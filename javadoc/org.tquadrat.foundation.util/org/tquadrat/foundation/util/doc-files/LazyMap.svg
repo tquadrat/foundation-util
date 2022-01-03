@@ -1,0 +1,523 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version='1.1'
+     baseProfile='full'
+     width='1646.000'
+     height='1253.000'>
+    <defs>
+        <style><![CDATA[
+            line
+            {
+              stroke: black;
+            }
+            line.separator
+            {
+              stroke:       black;
+              stroke-width: 1;
+            }
+            marker
+            {
+              fill: white;
+            }
+            path
+            {
+              fill:   white;
+              stroke: black;
+            }
+            path.implementation
+            {
+              fill:             none;
+              stroke-dasharray: 5,5;
+              stroke-width:     3;
+            }
+            path.inheritance
+            {
+              fill:         none;
+              stroke-width: 3;
+            }
+            rect
+            {
+              fill:         none;
+              stroke:       black;
+              stroke-width: 2;
+            }
+            rect.externalClass
+            {
+              fill:         #D0D0D0;
+              fill-opacity: 0.8;
+            }
+            rect.focusClass
+            {
+              fill:         #FFFFF9;
+              fill-opacity: 0.8;
+            }
+            rect.otherClass
+            {
+              fill:         #F0E68C;
+              fill-opacity: 0.8;
+            }
+            rect.template
+            {
+              fill:             #FFFFFF;
+              fill-opacity:     1.0;
+              stroke-dasharray: 3,3;
+            }
+            text
+            {
+              font-family: monospace;
+              font-size:   10px;
+              font-weight: bold;
+            }
+            text.abstract
+            {
+              font-style: italic;
+            }
+            text.final
+            {
+              text-decoration: underline;
+            }
+            text.static
+            {
+              font-weight: normal;
+            }
+            text.stereotype
+            {
+              font-size:   8px;
+              font-weight: normal;
+            }
+            ]]></style>
+        <marker id='inheritance'
+                viewBox='0,0,40,40'
+                markerUnits='strokeWidth'
+                refX='40'
+                refY='20'
+                markerWidth='6'
+                markerHeight='6'
+                orient='auto'>
+            <path d='M40,20 l-40,-20 v40 Z'
+                  fill='#ffffff'
+                  stroke='#000000'
+                  stroke-width='3'/>
+        </marker>
+        <marker id='implementation'
+                viewBox='0,0,40,40'
+                markerUnits='strokeWidth'
+                refX='40'
+                refY='20'
+                markerWidth='6'
+                markerHeight='6'
+                orient='auto'>
+            <path d='M40,20 l-40,-20 v40 Z'
+                  fill='#ffffff'
+                  stroke='#000000'
+                  stroke-width='3'/>
+        </marker>
+        <clipPath id='ID000001'>
+            <rect class='focusClass'
+                  height='117.000'
+                  width='814.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.LazyMap'>
+            <g>
+                <g class='focusClass'
+                   clip-path='url(#ID000001)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='814.000'
+                          height='117.000'
+                          class='focusClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='814.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='380.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='386.000'
+                          y='32.000'
+                          class='abstract'>LazyMap</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='814.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ ifPresent(consumer:java.util.function.Consumer&lt;? super java.util.Map&lt;K,V&gt;&gt;):void</text>
+                    <text x='5.000'
+                          y='77.000'
+                          class='abstract'>+ init():void</text>
+                    <text x='5.000'
+                          y='88.000'
+                          class='abstract'>+ isPresent():boolean</text>
+                    <text x='5.000'
+                          y='99.000'
+                          class='abstract static'>+ of(value:java.util.Map&lt;K,V&gt;):org.tquadrat.foundation.util.LazyMap&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='110.000'
+                          class='abstract static'>+ use(supplier:java.util.function.Supplier&lt;? extends java.util.Map&lt;K,V&gt;&gt;):org.tquadrat.foundation.util.LazyMap&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='121.000'
+                          class='abstract static'>+ use(doPopulate:boolean,supplier:java.util.function.Supplier&lt;? extends java.util.Map&lt;K,V&gt;&gt;):org.tquadrat.foundation.util.LazyMap&lt;K,V&gt;</text>
+                </g>
+                <g transform='translate(789.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='focusClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>K,V</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000002'>
+            <rect class='otherClass'
+                  height='282.000'
+                  width='610.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.internal.LazyMapImpl'>
+            <g>
+                <g clip-path='url(#ID000002)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='610.000'
+                          height='282.000'
+                          class='otherClass'/>
+                    <line x1='0.000'
+                          y1='25.000'
+                          x2='610.000'
+                          y2='25.000'
+                          class='separator'/>
+                    <text x='272.000'
+                          y='21.000'>LazyMapImpl</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='610.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text y='38.000'
+                          class='final'>- m_Holder:org.tquadrat.foundation.lang.Lazy&lt;? extends java.util.Map&lt;K,V&gt;&gt;</text>
+                    <text y='49.000'
+                          class='final'>- m_SupplierPopulates:boolean</text>
+                    <text x='5.000'
+                          y='66.000'>+ LazyMapImpl(doPopulate:boolean,supplier:java.util.function.Supplier&lt;? extends java.util.Map&lt;K,V&gt;&gt;)</text>
+                    <text x='5.000'
+                          y='77.000'>+ LazyMapImpl(value:java.util.Map&lt;K,V&gt;)</text>
+                    <text x='5.000'
+                          y='88.000'>+ clear():void</text>
+                    <text x='5.000'
+                          y='99.000'>+ containsKey(key:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='110.000'>+ containsValue(value:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='121.000'>+ entrySet():java.util.Set&lt;java.util.Map.Entry&lt;K,V&gt;&gt;</text>
+                    <text x='5.000'
+                          y='132.000'>+ equals(o:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='143.000'>+ get(key:java.lang.Object):V</text>
+                    <text x='5.000'
+                          y='154.000'>+ hashCode():int</text>
+                    <text x='5.000'
+                          y='165.000'># holder():org.tquadrat.foundation.lang.Lazy&lt;? extends java.util.Map&lt;K,V&gt;&gt;</text>
+                    <text x='5.000'
+                          y='176.000'>+ ifPresent(consumer:java.util.function.Consumer&lt;? super java.util.Map&lt;K,V&gt;&gt;):void</text>
+                    <text x='5.000'
+                          y='187.000'>+ init():void</text>
+                    <text x='5.000'
+                          y='198.000'>+ isEmpty():boolean</text>
+                    <text x='5.000'
+                          y='209.000'>+ isPresent():boolean</text>
+                    <text x='5.000'
+                          y='220.000'>+ keySet():java.util.Set&lt;K&gt;</text>
+                    <text x='5.000'
+                          y='231.000'>+ put(key:K,value:V):V</text>
+                    <text x='5.000'
+                          y='242.000'>+ putAll(map:java.util.Map&lt;? extends K,? extends V&gt;):void</text>
+                    <text x='5.000'
+                          y='253.000'>+ remove(key:java.lang.Object):V</text>
+                    <text x='5.000'
+                          y='264.000'>+ size():int</text>
+                    <text x='5.000'
+                          y='275.000'>+ toString():java.lang.String</text>
+                    <text x='5.000'
+                          y='286.000'>+ values():java.util.Collection&lt;V&gt;</text>
+                </g>
+                <g transform='translate(585.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='otherClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>K,V</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000003'>
+            <rect class='otherClass'
+                  height='84.000'
+                  width='886.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.LazySortedMap'>
+            <g>
+                <g clip-path='url(#ID000003)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='886.000'
+                          height='84.000'
+                          class='otherClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='886.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='416.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='404.000'
+                          y='32.000'
+                          class='abstract'>LazySortedMap</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='886.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract static'>+ of(value:java.util.SortedMap&lt;K,V&gt;):org.tquadrat.foundation.util.LazySortedMap&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='77.000'
+                          class='abstract static'>+ use(supplier:java.util.function.Supplier&lt;? extends java.util.SortedMap&lt;K,V&gt;&gt;):org.tquadrat.foundation.util.LazySortedMap&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='88.000'
+                          class='abstract static'>+ use(doPopulate:boolean,supplier:java.util.function.Supplier&lt;? extends java.util.SortedMap&lt;K,V&gt;&gt;):org.tquadrat.foundation.util.LazySortedMap&lt;K,V&gt;</text>
+                </g>
+                <g transform='translate(861.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='otherClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>K,V</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000004'>
+            <rect class='externalClass'
+                  height='480.000'
+                  width='1054.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='java.util.Map'>
+            <g>
+                <g clip-path='url(#ID000004)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='1054.000'
+                          height='480.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='1054.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='500.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='518.000'
+                          y='32.000'
+                          class='abstract'>Map</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='1054.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ size():int</text>
+                    <text x='5.000'
+                          y='77.000'
+                          class='abstract'>+ isEmpty():boolean</text>
+                    <text x='5.000'
+                          y='88.000'
+                          class='abstract'>+ containsKey(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='99.000'
+                          class='abstract'>+ containsValue(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='110.000'
+                          class='abstract'>+ get(arg0:java.lang.Object):V</text>
+                    <text x='5.000'
+                          y='121.000'
+                          class='abstract'>+ put(arg0:K,arg1:V):V</text>
+                    <text x='5.000'
+                          y='132.000'
+                          class='abstract'>+ remove(arg0:java.lang.Object):V</text>
+                    <text x='5.000'
+                          y='143.000'
+                          class='abstract'>+ putAll(arg0:java.util.Map&lt;? extends K,? extends V&gt;):void</text>
+                    <text x='5.000'
+                          y='154.000'
+                          class='abstract'>+ clear():void</text>
+                    <text x='5.000'
+                          y='165.000'
+                          class='abstract'>+ keySet():java.util.Set&lt;K&gt;</text>
+                    <text x='5.000'
+                          y='176.000'
+                          class='abstract'>+ values():java.util.Collection&lt;V&gt;</text>
+                    <text x='5.000'
+                          y='187.000'
+                          class='abstract'>+ entrySet():java.util.Set&lt;java.util.Map.Entry&lt;K,V&gt;&gt;</text>
+                    <text x='5.000'
+                          y='198.000'
+                          class='abstract'>+ equals(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='209.000'
+                          class='abstract'>+ hashCode():int</text>
+                    <text x='5.000'
+                          y='220.000'>&#x2A22; getOrDefault(arg0:java.lang.Object,arg1:V):V</text>
+                    <text x='5.000'
+                          y='231.000'>&#x2A22; forEach(arg0:java.util.function.BiConsumer&lt;? super K,? super V&gt;):void</text>
+                    <text x='5.000'
+                          y='242.000'>&#x2A22; replaceAll(arg0:java.util.function.BiFunction&lt;? super K,? super V,? extends V&gt;):void</text>
+                    <text x='5.000'
+                          y='253.000'>&#x2A22; putIfAbsent(arg0:K,arg1:V):V</text>
+                    <text x='5.000'
+                          y='264.000'>&#x2A22; remove(arg0:java.lang.Object,arg1:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='275.000'>&#x2A22; replace(arg0:K,arg1:V,arg2:V):boolean</text>
+                    <text x='5.000'
+                          y='286.000'>&#x2A22; replace(arg0:K,arg1:V):V</text>
+                    <text x='5.000'
+                          y='297.000'>&#x2A22; computeIfAbsent(arg0:K,arg1:java.util.function.Function&lt;? super K,? extends V&gt;):V</text>
+                    <text x='5.000'
+                          y='308.000'>&#x2A22; computeIfPresent(arg0:K,arg1:java.util.function.BiFunction&lt;? super K,? super V,? extends V&gt;):V</text>
+                    <text x='5.000'
+                          y='319.000'>&#x2A22; compute(arg0:K,arg1:java.util.function.BiFunction&lt;? super K,? super V,? extends V&gt;):V</text>
+                    <text x='5.000'
+                          y='330.000'>&#x2A22; merge(arg0:K,arg1:V,arg2:java.util.function.BiFunction&lt;? super V,? super V,? extends V&gt;):V</text>
+                    <text x='5.000'
+                          y='341.000'
+                          class='abstract static'>+ of():java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='352.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='363.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='374.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V,arg4:K,arg5:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='385.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V,arg4:K,arg5:V,arg6:K,arg7:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='396.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V,arg4:K,arg5:V,arg6:K,arg7:V,arg8:K,arg9:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='407.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V,arg4:K,arg5:V,arg6:K,arg7:V,arg8:K,arg9:V,arg10:K,arg11:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='418.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V,arg4:K,arg5:V,arg6:K,arg7:V,arg8:K,arg9:V,arg10:K,arg11:V,arg12:K,arg13:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='429.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V,arg4:K,arg5:V,arg6:K,arg7:V,arg8:K,arg9:V,arg10:K,arg11:V,arg12:K,arg13:V,arg14:K,arg15:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='440.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V,arg4:K,arg5:V,arg6:K,arg7:V,arg8:K,arg9:V,arg10:K,arg11:V,arg12:K,arg13:V,arg14:K,arg15:V,arg16:K,arg17:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='451.000'
+                          class='abstract static'>+ of(arg0:K,arg1:V,arg2:K,arg3:V,arg4:K,arg5:V,arg6:K,arg7:V,arg8:K,arg9:V,arg10:K,arg11:V,arg12:K,arg13:V,arg14:K,arg15:V,arg16:K,arg17:V,arg18:K,arg19:V):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='462.000'
+                          class='abstract static'>+ ofEntries(arg0:java.util.Map.Entry&lt;? extends K,? extends V&gt;&#x2026;):java.util.Map&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='473.000'
+                          class='abstract static'>+ entry(arg0:K,arg1:V):java.util.Map.Entry&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='484.000'
+                          class='abstract static'>+ copyOf(arg0:java.util.Map&lt;? extends K,? extends V&gt;):java.util.Map&lt;K,V&gt;</text>
+                </g>
+                <g transform='translate(1029.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='externalClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>K,V</text>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <path class='implementation'
+          d='M330.000,846.000 c0.000,-93.000,465.500,0.000,465.500,-93.000 v-15'
+          marker-end='url(#implementation)'/>
+    <path class='inheritance'
+          d='M1153.000,846.000 c0.000,-93.000,-327.500,0.000,-327.500,-93.000 v-15'
+          marker-end='url(#inheritance)'/>
+    <path class='inheritance'
+          d='M810.500,621.000 L810.500,513.000'
+          marker-end='url(#inheritance)'/>
+    <use x='283.500'
+         y='25.000'
+         xlink:href='#java.util.Map'/>
+    <use x='403.500'
+         y='613.000'
+         xlink:href='#org.tquadrat.foundation.util.LazyMap'/>
+    <use x='25.000'
+         y='838.000'
+         xlink:href='#org.tquadrat.foundation.util.internal.LazyMapImpl'/>
+    <use x='710.000'
+         y='838.000'
+         xlink:href='#org.tquadrat.foundation.util.LazySortedMap'/>
+</svg>

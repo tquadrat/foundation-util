@@ -1,0 +1,8 @@
+Result;Input;Output
+true;"@File\\.txt";"File.txt"
+true;"   This is a valid Filename   ";"This is a valid Filename"
+false;"@";
+false;"  ";
+false;"/";
+true;"Valid\nFile\nName";"ValidFileName"
+false;":\\/;*\"'@|?<>";

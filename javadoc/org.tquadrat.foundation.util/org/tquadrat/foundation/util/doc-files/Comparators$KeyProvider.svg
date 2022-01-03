@@ -1,0 +1,237 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version='1.1'
+     baseProfile='full'
+     width='217.000'
+     height='390.000'>
+    <defs>
+        <style><![CDATA[
+            line
+            {
+              stroke: black;
+            }
+            line.separator
+            {
+              stroke:       black;
+              stroke-width: 1;
+            }
+            marker
+            {
+              fill: white;
+            }
+            path
+            {
+              fill:   white;
+              stroke: black;
+            }
+            path.implementation
+            {
+              fill:             none;
+              stroke-dasharray: 5,5;
+              stroke-width:     3;
+            }
+            path.inheritance
+            {
+              fill:         none;
+              stroke-width: 3;
+            }
+            rect
+            {
+              fill:         none;
+              stroke:       black;
+              stroke-width: 2;
+            }
+            rect.externalClass
+            {
+              fill:         #D0D0D0;
+              fill-opacity: 0.8;
+            }
+            rect.focusClass
+            {
+              fill:         #FFFFF9;
+              fill-opacity: 0.8;
+            }
+            rect.otherClass
+            {
+              fill:         #F0E68C;
+              fill-opacity: 0.8;
+            }
+            rect.template
+            {
+              fill:             #FFFFFF;
+              fill-opacity:     1.0;
+              stroke-dasharray: 3,3;
+            }
+            text
+            {
+              font-family: monospace;
+              font-size:   10px;
+              font-weight: bold;
+            }
+            text.abstract
+            {
+              font-style: italic;
+            }
+            text.final
+            {
+              text-decoration: underline;
+            }
+            text.static
+            {
+              font-weight: normal;
+            }
+            text.stereotype
+            {
+              font-size:   8px;
+              font-weight: normal;
+            }
+            ]]></style>
+        <marker id='inheritance'
+                viewBox='0,0,40,40'
+                markerUnits='strokeWidth'
+                refX='40'
+                refY='20'
+                markerWidth='6'
+                markerHeight='6'
+                orient='auto'>
+            <path d='M40,20 l-40,-20 v40 Z'
+                  fill='#ffffff'
+                  stroke='#000000'
+                  stroke-width='3'/>
+        </marker>
+        <marker id='implementation'
+                viewBox='0,0,40,40'
+                markerUnits='strokeWidth'
+                refX='40'
+                refY='20'
+                markerWidth='6'
+                markerHeight='6'
+                orient='auto'>
+            <path d='M40,20 l-40,-20 v40 Z'
+                  fill='#ffffff'
+                  stroke='#000000'
+                  stroke-width='3'/>
+        </marker>
+        <clipPath id='ID000001'>
+            <rect class='focusClass'
+                  height='62.000'
+                  width='142.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.Comparators.KeyProvider'>
+            <g>
+                <g class='focusClass'
+                   clip-path='url(#ID000001)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='142.000'
+                          height='62.000'
+                          class='focusClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='142.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='44.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='38.000'
+                          y='32.000'
+                          class='abstract'>KeyProvider</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='142.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ getKey(instance:T):K</text>
+                </g>
+                <g transform='translate(117.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='focusClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>T,K</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000002'>
+            <rect class='otherClass'
+                  height='62.000'
+                  width='142.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.internal.ListBasedComparator.SimpleKeyProvider'>
+            <g>
+                <g clip-path='url(#ID000002)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='142.000'
+                          height='62.000'
+                          class='otherClass'/>
+                    <line x1='0.000'
+                          y1='25.000'
+                          x2='142.000'
+                          y2='25.000'
+                          class='separator'/>
+                    <text x='20.000'
+                          y='21.000'>SimpleKeyProvider</text>
+                    <line x1='0.000'
+                          y1='42.000'
+                          x2='142.000'
+                          y2='42.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='38.000'/>
+                    <text x='5.000'
+                          y='55.000'>+ SimpleKeyProvider()</text>
+                    <text x='5.000'
+                          y='66.000'>+ getKey(instance:T):K</text>
+                </g>
+                <g transform='translate(117.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='otherClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>T,K</text>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <path class='implementation'
+          d='M96.000,203.000 L96.000,95.000'
+          marker-end='url(#implementation)'/>
+    <use x='25.000'
+         y='25.000'
+         xlink:href='#org.tquadrat.foundation.util.Comparators.KeyProvider'/>
+    <use x='25.000'
+         y='195.000'
+         xlink:href='#org.tquadrat.foundation.util.internal.ListBasedComparator.SimpleKeyProvider'/>
+</svg>

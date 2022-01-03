@@ -1,0 +1,143 @@
+/*
+ * ============================================================================
+ * Copyright © 2002-2020 by Thomas Thrien.
+ * All Rights Reserved.
+ * ============================================================================
+ * Licensed to the public under the agreements of the GNU Lesser General Public
+ * License, version 3.0 (the "License"). You may obtain a copy of the License at
+ *
+ *      http://www.gnu.org/licenses/lgpl.html
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+
+package org.tquadrat.foundation.util;
+
+import static org.apiguardian.api.API.Status.STABLE;
+import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.util.internal.LazyListImpl;
+
+/**
+ *  The interface for a
+ *  {@link List}
+ *  that will be initialised only when required.
+ *
+ *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @version $Id: LazyList.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @since 0.0.5
+ *
+ *  @param  <E> The type of elements in this list.
+ *
+ *  @see org.tquadrat.foundation.lang.Lazy
+ *
+ *  @note   There is no implementation of a {@code map()} method in this
+ *      interface because it is assumed that this would be confusing: such a
+ *      {@code map()} method would operate on the whole list that is wrapped by
+ *      this value, and not on a entry as one would expect. Refer to
+ *      {@link org.tquadrat.foundation.lang.Lazy#map(java.util.function.Function)}.
+ *
+ *  @UMLGraph.link
+ */
+@SuppressWarnings( "preview" )
+@ClassVersion( sourceVersion = "$Id: LazyList.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@API( status = STABLE, since = "0.0.5" )
+public sealed interface LazyList<E> extends List<E>
+    permits LazyListImpl
+{
+        /*---------*\
+    ====** Methods **==========================================================
+        \*---------*/
+    /**
+     *  If this {@code LazyList} instance has been initialised already, the
+     *  provided
+     *  {@link Consumer}
+     *  will be executed; otherwise nothing happens.
+     *
+     *  @param  consumer    The consumer.
+     */
+    public void ifPresent( final Consumer<? super List<E>> consumer );
+
+    /**
+     *  Forces the initialisation of this {@code LazyList} instance.
+     */
+    public void init();
+
+    /**
+     *  Checks whether this {@code LazyList} instance has been initialised
+     *  already.
+     *
+     *  @return {@code true} if the instance was initialised, {@code false}
+     *      otherwise.
+     */
+    public boolean isPresent();
+
+    /**
+     *  Creates a new {@code LazyList} instance that is already initialised.
+     *
+     *  @param  <E> The type of elements in this list.
+     *  @param  value   The value.
+     *  @return The new instance.
+     */
+    @API( status = STABLE, since = "0.0.5" )
+    public static <E> LazyList<E> of( final List<E> value )
+    {
+        return new LazyListImpl<>( requireNonNullArgument( value, "value" ) );
+    }   //  of()
+
+    /**
+     *  {@inheritDoc}
+     */
+    @Override
+    public void sort( final Comparator<? super E> c );
+
+    /**
+     *  Creates a new {@code LazyList} instance that uses the given supplier to
+     *  create the internal map, but that supplier does not provide values on
+     *  initialisation.
+     *
+     *  @param  <E> The type of elements in this list.
+     *  @param  supplier    The supplier that initialises for the new instance
+     *      of {@code LazyList} when needed.
+     *  @return The new instance.
+     */
+    @API( status = STABLE, since = "0.0.5" )
+    public static <E> LazyList<E> use( final Supplier<? extends List<E>> supplier )
+    {
+        return new LazyListImpl<>( false, supplier );
+    }   //  use()
+
+    /**
+     *  Creates a new {@code LazyList} instance that uses the given supplier to
+     *  initialise.
+     *
+     *  @param  <E> The type of elements in this list.
+     *  @param  doPopulate  {@code true} if the provided supplier will put
+     *      entries to the list on initialisation, {@code false} if will create
+     *      an empty list.
+     *  @param  supplier    The supplier that initialises for the new instance
+     *      of {@code LazyList} when needed.
+     *  @return The new instance.
+     */
+    @API( status = STABLE, since = "0.0.5" )
+    public static <E> LazyList<E> use( final boolean doPopulate, final Supplier<? extends List<E>> supplier )
+    {
+        return new LazyListImpl<>( doPopulate, supplier );
+    }   //  use()
+}
+//  interface LazyList
+
+/*
+ *  End of File
+ */

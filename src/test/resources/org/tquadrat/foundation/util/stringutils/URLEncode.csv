@@ -1,0 +1,7 @@
+Plain;Encoded
+"";""
+"Text with blanks";"Text+with+blanks"
+"name=value+1";"name%3Dvalue%2B1"
+"Text";"Text"
+"Name=Value";"Name%3DValue"
+"Name = ""Value with Blanks""";"Name+%3D+%22Value+with+Blanks%22"

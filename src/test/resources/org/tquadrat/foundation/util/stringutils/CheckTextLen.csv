@@ -1,0 +1,4 @@
+Result;Text;MaxLength
+true;"String";10
+true;"String";6
+false;"String";4

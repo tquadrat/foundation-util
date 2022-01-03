@@ -1,0 +1,12 @@
+Input;Expected
+;
+"";""
+"c";"c"
+"C";"c"
+"cat";"cat"
+"Cat";"cat"
+"cAT";"cAT"
+"CaT";"caT"
+"CAT";"cAT"
+"istanbul";"istanbul"
+"Istanbul";"istanbul"

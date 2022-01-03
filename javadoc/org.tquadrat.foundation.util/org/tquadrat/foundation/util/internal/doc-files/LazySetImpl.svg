@@ -1,0 +1,682 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version='1.1'
+     baseProfile='full'
+     width='865.000'
+     height='1827.000'>
+    <defs>
+        <style><![CDATA[
+            line
+            {
+              stroke: black;
+            }
+            line.separator
+            {
+              stroke:       black;
+              stroke-width: 1;
+            }
+            marker
+            {
+              fill: white;
+            }
+            path
+            {
+              fill:   white;
+              stroke: black;
+            }
+            path.implementation
+            {
+              fill:             none;
+              stroke-dasharray: 5,5;
+              stroke-width:     3;
+            }
+            path.inheritance
+            {
+              fill:         none;
+              stroke-width: 3;
+            }
+            rect
+            {
+              fill:         none;
+              stroke:       black;
+              stroke-width: 2;
+            }
+            rect.externalClass
+            {
+              fill:         #D0D0D0;
+              fill-opacity: 0.8;
+            }
+            rect.focusClass
+            {
+              fill:         #FFFFF9;
+              fill-opacity: 0.8;
+            }
+            rect.otherClass
+            {
+              fill:         #F0E68C;
+              fill-opacity: 0.8;
+            }
+            rect.template
+            {
+              fill:             #FFFFFF;
+              fill-opacity:     1.0;
+              stroke-dasharray: 3,3;
+            }
+            text
+            {
+              font-family: monospace;
+              font-size:   10px;
+              font-weight: bold;
+            }
+            text.abstract
+            {
+              font-style: italic;
+            }
+            text.final
+            {
+              text-decoration: underline;
+            }
+            text.static
+            {
+              font-weight: normal;
+            }
+            text.stereotype
+            {
+              font-size:   8px;
+              font-weight: normal;
+            }
+            ]]></style>
+        <marker id='inheritance'
+                viewBox='0,0,40,40'
+                markerUnits='strokeWidth'
+                refX='40'
+                refY='20'
+                markerWidth='6'
+                markerHeight='6'
+                orient='auto'>
+            <path d='M40,20 l-40,-20 v40 Z'
+                  fill='#ffffff'
+                  stroke='#000000'
+                  stroke-width='3'/>
+        </marker>
+        <marker id='implementation'
+                viewBox='0,0,40,40'
+                markerUnits='strokeWidth'
+                refX='40'
+                refY='20'
+                markerWidth='6'
+                markerHeight='6'
+                orient='auto'>
+            <path d='M40,20 l-40,-20 v40 Z'
+                  fill='#ffffff'
+                  stroke='#000000'
+                  stroke-width='3'/>
+        </marker>
+        <clipPath id='ID000001'>
+            <rect class='focusClass'
+                  height='315.000'
+                  width='598.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.internal.LazySetImpl'>
+            <g>
+                <g class='focusClass'
+                   clip-path='url(#ID000001)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='598.000'
+                          height='315.000'
+                          class='focusClass'/>
+                    <line x1='0.000'
+                          y1='25.000'
+                          x2='598.000'
+                          y2='25.000'
+                          class='separator'/>
+                    <text x='266.000'
+                          y='21.000'>LazySetImpl</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='598.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text y='38.000'
+                          class='final'>- m_Holder:org.tquadrat.foundation.lang.Lazy&lt;? extends java.util.Set&lt;E&gt;&gt;</text>
+                    <text y='49.000'
+                          class='final'>- m_SupplierPopulates:boolean</text>
+                    <text x='5.000'
+                          y='66.000'>+ LazySetImpl(doPopulate:boolean,supplier:java.util.function.Supplier&lt;? extends java.util.Set&lt;E&gt;&gt;)</text>
+                    <text x='5.000'
+                          y='77.000'>+ LazySetImpl(value:java.util.Set&lt;E&gt;)</text>
+                    <text x='5.000'
+                          y='88.000'>+ add(e:E):boolean</text>
+                    <text x='5.000'
+                          y='99.000'>+ addAll(c:java.util.Collection&lt;? extends E&gt;):boolean</text>
+                    <text x='5.000'
+                          y='110.000'>+ clear():void</text>
+                    <text x='5.000'
+                          y='121.000'>+ contains(o:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='132.000'>+ containsAll(c:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='143.000'>+ equals(o:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='154.000'>+ forEach(action:java.util.function.Consumer&lt;? super E&gt;):void</text>
+                    <text x='5.000'
+                          y='165.000'>+ hashCode():int</text>
+                    <text x='5.000'
+                          y='176.000'>+ ifPresent(consumer:java.util.function.Consumer&lt;? super java.util.Set&lt;E&gt;&gt;):void</text>
+                    <text x='5.000'
+                          y='187.000'>+ init():void</text>
+                    <text x='5.000'
+                          y='198.000'>+ isEmpty():boolean</text>
+                    <text x='5.000'
+                          y='209.000'>+ isPresent():boolean</text>
+                    <text x='5.000'
+                          y='220.000'>+ iterator():java.util.Iterator&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='231.000'>+ remove(o:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='242.000'>+ removeAll(c:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='253.000'>+ removeIf(filter:java.util.function.Predicate&lt;? super E&gt;):boolean</text>
+                    <text x='5.000'
+                          y='264.000'>+ retainAll(c:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='275.000'>+ size():int</text>
+                    <text x='5.000'
+                          y='286.000'>+ spliterator():java.util.Spliterator&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='297.000'>+ toArray():java.lang.Object[]</text>
+                    <text x='5.000'
+                          y='308.000'>+ toArray(a:T[]):T[]</text>
+                    <text x='5.000'
+                          y='319.000'>+ toString():java.lang.String</text>
+                </g>
+                <g transform='translate(573.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='focusClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>E</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000002'>
+            <rect class='externalClass'
+                  height='172.000'
+                  width='244.000'
+                  x='0.000'
+                  y='0.000'/>
+        </clipPath>
+        <symbol id='java.lang.Object'>
+            <g>
+                <g clip-path='url(#ID000002)'>
+                    <rect x='0.000'
+                          y='0.000'
+                          width='244.000'
+                          height='172.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='17.000'
+                          x2='244.000'
+                          y2='17.000'
+                          class='separator'/>
+                    <text x='104.000'
+                          y='13.000'>Object</text>
+                    <line x1='0.000'
+                          y1='34.000'
+                          x2='244.000'
+                          y2='34.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='30.000'/>
+                    <text x='5.000'
+                          y='47.000'>+ Object()</text>
+                    <text x='5.000'
+                          y='58.000'>+ getClass():java.lang.Class&lt;?&gt;</text>
+                    <text x='5.000'
+                          y='69.000'>+ hashCode():int</text>
+                    <text x='5.000'
+                          y='80.000'>+ equals(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='91.000'># clone():java.lang.Object</text>
+                    <text x='5.000'
+                          y='102.000'>+ toString():java.lang.String</text>
+                    <text x='5.000'
+                          y='113.000'>+ notify():void</text>
+                    <text x='5.000'
+                          y='124.000'>+ notifyAll():void</text>
+                    <text x='5.000'
+                          y='135.000'>+ wait():void</text>
+                    <text x='5.000'
+                          y='146.000'>+ wait(arg0:long):void</text>
+                    <text x='5.000'
+                          y='157.000'>+ wait(arg0:long,arg1:int):void</text>
+                    <text x='5.000'
+                          y='168.000'># finalize():void</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000003'>
+            <rect class='otherClass'
+                  height='117.000'
+                  width='790.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.LazySet'>
+            <g>
+                <g clip-path='url(#ID000003)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='790.000'
+                          height='117.000'
+                          class='otherClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='790.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='368.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='374.000'
+                          y='32.000'
+                          class='abstract'>LazySet</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='790.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ ifPresent(consumer:java.util.function.Consumer&lt;? super java.util.Set&lt;E&gt;&gt;):void</text>
+                    <text x='5.000'
+                          y='77.000'
+                          class='abstract'>+ init():void</text>
+                    <text x='5.000'
+                          y='88.000'
+                          class='abstract'>+ isPresent():boolean</text>
+                    <text x='5.000'
+                          y='99.000'
+                          class='abstract static'>+ of(value:java.util.Set&lt;E&gt;):org.tquadrat.foundation.util.LazySet&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='110.000'
+                          class='abstract static'>+ use(supplier:java.util.function.Supplier&lt;? extends java.util.Set&lt;E&gt;&gt;):org.tquadrat.foundation.util.LazySet&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='121.000'
+                          class='abstract static'>+ use(doPopulate:boolean,supplier:java.util.function.Supplier&lt;? extends java.util.Set&lt;E&gt;&gt;):org.tquadrat.foundation.util.LazySet&lt;E&gt;</text>
+                </g>
+                <g transform='translate(765.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='otherClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>E</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000004'>
+            <rect class='externalClass'
+                  height='370.000'
+                  width='562.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='java.util.Set'>
+            <g>
+                <g clip-path='url(#ID000004)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='562.000'
+                          height='370.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='562.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='254.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='272.000'
+                          y='32.000'
+                          class='abstract'>Set</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='562.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ size():int</text>
+                    <text x='5.000'
+                          y='77.000'
+                          class='abstract'>+ isEmpty():boolean</text>
+                    <text x='5.000'
+                          y='88.000'
+                          class='abstract'>+ contains(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='99.000'
+                          class='abstract'>+ iterator():java.util.Iterator&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='110.000'
+                          class='abstract'>+ toArray():java.lang.Object[]</text>
+                    <text x='5.000'
+                          y='121.000'
+                          class='abstract'>+ toArray(arg0:T[]):T[]</text>
+                    <text x='5.000'
+                          y='132.000'
+                          class='abstract'>+ add(arg0:E):boolean</text>
+                    <text x='5.000'
+                          y='143.000'
+                          class='abstract'>+ remove(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='154.000'
+                          class='abstract'>+ containsAll(arg0:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='165.000'
+                          class='abstract'>+ addAll(arg0:java.util.Collection&lt;? extends E&gt;):boolean</text>
+                    <text x='5.000'
+                          y='176.000'
+                          class='abstract'>+ retainAll(arg0:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='187.000'
+                          class='abstract'>+ removeAll(arg0:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='198.000'
+                          class='abstract'>+ clear():void</text>
+                    <text x='5.000'
+                          y='209.000'
+                          class='abstract'>+ equals(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='220.000'
+                          class='abstract'>+ hashCode():int</text>
+                    <text x='5.000'
+                          y='231.000'>&#x2A22; spliterator():java.util.Spliterator&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='242.000'
+                          class='abstract static'>+ of():java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='253.000'
+                          class='abstract static'>+ of(arg0:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='264.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='275.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='286.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='297.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='308.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='319.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='330.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='341.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E,arg8:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='352.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E,arg8:E,arg9:E):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='363.000'
+                          class='abstract static'>+ of(arg0:E&#x2026;):java.util.Set&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='374.000'
+                          class='abstract static'>+ copyOf(arg0:java.util.Collection&lt;? extends E&gt;):java.util.Set&lt;E&gt;</text>
+                </g>
+                <g transform='translate(537.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='externalClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>E</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000005'>
+            <rect class='externalClass'
+                  height='271.000'
+                  width='394.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='java.util.Collection'>
+            <g>
+                <g clip-path='url(#ID000005)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='394.000'
+                          height='271.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='394.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='170.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='167.000'
+                          y='32.000'
+                          class='abstract'>Collection</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='394.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ size():int</text>
+                    <text x='5.000'
+                          y='77.000'
+                          class='abstract'>+ isEmpty():boolean</text>
+                    <text x='5.000'
+                          y='88.000'
+                          class='abstract'>+ contains(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='99.000'
+                          class='abstract'>+ iterator():java.util.Iterator&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='110.000'
+                          class='abstract'>+ toArray():java.lang.Object[]</text>
+                    <text x='5.000'
+                          y='121.000'
+                          class='abstract'>+ toArray(arg0:T[]):T[]</text>
+                    <text x='5.000'
+                          y='132.000'>&#x2A22; toArray(arg0:java.util.function.IntFunction&lt;T[]&gt;):T[]</text>
+                    <text x='5.000'
+                          y='143.000'
+                          class='abstract'>+ add(arg0:E):boolean</text>
+                    <text x='5.000'
+                          y='154.000'
+                          class='abstract'>+ remove(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='165.000'
+                          class='abstract'>+ containsAll(arg0:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='176.000'
+                          class='abstract'>+ addAll(arg0:java.util.Collection&lt;? extends E&gt;):boolean</text>
+                    <text x='5.000'
+                          y='187.000'
+                          class='abstract'>+ removeAll(arg0:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='198.000'>&#x2A22; removeIf(arg0:java.util.function.Predicate&lt;? super E&gt;):boolean</text>
+                    <text x='5.000'
+                          y='209.000'
+                          class='abstract'>+ retainAll(arg0:java.util.Collection&lt;?&gt;):boolean</text>
+                    <text x='5.000'
+                          y='220.000'
+                          class='abstract'>+ clear():void</text>
+                    <text x='5.000'
+                          y='231.000'
+                          class='abstract'>+ equals(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='242.000'
+                          class='abstract'>+ hashCode():int</text>
+                    <text x='5.000'
+                          y='253.000'>&#x2A22; spliterator():java.util.Spliterator&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='264.000'>&#x2A22; stream():java.util.stream.Stream&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='275.000'>&#x2A22; parallelStream():java.util.stream.Stream&lt;E&gt;</text>
+                </g>
+                <g transform='translate(369.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='externalClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>E</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000006'>
+            <rect class='externalClass'
+                  height='84.000'
+                  width='364.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='java.lang.Iterable'>
+            <g>
+                <g clip-path='url(#ID000006)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='364.000'
+                          height='84.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='364.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='155.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='158.000'
+                          y='32.000'
+                          class='abstract'>Iterable</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='364.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ iterator():java.util.Iterator&lt;T&gt;</text>
+                    <text x='5.000'
+                          y='77.000'>&#x2A22; forEach(arg0:java.util.function.Consumer&lt;? super T&gt;):void</text>
+                    <text x='5.000'
+                          y='88.000'>&#x2A22; spliterator():java.util.Spliterator&lt;T&gt;</text>
+                </g>
+                <g transform='translate(339.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='externalClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>T</text>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <path class='inheritance'
+          d='M445.000,1387.000 c0.000,-1175.000,-228.750,0.000,-228.750,-1175.000 v-15'
+          marker-end='url(#inheritance)'/>
+    <path class='implementation'
+          d='M395.000,1387.000 c0.000,-93.000,25.000,0.000,25.000,-93.000 v-15'
+          marker-end='url(#implementation)'/>
+    <path class='inheritance'
+          d='M420.000,1162.000 L420.000,1054.000'
+          marker-end='url(#inheritance)'/>
+    <path class='inheritance'
+          d='M420.000,684.000 L420.000,576.000'
+          marker-end='url(#inheritance)'/>
+    <path class='inheritance'
+          d='M420.000,305.000 c0.000,-173.000,216.250,0.000,216.250,-173.000 v-15'
+          marker-end='url(#inheritance)'/>
+    <use x='94.250'
+         y='25.000'
+         xlink:href='#java.lang.Object'/>
+    <use x='454.250'
+         y='25.000'
+         xlink:href='#java.lang.Iterable'/>
+    <use x='223.000'
+         y='297.000'
+         xlink:href='#java.util.Collection'/>
+    <use x='139.000'
+         y='676.000'
+         xlink:href='#java.util.Set'/>
+    <use x='25.000'
+         y='1154.000'
+         xlink:href='#org.tquadrat.foundation.util.LazySet'/>
+    <use x='121.000'
+         y='1379.000'
+         xlink:href='#org.tquadrat.foundation.util.internal.LazySetImpl'/>
+</svg>

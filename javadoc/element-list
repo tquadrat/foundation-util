@@ -1,0 +1,4 @@
+module:org.tquadrat.foundation.util
+org.tquadrat.foundation.util
+org.tquadrat.foundation.util.internal
+org.tquadrat.foundation.util.stringconverter

@@ -1,0 +1,12 @@
+Result;Input;MaxWidth;Expected
+true;"";4;""
+true;"abc";4;"abc"
+true;"abcd";4;"abcd"
+true;"abcdefg";4;"abc…"
+true;"abcdefg";7;"abcdefg"
+true;"abcdefg";8;"abcdefg"
+false;"abcdefg";-1;"?"
+false;"abcdefg";0;"?"
+false;"abcdefg";1;"?"
+false;"abcdefg";2;"?"
+false;"abcdefg";3;"?"

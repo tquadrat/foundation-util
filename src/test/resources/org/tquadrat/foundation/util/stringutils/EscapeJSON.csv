@@ -1,0 +1,6 @@
+Input;Expected
+"";""
+"\\";"\\u005c"
+"""";"\\u0022"
+"\n\t";"\\n\\t"
+"This is a text";"This is a text"
