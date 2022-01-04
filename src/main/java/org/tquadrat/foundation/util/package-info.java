@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -16,16 +16,22 @@
  */
 
 /**
- *  Utility classes provided by the Foundation Library.<br>
- *  <br>Unless otherwise stated, {@code null} argument values will cause
+ *  <p>{@summary The utility classes provided for the <i>Foundation</i>
+ *  library.}</p>
+ *  <p>Unless otherwise stated, {@code null} argument values will cause
  *  methods and constructors of all classes in this package to throw an
  *  {@link java.lang.Exception Exception},
  *  usually a
  *  {@link org.tquadrat.foundation.exception.NullArgumentException},
  *  but in some rare cases, it could be also a
- *  {@link java.lang.NullPointerException}.
+ *  {@link java.lang.NullPointerException}.</p>
  */
+@API( status = STABLE, since = "0.0.1" )
 package org.tquadrat.foundation.util;
+
+import static org.apiguardian.api.API.Status.STABLE;
+
+import org.apiguardian.api.API;
 
 /*
  *  End of File

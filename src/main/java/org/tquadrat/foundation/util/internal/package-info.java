@@ -19,7 +19,12 @@
  *  Internal utility classes for the util module of the Foundation library plus
  *  the implementations for the exported components.
  */
+@API( status = INTERNAL, since = "0.0.1" )
 package org.tquadrat.foundation.util.internal;
+
+import static org.apiguardian.api.API.Status.INTERNAL;
+
+import org.apiguardian.api.API;
 
 /*
  *  End of File
