@@ -52,12 +52,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  {@link IllegalArgumentException}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: PathStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: PathStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: PathStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: PathStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class PathStringConverter implements StringConverter<Path>
 {
@@ -113,6 +113,7 @@ public final class PathStringConverter implements StringConverter<Path>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final PathStringConverter provider() { return INSTANCE; }
 }
 //  class PathStringConverter

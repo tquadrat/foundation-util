@@ -57,12 +57,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to get the IP address as a String.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: InetAddressStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $
+ *  @version $Id: InetAddressStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: InetAddressStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: InetAddressStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class InetAddressStringConverter implements StringConverter<InetAddress>
 {
@@ -127,6 +127,7 @@ public final class InetAddressStringConverter implements StringConverter<InetAdd
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final InetAddressStringConverter provider() { return INSTANCE; }
 
     /**

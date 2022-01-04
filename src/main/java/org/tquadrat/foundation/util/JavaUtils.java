@@ -86,13 +86,13 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  allowed.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: JavaUtils.java 884 2021-03-22 18:02:51Z tquadrat $
+ *  @version $Id: JavaUtils.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: JavaUtils.java 884 2021-03-22 18:02:51Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: JavaUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @UtilityClass
 public final class JavaUtils
 {
@@ -292,6 +292,7 @@ public final class JavaUtils
      *      {@link Optional}
      *      that holds the name of the main class.
      */
+    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.5" )
     public static final Optional<String> findMainClass()
     {
@@ -413,6 +414,7 @@ public final class JavaUtils
      *      {@link Optional}
      *      that holds the URL for the code source.
      */
+    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.5" )
     public static final Optional<URL> getCodeSource( final Class<?> c )
     {
@@ -689,7 +691,7 @@ public final class JavaUtils
      *  {@link Object#hashCode() hashCode()}
      *  as defined by the class {@code Object}. To be this method, it has to be
      *  public, it has to have the name 'hashCode', it does not take any
-     *  argument and it will return a result of type {@code integer}.
+     *  argument, and it will return a result of type {@code integer}.
      *
      *  @param  method  The method to check.
      *  @return {@code true} if the method is the {@code hashCode()}
@@ -838,7 +840,7 @@ public final class JavaUtils
      *  {@link Object#toString() toString()}
      *  as defined by the class {@code Object}. To be this method, it has to be
      *  public, it has to have the name 'toString', it does not take any
-     *  argument and it returns a result of type
+     *  argument, and it returns a result of type
      *  {@link String}.
      *
      *  @param  method  The method to check.

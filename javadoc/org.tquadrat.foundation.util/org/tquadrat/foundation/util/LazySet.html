@@ -94,7 +94,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="internal/LazySetImpl.html" title="class in org.tquadrat.foundation.util.internal">LazySetImpl</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: LazySet.java 820 2020-12-29 20:34:22Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: LazySet.java 966 2022-01-04 22:28:49Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
 </span><span class="modifiers">public sealed interface </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySet.html#line-52">LazySet</a>&lt;E&gt;</span><span class="extends-implements">
@@ -110,7 +110,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/ja
 <li>There is no implementation of a <code>map()</code> method in this
       interface because it is assumed that this would be confusing: such a
       <code>map()</code> method would operate on the whole list that is wrapped by
-      this value, and not on a entry as one would expect. Refer to
+      this value, and not on an entry as one would expect. Refer to
       .</li>
 </ul>
 </dd>
@@ -118,7 +118,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/ja
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: LazySet.java 820 2020-12-29 20:34:22Z tquadrat $</dd>
+<dd>$Id: LazySet.java 966 2022-01-04 22:28:49Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.5</dd>
 <dt>See Also:</dt>
@@ -306,8 +306,8 @@ extends <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/ja
 <dd><code>E</code> - The type of elements in this set.</dd>
 <dt>Parameters:</dt>
 <dd><code>doPopulate</code> - <code>true</code> if the provided supplier will put
-      entries to the set on initialisation, <code>false</code> if will create
-      an empty set.</dd>
+      entries to the set on initialisation, <code>false</code> if it will
+      create an empty set.</dd>
 <dd><code>supplier</code> - The supplier that initialises for the new instance
       of <code>LazySet</code> when needed.</dd>
 <dt>Returns:</dt>

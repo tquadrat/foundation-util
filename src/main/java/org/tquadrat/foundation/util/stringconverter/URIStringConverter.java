@@ -43,12 +43,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to create a {@code URI} instance from the given value.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: URIStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $
+ *  @version $Id: URIStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: URIStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: URIStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class URIStringConverter implements StringConverter<URI>
 {
@@ -111,6 +111,7 @@ public final class URIStringConverter implements StringConverter<URI>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final URIStringConverter provider() { return INSTANCE; }
 }
 //  class URIStringConverter

@@ -48,7 +48,7 @@
 <span class="source-line-no">035</span><span id="line-35"> *  {@link LazyMap}.</span>
 <span class="source-line-no">036</span><span id="line-36"> *</span>
 <span class="source-line-no">037</span><span id="line-37"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">038</span><span id="line-38"> *  @version $Id: LazySortedMapImpl.java 820 2020-12-29 20:34:22Z tquadrat $</span>
+<span class="source-line-no">038</span><span id="line-38"> *  @version $Id: LazySortedMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $</span>
 <span class="source-line-no">039</span><span id="line-39"> *  @since 0.0.5</span>
 <span class="source-line-no">040</span><span id="line-40"> *</span>
 <span class="source-line-no">041</span><span id="line-41"> *  @param &lt;K&gt; The type of keys maintained by this map</span>
@@ -56,7 +56,7 @@
 <span class="source-line-no">043</span><span id="line-43"> *</span>
 <span class="source-line-no">044</span><span id="line-44"> *  @UMLGraph.link</span>
 <span class="source-line-no">045</span><span id="line-45"> */</span>
-<span class="source-line-no">046</span><span id="line-46">@ClassVersion( sourceVersion = "$Id: LazySortedMapImpl.java 820 2020-12-29 20:34:22Z tquadrat $" )</span>
+<span class="source-line-no">046</span><span id="line-46">@ClassVersion( sourceVersion = "$Id: LazySortedMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
 <span class="source-line-no">047</span><span id="line-47">@API( status = INTERNAL, since = "0.0.5" )</span>
 <span class="source-line-no">048</span><span id="line-48">public final class LazySortedMapImpl&lt;K,V&gt; extends LazyMapImpl&lt;K,V&gt; implements LazySortedMap&lt;K,V&gt;</span>
 <span class="source-line-no">049</span><span id="line-49">{</span>
@@ -67,8 +67,8 @@
 <span class="source-line-no">054</span><span id="line-54">     *  Creates a new {@code LazySortedMapImpl&lt;K,V&gt;} instance.</span>
 <span class="source-line-no">055</span><span id="line-55">     *</span>
 <span class="source-line-no">056</span><span id="line-56">     *  @param  doPopulate  {@code true} if the provided supplier will put</span>
-<span class="source-line-no">057</span><span id="line-57">     *      values to the map on initialisation, {@code false} if will create</span>
-<span class="source-line-no">058</span><span id="line-58">     *      an empty map.</span>
+<span class="source-line-no">057</span><span id="line-57">     *      values to the map on initialisation, {@code false} if it will</span>
+<span class="source-line-no">058</span><span id="line-58">     *      create an empty map.</span>
 <span class="source-line-no">059</span><span id="line-59">     *  @param  supplier    The supplier that initialises the internal map for</span>
 <span class="source-line-no">060</span><span id="line-60">     *      this instance on the first it is needed.</span>
 <span class="source-line-no">061</span><span id="line-61">     */</span>

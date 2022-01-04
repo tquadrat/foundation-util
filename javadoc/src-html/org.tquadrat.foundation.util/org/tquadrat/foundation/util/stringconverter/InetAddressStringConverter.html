@@ -70,12 +70,12 @@
 <span class="source-line-no">057</span><span id="line-57"> *  to get the IP address as a String.</span>
 <span class="source-line-no">058</span><span id="line-58"> *</span>
 <span class="source-line-no">059</span><span id="line-59"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">060</span><span id="line-60"> *  @version $Id: InetAddressStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $</span>
+<span class="source-line-no">060</span><span id="line-60"> *  @version $Id: InetAddressStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $</span>
 <span class="source-line-no">061</span><span id="line-61"> *  @since 0.0.6</span>
 <span class="source-line-no">062</span><span id="line-62"> *</span>
 <span class="source-line-no">063</span><span id="line-63"> *  @UMLGraph.link</span>
 <span class="source-line-no">064</span><span id="line-64"> */</span>
-<span class="source-line-no">065</span><span id="line-65">@ClassVersion( sourceVersion = "$Id: InetAddressStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $" )</span>
+<span class="source-line-no">065</span><span id="line-65">@ClassVersion( sourceVersion = "$Id: InetAddressStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
 <span class="source-line-no">066</span><span id="line-66">@API( status = STABLE, since = "0.0.6" )</span>
 <span class="source-line-no">067</span><span id="line-67">public final class InetAddressStringConverter implements StringConverter&lt;InetAddress&gt;</span>
 <span class="source-line-no">068</span><span id="line-68">{</span>
@@ -140,25 +140,26 @@
 <span class="source-line-no">127</span><span id="line-127">     *</span>
 <span class="source-line-no">128</span><span id="line-128">     *  @return The instance for this {@code StringConverter} implementation.</span>
 <span class="source-line-no">129</span><span id="line-129">     */</span>
-<span class="source-line-no">130</span><span id="line-130">    public static final InetAddressStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">131</span><span id="line-131"></span>
-<span class="source-line-no">132</span><span id="line-132">    /**</span>
-<span class="source-line-no">133</span><span id="line-133">     *  {@inheritDoc}</span>
-<span class="source-line-no">134</span><span id="line-134">     */</span>
-<span class="source-line-no">135</span><span id="line-135">    @Override</span>
-<span class="source-line-no">136</span><span id="line-136">    public final String toString( final InetAddress source )</span>
-<span class="source-line-no">137</span><span id="line-137">    {</span>
-<span class="source-line-no">138</span><span id="line-138">        final var retValue = nonNull( source ) ? source.getHostAddress() : null;</span>
-<span class="source-line-no">139</span><span id="line-139"></span>
-<span class="source-line-no">140</span><span id="line-140">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">141</span><span id="line-141">        return retValue;</span>
-<span class="source-line-no">142</span><span id="line-142">    }   //  toString()</span>
-<span class="source-line-no">143</span><span id="line-143">}</span>
-<span class="source-line-no">144</span><span id="line-144">//  class InetAddressStringConverter</span>
-<span class="source-line-no">145</span><span id="line-145"></span>
-<span class="source-line-no">146</span><span id="line-146">/*</span>
-<span class="source-line-no">147</span><span id="line-147"> *  End of File</span>
-<span class="source-line-no">148</span><span id="line-148"> */</span>
+<span class="source-line-no">130</span><span id="line-130">    @SuppressWarnings( "UseOfConcreteClass" )</span>
+<span class="source-line-no">131</span><span id="line-131">    public static final InetAddressStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">132</span><span id="line-132"></span>
+<span class="source-line-no">133</span><span id="line-133">    /**</span>
+<span class="source-line-no">134</span><span id="line-134">     *  {@inheritDoc}</span>
+<span class="source-line-no">135</span><span id="line-135">     */</span>
+<span class="source-line-no">136</span><span id="line-136">    @Override</span>
+<span class="source-line-no">137</span><span id="line-137">    public final String toString( final InetAddress source )</span>
+<span class="source-line-no">138</span><span id="line-138">    {</span>
+<span class="source-line-no">139</span><span id="line-139">        final var retValue = nonNull( source ) ? source.getHostAddress() : null;</span>
+<span class="source-line-no">140</span><span id="line-140"></span>
+<span class="source-line-no">141</span><span id="line-141">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">142</span><span id="line-142">        return retValue;</span>
+<span class="source-line-no">143</span><span id="line-143">    }   //  toString()</span>
+<span class="source-line-no">144</span><span id="line-144">}</span>
+<span class="source-line-no">145</span><span id="line-145">//  class InetAddressStringConverter</span>
+<span class="source-line-no">146</span><span id="line-146"></span>
+<span class="source-line-no">147</span><span id="line-147">/*</span>
+<span class="source-line-no">148</span><span id="line-148"> *  End of File</span>
+<span class="source-line-no">149</span><span id="line-149"> */</span>
 
 
 

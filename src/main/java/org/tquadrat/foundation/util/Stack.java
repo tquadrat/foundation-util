@@ -42,14 +42,14 @@ import org.tquadrat.foundation.lang.AutoLock;
  *      {@link java.util.Stack}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Stack.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <T> The type for the stack entries.
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: Stack.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Stack<T>
 {
@@ -65,12 +65,12 @@ public final class Stack<T>
      *      {@code <T>} that is inherited from the surrounding class.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Stack.java 820 2020-12-29 20:34:22Z tquadrat $
+     *  @version $Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Stack.java 820 2020-12-29 20:34:22Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     private final class Entry
     {
@@ -98,6 +98,7 @@ public final class Stack<T>
          *  @param  tail    The current tail; may be {@code null}, indicating
          *      an empty tail.
          */
+        @SuppressWarnings( "UseOfConcreteClass" )
         public Entry( final T head, final Entry tail )
         {
             m_Head = head;
@@ -119,6 +120,7 @@ public final class Stack<T>
          *
          *  @return The tail.
          */
+        @SuppressWarnings( "UseOfConcreteClass" )
         public final Entry tail() { return m_Tail; }
     }
     //  class Entry
@@ -152,7 +154,7 @@ public final class Stack<T>
     private final AutoLock m_ReadLock;
 
     /**
-     *  The write lock.
+     *  The &quot;write&quot; lock.
      */
     private final AutoLock m_WriteLock;
 
@@ -304,7 +306,7 @@ public final class Stack<T>
      *  <br>If the push failed for one element of the array, the stack
      *  remained unchanged.<br>
      *  <br>The method guarantees that the elements of the array are stored to
-     *  the stack in consecutive order, even in a multi-threaded environment.
+     *  the stack in consecutive order, even in a multithreaded environment.
      *
      *  @param  entries   The values to add.
      *  @throws IllegalArgumentException    At least one element of the
@@ -337,7 +339,7 @@ public final class Stack<T>
 
     /**
      *  Returns all entries that are currently on the stack as an array without
-     *  removing them, with the top most entry as the first. Therefore this is
+     *  removing them, with the top most entry as the first. Therefore, this is
      *  more or less a
      *  {@link #peek()}
      *  on the whole stack.<br>

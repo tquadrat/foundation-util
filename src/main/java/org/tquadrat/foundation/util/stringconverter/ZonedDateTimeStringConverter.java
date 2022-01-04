@@ -36,12 +36,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  for {@code java.time.ZonedDateTime}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ZonedDateTimeStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: ZonedDateTimeStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ZonedDateTimeStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ZonedDateTimeStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public class ZonedDateTimeStringConverter extends TimeDateStringConverter<ZonedDateTime>
 {
@@ -109,6 +109,7 @@ public class ZonedDateTimeStringConverter extends TimeDateStringConverter<ZonedD
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final ZonedDateTimeStringConverter provider() { return INSTANCE; }
 }
 //  class ZonedDateTimeStringConverter

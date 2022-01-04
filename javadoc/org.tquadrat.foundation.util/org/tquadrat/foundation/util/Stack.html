@@ -97,7 +97,7 @@ loadScripts(document, 'script');</script>
 <dd><code>T</code> - The type for the stack entries.</dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: Stack.java 820 2020-12-29 20:34:22Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
 </span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-52">Stack</a>&lt;T&gt;</span>
@@ -117,7 +117,7 @@ loadScripts(document, 'script');</script>
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: Stack.java 820 2020-12-29 20:34:22Z tquadrat $</dd>
+<dd>$Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.5</dd>
 
@@ -191,7 +191,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code>private final <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></code></div>
 <div class="col-second even-row-color"><code><a href="#m_WriteLock" class="member-name-link">m_WriteLock</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">The write lock.</div>
+<div class="block">The &quot;write&quot; lock.</div>
 </div>
 </div>
 </section>
@@ -301,36 +301,36 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="EMPTY_Stack_ARRAY">
 <h3>EMPTY_Stack_ARRAY</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="Stack.html" title="class in org.tquadrat.foundation.util">Stack</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-132">EMPTY_Stack_ARRAY</a></span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="Stack.html" title="class in org.tquadrat.foundation.util">Stack</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-134">EMPTY_Stack_ARRAY</a></span></div>
 <div class="block">An empty array of <code>Stack</code> objects.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_Count">
 <h3>m_Count</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-141">m_Count</a></span></div>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-143">m_Count</a></span></div>
 <div class="block">The number of entries on the stack.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_Entries">
 <h3>m_Entries</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="Stack.html" title="class in org.tquadrat.foundation.util">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">T</a>&gt;.<a href="Stack.Entry.html" title="class in org.tquadrat.foundation.util">Entry</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-146">m_Entries</a></span></div>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="Stack.html" title="class in org.tquadrat.foundation.util">Stack</a>&lt;<a href="Stack.html" title="type parameter in Stack">T</a>&gt;.<a href="Stack.Entry.html" title="class in org.tquadrat.foundation.util">Entry</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-148">m_Entries</a></span></div>
 <div class="block">The entries.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_ReadLock">
 <h3>m_ReadLock</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-152">m_ReadLock</a></span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-154">m_ReadLock</a></span></div>
 <div class="block">The read lock.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_WriteLock">
 <h3>m_WriteLock</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-157">m_WriteLock</a></span></div>
-<div class="block">The write lock.</div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-159">m_WriteLock</a></span></div>
+<div class="block">The &quot;write&quot; lock.</div>
 </section>
 </li>
 </ul>
@@ -344,7 +344,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="&lt;init&gt;()">
 <h3>Stack</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-165">Stack</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-167">Stack</a></span>()</div>
 <div class="block">Creates a new <code>Stack</code> object.</div>
 </section>
 </li>
@@ -359,14 +359,14 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="clear()">
 <h3>clear</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-178">clear</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-180">clear</a></span>()</div>
 <div class="block">Empties the whole stack in one go.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="hasMore()">
 <h3>hasMore</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-199">hasMore</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-201">hasMore</a></span>()</div>
 <div class="block">Tests if the stack is not empty.<br>
   <br>If concurrent threads will access the stack, it is still possible
   that this method will return <code>true</code>, but a call to
@@ -388,7 +388,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="isEmpty()">
 <h3>isEmpty</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-223">isEmpty</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-225">isEmpty</a></span>()</div>
 <div class="block">Tests if the stack is empty.<br>
   <br>If concurrent threads will access the stack, it is still possible
   that this method will return <code>false</code>, but a call to
@@ -410,7 +410,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="peek()">
 <h3>peek</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="Stack.html" title="type parameter in Stack">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-247">peek</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="Stack.html" title="type parameter in Stack">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-249">peek</a></span>()</div>
 <div class="block">Returns the first entry from the stack <i>without</i> removing it from
   the stack.<br>
   <br>If concurrent threads will access the stack, it is still possible
@@ -428,7 +428,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="pop()">
 <h3>pop</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="Stack.html" title="type parameter in Stack">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-269">pop</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="Stack.html" title="type parameter in Stack">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-271">pop</a></span>()</div>
 <div class="block">Returns the first entry from the stack and removes it.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -441,7 +441,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="push(T)">
 <h3 id="push(java.lang.Object)">push</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-291">push</a></span><wbr><span class="parameters">(<a href="Stack.html" title="type parameter in Stack">T</a>&nbsp;entry)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-293">push</a></span><wbr><span class="parameters">(<a href="Stack.html" title="type parameter in Stack">T</a>&nbsp;entry)</span></div>
 <div class="block">Add the given entry to the stack.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -453,7 +453,7 @@ loadScripts(document, 'script');</script>
 <section class="detail" id="push(T...)">
 <h3 id="push(java.lang.Object[])">push</h3>
 <div class="member-signature"><span class="annotations"><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/SafeVarargs.html" title="class or interface in java.lang" class="external-link">@SafeVarargs</a>
-</span><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-313">push</a></span><wbr><span class="parameters">(<a href="Stack.html" title="type parameter in Stack">T</a>...&nbsp;entries)</span>
+</span><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-315">push</a></span><wbr><span class="parameters">(<a href="Stack.html" title="type parameter in Stack">T</a>...&nbsp;entries)</span>
                 throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
 <div class="block">Add the given entries to the stack, in LIFO order. Nothing happens, if
   the provided array is empty.<br>
@@ -461,7 +461,7 @@ loadScripts(document, 'script');</script>
   <br>If the push failed for one element of the array, the stack
   remained unchanged.<br>
   <br>The method guarantees that the elements of the array are stored to
-  the stack in consecutive order, even in a multi-threaded environment.</div>
+  the stack in consecutive order, even in a multithreaded environment.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>entries</code> - The values to add.</dd>
@@ -474,7 +474,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="size()">
 <h3>size</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-336">size</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-338">size</a></span>()</div>
 <div class="block">Returns the number of entries on the stack.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -485,9 +485,9 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="toArray(T[])">
 <h3 id="toArray(java.lang.Object[])">toArray</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="Stack.html" title="type parameter in Stack">T</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-354">toArray</a></span><wbr><span class="parameters">(<a href="Stack.html" title="type parameter in Stack">T</a>[]&nbsp;target)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="Stack.html" title="type parameter in Stack">T</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html#line-356">toArray</a></span><wbr><span class="parameters">(<a href="Stack.html" title="type parameter in Stack">T</a>[]&nbsp;target)</span></div>
 <div class="block">Returns all entries that are currently on the stack as an array without
-  removing them, with the top most entry as the first. Therefore this is
+  removing them, with the top most entry as the first. Therefore, this is
   more or less a
   <a href="#peek()"><code>peek()</code></a>
   on the whole stack.<br>

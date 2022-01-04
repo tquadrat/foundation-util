@@ -36,12 +36,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  {@link java.time.Instant}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: InstantStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: InstantStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: InstantStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: InstantStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public class InstantStringConverter extends TimeDateStringConverter<Instant>
 {
@@ -110,6 +110,7 @@ public class InstantStringConverter extends TimeDateStringConverter<Instant>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final InstantStringConverter provider() { return INSTANCE; }
 }
 //  class InstantStringConverter

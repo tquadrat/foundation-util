@@ -68,12 +68,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 840 2021-01-10 21:37:03Z tquadrat $
+ *  @version $Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 840 2021-01-10 21:37:03Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -89,13 +89,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 840 2021-01-10 21:37:03Z tquadrat $
+     *  @version $Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 840 2021-01-10 21:37:03Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -135,13 +135,13 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 840 2021-01-10 21:37:03Z tquadrat $
+     *  @version $Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "UtilityClassCanBeEnum" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 840 2021-01-10 21:37:03Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -269,6 +269,7 @@ public final class IOUtils
      *
      *  @since 0.0.6
      */
+    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.6" )
     public static final File createDirectories( final File dir, final FileAttribute<?>... attributes ) throws IOException
     {
@@ -314,6 +315,7 @@ public final class IOUtils
      *
      *  @since 0.0.6
      */
+    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.6" )
     public static File createDirectory( final File dir, final FileAttribute<?>... attributes ) throws IOException
     {
@@ -406,6 +408,7 @@ public final class IOUtils
      *
      *  @since 0.0.6
      */
+    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.6" )
     public static Path createTempDirectory( final File dir, final String prefix, final FileAttribute<?>... attributes ) throws IOException
     {
@@ -445,6 +448,7 @@ public final class IOUtils
      *
      *  @since 0.0.6
      */
+    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.6" )
     public static File createTempDirectory( final String prefix, final FileAttribute<?>... attributes ) throws IOException
     {

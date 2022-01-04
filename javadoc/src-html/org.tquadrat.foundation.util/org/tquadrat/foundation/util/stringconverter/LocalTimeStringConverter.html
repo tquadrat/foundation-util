@@ -49,12 +49,12 @@
 <span class="source-line-no">036</span><span id="line-36"> *  for {@code java.time.LocalTime}.</span>
 <span class="source-line-no">037</span><span id="line-37"> *</span>
 <span class="source-line-no">038</span><span id="line-38"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">039</span><span id="line-39"> *  @version $Id: LocalTimeStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $</span>
+<span class="source-line-no">039</span><span id="line-39"> *  @version $Id: LocalTimeStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $</span>
 <span class="source-line-no">040</span><span id="line-40"> *  @since 0.0.6</span>
 <span class="source-line-no">041</span><span id="line-41"> *</span>
 <span class="source-line-no">042</span><span id="line-42"> *  @UMLGraph.link</span>
 <span class="source-line-no">043</span><span id="line-43"> */</span>
-<span class="source-line-no">044</span><span id="line-44">@ClassVersion( sourceVersion = "$Id: LocalTimeStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $" )</span>
+<span class="source-line-no">044</span><span id="line-44">@ClassVersion( sourceVersion = "$Id: LocalTimeStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
 <span class="source-line-no">045</span><span id="line-45">@API( status = STABLE, since = "0.0.6" )</span>
 <span class="source-line-no">046</span><span id="line-46">public class LocalTimeStringConverter extends TimeDateStringConverter&lt;LocalTime&gt;</span>
 <span class="source-line-no">047</span><span id="line-47">{</span>
@@ -122,13 +122,14 @@
 <span class="source-line-no">109</span><span id="line-109">     *</span>
 <span class="source-line-no">110</span><span id="line-110">     *  @return The instance for this {@code StringConverter} implementation.</span>
 <span class="source-line-no">111</span><span id="line-111">     */</span>
-<span class="source-line-no">112</span><span id="line-112">    public static final LocalTimeStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">113</span><span id="line-113">}</span>
-<span class="source-line-no">114</span><span id="line-114">//  class LocalTimeStringConverter</span>
-<span class="source-line-no">115</span><span id="line-115"></span>
-<span class="source-line-no">116</span><span id="line-116">/*</span>
-<span class="source-line-no">117</span><span id="line-117"> *  End of File</span>
-<span class="source-line-no">118</span><span id="line-118"> */</span>
+<span class="source-line-no">112</span><span id="line-112">    @SuppressWarnings( "UseOfConcreteClass" )</span>
+<span class="source-line-no">113</span><span id="line-113">    public static final LocalTimeStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">114</span><span id="line-114">}</span>
+<span class="source-line-no">115</span><span id="line-115">//  class LocalTimeStringConverter</span>
+<span class="source-line-no">116</span><span id="line-116"></span>
+<span class="source-line-no">117</span><span id="line-117">/*</span>
+<span class="source-line-no">118</span><span id="line-118"> *  End of File</span>
+<span class="source-line-no">119</span><span id="line-119"> */</span>
 
 
 

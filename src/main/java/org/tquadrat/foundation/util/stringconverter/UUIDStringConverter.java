@@ -28,6 +28,7 @@ import java.util.UUID;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
@@ -43,12 +44,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to create a {@code UUID} instance based on the given value.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UUIDStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $
+ *  @version $Id: UUIDStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: UUIDStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UUIDStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class UUIDStringConverter implements StringConverter<UUID>
 {
@@ -92,6 +93,10 @@ public final class UUIDStringConverter implements StringConverter<UUID>
             {
                 retValue = uuidFromString( source );
             }
+            catch( @SuppressWarnings( "OverlyBroadCatchBlock" ) final NullArgumentException e )
+            {
+                throw e;
+            }
             catch( final IllegalArgumentException e )
             {
                 throw new IllegalArgumentException( format( MSG_InvalidUUIDFormat, source ), e );
@@ -111,6 +116,7 @@ public final class UUIDStringConverter implements StringConverter<UUID>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final UUIDStringConverter provider() { return INSTANCE; }
 }
 //  class UUIDStringConverter

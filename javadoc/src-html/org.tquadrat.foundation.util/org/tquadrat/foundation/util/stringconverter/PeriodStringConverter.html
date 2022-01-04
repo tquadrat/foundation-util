@@ -82,12 +82,12 @@
 <span class="source-line-no">069</span><span id="line-69"> *  @see Period</span>
 <span class="source-line-no">070</span><span id="line-70"> *</span>
 <span class="source-line-no">071</span><span id="line-71"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">072</span><span id="line-72"> *  @version $Id: PeriodStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $</span>
+<span class="source-line-no">072</span><span id="line-72"> *  @version $Id: PeriodStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $</span>
 <span class="source-line-no">073</span><span id="line-73"> *  @since 0.0.7</span>
 <span class="source-line-no">074</span><span id="line-74"> *</span>
 <span class="source-line-no">075</span><span id="line-75"> *  @UMLGraph.link</span>
 <span class="source-line-no">076</span><span id="line-76"> */</span>
-<span class="source-line-no">077</span><span id="line-77">@ClassVersion( sourceVersion = "$Id: PeriodStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $" )</span>
+<span class="source-line-no">077</span><span id="line-77">@ClassVersion( sourceVersion = "$Id: PeriodStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
 <span class="source-line-no">078</span><span id="line-78">@API( status = STABLE, since = "0.0.7" )</span>
 <span class="source-line-no">079</span><span id="line-79">public final class PeriodStringConverter implements StringConverter&lt;Period&gt;</span>
 <span class="source-line-no">080</span><span id="line-80">{</span>
@@ -150,13 +150,14 @@
 <span class="source-line-no">137</span><span id="line-137">     *</span>
 <span class="source-line-no">138</span><span id="line-138">     *  @return The instance for this {@code StringConverter} implementation.</span>
 <span class="source-line-no">139</span><span id="line-139">     */</span>
-<span class="source-line-no">140</span><span id="line-140">    public static final PeriodStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">141</span><span id="line-141">}</span>
-<span class="source-line-no">142</span><span id="line-142">//  class PeriodStringConverter</span>
-<span class="source-line-no">143</span><span id="line-143"></span>
-<span class="source-line-no">144</span><span id="line-144">/*</span>
-<span class="source-line-no">145</span><span id="line-145"> *  End of File</span>
-<span class="source-line-no">146</span><span id="line-146"> */</span>
+<span class="source-line-no">140</span><span id="line-140">    @SuppressWarnings( "UseOfConcreteClass" )</span>
+<span class="source-line-no">141</span><span id="line-141">    public static final PeriodStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">142</span><span id="line-142">}</span>
+<span class="source-line-no">143</span><span id="line-143">//  class PeriodStringConverter</span>
+<span class="source-line-no">144</span><span id="line-144"></span>
+<span class="source-line-no">145</span><span id="line-145">/*</span>
+<span class="source-line-no">146</span><span id="line-146"> *  End of File</span>
+<span class="source-line-no">147</span><span id="line-147"> */</span>
 
 
 

@@ -34,7 +34,7 @@ import org.tquadrat.foundation.util.internal.LazySetImpl;
  *  that will be initialised only when required.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazySet.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: LazySet.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this set.
@@ -44,13 +44,13 @@ import org.tquadrat.foundation.util.internal.LazySetImpl;
  *  @note   There is no implementation of a {@code map()} method in this
  *      interface because it is assumed that this would be confusing: such a
  *      {@code map()} method would operate on the whole list that is wrapped by
- *      this value, and not on a entry as one would expect. Refer to
+ *      this value, and not on an entry as one would expect. Refer to
  *      {@link org.tquadrat.foundation.lang.Lazy#map(java.util.function.Function)}.
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "preview" )
-@ClassVersion( sourceVersion = "$Id: LazySet.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazySet.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public sealed interface LazySet<E> extends Set<E>
     permits LazySetImpl
@@ -117,8 +117,8 @@ public sealed interface LazySet<E> extends Set<E>
      *
      *  @param  <E> The type of elements in this set.
      *  @param  doPopulate  {@code true} if the provided supplier will put
-     *      entries to the set on initialisation, {@code false} if will create
-     *      an empty set.
+     *      entries to the set on initialisation, {@code false} if it will
+     *      create an empty set.
      *  @param  supplier    The supplier that initialises for the new instance
      *      of {@code LazySet} when needed.
      *  @return The new instance.

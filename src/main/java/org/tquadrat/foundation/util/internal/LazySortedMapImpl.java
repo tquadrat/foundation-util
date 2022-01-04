@@ -35,7 +35,7 @@ import org.tquadrat.foundation.util.LazySortedMap;
  *  {@link LazyMap}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazySortedMapImpl.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: LazySortedMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @param <K> The type of keys maintained by this map
@@ -43,7 +43,7 @@ import org.tquadrat.foundation.util.LazySortedMap;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: LazySortedMapImpl.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazySortedMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class LazySortedMapImpl<K,V> extends LazyMapImpl<K,V> implements LazySortedMap<K,V>
 {
@@ -54,8 +54,8 @@ public final class LazySortedMapImpl<K,V> extends LazyMapImpl<K,V> implements La
      *  Creates a new {@code LazySortedMapImpl<K,V>} instance.
      *
      *  @param  doPopulate  {@code true} if the provided supplier will put
-     *      values to the map on initialisation, {@code false} if will create
-     *      an empty map.
+     *      values to the map on initialisation, {@code false} if it will
+     *      create an empty map.
      *  @param  supplier    The supplier that initialises the internal map for
      *      this instance on the first it is needed.
      */

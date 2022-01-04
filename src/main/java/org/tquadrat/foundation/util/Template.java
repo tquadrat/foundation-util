@@ -96,12 +96,12 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 840 2021-01-10 21:37:03Z tquadrat $
+ *  @version $Id: Template.java 966 2022-01-04 22:28:49Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: Template.java 840 2021-01-10 21:37:03Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Template.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class Template implements Serializable
 {
@@ -167,6 +167,7 @@ public class Template implements Serializable
      *
      *  @since 0.1.0
      */
+    @SuppressWarnings( "RegExpUnnecessaryNonCapturingGroup" )
     @API( status = STABLE, since = "0.1.0" )
     public static final String VARIABLE_PATTERN = "\\$\\{((?:_)|(?:[~/=%:&]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\p{Digit}|_|.)*?))}";
 
@@ -519,7 +520,7 @@ public class Template implements Serializable
      *
      *  @param  s   The String to test; can be {@code null}.
      *  @return {@code true} if the given String is not {@code null}, not the
-     *      empty String and it matches the given pattern, {@code false}
+     *      empty String, and it matches the given pattern, {@code false}
      *      otherwise.
      *
      *  @since 0.1.0

@@ -98,7 +98,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;K,<wbr>V&gt;</code>, <code><a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/SortedMap.html" title="class or interface in java.util" class="external-link">SortedMap</a>&lt;K,<wbr>V&gt;</code>, <code><a href="../LazyMap.html" title="interface in org.tquadrat.foundation.util">LazyMap</a>&lt;K,<wbr>V&gt;</code>, <code><a href="../LazySortedMap.html" title="interface in org.tquadrat.foundation.util">LazySortedMap</a>&lt;K,<wbr>V&gt;</code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: LazySortedMapImpl.java 820 2020-12-29 20:34:22Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: LazySortedMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#INTERNAL" title="class or interface in org.apiguardian.api" class="external-link">INTERNAL</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
 </span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySortedMapImpl.html#line-46">LazySortedMapImpl</a>&lt;K,<wbr>V&gt;</span>
@@ -110,7 +110,7 @@ implements <a href="../LazySortedMap.html" title="interface in org.tquadrat.foun
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: LazySortedMapImpl.java 820 2020-12-29 20:34:22Z tquadrat $</dd>
+<dd>$Id: LazySortedMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.5</dd>
 
@@ -252,8 +252,8 @@ implements <a href="../LazySortedMap.html" title="interface in org.tquadrat.foun
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>doPopulate</code> - <code>true</code> if the provided supplier will put
-      values to the map on initialisation, <code>false</code> if will create
-      an empty map.</dd>
+      values to the map on initialisation, <code>false</code> if it will
+      create an empty map.</dd>
 <dd><code>supplier</code> - The supplier that initialises the internal map for
       this instance on the first it is needed.</dd>
 </dl>

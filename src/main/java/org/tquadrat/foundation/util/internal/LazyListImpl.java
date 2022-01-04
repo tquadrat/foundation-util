@@ -46,7 +46,7 @@ import org.tquadrat.foundation.util.LazyList;
  *  {@link LazyList}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazyListImpl.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: LazyListImpl.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this list.
@@ -54,7 +54,7 @@ import org.tquadrat.foundation.util.LazyList;
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: LazyListImpl.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazyListImpl.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class LazyListImpl<E> implements LazyList<E>
 {
@@ -79,8 +79,8 @@ public final class LazyListImpl<E> implements LazyList<E>
      *  Creates a new {@code LazyListImpl} instance.
      *
      *  @param  doPopulate  {@code true} if the provided supplier will put
-     *      values to the list on initialisation, {@code false} if will create
-     *      an empty list.
+     *      values to the list on initialisation, {@code false} if it will
+     *      create an empty list.
      *  @param  supplier    The supplier that initialises the internal list
      *      for this instance when it is first needed.
      */
@@ -466,6 +466,7 @@ public final class LazyListImpl<E> implements LazyList<E>
     /**
      *  {@inheritDoc}
      */
+    @SuppressWarnings( "NewExceptionWithoutArguments" )
     @Override
     public final List<E> subList( final int fromIndex, final int toIndex )
     {
@@ -486,7 +487,7 @@ public final class LazyListImpl<E> implements LazyList<E>
          *     if( fromIndex > toIndex ) throw new IllegalArgumentException( "fromIndex(" + fromIndex + ") > toIndex(" + toIndex + ")" );
          * }
          *
-         * From this, the sublist of an empty list is a empty list, if the
+         * From this, the sublist of an empty list is an empty list, if the
          * fromIndex and the toIndex are both 0.
          */
         final List<E> retValue;

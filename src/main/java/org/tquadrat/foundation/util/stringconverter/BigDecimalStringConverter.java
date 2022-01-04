@@ -32,12 +32,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  {@link java.math.BigDecimal}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: BigDecimalStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: BigDecimalStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: BigDecimalStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: BigDecimalStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class BigDecimalStringConverter extends NumberStringConverter<BigDecimal>
 {
@@ -86,6 +86,7 @@ public final class BigDecimalStringConverter extends NumberStringConverter<BigDe
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final BigDecimalStringConverter provider() { return INSTANCE; }
 }
 //  class BigDecimalStringConverter

@@ -56,7 +56,7 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  @since 0.1.0
  */
 @SuppressWarnings( "MagicNumber" )
-@ClassVersion( sourceVersion = "CharSetUtils: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 @UtilityClass
 public final class CharSetUtils
@@ -334,7 +334,7 @@ public final class CharSetUtils
 
     /**
      *  Returns {@code true} if the given character is a printable ASCII
-     *  character. That means, it is a ASCII character, but not a control
+     *  character. That means, it is an ASCII character, but not a control
      *  character.
      *
      *  @param  c   The character to check.
@@ -348,8 +348,8 @@ public final class CharSetUtils
 
     /**
      *  Returns {@code true} if the given code point represents a printable
-     *  ASCII character. That means, it is a ASCII character, but not a control
-     *  character.
+     *  ASCII character. That means, it is an ASCII character, but not a
+     *  control character.
      *
      *  @param  codePoint   The code point to check.
      *  @return {@code true} if the given code point represents a printable

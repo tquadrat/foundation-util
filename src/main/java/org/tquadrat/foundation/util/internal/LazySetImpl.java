@@ -41,7 +41,7 @@ import org.tquadrat.foundation.util.LazySet;
  *  {@link LazySet}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazySetImpl.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: LazySetImpl.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this set.
@@ -49,7 +49,7 @@ import org.tquadrat.foundation.util.LazySet;
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: LazySetImpl.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazySetImpl.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class LazySetImpl<E> implements LazySet<E>
 {
@@ -74,8 +74,8 @@ public final class LazySetImpl<E> implements LazySet<E>
      *  Creates a new {@code LazySetImpl} instance.
      *
      *  @param  doPopulate  {@code true} if the provided supplier will put
-     *      values to the set on initialisation, {@code false} if will create
-     *      an empty set.
+     *      values to the set on initialisation, {@code false} if it will
+     *      create an empty set.
      *  @param  supplier    The supplier that initialises the internal set
      *      for this instance when it is first needed.
      */

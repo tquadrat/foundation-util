@@ -56,7 +56,7 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @param  <T> The type that is handled by this class.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TimeDateStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: TimeDateStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
@@ -64,7 +64,7 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see DateTimeFormatter
  */
 @SuppressWarnings( "OptionalUsedAsFieldOrParameterType" )
-@ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public abstract class TimeDateStringConverter<T extends Temporal> implements StringConverter<T>
 {
@@ -108,7 +108,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
      *
      *  @param   subjectClass    The subject class.
      */
-    protected TimeDateStringConverter( Class<T> subjectClass ) { this( subjectClass, Optional.empty()); }
+    protected TimeDateStringConverter( final Class<T> subjectClass ) { this( subjectClass, Optional.empty()); }
 
     /**
      *  Creates a new {@code TimeStringConverter} instance that uses the given
@@ -123,7 +123,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
      *  @param  subjectClass    The subject class.
      *  @param  formatter   The formatter for the date/time data.
      */
-    protected TimeDateStringConverter( Class<T> subjectClass, final DateTimeFormatter formatter )
+    protected TimeDateStringConverter( final Class<T> subjectClass, final DateTimeFormatter formatter )
     {
         this( subjectClass, Optional.of( requireNonNullArgument( formatter, "formatter" ) ) );
     }   //  TimeDateStringConverter()
@@ -134,7 +134,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
      *  @param  subjectClass    The subject class.
      *  @param  formatter   The formatter for the date/time data.
      */
-    private TimeDateStringConverter( Class<T> subjectClass, final Optional<DateTimeFormatter> formatter )
+    private TimeDateStringConverter( final Class<T> subjectClass, final Optional<DateTimeFormatter> formatter )
     {
         m_SubjectClass = subjectClass;
         m_Formatter = formatter;

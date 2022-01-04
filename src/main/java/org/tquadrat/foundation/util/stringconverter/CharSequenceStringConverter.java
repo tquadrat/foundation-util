@@ -41,12 +41,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  case must be considered for {@code CharSequence}.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: CharSequenceStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: CharSequenceStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: CharSequenceStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharSequenceStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class CharSequenceStringConverter implements StringConverter<CharSequence>
 {
@@ -98,6 +98,7 @@ public final class CharSequenceStringConverter implements StringConverter<CharSe
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final CharSequenceStringConverter provider() { return INSTANCE; }
 
     /**

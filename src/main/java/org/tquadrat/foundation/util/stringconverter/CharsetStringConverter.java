@@ -44,12 +44,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to obtain an instance of {@code Charset} based on the given value.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: CharsetStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $
+ *  @version $Id: CharsetStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: CharsetStringConverter.java 892 2021-04-03 18:07:28Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharsetStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class CharsetStringConverter implements StringConverter<Charset>
 {
@@ -114,6 +114,7 @@ public final class CharsetStringConverter implements StringConverter<Charset>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final CharsetStringConverter provider() { return INSTANCE; }
 
     /**

@@ -69,7 +69,7 @@
 <span class="source-line-no">056</span><span id="line-56"> *  @param  &lt;T&gt; The type that is handled by this class.</span>
 <span class="source-line-no">057</span><span id="line-57"> *</span>
 <span class="source-line-no">058</span><span id="line-58"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">059</span><span id="line-59"> *  @version $Id: TimeDateStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $</span>
+<span class="source-line-no">059</span><span id="line-59"> *  @version $Id: TimeDateStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $</span>
 <span class="source-line-no">060</span><span id="line-60"> *  @since 0.0.6</span>
 <span class="source-line-no">061</span><span id="line-61"> *</span>
 <span class="source-line-no">062</span><span id="line-62"> *  @UMLGraph.link</span>
@@ -77,7 +77,7 @@
 <span class="source-line-no">064</span><span id="line-64"> *  @see DateTimeFormatter</span>
 <span class="source-line-no">065</span><span id="line-65"> */</span>
 <span class="source-line-no">066</span><span id="line-66">@SuppressWarnings( "OptionalUsedAsFieldOrParameterType" )</span>
-<span class="source-line-no">067</span><span id="line-67">@ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )</span>
+<span class="source-line-no">067</span><span id="line-67">@ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
 <span class="source-line-no">068</span><span id="line-68">@API( status = STABLE, since = "0.0.6" )</span>
 <span class="source-line-no">069</span><span id="line-69">public abstract class TimeDateStringConverter&lt;T extends Temporal&gt; implements StringConverter&lt;T&gt;</span>
 <span class="source-line-no">070</span><span id="line-70">{</span>
@@ -121,7 +121,7 @@
 <span class="source-line-no">108</span><span id="line-108">     *</span>
 <span class="source-line-no">109</span><span id="line-109">     *  @param   subjectClass    The subject class.</span>
 <span class="source-line-no">110</span><span id="line-110">     */</span>
-<span class="source-line-no">111</span><span id="line-111">    protected TimeDateStringConverter( Class&lt;T&gt; subjectClass ) { this( subjectClass, Optional.empty()); }</span>
+<span class="source-line-no">111</span><span id="line-111">    protected TimeDateStringConverter( final Class&lt;T&gt; subjectClass ) { this( subjectClass, Optional.empty()); }</span>
 <span class="source-line-no">112</span><span id="line-112"></span>
 <span class="source-line-no">113</span><span id="line-113">    /**</span>
 <span class="source-line-no">114</span><span id="line-114">     *  Creates a new {@code TimeStringConverter} instance that uses the given</span>
@@ -136,7 +136,7 @@
 <span class="source-line-no">123</span><span id="line-123">     *  @param  subjectClass    The subject class.</span>
 <span class="source-line-no">124</span><span id="line-124">     *  @param  formatter   The formatter for the date/time data.</span>
 <span class="source-line-no">125</span><span id="line-125">     */</span>
-<span class="source-line-no">126</span><span id="line-126">    protected TimeDateStringConverter( Class&lt;T&gt; subjectClass, final DateTimeFormatter formatter )</span>
+<span class="source-line-no">126</span><span id="line-126">    protected TimeDateStringConverter( final Class&lt;T&gt; subjectClass, final DateTimeFormatter formatter )</span>
 <span class="source-line-no">127</span><span id="line-127">    {</span>
 <span class="source-line-no">128</span><span id="line-128">        this( subjectClass, Optional.of( requireNonNullArgument( formatter, "formatter" ) ) );</span>
 <span class="source-line-no">129</span><span id="line-129">    }   //  TimeDateStringConverter()</span>
@@ -147,7 +147,7 @@
 <span class="source-line-no">134</span><span id="line-134">     *  @param  subjectClass    The subject class.</span>
 <span class="source-line-no">135</span><span id="line-135">     *  @param  formatter   The formatter for the date/time data.</span>
 <span class="source-line-no">136</span><span id="line-136">     */</span>
-<span class="source-line-no">137</span><span id="line-137">    private TimeDateStringConverter( Class&lt;T&gt; subjectClass, final Optional&lt;DateTimeFormatter&gt; formatter )</span>
+<span class="source-line-no">137</span><span id="line-137">    private TimeDateStringConverter( final Class&lt;T&gt; subjectClass, final Optional&lt;DateTimeFormatter&gt; formatter )</span>
 <span class="source-line-no">138</span><span id="line-138">    {</span>
 <span class="source-line-no">139</span><span id="line-139">        m_SubjectClass = subjectClass;</span>
 <span class="source-line-no">140</span><span id="line-140">        m_Formatter = formatter;</span>

@@ -36,12 +36,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  locale.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: DoubleStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: DoubleStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: DoubleStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: DoubleStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class DoubleStringConverter extends NumberStringConverter<Double>
 {
@@ -90,6 +90,7 @@ public final class DoubleStringConverter extends NumberStringConverter<Double>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final DoubleStringConverter provider() { return INSTANCE; }
 }
 //  class DoubleStringConverter

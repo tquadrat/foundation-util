@@ -32,12 +32,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  {@link java.lang.Short}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ShortStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: ShortStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ShortStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ShortStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class ShortStringConverter extends NumberStringConverter<Short>
 {
@@ -76,6 +76,18 @@ public final class ShortStringConverter extends NumberStringConverter<Short>
     {
         return Short.decode( value );
     }   //  parseNumber()
+
+    /**
+     *  This method is used by the
+     *  {@link java.util.ServiceLoader}
+     *  to obtain the instance for this
+     *  {@link org.tquadrat.foundation.lang.StringConverter}
+     *  implementation.
+     *
+     *  @return The instance for this {@code StringConverter} implementation.
+     */
+    @SuppressWarnings( "UseOfConcreteClass" )
+    public static final ShortStringConverter provider() { return INSTANCE; }
 }
 //  class ShortStringConverter
 

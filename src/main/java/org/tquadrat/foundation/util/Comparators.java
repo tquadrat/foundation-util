@@ -39,13 +39,13 @@ import org.tquadrat.foundation.util.internal.ListBasedComparator;
  *  {@link Comparator}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Comparators.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: Comparators.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: Comparators.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Comparators.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Comparators
 {
@@ -70,7 +70,7 @@ public final class Comparators
      *  provide always the same key.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Comparators.java 820 2020-12-29 20:34:22Z tquadrat $
+     *  @version $Id: Comparators.java 966 2022-01-04 22:28:49Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
@@ -82,7 +82,7 @@ public final class Comparators
      *  @UMLGraph.link
      */
     @API( status = STABLE, since = "0.0.5" )
-    @ClassVersion( sourceVersion = "$Id: Comparators.java 820 2020-12-29 20:34:22Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Comparators.java 966 2022-01-04 22:28:49Z tquadrat $" )
     @FunctionalInterface
     public interface KeyProvider<T,K>
     {
@@ -183,7 +183,7 @@ public final class Comparators
     public static final <T, K extends Comparable<K>> Comparator<T> keyBasedComparator( final KeyProvider<? super T, K> keyProvider )
     {
         requireNonNullArgument( keyProvider, "keyProvider" );
-        final Comparator<T> retValue = (o1,o2) -> signum( keyProvider.getKey( o1 ).compareTo( keyProvider.getKey( o2 ) ) );
+        final var retValue = (Comparator<T>) ( o1, o2) -> signum( keyProvider.getKey( o1 ).compareTo( keyProvider.getKey( o2 ) ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -229,7 +229,7 @@ public final class Comparators
 
     /**
      *  Sometimes a special sort order is required that cannot be defined as a
-     *  rule. Instead a list defines the sequence. This method creates a new
+     *  rule. Instead, a list defines the sequence. This method creates a new
      *  {@link Comparator}
      *  instance that works on the given list of keys. Values that are not on
      *  that list will be placed to the end, ordered according to their natural
@@ -248,8 +248,8 @@ public final class Comparators
     public static final <T,K> Comparator<T> listBasedComparator( final K... keys ) { return new ListBasedComparator<>( keys ); }
 
     /**
-     *  Sometimes a special sort order is required that cannot defined as a
-     *  rule. Instead a list defines the sequence. This method creates a new
+     *  Sometimes a special sort order is required that cannot be defined as a
+     *  rule. Instead, a list defines the sequence. This method creates a new
      *  {@link Comparator}
      *  instance that works on the given list of keys. Values that are not on
      *  that list will be placed to the end, ordered according to their natural
@@ -267,8 +267,8 @@ public final class Comparators
     public static final <T,K> Comparator<T> listBasedComparator( final List<K> keys ) { return new ListBasedComparator<>( keys ); }
 
     /**
-     *  Sometimes a special sort order is required that cannot defined as a
-     *  rule. Instead a list defines the sequence. This method creates a new
+     *  Sometimes a special sort order is required that cannot be defined as a
+     *  rule. Instead, a list defines the sequence. This method creates a new
      *  {@link Comparator}
      *  instance that works on the given list of keys.
      *
@@ -293,8 +293,8 @@ public final class Comparators
     }   //  listBasedComparator()
 
     /**
-     *  Sometimes a special sort order is required that cannot defined as a
-     *  rule. Instead a list defines the sequence. This method creates a new
+     *  Sometimes a special sort order is required that cannot be defined as a
+     *  rule. Instead, a list defines the sequence. This method creates a new
      *  {@link Comparator}
      *  instance that works on the given list of keys.
      *
@@ -331,7 +331,7 @@ public final class Comparators
     @API( status = STABLE, since = "0.1.0" )
     public static final <T extends Number> Comparator<T> numberComparator()
     {
-        final Comparator<T> retValue = (v1,v2) ->
+        final var retValue = (Comparator<T>) ( v1, v2) ->
         {
             //noinspection rawtypes
             if( v1 instanceof Comparable comparable )

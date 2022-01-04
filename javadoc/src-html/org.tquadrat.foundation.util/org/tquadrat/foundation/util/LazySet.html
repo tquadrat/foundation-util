@@ -47,7 +47,7 @@
 <span class="source-line-no">034</span><span id="line-34"> *  that will be initialised only when required.</span>
 <span class="source-line-no">035</span><span id="line-35"> *</span>
 <span class="source-line-no">036</span><span id="line-36"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">037</span><span id="line-37"> *  @version $Id: LazySet.java 820 2020-12-29 20:34:22Z tquadrat $</span>
+<span class="source-line-no">037</span><span id="line-37"> *  @version $Id: LazySet.java 966 2022-01-04 22:28:49Z tquadrat $</span>
 <span class="source-line-no">038</span><span id="line-38"> *  @since 0.0.5</span>
 <span class="source-line-no">039</span><span id="line-39"> *</span>
 <span class="source-line-no">040</span><span id="line-40"> *  @param  &lt;E&gt; The type of elements in this set.</span>
@@ -57,13 +57,13 @@
 <span class="source-line-no">044</span><span id="line-44"> *  @note   There is no implementation of a {@code map()} method in this</span>
 <span class="source-line-no">045</span><span id="line-45"> *      interface because it is assumed that this would be confusing: such a</span>
 <span class="source-line-no">046</span><span id="line-46"> *      {@code map()} method would operate on the whole list that is wrapped by</span>
-<span class="source-line-no">047</span><span id="line-47"> *      this value, and not on a entry as one would expect. Refer to</span>
+<span class="source-line-no">047</span><span id="line-47"> *      this value, and not on an entry as one would expect. Refer to</span>
 <span class="source-line-no">048</span><span id="line-48"> *      {@link org.tquadrat.foundation.lang.Lazy#map(java.util.function.Function)}.</span>
 <span class="source-line-no">049</span><span id="line-49"> *</span>
 <span class="source-line-no">050</span><span id="line-50"> *  @UMLGraph.link</span>
 <span class="source-line-no">051</span><span id="line-51"> */</span>
 <span class="source-line-no">052</span><span id="line-52">@SuppressWarnings( "preview" )</span>
-<span class="source-line-no">053</span><span id="line-53">@ClassVersion( sourceVersion = "$Id: LazySet.java 820 2020-12-29 20:34:22Z tquadrat $" )</span>
+<span class="source-line-no">053</span><span id="line-53">@ClassVersion( sourceVersion = "$Id: LazySet.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
 <span class="source-line-no">054</span><span id="line-54">@API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">055</span><span id="line-55">public sealed interface LazySet&lt;E&gt; extends Set&lt;E&gt;</span>
 <span class="source-line-no">056</span><span id="line-56">    permits LazySetImpl</span>
@@ -130,8 +130,8 @@
 <span class="source-line-no">117</span><span id="line-117">     *</span>
 <span class="source-line-no">118</span><span id="line-118">     *  @param  &lt;E&gt; The type of elements in this set.</span>
 <span class="source-line-no">119</span><span id="line-119">     *  @param  doPopulate  {@code true} if the provided supplier will put</span>
-<span class="source-line-no">120</span><span id="line-120">     *      entries to the set on initialisation, {@code false} if will create</span>
-<span class="source-line-no">121</span><span id="line-121">     *      an empty set.</span>
+<span class="source-line-no">120</span><span id="line-120">     *      entries to the set on initialisation, {@code false} if it will</span>
+<span class="source-line-no">121</span><span id="line-121">     *      create an empty set.</span>
 <span class="source-line-no">122</span><span id="line-122">     *  @param  supplier    The supplier that initialises for the new instance</span>
 <span class="source-line-no">123</span><span id="line-123">     *      of {@code LazySet} when needed.</span>
 <span class="source-line-no">124</span><span id="line-124">     *  @return The new instance.</span>

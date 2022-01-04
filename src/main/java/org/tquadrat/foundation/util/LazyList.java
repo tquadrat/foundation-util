@@ -35,7 +35,7 @@ import org.tquadrat.foundation.util.internal.LazyListImpl;
  *  that will be initialised only when required.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazyList.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: LazyList.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this list.
@@ -45,13 +45,13 @@ import org.tquadrat.foundation.util.internal.LazyListImpl;
  *  @note   There is no implementation of a {@code map()} method in this
  *      interface because it is assumed that this would be confusing: such a
  *      {@code map()} method would operate on the whole list that is wrapped by
- *      this value, and not on a entry as one would expect. Refer to
+ *      this value, and not on an entry as one would expect. Refer to
  *      {@link org.tquadrat.foundation.lang.Lazy#map(java.util.function.Function)}.
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "preview" )
-@ClassVersion( sourceVersion = "$Id: LazyList.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazyList.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public sealed interface LazyList<E> extends List<E>
     permits LazyListImpl
@@ -124,8 +124,8 @@ public sealed interface LazyList<E> extends List<E>
      *
      *  @param  <E> The type of elements in this list.
      *  @param  doPopulate  {@code true} if the provided supplier will put
-     *      entries to the list on initialisation, {@code false} if will create
-     *      an empty list.
+     *      entries to the list on initialisation, {@code false} if it will
+     *      create an empty list.
      *  @param  supplier    The supplier that initialises for the new instance
      *      of {@code LazyList} when needed.
      *  @return The new instance.

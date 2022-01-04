@@ -55,12 +55,12 @@
 <span class="source-line-no">042</span><span id="line-42"> *  {@link IllegalArgumentException}.</span>
 <span class="source-line-no">043</span><span id="line-43"> *</span>
 <span class="source-line-no">044</span><span id="line-44"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">045</span><span id="line-45"> *  @version $Id: CharacterStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $</span>
+<span class="source-line-no">045</span><span id="line-45"> *  @version $Id: CharacterStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $</span>
 <span class="source-line-no">046</span><span id="line-46"> *  @since 0.0.6</span>
 <span class="source-line-no">047</span><span id="line-47"> *</span>
 <span class="source-line-no">048</span><span id="line-48"> *  @UMLGraph.link</span>
 <span class="source-line-no">049</span><span id="line-49"> */</span>
-<span class="source-line-no">050</span><span id="line-50">@ClassVersion( sourceVersion = "$Id: CharacterStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )</span>
+<span class="source-line-no">050</span><span id="line-50">@ClassVersion( sourceVersion = "$Id: CharacterStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
 <span class="source-line-no">051</span><span id="line-51">@API( status = STABLE, since = "0.0.6" )</span>
 <span class="source-line-no">052</span><span id="line-52">public final class CharacterStringConverter implements StringConverter&lt;Character&gt;</span>
 <span class="source-line-no">053</span><span id="line-53">{</span>
@@ -126,25 +126,26 @@
 <span class="source-line-no">113</span><span id="line-113">     *</span>
 <span class="source-line-no">114</span><span id="line-114">     *  @return The instance for this {@code StringConverter} implementation.</span>
 <span class="source-line-no">115</span><span id="line-115">     */</span>
-<span class="source-line-no">116</span><span id="line-116">    public static final CharacterStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">117</span><span id="line-117"></span>
-<span class="source-line-no">118</span><span id="line-118">    /**</span>
-<span class="source-line-no">119</span><span id="line-119">     *  {@inheritDoc}</span>
-<span class="source-line-no">120</span><span id="line-120">     */</span>
-<span class="source-line-no">121</span><span id="line-121">    @Override</span>
-<span class="source-line-no">122</span><span id="line-122">    public final String toString( final Character source )</span>
-<span class="source-line-no">123</span><span id="line-123">    {</span>
-<span class="source-line-no">124</span><span id="line-124">        final var retValue = isNull( source ) ? null : source.toString();</span>
-<span class="source-line-no">125</span><span id="line-125"></span>
-<span class="source-line-no">126</span><span id="line-126">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">127</span><span id="line-127">        return retValue;</span>
-<span class="source-line-no">128</span><span id="line-128">    }   //  toString()</span>
-<span class="source-line-no">129</span><span id="line-129">}</span>
-<span class="source-line-no">130</span><span id="line-130">//  class CharacterValueHandler</span>
-<span class="source-line-no">131</span><span id="line-131"></span>
-<span class="source-line-no">132</span><span id="line-132">/*</span>
-<span class="source-line-no">133</span><span id="line-133"> *  End of File</span>
-<span class="source-line-no">134</span><span id="line-134"> */</span>
+<span class="source-line-no">116</span><span id="line-116">    @SuppressWarnings( "UseOfConcreteClass" )</span>
+<span class="source-line-no">117</span><span id="line-117">    public static final CharacterStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">118</span><span id="line-118"></span>
+<span class="source-line-no">119</span><span id="line-119">    /**</span>
+<span class="source-line-no">120</span><span id="line-120">     *  {@inheritDoc}</span>
+<span class="source-line-no">121</span><span id="line-121">     */</span>
+<span class="source-line-no">122</span><span id="line-122">    @Override</span>
+<span class="source-line-no">123</span><span id="line-123">    public final String toString( final Character source )</span>
+<span class="source-line-no">124</span><span id="line-124">    {</span>
+<span class="source-line-no">125</span><span id="line-125">        final var retValue = isNull( source ) ? null : source.toString();</span>
+<span class="source-line-no">126</span><span id="line-126"></span>
+<span class="source-line-no">127</span><span id="line-127">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">128</span><span id="line-128">        return retValue;</span>
+<span class="source-line-no">129</span><span id="line-129">    }   //  toString()</span>
+<span class="source-line-no">130</span><span id="line-130">}</span>
+<span class="source-line-no">131</span><span id="line-131">//  class CharacterValueHandler</span>
+<span class="source-line-no">132</span><span id="line-132"></span>
+<span class="source-line-no">133</span><span id="line-133">/*</span>
+<span class="source-line-no">134</span><span id="line-134"> *  End of File</span>
+<span class="source-line-no">135</span><span id="line-135"> */</span>
 
 
 

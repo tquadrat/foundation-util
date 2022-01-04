@@ -51,12 +51,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see Boolean#valueOf(String)
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: BooleanStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: BooleanStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: BooleanStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: BooleanStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public class BooleanStringConverter implements StringConverter<Boolean>
 {
@@ -109,6 +109,7 @@ public class BooleanStringConverter implements StringConverter<Boolean>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final BooleanStringConverter provider() { return INSTANCE; }
 
     /**

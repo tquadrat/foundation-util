@@ -31,12 +31,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  {@link java.lang.Integer}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IntegerStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: IntegerStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IntegerStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IntegerStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class IntegerStringConverter extends NumberStringConverter<Integer>
 {
@@ -85,6 +85,7 @@ public final class IntegerStringConverter extends NumberStringConverter<Integer>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
+    @SuppressWarnings( "UseOfConcreteClass" )
     public static final IntegerStringConverter provider() { return INSTANCE; }
 }
 //  class IntegerStringConverter
