@@ -60,9 +60,6 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      *  @version $Id: ListBasedComparator.java 840 2021-01-10 21:37:03Z tquadrat $
-     *  @since 9
-     *
-     *  @UMLGraph.link
      *
      *  @param  <T> The type to order.
      *  @param  <K> The key type that is used to determine the order; this may

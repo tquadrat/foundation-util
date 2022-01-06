@@ -26,6 +26,7 @@ import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.StringUtils.format;
+import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;
 import static org.tquadrat.foundation.util.StringUtils.isNotEmptyOrBlank;
 
 import java.io.BufferedReader;
@@ -530,7 +531,7 @@ public final class Entities
                 @SuppressWarnings( "OptionalGetWithoutIsPresent" )
                 final var value = entityValue( e ).get().intValue();
                 final var unicode = Character.getName( value );
-                return format( "&%1$s; = &#%2$d = &#%2$X%3$s", e, value, StringUtils.isEmptyOrBlank( unicode ) ? "" : format( " (%s)", unicode ) );
+                return format( "&%1$s; = &#%2$d = &#%2$X%3$s", e, value, isEmptyOrBlank( unicode ) ? "" : format( " (%s)", unicode ) );
             } )
             .toArray( String []::new );
 

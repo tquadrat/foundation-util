@@ -17,6 +17,17 @@
 
 package org.tquadrat.foundation.util.systemutils;
 
+import static java.lang.System.getProperties;
+import static java.lang.System.getenv;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.tquadrat.foundation.util.StringUtils.format;
+import static org.tquadrat.foundation.util.Template.VARIABLE_TEMPLATE;
+
+import java.util.Map;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -26,16 +37,6 @@ import org.tquadrat.foundation.lang.Objects;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.StringUtils;
 import org.tquadrat.foundation.util.SystemUtils;
-
-import java.util.Map;
-import java.util.stream.Stream;
-
-import static java.lang.System.getProperties;
-import static java.lang.System.getenv;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 /**
  *  Some tests for the method
@@ -104,7 +105,7 @@ public class TestReplaceSystemVariable extends TestBaseClass
 
         assumeTrue( StringUtils.isValidVariableName( candidate ) );
 
-        final var text = format( StringUtils.VARIABLE_TEMPLATE, candidate );
+        final var text = format( VARIABLE_TEMPLATE, candidate );
         final var expected = getenv().get( candidate );
         assertEquals( expected, SystemUtils.replaceSystemVariable( text ) );
     }   //  testReplaceSystemVariablesEnvironment()
@@ -123,7 +124,7 @@ public class TestReplaceSystemVariable extends TestBaseClass
 
         assumeTrue( StringUtils.isValidVariableName( candidate ) );
 
-        final var text = format( StringUtils.VARIABLE_TEMPLATE, candidate );
+        final var text = format( VARIABLE_TEMPLATE, candidate );
         final var expected = Objects.toString( getProperties().getProperty( candidate ) );
         assertEquals( expected, SystemUtils.replaceSystemVariable( text ) );
     }   //  testReplaceSystemVariablesProperties()

@@ -60,7 +60,7 @@ loadScripts(document, 'script');</script>
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link"><code>File</code></a>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link"><code>File</code></a>
   values.<br>
   <br>The file or folder that will be identified by the respective
   <code>File</code> object do not need to exist nor is it guaranteed that it can
@@ -68,7 +68,7 @@ loadScripts(document, 'script');</script>
   <br>File names will not be normalised or canonicalized.<br>
   <br>A file name of only blanks will be accepted as valid, while the empty
   String will cause an
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link"><code>IllegalArgumentException</code></a>.</div>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link"><code>IllegalArgumentException</code></a>.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/FileStringConverter.html#%3Cinit%3E()" class="member-name-link">FileStringConverter()</a> - Constructor for class org.tquadrat.foundation.util.stringconverter.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/FileStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">FileStringConverter</a></dt>
 <dd>&nbsp;</dd>
@@ -87,7 +87,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Collects all the variables of the form
   <code>${<i>&lt;name&gt;</i>}</code> in the adjusted template.<br>
   <br>If there are not any variables in there, an empty
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link"><code>Collection</code></a>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link"><code>Collection</code></a>
   will be returned.<br>
   <br>A valid variable name may not contain any other characters than the
   letters from 'a' to 'z' (upper case and lower case), the digits from
@@ -112,7 +112,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Collects all the variables of the form
   <code>${<i>&lt;name&gt;</i>}</code> in the given String.<br>
   <br>If there are not any variables in the given String, an empty
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link"><code>Set</code></a>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link"><code>Set</code></a>
   will be returned.<br>
   <br>A valid variable name may not contain any other characters than the
   letters from 'a' to 'z' (upper case and lower case), the digits from
@@ -131,10 +131,10 @@ loadScripts(document, 'script');</script>
   <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>NumberStringConverter</code></a>
   for <code>float</code>
   and
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link"><code>Float</code></a>.<br>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Float.html" title="class or interface in java.lang" class="external-link"><code>Float</code></a>.<br>
   <br>The <code>float</code> literals are expected in the format as they are
   emitted by
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/Float.html#toString(float)" title="class or interface in java.lang" class="external-link"><code>Float.toString(float)</code></a>;
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Float.html#toString(float)" title="class or interface in java.lang" class="external-link"><code>Float.toString(float)</code></a>;
   in particular, it expects decimal points instead of decimal commas for each
   locale.</div>
 </dd>
@@ -149,24 +149,24 @@ loadScripts(document, 'script');</script>
 <div class="block">Returns a formatted String using the specified format String and
   arguments.<br>
   <br>The implementation uses internally the
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Locale.html" title="class or interface in java.util" class="external-link"><code>Locale</code></a>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html" title="class or interface in java.util" class="external-link"><code>Locale</code></a>
   that is returned by
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Locale.html#getDefault()" title="class or interface in java.util" class="external-link"><code>Locale.getDefault()</code></a>.<br>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html#getDefault()" title="class or interface in java.util" class="external-link"><code>Locale.getDefault()</code></a>.<br>
   <br>This method is meant as a replacement for the method
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/String.html#format(java.lang.String,java.lang.Object...)" title="class or interface in java.lang" class="external-link"><code>String.format(String, Object...)</code></a>;
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#format(java.lang.String,java.lang.Object...)" title="class or interface in java.lang" class="external-link"><code>String.format(String, Object...)</code></a>;
   that implementation always uses a new instance of
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Formatter.html" title="class or interface in java.util" class="external-link"><code>Formatter</code></a>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Formatter.html" title="class or interface in java.util" class="external-link"><code>Formatter</code></a>
   for each invocation.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#format(java.util.Locale,java.lang.String,java.lang.Object...)" class="member-name-link">format(Locale, String, Object...)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html" title="class in org.tquadrat.foundation.util">StringUtils</a></dt>
 <dd>
 <div class="block">Returns a formatted String using the specified
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Locale.html" title="class or interface in java.util" class="external-link"><code>Locale</code></a>,
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Locale.html" title="class or interface in java.util" class="external-link"><code>Locale</code></a>,
   format String, and arguments.<br>
   <br>This method is meant as a replacement for the method
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/lang/String.html#format(java.lang.String,java.lang.Object...)" title="class or interface in java.lang" class="external-link"><code>String.format(String, Object...)</code></a>;
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#format(java.lang.String,java.lang.Object...)" title="class or interface in java.lang" class="external-link"><code>String.format(String, Object...)</code></a>;
   that implementation always uses a new instance of
-  <a href="https://docs.oracle.com/en/java/javase/15/docs/api/java.base/java/util/Formatter.html" title="class or interface in java.util" class="external-link"><code>Formatter</code></a>
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Formatter.html" title="class or interface in java.util" class="external-link"><code>Formatter</code></a>
   for each invocation.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#FORMAT_INITIAL_BUFFERSIZE" class="member-name-link">FORMAT_INITIAL_BUFFERSIZE</a> - Static variable in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html" title="class in org.tquadrat.foundation.util">StringUtils</a></dt>

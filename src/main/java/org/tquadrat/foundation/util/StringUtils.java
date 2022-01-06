@@ -322,10 +322,11 @@ public final class StringUtils
     ====** Constants **========================================================
         \*-----------*/
     /**
-     *  The regular expression for an HTML or XML comment: {@value}.<br>
-     *  <br>This pattern is used by the
+     *  <p>{@summary The regular expression for an HTML or XML comment:
+     *  {@value}.}</p>
+     *  <p>This pattern is used by the
      *  {@link #stripXMLComments(CharSequence)}
-     *  method.
+     *  method.</p>
      *
      *  @since 0.0.5
      */
@@ -381,6 +382,7 @@ public final class StringUtils
      *
      *  @since 0.0.5
      */
+    @SuppressWarnings( "RegExpUnnecessaryNonCapturingGroup" )
     @API( status = STABLE, since = "0.0.5" )
     public static final String TAGREMOVAL_PATTERN = "(?:<!--.+?-->)|(?:<[^>]+?>)";
 
@@ -994,24 +996,26 @@ public final class StringUtils
     }   //  decapitalize()
 
     /**
-     *  Escapes the non-ASCII and special characters in a {@code String} so
-     *  that the result can be used in the context of HTML. Wherever possible,
-     *  the method will return the respective HTML&nbsp;5 entity; only when
-     *  there is no matching entity, it will use the Unicode escape. So if you
-     *  call the method with the argument &quot;<i>S&uuml;&szlig;e</i>&quot;,
-     *  it will return &quot;<code>S&amp;uuml;&amp;szlig;e</code>&quot;. If the
-     *  input will be, for example, a Chinese text like this:
-     *  &quot;<i>球体</i>&quot; (means "Ball"), you may get back
-     *  something like this: &quot;<code>&amp;#x7403;&amp;#x4F53;</code>&quot;,
-     *  as there are no entities defined for (all) Chinese letters.<br>
-     *  <br>The method supports all known HTML 5.0 entities, including funky
-     *  accents. But it will not escape several commonly used characters like
-     *  the full stop ('.'), the comma (','), the colon (':'), or the
-     *  semi-colon (';'), although they will be handled properly by
-     *  {@link #unescapeHTML(CharSequence)}.<br>
-     *  <br>Note that the commonly used apostrophe escape character
-     *  (&amp;apos;) that was not a legal entity for HTML before HTML&nbsp; is
-     *  now supported.
+     *  <p>{@summary Escapes the non-ASCII and special characters in a
+     *  {@code String} so that the result can be used in the context of HTML.}
+     *  Wherever possible, the method will return the respective HTML&nbsp;5
+     *  entity; only when there is no matching entity, it will use the Unicode
+     *  escape.</p>
+     *  <p>So if you call the method with the argument
+     *  &quot;<i>S&uuml;&szlig;e</i>&quot;, it will return
+     *  &quot;<code>S&amp;uuml;&amp;szlig;e</code>&quot;.</p>
+     *  <p>If the input will be, for example, a Chinese text like this:
+     *  &quot;<i>球体</i>&quot; (means "Ball"), you may get back something like
+     *  this: &quot;<code>&amp;#x7403;&amp;#x4F53;</code>&quot;, as there are
+     *  no entities defined for (any) Chinese letters.</p>
+     *  <p>The method supports all known HTML&nbsp;5.0 entities, including
+     *  funky accents. But it will not escape several commonly used characters
+     *  like the full stop ('.'), the comma (','), the colon (':'), or the
+     *  semicolon (';'), although they will be handled properly by
+     *  {@link #unescapeHTML(CharSequence)}.</p>
+     *  <p>Note that the commonly used apostrophe escape character
+     *  (&amp;apos;) that was not a legal entity for HTML before HTML&nbsp;5 is
+     *  now supported.</p>
      *
      *  @param  str The {@code String} to escape, may be {@code null}.
      *  @return A new escaped {@code String}, or {@code null} if the
@@ -1347,12 +1351,13 @@ public final class StringUtils
     public static final String escapeUnicode( final int codePoint ) { return escapeCharacter( codePoint ); }
 
     /**
-     *  Escapes the characters in a {@code String} using XML entities.<br>
-     *  <br>For example:<br>
-     *  <br>{@code "bread" & "butter"}<br>
-     *  <br>becomes:<br>
-     *  <br><code>&amp;quot;bread&amp;quot; &amp;amp;
-     *  &amp;quot;butter&amp;quot;</code>.
+     *  <p>{@summary Escapes the characters in a {@code String} using XML
+     *  entities.}</p>
+     *  <p>For example:</p>
+     *  <p>{@code "bread" & "butter"}</p>
+     *  <p>becomes:</p>
+     *  <p><code>&amp;quot;bread&amp;quot; &amp;amp;
+     *  &amp;quot;butter&amp;quot;</code>.</p>
      *
      *  @param  str The {@code String} to escape, may be null.
      *  @return A new escaped {@code String}, or {@code null} if the
@@ -1370,14 +1375,14 @@ public final class StringUtils
     }   //  escapeXML()
 
     /**
-     *  Escapes the characters in a {@code String} using XML entities and
-     *  writes them to an
-     *  {@link Appendable}.<br>
-     *  <br>For example:<br>
-     *  <br>{@code "bread" & "butter"}<br>
-     *  <br>becomes:<br>
-     *  <br><code>&amp;quot;bread&amp;quot; &amp;amp;
-     *  &amp;quot;butter&amp;quot;</code>.
+     *  <p>{@summary Escapes the characters in a {@code String} using XML
+     *  entities and writes them to an
+     *  {@link Appendable}.}</p>
+     *  <p>For example:</p>
+     *  <p>{@code "bread" & "butter"}</p>
+     *  <p>becomes:</p>
+     *  <p><code>&amp;quot;bread&amp;quot; &amp;amp;
+     *  &amp;quot;butter&amp;quot;</code>.</p>
      *
      *  @param  appendable  The appendable object receiving the escaped string.
      *  @param  str  The {@code String} to escape, may be {@code null}.
@@ -1606,7 +1611,7 @@ public final class StringUtils
      *
      *  @param  s   The String to test.
      *  @return {@code true} if the given String reference is not
-     *      {@code null} and not the empty String and it contains other
+     *      {@code null} and not the empty String, and it contains other
      *      characters than just whitespace.
      *
      *  @see String#isBlank()
@@ -1654,7 +1659,7 @@ public final class StringUtils
      *
      *  @param  s   The String to test; can be {@code null}.
      *  @return {@code true} if the given String is not {@code null}, not the
-     *      empty String and it matches the given pattern, {@code false}
+     *      empty String, and it matches the given pattern, {@code false}
      *      otherwise.
      *
      *  @since 0.0.4
@@ -2157,7 +2162,6 @@ public final class StringUtils
      *      {@link Template#replaceVariable(CharSequence, Map[])}
      *      instead.
      */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @SafeVarargs
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
@@ -2202,7 +2206,6 @@ public final class StringUtils
      *      {@link Template#replaceVariable(CharSequence, Function)}
      *      instead.
      */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
     public static final String replaceVariable( final CharSequence text, final Function<? super String, Optional<String>> retriever )
@@ -2311,17 +2314,17 @@ public final class StringUtils
     }   //  stream()
 
     /**
-     *  Splits a String by the given separator character, identified by its
+     *  <p>{@summary Splits a String by the given separator character, identified by its
      *  Unicode code point, and returns a
      *  {@link Stream}
-     *  of all parts. In case a separator character is immediately followed by
+     *  of all parts.} In case a separator character is immediately followed by
      *  another separator char, an empty String will be put to the
      *  {@code Stream}. Beginning and end of the String are treated as
      *  separators, so if the first character of the String is a separator, the
      *  returned {@code Stream} will start with an empty String, as it will end
-     *  with an empty String if the last character is a separator.<br>
-     *  <br>In case the String is empty, the return value will be a
-     *  {@code Stream} containing just the empty String.
+     *  with an empty String if the last character is a separator.</p>
+     *  <p>In case the String is empty, the return value will be a
+     *  {@code Stream} containing just the empty String.</p>
      *
      *  @param  string  The String to split.
      *  @param  separator   The code point for the separator character.
@@ -2397,24 +2400,19 @@ public final class StringUtils
         while( isNotEmpty( s ) && (pos >= 0) )
         {
             pos = s.indexOf( t );
-            ResultHandlerSwitch: switch( Integer.signum( pos ) )
+            switch( Integer.signum( pos ) )
             {
-                case 0: /* String starts with separator */
-                {
-                    builder.add( EMPTY_STRING );
-                    s = s.substring( t.length() );
-                    break ResultHandlerSwitch;
-                }
-
-                case 1: /* String contains a separator somewhere */
-                {
-                    builder.add( s.substring( 0, pos ) );
-                    s = s.substring( pos + t.length() );
-                    break ResultHandlerSwitch;
-                }
-
-                case -1: /* Just leave the loop */
-                default: break ResultHandlerSwitch;
+                case 0 -> /* String starts with separator */
+                    {
+                        builder.add( EMPTY_STRING );
+                        s = s.substring( t.length() );
+                    }
+                case 1 -> /* String contains a separator somewhere */
+                    {
+                        builder.add( s.substring( 0, pos ) );
+                        s = s.substring( pos + t.length() );
+                    }
+                case -1 -> { /* Just leave the loop */ }
             }   //  ResultHandlerSwitch:
         }
 
@@ -2816,12 +2814,12 @@ public final class StringUtils
     }   //  unescapeUnicode()
 
     /**
-     *  Unescapes an XML string containing XML entity escapes to a string
-     *  containing the actual Unicode characters corresponding to the
-     *  escapes.<br>
-     *  <br>If an entity is unrecognised, it is left alone, and inserted
+     *  <p>{@summary Unescapes an XML string containing XML entity escapes to a
+     *  string containing the actual Unicode characters corresponding to the
+     *  escapes.}</p>
+     *  <p>If an entity is unrecognised, it is left alone, and inserted
      *  verbatim into the result string. e.g. &quot;&amp;gt;&amp;zzzz;x&quot;
-     *  will become &quot;&gt;&amp;zzzz;x&quot;.
+     *  will become &quot;&gt;&amp;zzzz;x&quot;.</p>
      *
      *  @param  str The {@code String} to unescape, may be {@code null}.
      *  @return A new unescaped {@code String}, {@code null} if the given
@@ -2842,13 +2840,13 @@ public final class StringUtils
     }   //  unescapeXML()
 
     /**
-     *  Unescapes an XML String containing XML entity escapes to a String
-     *  containing the actual Unicode characters corresponding to the escapes
-     *  and writes it to the given
-     *  {@link Appendable}.<br>
-     *  <br>If an entity is unrecognised, it is left alone, and inserted
+     *  <p>{@summary Unescapes an XML String containing XML entity escapes to a
+     *  String containing the actual Unicode characters corresponding to the
+     *  escapes and writes it to the given
+     *  {@link Appendable}.}</p>
+     *  <p>If an entity is unrecognised, it is left alone, and inserted
      *  verbatim into the result string. e.g. &quot;&amp;gt;&amp;zzzz;x&quot;
-     *  will become &quot;&gt;&amp;zzzz;x&quot;.
+     *  will become &quot;&gt;&amp;zzzz;x&quot;.</p>
      *
      *  @param  appendable  The appendable receiving the unescaped string.
      *  @param  str The {@code String} to unescape, may be {@code null}.

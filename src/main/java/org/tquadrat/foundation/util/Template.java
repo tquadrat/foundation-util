@@ -52,12 +52,12 @@ import org.tquadrat.foundation.annotation.MountPoint;
 import org.tquadrat.foundation.exception.ImpossibleExceptionError;
 
 /**
- *  <p>{@summary An instance of this class is basically a wrapper around a String
- *  that contains placeholders (&quot;Variables&quot;) in the form
+ *  <p>{@summary An instance of this class is basically a wrapper around a
+ *  String that contains placeholders (&quot;Variables&quot;) in the form
  *  <code>${&lt;<i>name</i>&gt;}</code>, where &lt;<i>name</i> is the variable
  *  name.}</p>
  *  <p>The variables names are case-sensitive.</p>
- *  <p>Valid variable name may not contain other characters than the letters
+ *  <p>Valid variable names may not contain other characters than the letters
  *  from 'a' to 'z' (upper case and lower case), the digits from '0' to '9' and
  *  the special characters underscore ('_') and dot ('.'), after an optional
  *  prefix character.</p>

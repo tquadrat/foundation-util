@@ -66,305 +66,301 @@
 <span class="source-line-no">053</span><span id="line-53">    ====** Inner Classes **====================================================</span>
 <span class="source-line-no">054</span><span id="line-54">        \*---------------*/</span>
 <span class="source-line-no">055</span><span id="line-55">    /**</span>
-<span class="source-line-no">056</span><span id="line-56">     *  Implementations of this interface provides the sort order key from the</span>
-<span class="source-line-no">057</span><span id="line-57">     *  given instance of the type. &lt;br&gt;</span>
-<span class="source-line-no">058</span><span id="line-58">     *  &lt;br&gt;Usually the implementation of#</span>
+<span class="source-line-no">056</span><span id="line-56">     *  &lt;p&gt;{@summary Implementations of this interface provides the sort order</span>
+<span class="source-line-no">057</span><span id="line-57">     *  key from the given instance of the type.}&lt;/p&gt;</span>
+<span class="source-line-no">058</span><span id="line-58">     *  &lt;p&gt;Usually the implementation of</span>
 <span class="source-line-no">059</span><span id="line-59">     *  {@link #getKey(Object) getKey()}</span>
 <span class="source-line-no">060</span><span id="line-60">     *  must ensure that the returned keys are distinct for distinct arguments.</span>
-<span class="source-line-no">061</span><span id="line-61">     *  This means for the arguments {@code a1} and {@code a2} and the</span>
+<span class="source-line-no">061</span><span id="line-61">     *  This means for the arguments {@code a1} and {@code a2}, and the</span>
 <span class="source-line-no">062</span><span id="line-62">     *  generated keys &lt;code&gt;k&lt;sub&gt;a1&lt;/sub&gt;&lt;/code&gt; and</span>
 <span class="source-line-no">063</span><span id="line-63">     *  &lt;code&gt;k&lt;sub&gt;a2&lt;/sub&gt;&lt;/code&gt; that the following must be both</span>
-<span class="source-line-no">064</span><span id="line-64">     *  {@code true}:</span>
+<span class="source-line-no">064</span><span id="line-64">     *  {@code true}:&lt;/p&gt;</span>
 <span class="source-line-no">065</span><span id="line-65">     *  &lt;ul&gt;</span>
 <span class="source-line-no">066</span><span id="line-66">     *      &lt;li&gt;&lt;code&gt;a1&amp;nbsp;=&amp;nbsp;a2&amp;nbsp;&amp;#x21d4;&amp;nbsp;k&lt;sub&gt;a1&lt;/sub&gt;&amp;nbsp;=&amp;nbsp;k&lt;sub&gt;a2&lt;/sub&gt;&lt;/code&gt;&lt;/li&gt;</span>
 <span class="source-line-no">067</span><span id="line-67">     *      &lt;li&gt;&lt;code&gt;a1&amp;nbsp;&amp;#x2260;&amp;nbsp;a2&amp;nbsp;&amp;#x21d4;&amp;nbsp;k&lt;sub&gt;a1&lt;/sub&gt;&amp;nbsp;&amp;#x2260;&amp;nbsp;k&lt;sub&gt;a2&lt;/sub&gt;&lt;/code&gt;&lt;/li&gt;</span>
 <span class="source-line-no">068</span><span id="line-68">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">069</span><span id="line-69">     *  This also follows that {@code getKey()} for the same argument must</span>
-<span class="source-line-no">070</span><span id="line-70">     *  provide always the same key.</span>
+<span class="source-line-no">069</span><span id="line-69">     *  &lt;p&gt;This also requires that {@code getKey()} for the same argument must</span>
+<span class="source-line-no">070</span><span id="line-70">     *  provide always the same key.&lt;/p&gt;</span>
 <span class="source-line-no">071</span><span id="line-71">     *</span>
 <span class="source-line-no">072</span><span id="line-72">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
 <span class="source-line-no">073</span><span id="line-73">     *  @version $Id: Comparators.java 966 2022-01-04 22:28:49Z tquadrat $</span>
 <span class="source-line-no">074</span><span id="line-74">     *  @since 0.0.5</span>
 <span class="source-line-no">075</span><span id="line-75">     *</span>
-<span class="source-line-no">076</span><span id="line-76">     *  @UMLGraph.link</span>
-<span class="source-line-no">077</span><span id="line-77">     *</span>
-<span class="source-line-no">078</span><span id="line-78">     *  @param  &lt;T&gt; The type to order.</span>
-<span class="source-line-no">079</span><span id="line-79">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
-<span class="source-line-no">080</span><span id="line-80">     *      be the same as the type itself.</span>
-<span class="source-line-no">081</span><span id="line-81">     *</span>
-<span class="source-line-no">082</span><span id="line-82">     *  @UMLGraph.link</span>
-<span class="source-line-no">083</span><span id="line-83">     */</span>
-<span class="source-line-no">084</span><span id="line-84">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">085</span><span id="line-85">    @ClassVersion( sourceVersion = "$Id: Comparators.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
-<span class="source-line-no">086</span><span id="line-86">    @FunctionalInterface</span>
-<span class="source-line-no">087</span><span id="line-87">    public interface KeyProvider&lt;T,K&gt;</span>
-<span class="source-line-no">088</span><span id="line-88">    {</span>
-<span class="source-line-no">089</span><span id="line-89">            /*---------*\</span>
-<span class="source-line-no">090</span><span id="line-90">        ====** Methods **======================================================</span>
-<span class="source-line-no">091</span><span id="line-91">            \*---------*/</span>
-<span class="source-line-no">092</span><span id="line-92">        /**</span>
-<span class="source-line-no">093</span><span id="line-93">         *  Returns the sort order key for the given instance.</span>
-<span class="source-line-no">094</span><span id="line-94">         *</span>
-<span class="source-line-no">095</span><span id="line-95">         *  @param  instance    The instance; may be {@code null}.</span>
-<span class="source-line-no">096</span><span id="line-96">         *  @return The respective sort order key; will be {@code null} if</span>
-<span class="source-line-no">097</span><span id="line-97">         *      the {@code instance} was {@code null}.</span>
-<span class="source-line-no">098</span><span id="line-98">         */</span>
-<span class="source-line-no">099</span><span id="line-99">        public K getKey( T instance );</span>
-<span class="source-line-no">100</span><span id="line-100">    }</span>
-<span class="source-line-no">101</span><span id="line-101">    //  interface KeyProvider</span>
-<span class="source-line-no">102</span><span id="line-102"></span>
-<span class="source-line-no">103</span><span id="line-103">        /*--------------*\</span>
-<span class="source-line-no">104</span><span id="line-104">    ====** Constructors **=====================================================</span>
-<span class="source-line-no">105</span><span id="line-105">        \*--------------*/</span>
-<span class="source-line-no">106</span><span id="line-106">    /**</span>
-<span class="source-line-no">107</span><span id="line-107">     *  No instance allowed for this class.</span>
-<span class="source-line-no">108</span><span id="line-108">     */</span>
-<span class="source-line-no">109</span><span id="line-109">    private Comparators() { throw new PrivateConstructorForStaticClassCalledError( Comparators.class ); }</span>
-<span class="source-line-no">110</span><span id="line-110"></span>
-<span class="source-line-no">111</span><span id="line-111">        /*---------*\</span>
-<span class="source-line-no">112</span><span id="line-112">    ====** Methods **==========================================================</span>
-<span class="source-line-no">113</span><span id="line-113">        \*---------*/</span>
-<span class="source-line-no">114</span><span id="line-114">    /**</span>
-<span class="source-line-no">115</span><span id="line-115">     *  Returns a comparator that compares Strings ignoring the case.&lt;br&gt;</span>
-<span class="source-line-no">116</span><span id="line-116">     *  &lt;br&gt;Internally this is</span>
-<span class="source-line-no">117</span><span id="line-117">     *  {@link String#CASE_INSENSITIVE_ORDER},</span>
-<span class="source-line-no">118</span><span id="line-118">     *  with the limitations described there.</span>
-<span class="source-line-no">119</span><span id="line-119">     *</span>
-<span class="source-line-no">120</span><span id="line-120">     *  @return The comparator.</span>
-<span class="source-line-no">121</span><span id="line-121">     */</span>
-<span class="source-line-no">122</span><span id="line-122">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">123</span><span id="line-123">    public static final Comparator&lt;String&gt; caseInsensitiveComparator() { return CASE_INSENSITIVE_ORDER; }</span>
-<span class="source-line-no">124</span><span id="line-124"></span>
-<span class="source-line-no">125</span><span id="line-125">    /**</span>
-<span class="source-line-no">126</span><span id="line-126">     *  Returns a dummy comparator for elements that implements</span>
-<span class="source-line-no">127</span><span id="line-127">     *  {@link Comparable}.</span>
-<span class="source-line-no">128</span><span id="line-128">     *  Use this comparator if a</span>
-<span class="source-line-no">129</span><span id="line-129">     *  {@link Comparator}</span>
-<span class="source-line-no">130</span><span id="line-130">     *  is required for some reason, but your objects can be compared already</span>
-<span class="source-line-no">131</span><span id="line-131">     *  directly by their inherent</span>
-<span class="source-line-no">132</span><span id="line-132">     *  {@link Comparable#compareTo(Object)}</span>
-<span class="source-line-no">133</span><span id="line-133">     *  method.&lt;br&gt;</span>
-<span class="source-line-no">134</span><span id="line-134">     *  &lt;br&gt;A</span>
-<span class="source-line-no">135</span><span id="line-135">     *  {@link NullPointerException}</span>
-<span class="source-line-no">136</span><span id="line-136">     *  (and not a</span>
-<span class="source-line-no">137</span><span id="line-137">     *  {@link org.tquadrat.foundation.exception.NullArgumentException})</span>
-<span class="source-line-no">138</span><span id="line-138">     *  is thrown, if the first argument is {@code null}. Whether an exception</span>
-<span class="source-line-no">139</span><span id="line-139">     *  is thrown when the second argument is {@code null} depends on the</span>
-<span class="source-line-no">140</span><span id="line-140">     *  implementation of</span>
-<span class="source-line-no">141</span><span id="line-141">     *  {@link Comparable#compareTo(Object) T.compareTo(Object)}.</span>
-<span class="source-line-no">142</span><span id="line-142">     *</span>
-<span class="source-line-no">143</span><span id="line-143">     *  @param  &lt;T&gt; The type to compare.</span>
-<span class="source-line-no">144</span><span id="line-144">     *  @return The comparator.</span>
+<span class="source-line-no">076</span><span id="line-76">     *  @param  &lt;T&gt; The type to order.</span>
+<span class="source-line-no">077</span><span id="line-77">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
+<span class="source-line-no">078</span><span id="line-78">     *      be the same as the type itself.</span>
+<span class="source-line-no">079</span><span id="line-79">     *</span>
+<span class="source-line-no">080</span><span id="line-80">     *  @UMLGraph.link</span>
+<span class="source-line-no">081</span><span id="line-81">     */</span>
+<span class="source-line-no">082</span><span id="line-82">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">083</span><span id="line-83">    @ClassVersion( sourceVersion = "$Id: Comparators.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
+<span class="source-line-no">084</span><span id="line-84">    @FunctionalInterface</span>
+<span class="source-line-no">085</span><span id="line-85">    public interface KeyProvider&lt;T,K&gt;</span>
+<span class="source-line-no">086</span><span id="line-86">    {</span>
+<span class="source-line-no">087</span><span id="line-87">            /*---------*\</span>
+<span class="source-line-no">088</span><span id="line-88">        ====** Methods **======================================================</span>
+<span class="source-line-no">089</span><span id="line-89">            \*---------*/</span>
+<span class="source-line-no">090</span><span id="line-90">        /**</span>
+<span class="source-line-no">091</span><span id="line-91">         *  Returns the sort order key for the given instance.</span>
+<span class="source-line-no">092</span><span id="line-92">         *</span>
+<span class="source-line-no">093</span><span id="line-93">         *  @param  instance    The instance; may be {@code null}.</span>
+<span class="source-line-no">094</span><span id="line-94">         *  @return The respective sort order key; will be {@code null} if</span>
+<span class="source-line-no">095</span><span id="line-95">         *      the {@code instance} was {@code null}.</span>
+<span class="source-line-no">096</span><span id="line-96">         */</span>
+<span class="source-line-no">097</span><span id="line-97">        public K getKey( T instance );</span>
+<span class="source-line-no">098</span><span id="line-98">    }</span>
+<span class="source-line-no">099</span><span id="line-99">    //  interface KeyProvider</span>
+<span class="source-line-no">100</span><span id="line-100"></span>
+<span class="source-line-no">101</span><span id="line-101">        /*--------------*\</span>
+<span class="source-line-no">102</span><span id="line-102">    ====** Constructors **=====================================================</span>
+<span class="source-line-no">103</span><span id="line-103">        \*--------------*/</span>
+<span class="source-line-no">104</span><span id="line-104">    /**</span>
+<span class="source-line-no">105</span><span id="line-105">     *  No instance allowed for this class.</span>
+<span class="source-line-no">106</span><span id="line-106">     */</span>
+<span class="source-line-no">107</span><span id="line-107">    private Comparators() { throw new PrivateConstructorForStaticClassCalledError( Comparators.class ); }</span>
+<span class="source-line-no">108</span><span id="line-108"></span>
+<span class="source-line-no">109</span><span id="line-109">        /*---------*\</span>
+<span class="source-line-no">110</span><span id="line-110">    ====** Methods **==========================================================</span>
+<span class="source-line-no">111</span><span id="line-111">        \*---------*/</span>
+<span class="source-line-no">112</span><span id="line-112">    /**</span>
+<span class="source-line-no">113</span><span id="line-113">     *  Returns a comparator that compares Strings ignoring the case.&lt;br&gt;</span>
+<span class="source-line-no">114</span><span id="line-114">     *  &lt;br&gt;Internally this is</span>
+<span class="source-line-no">115</span><span id="line-115">     *  {@link String#CASE_INSENSITIVE_ORDER},</span>
+<span class="source-line-no">116</span><span id="line-116">     *  with the limitations described there.</span>
+<span class="source-line-no">117</span><span id="line-117">     *</span>
+<span class="source-line-no">118</span><span id="line-118">     *  @return The comparator.</span>
+<span class="source-line-no">119</span><span id="line-119">     */</span>
+<span class="source-line-no">120</span><span id="line-120">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">121</span><span id="line-121">    public static final Comparator&lt;String&gt; caseInsensitiveComparator() { return CASE_INSENSITIVE_ORDER; }</span>
+<span class="source-line-no">122</span><span id="line-122"></span>
+<span class="source-line-no">123</span><span id="line-123">    /**</span>
+<span class="source-line-no">124</span><span id="line-124">     *  Returns a dummy comparator for elements that implements</span>
+<span class="source-line-no">125</span><span id="line-125">     *  {@link Comparable}.</span>
+<span class="source-line-no">126</span><span id="line-126">     *  Use this comparator if a</span>
+<span class="source-line-no">127</span><span id="line-127">     *  {@link Comparator}</span>
+<span class="source-line-no">128</span><span id="line-128">     *  is required for some reason, but your objects can be compared already</span>
+<span class="source-line-no">129</span><span id="line-129">     *  directly by their inherent</span>
+<span class="source-line-no">130</span><span id="line-130">     *  {@link Comparable#compareTo(Object)}</span>
+<span class="source-line-no">131</span><span id="line-131">     *  method.&lt;br&gt;</span>
+<span class="source-line-no">132</span><span id="line-132">     *  &lt;br&gt;A</span>
+<span class="source-line-no">133</span><span id="line-133">     *  {@link NullPointerException}</span>
+<span class="source-line-no">134</span><span id="line-134">     *  (and not a</span>
+<span class="source-line-no">135</span><span id="line-135">     *  {@link org.tquadrat.foundation.exception.NullArgumentException})</span>
+<span class="source-line-no">136</span><span id="line-136">     *  is thrown, if the first argument is {@code null}. Whether an exception</span>
+<span class="source-line-no">137</span><span id="line-137">     *  is thrown when the second argument is {@code null} depends on the</span>
+<span class="source-line-no">138</span><span id="line-138">     *  implementation of</span>
+<span class="source-line-no">139</span><span id="line-139">     *  {@link Comparable#compareTo(Object) T.compareTo(Object)}.</span>
+<span class="source-line-no">140</span><span id="line-140">     *</span>
+<span class="source-line-no">141</span><span id="line-141">     *  @param  &lt;T&gt; The type to compare.</span>
+<span class="source-line-no">142</span><span id="line-142">     *  @return The comparator.</span>
+<span class="source-line-no">143</span><span id="line-143">     *</span>
+<span class="source-line-no">144</span><span id="line-144">     *  @see Comparator#naturalOrder()</span>
 <span class="source-line-no">145</span><span id="line-145">     *</span>
-<span class="source-line-no">146</span><span id="line-146">     *  @see Comparator#naturalOrder()</span>
-<span class="source-line-no">147</span><span id="line-147">     *</span>
-<span class="source-line-no">148</span><span id="line-148">     *  @deprecated Use</span>
-<span class="source-line-no">149</span><span id="line-149">     *      {@link Comparator#naturalOrder()}</span>
-<span class="source-line-no">150</span><span id="line-150">     *      instead.</span>
-<span class="source-line-no">151</span><span id="line-151">     */</span>
-<span class="source-line-no">152</span><span id="line-152">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">153</span><span id="line-153">    @Deprecated( since = "0.1.0", forRemoval = true )</span>
-<span class="source-line-no">154</span><span id="line-154">    public static final &lt;T extends Comparable&lt;? super T&gt;&gt; Comparator&lt;T&gt; comparableComparator()</span>
-<span class="source-line-no">155</span><span id="line-155">    {</span>
-<span class="source-line-no">156</span><span id="line-156">        final Comparator&lt;T&gt; retValue = naturalOrder();</span>
-<span class="source-line-no">157</span><span id="line-157"></span>
-<span class="source-line-no">158</span><span id="line-158">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">159</span><span id="line-159">        return retValue;</span>
-<span class="source-line-no">160</span><span id="line-160">    }   //  comparableComparator()</span>
-<span class="source-line-no">161</span><span id="line-161"></span>
-<span class="source-line-no">162</span><span id="line-162">    /**</span>
-<span class="source-line-no">163</span><span id="line-163">     *  Returns a comparator that generates a sort key from the elements before</span>
-<span class="source-line-no">164</span><span id="line-164">     *  sorting them.&lt;br&gt;</span>
-<span class="source-line-no">165</span><span id="line-165">     *  &lt;br&gt;The implementation of this comparator generates the sort keys for</span>
-<span class="source-line-no">166</span><span id="line-166">     *  each and every comparison. This is obviously not very efficient. A more</span>
-<span class="source-line-no">167</span><span id="line-167">     *  efficient implementation is provided by</span>
-<span class="source-line-no">168</span><span id="line-168">     *  {@link #keyBasedComparator(KeyProvider, Comparator, boolean)}</span>
-<span class="source-line-no">169</span><span id="line-169">     *</span>
-<span class="source-line-no">170</span><span id="line-170">     *  @param  &lt;T&gt; The type to compare.</span>
-<span class="source-line-no">171</span><span id="line-171">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
-<span class="source-line-no">172</span><span id="line-172">     *      be the same as the type itself.</span>
-<span class="source-line-no">173</span><span id="line-173">     *  @param  keyProvider The method that generates the sort key.</span>
-<span class="source-line-no">174</span><span id="line-174">     *  @return The comparator.</span>
-<span class="source-line-no">175</span><span id="line-175">     *</span>
-<span class="source-line-no">176</span><span id="line-176">     *  @note The key provider must return {@code null} for a {@code null}</span>
-<span class="source-line-no">177</span><span id="line-177">     *      value, as described for</span>
-<span class="source-line-no">178</span><span id="line-178">     *      {@link KeyProvider#getKey(Object)}.</span>
-<span class="source-line-no">179</span><span id="line-179">     *</span>
-<span class="source-line-no">180</span><span id="line-180">     *  @see KeyProvider</span>
-<span class="source-line-no">181</span><span id="line-181">     */</span>
-<span class="source-line-no">182</span><span id="line-182">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">183</span><span id="line-183">    public static final &lt;T, K extends Comparable&lt;K&gt;&gt; Comparator&lt;T&gt; keyBasedComparator( final KeyProvider&lt;? super T, K&gt; keyProvider )</span>
-<span class="source-line-no">184</span><span id="line-184">    {</span>
-<span class="source-line-no">185</span><span id="line-185">        requireNonNullArgument( keyProvider, "keyProvider" );</span>
-<span class="source-line-no">186</span><span id="line-186">        final var retValue = (Comparator&lt;T&gt;) ( o1, o2) -&gt; signum( keyProvider.getKey( o1 ).compareTo( keyProvider.getKey( o2 ) ) );</span>
-<span class="source-line-no">187</span><span id="line-187"></span>
-<span class="source-line-no">188</span><span id="line-188">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">189</span><span id="line-189">        return retValue;</span>
-<span class="source-line-no">190</span><span id="line-190">    }   //  keyBasedComparator()</span>
-<span class="source-line-no">191</span><span id="line-191"></span>
-<span class="source-line-no">192</span><span id="line-192">    /**</span>
-<span class="source-line-no">193</span><span id="line-193">     *  A comparator that generates a sort key from the elements before sorting</span>
-<span class="source-line-no">194</span><span id="line-194">     *  them.&lt;br&gt;</span>
-<span class="source-line-no">195</span><span id="line-195">     *  &lt;br&gt;As it is not very efficient to generate the sort keys for each and</span>
-<span class="source-line-no">196</span><span id="line-196">     *  every comparison, it is possible to cache them.</span>
-<span class="source-line-no">197</span><span id="line-197">     *</span>
-<span class="source-line-no">198</span><span id="line-198">     *  @param  &lt;T&gt; The type to compare.</span>
-<span class="source-line-no">199</span><span id="line-199">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
-<span class="source-line-no">200</span><span id="line-200">     *      be the same as the type itself.</span>
-<span class="source-line-no">201</span><span id="line-201">     *  @param  keyProvider The method that generates the sort key.</span>
-<span class="source-line-no">202</span><span id="line-202">     *  @param  keyComparator   The comparator that determines the order for</span>
-<span class="source-line-no">203</span><span id="line-203">     *      the keys.</span>
-<span class="source-line-no">204</span><span id="line-204">     *  @param  cacheKeys   A flag that determines whether the keys are to be</span>
-<span class="source-line-no">205</span><span id="line-205">     *      cached internally; {@code true} means they are kept, {@code false}</span>
-<span class="source-line-no">206</span><span id="line-206">     *      means that the keys are generated newly for each comparison.</span>
-<span class="source-line-no">207</span><span id="line-207">     *  @return The comparator.</span>
-<span class="source-line-no">208</span><span id="line-208">     *</span>
-<span class="source-line-no">209</span><span id="line-209">     *  @note The key provider must return {@code null} for a {@code null}</span>
-<span class="source-line-no">210</span><span id="line-210">     *      value, as described for</span>
-<span class="source-line-no">211</span><span id="line-211">     *      {@link KeyProvider#getKey(Object)}.</span>
-<span class="source-line-no">212</span><span id="line-212">     *  @note The internally used cache will be kept for later uses of the</span>
-<span class="source-line-no">213</span><span id="line-213">     *      comparator; this means that the key provider may not change its</span>
-<span class="source-line-no">214</span><span id="line-214">     *      behaviour meanwhile.</span>
-<span class="source-line-no">215</span><span id="line-215">     *  @note The internal cache is based on an</span>
-<span class="source-line-no">216</span><span id="line-216">     *      {@link java.util.IdentityHashMap IdentityHashMap}</span>
-<span class="source-line-no">217</span><span id="line-217">     *      with instances of the argument type &lt;code&gt;&amp;lt;T&amp;gt;&lt;/code&gt; as the</span>
-<span class="source-line-no">218</span><span id="line-218">     *      key. If the key generation through the key provider will provide</span>
-<span class="source-line-no">219</span><span id="line-219">     *      equal keys for non-identical, but otherwise equal arguments, the</span>
-<span class="source-line-no">220</span><span id="line-220">     *      cache may not be efficient.</span>
-<span class="source-line-no">221</span><span id="line-221">     *</span>
-<span class="source-line-no">222</span><span id="line-222">     *  @see KeyProvider</span>
-<span class="source-line-no">223</span><span id="line-223">     */</span>
-<span class="source-line-no">224</span><span id="line-224">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">225</span><span id="line-225">    public static final &lt;T, K&gt; Comparator&lt;T&gt; keyBasedComparator( final KeyProvider&lt;T,K&gt; keyProvider, final Comparator&lt;K&gt; keyComparator, final boolean cacheKeys )</span>
-<span class="source-line-no">226</span><span id="line-226">    {</span>
-<span class="source-line-no">227</span><span id="line-227">        return new KeyBasedComparator&lt;&gt;( keyProvider, keyComparator, cacheKeys );</span>
-<span class="source-line-no">228</span><span id="line-228">    }   //  keyBasedComparator()</span>
-<span class="source-line-no">229</span><span id="line-229"></span>
-<span class="source-line-no">230</span><span id="line-230">    /**</span>
-<span class="source-line-no">231</span><span id="line-231">     *  Sometimes a special sort order is required that cannot be defined as a</span>
-<span class="source-line-no">232</span><span id="line-232">     *  rule. Instead, a list defines the sequence. This method creates a new</span>
-<span class="source-line-no">233</span><span id="line-233">     *  {@link Comparator}</span>
-<span class="source-line-no">234</span><span id="line-234">     *  instance that works on the given list of keys. Values that are not on</span>
-<span class="source-line-no">235</span><span id="line-235">     *  that list will be placed to the end, ordered according to their natural</span>
-<span class="source-line-no">236</span><span id="line-236">     *  order if they or their keys implement the</span>
-<span class="source-line-no">237</span><span id="line-237">     *  {@link Comparable}</span>
-<span class="source-line-no">238</span><span id="line-238">     *  interface, or without any specific order.</span>
-<span class="source-line-no">239</span><span id="line-239">     *</span>
-<span class="source-line-no">240</span><span id="line-240">     *  @param  &lt;T&gt; The type to compare.</span>
-<span class="source-line-no">241</span><span id="line-241">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
-<span class="source-line-no">242</span><span id="line-242">     *      be the same as the type itself.</span>
-<span class="source-line-no">243</span><span id="line-243">     *  @param  keys    The sort order keys.</span>
-<span class="source-line-no">244</span><span id="line-244">     *  @return The comparator.</span>
-<span class="source-line-no">245</span><span id="line-245">     */</span>
-<span class="source-line-no">246</span><span id="line-246">    @SafeVarargs</span>
-<span class="source-line-no">247</span><span id="line-247">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">248</span><span id="line-248">    public static final &lt;T,K&gt; Comparator&lt;T&gt; listBasedComparator( final K... keys ) { return new ListBasedComparator&lt;&gt;( keys ); }</span>
-<span class="source-line-no">249</span><span id="line-249"></span>
-<span class="source-line-no">250</span><span id="line-250">    /**</span>
-<span class="source-line-no">251</span><span id="line-251">     *  Sometimes a special sort order is required that cannot be defined as a</span>
-<span class="source-line-no">252</span><span id="line-252">     *  rule. Instead, a list defines the sequence. This method creates a new</span>
-<span class="source-line-no">253</span><span id="line-253">     *  {@link Comparator}</span>
-<span class="source-line-no">254</span><span id="line-254">     *  instance that works on the given list of keys. Values that are not on</span>
-<span class="source-line-no">255</span><span id="line-255">     *  that list will be placed to the end, ordered according to their natural</span>
-<span class="source-line-no">256</span><span id="line-256">     *  order if they or their keys implement the</span>
-<span class="source-line-no">257</span><span id="line-257">     *  {@link Comparable}</span>
-<span class="source-line-no">258</span><span id="line-258">     *  interface, or without any specific order.</span>
-<span class="source-line-no">259</span><span id="line-259">     *</span>
-<span class="source-line-no">260</span><span id="line-260">     *  @param  &lt;T&gt; The type to compare.</span>
-<span class="source-line-no">261</span><span id="line-261">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
-<span class="source-line-no">262</span><span id="line-262">     *      be the same as the type itself.</span>
-<span class="source-line-no">263</span><span id="line-263">     *  @param  keys    The sort order keys.</span>
-<span class="source-line-no">264</span><span id="line-264">     *  @return The comparator.</span>
-<span class="source-line-no">265</span><span id="line-265">     */</span>
-<span class="source-line-no">266</span><span id="line-266">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">267</span><span id="line-267">    public static final &lt;T,K&gt; Comparator&lt;T&gt; listBasedComparator( final List&lt;K&gt; keys ) { return new ListBasedComparator&lt;&gt;( keys ); }</span>
-<span class="source-line-no">268</span><span id="line-268"></span>
-<span class="source-line-no">269</span><span id="line-269">    /**</span>
-<span class="source-line-no">270</span><span id="line-270">     *  Sometimes a special sort order is required that cannot be defined as a</span>
-<span class="source-line-no">271</span><span id="line-271">     *  rule. Instead, a list defines the sequence. This method creates a new</span>
-<span class="source-line-no">272</span><span id="line-272">     *  {@link Comparator}</span>
-<span class="source-line-no">273</span><span id="line-273">     *  instance that works on the given list of keys.</span>
-<span class="source-line-no">274</span><span id="line-274">     *</span>
-<span class="source-line-no">275</span><span id="line-275">     *  @param  &lt;T&gt; The type to compare.</span>
-<span class="source-line-no">276</span><span id="line-276">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
-<span class="source-line-no">277</span><span id="line-277">     *      be the same as the type itself.</span>
-<span class="source-line-no">278</span><span id="line-278">     *  @param  keyProvider The implementation of</span>
-<span class="source-line-no">279</span><span id="line-279">     *      {@link Comparators.KeyProvider}</span>
-<span class="source-line-no">280</span><span id="line-280">     *      that returns the sort keys for the instances to compare.</span>
-<span class="source-line-no">281</span><span id="line-281">     *  @param  comparator  The comparator that is used to order the instances</span>
-<span class="source-line-no">282</span><span id="line-282">     *      that are not listed; if {@code null}, those are ordered randomly in</span>
-<span class="source-line-no">283</span><span id="line-283">     *      a non-consistent way if they or their keys do not implement the</span>
-<span class="source-line-no">284</span><span id="line-284">     *      {@link Comparable}</span>
-<span class="source-line-no">285</span><span id="line-285">     *      interface.</span>
-<span class="source-line-no">286</span><span id="line-286">     *  @param  keys    The sort order keys.</span>
-<span class="source-line-no">287</span><span id="line-287">     *  @return The comparator.</span>
-<span class="source-line-no">288</span><span id="line-288">     */</span>
-<span class="source-line-no">289</span><span id="line-289">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">290</span><span id="line-290">    public static final &lt;T,K&gt; Comparator&lt;T&gt; listBasedComparator( final KeyProvider&lt;T,K&gt; keyProvider, final Comparator&lt;? super T&gt; comparator, final List&lt;K&gt; keys )</span>
-<span class="source-line-no">291</span><span id="line-291">    {</span>
-<span class="source-line-no">292</span><span id="line-292">        return new ListBasedComparator&lt;&gt;( keyProvider, comparator, keys );</span>
-<span class="source-line-no">293</span><span id="line-293">    }   //  listBasedComparator()</span>
-<span class="source-line-no">294</span><span id="line-294"></span>
-<span class="source-line-no">295</span><span id="line-295">    /**</span>
-<span class="source-line-no">296</span><span id="line-296">     *  Sometimes a special sort order is required that cannot be defined as a</span>
-<span class="source-line-no">297</span><span id="line-297">     *  rule. Instead, a list defines the sequence. This method creates a new</span>
-<span class="source-line-no">298</span><span id="line-298">     *  {@link Comparator}</span>
-<span class="source-line-no">299</span><span id="line-299">     *  instance that works on the given list of keys.</span>
-<span class="source-line-no">300</span><span id="line-300">     *</span>
-<span class="source-line-no">301</span><span id="line-301">     *  @param  &lt;T&gt; The type to compare.</span>
-<span class="source-line-no">302</span><span id="line-302">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
-<span class="source-line-no">303</span><span id="line-303">     *      be the same as the type itself.</span>
-<span class="source-line-no">304</span><span id="line-304">     *  @param  keyProvider The implementation of</span>
-<span class="source-line-no">305</span><span id="line-305">     *      {@link org.tquadrat.foundation.util.Comparators.KeyProvider}</span>
-<span class="source-line-no">306</span><span id="line-306">     *      that returns the sort keys for the instances to compare.</span>
-<span class="source-line-no">307</span><span id="line-307">     *  @param  comparator  The comparator that is used to order the instances</span>
-<span class="source-line-no">308</span><span id="line-308">     *      that are not listed; if {@code null}, those are ordered randomly in</span>
-<span class="source-line-no">309</span><span id="line-309">     *      a non-consistent way if they or their keys do not implement the</span>
-<span class="source-line-no">310</span><span id="line-310">     *      {@link Comparable}</span>
-<span class="source-line-no">311</span><span id="line-311">     *      interface.</span>
-<span class="source-line-no">312</span><span id="line-312">     *  @param  keys    The sort order keys.</span>
-<span class="source-line-no">313</span><span id="line-313">     *  @return The comparator.</span>
-<span class="source-line-no">314</span><span id="line-314">     */</span>
-<span class="source-line-no">315</span><span id="line-315">    @SafeVarargs</span>
-<span class="source-line-no">316</span><span id="line-316">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">317</span><span id="line-317">    public static final &lt;T,K&gt; Comparator&lt;T&gt; listBasedComparator( final KeyProvider&lt;T, ? super K&gt; keyProvider, final Comparator&lt;? super T&gt; comparator, final K... keys )</span>
-<span class="source-line-no">318</span><span id="line-318">    {</span>
-<span class="source-line-no">319</span><span id="line-319">        return new ListBasedComparator&lt;&gt;( keyProvider, comparator, keys );</span>
-<span class="source-line-no">320</span><span id="line-320">    }   //  ListBasedComparator()</span>
-<span class="source-line-no">321</span><span id="line-321"></span>
-<span class="source-line-no">322</span><span id="line-322">    /**</span>
-<span class="source-line-no">323</span><span id="line-323">     *  A comparator for numeric values.</span>
-<span class="source-line-no">324</span><span id="line-324">     *</span>
-<span class="source-line-no">325</span><span id="line-325">     *  @param  &lt;T&gt; The type to compare.</span>
-<span class="source-line-no">326</span><span id="line-326">     *  @return The comparator.</span>
-<span class="source-line-no">327</span><span id="line-327">     *</span>
-<span class="source-line-no">328</span><span id="line-328">     *  @since 0.1.0</span>
-<span class="source-line-no">329</span><span id="line-329">     */</span>
-<span class="source-line-no">330</span><span id="line-330">    @SuppressWarnings( {"preview", "rawtypes"} )</span>
-<span class="source-line-no">331</span><span id="line-331">    @API( status = STABLE, since = "0.1.0" )</span>
-<span class="source-line-no">332</span><span id="line-332">    public static final &lt;T extends Number&gt; Comparator&lt;T&gt; numberComparator()</span>
-<span class="source-line-no">333</span><span id="line-333">    {</span>
-<span class="source-line-no">334</span><span id="line-334">        final var retValue = (Comparator&lt;T&gt;) ( v1, v2) -&gt;</span>
-<span class="source-line-no">335</span><span id="line-335">        {</span>
-<span class="source-line-no">336</span><span id="line-336">            //noinspection rawtypes</span>
-<span class="source-line-no">337</span><span id="line-337">            if( v1 instanceof Comparable comparable )</span>
-<span class="source-line-no">338</span><span id="line-338">            {</span>
-<span class="source-line-no">339</span><span id="line-339">                @SuppressWarnings( "unchecked" )</span>
-<span class="source-line-no">340</span><span id="line-340">                final var result = signum( comparable.compareTo( v2 ) );</span>
-<span class="source-line-no">341</span><span id="line-341">                return result;</span>
-<span class="source-line-no">342</span><span id="line-342">            }</span>
-<span class="source-line-no">343</span><span id="line-343">            return (int) Math.signum( v1.doubleValue() - v2.doubleValue() );</span>
-<span class="source-line-no">344</span><span id="line-344">        };</span>
-<span class="source-line-no">345</span><span id="line-345"></span>
-<span class="source-line-no">346</span><span id="line-346">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">347</span><span id="line-347">        return retValue;</span>
-<span class="source-line-no">348</span><span id="line-348">    }   //  numberComparator()</span>
-<span class="source-line-no">349</span><span id="line-349">}</span>
-<span class="source-line-no">350</span><span id="line-350">//  class Comparators</span>
-<span class="source-line-no">351</span><span id="line-351"></span>
-<span class="source-line-no">352</span><span id="line-352">/*</span>
-<span class="source-line-no">353</span><span id="line-353"> *  End of File</span>
-<span class="source-line-no">354</span><span id="line-354"> */</span>
+<span class="source-line-no">146</span><span id="line-146">     *  @deprecated Use</span>
+<span class="source-line-no">147</span><span id="line-147">     *      {@link Comparator#naturalOrder()}</span>
+<span class="source-line-no">148</span><span id="line-148">     *      instead.</span>
+<span class="source-line-no">149</span><span id="line-149">     */</span>
+<span class="source-line-no">150</span><span id="line-150">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">151</span><span id="line-151">    @Deprecated( since = "0.1.0", forRemoval = true )</span>
+<span class="source-line-no">152</span><span id="line-152">    public static final &lt;T extends Comparable&lt;? super T&gt;&gt; Comparator&lt;T&gt; comparableComparator()</span>
+<span class="source-line-no">153</span><span id="line-153">    {</span>
+<span class="source-line-no">154</span><span id="line-154">        final Comparator&lt;T&gt; retValue = naturalOrder();</span>
+<span class="source-line-no">155</span><span id="line-155"></span>
+<span class="source-line-no">156</span><span id="line-156">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">157</span><span id="line-157">        return retValue;</span>
+<span class="source-line-no">158</span><span id="line-158">    }   //  comparableComparator()</span>
+<span class="source-line-no">159</span><span id="line-159"></span>
+<span class="source-line-no">160</span><span id="line-160">    /**</span>
+<span class="source-line-no">161</span><span id="line-161">     *  Returns a comparator that generates a sort key from the elements before</span>
+<span class="source-line-no">162</span><span id="line-162">     *  sorting them.&lt;br&gt;</span>
+<span class="source-line-no">163</span><span id="line-163">     *  &lt;br&gt;The implementation of this comparator generates the sort keys for</span>
+<span class="source-line-no">164</span><span id="line-164">     *  each and every comparison. This is obviously not very efficient. A more</span>
+<span class="source-line-no">165</span><span id="line-165">     *  efficient implementation is provided by</span>
+<span class="source-line-no">166</span><span id="line-166">     *  {@link #keyBasedComparator(KeyProvider, Comparator, boolean)}</span>
+<span class="source-line-no">167</span><span id="line-167">     *</span>
+<span class="source-line-no">168</span><span id="line-168">     *  @param  &lt;T&gt; The type to compare.</span>
+<span class="source-line-no">169</span><span id="line-169">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
+<span class="source-line-no">170</span><span id="line-170">     *      be the same as the type itself.</span>
+<span class="source-line-no">171</span><span id="line-171">     *  @param  keyProvider The method that generates the sort key.</span>
+<span class="source-line-no">172</span><span id="line-172">     *  @return The comparator.</span>
+<span class="source-line-no">173</span><span id="line-173">     *</span>
+<span class="source-line-no">174</span><span id="line-174">     *  @note The key provider must return {@code null} for a {@code null}</span>
+<span class="source-line-no">175</span><span id="line-175">     *      value, as described for</span>
+<span class="source-line-no">176</span><span id="line-176">     *      {@link KeyProvider#getKey(Object)}.</span>
+<span class="source-line-no">177</span><span id="line-177">     *</span>
+<span class="source-line-no">178</span><span id="line-178">     *  @see KeyProvider</span>
+<span class="source-line-no">179</span><span id="line-179">     */</span>
+<span class="source-line-no">180</span><span id="line-180">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">181</span><span id="line-181">    public static final &lt;T, K extends Comparable&lt;K&gt;&gt; Comparator&lt;T&gt; keyBasedComparator( final KeyProvider&lt;? super T, K&gt; keyProvider )</span>
+<span class="source-line-no">182</span><span id="line-182">    {</span>
+<span class="source-line-no">183</span><span id="line-183">        requireNonNullArgument( keyProvider, "keyProvider" );</span>
+<span class="source-line-no">184</span><span id="line-184">        final var retValue = (Comparator&lt;T&gt;) ( o1, o2) -&gt; signum( keyProvider.getKey( o1 ).compareTo( keyProvider.getKey( o2 ) ) );</span>
+<span class="source-line-no">185</span><span id="line-185"></span>
+<span class="source-line-no">186</span><span id="line-186">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">187</span><span id="line-187">        return retValue;</span>
+<span class="source-line-no">188</span><span id="line-188">    }   //  keyBasedComparator()</span>
+<span class="source-line-no">189</span><span id="line-189"></span>
+<span class="source-line-no">190</span><span id="line-190">    /**</span>
+<span class="source-line-no">191</span><span id="line-191">     *  A comparator that generates a sort key from the elements before sorting</span>
+<span class="source-line-no">192</span><span id="line-192">     *  them.&lt;br&gt;</span>
+<span class="source-line-no">193</span><span id="line-193">     *  &lt;br&gt;As it is not very efficient to generate the sort keys for each and</span>
+<span class="source-line-no">194</span><span id="line-194">     *  every comparison, it is possible to cache them.</span>
+<span class="source-line-no">195</span><span id="line-195">     *</span>
+<span class="source-line-no">196</span><span id="line-196">     *  @param  &lt;T&gt; The type to compare.</span>
+<span class="source-line-no">197</span><span id="line-197">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
+<span class="source-line-no">198</span><span id="line-198">     *      be the same as the type itself.</span>
+<span class="source-line-no">199</span><span id="line-199">     *  @param  keyProvider The method that generates the sort key.</span>
+<span class="source-line-no">200</span><span id="line-200">     *  @param  keyComparator   The comparator that determines the order for</span>
+<span class="source-line-no">201</span><span id="line-201">     *      the keys.</span>
+<span class="source-line-no">202</span><span id="line-202">     *  @param  cacheKeys   A flag that determines whether the keys are to be</span>
+<span class="source-line-no">203</span><span id="line-203">     *      cached internally; {@code true} means they are kept, {@code false}</span>
+<span class="source-line-no">204</span><span id="line-204">     *      means that the keys are generated newly for each comparison.</span>
+<span class="source-line-no">205</span><span id="line-205">     *  @return The comparator.</span>
+<span class="source-line-no">206</span><span id="line-206">     *</span>
+<span class="source-line-no">207</span><span id="line-207">     *  @note The key provider must return {@code null} for a {@code null}</span>
+<span class="source-line-no">208</span><span id="line-208">     *      value, as described for</span>
+<span class="source-line-no">209</span><span id="line-209">     *      {@link KeyProvider#getKey(Object)}.</span>
+<span class="source-line-no">210</span><span id="line-210">     *  @note The internally used cache will be kept for later uses of the</span>
+<span class="source-line-no">211</span><span id="line-211">     *      comparator; this means that the key provider may not change its</span>
+<span class="source-line-no">212</span><span id="line-212">     *      behaviour meanwhile.</span>
+<span class="source-line-no">213</span><span id="line-213">     *  @note The internal cache is based on an</span>
+<span class="source-line-no">214</span><span id="line-214">     *      {@link java.util.IdentityHashMap IdentityHashMap}</span>
+<span class="source-line-no">215</span><span id="line-215">     *      with instances of the argument type &lt;code&gt;&amp;lt;T&amp;gt;&lt;/code&gt; as the</span>
+<span class="source-line-no">216</span><span id="line-216">     *      key. If the key generation through the key provider will provide</span>
+<span class="source-line-no">217</span><span id="line-217">     *      equal keys for non-identical, but otherwise equal arguments, the</span>
+<span class="source-line-no">218</span><span id="line-218">     *      cache may not be efficient.</span>
+<span class="source-line-no">219</span><span id="line-219">     *</span>
+<span class="source-line-no">220</span><span id="line-220">     *  @see KeyProvider</span>
+<span class="source-line-no">221</span><span id="line-221">     */</span>
+<span class="source-line-no">222</span><span id="line-222">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">223</span><span id="line-223">    public static final &lt;T, K&gt; Comparator&lt;T&gt; keyBasedComparator( final KeyProvider&lt;T,K&gt; keyProvider, final Comparator&lt;K&gt; keyComparator, final boolean cacheKeys )</span>
+<span class="source-line-no">224</span><span id="line-224">    {</span>
+<span class="source-line-no">225</span><span id="line-225">        return new KeyBasedComparator&lt;&gt;( keyProvider, keyComparator, cacheKeys );</span>
+<span class="source-line-no">226</span><span id="line-226">    }   //  keyBasedComparator()</span>
+<span class="source-line-no">227</span><span id="line-227"></span>
+<span class="source-line-no">228</span><span id="line-228">    /**</span>
+<span class="source-line-no">229</span><span id="line-229">     *  Sometimes a special sort order is required that cannot be defined as a</span>
+<span class="source-line-no">230</span><span id="line-230">     *  rule. Instead, a list defines the sequence. This method creates a new</span>
+<span class="source-line-no">231</span><span id="line-231">     *  {@link Comparator}</span>
+<span class="source-line-no">232</span><span id="line-232">     *  instance that works on the given list of keys. Values that are not on</span>
+<span class="source-line-no">233</span><span id="line-233">     *  that list will be placed to the end, ordered according to their natural</span>
+<span class="source-line-no">234</span><span id="line-234">     *  order if they or their keys implement the</span>
+<span class="source-line-no">235</span><span id="line-235">     *  {@link Comparable}</span>
+<span class="source-line-no">236</span><span id="line-236">     *  interface, or without any specific order.</span>
+<span class="source-line-no">237</span><span id="line-237">     *</span>
+<span class="source-line-no">238</span><span id="line-238">     *  @param  &lt;T&gt; The type to compare.</span>
+<span class="source-line-no">239</span><span id="line-239">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
+<span class="source-line-no">240</span><span id="line-240">     *      be the same as the type itself.</span>
+<span class="source-line-no">241</span><span id="line-241">     *  @param  keys    The sort order keys.</span>
+<span class="source-line-no">242</span><span id="line-242">     *  @return The comparator.</span>
+<span class="source-line-no">243</span><span id="line-243">     */</span>
+<span class="source-line-no">244</span><span id="line-244">    @SafeVarargs</span>
+<span class="source-line-no">245</span><span id="line-245">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">246</span><span id="line-246">    public static final &lt;T,K&gt; Comparator&lt;T&gt; listBasedComparator( final K... keys ) { return new ListBasedComparator&lt;&gt;( keys ); }</span>
+<span class="source-line-no">247</span><span id="line-247"></span>
+<span class="source-line-no">248</span><span id="line-248">    /**</span>
+<span class="source-line-no">249</span><span id="line-249">     *  Sometimes a special sort order is required that cannot be defined as a</span>
+<span class="source-line-no">250</span><span id="line-250">     *  rule. Instead, a list defines the sequence. This method creates a new</span>
+<span class="source-line-no">251</span><span id="line-251">     *  {@link Comparator}</span>
+<span class="source-line-no">252</span><span id="line-252">     *  instance that works on the given list of keys. Values that are not on</span>
+<span class="source-line-no">253</span><span id="line-253">     *  that list will be placed to the end, ordered according to their natural</span>
+<span class="source-line-no">254</span><span id="line-254">     *  order if they or their keys implement the</span>
+<span class="source-line-no">255</span><span id="line-255">     *  {@link Comparable}</span>
+<span class="source-line-no">256</span><span id="line-256">     *  interface, or without any specific order.</span>
+<span class="source-line-no">257</span><span id="line-257">     *</span>
+<span class="source-line-no">258</span><span id="line-258">     *  @param  &lt;T&gt; The type to compare.</span>
+<span class="source-line-no">259</span><span id="line-259">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
+<span class="source-line-no">260</span><span id="line-260">     *      be the same as the type itself.</span>
+<span class="source-line-no">261</span><span id="line-261">     *  @param  keys    The sort order keys.</span>
+<span class="source-line-no">262</span><span id="line-262">     *  @return The comparator.</span>
+<span class="source-line-no">263</span><span id="line-263">     */</span>
+<span class="source-line-no">264</span><span id="line-264">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">265</span><span id="line-265">    public static final &lt;T,K&gt; Comparator&lt;T&gt; listBasedComparator( final List&lt;K&gt; keys ) { return new ListBasedComparator&lt;&gt;( keys ); }</span>
+<span class="source-line-no">266</span><span id="line-266"></span>
+<span class="source-line-no">267</span><span id="line-267">    /**</span>
+<span class="source-line-no">268</span><span id="line-268">     *  Sometimes a special sort order is required that cannot be defined as a</span>
+<span class="source-line-no">269</span><span id="line-269">     *  rule. Instead, a list defines the sequence. This method creates a new</span>
+<span class="source-line-no">270</span><span id="line-270">     *  {@link Comparator}</span>
+<span class="source-line-no">271</span><span id="line-271">     *  instance that works on the given list of keys.</span>
+<span class="source-line-no">272</span><span id="line-272">     *</span>
+<span class="source-line-no">273</span><span id="line-273">     *  @param  &lt;T&gt; The type to compare.</span>
+<span class="source-line-no">274</span><span id="line-274">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
+<span class="source-line-no">275</span><span id="line-275">     *      be the same as the type itself.</span>
+<span class="source-line-no">276</span><span id="line-276">     *  @param  keyProvider The implementation of</span>
+<span class="source-line-no">277</span><span id="line-277">     *      {@link Comparators.KeyProvider}</span>
+<span class="source-line-no">278</span><span id="line-278">     *      that returns the sort keys for the instances to compare.</span>
+<span class="source-line-no">279</span><span id="line-279">     *  @param  comparator  The comparator that is used to order the instances</span>
+<span class="source-line-no">280</span><span id="line-280">     *      that are not listed; if {@code null}, those are ordered randomly in</span>
+<span class="source-line-no">281</span><span id="line-281">     *      a non-consistent way if they or their keys do not implement the</span>
+<span class="source-line-no">282</span><span id="line-282">     *      {@link Comparable}</span>
+<span class="source-line-no">283</span><span id="line-283">     *      interface.</span>
+<span class="source-line-no">284</span><span id="line-284">     *  @param  keys    The sort order keys.</span>
+<span class="source-line-no">285</span><span id="line-285">     *  @return The comparator.</span>
+<span class="source-line-no">286</span><span id="line-286">     */</span>
+<span class="source-line-no">287</span><span id="line-287">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">288</span><span id="line-288">    public static final &lt;T,K&gt; Comparator&lt;T&gt; listBasedComparator( final KeyProvider&lt;T,K&gt; keyProvider, final Comparator&lt;? super T&gt; comparator, final List&lt;K&gt; keys )</span>
+<span class="source-line-no">289</span><span id="line-289">    {</span>
+<span class="source-line-no">290</span><span id="line-290">        return new ListBasedComparator&lt;&gt;( keyProvider, comparator, keys );</span>
+<span class="source-line-no">291</span><span id="line-291">    }   //  listBasedComparator()</span>
+<span class="source-line-no">292</span><span id="line-292"></span>
+<span class="source-line-no">293</span><span id="line-293">    /**</span>
+<span class="source-line-no">294</span><span id="line-294">     *  Sometimes a special sort order is required that cannot be defined as a</span>
+<span class="source-line-no">295</span><span id="line-295">     *  rule. Instead, a list defines the sequence. This method creates a new</span>
+<span class="source-line-no">296</span><span id="line-296">     *  {@link Comparator}</span>
+<span class="source-line-no">297</span><span id="line-297">     *  instance that works on the given list of keys.</span>
+<span class="source-line-no">298</span><span id="line-298">     *</span>
+<span class="source-line-no">299</span><span id="line-299">     *  @param  &lt;T&gt; The type to compare.</span>
+<span class="source-line-no">300</span><span id="line-300">     *  @param  &lt;K&gt; The key type that is used to determine the order; this may</span>
+<span class="source-line-no">301</span><span id="line-301">     *      be the same as the type itself.</span>
+<span class="source-line-no">302</span><span id="line-302">     *  @param  keyProvider The implementation of</span>
+<span class="source-line-no">303</span><span id="line-303">     *      {@link org.tquadrat.foundation.util.Comparators.KeyProvider}</span>
+<span class="source-line-no">304</span><span id="line-304">     *      that returns the sort keys for the instances to compare.</span>
+<span class="source-line-no">305</span><span id="line-305">     *  @param  comparator  The comparator that is used to order the instances</span>
+<span class="source-line-no">306</span><span id="line-306">     *      that are not listed; if {@code null}, those are ordered randomly in</span>
+<span class="source-line-no">307</span><span id="line-307">     *      a non-consistent way if they or their keys do not implement the</span>
+<span class="source-line-no">308</span><span id="line-308">     *      {@link Comparable}</span>
+<span class="source-line-no">309</span><span id="line-309">     *      interface.</span>
+<span class="source-line-no">310</span><span id="line-310">     *  @param  keys    The sort order keys.</span>
+<span class="source-line-no">311</span><span id="line-311">     *  @return The comparator.</span>
+<span class="source-line-no">312</span><span id="line-312">     */</span>
+<span class="source-line-no">313</span><span id="line-313">    @SafeVarargs</span>
+<span class="source-line-no">314</span><span id="line-314">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">315</span><span id="line-315">    public static final &lt;T,K&gt; Comparator&lt;T&gt; listBasedComparator( final KeyProvider&lt;T, ? super K&gt; keyProvider, final Comparator&lt;? super T&gt; comparator, final K... keys )</span>
+<span class="source-line-no">316</span><span id="line-316">    {</span>
+<span class="source-line-no">317</span><span id="line-317">        return new ListBasedComparator&lt;&gt;( keyProvider, comparator, keys );</span>
+<span class="source-line-no">318</span><span id="line-318">    }   //  ListBasedComparator()</span>
+<span class="source-line-no">319</span><span id="line-319"></span>
+<span class="source-line-no">320</span><span id="line-320">    /**</span>
+<span class="source-line-no">321</span><span id="line-321">     *  A comparator for numeric values.</span>
+<span class="source-line-no">322</span><span id="line-322">     *</span>
+<span class="source-line-no">323</span><span id="line-323">     *  @param  &lt;T&gt; The type to compare.</span>
+<span class="source-line-no">324</span><span id="line-324">     *  @return The comparator.</span>
+<span class="source-line-no">325</span><span id="line-325">     *</span>
+<span class="source-line-no">326</span><span id="line-326">     *  @since 0.1.0</span>
+<span class="source-line-no">327</span><span id="line-327">     */</span>
+<span class="source-line-no">328</span><span id="line-328">    @API( status = STABLE, since = "0.1.0" )</span>
+<span class="source-line-no">329</span><span id="line-329">    public static final &lt;T extends Number&gt; Comparator&lt;T&gt; numberComparator()</span>
+<span class="source-line-no">330</span><span id="line-330">    {</span>
+<span class="source-line-no">331</span><span id="line-331">        final var retValue = (Comparator&lt;T&gt;) ( v1, v2) -&gt;</span>
+<span class="source-line-no">332</span><span id="line-332">        {</span>
+<span class="source-line-no">333</span><span id="line-333">            if( v1 instanceof Comparable comparable )</span>
+<span class="source-line-no">334</span><span id="line-334">            {</span>
+<span class="source-line-no">335</span><span id="line-335">                @SuppressWarnings( "unchecked" )</span>
+<span class="source-line-no">336</span><span id="line-336">                final var result = signum( comparable.compareTo( v2 ) );</span>
+<span class="source-line-no">337</span><span id="line-337">                return result;</span>
+<span class="source-line-no">338</span><span id="line-338">            }</span>
+<span class="source-line-no">339</span><span id="line-339">            return (int) Math.signum( v1.doubleValue() - v2.doubleValue() );</span>
+<span class="source-line-no">340</span><span id="line-340">        };</span>
+<span class="source-line-no">341</span><span id="line-341"></span>
+<span class="source-line-no">342</span><span id="line-342">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">343</span><span id="line-343">        return retValue;</span>
+<span class="source-line-no">344</span><span id="line-344">    }   //  numberComparator()</span>
+<span class="source-line-no">345</span><span id="line-345">}</span>
+<span class="source-line-no">346</span><span id="line-346">//  class Comparators</span>
+<span class="source-line-no">347</span><span id="line-347"></span>
+<span class="source-line-no">348</span><span id="line-348">/*</span>
+<span class="source-line-no">349</span><span id="line-349"> *  End of File</span>
+<span class="source-line-no">350</span><span id="line-350"> */</span>
 
 
 

@@ -53,27 +53,25 @@ public final class Comparators
     ====** Inner Classes **====================================================
         \*---------------*/
     /**
-     *  Implementations of this interface provides the sort order key from the
-     *  given instance of the type. <br>
-     *  <br>Usually the implementation of#
+     *  <p>{@summary Implementations of this interface provides the sort order
+     *  key from the given instance of the type.}</p>
+     *  <p>Usually the implementation of
      *  {@link #getKey(Object) getKey()}
      *  must ensure that the returned keys are distinct for distinct arguments.
-     *  This means for the arguments {@code a1} and {@code a2} and the
+     *  This means for the arguments {@code a1} and {@code a2}, and the
      *  generated keys <code>k<sub>a1</sub></code> and
      *  <code>k<sub>a2</sub></code> that the following must be both
-     *  {@code true}:
+     *  {@code true}:</p>
      *  <ul>
      *      <li><code>a1&nbsp;=&nbsp;a2&nbsp;&#x21d4;&nbsp;k<sub>a1</sub>&nbsp;=&nbsp;k<sub>a2</sub></code></li>
      *      <li><code>a1&nbsp;&#x2260;&nbsp;a2&nbsp;&#x21d4;&nbsp;k<sub>a1</sub>&nbsp;&#x2260;&nbsp;k<sub>a2</sub></code></li>
      *  </ul>
-     *  This also follows that {@code getKey()} for the same argument must
-     *  provide always the same key.
+     *  <p>This also requires that {@code getKey()} for the same argument must
+     *  provide always the same key.</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      *  @version $Id: Comparators.java 966 2022-01-04 22:28:49Z tquadrat $
      *  @since 0.0.5
-     *
-     *  @UMLGraph.link
      *
      *  @param  <T> The type to order.
      *  @param  <K> The key type that is used to determine the order; this may
@@ -327,13 +325,11 @@ public final class Comparators
      *
      *  @since 0.1.0
      */
-    @SuppressWarnings( {"preview", "rawtypes"} )
     @API( status = STABLE, since = "0.1.0" )
     public static final <T extends Number> Comparator<T> numberComparator()
     {
         final var retValue = (Comparator<T>) ( v1, v2) ->
         {
-            //noinspection rawtypes
             if( v1 instanceof Comparable comparable )
             {
                 @SuppressWarnings( "unchecked" )

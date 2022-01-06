@@ -470,7 +470,6 @@ public final class IOUtils
      */
     public static final void deleteFolder( final Path folder ) throws IOException
     {
-        //noinspection AnonymousInnerClassWithTooManyMethods
         walkFileTree( requireNonNullArgument( folder, "folder" ), new SimpleFileVisitor<>()
         {
             /**
@@ -753,12 +752,12 @@ public final class IOUtils
     }   //  getUncloseableOut()
 
     /**
-     *  Reads the complete content of the provided
+     *  <p>{@summary Reads the complete content of the provided
      *  {@link Reader}
      *  into a
-     *  {@link String}.<br>
-     *  <br>Obviously this method is feasible only for files with a limited
-     *  size.
+     *  {@link String}.}</p>
+     *  <p>Obviously this method is feasible only for files with a limited
+     *  size.</p>
      *
      *  @param  reader  The {@code Reader} instance.
      *  @return The content of the provided {@code Reader}.
@@ -769,12 +768,11 @@ public final class IOUtils
     {
         final var builder = new StringBuilder( DEFAULT_BUFFER_SIZE );
         final var buffer = new char [DEFAULT_BUFFER_SIZE];
-        @SuppressWarnings( "resource" )
-        var result = requireNonNullArgument( reader, "reader" ).read( buffer );
-        while( result > 0 )
+        var bytesRead = requireNonNullArgument( reader, "reader" ).read( buffer );
+        while( bytesRead > 0 )
         {
-            builder.append( buffer, 0, result );
-            result = reader.read( buffer );
+            builder.append( buffer, 0, bytesRead );
+            bytesRead = reader.read( buffer );
         }
         final var retValue = builder.toString();
 
