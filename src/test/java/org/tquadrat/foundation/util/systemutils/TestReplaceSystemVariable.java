@@ -45,10 +45,10 @@ import org.tquadrat.foundation.util.SystemUtils;
  *  {@link SystemUtils}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestReplaceSystemVariable.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestReplaceSystemVariable.java 980 2022-01-06 15:29:19Z tquadrat $
  */
 @SuppressWarnings( "removal" )
-@ClassVersion( sourceVersion = "$Id: TestReplaceSystemVariable.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestReplaceSystemVariable.java 980 2022-01-06 15:29:19Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.systemutils.TestReplaceSystemVariable" )
 public class TestReplaceSystemVariable extends TestBaseClass
 {

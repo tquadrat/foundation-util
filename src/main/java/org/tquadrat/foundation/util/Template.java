@@ -96,12 +96,12 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: Template.java 980 2022-01-06 15:29:19Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: Template.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Template.java 980 2022-01-06 15:29:19Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class Template implements Serializable
 {

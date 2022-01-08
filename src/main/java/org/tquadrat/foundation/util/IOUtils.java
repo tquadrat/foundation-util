@@ -68,12 +68,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -89,13 +89,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $
+     *  @version $Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -135,13 +135,13 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $
+     *  @version $Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "UtilityClassCanBeEnum" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
