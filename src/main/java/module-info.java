@@ -59,7 +59,7 @@ import org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter
  *  @provides   org.tquadrat.foundation.lang.StringConverter    Implementations
  *      of String converters.
  *
- *  @version $Id: module-info.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: module-info.java 984 2022-01-13 00:46:27Z tquadrat $
  *
  *  @todo task.list
  */
@@ -67,7 +67,7 @@ import org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter
 module org.tquadrat.foundation.util
 {
     requires java.base;
-    requires org.tquadrat.foundation.base;
+    requires transitive org.tquadrat.foundation.base;
     requires transitive java.compiler;
 
     //---* Common Use *--------------------------------------------------------
