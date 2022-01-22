@@ -27,6 +27,7 @@ import static org.tquadrat.foundation.util.StringUtils.format;
 import java.lang.reflect.Array;
 import java.util.Optional;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.IntFunction;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
@@ -34,12 +35,9 @@ import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.AutoLock;
 
 /**
- *  A stand-alone implementation for stack, without the ballast from the
- *  Collections framework. <br>
- *  <br>This implementation is not synchronised, but thread-safe.
- *
- *  @note This class does not implement the interface
- *      {@link java.util.Stack}.
+ *  <p>{@summary A stand-alone implementation for stack, without the ballast
+ *  from the Collections framework.}</p>
+ *  <p>This implementation is not synchronised, but thread-safe.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $
@@ -48,6 +46,8 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  @param  <T> The type for the stack entries.
  *
  *  @UMLGraph.link
+ *
+ *  @see    java.util.Stack
  */
 @ClassVersion( sourceVersion = "$Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
@@ -85,7 +85,7 @@ public final class Stack<T>
         /**
          *  The remaining elements.
          */
-        @SuppressWarnings( "InstanceVariableOfConcreteClass" )
+        @SuppressWarnings( "UseOfConcreteClass" )
         private final Entry m_Tail;
 
             /*--------------*\
@@ -145,11 +145,11 @@ public final class Stack<T>
     /**
      *  The entries.
      */
-    @SuppressWarnings( "InstanceVariableOfConcreteClass" )
+    @SuppressWarnings( "UseOfConcreteClass" )
     private Entry m_Entries = null;
 
     /**
-     *  The read lock.
+     *  The &quot;read&quot; lock.
      */
     private final AutoLock m_ReadLock;
 
@@ -179,43 +179,33 @@ public final class Stack<T>
      */
     public final void clear()
     {
-        try( @SuppressWarnings( "unused" ) final var l = m_WriteLock.lock() )
+        m_WriteLock.execute( () ->
         {
             m_Entries = null;
             m_Count = 0;
-        }
+        } );
     }   //  clear()
 
     /**
-     *  Tests if the stack is not empty.<br>
-     *  <br>If concurrent threads will access the stack, it is still possible
+     *  <p>{@summary Tests if the stack is not empty.}</p>
+     *  <p>If concurrent threads will access the stack, it is still possible
      *  that this method will return {@code true}, but a call to
      *  {@link #pop()}
-     *  immediately after returns {@code null}.
+     *  immediately after returns {@code null}.</p>
      *
      *  @return {@code true} if there are still entries on the stack,
      *      {@code false} otherwise.
      *
      *  @see #isEmpty()
      */
-    public final boolean hasMore()
-    {
-        var retValue = false;
-        try( @SuppressWarnings( "unused" ) final var l = m_ReadLock.lock() )
-        {
-            retValue = nonNull( m_Entries );
-        }
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  hasMore()
+    public final boolean hasMore() { return !isEmpty(); }
 
     /**
-     *  Tests if the stack is empty.<br>
-     *  <br>If concurrent threads will access the stack, it is still possible
+     *  <p>{@summary Tests if the stack is empty.}</p>
+     *  <p>If concurrent threads will access the stack, it is still possible
      *  that this method will return {@code false}, but a call to
      *  {@link #pop()}
-     *  immediately after returns {@code null}.
+     *  immediately after returns {@code null}.</p>
      *
      *  @return {@code true} if there are no entries on the stack,
      *      {@code false} otherwise.
@@ -225,7 +215,7 @@ public final class Stack<T>
     public final boolean isEmpty()
     {
         var retValue = false;
-        try( @SuppressWarnings( "unused" ) final var l = m_ReadLock.lock() )
+        try( final var ignore = m_ReadLock.lock() )
         {
             retValue = isNull( m_Entries );
         }
@@ -235,27 +225,20 @@ public final class Stack<T>
     }   //  isEmpty()
 
     /**
-     *  Returns the first entry from the stack <i>without</i> removing it from
-     *  the stack.<br>
-     *  <br>If concurrent threads will access the stack, it is still possible
+     *  <p>{@summary Returns the first entry from the stack <i>without</i>
+     *  removing it from the stack.}</p>
+     *  <p>If concurrent threads will access the stack, it is still possible
      *  that this method will return a different value than a consecutive call
      *  to
-     *  {@link #pop()}.
+     *  {@link #pop()}.</p>
      *
      *  @return An instance of
      *      {@link Optional}
-     *      that holds the first entry; will be empty if the stack is empty.
+     *      that holds the first entry; it will be empty if the stack is empty.
      */
     public final Optional<T> peek()
     {
-        Optional<T> retValue = Optional.empty();
-        try( @SuppressWarnings( "unused" ) final var l = m_ReadLock.lock() )
-        {
-            if( nonNull( m_Entries ) )
-            {
-                retValue = Optional.of( m_Entries.head() );
-            }
-        }
+        final var retValue = m_ReadLock.execute( () -> nonNull( m_Entries ) ? m_Entries.head() : null );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -266,12 +249,12 @@ public final class Stack<T>
      *
      *  @return An instance of
      *      {@link Optional}
-     *      that holds the first entry; will be empty if the stack is empty.
+     *      that holds the first entry; it will be empty if the stack is empty.
      */
     public final Optional<T> pop()
     {
         Optional<T> retValue = Optional.empty();
-        try( @SuppressWarnings( "unused" ) final var l = m_WriteLock.lock() )
+        try( final var ignore = m_WriteLock.lock() )
         {
             if( nonNull( m_Entries ) )
             {
@@ -292,21 +275,23 @@ public final class Stack<T>
      */
     public final void push( final T entry )
     {
-        try( @SuppressWarnings( "unused" ) final var l = m_WriteLock.lock() )
+        requireNonNullArgument( entry, "entry" );
+        m_WriteLock.execute( () ->
         {
-            m_Entries = new Entry( requireNonNullArgument( entry, "entry" ), m_Entries );
+            m_Entries = new Entry( entry, m_Entries );
             ++m_Count;
-        }
+        } );
     }   //  push()
 
     /**
-     *  Add the given entries to the stack, in LIFO order. Nothing happens, if
-     *  the provided array is empty.<br>
-     *  <br>The provided array may not contain {@code null} elements.<br>
-     *  <br>If the push failed for one element of the array, the stack
-     *  remained unchanged.<br>
-     *  <br>The method guarantees that the elements of the array are stored to
-     *  the stack in consecutive order, even in a multithreaded environment.
+     *  <p>{@summary Adds the given entries to the stack, in LIFO order.}
+     *  Nothing happens, if the provided array is empty.</p>
+     *  <p>The provided array may not contain {@code null} elements.</p>
+     *  <p>If the push failed for anyone element of the array, the stack
+     *  remained unchanged.</p>
+     *  <p>The method guarantees that the elements of the array are stored to
+     *  the stack in consecutive order, even in a multithreaded
+     *  environment.</p>
      *
      *  @param  entries   The values to add.
      *  @throws IllegalArgumentException    At least one element of the
@@ -320,14 +305,14 @@ public final class Stack<T>
             if( isNull( entries [i] ) ) throw new ValidationException( format( "The entry %1$d of the arguments list is null", i ) );
         }
 
-        try( @SuppressWarnings( "unused" ) final var l = m_WriteLock.lock() )
+        m_WriteLock.execute( () ->
         {
             for( final var entry : entries )
             {
                 m_Entries = new Entry( entry, m_Entries );
                 ++m_Count;
             }
-        }
+        } );
     }   //  push()
 
     /**
@@ -338,13 +323,13 @@ public final class Stack<T>
     public final int size() { return m_Count; }
 
     /**
-     *  Returns all entries that are currently on the stack as an array without
-     *  removing them, with the top most entry as the first. Therefore, this is
-     *  more or less a
+     *  <p>{@summary Returns all entries that are currently on the stack as an
+     *  array without removing them, with the top most entry as the first.}
+     *  Therefore, this is more or less a
      *  {@link #peek()}
-     *  on the whole stack.<br>
-     *  <br>If the provided array is larger that the number of elements on the
-     *  stack, the exceeding entries on that array remained unchanged.
+     *  on the whole stack.</p>
+     *  <p>If the provided array is larger that the number of elements on the
+     *  stack, the exceeding entries on that array remained unchanged.</p>
      *
      *  @param  target  The target array; if this array has an insufficient
      *      size, a new array will be created.
@@ -358,19 +343,39 @@ public final class Stack<T>
     {
         requireNonNullArgument( target, "target" );
 
-        T [] retValue = null;
-
-        try( @SuppressWarnings( "unused" ) final var l = m_ReadLock.lock() )
-        {
-            retValue = target.length >= m_Count ? target : (T []) Array.newInstance( target.getClass().getComponentType(), m_Count );
-            var index = 0;
-            var entries = m_Entries;
-            while( nonNull( entries ) )
+        @SuppressWarnings( "OptionalGetWithoutIsPresent" )
+        final var retValue = m_ReadLock.execute( () ->
             {
-                retValue [index++] = entries.head();
-                entries = entries.tail();
-            }
-        }
+                final var result = target.length >= m_Count ? target : (T []) Array.newInstance( target.getClass().getComponentType(), m_Count );
+                var index = 0;
+                var entries = m_Entries;
+                while( nonNull( entries ) )
+                {
+                    result [index++] = entries.head();
+                    entries = entries.tail();
+                }
+                return result;
+            } ).get();
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  toArray()
+
+    /**
+     *  <p>{@summary Returns all entries that are currently on the stack as an
+     *  array without removing them, with the top most entry as the first.}
+     *  Therefore, this is more or less a
+     *  {@link #peek()}
+     *  on the whole stack.</p>
+     *
+     *  @param  supplier    The supplier for the target array.
+     *  @return An array with all entries on the stack; never {@code null}.
+     */
+    public final T [] toArray( final IntFunction<T []> supplier )
+    {
+        @SuppressWarnings( "OptionalGetWithoutIsPresent" )
+        final var retValue = m_ReadLock.execute( () -> toArray( requireNonNullArgument( supplier, "supplier" ).apply( m_Count ) ) )
+            .get();
 
         //---* Done *----------------------------------------------------------
         return retValue;

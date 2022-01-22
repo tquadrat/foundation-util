@@ -40,7 +40,6 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: TestStack.java 820 2020-12-29 20:34:22Z tquadrat $
  */
-@SuppressWarnings( "MisorderedAssertEqualsArguments" )
 @ClassVersion( sourceVersion = "$Id: TestStack.java 820 2020-12-29 20:34:22Z tquadrat $" )
 public class TestStack extends TestBaseClass
 {

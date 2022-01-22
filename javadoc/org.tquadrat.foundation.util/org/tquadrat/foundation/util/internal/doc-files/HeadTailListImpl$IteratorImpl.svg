@@ -6,8 +6,8 @@
      xmlns:xlink="http://www.w3.org/1999/xlink"
      version='1.1'
      baseProfile='full'
-     width='439.000'
-     height='635.000'>
+     width='787.000'
+     height='503.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,64 +118,41 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='205.000'
-                  width='364.000'
+                  height='73.000'
+                  width='400.000'
                   x='0.000'
                   y='8.000'/>
         </clipPath>
-        <symbol id='org.tquadrat.foundation.util.Stack'>
+        <symbol id='org.tquadrat.foundation.util.internal.HeadTailListImpl.IteratorImpl'>
             <g>
                 <g class='focusClass'
                    clip-path='url(#ID000001)'>
                     <rect x='0.000'
                           y='8.000'
-                          width='364.000'
-                          height='205.000'
+                          width='400.000'
+                          height='73.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='25.000'
-                          x2='364.000'
+                          x2='400.000'
                           y2='25.000'
                           class='separator'/>
-                    <text x='167.000'
-                          y='21.000'>Stack</text>
+                    <text x='164.000'
+                          y='21.000'>IteratorImpl</text>
                     <line x1='0.000'
-                          y1='86.000'
-                          x2='364.000'
-                          y2='86.000'
+                          y1='42.000'
+                          x2='400.000'
+                          y2='42.000'
                           class='separator'/>
-                    <text y='38.000'
-                          class='static final'>+ EMPTY_Stack_ARRAY:org.tquadrat.foundation.util.Stack[]</text>
-                    <text y='49.000'>- m_Count:int</text>
-                    <text y='60.000'>- m_Entries:org.tquadrat.foundation.util.Stack&lt;T&gt;.Entry</text>
-                    <text y='71.000'
-                          class='final'>- m_ReadLock:org.tquadrat.foundation.lang.AutoLock</text>
-                    <text y='82.000'
-                          class='final'>- m_WriteLock:org.tquadrat.foundation.lang.AutoLock</text>
+                    <text y='38.000'>- m_CurrentList:org.tquadrat.foundation.util.HeadTailList&lt;T&gt;</text>
                     <text x='5.000'
-                          y='99.000'>+ Stack()</text>
+                          y='55.000'>+ IteratorImpl(list:org.tquadrat.foundation.util.HeadTailList&lt;T&gt;)</text>
                     <text x='5.000'
-                          y='110.000'>+ clear():void</text>
+                          y='66.000'>+ hasNext():boolean</text>
                     <text x='5.000'
-                          y='121.000'>+ hasMore():boolean</text>
-                    <text x='5.000'
-                          y='132.000'>+ isEmpty():boolean</text>
-                    <text x='5.000'
-                          y='143.000'>+ peek():java.util.Optional&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='154.000'>+ pop():java.util.Optional&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='165.000'>+ push(entry:T):void</text>
-                    <text x='5.000'
-                          y='176.000'>+ push(entries:T&#x2026;):void</text>
-                    <text x='5.000'
-                          y='187.000'>+ size():int</text>
-                    <text x='5.000'
-                          y='198.000'>+ toArray(target:T[]):T[]</text>
-                    <text x='5.000'
-                          y='209.000'>+ toArray(supplier:java.util.function.IntFunction&lt;T[]&gt;):T[]</text>
+                          y='77.000'>+ next():T</text>
                 </g>
-                <g transform='translate(339.000 0.000)'>
+                <g transform='translate(375.000 0.000)'>
                     <rect x='0.000'
                           y='1.000'
                           width='50.000'
@@ -249,14 +226,82 @@
                 </g>
             </g>
         </symbol>
+        <clipPath id='ID000003'>
+            <rect class='externalClass'
+                  height='95.000'
+                  width='418.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='java.util.Iterator'>
+            <g>
+                <g clip-path='url(#ID000003)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='418.000'
+                          height='95.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='418.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='182.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='185.000'
+                          y='32.000'
+                          class='abstract'>Iterator</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='418.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ hasNext():boolean</text>
+                    <text x='5.000'
+                          y='77.000'
+                          class='abstract'>+ next():E</text>
+                    <text x='5.000'
+                          y='88.000'>&#x2A22; remove():void</text>
+                    <text x='5.000'
+                          y='99.000'>&#x2A22; forEachRemaining(arg0:java.util.function.Consumer&lt;? super E&gt;):void</text>
+                </g>
+                <g transform='translate(393.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='externalClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>E</text>
+                </g>
+            </g>
+        </symbol>
     </defs>
     <path class='inheritance'
-          d='M207.000,305.000 c0.000,-93.000,12.500,0.000,12.500,-93.000 v-15'
+          d='M356.000,305.000 c0.000,-93.000,-209.000,0.000,-209.000,-93.000 v-15'
           marker-end='url(#inheritance)'/>
-    <use x='97.500'
+    <path class='implementation'
+          d='M406.000,305.000 c0.000,-162.000,122.000,0.000,122.000,-162.000 v-15'
+          marker-end='url(#implementation)'/>
+    <use x='25.000'
          y='25.000'
          xlink:href='#java.lang.Object'/>
-    <use x='25.000'
+    <use x='319.000'
+         y='25.000'
+         xlink:href='#java.util.Iterator'/>
+    <use x='181.000'
          y='297.000'
-         xlink:href='#org.tquadrat.foundation.util.Stack'/>
+         xlink:href='#org.tquadrat.foundation.util.internal.HeadTailListImpl.IteratorImpl'/>
 </svg>
