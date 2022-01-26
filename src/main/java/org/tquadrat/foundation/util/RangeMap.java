@@ -32,7 +32,7 @@ import org.tquadrat.foundation.util.internal.RangeMapImpl;
  *  {@link Double#MAX_VALUE -Double.MAX_VALUE}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: RangeMap.java 574 2019-04-16 18:33:24Z tquadrat $
+ *  @version $Id: RangeMap.java 995 2022-01-23 01:09:35Z tquadrat $
  *  @since 0.0.7
  *
  *  @param <T>  The type of the mapped value.
@@ -41,7 +41,7 @@ import org.tquadrat.foundation.util.internal.RangeMapImpl;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: RangeMap.java 574 2019-04-16 18:33:24Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeMap.java 995 2022-01-23 01:09:35Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public sealed interface RangeMap<T> extends Serializable
     permits RangeMapImpl

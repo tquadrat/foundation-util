@@ -24,6 +24,7 @@ import org.tquadrat.foundation.util.stringconverter.CharSequenceStringConverter;
 import org.tquadrat.foundation.util.stringconverter.CharacterStringConverter;
 import org.tquadrat.foundation.util.stringconverter.CharsetStringConverter;
 import org.tquadrat.foundation.util.stringconverter.ClassStringConverter;
+import org.tquadrat.foundation.util.stringconverter.CurrencyStringConverter;
 import org.tquadrat.foundation.util.stringconverter.DayOfWeekStringConverter;
 import org.tquadrat.foundation.util.stringconverter.DoubleStringConverter;
 import org.tquadrat.foundation.util.stringconverter.DurationStringConverter;
@@ -59,11 +60,10 @@ import org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter
  *  @provides   org.tquadrat.foundation.lang.StringConverter    Implementations
  *      of String converters.
  *
- *  @version $Id: module-info.java 984 2022-01-13 00:46:27Z tquadrat $
+ *  @version $Id: module-info.java 997 2022-01-26 14:55:05Z tquadrat $
  *
  *  @todo task.list
  */
-@SuppressWarnings( "rawtypes" )
 module org.tquadrat.foundation.util
 {
     requires java.base;
@@ -83,6 +83,7 @@ module org.tquadrat.foundation.util
         CharSequenceStringConverter,
         CharsetStringConverter,
         ClassStringConverter,
+        CurrencyStringConverter,
         DayOfWeekStringConverter,
         DoubleStringConverter,
         DurationStringConverter,

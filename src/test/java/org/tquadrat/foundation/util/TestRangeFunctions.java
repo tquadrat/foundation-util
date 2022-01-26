@@ -42,7 +42,7 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  */
 @SuppressWarnings( "OverlyComplexClass" )
-@ClassVersion( sourceVersion = "$Id: TestRangeFunctions.java 574 2019-04-16 18:33:24Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestRangeFunctions.java 995 2022-01-23 01:09:35Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestRangeFunctions" )
 public class TestRangeFunctions extends TestBaseClass
 {

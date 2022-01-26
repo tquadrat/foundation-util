@@ -40,7 +40,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  <p>This implementation is not synchronised, but thread-safe.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: Stack.java 995 2022-01-23 01:09:35Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <T> The type for the stack entries.
@@ -49,7 +49,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *
  *  @see    java.util.Stack
  */
-@ClassVersion( sourceVersion = "$Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Stack.java 995 2022-01-23 01:09:35Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Stack<T>
 {
@@ -65,12 +65,12 @@ public final class Stack<T>
      *      {@code <T>} that is inherited from the surrounding class.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $
+     *  @version $Id: Stack.java 995 2022-01-23 01:09:35Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Stack.java 966 2022-01-04 22:28:49Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Stack.java 995 2022-01-23 01:09:35Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     private final class Entry
     {

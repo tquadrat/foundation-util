@@ -35,7 +35,7 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *
  *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestHeadTailList.java 727 2020-08-09 18:54:38Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestHeadTailList.java 995 2022-01-23 01:09:35Z tquadrat $" )
 public class TestHeadTailList extends TestBaseClass
 {
         /*---------*\

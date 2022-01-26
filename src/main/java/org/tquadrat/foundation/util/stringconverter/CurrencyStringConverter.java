@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2019 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -20,12 +20,9 @@ package org.tquadrat.foundation.util.stringconverter;
 
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
-import static org.tquadrat.foundation.util.StringUtils.format;
-import static org.tquadrat.foundation.util.SystemUtils.getZoneIdAliasMap;
 
 import java.io.Serial;
-import java.time.DateTimeException;
-import java.time.ZoneId;
+import java.util.Currency;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
@@ -35,36 +32,30 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  <p>{@summary An implementation of
  *  {@link StringConverter}
  *  for
- *  {@link ZoneId}
+ *  {@link Currency}
  *  values.}</p>
  *  <p>The method
  *  {@link #fromString(CharSequence)}
  *  will use
- *  {@link ZoneId#of(String, java.util.Map)}
- *  to retrieve a {@code ZoneId} based on the given value. The second parameter
- *  will be retrieved by a call to
- *  {@link org.tquadrat.foundation.util.SystemUtils#getZoneIdAliasMap()}.</p>
+ *  {@link Currency#getInstance(String)}
+ *  to retrieve a {@code Currency} based on the given ISO&nbsp;4217 code.}.</p>
+ *  <p>The method
+ *  {@link #toString(Currency)}
+ *  will use
+ *  {@link Currency#getCurrencyCode()}
+ *  to return the ISO&nbsp;4217 code to the given {@code Currency}
+ *  instance.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ZoneIdStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $
+ *  @version $Id: CurrencyStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $
  *  @since 0.0.6
- *
- *  @see org.tquadrat.foundation.util.SystemUtils#createZoneIdAliasMap()
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ZoneIdStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $" )
-@API( status = STABLE, since = "0.0.6" )
-public final class ZoneIdStringConverter implements StringConverter<ZoneId>
+@ClassVersion( sourceVersion = "$Id: CurrencyStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $" )
+@API( status = STABLE, since = "0.1.0" )
+public final class CurrencyStringConverter implements StringConverter<Currency>
 {
-        /*-----------*\
-    ====** Constants **========================================================
-        \*-----------*/
-    /**
-     *  The error message for an invalid zone id on the command line: {@value}.
-     */
-    public static final String MSG_InvalidZoneId = "'%1$s' cannot be parsed as a valid time zone id";
-
         /*------------------------*\
     ====** Static Initialisations **===========================================
         \*------------------------*/
@@ -79,7 +70,7 @@ public final class ZoneIdStringConverter implements StringConverter<ZoneId>
     /**
      *  An instance of this class.
      */
-    public static final ZoneIdStringConverter INSTANCE = new ZoneIdStringConverter();
+    public static final CurrencyStringConverter INSTANCE = new CurrencyStringConverter();
 
         /*---------*\
     ====** Methods **==========================================================
@@ -88,20 +79,9 @@ public final class ZoneIdStringConverter implements StringConverter<ZoneId>
      *  {@inheritDoc}
      */
     @Override
-    public final ZoneId fromString( final CharSequence source ) throws IllegalArgumentException
+    public final Currency fromString( final CharSequence source ) throws IllegalArgumentException
     {
-        ZoneId retValue = null;
-        if( nonNull( source ) )
-        {
-            try
-            {
-                retValue = ZoneId.of( source.toString(), getZoneIdAliasMap() );
-            }
-            catch( final DateTimeException e )
-            {
-                throw new IllegalArgumentException( format( MSG_InvalidZoneId, source ), e );
-            }
-        }
+        final var retValue = nonNull( source ) ? Currency.getInstance( source.toString() ) : null;
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -111,13 +91,25 @@ public final class ZoneIdStringConverter implements StringConverter<ZoneId>
      *  This method is used by the
      *  {@link java.util.ServiceLoader}
      *  to obtain the instance for this
-     *  {@link org.tquadrat.foundation.lang.StringConverter}
+     *  {@link StringConverter}
      *  implementation.
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
     @SuppressWarnings( "UseOfConcreteClass" )
-    public static final ZoneIdStringConverter provider() { return INSTANCE; }
+    public static final CurrencyStringConverter provider() { return INSTANCE; }
+
+    /**
+     *  {@inheritDoc}
+     */
+    @Override
+    public final String toString( final Currency source )
+    {
+        final var retValue = nonNull( source ) ? source.getCurrencyCode() : null;
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  toString()
 }
 //  class ZoneIdStringConverter
 

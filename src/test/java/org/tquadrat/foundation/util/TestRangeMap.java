@@ -36,7 +36,7 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *
  *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestRangeMap.java 574 2019-04-16 18:33:24Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestRangeMap.java 995 2022-01-23 01:09:35Z tquadrat $" )
 public class TestRangeMap extends TestBaseClass
 {
         /*---------*\

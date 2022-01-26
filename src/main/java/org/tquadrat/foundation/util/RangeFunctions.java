@@ -35,14 +35,14 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Ben Gidley
- *  @version $Id: RangeFunctions.java 574 2019-04-16 18:33:24Z tquadrat $
+ *  @version $Id: RangeFunctions.java 995 2022-01-23 01:09:35Z tquadrat $
  *  @since 0.0.7
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: RangeFunctions.java 574 2019-04-16 18:33:24Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeFunctions.java 995 2022-01-23 01:09:35Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public final class RangeFunctions
 {

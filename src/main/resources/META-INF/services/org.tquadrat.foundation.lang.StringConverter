@@ -6,6 +6,7 @@ org.tquadrat.foundation.util.stringconverter.CharacterStringConverter
 org.tquadrat.foundation.util.stringconverter.CharSequenceStringConverter
 org.tquadrat.foundation.util.stringconverter.CharsetStringConverter
 org.tquadrat.foundation.util.stringconverter.ClassStringConverter
+org.tquadrat.foundation.util.stringconverter.CurrencyStringConverter
 org.tquadrat.foundation.util.stringconverter.DayOfWeekStringConverter
 org.tquadrat.foundation.util.stringconverter.DoubleStringConverter
 org.tquadrat.foundation.util.stringconverter.DurationStringConverter

@@ -31,15 +31,15 @@ import org.tquadrat.foundation.lang.StringConverter;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 
 /**
- *  Some tests for the interface
- *  {@link StringConverter}.<br>
- *  <br>Although that interface belongs to the module
- *  {@code org.tquadrat.foundation.base}, it needs to be tested here.
+ *  <p>{@summary Some tests for the interface
+ *  {@link StringConverter}.}</p>
+ *  <p>Although that interface belongs to the module
+ *  {@code org.tquadrat.foundation.base}, it needs to be tested here.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestStringConverter.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestStringConverter" )
 public class TestStringConverter extends TestBaseClass
 {
@@ -56,7 +56,6 @@ public class TestStringConverter extends TestBaseClass
     {
         skipThreadTest();
 
-        @SuppressWarnings( "rawtypes" )
         final var services = ServiceLoader.load( StringConverter.class );
         assertNotNull( services );
         assertFalse( services.findFirst().isEmpty() );
@@ -72,7 +71,6 @@ public class TestStringConverter extends TestBaseClass
     {
         skipThreadTest();
 
-        @SuppressWarnings( "rawtypes" )
         final var services = ServiceLoader.load( StringConverter.class );
         assertNotNull( services );
         assertFalse( services.stream().findFirst().isEmpty() );

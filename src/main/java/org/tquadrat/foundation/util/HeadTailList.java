@@ -55,13 +55,13 @@ import org.tquadrat.foundation.util.internal.HeadTailListImpl;
  *  @param  <T> The element type of the list.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: HeadTailList.java 727 2020-08-09 18:54:38Z tquadrat $
+ *  @version $Id: HeadTailList.java 995 2022-01-23 01:09:35Z tquadrat $
  *  @since 0.0.4
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: HeadTailList.java 727 2020-08-09 18:54:38Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HeadTailList.java 995 2022-01-23 01:09:35Z tquadrat $" )
 @API( status = STABLE, since = "0.0.4" )
 public sealed interface HeadTailList<T> extends Iterable<T>
     permits HeadTailListImpl

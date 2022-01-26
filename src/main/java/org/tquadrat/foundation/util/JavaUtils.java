@@ -45,6 +45,7 @@ import static javax.lang.model.element.Modifier.SYNCHRONIZED;
 import static javax.lang.model.element.Modifier.TRANSIENT;
 import static javax.lang.model.element.Modifier.VOLATILE;
 import static org.apiguardian.api.API.Status.STABLE;
+import static org.tquadrat.foundation.lang.DebugOutput.ifDebug;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
@@ -77,6 +78,7 @@ import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
 import org.tquadrat.foundation.exception.UnexpectedExceptionError;
 import org.tquadrat.foundation.exception.ValidationException;
+import org.tquadrat.foundation.lang.DebugOutput;
 
 /**
  *  <p>{@summary This class provides a bunch of helper methods that deal with the Java
@@ -86,13 +88,13 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  allowed.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: JavaUtils.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: JavaUtils.java 997 2022-01-26 14:55:05Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: JavaUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: JavaUtils.java 997 2022-01-26 14:55:05Z tquadrat $" )
 @UtilityClass
 public final class JavaUtils
 {
@@ -271,6 +273,26 @@ public final class JavaUtils
 
         //---* Done *----------------------------------------------------------
         return retValue;
+    }   //  findCaller()
+
+    /**
+     *  <p>{@summary This method will find the caller for the method that is
+     *  identified by its name and class, and returns the appropriate stack
+     *  trace element.}</p>
+     *  <p>The return value is
+     *  {@linkplain Optional#empty() empty}
+     *  when the provided method is not on the stack trace.</p>
+     *
+     *  @param  methodName  The name of the method that we need the caller for.
+     *  @param  owningClass The class for the called method.
+     *  @return An instance of
+     *      {@link Optional}
+     *      that holds the stack trace element for the caller.
+     */
+    @API( status = STABLE, since = "0.1.0" )
+    public static final Optional<StackTraceElement> findCaller( final String methodName, final Class<?> owningClass )
+    {
+        return DebugOutput.findCaller( methodName, owningClass );
     }   //  findCaller()
 
     /**
@@ -945,21 +967,21 @@ public final class JavaUtils
     }   //  loadClass()
 
     /**
-     *  Loads the class with the given name, using the given
+     *  <p>{@summary Loads the class with the given name, using the given
      *  {@link ClassLoader}
-     *  instance, and returns that class. If no class with that name could be
+     *  instance, and returns that class.} If no class with that name could be
      *  found by that {@code ClassLoader}, no exception will be thrown; instead
      *  this method will return an empty
      *  {@link Optional}
-     *  instance.<br>
-     *  <br>If not loaded and initialised before, the loaded class is not yet
+     *  instance.</p>
+     *  <p>If not loaded and initialised before, the loaded class is not yet
      *  initialised. That means that {@code static} code blocks have not been
      *  executed yet and class variables (static variables) are not
-     *  initialised.<br>
-     *  <br>Different from
+     *  initialised.</p>
+     *  <p>Different from
      *  {@link Class#forName(String, boolean, ClassLoader)},
      *  this method is able to load the class objects for the primitive types,
-     *  too.
+     *  too.</p>
      *
      *  @param  classLoader The class loader to use.
      *  @param  classname   The name of the class to load; may <i>not</i> be
@@ -982,7 +1004,11 @@ public final class JavaUtils
             {
                 resultClass = Class.forName( classname, false, requireNonNullArgument( classLoader, "classLoader" ) );
             }
-            catch( @SuppressWarnings( "unused" ) final ClassNotFoundException e ) { /* Deliberately ignored */ }
+            catch( final ClassNotFoundException e )
+            {
+                //---* Deliberately ignored *----------------------------------
+                ifDebug( e );
+            }
         }
 
         //---* Create the return value *---------------------------------------
@@ -1470,10 +1496,11 @@ public final class JavaUtils
     }   //  retrieveSetter()
 
     /**
-     *  Searches the given stack trace for references to the method with the
-     *  given name and returns the name for the respective class.<br>
-     *  <br>This is a helper method for
-     *  {@link #findMainClass()}.
+     *  <p>{@summary Searches the given stack trace for references to the
+     *  method with the given name and returns the name for the respective
+     *  class.}</p>
+     *  <p>This is a helper method for
+     *  {@link #findMainClass()}.</p>
      *
      *  @param  stackTrace  The stack trace.
      *  @param  methodName  The name of the method to look for.
