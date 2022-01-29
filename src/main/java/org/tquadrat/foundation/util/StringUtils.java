@@ -2027,6 +2027,27 @@ public final class StringUtils
     public static final String padRight( final CharSequence s, final int length ) { return pad( s, length, ' ', PADDING_RIGHT, CLIPPING_ABBREVIATE ); }
 
     /**
+     *  <p>{@summary Surrounds the given String with double-quotes
+     *  (&quot;, &amp;#34;).}</p>
+     *  <p>When the double-quote is needed in a String constant, it has to be
+     *  escaped with a backslash:</p>
+     *  <pre><code>&quot;\&quot;…\&quot;&quot;</code></pre>
+     *  <p>Sometimes, this is just ugly, and there this method comes into
+     *  play.</p>
+     *
+     *  @param  s   The String to surround; can be {@code null}.
+     *  @return The quoted String; will be {@code null} if the argument was
+     *      {@code null} already.
+     */
+    public static final String quote( final CharSequence s )
+    {
+        final var retValue = isNull( s ) ? null : format( "\"%s\"u\"", s );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  quote()
+
+    /**
      *  Repeats the given char {@code repeat} to form a new String. The table
      *  below shows the various  result for some argument combinations.<br>
      *  <br><code>
