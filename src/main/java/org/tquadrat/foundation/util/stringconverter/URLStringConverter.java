@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -26,38 +26,41 @@ import static org.tquadrat.foundation.util.StringUtils.format;
 import java.io.Serial;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.Collection;
+import java.util.List;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
- *  An implementation of
+ *  <p>{@summary An implementation of
  *  {@link StringConverter}
  *  for
  *  {@link URL}
- *  values.<br>
- *  <br>The method
+ *  values.}</p>
+ *  <p>The method
  *  {@link #fromString(CharSequence)}
  *  will use the constructor
  *  {@link URL#URL(String)}
- *  to create a {@code URL} instance from the given value.
+ *  to create a {@code URL} instance from the given value.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: URLStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: URLStringConverter.java 1003 2022-02-02 11:07:25Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: URLStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: URLStringConverter.java 1003 2022-02-02 11:07:25Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
-public final class URLStringConverter implements StringConverter<URL>
+public sealed class URLStringConverter implements StringConverter<URL>
+    permits EncodedURLStringConverter
 {
         /*-----------*\
     ====** Constants **========================================================
         \*-----------*/
     /**
-     *  The error message for an invalid URL on the command line: {@value}.
+     *  The error message for an invalid URL: {@value}.
      */
     public static final String MSG_InvalidURL = "'%1$s' cannot be parsed as a valid URL";
 
@@ -104,6 +107,14 @@ public final class URLStringConverter implements StringConverter<URL>
     }   //  fromString()
 
     /**
+     *  Provides the subject class for this converter.
+     *
+     *  @return The subject class.
+     */
+    @SuppressWarnings( "PublicMethodNotExposedInInterface" )
+    public final Collection<Class<?>> getSubjectClass() { return List.of( URL.class ); }
+
+    /**
      *  This method is used by the
      *  {@link java.util.ServiceLoader}
      *  to obtain the instance for this
@@ -119,7 +130,7 @@ public final class URLStringConverter implements StringConverter<URL>
      *  {@inheritDoc}
      */
     @Override
-    public final String toString( final URL source )
+    public String toString( final URL source )
     {
         final var retValue = isNull( source ) ? null : source.toExternalForm();
 

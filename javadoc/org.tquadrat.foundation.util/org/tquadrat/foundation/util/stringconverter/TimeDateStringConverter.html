@@ -102,28 +102,28 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="InstantStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">InstantStringConverter</a></code>, <code><a href="LocalDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalDateStringConverter</a></code>, <code><a href="LocalDateTimeStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalDateTimeStringConverter</a></code>, <code><a href="LocalTimeStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalTimeStringConverter</a></code>, <code><a href="YearMonthStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">YearMonthStringConverter</a></code>, <code><a href="YearStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">YearStringConverter</a></code>, <code><a href="ZonedDateTimeStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">ZonedDateTimeStringConverter</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: TimeDateStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: TimeDateStringConverter.java 1003 2022-02-02 11:07:25Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.6")
-</span><span class="modifiers">public abstract class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-66">TimeDateStringConverter</a>&lt;T extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/temporal/Temporal.html" title="class or interface in java.time.temporal" class="external-link">Temporal</a>&gt;</span>
+</span><span class="modifiers">public abstract class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-67">TimeDateStringConverter</a>&lt;T extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/temporal/Temporal.html" title="class or interface in java.time.temporal" class="external-link">Temporal</a>&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">StringConverter</a>&lt;T&gt;</span></div>
-<div class="block">The abstract base class for implementations of
+<div class="block"><p>The abstract base class for implementations of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for types that extend
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/temporal/Temporal.html" title="class or interface in java.time.temporal" class="external-link"><code>Temporal</code></a>.<br>
-  <br>The format for the date/time data can be modified by applying an
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/temporal/Temporal.html" title="class or interface in java.time.temporal" class="external-link"><code>Temporal</code></a>.</p>
+  <p>The format for the date/time data can be modified by applying an
   instance of
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html" title="class or interface in java.time.format" class="external-link"><code>DateTimeFormatter</code></a>
   to the constructor
   <a href="#%3Cinit%3E(java.lang.Class,java.time.format.DateTimeFormatter)"><code>TimeDateStringConverter(Class,DateTimeFormatter)</code></a>
   that is used for parsing Strings to object instances and for converting
-  object instances to Strings.</div>
+  object instances to Strings.</p></div>
 <dl class="notes">
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: TimeDateStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $</dd>
+<dd>$Id: TimeDateStringConverter.java 1003 2022-02-02 11:07:25Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.6</dd>
 <dt>See Also:</dt>
@@ -275,7 +275,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="MSG_InvalidDateTimeFormat">
 <h3>MSG_InvalidDateTimeFormat</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-77">MSG_InvalidDateTimeFormat</a></span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-78">MSG_InvalidDateTimeFormat</a></span></div>
 <div class="block">The error message for an invalid date/time on the command line: "\'%1$s\' cannot be parsed as a valid date/time".</div>
 <dl class="notes">
 <dt>See Also:</dt>
@@ -290,14 +290,14 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="m_Formatter">
 <h3>m_Formatter</h3>
-<div class="member-signature"><span class="modifiers">private final transient</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html" title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-85">m_Formatter</a></span></div>
+<div class="member-signature"><span class="modifiers">private final transient</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html" title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-86">m_Formatter</a></span></div>
 <div class="block">The formatter that is used to format the date/time data.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_SubjectClass">
 <h3>m_SubjectClass</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a> extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/temporal/Temporal.html" title="class or interface in java.time.temporal" class="external-link">Temporal</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-90">m_SubjectClass</a></span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a> extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/temporal/Temporal.html" title="class or interface in java.time.temporal" class="external-link">Temporal</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-91">m_SubjectClass</a></span></div>
 <div class="block">The subject class for this converter.</div>
 </section>
 </li>
@@ -312,7 +312,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="&lt;init&gt;(java.lang.Class)">
 <h3>TimeDateStringConverter</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-111">TimeDateStringConverter</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&gt;&nbsp;subjectClass)</span></div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-112">TimeDateStringConverter</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&gt;&nbsp;subjectClass)</span></div>
 <div class="block">Creates a new <code>TimeStringConverter</code> instance.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -323,7 +323,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="&lt;init&gt;(java.lang.Class,java.time.format.DateTimeFormatter)">
 <h3>TimeDateStringConverter</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-126">TimeDateStringConverter</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&gt;&nbsp;subjectClass,
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-127">TimeDateStringConverter</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&gt;&nbsp;subjectClass,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html" title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&nbsp;formatter)</span></div>
 <div class="block">Creates a new <code>TimeStringConverter</code> instance that uses the given
   formatter for the conversion back and forth.</div>
@@ -347,7 +347,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="&lt;init&gt;(java.lang.Class,java.util.Optional)">
 <h3>TimeDateStringConverter</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-137">TimeDateStringConverter</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&gt;&nbsp;subjectClass,
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-138">TimeDateStringConverter</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&gt;&nbsp;subjectClass,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html" title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&gt;&nbsp;formatter)</span></div>
 <div class="block">Creates a new <code>TimeStringConverter</code> instance.</div>
 <dl class="notes">
@@ -368,7 +368,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="fromString(java.lang.CharSequence)">
 <h3>fromString</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-149">fromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;source)</span>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-150">fromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;source)</span>
                    throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -381,7 +381,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="getSubjectClass()">
 <h3>getSubjectClass</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-175">getSubjectClass</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-176">getSubjectClass</a></span>()</div>
 <div class="block">Provides the subject class for this converter.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -392,7 +392,8 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="parseDateTime(java.lang.CharSequence,java.util.Optional)">
 <h3>parseDateTime</h3>
-<div class="member-signature"><span class="modifiers">protected abstract</span>&nbsp;<span class="return-type"><a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-190">parseDateTime</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;source,
+<div class="member-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/MountPoint.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@MountPoint</a>
+</span><span class="modifiers">protected abstract</span>&nbsp;<span class="return-type"><a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-191">parseDateTime</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;source,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeFormatter.html" title="class or interface in java.time.format" class="external-link">DateTimeFormatter</a>&gt;&nbsp;formatter)</span>
                             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/format/DateTimeParseException.html" title="class or interface in java.time.format" class="external-link">DateTimeParseException</a></span></div>
 <div class="block">Parses the given String to an instance of
@@ -414,7 +415,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="readObject(java.io.ObjectInputStream)">
 <h3>readObject</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-200">readObject</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/ObjectInputStream.html" title="class or interface in java.io" class="external-link">ObjectInputStream</a>&nbsp;in)</span>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-202">readObject</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/ObjectInputStream.html" title="class or interface in java.io" class="external-link">ObjectInputStream</a>&nbsp;in)</span>
                        throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a>,
 <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/ClassNotFoundException.html" title="class or interface in java.lang" class="external-link">ClassNotFoundException</a></span></div>
 <div class="block">Loads a previously serialised instance of this class from the given
@@ -431,7 +432,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="toString(T)">
 <h3 id="toString(java.time.temporal.Temporal)">toString</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-210">toString</a></span><wbr><span class="parameters">(<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&nbsp;source)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-212">toString</a></span><wbr><span class="parameters">(<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a>&nbsp;source)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html#toString(T)" title="class or interface in org.tquadrat.foundation.lang" class="external-link">toString</a></code>&nbsp;in interface&nbsp;<code><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">StringConverter</a>&lt;<a href="TimeDateStringConverter.html" title="type parameter in TimeDateStringConverter">T</a> extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/temporal/Temporal.html" title="class or interface in java.time.temporal" class="external-link">Temporal</a>&gt;</code></dd>
@@ -441,7 +442,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="writeObject(java.io.ObjectOutputStream)">
 <h3>writeObject</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-229">writeObject</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/ObjectOutputStream.html" title="class or interface in java.io" class="external-link">ObjectOutputStream</a>&nbsp;out)</span>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-231">writeObject</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/ObjectOutputStream.html" title="class or interface in java.io" class="external-link">ObjectOutputStream</a>&nbsp;out)</span>
                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Writes a serialised instance of this class to the given output stream.
   This fails if a

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -38,25 +38,26 @@ import java.util.Optional;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.MountPoint;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
- *  The abstract base class for implementations of
+ *  <p>{@summary The abstract base class for implementations of
  *  {@link StringConverter}
  *  for types that extend
- *  {@link java.time.temporal.Temporal}.<br>
- *  <br>The format for the date/time data can be modified by applying an
+ *  {@link Temporal}.}</p>
+ *  <p>The format for the date/time data can be modified by applying an
  *  instance of
  *  {@link java.time.format.DateTimeFormatter}
  *  to the constructor
  *  {@link #TimeDateStringConverter(Class,DateTimeFormatter)}
  *  that is used for parsing Strings to object instances and for converting
- *  object instances to Strings.
+ *  object instances to Strings.</p>
  *
  *  @param  <T> The type that is handled by this class.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TimeDateStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: TimeDateStringConverter.java 1003 2022-02-02 11:07:25Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
@@ -64,7 +65,7 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see DateTimeFormatter
  */
 @SuppressWarnings( "OptionalUsedAsFieldOrParameterType" )
-@ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 1003 2022-02-02 11:07:25Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public abstract class TimeDateStringConverter<T extends Temporal> implements StringConverter<T>
 {
@@ -170,7 +171,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
     /**
      *  Provides the subject class for this converter.
      *
-     * @return The subject class.
+     *  @return The subject class.
      */
     @SuppressWarnings( "PublicMethodNotExposedInInterface" )
     public final Collection<Class<T>> getSubjectClass() { return List.of( m_SubjectClass ); }
@@ -187,6 +188,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
      *  @throws DateTimeParseException  The given value cannot be parsed to a
      *      {@code Temporal}.
      */
+    @MountPoint
     protected abstract T parseDateTime( CharSequence source, Optional<DateTimeFormatter> formatter ) throws DateTimeParseException;
 
     /**

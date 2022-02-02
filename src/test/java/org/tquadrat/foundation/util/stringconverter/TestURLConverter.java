@@ -17,18 +17,6 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.MethodSource;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.lang.StringConverter;
-import org.tquadrat.foundation.testutil.TestBaseClass;
-
-import java.io.File;
-import java.net.URL;
-import java.util.stream.Stream;
-
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -38,14 +26,27 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
 import static org.tquadrat.foundation.util.StringUtils.format;
 
+import java.io.File;
+import java.net.URL;
+import java.util.stream.Stream;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.MountPoint;
+import org.tquadrat.foundation.lang.StringConverter;
+import org.tquadrat.foundation.testutil.TestBaseClass;
+
 /**
  *  Tests for the class
  *  {@link org.tquadrat.foundation.util.stringconverter.URLStringConverter}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestURLConverter.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestURLConverter.java 1003 2022-02-02 11:07:25Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestURLConverter.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestURLConverter.java 1003 2022-02-02 11:07:25Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringconverter.TestURLConverter" )
 public class TestURLConverter extends TestBaseClass
 {
@@ -56,8 +57,9 @@ public class TestURLConverter extends TestBaseClass
      *  The tests for
      *  {@link URLStringConverter}.
      */
+    @MountPoint
     @Test
-    final void testURLConversion()
+    void testURLConversion()
     {
         skipThreadTest();
 
@@ -121,9 +123,10 @@ public class TestURLConverter extends TestBaseClass
      *
      *  @param  value   The value for the tests.
      */
+    @MountPoint
     @ParameterizedTest
     @MethodSource( "valueProvider" )
-    final void testValueConversion( final URL value )
+    void testValueConversion( final URL value )
     {
         skipThreadTest();
 
