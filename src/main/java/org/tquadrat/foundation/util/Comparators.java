@@ -24,14 +24,15 @@ import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 
 import java.util.Comparator;
-import java.util.List;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.lang.StringConverter;
 import org.tquadrat.foundation.util.internal.KeyBasedComparator;
 import org.tquadrat.foundation.util.internal.ListBasedComparator;
+import org.tquadrat.foundation.util.internal.StringBasedComparator;
 
 /**
  *  This class provides factory methods for a bunch of different
@@ -39,13 +40,13 @@ import org.tquadrat.foundation.util.internal.ListBasedComparator;
  *  {@link Comparator}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Comparators.java 980 2022-01-06 15:29:19Z tquadrat $
+ *  @version $Id: Comparators.java 1007 2022-02-05 01:03:43Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: Comparators.java 980 2022-01-06 15:29:19Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Comparators.java 1007 2022-02-05 01:03:43Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Comparators
 {
@@ -70,7 +71,7 @@ public final class Comparators
      *  provide always the same key.</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Comparators.java 980 2022-01-06 15:29:19Z tquadrat $
+     *  @version $Id: Comparators.java 1007 2022-02-05 01:03:43Z tquadrat $
      *  @since 0.0.5
      *
      *  @param  <T> The type to order.
@@ -80,7 +81,7 @@ public final class Comparators
      *  @UMLGraph.link
      */
     @API( status = STABLE, since = "0.0.5" )
-    @ClassVersion( sourceVersion = "$Id: Comparators.java 980 2022-01-06 15:29:19Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Comparators.java 1007 2022-02-05 01:03:43Z tquadrat $" )
     @FunctionalInterface
     public interface KeyProvider<T,K>
     {
@@ -226,49 +227,40 @@ public final class Comparators
     }   //  keyBasedComparator()
 
     /**
-     *  Sometimes a special sort order is required that cannot be defined as a
-     *  rule. Instead, a list defines the sequence. This method creates a new
+     *  <p>{@summary Returns a comparator that works on a list of sort
+     *  keys.}</p>
+     *  <p>Sometimes, a special sort order is required that cannot be defined
+     *  as a rule based on the values themselves. Instead an ordered list of
+     *  values defines their sequence.</p>
+     *  <p>This method creates a new
      *  {@link Comparator}
-     *  instance that works on the given list of keys. Values that are not on
+     *  instance that works on the given list of values. Values that are not on
      *  that list will be placed to the end, ordered according to their natural
-     *  order if they or their keys implement the
-     *  {@link Comparable}
-     *  interface, or without any specific order.
+     *  order.</p>
      *
      *  @param  <T> The type to compare.
-     *  @param  <K> The key type that is used to determine the order; this may
-     *      be the same as the type itself.
-     *  @param  keys    The sort order keys.
+     *  @param  values  The values in their order.
      *  @return The comparator.
      */
     @SafeVarargs
     @API( status = STABLE, since = "0.0.5" )
-    public static final <T,K> Comparator<T> listBasedComparator( final K... keys ) { return new ListBasedComparator<>( keys ); }
+    public static final <T extends Comparable<T>> Comparator<T> listBasedComparator( final T... values )
+    {
+        final var retValue = new ListBasedComparator<T,T>( t -> t, naturalOrder(), requireNonNullArgument( values, "values" ).clone() );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  listBasedComparator()
 
     /**
-     *  Sometimes a special sort order is required that cannot be defined as a
-     *  rule. Instead, a list defines the sequence. This method creates a new
-     *  {@link Comparator}
-     *  instance that works on the given list of keys. Values that are not on
-     *  that list will be placed to the end, ordered according to their natural
-     *  order if they or their keys implement the
-     *  {@link Comparable}
-     *  interface, or without any specific order.
-     *
-     *  @param  <T> The type to compare.
-     *  @param  <K> The key type that is used to determine the order; this may
-     *      be the same as the type itself.
-     *  @param  keys    The sort order keys.
-     *  @return The comparator.
-     */
-    @API( status = STABLE, since = "0.0.5" )
-    public static final <T,K> Comparator<T> listBasedComparator( final List<K> keys ) { return new ListBasedComparator<>( keys ); }
-
-    /**
-     *  Sometimes a special sort order is required that cannot be defined as a
-     *  rule. Instead, a list defines the sequence. This method creates a new
-     *  {@link Comparator}
-     *  instance that works on the given list of keys.
+     *  <p>{@summary A comparator that works on a list of sort keys.}</p>
+     *  <p>Sometimes, a special sort order is required that cannot be defined
+     *  as a rule based on the values themselves. Instead an ordered list of
+     *  keys defines their sequence.</p>
+     *  <p>The implementation first determines the key for a given value, then
+     *  it looks up that key in the key list to determine the sort order.
+     *  Values whose keys are not in the key list are ordered based on the
+     *  natural sort order of the keys.
      *
      *  @param  <T> The type to compare.
      *  @param  <K> The key type that is used to determine the order; this may
@@ -276,25 +268,28 @@ public final class Comparators
      *  @param  keyProvider The implementation of
      *      {@link Comparators.KeyProvider}
      *      that returns the sort keys for the instances to compare.
-     *  @param  comparator  The comparator that is used to order the instances
-     *      that are not listed; if {@code null}, those are ordered randomly in
-     *      a non-consistent way if they or their keys do not implement the
-     *      {@link Comparable}
-     *      interface.
      *  @param  keys    The sort order keys.
      *  @return The comparator.
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final <T,K> Comparator<T> listBasedComparator( final KeyProvider<T,K> keyProvider, final Comparator<? super T> comparator, final List<K> keys )
+    @SafeVarargs
+    public static final <T,K extends Comparable<K>> Comparator<T> listBasedComparator( final KeyProvider<T,K> keyProvider, final K... keys )
     {
-        return new ListBasedComparator<>( keyProvider, comparator, keys );
+        final var retValue = new ListBasedComparator<>( keyProvider, naturalOrder(), requireNonNullArgument( keys, "keys" ).clone() );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
     }   //  listBasedComparator()
 
     /**
-     *  Sometimes a special sort order is required that cannot be defined as a
-     *  rule. Instead, a list defines the sequence. This method creates a new
-     *  {@link Comparator}
-     *  instance that works on the given list of keys.
+     *  <p>{@summary A comparator that works on a list of sort keys.}</p>
+     *  <p>Sometimes, a special sort order is required that cannot be defined
+     *  as a rule based on the values themselves. Instead an ordered list of
+     *  keys defines their sequence.</p>
+     *  <p>The implementation first determines the key for a given value, then
+     *  it looks up that key in the key list to determine the sort order.
+     *  Values whose keys are not in the key list are ordered based on the
+     *  order of their keys that is implied by the given comparator.
      *
      *  @param  <T> The type to compare.
      *  @param  <K> The key type that is used to determine the order; this may
@@ -303,18 +298,18 @@ public final class Comparators
      *      {@link org.tquadrat.foundation.util.Comparators.KeyProvider}
      *      that returns the sort keys for the instances to compare.
      *  @param  comparator  The comparator that is used to order the instances
-     *      that are not listed; if {@code null}, those are ordered randomly in
-     *      a non-consistent way if they or their keys do not implement the
-     *      {@link Comparable}
-     *      interface.
+     *      that are not listed.
      *  @param  keys    The sort order keys.
      *  @return The comparator.
      */
     @SafeVarargs
     @API( status = STABLE, since = "0.0.5" )
-    public static final <T,K> Comparator<T> listBasedComparator( final KeyProvider<T, ? super K> keyProvider, final Comparator<? super T> comparator, final K... keys )
+    public static final <T,K> Comparator<T> listBasedComparator( final KeyProvider<T,K> keyProvider, final Comparator<? super K> comparator, final K... keys )
     {
-        return new ListBasedComparator<>( keyProvider, comparator, keys );
+        final var retValue = new ListBasedComparator<>( keyProvider, comparator, requireNonNullArgument( keys, "keys" ).clone() );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
     }   //  ListBasedComparator()
 
     /**
@@ -342,6 +337,28 @@ public final class Comparators
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  numberComparator()
+
+    /**
+     *  A comparator that compares arbitrary object types based on their String
+     *  representations.
+     *
+     *  @param  <T> The type to compare.
+     *  @param  stringConverter The instance of
+     *      {@link StringConverter}
+     *      that is used to get the String representation of the instances to
+     *      compare.
+     *  @return The comparator.
+     *
+     *  @since 0.1.0
+     */
+    @API( status = STABLE, since = "0.1.0" )
+    public static final <T> Comparator<T> stringBasedComparator( final StringConverter<T> stringConverter )
+    {
+        final var retValue = new StringBasedComparator<>( stringConverter );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  stringBasedComparator()
 }
 //  class Comparators
 

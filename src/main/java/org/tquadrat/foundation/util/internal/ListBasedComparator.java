@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2021 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -21,32 +21,36 @@ package org.tquadrat.foundation.util.internal;
 import static java.lang.Integer.signum;
 import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.tquadrat.foundation.lang.CommonConstants.NOT_FOUND;
-import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 
 import java.util.Comparator;
-import java.util.List;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.util.Comparators.KeyProvider;
 
 /**
- *  Sometimes a special sort order is required that cannot defined as a rule.
- *  Instead a list defines the sequence.
+ *  <p>{@summary A comparator that works on a list of sort keys.}</p>
+ *  <p>Sometimes, a special sort order is required that cannot be defined as a
+ *  rule based on the values themselves. Instead an ordered list of value
+ *  defines their sequence.</p>
+ *  <p>The implementation first determines the key for a given value, then it
+ *  looks up that key in the key list to determine the sort order. Values whose
+ *  keys are not in the key list are placed on the list, will be ordered based
+ *  on the order implied by the given comparator according their keys.</p>
  *
  *  @param  <T> The type to order.
  *  @param  <K> The key type that is used to determine the order; this may be
  *      the same as the type itself.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ListBasedComparator.java 980 2022-01-06 15:29:19Z tquadrat $
+ *  @version $Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 980 2022-01-06 15:29:19Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public class ListBasedComparator<T,K> implements Comparator<T>
 {
@@ -59,7 +63,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *  that returns the instance itself as the sort order key.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: ListBasedComparator.java 980 2022-01-06 15:29:19Z tquadrat $
+     *  @version $Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $
      *
      *  @param  <T> The type to order.
      *  @param  <K> The key type that is used to determine the order; this may
@@ -68,17 +72,9 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 980 2022-01-06 15:29:19Z tquadrat $" )
-    private static class SimpleKeyProvider<T,K> implements KeyProvider<T,K>
+    @ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+    public static class SimpleKeyProvider<T,K extends T> implements KeyProvider<T,K>
     {
-            /*--------------*\
-        ====** Constructors **=================================================
-            \*--------------*/
-        /**
-         *  Creates a new {@code SimpleKeyProvider} instance.
-         */
-        public SimpleKeyProvider() { /* Just exists */ }
-
             /*---------*\
         ====** Methods **======================================================
             \*---------*/
@@ -94,15 +90,6 @@ public class ListBasedComparator<T,K> implements Comparator<T>
     }
     //  class SimpleKeyProvider
 
-        /*-----------*\
-    ====** Constants **========================================================
-        \*-----------*/
-    /**
-     *  An empty array of {@code ListBasedComparator<T>} objects.
-     */
-    @SuppressWarnings( "rawtypes" )
-    public static final ListBasedComparator [] EMPTY_ListBasedComparator_ARRAY = new ListBasedComparator [0];
-
         /*------------*\
     ====** Attributes **=======================================================
         \*------------*/
@@ -110,7 +97,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *  The comparator that is used to determine the sort order for instances
      *  that do not have their keys in the list; may be {@code null}.
      */
-    private final Comparator<? super T> m_Comparator;
+    private final Comparator<? super K> m_Comparator;
 
     /**
      *  The key provider.
@@ -128,86 +115,19 @@ public class ListBasedComparator<T,K> implements Comparator<T>
     /**
      *  Creates a new {@code ListBasedComparator} instance.
      *
-     *  @param  keys    The sort order keys.
-     */
-    @SuppressWarnings( "MethodCanBeVariableArityMethod" )
-    public ListBasedComparator( final K [] keys )
-    {
-        this( new SimpleKeyProvider<>(), null, null, requireNonNullArgument( keys, "keys" ) );
-    }   //  ListBasedComparator()
-
-    /**
-     *  Creates a new {@code ListBasedComparator} instance.
-     *
-     *  @param  keys    The sort order keys.
-     */
-    public ListBasedComparator( final List<K> keys )
-    {
-        this( new SimpleKeyProvider<>(), null, requireNonNullArgument( keys, "keys" ), null );
-    }   //  ListBasedComparator()
-
-    /**
-     *  Creates a new {@code ListBasedComparator} instance.
-     *
      *  @param  keyProvider The implementation of
      *      {@link org.tquadrat.foundation.util.Comparators.KeyProvider}
      *      that returns the sort keys for the instances to compare.
      *  @param  comparator  The comparator that is used to order the instances
-     *      that are not listed; if {@code null}, those are ordered randomly in
-     *      a non-consistent way if they or their keys do not implement the
-     *      {@link Comparable}
-     *      interface.
+     *      that are not listed.
      *  @param  keys    The sort order keys.
-     */
-    public ListBasedComparator( final KeyProvider<T,K> keyProvider, final Comparator<? super T> comparator, final List<K> keys )
-    {
-        this( keyProvider, comparator, requireNonNullArgument( keys, "keys" ), null );
-    }   //  ListBasedComparator()
-
-    /**
-     *  Creates a new {@code ListBasedComparator} instance.
-     *
-     *  @param  keyProvider The implementation of
-     *      {@link org.tquadrat.foundation.util.Comparators.KeyProvider}
-     *      that returns the sort keys for the instances to compare.
-     *  @param  comparator  The comparator that is used to order the instances
-     *      that are not listed; if {@code null}, those are ordered randomly in
-     *      a non-consistent way if they or their keys do not implement the
-     *      {@link Comparable}
-     *      interface.
-     *  @param  keys    The sort order keys.
-     */
-    @SafeVarargs
-    public ListBasedComparator( final KeyProvider<T,K> keyProvider, final Comparator<? super T> comparator, final K... keys )
-    {
-        this( keyProvider, comparator, null, requireNonNullArgument( keys, "keys" ) );
-    }   //  ListBasedComparator()
-
-    /**
-     *  Creates a new {@code ListBasedComparator} instance.
-     *
-     *  @param  keyProvider The implementation of
-     *      {@link org.tquadrat.foundation.util.Comparators.KeyProvider}
-     *      that returns the sort keys for the instances to compare.
-     *  @param  comparator  The comparator that is used to order the instances
-     *      that are not listed; if {@code null}, those are ordered randomly in
-     *      a non-consistent way if they or their keys do not implement the
-     *      {@link Comparable}
-     *      interface.
-     *  @param  keysList    The sort order keys in a list; is {@code null} when
-     *      {@code keysArray} is not {@code null}.
-     *  @param  keysArray   The sort order keys in an array; is {@code null}
-     *      when {@code keysList} is not {@code null}.
      */
     @SuppressWarnings( {"unchecked", "MethodCanBeVariableArityMethod"} )
-    private ListBasedComparator( final KeyProvider<T,K> keyProvider, final Comparator<? super T> comparator, final List<K> keysList, final K [] keysArray )
+    public ListBasedComparator( final KeyProvider<T,K> keyProvider, final Comparator<? super K> comparator, final K [] keys )
     {
-        assert isNull( keysList ) ^ isNull( keysArray ) : "Both, keysList and keysArray are either null or not null";
-
-        //noinspection SuspiciousArrayCast
-        m_Keys = nonNull( keysList ) ? (K []) keysList.toArray() : keysArray.clone();
+        m_Keys = requireNonNullArgument( keys, "keys" );
         m_KeyProvider = requireNonNullArgument( keyProvider, "keyProvider" );
-        m_Comparator = comparator;
+        m_Comparator = requireNonNullArgument( comparator, "comparator" );
     }   //  ListBasedComparator()
 
         /*---------*\
@@ -216,7 +136,6 @@ public class ListBasedComparator<T,K> implements Comparator<T>
     /**
      *  {@inheritDoc}
      */
-    @SuppressWarnings( {"rawtypes", "unchecked", "preview"} )
     @Override
     public final int compare( final T o1, final T o2 )
     {
@@ -246,39 +165,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
                 if( index1 == NOT_FOUND )
                 {
                     //---* Both are not in the list *--------------------------
-                    //noinspection IfStatementWithTooManyBranches
-                    if( nonNull( m_Comparator ) )
-                    {
-                        //---* Use the comparator if we have one *-------------
-                        retValue = signum( m_Comparator.compare( o1, o2 ) );
-                    }
-                    else if( key1 instanceof Comparable comparable )
-                    {
-                        //---* Use the implicit natural order *----------------
-                        retValue = signum( comparable.compareTo( key2 ) );
-                    }
-                    else if( (o1 != key1) || (o2 != key2) )
-                    /*
-                     * Yes, we know that we do check for *identity* here! If
-                     * no explicit KeyProvider was given, the SimpleKeyProvider
-                     * is used, and that will return o# as Key#. This would
-                     * mean that we have performed the action below already
-                     * above …
-                     */
-                    {
-                        if( o1 instanceof Comparable comparable )
-                        {
-                            retValue = signum( comparable.compareTo( o2 ) );
-                        }
-                    }
-                    else
-                    {
-                        /*
-                         * We have no idea how to order, so we just compare the
-                         * hashcodes of the keys.
-                         */
-                        retValue = Long.signum( (long) key1.hashCode() - (long) key2.hashCode() );
-                    }
+                    retValue = signum( m_Comparator.compare( key1, key2 ) );
                 }
             }
             else
@@ -297,7 +184,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
                 else
                 {
                     /*
-                     * That one that is closer to the begin of the list is less
+                     * That one that is closer to the start of the list is less
                      * than the other one.
                      */
                     retValue = signum( index1 - index2 );

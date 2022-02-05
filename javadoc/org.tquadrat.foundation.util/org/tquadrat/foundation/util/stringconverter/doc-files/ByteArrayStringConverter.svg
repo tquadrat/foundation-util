@@ -6,8 +6,8 @@
      xmlns:xlink="http://www.w3.org/1999/xlink"
      version='1.1'
      baseProfile='full'
-     width='1177.000'
-     height='610.000'>
+     width='703.000'
+     height='753.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,60 +118,47 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='95.000'
-                  width='874.000'
+                  height='106.000'
+                  width='502.000'
                   x='0.000'
-                  y='8.000'/>
+                  y='0.000'/>
         </clipPath>
-        <symbol id='org.tquadrat.foundation.util.internal.ListBasedComparator'>
+        <symbol id='org.tquadrat.foundation.util.stringconverter.ByteArrayStringConverter'>
             <g>
                 <g class='focusClass'
                    clip-path='url(#ID000001)'>
                     <rect x='0.000'
-                          y='8.000'
-                          width='874.000'
-                          height='95.000'
+                          y='0.000'
+                          width='502.000'
+                          height='106.000'
                           class='focusClass'/>
                     <line x1='0.000'
-                          y1='25.000'
-                          x2='874.000'
-                          y2='25.000'
+                          y1='17.000'
+                          x2='502.000'
+                          y2='17.000'
                           class='separator'/>
-                    <text x='380.000'
-                          y='21.000'>ListBasedComparator</text>
+                    <text x='179.000'
+                          y='13.000'>ByteArrayStringConverter</text>
                     <line x1='0.000'
-                          y1='64.000'
-                          x2='874.000'
-                          y2='64.000'
+                          y1='45.000'
+                          x2='502.000'
+                          y2='45.000'
                           class='separator'/>
-                    <text y='38.000'
-                          class='final'>- m_Comparator:java.util.Comparator&lt;? super K&gt;</text>
-                    <text y='49.000'
-                          class='final'>- m_KeyProvider:org.tquadrat.foundation.util.Comparators.KeyProvider&lt;T,K&gt;</text>
-                    <text y='60.000'
-                          class='final'>- m_Keys:K[]</text>
+                    <text y='30.000'
+                          class='static final'>+ INSTANCE:org.tquadrat.foundation.util.stringconverter.ByteArrayStringConverter</text>
+                    <text y='41.000'
+                          class='static final'>- serialVersionUID:long</text>
                     <text x='5.000'
-                          y='77.000'>+ ListBasedComparator(keyProvider:org.tquadrat.foundation.util.Comparators.KeyProvider&lt;T,K&gt;,comparator:java.util.Comparator&lt;? super K&gt;,keys:K[])</text>
+                          y='58.000'>+ ByteArrayStringConverter()</text>
                     <text x='5.000'
-                          y='88.000'>+ compare(o1:T,o2:T):int</text>
+                          y='69.000'>+ fromString(source:java.lang.CharSequence):byte[]</text>
                     <text x='5.000'
-                          y='99.000'>- searchKey(key:K):int</text>
-                </g>
-                <g transform='translate(849.000 0.000)'>
-                    <rect x='0.000'
-                          y='1.000'
-                          width='50.000'
-                          height='17.000'
-                          class='template'/>
-                    <rect x='0.000'
-                          y='1.000'
-                          width='50.000'
-                          height='17.000'
-                          class='focusClass'
-                          stroke='none'
-                          stroke-opacity='0.0'/>
+                          y='80.000'
+                          class='static'>+ provider():org.tquadrat.foundation.util.stringconverter.ByteArrayStringConverter</text>
                     <text x='5.000'
-                          y='14.000'>T,K</text>
+                          y='91.000'>+ getSubjectClass():java.util.Collection&lt;java.lang.Class&lt;?&gt;&gt;</text>
+                    <text x='5.000'
+                          y='102.000'>+ toString(source:byte[]):java.lang.String</text>
                 </g>
             </g>
         </symbol>
@@ -233,86 +220,55 @@
         </symbol>
         <clipPath id='ID000003'>
             <rect class='externalClass'
-                  height='249.000'
-                  width='808.000'
+                  height='117.000'
+                  width='628.000'
                   x='0.000'
                   y='8.000'/>
         </clipPath>
-        <symbol id='java.util.Comparator'>
+        <symbol id='org.tquadrat.foundation.lang.StringConverter'>
             <g>
                 <g clip-path='url(#ID000003)'>
                     <rect x='0.000'
                           y='8.000'
-                          width='808.000'
-                          height='249.000'
+                          width='628.000'
+                          height='117.000'
                           class='externalClass'/>
                     <line x1='0.000'
                           y1='36.000'
-                          x2='808.000'
+                          x2='628.000'
                           y2='36.000'
                           class='separator'/>
-                    <text x='377.600'
+                    <text x='287.600'
                           y='21.000'
                           class='stereotype'>&#xAB;Interface&#xBB;</text>
-                    <text x='374.000'
+                    <text x='269.000'
                           y='32.000'
-                          class='abstract'>Comparator</text>
+                          class='abstract'>StringConverter</text>
                     <line x1='0.000'
-                          y1='53.000'
-                          x2='808.000'
-                          y2='53.000'
+                          y1='64.000'
+                          x2='628.000'
+                          y2='64.000'
                           class='separator'/>
-                    <text x='5.000'
-                          y='49.000'/>
-                    <text x='5.000'
-                          y='66.000'
-                          class='abstract'>+ compare(arg0:T,arg1:T):int</text>
+                    <text y='49.000'
+                          class='static final'>+ METHOD_NAME_GetSubjectClass:java.lang.String</text>
+                    <text y='60.000'
+                          class='static final'>+ METHOD_NAME_Provider:java.lang.String</text>
                     <text x='5.000'
                           y='77.000'
-                          class='abstract'>+ equals(arg0:java.lang.Object):boolean</text>
+                          class='abstract static'>+ forClass(arg0:java.lang.Class&lt;C&gt;):java.util.Optional&lt;org.tquadrat.foundation.lang.StringConverter&lt;C&gt;&gt;</text>
                     <text x='5.000'
-                          y='88.000'>&#x2A22; reversed():java.util.Comparator&lt;T&gt;</text>
+                          y='88.000'
+                          class='abstract static'>+ forEnum(arg0:java.lang.Class&lt;E&gt;):org.tquadrat.foundation.lang.StringConverter&lt;E&gt;</text>
                     <text x='5.000'
-                          y='99.000'>&#x2A22; thenComparing(arg0:java.util.Comparator&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
+                          y='99.000'
+                          class='abstract'>+ fromString(arg0:java.lang.CharSequence):T</text>
                     <text x='5.000'
-                          y='110.000'>&#x2A22; thenComparing(arg0:java.util.function.Function&lt;? super T,? extends U&gt;,arg1:java.util.Comparator&lt;? super U&gt;):java.util.Comparator&lt;T&gt;</text>
+                          y='110.000'>&#x2A22; toString(arg0:T):java.lang.String</text>
                     <text x='5.000'
-                          y='121.000'>&#x2A22; thenComparing(arg0:java.util.function.Function&lt;? super T,? extends U&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='132.000'>&#x2A22; thenComparingInt(arg0:java.util.function.ToIntFunction&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='143.000'>&#x2A22; thenComparingLong(arg0:java.util.function.ToLongFunction&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='154.000'>&#x2A22; thenComparingDouble(arg0:java.util.function.ToDoubleFunction&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='165.000'
-                          class='abstract static'>+ reverseOrder():java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='176.000'
-                          class='abstract static'>+ naturalOrder():java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='187.000'
-                          class='abstract static'>+ nullsFirst(arg0:java.util.Comparator&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='198.000'
-                          class='abstract static'>+ nullsLast(arg0:java.util.Comparator&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='209.000'
-                          class='abstract static'>+ comparing(arg0:java.util.function.Function&lt;? super T,? extends U&gt;,arg1:java.util.Comparator&lt;? super U&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='220.000'
-                          class='abstract static'>+ comparing(arg0:java.util.function.Function&lt;? super T,? extends U&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='231.000'
-                          class='abstract static'>+ comparingInt(arg0:java.util.function.ToIntFunction&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='242.000'
-                          class='abstract static'>+ comparingLong(arg0:java.util.function.ToLongFunction&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='253.000'
-                          class='abstract static'>+ comparingDouble(arg0:java.util.function.ToDoubleFunction&lt;? super T&gt;):java.util.Comparator&lt;T&gt;</text>
+                          y='121.000'
+                          class='abstract static'>+ list():java.util.Collection&lt;java.lang.Class&lt;?&gt;&gt;</text>
                 </g>
-                <g transform='translate(783.000 0.000)'>
+                <g transform='translate(603.000 0.000)'>
                     <rect x='0.000'
                           y='1.000'
                           width='50.000'
@@ -330,20 +286,64 @@
                 </g>
             </g>
         </symbol>
+        <clipPath id='ID000004'>
+            <rect class='externalClass'
+                  height='62.000'
+                  width='82.000'
+                  x='0.000'
+                  y='0.000'/>
+        </clipPath>
+        <symbol id='java.io.Serializable'>
+            <g>
+                <g clip-path='url(#ID000004)'>
+                    <rect x='0.000'
+                          y='0.000'
+                          width='82.000'
+                          height='62.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='28.000'
+                          x2='82.000'
+                          y2='28.000'
+                          class='separator'/>
+                    <text x='14.600'
+                          y='13.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='5.000'
+                          y='24.000'
+                          class='abstract'>Serializable</text>
+                    <line x1='0.000'
+                          y1='45.000'
+                          x2='82.000'
+                          y2='45.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='41.000'/>
+                    <text x='5.000'
+                          y='58.000'/>
+                </g>
+            </g>
+        </symbol>
     </defs>
     <path class='inheritance'
-          d='M551.000,390.000 c0.000,-178.000,-404.000,0.000,-404.000,-178.000 v-15'
+          d='M376.500,522.000 c0.000,-310.000,-200.750,0.000,-200.750,-310.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='implementation'
-          d='M601.000,390.000 c0.000,-93.000,122.000,0.000,122.000,-93.000 v-15'
+          d='M326.500,522.000 c0.000,-85.000,12.500,0.000,12.500,-85.000 v-15'
           marker-end='url(#implementation)'/>
-    <use x='25.000'
+    <path class='inheritance'
+          d='M339.000,305.000 c0.000,-203.000,188.250,0.000,188.250,-203.000 v-15'
+          marker-end='url(#inheritance)'/>
+    <use x='53.750'
          y='25.000'
          xlink:href='#java.lang.Object'/>
-    <use x='319.000'
+    <use x='486.250'
          y='25.000'
-         xlink:href='#java.util.Comparator'/>
-    <use x='139.000'
-         y='382.000'
-         xlink:href='#org.tquadrat.foundation.util.internal.ListBasedComparator'/>
+         xlink:href='#java.io.Serializable'/>
+    <use x='25.000'
+         y='297.000'
+         xlink:href='#org.tquadrat.foundation.lang.StringConverter'/>
+    <use x='100.500'
+         y='522.000'
+         xlink:href='#org.tquadrat.foundation.util.stringconverter.ByteArrayStringConverter'/>
 </svg>

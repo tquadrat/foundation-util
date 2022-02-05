@@ -19,7 +19,6 @@ package org.tquadrat.foundation.util.internal;
 
 import static java.lang.System.out;
 import static java.util.Arrays.sort;
-import static java.util.Collections.emptyList;
 import static java.util.Comparator.naturalOrder;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -27,10 +26,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_String_ARRAY;
 import static org.tquadrat.foundation.util.StringUtils.format;
-import static org.tquadrat.foundation.util.SystemUtils.getRandom;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -46,10 +43,9 @@ import org.tquadrat.foundation.util.Comparators.KeyProvider;
  *  {@link ListBasedComparator}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestListBasedComparator.java 883 2021-03-02 18:39:20Z tquadrat $
+ *  @version $Id: TestListBasedComparator.java 1009 2022-02-05 09:03:15Z tquadrat $
  */
-@SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestListBasedComparator.java 883 2021-03-02 18:39:20Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestListBasedComparator.java 1009 2022-02-05 09:03:15Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.internal.TestListBasedComparator" )
 public class TestListBasedComparator extends TestBaseClass
 {
@@ -60,6 +56,7 @@ public class TestListBasedComparator extends TestBaseClass
      *  Tests for the method
      *  {@link ListBasedComparator#compare(Object, Object)}.
      */
+    @SuppressWarnings( "QuestionableName" )
     @Test
     final void testCompare()
     {
@@ -77,10 +74,10 @@ public class TestListBasedComparator extends TestBaseClass
             .collect( Collectors.toMap( i -> values [i], i -> Integer.valueOf( i + 1 ) ) );
 
         //---* The key provider *----------------------------------------------
-        final KeyProvider<String,Integer> keyProvider = s -> map.computeIfAbsent( s, $ -> Integer.valueOf( getRandom().nextInt( 94 ) + 6 ) );
+        final var keyProvider = (KeyProvider<String, Integer>) s -> map.computeIfAbsent( s, $ -> Integer.valueOf( map.size() ) );
 
         //---* The fallback comparator *---------------------------------------
-        final Comparator<String> fallbackComparator = naturalOrder();
+        final Comparator<Integer> fallbackComparator = naturalOrder();
 
         //---* The key list *--------------------------------------------------
         final var keysList = map.values().toArray( Integer []::new );
@@ -105,8 +102,9 @@ public class TestListBasedComparator extends TestBaseClass
         assertEquals(  1, candidate.compare( three, two ) );
         assertEquals( -1, candidate.compare( one, "acht" ) );
         assertEquals(  1, candidate.compare( "tausend", two ) );
-        assertEquals( -1, candidate.compare( "hundert", "tausend" ) );
-        assertEquals(  1, candidate.compare( "tausend", "million" ) );
+        assertEquals( 1, candidate.compare( "hundert", "tausend" ) );
+        //noinspection GrazieInspection
+        assertEquals(  -1, candidate.compare( "tausend", "million" ) );
     }   //  testCompare()
 
     /**
@@ -119,37 +117,9 @@ public class TestListBasedComparator extends TestBaseClass
 
         ListBasedComparator<String,String> candidate;
         final Comparator<String> defaultComparator = naturalOrder();
-        final KeyProvider<String,String> keyProvider = s -> s;
+        final var keyProvider = (KeyProvider<String, String>) s -> s;
 
         final Class<? extends Throwable> expectedException = NullArgumentException.class;
-
-        try
-        {
-            candidate = new ListBasedComparator<>( (String []) null );
-            assertNotNull( candidate );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException ) t.printStackTrace( out );
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
-
-        try
-        {
-            candidate = new ListBasedComparator<>( (List<String>) null );
-            assertNotNull( candidate );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException ) t.printStackTrace( out );
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
 
         try
         {
@@ -167,35 +137,8 @@ public class TestListBasedComparator extends TestBaseClass
 
         try
         {
+            //noinspection RedundantCast
             candidate = new ListBasedComparator<>( keyProvider, defaultComparator, (String []) null );
-            assertNotNull( candidate );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException ) t.printStackTrace( out );
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
-
-        try
-        {
-            candidate = new ListBasedComparator<>( null, defaultComparator, emptyList() );
-            assertNotNull( candidate );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException ) t.printStackTrace( out );
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
-
-        try
-        {
-            candidate = new ListBasedComparator<>( keyProvider, defaultComparator, (List<String>) null );
             assertNotNull( candidate );
             fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
         }

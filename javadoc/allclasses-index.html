@@ -74,18 +74,7 @@ loadScripts(document, 'script');</script>
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link"><code>String</code></a>
-  values in BASE64 format.<br>
-  <br>The BASE64 format returned from
-  <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/BASE64StringConverter.html#fromString(java.lang.CharSequence)"><code>BASE64StringConverter.fromString(CharSequence)</code></a>
-  contains the source String in
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/charset/StandardCharsets.html#UTF_8" title="class or interface in java.nio.charset" class="external-link">UTF-8</a>
-  encoding and it is itself encoded to
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/charset/StandardCharsets.html#US_ASCII" title="class or interface in java.nio.charset" class="external-link">ASCII</a>.<br>
-  <br>Correspondingly,
-  <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/BASE64StringConverter.html#toString(java.lang.String)"><code>BASE64StringConverter.toString(String)</code></a>
-  expects an ASCII encoded BASE64 stream containing a UTF-8 encoded
-  String.<br>
-  <br>Both methods are using the BASE64 <i>basic</i> encoding scheme.</div>
+  values in BASE64 format.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/BigDecimalStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">BigDecimalStringConverter</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
@@ -112,14 +101,20 @@ loadScripts(document, 'script');</script>
   value <code>true</code>, and any other String for <code>false</code> (including the
   empty String!)</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ByteStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">ByteStringConverter</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ByteArrayStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">ByteArrayStringConverter</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">The implementation of
+  <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
+  for <code>byte</code> arrays.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ByteStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">ByteStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>NumberStringConverter</code></a>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Byte.html" title="class or interface in java.lang" class="external-link"><code>Byte</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CharacterStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CharacterStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CharacterStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CharacterStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -130,16 +125,16 @@ loadScripts(document, 'script');</script>
   with an empty String will cause an
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link"><code>IllegalArgumentException</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CharSequenceStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CharSequenceStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CharSequenceStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CharSequenceStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link"><code>CharSequence</code></a>
   values.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CharsetStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CharsetStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CharsetStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CharsetStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -151,13 +146,13 @@ loadScripts(document, 'script');</script>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/charset/Charset.html#forName(java.lang.String)" title="class or interface in java.nio.charset" class="external-link"><code>Charset.forName(String)</code></a>
   to obtain an instance of <code>Charset</code> based on the given value.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html" title="class in org.tquadrat.foundation.util">CharSetUtils</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html" title="class in org.tquadrat.foundation.util">CharSetUtils</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class provides several utilities dealing with Strings in different
   character sets/encodings.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ClassStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">ClassStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ClassStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">ClassStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -169,42 +164,42 @@ loadScripts(document, 'script');</script>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html#forName(java.lang.String,boolean,java.lang.ClassLoader)" title="class or interface in java.lang" class="external-link"><code>Class.forName(String, boolean, ClassLoader)</code></a>
   to load the class with the given name.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.html" title="class in org.tquadrat.foundation.util">Comparators</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.html" title="class in org.tquadrat.foundation.util">Comparators</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class provides factory methods for a bunch of different
   implementations of
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link"><code>Comparator</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.KeyProvider.html" title="type parameter in Comparators.KeyProvider">T</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.KeyProvider.html" title="type parameter in Comparators.KeyProvider">K</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.KeyProvider.html" title="type parameter in Comparators.KeyProvider">T</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.KeyProvider.html" title="type parameter in Comparators.KeyProvider">K</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Implementations of this interface provides the sort order
   key from the given instance of the type.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CurrencyStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CurrencyStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Currency.html" title="class or interface in java.util" class="external-link"><code>Currency</code></a>
   values.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/DateLongStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">DateLongStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/DateLongStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">DateLongStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation for the interface
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Date.html" title="class or interface in java.util" class="external-link"><code>Date</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/DayOfWeekStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">DayOfWeekStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/DayOfWeekStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">DayOfWeekStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EnumStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>EnumStringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Month.html" title="class or interface in java.time" class="external-link"><code>Month</code></a>
   values.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/DoubleStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">DoubleStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/DoubleStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">DoubleStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>NumberStringConverter</code></a>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html" title="class or interface in java.lang" class="external-link"><code>Double</code></a>.<br>
@@ -214,8 +209,8 @@ loadScripts(document, 'script');</script>
   in particular, it expects decimal points instead of decimal commas for each
   locale.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/DurationStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">DurationStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/DurationStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">DurationStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -231,37 +226,37 @@ loadScripts(document, 'script');</script>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Duration.html#parse(java.lang.CharSequence)" title="class or interface in java.time" class="external-link"><code>Duration.parse(CharSequence)</code></a>
   to create the <code>Duration</code> instance for the given value.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EncodedURLStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">EncodedURLStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EncodedURLStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">EncodedURLStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URL.html" title="class or interface in java.net" class="external-link"><code>URL</code></a>
   values.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/Entities.html" title="class in org.tquadrat.foundation.util.internal">Entities</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/Entities.html" title="class in org.tquadrat.foundation.util.internal">Entities</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Provides HTML and XML entity utilities.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/Entities.EntityMap.html" title="interface in org.tquadrat.foundation.util.internal">Entities.EntityMap</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/Entities.EntityMap.html" title="interface in org.tquadrat.foundation.util.internal">Entities.EntityMap</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Local interface for the data structure that is used to store the
   entity mappings.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/Entities.PrimitiveEntityMap.html" title="class in org.tquadrat.foundation.util.internal">Entities.PrimitiveEntityMap</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/Entities.PrimitiveEntityMap.html" title="class in org.tquadrat.foundation.util.internal">Entities.PrimitiveEntityMap</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A simple implementation for the interface
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/Entities.EntityMap.html" title="interface in org.tquadrat.foundation.util.internal"><code>Entities.EntityMap</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EnumStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">EnumStringConverter</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EnumStringConverter.html" title="type parameter in EnumStringConverter">T</a> extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EnumStringConverter.html" title="type parameter in EnumStringConverter">T</a>&gt;&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EnumStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">EnumStringConverter</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EnumStringConverter.html" title="type parameter in EnumStringConverter">T</a> extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link">Enum</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EnumStringConverter.html" title="type parameter in EnumStringConverter">T</a>&gt;&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for types that are derived from
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Enum.html" title="class or interface in java.lang" class="external-link"><code>Enum</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/FileStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">FileStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/FileStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">FileStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -275,12 +270,12 @@ loadScripts(document, 'script');</script>
   String will cause an
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link"><code>IllegalArgumentException</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/FinalRangeMap.html" title="class in org.tquadrat.foundation.util.internal">FinalRangeMap</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/FinalRangeMap.html" title="type parameter in FinalRangeMap">T</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/FinalRangeMap.html" title="class in org.tquadrat.foundation.util.internal">FinalRangeMap</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/FinalRangeMap.html" title="type parameter in FinalRangeMap">T</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of <code>RangeMap</code> that does not allow changes.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/FloatStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">FloatStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/FloatStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">FloatStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>NumberStringConverter</code></a>
   for <code>float</code>
@@ -292,30 +287,30 @@ loadScripts(document, 'script');</script>
   in particular, it expects decimal points instead of decimal commas for each
   locale.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html" title="interface in org.tquadrat.foundation.util">HeadTailList</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html" title="type parameter in HeadTailList">T</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html" title="interface in org.tquadrat.foundation.util">HeadTailList</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html" title="type parameter in HeadTailList">T</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">A <code>HeadTailList</code> is an unmodifiable list data
   structure</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.html" title="class in org.tquadrat.foundation.util.internal">HeadTailListImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.html" title="type parameter in HeadTailListImpl">T</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.html" title="class in org.tquadrat.foundation.util.internal">HeadTailListImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.html" title="type parameter in HeadTailListImpl">T</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation for the interface
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html" title="interface in org.tquadrat.foundation.util"><code>HeadTailList</code></a></div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.IteratorImpl.html" title="class in org.tquadrat.foundation.util.internal">HeadTailListImpl.IteratorImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.IteratorImpl.html" title="type parameter in HeadTailListImpl.IteratorImpl">T</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.IteratorImpl.html" title="class in org.tquadrat.foundation.util.internal">HeadTailListImpl.IteratorImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.IteratorImpl.html" title="type parameter in HeadTailListImpl.IteratorImpl">T</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of the interface
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Iterator.html" title="class or interface in java.util" class="external-link"><code>Iterator</code></a>
   for instances of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/HeadTailListImpl.html" title="class in org.tquadrat.foundation.util.internal"><code>HeadTailListImpl</code></a></div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html" title="class in org.tquadrat.foundation.util">HexUtils</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html" title="class in org.tquadrat.foundation.util">HexUtils</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Library of utility methods useful in dealing with converting byte arrays
   to and from strings of hexadecimal digits.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/InetAddressStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">InetAddressStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/InetAddressStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">InetAddressStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -331,42 +326,42 @@ loadScripts(document, 'script');</script>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link"><code>IllegalArgumentException</code></a>
   is thrown when that host is unknown (cannot be resolved by DNS).</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/InstantStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">InstantStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/InstantStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">InstantStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>TimeDateStringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link"><code>Instant</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/IntegerStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">IntegerStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/IntegerStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">IntegerStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>NumberStringConverter</code></a>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Integer.html" title="class or interface in java.lang" class="external-link"><code>Integer</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Some I/O, file, file system and network related helper and convenience
   methods.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.NullAppendable.html" title="class in org.tquadrat.foundation.util">IOUtils.NullAppendable</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.NullAppendable.html" title="class in org.tquadrat.foundation.util">IOUtils.NullAppendable</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This implementation of an
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Appendable.html" title="class or interface in java.lang" class="external-link"><code>Appendable</code></a>
   just swallows any data that is written to it, like the <code>/dev/null</code>
   device of a Unix or Linux machine, or <code>NUL:</code> on Windows.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.PosixPermissions.html" title="class in org.tquadrat.foundation.util">IOUtils.PosixPermissions</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.PosixPermissions.html" title="class in org.tquadrat.foundation.util">IOUtils.PosixPermissions</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The default file attributes.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/JavaUtils.html" title="class in org.tquadrat.foundation.util">JavaUtils</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/JavaUtils.html" title="class in org.tquadrat.foundation.util">JavaUtils</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class provides a bunch of helper methods that deal with the Java
   language itself and some related areas.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/KeyBasedComparator.html" title="class in org.tquadrat.foundation.util.internal">KeyBasedComparator</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/KeyBasedComparator.html" title="type parameter in KeyBasedComparator">T</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/KeyBasedComparator.html" title="type parameter in KeyBasedComparator">K</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/KeyBasedComparator.html" title="class in org.tquadrat.foundation.util.internal">KeyBasedComparator</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/KeyBasedComparator.html" title="type parameter in KeyBasedComparator">T</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/KeyBasedComparator.html" title="type parameter in KeyBasedComparator">K</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Sometimes a special sort key is used to order elements, and instead of
   hiding the generation of that key inside the method
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html#compare(T,T)" title="class or interface in java.util" class="external-link"><code>compare()</code></a>
@@ -377,74 +372,74 @@ loadScripts(document, 'script');</script>
   as an argument to its
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/KeyBasedComparator.html#%3Cinit%3E(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,boolean)">constructor</a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyList.html" title="interface in org.tquadrat.foundation.util">LazyList</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyList.html" title="type parameter in LazyList">E</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyList.html" title="interface in org.tquadrat.foundation.util">LazyList</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyList.html" title="type parameter in LazyList">E</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">The interface for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link"><code>List</code></a>
   that will be initialised only when required.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyListImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="type parameter in LazyListImpl">E</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyListImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="type parameter in LazyListImpl">E</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation for
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyList.html" title="interface in org.tquadrat.foundation.util"><code>LazyList</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyMap.html" title="interface in org.tquadrat.foundation.util">LazyMap</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyMap.html" title="type parameter in LazyMap">K</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyMap.html" title="type parameter in LazyMap">V</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyMap.html" title="interface in org.tquadrat.foundation.util">LazyMap</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyMap.html" title="type parameter in LazyMap">K</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyMap.html" title="type parameter in LazyMap">V</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">The interface for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link"><code>Map</code></a>
   that will be initialised only when required.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyMapImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyMapImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation for
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyMap.html" title="interface in org.tquadrat.foundation.util"><code>LazyMap</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySet.html" title="interface in org.tquadrat.foundation.util">LazySet</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySet.html" title="type parameter in LazySet">E</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySet.html" title="interface in org.tquadrat.foundation.util">LazySet</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySet.html" title="type parameter in LazySet">E</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">The interface for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link"><code>Set</code></a>
   that will be initialised only when required.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySetImpl.html" title="class in org.tquadrat.foundation.util.internal">LazySetImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySetImpl.html" title="type parameter in LazySetImpl">E</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySetImpl.html" title="class in org.tquadrat.foundation.util.internal">LazySetImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySetImpl.html" title="type parameter in LazySetImpl">E</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation for
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySet.html" title="interface in org.tquadrat.foundation.util"><code>LazySet</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySortedMap.html" title="interface in org.tquadrat.foundation.util">LazySortedMap</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySortedMap.html" title="type parameter in LazySortedMap">K</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySortedMap.html" title="type parameter in LazySortedMap">V</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySortedMap.html" title="interface in org.tquadrat.foundation.util">LazySortedMap</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySortedMap.html" title="type parameter in LazySortedMap">K</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazySortedMap.html" title="type parameter in LazySortedMap">V</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">The interface for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/SortedMap.html" title="class or interface in java.util" class="external-link"><code>SortedMap</code></a>
   that will be initialised only when required.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySortedMapImpl.html" title="class in org.tquadrat.foundation.util.internal">LazySortedMapImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySortedMapImpl.html" title="type parameter in LazySortedMapImpl">K</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySortedMapImpl.html" title="type parameter in LazySortedMapImpl">V</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySortedMapImpl.html" title="class in org.tquadrat.foundation.util.internal">LazySortedMapImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySortedMapImpl.html" title="type parameter in LazySortedMapImpl">K</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySortedMapImpl.html" title="type parameter in LazySortedMapImpl">V</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation for
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/LazyMap.html" title="interface in org.tquadrat.foundation.util"><code>LazyMap</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html" title="class in org.tquadrat.foundation.util.internal">ListBasedComparator</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Sometimes a special sort order is required that cannot defined as a rule.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.SimpleKeyProvider.html" title="class in org.tquadrat.foundation.util.internal">ListBasedComparator.SimpleKeyProvider</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">T</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">K</a>&gt;</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html" title="class in org.tquadrat.foundation.util.internal">ListBasedComparator</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;</div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">A comparator that works on a list of sort keys.</div>
+</div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.SimpleKeyProvider.html" title="class in org.tquadrat.foundation.util.internal">ListBasedComparator.SimpleKeyProvider</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">T</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">K</a> extends <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">T</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A simple implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util"><code>Comparators.KeyProvider</code></a>
   that returns the instance itself as the sort order key.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocalDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalDateStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocalDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalDateStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>TimeDateStringConverter</code></a>
   for <code>java.time.LocalDate</code>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocalDateTimeStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalDateTimeStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocalDateTimeStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalDateTimeStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>TimeDateStringConverter</code></a>
   for <code>java.time.LocalDateTime</code>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocaleStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocaleStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocaleStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocaleStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -456,35 +451,35 @@ loadScripts(document, 'script');</script>
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#retrieveLocale(java.lang.CharSequence)"><code>SystemUtils.retrieveLocale(CharSequence)</code></a>
   to obtain an instance of <code>Locale</code> based on the given value.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocalTimeStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalTimeStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocalTimeStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LocalTimeStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>TimeDateStringConverter</code></a>
   for <code>java.time.LocalTime</code>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LongStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LongStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LongStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">LongStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>NumberStringConverter</code></a>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Long.html" title="class or interface in java.lang" class="external-link"><code>Long</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/MonthStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">MonthStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/MonthStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">MonthStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/EnumStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>EnumStringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Month.html" title="class or interface in java.time" class="external-link"><code>Month</code></a>
   values.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">NumberStringConverter</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="type parameter in NumberStringConverter">T</a> extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html" title="class or interface in java.lang" class="external-link">Number</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">NumberStringConverter</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="type parameter in NumberStringConverter">T</a> extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html" title="class or interface in java.lang" class="external-link">Number</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The base class for implementations of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for types that extend
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Number.html" title="class or interface in java.lang" class="external-link"><code>Number</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/PathStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">PathStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/PathStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">PathStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -503,16 +498,16 @@ loadScripts(document, 'script');</script>
   String will cause an
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link"><code>IllegalArgumentException</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/PatternStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">PatternStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/PatternStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">PatternStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for regular expressions that are stored as
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/regex/Pattern.html" title="class or interface in java.util.regex" class="external-link"><code>Pattern</code></a>
   values.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/PeriodStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">PeriodStringConverter</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/PeriodStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">PeriodStringConverter</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -528,37 +523,43 @@ loadScripts(document, 'script');</script>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Period.html#parse(java.lang.CharSequence)" title="class or interface in java.time" class="external-link"><code>Period.parse(CharSequence)</code></a>
   to create the <code>Period</code> instance for the given value.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeFunctions.html" title="class in org.tquadrat.foundation.util">RangeFunctions</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeFunctions.html" title="class in org.tquadrat.foundation.util">RangeFunctions</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Several range checking functions.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html" title="type parameter in RangeMap">T</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab1"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html" title="type parameter in RangeMap">T</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab1">
 <div class="block"><code>A range map is used to map a value to a given numerical range.</code>
   The lower border of the lowest range is always
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html#MAX_VALUE" title="class or interface in java.lang" class="external-link"><code>-Double.MAX_VALUE</code></a>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&gt;</div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of the interface
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html" title="interface in org.tquadrat.foundation.util"><code>RangeMap</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html" title="class in org.tquadrat.foundation.util">SecurityUtils</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html" title="class in org.tquadrat.foundation.util">SecurityUtils</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">This class provides some utility functions that are helpful in the
   security arena.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ShortStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">ShortStringConverter</a></div>
-<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ShortStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">ShortStringConverter</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">The implementation of
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/NumberStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>NumberStringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Short.html" title="class or interface in java.lang" class="external-link"><code>Short</code></a>.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html" title="class in org.tquadrat.foundation.util">Stack</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html" title="type parameter in Stack">T</a>&gt;</div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html" title="class in org.tquadrat.foundation.util">Stack</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Stack.html" title="type parameter in Stack">T</a>&gt;</div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">A stand-alone implementation for stack, without the ballast
   from the Collections framework.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/StringBasedComparator.html" title="class in org.tquadrat.foundation.util.internal">StringBasedComparator</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/StringBasedComparator.html" title="type parameter in StringBasedComparator">T</a>&gt;</div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">An implementation of
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link"><code>Comparator</code></a>
+  that compares object instances based on their String representation.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/StringStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">StringStringConverter</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">

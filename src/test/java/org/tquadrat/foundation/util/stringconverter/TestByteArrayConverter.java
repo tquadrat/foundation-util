@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -17,7 +17,8 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static java.nio.charset.StandardCharsets.UTF_16;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -28,72 +29,84 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.lang.Objects;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 
 /**
  *  Tests for the class
- *  {@link org.tquadrat.foundation.util.stringconverter.BASE64StringConverter}.
+ *  {@link ByteArrayStringConverter}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestBASE64Converter.java 1007 2022-02-05 01:03:43Z tquadrat $
+ *  @version $Id: TestByteArrayConverter.java 1007 2022-02-05 01:03:43Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestBASE64Converter.java 1007 2022-02-05 01:03:43Z tquadrat $" )
-@DisplayName( "org.tquadrat.foundation.util.stringconverter.TestBASE64Converter" )
-public class TestBASE64Converter extends TestBaseClass
+@ClassVersion( sourceVersion = "$Id: TestByteArrayConverter.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+@DisplayName( "org.tquadrat.foundation.util.stringconverter.TestByteArrayConverter" )
+public class TestByteArrayConverter extends TestBaseClass
 {
         /*---------*\
     ====** Methods **==========================================================
         \*---------*/
     /**
      *  The tests for
-     *  {@link BASE64StringConverter}.
+     *  {@link ByteArrayStringConverter}.
      */
     @Test
-    final void testBASE64Conversion()
+    final void testByteArrayConversion()
     {
         skipThreadTest();
 
-        final var candidate = BASE64StringConverter.INSTANCE;
+        final var candidate = ByteArrayStringConverter.INSTANCE;
         assertNotNull( candidate );
 
         assertNull( candidate.fromString( null ) );
         assertNull( candidate.toString( null ) );
-    }   //  testBASE64Conversion()
+    }   //  testByteArrayConversion()
 
     /**
      *  The tests for
-     *  {@link BASE64StringConverter}.
+     *  {@link ByteArrayStringConverter}.
      *
      *  @param  value   The value for the tests.
      */
     @ParameterizedTest
     @MethodSource( "valueProvider" )
-    final void testValueConversionBASE64( final String value )
+    final void testValueConversionByteArray( final byte [] value )
     {
         skipThreadTest();
 
-        final var candidate = BASE64StringConverter.INSTANCE;
+        final var candidate = ByteArrayStringConverter.INSTANCE;
         assertNotNull( candidate );
 
-        assertEquals( value, candidate.fromString( candidate.toString( value ) ) );
-    }   //  testValueConversionBASE64()
+        assertArrayEquals( value, candidate.fromString( candidate.toString( value ) ) );
+    }   //  testValueConversionByteArray()
 
     /**
      *  Provides test values for
-     *  {@link #testValueConversionBASE64(String)}.
+     *  {@link #testValueConversionByteArray(String)}.
      *
      *  @return The test values.
      *  @throws Exception   Something unexpected went wrong.
      */
-    static final Stream<String> valueProvider() throws Exception
+    static final Stream<byte []> valueProvider() throws Exception
     {
-        final var retValue = TestStringConverter.valueProvider();
+        final var builder = Stream.<byte []>builder();
+        builder.add( new byte [0] );
+        TestStringConverter.valueProvider()
+            .filter( Objects::nonNull )
+            .map( s -> s.getBytes( UTF_16 ) )
+            .forEach( builder::add );
+        var array = new byte [] { 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x0A };
+        builder.add( array );
+        array = new byte [] { -1 };
+        builder.add( array );
+
+        final var retValue = builder.build();
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  valueProvider()
 }
-//  class TestBASE64Converter
+//  class TestByteArrayConverter
 
 /*
  *  End of File

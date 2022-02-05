@@ -8,7 +8,6 @@
 <meta name="description" content="declaration: module: org.tquadrat.foundation.util, package: org.tquadrat.foundation.util.internal, class: ListBasedComparator">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <meta name="keywords" content="org.tquadrat.foundation.util.internal.ListBasedComparator class">
-<meta name="keywords" content="EMPTY_ListBasedComparator_ARRAY">
 <meta name="keywords" content="m_Comparator">
 <meta name="keywords" content="m_KeyProvider">
 <meta name="keywords" content="m_Keys">
@@ -96,19 +95,25 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;T&gt;</code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: ListBasedComparator.java 980 2022-01-06 15:29:19Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#INTERNAL" title="class or interface in org.apiguardian.api" class="external-link">INTERNAL</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-49">ListBasedComparator</a>&lt;T,<wbr>K&gt;</span>
+</span><span class="modifiers">public class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-53">ListBasedComparator</a>&lt;T,<wbr>K&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;T&gt;</span></div>
-<div class="block">Sometimes a special sort order is required that cannot defined as a rule.
-  Instead a list defines the sequence.</div>
+<div class="block"><p>A comparator that works on a list of sort keys.</p>
+  <p>Sometimes, a special sort order is required that cannot be defined as a
+  rule based on the values themselves. Instead an ordered list of value
+  defines their sequence.</p>
+  <p>The implementation first determines the key for a given value, then it
+  looks up that key in the key list to determine the sort order. Values whose
+  keys are not in the key list are placed on the list, will be ordered based
+  on the order implied by the given comparator according their keys.</p></div>
 <dl class="notes">
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: ListBasedComparator.java 980 2022-01-06 15:29:19Z tquadrat $</dd>
+<dd>$Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.5</dd>
 
@@ -142,8 +147,8 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Class</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>private static class&nbsp;</code></div>
-<div class="col-second even-row-color"><code><a href="ListBasedComparator.SimpleKeyProvider.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">ListBasedComparator.SimpleKeyProvider</a>&lt;<a href="ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">T</a>,<wbr><a href="ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">K</a>&gt;</code></div>
+<div class="col-first even-row-color"><code>static class&nbsp;</code></div>
+<div class="col-second even-row-color"><code><a href="ListBasedComparator.SimpleKeyProvider.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">ListBasedComparator.SimpleKeyProvider</a>&lt;<a href="ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">T</a>,<wbr><a href="ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">K</a> extends <a href="ListBasedComparator.SimpleKeyProvider.html" title="type parameter in ListBasedComparator.SimpleKeyProvider">T</a>&gt;</code></div>
 <div class="col-last even-row-color">
 <div class="block">A simple implementation of
   <a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util"><code>Comparators.KeyProvider</code></a>
@@ -161,25 +166,20 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>static final <a href="ListBasedComparator.html" title="class in org.tquadrat.foundation.util.internal">ListBasedComparator</a>[]</code></div>
-<div class="col-second even-row-color"><code><a href="#EMPTY_ListBasedComparator_ARRAY" class="member-name-link">EMPTY_ListBasedComparator_ARRAY</a></code></div>
+<div class="col-first even-row-color"><code>private final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;</code></div>
+<div class="col-second even-row-color"><code><a href="#m_Comparator" class="member-name-link">m_Comparator</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">An empty array of <code>ListBasedComparator&lt;T&gt;</code> objects.</div>
-</div>
-<div class="col-first odd-row-color"><code>private final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&gt;</code></div>
-<div class="col-second odd-row-color"><code><a href="#m_Comparator" class="member-name-link">m_Comparator</a></code></div>
-<div class="col-last odd-row-color">
 <div class="block">The comparator that is used to determine the sort order for instances
   that do not have their keys in the list; may be <code>null</code>.</div>
 </div>
-<div class="col-first even-row-color"><code>private final <a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;</code></div>
-<div class="col-second even-row-color"><code><a href="#m_KeyProvider" class="member-name-link">m_KeyProvider</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code>private final <a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;</code></div>
+<div class="col-second odd-row-color"><code><a href="#m_KeyProvider" class="member-name-link">m_KeyProvider</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">The key provider.</div>
 </div>
-<div class="col-first odd-row-color"><code>private final <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]</code></div>
-<div class="col-second odd-row-color"><code><a href="#m_Keys" class="member-name-link">m_Keys</a></code></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><code>private final <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]</code></div>
+<div class="col-second even-row-color"><code><a href="#m_Keys" class="member-name-link">m_Keys</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">The list with the sort order keys.</div>
 </div>
 </div>
@@ -190,39 +190,12 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <section class="constructor-summary" id="constructor-summary">
 <h2>Constructor Summary</h2>
 <div class="caption"><span>Constructors</span></div>
-<div class="summary-table three-column-summary">
-<div class="table-header col-first">Modifier</div>
-<div class="table-header col-second">Constructor</div>
+<div class="summary-table two-column-summary">
+<div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>&nbsp;</code></div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(java.util.List)" class="member-name-link">ListBasedComparator</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keys)</code></div>
-<div class="col-last even-row-color">
-<div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
-</div>
-<div class="col-first odd-row-color"><code>&nbsp;</code></div>
-<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(K%5B%5D)" class="member-name-link">ListBasedComparator</a><wbr>(<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]&nbsp;keys)</code></div>
-<div class="col-last odd-row-color">
-<div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
-</div>
-<div class="col-first even-row-color"><code>&nbsp;</code></div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,java.util.List)" class="member-name-link">ListBasedComparator</a><wbr>(<a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keyProvider,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&gt;&nbsp;comparator,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keys)</code></div>
-<div class="col-last even-row-color">
-<div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
-</div>
-<div class="col-first odd-row-color"><code>private </code></div>
-<div class="col-constructor-name odd-row-color"><code><a href="#%3Cinit%3E(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,java.util.List,K%5B%5D)" class="member-name-link">ListBasedComparator</a><wbr>(<a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keyProvider,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&gt;&nbsp;comparator,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keysList,
- <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]&nbsp;keysArray)</code></div>
-<div class="col-last odd-row-color">
-<div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
-</div>
-<div class="col-first even-row-color"><code>&nbsp;</code></div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,K...)" class="member-name-link">ListBasedComparator</a><wbr>(<a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keyProvider,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&gt;&nbsp;comparator,
- <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>...&nbsp;keys)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,K%5B%5D)" class="member-name-link">ListBasedComparator</a><wbr>(<a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keyProvider,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;comparator,
+ <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]&nbsp;keys)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
 </div>
@@ -270,16 +243,9 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="EMPTY_ListBasedComparator_ARRAY">
-<h3>EMPTY_ListBasedComparator_ARRAY</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="ListBasedComparator.html" title="class in org.tquadrat.foundation.util.internal">ListBasedComparator</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-103">EMPTY_ListBasedComparator_ARRAY</a></span></div>
-<div class="block">An empty array of <code>ListBasedComparator&lt;T&gt;</code> objects.</div>
-</section>
-</li>
-<li>
 <section class="detail" id="m_Comparator">
 <h3>m_Comparator</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-113">m_Comparator</a></span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-100">m_Comparator</a></span></div>
 <div class="block">The comparator that is used to determine the sort order for instances
   that do not have their keys in the list; may be <code>null</code>.</div>
 </section>
@@ -287,14 +253,14 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <li>
 <section class="detail" id="m_KeyProvider">
 <h3>m_KeyProvider</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-118">m_KeyProvider</a></span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-105">m_KeyProvider</a></span></div>
 <div class="block">The key provider.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_Keys">
 <h3>m_Keys</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-123">m_Keys</a></span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-110">m_Keys</a></span></div>
 <div class="block">The list with the sort order keys.</div>
 </section>
 </li>
@@ -307,55 +273,11 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(K[])">
-<h3 id="&lt;init&gt;(java.lang.Object[])">ListBasedComparator</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-133">ListBasedComparator</a></span><wbr><span class="parameters">(<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]&nbsp;keys)</span></div>
-<div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>keys</code> - The sort order keys.</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="&lt;init&gt;(java.util.List)">
-<h3>ListBasedComparator</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-144">ListBasedComparator</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keys)</span></div>
-<div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>keys</code> - The sort order keys.</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="&lt;init&gt;(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,java.util.List)">
-<h3>ListBasedComparator</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-162">ListBasedComparator</a></span><wbr><span class="parameters">(<a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keyProvider,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&gt;&nbsp;comparator,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keys)</span></div>
-<div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>keyProvider</code> - The implementation of
-      <a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util"><code>Comparators.KeyProvider</code></a>
-      that returns the sort keys for the instances to compare.</dd>
-<dd><code>comparator</code> - The comparator that is used to order the instances
-      that are not listed; if <code>null</code>, those are ordered randomly in
-      a non-consistent way if they or their keys do not implement the
-      <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html" title="class or interface in java.lang" class="external-link"><code>Comparable</code></a>
-      interface.</dd>
-<dd><code>keys</code> - The sort order keys.</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="&lt;init&gt;(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,K...)">
+<section class="detail" id="&lt;init&gt;(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,K[])">
 <h3 id="&lt;init&gt;(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,java.lang.Object[])">ListBasedComparator</h3>
-<div class="member-signature"><span class="annotations"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/SafeVarargs.html" title="class or interface in java.lang" class="external-link">@SafeVarargs</a>
-</span><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-180">ListBasedComparator</a></span><wbr><span class="parameters">(<a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keyProvider,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&gt;&nbsp;comparator,
- <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>...&nbsp;keys)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-125">ListBasedComparator</a></span><wbr><span class="parameters">(<a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keyProvider,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;comparator,
+ <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]&nbsp;keys)</span></div>
 <div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -363,36 +285,8 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
       <a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util"><code>Comparators.KeyProvider</code></a>
       that returns the sort keys for the instances to compare.</dd>
 <dd><code>comparator</code> - The comparator that is used to order the instances
-      that are not listed; if <code>null</code>, those are ordered randomly in
-      a non-consistent way if they or their keys do not implement the
-      <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html" title="class or interface in java.lang" class="external-link"><code>Comparable</code></a>
-      interface.</dd>
+      that are not listed.</dd>
 <dd><code>keys</code> - The sort order keys.</dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="&lt;init&gt;(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,java.util.List,K[])">
-<h3 id="&lt;init&gt;(org.tquadrat.foundation.util.Comparators.KeyProvider,java.util.Comparator,java.util.List,java.lang.Object[])">ListBasedComparator</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-202">ListBasedComparator</a></span><wbr><span class="parameters">(<a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util">Comparators.KeyProvider</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>,<wbr><a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keyProvider,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Comparator.html" title="class or interface in java.util" class="external-link">Comparator</a>&lt;? super <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&gt;&nbsp;comparator,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&gt;&nbsp;keysList,
- <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>[]&nbsp;keysArray)</span></div>
-<div class="block">Creates a new <code>ListBasedComparator</code> instance.</div>
-<dl class="notes">
-<dt>Parameters:</dt>
-<dd><code>keyProvider</code> - The implementation of
-      <a href="../Comparators.KeyProvider.html" title="interface in org.tquadrat.foundation.util"><code>Comparators.KeyProvider</code></a>
-      that returns the sort keys for the instances to compare.</dd>
-<dd><code>comparator</code> - The comparator that is used to order the instances
-      that are not listed; if <code>null</code>, those are ordered randomly in
-      a non-consistent way if they or their keys do not implement the
-      <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Comparable.html" title="class or interface in java.lang" class="external-link"><code>Comparable</code></a>
-      interface.</dd>
-<dd><code>keysList</code> - The sort order keys in a list; is <code>null</code> when
-      <code>keysArray</code> is not <code>null</code>.</dd>
-<dd><code>keysArray</code> - The sort order keys in an array; is <code>null</code>
-      when <code>keysList</code> is not <code>null</code>.</dd>
 </dl>
 </section>
 </li>
@@ -407,7 +301,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <li>
 <section class="detail" id="compare(T,T)">
 <h3 id="compare(java.lang.Object,java.lang.Object)">compare</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-219">compare</a></span><wbr><span class="parameters">(<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&nbsp;o1,
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-139">compare</a></span><wbr><span class="parameters">(<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&nbsp;o1,
  <a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">T</a>&nbsp;o2)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -418,7 +312,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <li>
 <section class="detail" id="searchKey(K)">
 <h3 id="searchKey(java.lang.Object)">searchKey</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-321">searchKey</a></span><wbr><span class="parameters">(<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&nbsp;key)</span></div>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/ListBasedComparator.html#line-208">searchKey</a></span><wbr><span class="parameters">(<a href="ListBasedComparator.html" title="type parameter in ListBasedComparator">K</a>&nbsp;key)</span></div>
 <div class="block">Searches the given key in the list.</div>
 <dl class="notes">
 <dt>Parameters:</dt>

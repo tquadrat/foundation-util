@@ -1,6 +1,7 @@
 org.tquadrat.foundation.util.stringconverter.BigDecimalStringConverter
 org.tquadrat.foundation.util.stringconverter.BigIntegerStringConverter
 org.tquadrat.foundation.util.stringconverter.BooleanStringConverter
+org.tquadrat.foundation.util.stringconverter.ByteArrayStringConverter
 org.tquadrat.foundation.util.stringconverter.ByteStringConverter
 org.tquadrat.foundation.util.stringconverter.CharacterStringConverter
 org.tquadrat.foundation.util.stringconverter.CharSequenceStringConverter

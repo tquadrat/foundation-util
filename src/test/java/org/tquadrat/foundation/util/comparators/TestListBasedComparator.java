@@ -18,9 +18,7 @@
 package org.tquadrat.foundation.util.comparators;
 
 import static java.lang.System.out;
-import static java.util.Arrays.asList;
 import static java.util.Arrays.sort;
-import static java.util.Collections.emptyList;
 import static java.util.Comparator.naturalOrder;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -47,10 +45,9 @@ import org.tquadrat.foundation.util.Comparators.KeyProvider;
  *  {@link Comparators}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestListBasedComparator.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $
  */
-@SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestListBasedComparator.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.comparators.TestListBasedComparator" )
 public class TestListBasedComparator extends TestBaseClass
 {
@@ -75,7 +72,7 @@ public class TestListBasedComparator extends TestBaseClass
         final var testDataSize = 1000;
         Comparator<String> candidate;
         final Comparator<String> defaultComparator = naturalOrder();
-        final KeyProvider<String,String> keyProvider = s -> s;
+        final var keyProvider = (KeyProvider<String, String>) s -> s;
         final var testData = generateTestData( testDataSize );
         assertEquals( testDataSize, testData.length );
         String [] actual, expected;
@@ -96,21 +93,7 @@ public class TestListBasedComparator extends TestBaseClass
         assertArrayEquals( expected, actual );
 
         expected = testData.clone();
-        candidate = listBasedComparator( asList( expected ) );
-        actual = testData.clone();
-        sort( actual );
-        sort( actual, candidate );
-        assertArrayEquals( expected, actual );
-
-        expected = testData.clone();
         candidate = listBasedComparator( keyProvider, defaultComparator, expected );
-        actual = testData.clone();
-        sort( actual );
-        sort( actual, candidate );
-        assertArrayEquals( expected, actual );
-
-        expected = testData.clone();
-        candidate = listBasedComparator( keyProvider, defaultComparator, asList( expected ) );
         actual = testData.clone();
         sort( actual );
         sort( actual, candidate );
@@ -131,26 +114,13 @@ public class TestListBasedComparator extends TestBaseClass
         skipThreadTest();
 
         final Comparator<String> defaultComparator = naturalOrder();
-        final KeyProvider<String,String> keyProvider = s -> s;
+        final var keyProvider = (KeyProvider<String, String>) s -> s;
 
         final Class<? extends Throwable> expectedException = NullArgumentException.class;
 
         try
         {
             listBasedComparator( (String []) null );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException ) t.printStackTrace( out );
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
-
-        try
-        {
-            listBasedComparator( (List<String>) null );
             fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
         }
         catch( final AssertionError e ) { throw e; }
@@ -177,32 +147,6 @@ public class TestListBasedComparator extends TestBaseClass
         try
         {
             listBasedComparator( keyProvider, defaultComparator, (String []) null );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException ) t.printStackTrace( out );
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
-
-        try
-        {
-            listBasedComparator( null, defaultComparator, emptyList() );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException ) t.printStackTrace( out );
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
-
-        try
-        {
-            listBasedComparator( keyProvider, defaultComparator, (List<String>) null );
             fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
         }
         catch( final AssertionError e ) { throw e; }

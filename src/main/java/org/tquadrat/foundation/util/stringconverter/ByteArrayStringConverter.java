@@ -22,10 +22,11 @@ import static java.util.Base64.getDecoder;
 import static java.util.Base64.getEncoder;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.ASCII;
-import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 
 import java.io.Serial;
+import java.util.Collection;
+import java.util.List;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
@@ -34,19 +35,14 @@ import org.tquadrat.foundation.lang.StringConverter;
 /**
  *  <p>{@summary The implementation of
  *  {@link StringConverter}
- *  for
- *  {@link String}
- *  values in BASE64 format.}</p>
- *  <p>The BASE64 format returned from
- *  {@link #toString(String)}
- *  contains the source String in
- *  {@linkplain java.nio.charset.StandardCharsets#UTF_8 UTF-8}
- *  encoding and it is itself encoded to
+ *  for {@code byte} arrays.}</p>
+ *  <p>The output from
+ *  {@link toString(byte[])}
+ *  will be in BASE64 format, encoded to
  *  {@linkplain java.nio.charset.StandardCharsets#US_ASCII ASCII}.</p>
  *  <p>Correspondingly,
  *  {@link #fromString(CharSequence)}
- *  expects an ASCII encoded BASE64 stream containing a UTF-8 encoded
- *  String.</p>
+ *  expects an ASCII encoded BASE64 stream.</p>
  *  <p>Both methods are using the BASE64 <i>basic</i> encoding scheme.</p>
  *
  *  @see java.util.Base64
@@ -54,14 +50,14 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see java.util.Base64#getDecoder()
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: BASE64StringConverter.java 1007 2022-02-05 01:03:43Z tquadrat $
- *  @since 0.0.6
+ *  @version $Id: ByteArrayStringConverter.java 1007 2022-02-05 01:03:43Z tquadrat $
+ *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: BASE64StringConverter.java 1007 2022-02-05 01:03:43Z tquadrat $" )
-@API( status = STABLE, since = "0.0.6" )
-public final class BASE64StringConverter implements StringConverter<String>
+@ClassVersion( sourceVersion = "$Id: ByteArrayStringConverter.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+@API( status = STABLE, since = "0.1.0" )
+public final class ByteArrayStringConverter implements StringConverter<byte[]>
 {
         /*------------------------*\
     ====** Static Initialisations **===========================================
@@ -69,7 +65,7 @@ public final class BASE64StringConverter implements StringConverter<String>
     /**
      *  An instance of this class.
      */
-    public static final BASE64StringConverter INSTANCE = new BASE64StringConverter();
+    public static final ByteArrayStringConverter INSTANCE = new ByteArrayStringConverter();
 
     /**
      *  The serial version UID for objects of this class: {@value}.
@@ -86,27 +82,47 @@ public final class BASE64StringConverter implements StringConverter<String>
      *  {@inheritDoc}
      */
     @Override
-    public final String fromString( final CharSequence source ) throws IllegalArgumentException
+    public final byte [] fromString( final CharSequence source ) throws IllegalArgumentException
     {
-        final var retValue = isNull( source ) ? null : new String( getDecoder().decode( source.toString().getBytes( ASCII ) ), UTF8 );
+        final var retValue = isNull( source ) ? null : getDecoder().decode( source.toString().getBytes( ASCII ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  fromString()
 
     /**
+     *  This method is used by the
+     *  {@link java.util.ServiceLoader}
+     *  to obtain the instance for this
+     *  {@link StringConverter}
+     *  implementation.
+     *
+     *  @return The instance for this {@code StringConverter} implementation.
+     */
+    @SuppressWarnings( "UseOfConcreteClass" )
+    public static final ByteArrayStringConverter provider() { return INSTANCE; }
+
+    /**
+     *  Provides the subject class for this converter.
+     *
+     *  @return The subject class.
+     */
+    @SuppressWarnings( "PublicMethodNotExposedInInterface" )
+    public final Collection<Class<?>> getSubjectClass() { return List.of( byte [].class ); }
+
+    /**
      *  {@inheritDoc}
      */
     @Override
-    public final String toString( final String source )
+    public final String toString( final byte [] source )
     {
-        final var retValue = isNull( source ) ? null : new String( getEncoder().encode( source.getBytes( UTF8 ) ), ASCII );
+        final var retValue = isNull( source ) ? null : new String( getEncoder().encode( source ), ASCII );
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  toString()
 }
-//  class BASE64StringConverter
+//  class ByteArrayStringConverter
 
 /*
  *  End of File

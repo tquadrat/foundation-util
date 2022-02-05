@@ -40,10 +40,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  Provides a generator for random Strings.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: RandomStringGenerator.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: RandomStringGenerator.java 1009 2022-02-05 09:03:15Z tquadrat $
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: RandomStringGenerator.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RandomStringGenerator.java 1009 2022-02-05 09:03:15Z tquadrat $" )
 public final class RandomStringGenerator
 {
         /*--------------*\
@@ -106,7 +106,7 @@ public final class RandomStringGenerator
     }   //  generateStream()
 
     /**
-     *  Generate the test data for the comparator tests. This an array of
+     *  Generate the test data for the comparator tests. This is an array of
      *  random Strings that are not ordered and that does not contain
      *  duplicates.
      *

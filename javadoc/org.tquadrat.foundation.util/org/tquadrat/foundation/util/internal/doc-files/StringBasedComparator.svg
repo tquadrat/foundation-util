@@ -7,7 +7,7 @@
      version='1.1'
      baseProfile='full'
      width='1177.000'
-     height='610.000'>
+     height='577.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,46 +118,40 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='95.000'
-                  width='874.000'
+                  height='62.000'
+                  width='538.000'
                   x='0.000'
                   y='8.000'/>
         </clipPath>
-        <symbol id='org.tquadrat.foundation.util.internal.ListBasedComparator'>
+        <symbol id='org.tquadrat.foundation.util.internal.StringBasedComparator'>
             <g>
                 <g class='focusClass'
                    clip-path='url(#ID000001)'>
                     <rect x='0.000'
                           y='8.000'
-                          width='874.000'
-                          height='95.000'
+                          width='538.000'
+                          height='62.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='25.000'
-                          x2='874.000'
+                          x2='538.000'
                           y2='25.000'
                           class='separator'/>
-                    <text x='380.000'
-                          y='21.000'>ListBasedComparator</text>
+                    <text x='206.000'
+                          y='21.000'>StringBasedComparator</text>
                     <line x1='0.000'
-                          y1='64.000'
-                          x2='874.000'
-                          y2='64.000'
+                          y1='42.000'
+                          x2='538.000'
+                          y2='42.000'
                           class='separator'/>
                     <text y='38.000'
-                          class='final'>- m_Comparator:java.util.Comparator&lt;? super K&gt;</text>
-                    <text y='49.000'
-                          class='final'>- m_KeyProvider:org.tquadrat.foundation.util.Comparators.KeyProvider&lt;T,K&gt;</text>
-                    <text y='60.000'
-                          class='final'>- m_Keys:K[]</text>
+                          class='final'>- m_StringConverter:org.tquadrat.foundation.lang.StringConverter&lt;T&gt;</text>
                     <text x='5.000'
-                          y='77.000'>+ ListBasedComparator(keyProvider:org.tquadrat.foundation.util.Comparators.KeyProvider&lt;T,K&gt;,comparator:java.util.Comparator&lt;? super K&gt;,keys:K[])</text>
+                          y='55.000'>+ StringBasedComparator(stringConverter:org.tquadrat.foundation.lang.StringConverter&lt;T&gt;)</text>
                     <text x='5.000'
-                          y='88.000'>+ compare(o1:T,o2:T):int</text>
-                    <text x='5.000'
-                          y='99.000'>- searchKey(key:K):int</text>
+                          y='66.000'>+ compare(o1:T,o2:T):int</text>
                 </g>
-                <g transform='translate(849.000 0.000)'>
+                <g transform='translate(513.000 0.000)'>
                     <rect x='0.000'
                           y='1.000'
                           width='50.000'
@@ -171,7 +165,7 @@
                           stroke='none'
                           stroke-opacity='0.0'/>
                     <text x='5.000'
-                          y='14.000'>T,K</text>
+                          y='14.000'>T</text>
                 </g>
             </g>
         </symbol>
@@ -343,7 +337,7 @@
     <use x='319.000'
          y='25.000'
          xlink:href='#java.util.Comparator'/>
-    <use x='139.000'
+    <use x='307.000'
          y='382.000'
-         xlink:href='#org.tquadrat.foundation.util.internal.ListBasedComparator'/>
+         xlink:href='#org.tquadrat.foundation.util.internal.StringBasedComparator'/>
 </svg>

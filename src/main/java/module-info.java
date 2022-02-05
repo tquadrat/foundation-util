@@ -19,6 +19,7 @@
 import org.tquadrat.foundation.util.stringconverter.BigDecimalStringConverter;
 import org.tquadrat.foundation.util.stringconverter.BigIntegerStringConverter;
 import org.tquadrat.foundation.util.stringconverter.BooleanStringConverter;
+import org.tquadrat.foundation.util.stringconverter.ByteArrayStringConverter;
 import org.tquadrat.foundation.util.stringconverter.ByteStringConverter;
 import org.tquadrat.foundation.util.stringconverter.CharSequenceStringConverter;
 import org.tquadrat.foundation.util.stringconverter.CharacterStringConverter;
@@ -60,7 +61,7 @@ import org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter
  *  @provides   org.tquadrat.foundation.lang.StringConverter    Implementations
  *      of String converters.
  *
- *  @version $Id: module-info.java 997 2022-01-26 14:55:05Z tquadrat $
+ *  @version $Id: module-info.java 1007 2022-02-05 01:03:43Z tquadrat $
  *
  *  @todo task.list
  */
@@ -78,6 +79,7 @@ module org.tquadrat.foundation.util
         BigDecimalStringConverter,
         BigIntegerStringConverter,
         BooleanStringConverter,
+        ByteArrayStringConverter,
         ByteStringConverter,
         CharacterStringConverter,
         CharSequenceStringConverter,
