@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2021 by Thomas Thrien.
+ *  Copyright © 2002-2022 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -96,12 +96,12 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 980 2022-01-06 15:29:19Z tquadrat $
+ *  @version $Id: Template.java 1015 2022-02-09 08:25:36Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: Template.java 980 2022-01-06 15:29:19Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Template.java 1015 2022-02-09 08:25:36Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class Template implements Serializable
 {
@@ -172,17 +172,17 @@ public class Template implements Serializable
     public static final String VARIABLE_PATTERN = "\\$\\{((?:_)|(?:[~/=%:&]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\p{Digit}|_|.)*?))}";
 
     /**
-     *  The template for variables: {@value}. The argument is the name of the
-     *  variable itself; after an optional prefix character, it may not contain
-     *  other characters than the letters from 'a' to 'z' (upper case and lower
-     *  case), the digits from '0' to '9' and the special characters underscore
-     *  ('_') and dot ('.').<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
+     *  <p>{@summary The template for variables: {@value}.} The argument is the
+     *  name of the variable itself; after an optional prefix character, it may
+     *  not contain other characters than the letters from 'a' to 'z' (upper
+     *  case and lower case), the digits from '0' to '9' and the special
+     *  characters underscore ('_') and dot ('.').</p>
+     *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
      *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
+     *  ('&amp;').</p>
+     *  <p>The prefix character is part of the name.</p>
+     *  <p>Finally, there is the single underscore that is allowed as a
+     *  special variable.</p>
      *
      *  @see #VARIABLE_PATTERN
      *
@@ -252,8 +252,9 @@ public class Template implements Serializable
     ====** Methods **==========================================================
         \*---------*/
     /**
-     *  The mount point for template manipulations in derived classes.<br>
-     *  <br>The default implementation will just return the argument.
+     *  <p>{@summary The mount point for template manipulations in derived
+     *  classes.}</p>
+     *  <p>The default implementation will just return the argument.</p>
      *
      *  @param  templateText    The template text, as it was given to the
      *      constructor on creation of the object instance.
@@ -310,6 +311,7 @@ public class Template implements Serializable
         //---* Escape the backslashes and dollar signs *-------------------
         final var len = s.length();
         final var retValue = new StringBuilder( (len * 12) / 10 );
+        @SuppressWarnings( "LocalVariableNamingConvention" )
         char c;
         EscapeLoop: for( var i = 0; i < len; ++i )
         {
@@ -330,20 +332,20 @@ public class Template implements Serializable
     }   //  escapeRegexReplacement()
 
     /**
-     *  Collects all the variables of the form
-     *  <code>${<i>&lt;name&gt;</i>}</code> in the given String.<br>
-     *  <br>If there are not any variables in the given String, an empty
+     *  <p>{@summary Collects all the variables of the form
+     *  <code>${<i>&lt;name&gt;</i>}</code> in the given String.}</p>
+     *  <p>If there are not any variables in the given String, an empty
      *  {@link Set}
-     *  will be returned.<br>
-     *  <br>A valid variable name may not contain any other characters than the
+     *  will be returned.</p>
+     *  <p>A valid variable name may not contain any other characters than the
      *  letters from 'a' to 'z' (upper case and lower case), the digits from
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
+     *  after an optional prefix character.</p>
+     *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
      *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
+     *  ('&amp;').</p>
+     *  <p>Finally, there is the single underscore that is allowed as a
+     *  special variable.</p>
      *
      *  @param  text    The text with the variables; may be {@code null}.
      *  @return A {@code Collection} with the variable (names).
@@ -373,20 +375,20 @@ public class Template implements Serializable
     }   //  findVariables()
 
     /**
-     *  Collects all the variables of the form
-     *  <code>${<i>&lt;name&gt;</i>}</code> in the adjusted template.<br>
-     *  <br>If there are not any variables in there, an empty
+     *  <p>{@summary Collects all the variables of the form
+     *  <code>${<i>&lt;name&gt;</i>}</code> in the adjusted template.}</p>
+     *  <p>If there are not any variables in there, an empty
      *  {@link Collection}
-     *  will be returned.<br>
-     *  <br>A valid variable name may not contain any other characters than the
+     *  will be returned.</p>
+     *  <p>A valid variable name may not contain any other characters than the
      *  letters from 'a' to 'z' (upper case and lower case), the digits from
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
+     *  after an optional prefix character.</p>
+     *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
      *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
+     *  ('&amp;').</p>
+     *  <p>Finally, there is the single underscore that is allowed as a
+     *  special variable.</p>
      *
      *  @return A {@code Collection} with the variable (names).
      *
@@ -401,9 +403,9 @@ public class Template implements Serializable
     }   //  findVariables()
 
     /**
-     *  Mountpoint for the formatting of the result after the variables have
-     *  been replaced.<br>
-     *  <br>The default implementation just returns the result.
+     *  <p>{@summary Mountpoint for the formatting of the result after the variables have
+     *  been replaced.}</p>
+     *  <p>The default implementation just returns the result.</p>
      *
      *  @param  text    The result from replacing the variables in the template
      *      text.
@@ -535,24 +537,25 @@ public class Template implements Serializable
     }   //  isVariable()
 
     /**
-     *  Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-     *  in the given String with values from the given maps. The method will
-     *  try the maps in the given sequence.<br>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all.<br>
-     *  <br>If a value from one of the maps contains a variable itself, this
-     *  will not be replaced.<br>
-     *  <br>The variables names are case-sensitive.<br>
-     *  <br>Valid variable names may not contain other characters than the
+     *  <p>{@summary Replaces the variables of the form
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the given String with values
+     *  from the given maps.} The method will try the maps in the given
+     *  sequence, it stops after the first match.</p>
+     *  <p>If no replacement value could be found, the variable will not be
+     *  replaced at all.</p>
+     *  <p>If a value from one of the maps contains a variable itself, this
+     *  will not be replaced.</p>
+     *  <p>The variables names are case-sensitive.</p>
+     *  <p>Valid variable names may not contain other characters than the
      *  letters from 'a' to 'z' (upper case and lower case), the digits from
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
+     *  after an optional prefix character.</p>
+     *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
      *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
+     *  ('&amp;').</p>
+     *  <p>The prefix character is part of the name.</p>
+     *  <p>Finally, there is the single underscore that is allowed as a
+     *  special variable.</p>
      *
      *  @param  text    The text with the variables; may be {@code null}.
      *  @param  sources The maps with the replacement values.
@@ -576,25 +579,26 @@ public class Template implements Serializable
     }   //  replaceVariable()
 
     /**
-     *  Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-     *  in the adjusted template with values from the given maps and returns it
-     *  after formatting the result. The method will try the maps in the given
-     *  sequence.<br>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all.<br>
-     *  <br>If a value from one of the maps contains a variable itself, this
-     *  will not be replaced.<br>
-     *  <br>The variables names are case-sensitive.<br>
-     *  <br>Valid variable names may not contain other characters than the
+     *  <p>{@summary Replaces the variables of the form
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
+     *  values from the given maps and returns it after formatting the result.}
+     *  The method will try the maps in the given sequence, it stops after the
+     *  first match.</p>
+     *  <p>If no replacement value could be found, the variable will not be
+     *  replaced at all.</p>
+     *  <p>If a value from one of the maps contains a variable itself, this
+     *  will not be replaced.</p>
+     *  <p>The variables names are case-sensitive.</p>
+     *  <p>Valid variable names may not contain other characters than the
      *  letters from 'a' to 'z' (upper case and lower case), the digits from
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
+     *  after an optional prefix character.</p>
+     *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
      *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
+     *  ('&amp;').</p>
+     *  <p>The prefix character is part of the name.</p>
+     *  <p>Finally, there is the single underscore that is allowed as a
+     *  special variable.</p>
      *
      *  @param  sources The maps with the replacement values.
      *  @return The new text, or {@code null} if the provided value for
@@ -609,30 +613,31 @@ public class Template implements Serializable
     }   //  replaceVariable()
 
     /**
-     *  Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-     *  in the adjusted template with values from the given maps and returns it
-     *  after formatting the result. The method will try the maps in the given
-     *  sequence.<br>
-     *  <br>If {@code addSystemData} is provided as {@code true}, the
+     *  <p>{@summary Replaces the variables of the form
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
+     *  values from the given maps and returns it after formatting the result.}
+     *  The method will try the maps in the given sequence, it stops after the
+     *  first match.</p>
+     *  <p>If {@code addSystemData} is provided as {@code true}, the
      *  {@linkplain System#getProperties() system properties}
      *  and
      *  {@linkplain System#getenv()} system environment}
-     *  will be searched for replacement values before any other source.<br>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all.<br>
-     *  <br>If a value from one of the maps contains a variable itself, this
-     *  will not be replaced.<br>
-     *  <br>The variables names are case-sensitive.<br>
-     *  <br>Valid variable names may not contain other characters than the
+     *  will be searched for replacement values before any other source.</p>
+     *  <p>If no replacement value could be found, the variable will not be
+     *  replaced at all.</p>
+     *  <p>If a value from one of the maps contains a variable itself, this
+     *  will not be replaced.</p>
+     *  <p>The variables names are case-sensitive.</p>
+     *  <p>Valid variable names may not contain other characters than the
      *  letters from 'a' to 'z' (upper case and lower case), the digits from
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
+     *  after an optional prefix character.</p>
+     *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
      *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
+     *  ('&amp;').</p>
+     *  <p>The prefix character is part of the name.</p>
+     *  <p>Finally, there is the single underscore that is allowed as a
+     *  special variable.</p>
      *
      *  @param  addSystemData   {@code true} if the system properties and the
      *      system environment should be searched for replacement values, too,
@@ -658,28 +663,28 @@ public class Template implements Serializable
     }   //  replaceVariable()
 
     /**
-     *  Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-     *  in the adjusted template with values returned by the given retriever
-     *  function for the variable name, and returns it after formatting the
-     *  result.<br>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all.<br>
-     *  <br>If the retriever function returns a value that contains a variable
-     *  itself, this will not be replaced.<br>
-     *  <br>The retriever function will be called only once for each variable
+     *  <p>{@summary Replaces the variables of the form
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
+     *  values returned by the given retriever function for the variable name,
+     *  and returns it after formatting the result.}</p>
+     *  <p>If no replacement value could be found, the variable will not be
+     *  replaced at all.</p>
+     *  <p>If the retriever function returns a value that contains a variable
+     *  itself, this will not be replaced.</p>
+     *  <p>The retriever function will be called only once for each variable
      *  name; if the text contains the same variable multiple times, it will
-     *  always be replaced with the same value.<br>
-     *  <br>The variables names are case-sensitive.<br>
-     *  <br>Valid variable name may not contain other characters than the
+     *  always be replaced with the same value.</p>
+     *  <p>The variables names are case-sensitive.</p>
+     *  <p>Valid variable names may not contain other characters than the
      *  letters from 'a' to 'z' (upper case and lower case), the digits from
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
+     *  after an optional prefix character.</p>
+     *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
      *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
+     *  ('&amp;').</p>
+     *  <p>The prefix character is part of the name.</p>
+     *  <p>Finally, there is the single underscore that is allowed as a
+     *  special variable.</p>
      *
      *  @param  retriever   The function that will retrieve the replacement
      *      values for the given variable names.
@@ -690,7 +695,6 @@ public class Template implements Serializable
      */
     public final String replaceVariable( final Function<? super String, Optional<String>> retriever )
     {
-
         final var retValue = formatResult( replaceVariable( getTemplateText(), retriever ) );
 
         //---* Done *----------------------------------------------------------
@@ -698,27 +702,27 @@ public class Template implements Serializable
     }   //  replaceVariable()
 
     /**
-     *  Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-     *  in the given String with values returned by the given retriever
-     *  function for the variable name.<br>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all.<br>
-     *  <br>If the retriever function returns a value that contains a variable
-     *  itself, this will not be replaced.<br>
-     *  <br>The retriever function will be called only once for each variable
+     *  <p>{@summary Replaces the variables of the form
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the given String with values
+     *  returned by the given retriever function for the variable name.}</p>
+     *  <p>If no replacement value could be found, the variable will not be
+     *  replaced at all.</p>
+     *  <p>If the retriever function returns a value that contains a variable
+     *  itself, this will not be replaced.</p>
+     *  <p>The retriever function will be called only once for each variable
      *  name; if the text contains the same variable multiple times, it will
-     *  always be replaced with the same value.<br>
-     *  <br>The variables names are case-sensitive.<br>
-     *  <br>Valid variable name may not contain other characters than the
+     *  always be replaced with the same value.</p>
+     *  <p>The variables names are case-sensitive.</p>
+     *  <p>Valid variable name may not contain other characters than the
      *  letters from 'a' to 'z' (upper case and lower case), the digits from
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
+     *  after an optional prefix character.</p>
+     *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
      *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
+     *  ('&amp;').</p>
+     *  <p>The prefix character is part of the name.</p>
+     *  <p>Finally, there is the single underscore that is allowed as a
+     *  special variable.</p>
      *
      *  @param  text    The text with the variables; may be {@code null}.
      *  @param  retriever   The function that will retrieve the replacement
@@ -757,37 +761,34 @@ public class Template implements Serializable
     }   //  replaceVariable()
 
     /**
-     *  Replaces the variables of the form <code>${<i>&lt;name&gt;</i>}</code>
-     *  in the given String with values from the
+     *  <p>{@summary Replaces the variables of the form
+     *  <code>${<i>&lt;name&gt;</i>}</code> in the given String with values
+     *  from the
      *  {@linkplain System#getProperties() system properties},
      *  the
      *  {@linkplain System#getenv() system environment}
-     *  and the given maps. The method will try the maps in the given
-     *  sequence.<br>
-     *  <br>In addition, five more variables are recognised:
+     *  and the given maps.} The method will try the maps in the given
+     *  sequence, it stops after the first match.</p>
+     *  <p>In addition, five more variables are recognised:</p>
      *  <dl>
-     *  <dt><b><code>tq.ip</code></b></dt>
-     *  <dd>The first IP address for the machine that executes this Java
-     *  virtual machine.</dd>
-     *
-     *  <dt><b><code>tq.mac</code></b></dt>
-     *  <dd>The MAC address of the first NIC in this machine.</dd>
-     *
-     *  <dt><b><code>tq.nodeId</code></b></dt>
-     *  <dd>The node id from the first NIC in this machine.</dd>
-     *
-     *  <dt><b><code>tq.now</code></b></dt>
-     *  <dd>The current date and time as returned by
-     *  {@link Instant#now}.</dd>
-     *
-     *  <dt><b><code>tq.pid</code></b></dt>
-     *  <dd>The process id of this Java virtual machine.</dd>
+     *      <dt><b><code>{@value #VARNAME_IPAddress}</code></b></dt>
+     *      <dd>The first IP address for the machine that executes this Java
+     *      virtual machine.</dd>
+     *      <dt><b><code>{@value #VARNAME_MACAddress}</code></b></dt>
+     *      <dd>The MAC address of the first NIC in this machine.</dd>
+     *      <dt><b><code>{@value #VARNAME_NodeId}</code></b></dt>
+     *      <dd>The node id from the first NIC in this machine.</dd>
+     *      <dt><b><code>{@value #VARNAME_Now}</code></b></dt>
+     *      <dd>The current date and time as returned by
+     *      {@link Instant#now}.</dd>
+     *      <dt><b><code>{@value #VARNAME_pid}</code></b></dt>
+     *      <dd>The process id of this Java virtual machine.</dd>
      *  </dl>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all; no exception will be thrown.<br>
-     *  <br>If a value from one of the maps contains a variable itself, this
-     *  will not be replaced.<br>
-     *  <br>The variables names are case-sensitive.
+     *  <p>If no replacement value could be found, the variable will not be
+     *  replaced at all; no exception will be thrown.</p>
+     *  <p>If a value from one of the maps contains a variable itself, this
+     *  will not be replaced.</p>
+     *  <p>The variables names are case-sensitive.</p>
      *
      *  @param  text    The text with the variables; can be {@code null}.
      *  @param  additionalSources The maps with additional replacement values.

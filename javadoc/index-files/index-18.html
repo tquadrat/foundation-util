@@ -163,9 +163,9 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(boolean,java.util.Map...)" class="member-name-link">replaceVariable(boolean, Map&lt;String, ? extends Object&gt;...)</a> - Method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
-<div class="block">Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-  in the adjusted template with values from the given maps and returns it
-  after formatting the result.</div>
+<div class="block">Replaces the variables of the form
+  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
+  values from the given maps and returns it after formatting the result.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#replaceVariable(java.lang.CharSequence,java.util.function.Function)" class="member-name-link">replaceVariable(CharSequence, Function&lt;? super String, Optional&lt;String&gt;&gt;)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html" title="class in org.tquadrat.foundation.util">StringUtils</a></dt>
 <dd>
@@ -177,27 +177,9 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.lang.CharSequence,java.util.function.Function)" class="member-name-link">replaceVariable(CharSequence, Function&lt;? super String, Optional&lt;String&gt;&gt;)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
-<div class="block">Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-  in the given String with values returned by the given retriever
-  function for the variable name.<br>
-  <br>If no replacement value could be found, the variable will not be
-  replaced at all.<br>
-  <br>If the retriever function returns a value that contains a variable
-  itself, this will not be replaced.<br>
-  <br>The retriever function will be called only once for each variable
-  name; if the text contains the same variable multiple times, it will
-  always be replaced with the same value.<br>
-  <br>The variables names are case-sensitive.<br>
-  <br>Valid variable name may not contain other characters than the
-  letters from 'a' to 'z' (upper case and lower case), the digits from
-  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-  after an optional prefix character.<br>
-  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-  ('&amp;').<br>
-  <br>The prefix character is part of the name.<br>
-  <br>Finally, there is the single underscore that is allowed as a
-  special variable.</div>
+<div class="block">Replaces the variables of the form
+  <code>${&lt;<i>name</i>&gt;}</code> in the given String with values
+  returned by the given retriever function for the variable name.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#replaceVariable(java.lang.CharSequence,java.util.Map...)" class="member-name-link">replaceVariable(CharSequence, Map&lt;String, ? extends Object&gt;...)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html" title="class in org.tquadrat.foundation.util">StringUtils</a></dt>
 <dd>
@@ -209,44 +191,28 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.lang.CharSequence,java.util.Map...)" class="member-name-link">replaceVariable(CharSequence, Map&lt;String, ? extends Object&gt;...)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
-<div class="block">Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-  in the given String with values from the given maps.</div>
+<div class="block">Replaces the variables of the form
+  <code>${&lt;<i>name</i>&gt;}</code> in the given String with values
+  from the given maps.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.util.function.Function)" class="member-name-link">replaceVariable(Function&lt;? super String, Optional&lt;String&gt;&gt;)</a> - Method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
-<div class="block">Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-  in the adjusted template with values returned by the given retriever
-  function for the variable name, and returns it after formatting the
-  result.<br>
-  <br>If no replacement value could be found, the variable will not be
-  replaced at all.<br>
-  <br>If the retriever function returns a value that contains a variable
-  itself, this will not be replaced.<br>
-  <br>The retriever function will be called only once for each variable
-  name; if the text contains the same variable multiple times, it will
-  always be replaced with the same value.<br>
-  <br>The variables names are case-sensitive.<br>
-  <br>Valid variable name may not contain other characters than the
-  letters from 'a' to 'z' (upper case and lower case), the digits from
-  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-  after an optional prefix character.<br>
-  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-  ('&amp;').<br>
-  <br>The prefix character is part of the name.<br>
-  <br>Finally, there is the single underscore that is allowed as a
-  special variable.</div>
+<div class="block">Replaces the variables of the form
+  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
+  values returned by the given retriever function for the variable name,
+  and returns it after formatting the result.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.util.Map...)" class="member-name-link">replaceVariable(Map&lt;String, ? extends Object&gt;...)</a> - Method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
-<div class="block">Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-  in the adjusted template with values from the given maps and returns it
-  after formatting the result.</div>
+<div class="block">Replaces the variables of the form
+  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
+  values from the given maps and returns it after formatting the result.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariableFromSystemData(java.lang.CharSequence,java.util.Map...)" class="member-name-link">replaceVariableFromSystemData(CharSequence, Map&lt;String, ? extends Object&gt;...)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
-<div class="block">Replaces the variables of the form <code>${<i>&lt;name&gt;</i>}</code>
-  in the given String with values from the
+<div class="block">Replaces the variables of the form
+  <code>${<i>&lt;name&gt;</i>}</code> in the given String with values
+  from the
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/System.html#getProperties()" title="class or interface in java.lang" class="external-link">system properties</a>,
   the
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/System.html#getenv()" title="class or interface in java.lang" class="external-link">system environment</a>

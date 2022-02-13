@@ -99,7 +99,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="internal/FinalRangeMap.html" title="class in org.tquadrat.foundation.util.internal">FinalRangeMap</a></code>, <code><a href="internal/RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: RangeMap.java 995 2022-01-23 01:09:35Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: RangeMap.java 1017 2022-02-10 19:39:09Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
 </span><span class="modifiers">public sealed interface </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-44">RangeMap</a>&lt;T&gt;</span><span class="extends-implements">
@@ -112,7 +112,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: RangeMap.java 995 2022-01-23 01:09:35Z tquadrat $</dd>
+<dd>$Id: RangeMap.java 1017 2022-02-10 19:39:09Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.7</dd>
 <dt>See Also:</dt>
@@ -329,14 +329,15 @@ throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/
 <li>
 <section class="detail" id="of(V,boolean)">
 <h3 id="of(java.lang.Object,boolean)">of</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="type-parameters">&lt;V&gt;</span>&nbsp;<span class="return-type"><a href="RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;V&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-129">of</a></span><wbr><span class="parameters">(V&nbsp;defaultValue,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="type-parameters">&lt;V&gt;</span>&nbsp;<span class="return-type"><a href="RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;V&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-130">of</a></span><wbr><span class="parameters">(V&nbsp;defaultValue,
  boolean&nbsp;includes)</span></div>
 <div class="block">The factory method for a new instance of <code>RangeMap</code>.</div>
 <dl class="notes">
 <dt>Type Parameters:</dt>
 <dd><code>V</code> - The value type for the range map.</dd>
 <dt>Parameters:</dt>
-<dd><code>defaultValue</code> - The value type for the range map.</dd>
+<dd><code>defaultValue</code> - The default value; this is the that is returned
+      if the key is above all range limits.</dd>
 <dd><code>includes</code> - <code>true</code> if the limit belongs to the
       range, <code>false</code> otherwise.</dd>
 <dt>Returns:</dt>
@@ -347,7 +348,7 @@ throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/
 <li>
 <section class="detail" id="removeRange(double)">
 <h3>removeRange</h3>
-<div class="member-signature"><span class="return-type"><a href="RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="RangeMap.html" title="type parameter in RangeMap">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-149">removeRange</a></span><wbr><span class="parameters">(double&nbsp;key)</span></div>
+<div class="member-signature"><span class="return-type"><a href="RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="RangeMap.html" title="type parameter in RangeMap">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-150">removeRange</a></span><wbr><span class="parameters">(double&nbsp;key)</span></div>
 <div class="block"><p>Removes a range. Nothing happens if there is no range for
   the given key value.</p>
   <p>After this operation, the range map can be empty.</p>
@@ -365,7 +366,7 @@ throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/
 <li>
 <section class="detail" id="replaceRange(double,T)">
 <h3 id="replaceRange(double,java.lang.Object)">replaceRange</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="RangeMap.html" title="type parameter in RangeMap">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-162">replaceRange</a></span><wbr><span class="parameters">(double&nbsp;key,
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="RangeMap.html" title="type parameter in RangeMap">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-163">replaceRange</a></span><wbr><span class="parameters">(double&nbsp;key,
  <a href="RangeMap.html" title="type parameter in RangeMap">T</a>&nbsp;value)</span></div>
 <div class="block"><p>Replaces an already existing range. If there is no range
   for the given key value, the method will just add a new range.</p>
@@ -384,7 +385,7 @@ throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/
 <li>
 <section class="detail" id="setDefault(T)">
 <h3 id="setDefault(java.lang.Object)">setDefault</h3>
-<div class="member-signature"><span class="return-type"><a href="RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="RangeMap.html" title="type parameter in RangeMap">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-185">setDefault</a></span><wbr><span class="parameters">(<a href="RangeMap.html" title="type parameter in RangeMap">T</a>&nbsp;value)</span></div>
+<div class="member-signature"><span class="return-type"><a href="RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="RangeMap.html" title="type parameter in RangeMap">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/RangeMap.html#line-186">setDefault</a></span><wbr><span class="parameters">(<a href="RangeMap.html" title="type parameter in RangeMap">T</a>&nbsp;value)</span></div>
 <div class="block"><p>Sets the default value and overwrites that one that was
   set on creation of the range map.</p>
   <p>The default value is that one that is returned if the key is above

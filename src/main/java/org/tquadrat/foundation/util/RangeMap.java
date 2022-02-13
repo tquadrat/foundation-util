@@ -32,7 +32,7 @@ import org.tquadrat.foundation.util.internal.RangeMapImpl;
  *  {@link Double#MAX_VALUE -Double.MAX_VALUE}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: RangeMap.java 995 2022-01-23 01:09:35Z tquadrat $
+ *  @version $Id: RangeMap.java 1017 2022-02-10 19:39:09Z tquadrat $
  *  @since 0.0.7
  *
  *  @param <T>  The type of the mapped value.
@@ -41,7 +41,7 @@ import org.tquadrat.foundation.util.internal.RangeMapImpl;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: RangeMap.java 995 2022-01-23 01:09:35Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeMap.java 1017 2022-02-10 19:39:09Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public sealed interface RangeMap<T> extends Serializable
     permits RangeMapImpl
@@ -121,7 +121,8 @@ public sealed interface RangeMap<T> extends Serializable
      *  The factory method for a new instance of {@code RangeMap}.
      *
      *  @param  <V> The value type for the range map.
-     *  @param  defaultValue    The value type for the range map.
+     *  @param  defaultValue    The default value; this is the that is returned
+     *      if the key is above all range limits.
      *  @param  includes    {@code true} if the limit belongs to the
      *      range, {@code false} otherwise.
      *  @return The new range map instance.
