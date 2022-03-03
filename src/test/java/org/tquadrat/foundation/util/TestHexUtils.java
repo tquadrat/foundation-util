@@ -17,11 +17,6 @@
 
 package org.tquadrat.foundation.util;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.testutil.TestBaseClass;
-
 import static java.lang.System.arraycopy;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -30,13 +25,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.tquadrat.foundation.util.HexUtils.convertFromHexString;
 import static org.tquadrat.foundation.util.HexUtils.convertToHexString;
 
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.testutil.TestBaseClass;
+
 /**
  *  This class provides the JUnit tests for the methods in class
  *  {@link HexUtils}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestHexUtils.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@SuppressWarnings( "removal" )
+@ClassVersion( sourceVersion = "$Id: TestHexUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestHexUtils" )
 public class TestHexUtils extends TestBaseClass
 {

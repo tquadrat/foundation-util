@@ -91,7 +91,7 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $")
 <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/UtilityClass.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@UtilityClass</a>
 </span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-76">IOUtils</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
@@ -101,7 +101,7 @@ loadScripts(document, 'script');</script>
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $</dd>
+<dd>$Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.5</dd>
 
@@ -316,23 +316,8 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#determineCheckSum(java.nio.file.Path,java.lang.String)" class="member-name-link">determineCheckSum</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;file,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;algorithm)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Calculates the check sum for the given file, using the algorithm
-  with the given name.<br>
-  <br>If the name is one of
-  CRC32Adler32
-  it uses
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/CRC32.html" title="class or interface in java.util.zip" class="external-link"><code>CRC32</code></a>
-  or
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Adler32.html" title="class or interface in java.util.zip" class="external-link"><code>Adler32</code></a>
-  for the calculation, any other name is taken as the name for a
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>;
-  any JVM knows
-  
-  MD5
-  SHA1
-  
-  others can be added installing additional
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/Provider.html" title="class or interface in java.security" class="external-link">security providers</a>.</div>
+<div class="block">Calculates the check sum for the given file, using the
+  algorithm with the given name.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final byte[]</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#determineCheckSum(java.nio.file.Path,java.security.MessageDigest)" class="member-name-link">determineCheckSum</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;file,
@@ -801,27 +786,30 @@ loadScripts(document, 'script');</script>
 <h3>determineCheckSum</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-585">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;file,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-588">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;file,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;algorithm)</span>
                                       throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a>,
 <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/NoSuchAlgorithmException.html" title="class or interface in java.security" class="external-link">NoSuchAlgorithmException</a></span></div>
-<div class="block">Calculates the check sum for the given file, using the algorithm
-  with the given name.<br>
-  <br>If the name is one of
-  <ul><li>CRC32</li><li>Adler32</li></ul>
-  it uses
+<div class="block"><p>Calculates the check sum for the given file, using the
+  algorithm with the given name.</p>
+  <p>If the name is one of</p>
+  <ul>
+      <li>CRC32</li>
+      <li>Adler32</li>
+  </ul>
+  <p>it uses
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/CRC32.html" title="class or interface in java.util.zip" class="external-link"><code>CRC32</code></a>
   or
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Adler32.html" title="class or interface in java.util.zip" class="external-link"><code>Adler32</code></a>
   for the calculation, any other name is taken as the name for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>;
-  any JVM knows
+  all JVMs know</p>
   <ul>
-  <li>MD5</li>
-  <li>SHA1</li>
+      <li>MD5</li>
+      <li>SHA1</li>
   </ul>
-  others can be added installing additional
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/Provider.html" title="class or interface in java.security" class="external-link">security providers</a>.</div>
+  <p>others can be added installing additional
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/Provider.html" title="class or interface in java.security" class="external-link">security providers</a>.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>file</code> - The file to process.</dd>
@@ -841,7 +829,7 @@ loadScripts(document, 'script');</script>
 <h3>determineCheckSum</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-612">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-615">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Checksum.html" title="class or interface in java.util.zip" class="external-link">Checksum</a>&nbsp;algorithm)</span>
                                     throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Calculates the check sum for the given file, using provided check sum
@@ -863,7 +851,7 @@ loadScripts(document, 'script');</script>
 <h3>determineCheckSum</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-631">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;file,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-634">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;file,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Checksum.html" title="class or interface in java.util.zip" class="external-link">Checksum</a>&nbsp;algorithm)</span>
                                     throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Calculates the check sum for the given file, using provided check sum
@@ -885,7 +873,7 @@ loadScripts(document, 'script');</script>
 <h3>determineCheckSum</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-660">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-663">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>&nbsp;algorithm)</span>
                                       throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Calculates the check sum for the given file, using the provided
@@ -907,7 +895,7 @@ loadScripts(document, 'script');</script>
 <h3>determineCheckSum</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-679">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;file,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-682">determineCheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;file,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>&nbsp;algorithm)</span>
                                       throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Calculates the check sum for the given file, using the provided
@@ -929,7 +917,7 @@ loadScripts(document, 'script');</script>
 <h3>getNullAppendable</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Appendable.html" title="class or interface in java.lang" class="external-link">Appendable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-709">getNullAppendable</a></span>()</div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Appendable.html" title="class or interface in java.lang" class="external-link">Appendable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-712">getNullAppendable</a></span>()</div>
 <div class="block">Returns an
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Appendable.html" title="class or interface in java.lang" class="external-link"><code>Appendable</code></a>
   that just swallows any data that is written to it, like the
@@ -952,7 +940,7 @@ loadScripts(document, 'script');</script>
 <h3>getUncloseableOut</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/PrintStream.html" title="class or interface in java.io" class="external-link">PrintStream</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-738">getUncloseableOut</a></span>()</div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/PrintStream.html" title="class or interface in java.io" class="external-link">PrintStream</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-741">getUncloseableOut</a></span>()</div>
 <div class="block">Returns
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/System.html#out" title="class or interface in java.lang" class="external-link"><code>System.out</code></a>
   with a non-functional
@@ -986,7 +974,7 @@ loadScripts(document, 'script');</script>
 <h3>loadToString</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-766">loadToString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Reader.html" title="class or interface in java.io" class="external-link">Reader</a>&nbsp;reader)</span>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#line-769">loadToString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Reader.html" title="class or interface in java.io" class="external-link">Reader</a>&nbsp;reader)</span>
                                  throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block"><p>Reads the complete content of the provided
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Reader.html" title="class or interface in java.io" class="external-link"><code>Reader</code></a>

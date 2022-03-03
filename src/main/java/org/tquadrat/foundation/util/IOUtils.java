@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2021 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -33,7 +33,6 @@ import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_USER_NAME;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
-import static org.tquadrat.foundation.util.HexUtils.convertToHexString;
 import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.io.File;
@@ -53,6 +52,7 @@ import java.nio.file.attribute.PosixFilePermissions;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.EnumSet;
+import java.util.HexFormat;
 import java.util.Set;
 import java.util.zip.Adler32;
 import java.util.zip.CRC32;
@@ -68,12 +68,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $
+ *  @version $Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -89,13 +89,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $
+     *  @version $Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -135,13 +135,13 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $
+     *  @version $Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "UtilityClassCanBeEnum" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 980 2022-01-06 15:29:19Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -556,23 +556,26 @@ public final class IOUtils
     }   //  determineCheckSum()
 
     /**
-     *  Calculates the check sum for the given file, using the algorithm
-     *  with the given name.<br>
-     *  <br>If the name is one of
-     *  <ul><li>CRC32</li><li>Adler32</li></ul>
-     *  it uses
+     *  <p>{@summary Calculates the check sum for the given file, using the
+     *  algorithm with the given name.}</p>
+     *  <p>If the name is one of</p>
+     *  <ul>
+     *      <li>CRC32</li>
+     *      <li>Adler32</li>
+     *  </ul>
+     *  <p>it uses
      *  {@link java.util.zip.CRC32}
      *  or
      *  {@link java.util.zip.Adler32}
      *  for the calculation, any other name is taken as the name for a
      *  {@linkplain MessageDigest};
-     *  any JVM knows
+     *  all JVMs know</p>
      *  <ul>
-     *  <li>MD5</li>
-     *  <li>SHA1</li>
+     *      <li>MD5</li>
+     *      <li>SHA1</li>
      *  </ul>
-     *  others can be added installing additional
-     *  {@linkplain java.security.Provider security providers}.
+     *  <p>others can be added installing additional
+     *  {@linkplain java.security.Provider security providers}.</p>
      *
      *  @param  file    The file to process.
      *  @param  algorithm   The name for the algorithm to use for the check sum
@@ -591,7 +594,7 @@ public final class IOUtils
             case "CRC32" -> format( "%Xd", determineCheckSum( file, new CRC32() ) );
             default -> {
                 final var messageDigest = MessageDigest.getInstance( algorithm );
-                yield convertToHexString( determineCheckSum( file, messageDigest ) );
+                yield HexFormat.of().withUpperCase().formatHex( determineCheckSum( file, messageDigest ) );
             }
         };
 

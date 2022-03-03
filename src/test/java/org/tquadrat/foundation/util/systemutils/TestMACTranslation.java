@@ -17,10 +17,13 @@
 
 package org.tquadrat.foundation.util.systemutils;
 
+import static java.util.Locale.ROOT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
 import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.SystemUtils.formatNodeIdAsMAC;
 import static org.tquadrat.foundation.util.SystemUtils.getMACAddress;
@@ -32,6 +35,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.exception.EmptyArgumentException;
 import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
@@ -46,9 +50,9 @@ import org.tquadrat.foundation.util.SystemUtils;
  *  {@link SystemUtils}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestMACTranslation.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestMACTranslation.java 1021 2022-03-01 22:53:02Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestMACTranslation.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestMACTranslation.java 1021 2022-03-01 22:53:02Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.systemutils.TestMACTranslation" )
 public class TestMACTranslation extends TestBaseClass
 {
@@ -99,7 +103,7 @@ public class TestMACTranslation extends TestBaseClass
         assertEquals( nodeId, currentNodeId );
         final var currentMACAddress = formatNodeIdAsMAC( currentNodeId );
         assertNotNull( currentMACAddress );
-        assertEquals( candidate, currentMACAddress );
+        assertEquals( candidate.toUpperCase( ROOT ), currentMACAddress );
     }   //  testMACTranslation()
 
     /**
@@ -124,58 +128,36 @@ public class TestMACTranslation extends TestBaseClass
      *  {@link SystemUtils#translateMACToNodeId(String)}.
      */
     @Test
+    final void testTranslateMACToNodeIdWithEmptyArgument()
+    {
+        skipThreadTest();
+
+        assertThrows( EmptyArgumentException.class, () -> translateMACToNodeId( EMPTY_STRING ) );
+    }   //  testTranslateMACToNodeIdWithEmptyArgument()
+
+    /**
+     *  Tests for the method
+     *  {@link SystemUtils#translateMACToNodeId(String)}.
+     */
+    @Test
     final void testTranslateMACToNodeIdWithInvalidArgument()
     {
         skipThreadTest();
 
-        final Class<? extends Exception> expectedException = ValidationException.class;
-        try
-        {
-            translateMACToNodeId( "12-34-56-78-9A-BC-DE" );  // Too long
-            fail( format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            assertTrue( isExpectedException, format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
+        //---* "MAC Address" is too long *-------------------------------------
+        assertThrows( ValidationException.class, () -> translateMACToNodeId( "12-34-56-78-9A-BC-DE" ) );
 
-        try
-        {
-            translateMACToNodeId( "12-34-56-78-9A" );  // Too short
-            fail( format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            assertTrue( isExpectedException, format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
+        //---* "MAC Address" is too short *------------------------------------
+        assertThrows( ValidationException.class, () -> translateMACToNodeId( "12-34-56-78-9A" ) );
 
-        try
-        {
-            translateMACToNodeId( "12-34-56-78-9A-XY" );  // Not numeric
-            fail( format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            assertTrue( isExpectedException, format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
+        //---* "MAC Address" is too short *------------------------------------
+        assertThrows( NumberFormatException.class, () -> translateMACToNodeId( "12-34-56-78-9A-XY" ) );
 
-        try
-        {
-            translateMACToNodeId( "MAC Address" );  // Completely wrong
-            fail( format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            assertTrue( isExpectedException, format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
+        //---* "MAC Address" is not even half way correct *--------------------
+        assertThrows( NumberFormatException.class, () -> translateMACToNodeId( "MAC Address" ) );
+
+        //---* MAC Address with wrong separators *-----------------------------
+        assertThrows( IllegalArgumentException.class, () -> translateMACToNodeId( "123456789ABC" ) );
     }   //  testTranslateMACToNodeIdWithInvalidArgument()
 
     /**
@@ -187,21 +169,7 @@ public class TestMACTranslation extends TestBaseClass
     {
         skipThreadTest();
 
-        final Class<? extends Exception> expectedException = NullArgumentException.class;
-        try
-        {
-            translateMACToNodeId( null );
-            fail( format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e )
-        {
-            throw e;
-        }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            assertTrue( isExpectedException, format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
+        assertThrows( NullArgumentException.class, () -> translateMACToNodeId( null ) );
     }   //  testTranslateMACToNodeIdWithNullArgument()
 }
 //  class TestMACTranslation

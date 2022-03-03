@@ -84,16 +84,19 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: HexUtils.java 820 2020-12-29 20:34:22Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: HexUtils.java 1021 2022-03-01 22:53:02Z tquadrat $")
 <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/UtilityClass.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@UtilityClass</a>
-</span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-46">HexUtils</a></span>
+</span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-50">HexUtils</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Library of utility methods useful in dealing with converting byte arrays
-  to and from strings of hexadecimal digits. <br>
-  <br>Parts of the code were adopted from the class
-  <code>org.apache.catalina.util.HexUtils</code> (written by Craig R.
-  McClanahan) out of the Tomcat source and modified to match the requirements
-  of this project.</div>
+<div class="block"><p>A set of utility methods that are useful for the conversion of
+  byte arrays to and from strings of hexadecimal digits.</p>
+  <p>Parts of the code were adopted from the class
+  <code>org.apache.catalina.util.HexUtils</code> (written by Craig R. McClanahan)
+  out of the Tomcat source and modified to match the requirements of this
+  project.</p>
+  <p>Partially, the methods got obsolete with the introduction of
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HexFormat.html" title="class or interface in java.util" class="external-link"><code>HexFormat</code></a>
+  in Java&nbsp;17.</p></div>
 <dl class="notes">
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
@@ -101,7 +104,7 @@ loadScripts(document, 'script');</script>
 <dt><span class="simpleTagLabel">Thanks to:</span></dt>
   <dd>Craig R. McClanahan</dd>
 <dt>Version:</dt>
-<dd>$Id: HexUtils.java 820 2020-12-29 20:34:22Z tquadrat $</dd>
+<dd>$Id: HexUtils.java 1021 2022-03-01 22:53:02Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.5</dd>
 
@@ -148,7 +151,7 @@ loadScripts(document, 'script');</script>
 <section class="method-summary" id="method-summary">
 <h2>Method Summary</h2>
 <div id="method-summary-table">
-<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button></div>
+<div class="table-tabs" role="tablist" aria-orientation="horizontal"><button id="method-summary-table-tab0" role="tab" aria-selected="true" aria-controls="method-summary-table.tabpanel" tabindex="0" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table', 3)" class="active-table-tab">All Methods</button><button id="method-summary-table-tab1" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab1', 3)" class="table-tab">Static Methods</button><button id="method-summary-table-tab4" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab4', 3)" class="table-tab">Concrete Methods</button><button id="method-summary-table-tab6" role="tab" aria-selected="false" aria-controls="method-summary-table.tabpanel" tabindex="-1" onkeydown="switchTab(event)" onclick="show('method-summary-table', 'method-summary-table-tab6', 3)" class="table-tab">Deprecated Methods</button></div>
 <div id="method-summary-table.tabpanel" role="tabpanel">
 <div class="summary-table three-column-summary" aria-labelledby="method-summary-table-tab0">
 <div class="table-header col-first">Modifier and Type</div>
@@ -163,19 +166,23 @@ loadScripts(document, 'script');</script>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static byte[]</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#convertFromHexString(java.lang.CharSequence)" class="member-name-link">convertFromHexString</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;digits)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Converts a String of hexadecimal digits into the corresponding byte
-  array by encoding each two hexadecimal digits as a byte.</div>
+<div class="block">Converts a String of hexadecimal digits into the
+  corresponding byte array by encoding each two hexadecimal digits as a
+  byte.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final char</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#convertToHexDigit(int)" class="member-name-link">convertToHexDigit</a><wbr>(int&nbsp;value)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Converts an integer in the range form 0 to 15 to a hex digit.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#convertToHexString(byte%5B%5D)" class="member-name-link">convertToHexString</a><wbr>(byte[]&nbsp;bytes)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Converts an array of bytes to a hex string where the digits from
-  <code>0xA</code> to <code>0xF</code> are all uppercase.</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#convertToHexString(byte%5B%5D)" class="member-name-link">convertToHexString</a><wbr>(byte[]&nbsp;bytes)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
+<div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
+<div class="deprecation-comment">Use
+      <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HexFormat.html#formatHex(byte%5B%5D)" title="class or interface in java.util" class="external-link"><code>HexFormat.formatHex(byte[])</code></a>
+      instead, like this:</div>
+</div>
 </div>
 </div>
 </div>
@@ -197,7 +204,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="&lt;init&gt;()">
 <h3>HexUtils</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-56">HexUtils</a></span>()</div>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-60">HexUtils</a></span>()</div>
 <div class="block">No instance of this class is allowed.</div>
 </section>
 </li>
@@ -214,13 +221,13 @@ loadScripts(document, 'script');</script>
 <h3>convertFromHexString</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-75">convertFromHexString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;digits)</span></div>
-<div class="block">Converts a String of hexadecimal digits into the corresponding byte
-  array by encoding each two hexadecimal digits as a byte. The method
-  will not distinguish between upper or lower case for the digit from
-  <code>0xA</code> to <code>0xF</code>.<br>
-  <br>If the number of digits in the String is odd, the String will be
-  <i>prefixed</i> by an additional 0.</div>
+</span><span class="modifiers">public static</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-79">convertFromHexString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;digits)</span></div>
+<div class="block"><p>Converts a String of hexadecimal digits into the
+  corresponding byte array by encoding each two hexadecimal digits as a
+  byte. The method will not distinguish between upper or lower case for
+  the digit from <code>0xA</code> to <code>0xF</code>.</p>
+  <p>If the number of digits in the String is odd, the String will be
+  <i>prefixed</i> by an additional 0.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>digits</code> - Hexadecimal digits representation.</dd>
@@ -238,7 +245,7 @@ loadScripts(document, 'script');</script>
 <h3>convertFromHexCharArray</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-101">convertFromHexCharArray</a></span><wbr><span class="parameters">(char[]&nbsp;digits)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-106">convertFromHexCharArray</a></span><wbr><span class="parameters">(char[]&nbsp;digits)</span></div>
 <div class="block">Converts an array of hexadecimal digits into the corresponding byte
   array by encoding each two hexadecimal digits as a byte. The method
   will not distinguish between upper or lower case for the digit from
@@ -262,7 +269,7 @@ loadScripts(document, 'script');</script>
 <h3>convertToHexDigit</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">char</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-159">convertToHexDigit</a></span><wbr><span class="parameters">(int&nbsp;value)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">char</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-122">convertToHexDigit</a></span><wbr><span class="parameters">(int&nbsp;value)</span></div>
 <div class="block">Converts an integer in the range form 0 to 15 to a hex digit.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -275,10 +282,18 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="convertToHexString(byte[])">
 <h3>convertToHexString</h3>
-<div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
+<div class="member-signature"><span class="annotations"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html" title="class or interface in java.lang" class="external-link">@Deprecated</a>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#since()" title="class or interface in java.lang" class="external-link">since</a>="0.1.0",
+            <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
+<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-184">convertToHexString</a></span><wbr><span class="parameters">(byte[]&nbsp;bytes)</span>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#line-151">convertToHexString</a></span><wbr><span class="parameters">(byte[]&nbsp;bytes)</span>
                                        throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
+<div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
+<div class="deprecation-comment">Use
+      <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HexFormat.html#formatHex(byte%5B%5D)" title="class or interface in java.util" class="external-link"><code>HexFormat.formatHex(byte[])</code></a>
+      instead, like this:
+      <pre><code>String s = HexFormat.of().withUpperCase().formatHex( bytes );</code></pre></div>
+</div>
 <div class="block">Converts an array of bytes to a hex string where the digits from
   <code>0xA</code> to <code>0xF</code> are all uppercase.</div>
 <dl class="notes">

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2021 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -22,7 +22,6 @@ import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
-import static org.tquadrat.foundation.util.HexUtils.convertToHexString;
 import static org.tquadrat.foundation.util.IOUtils.determineCheckSum;
 import static org.tquadrat.foundation.util.StringUtils.format;
 
@@ -31,6 +30,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.HexFormat;
 import java.util.Locale;
 
 import org.apiguardian.api.API;
@@ -50,12 +50,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  uses multiple threads to calculate the hashes for a bunch of files.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SecurityUtils.java 840 2021-01-10 21:37:03Z tquadrat $
+ *  @version $Id: SecurityUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 840 2021-01-10 21:37:03Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
 @UtilityClass
 public final class SecurityUtils
 {
@@ -279,7 +279,7 @@ public final class SecurityUtils
         synchronized( m_MD5MessageDigest )
         {
             final var hash = determineCheckSum( file, m_MD5MessageDigest );
-            retValue = convertToHexString( hash );
+            retValue = HexFormat.of().withUpperCase().formatHex( hash );
         }
 
         //---* Done *----------------------------------------------------------
@@ -302,7 +302,7 @@ public final class SecurityUtils
         synchronized( m_SHA1MessageDigest )
         {
             final var hash = determineCheckSum( file, m_SHA1MessageDigest );
-            retValue = convertToHexString( hash );
+            retValue = HexFormat.of().withUpperCase().formatHex( hash );
         }
 
         //---* Done *----------------------------------------------------------
@@ -326,7 +326,7 @@ public final class SecurityUtils
         synchronized( m_SHA256MessageDigest )
         {
             final var hash = determineCheckSum( file, m_SHA256MessageDigest );
-            retValue = convertToHexString( hash );
+            retValue = HexFormat.of().withUpperCase().formatHex( hash );
         }
 
         //---* Done *----------------------------------------------------------
@@ -355,7 +355,7 @@ public final class SecurityUtils
         if( nonNull( input ) )
         {
             final var inputBytes = input.toString().getBytes( UTF8 );
-            retValue = convertToHexString( calculateMD5Hash( inputBytes ) ).toLowerCase( Locale.ROOT );
+            retValue = HexFormat.of().withUpperCase().formatHex( calculateMD5Hash( inputBytes ) ).toLowerCase( Locale.ROOT );
         }
 
         //---* Done *----------------------------------------------------------
@@ -412,7 +412,7 @@ public final class SecurityUtils
         if( nonNull( input ) )
         {
             final var inputBytes = input.toString().getBytes( UTF8 );
-            retValue = convertToHexString( calculateSHA1Hash( inputBytes ) ).toLowerCase( Locale.ROOT );
+            retValue = HexFormat.of().withLowerCase().formatHex( calculateSHA1Hash( inputBytes ) );
         }
 
         //---* Done *----------------------------------------------------------
@@ -469,7 +469,7 @@ public final class SecurityUtils
         if( nonNull( input ) )
         {
             final var inputBytes = input.toString().getBytes( UTF8 );
-            retValue = convertToHexString( calculateSHA256Hash( inputBytes ) ).toLowerCase( Locale.ROOT );
+            retValue = HexFormat.of().withLowerCase().formatHex( calculateSHA256Hash( inputBytes ) );
         }
 
         //---* Done *----------------------------------------------------------

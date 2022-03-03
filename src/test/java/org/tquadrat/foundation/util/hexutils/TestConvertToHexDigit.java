@@ -17,18 +17,18 @@
 
 package org.tquadrat.foundation.util.hexutils;
 
+import static java.lang.String.format;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.tquadrat.foundation.util.HexUtils.convertToHexDigit;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.HexUtils;
-
-import static java.lang.String.format;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.tquadrat.foundation.util.HexUtils.convertToHexDigit;
 
 /**
  *  This class provides the JUnit tests for the method
@@ -76,22 +76,22 @@ public class TestConvertToHexDigit extends TestBaseClass
             assertTrue( isExpectedException, format( "Wrong Exception type; caught '%2$s' but '%1$s' was expected", expectedException.getName(), e.getClass().getName() ) );
         }
 
-        assertEquals( convertToHexDigit( 0 ), '0' );
-        assertEquals( convertToHexDigit( 1 ), '1' );
-        assertEquals( convertToHexDigit( 2 ), '2' );
-        assertEquals( convertToHexDigit( 3 ), '3' );
-        assertEquals( convertToHexDigit( 4 ), '4' );
-        assertEquals( convertToHexDigit( 5 ), '5' );
-        assertEquals( convertToHexDigit( 6 ), '6' );
-        assertEquals( convertToHexDigit( 7 ), '7' );
-        assertEquals( convertToHexDigit( 8 ), '8' );
-        assertEquals( convertToHexDigit( 9 ), '9' );
-        assertEquals( convertToHexDigit( 10 ), 'A' );
-        assertEquals( convertToHexDigit( 11 ), 'B' );
-        assertEquals( convertToHexDigit( 12 ), 'C' );
-        assertEquals( convertToHexDigit( 13 ), 'D' );
-        assertEquals( convertToHexDigit( 14 ), 'E' );
-        assertEquals( convertToHexDigit( 15 ), 'F' );
+        assertEquals( '0', convertToHexDigit( 0 ) );
+        assertEquals( '1', convertToHexDigit( 1 ) );
+        assertEquals( '2', convertToHexDigit( 2 ) );
+        assertEquals( '3', convertToHexDigit( 3 ) );
+        assertEquals( '4', convertToHexDigit( 4 ) );
+        assertEquals( '5', convertToHexDigit( 5 ) );
+        assertEquals( '6', convertToHexDigit( 6 ) );
+        assertEquals( '7', convertToHexDigit( 7 ) );
+        assertEquals( '8', convertToHexDigit( 8 ) );
+        assertEquals( '9', convertToHexDigit( 9 ) );
+        assertEquals( 'A', convertToHexDigit( 10 ) );
+        assertEquals( 'B', convertToHexDigit( 11 ) );
+        assertEquals( 'C', convertToHexDigit( 12 ) );
+        assertEquals( 'D', convertToHexDigit( 13 ) );
+        assertEquals( 'E', convertToHexDigit( 14 ) );
+        assertEquals( 'F', convertToHexDigit( 15 ) );
     }   //  testConvertToHexDigit()
 }
 //  class TestConvertToHexDigit

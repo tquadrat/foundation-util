@@ -134,23 +134,8 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#determineCheckSum(java.nio.file.Path,java.lang.String)" class="member-name-link">determineCheckSum(Path, String)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></dt>
 <dd>
-<div class="block">Calculates the check sum for the given file, using the algorithm
-  with the given name.<br>
-  <br>If the name is one of
-  CRC32Adler32
-  it uses
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/CRC32.html" title="class or interface in java.util.zip" class="external-link"><code>CRC32</code></a>
-  or
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Adler32.html" title="class or interface in java.util.zip" class="external-link"><code>Adler32</code></a>
-  for the calculation, any other name is taken as the name for a
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>;
-  any JVM knows
-  
-  MD5
-  SHA1
-  
-  others can be added installing additional
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/Provider.html" title="class or interface in java.security" class="external-link">security providers</a>.</div>
+<div class="block">Calculates the check sum for the given file, using the
+  algorithm with the given name.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#determineCheckSum(java.nio.file.Path,java.security.MessageDigest)" class="member-name-link">determineCheckSum(Path, MessageDigest)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></dt>
 <dd>

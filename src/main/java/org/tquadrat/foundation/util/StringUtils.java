@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 20002-2021 by Thomas Thrien.
+ * Copyright © 20002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -27,7 +27,9 @@ import static java.lang.Integer.min;
 import static java.lang.String.join;
 import static java.net.URLDecoder.decode;
 import static java.net.URLEncoder.encode;
+import static java.text.Normalizer.Form.NFD;
 import static java.text.Normalizer.Form.NFKC;
+import static java.text.Normalizer.normalize;
 import static java.util.regex.Pattern.DOTALL;
 import static java.util.regex.Pattern.compile;
 import static java.util.stream.Collectors.joining;
@@ -96,13 +98,13 @@ import org.tquadrat.foundation.lang.internal.SharedFormatter;
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1001 2022-01-29 16:42:15Z tquadrat $
+ *  @version $Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1001 2022-01-29 16:42:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -114,13 +116,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1001 2022-01-29 16:42:15Z tquadrat $
+     *  @version $Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1001 2022-01-29 16:42:15Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -210,13 +212,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1001 2022-01-29 16:42:15Z tquadrat $
+     *  @version $Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1001 2022-01-29 16:42:15Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {
@@ -1897,6 +1899,34 @@ public final class StringUtils
     }   //  maxContentLength()
 
     /**
+     *  <p>{@summary Normalizes the given String to a pure ASCII String.} This
+     *  replaces 'ß' by 'ss' and replaces all diacritical characters by their
+     *  base form (that mean that 'ü' gets 'u' and so on). For the normalizing
+     *  of a search criteria, this should be sufficient, although it may cause
+     *  issues for non-latin scripts, as for these the input can be mapped to
+     *  the empty String.
+     *
+     *  @note   The scandinavian letters 'ø' and 'Ø' are not diacritical
+     *      letters, nevertheless they will be replaced.
+     *
+     *  @param  s   The input string.
+     *  @return The normalised String, only containing ASCII characters; it
+     *      could be empty.
+     */
+    public static final String normalizeToASCII( final CharSequence s )
+    {
+        final var input = requireNonNullArgument( s, "s" ).toString()
+            .replace( "ß", "ss" )
+            .replace( 'ø', 'o' )
+            .replace( 'Ø', 'O' );
+        final var retValue = normalize( input, NFD )
+            .replaceAll( "[^\\p{ASCII}]", EMPTY_STRING );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  normalizeToASCII()
+
+    /**
      *  Brings the given string to the given length and uses the provided
      *  padding character to fill up the string.
      *
@@ -2046,6 +2076,30 @@ public final class StringUtils
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  quote()
+
+    /**
+     *  <p>{@summary This method replaces all diacritical characters in the
+     *  input String by their base form.} That means that 'ü' gets 'u', `È'
+     *  gets 'E' and so on).</p>
+     *  <p>This differs from
+     *  {@link #normalizeToASCII(CharSequence)}
+     *  as this method still allows non-ASCII characters in the output.</p>
+     *
+     *  @note   The scandinavian letters 'ø' and 'Ø' are not diacritical
+     *      letters, meaning they will not be replaced.
+     *
+     *  @param  s   The input string.
+     *  @return The normalised String, not containing any diacritical
+     *      characters.
+     */
+    public static final String removeDiacriticalMarks( final CharSequence s )
+    {
+        final var retValue = normalize( requireNonNullArgument( s, "s" ), NFD )
+            .replaceAll("\\p{InCombiningDiacriticalMarks}+", EMPTY_STRING );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  removeDiacriticalMarks()
 
     /**
      *  Repeats the given char {@code repeat} to form a new String. The table

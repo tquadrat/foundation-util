@@ -18,7 +18,7 @@
 package org.tquadrat.foundation.util;
 
 import static java.lang.Math.max;
-import static java.lang.String.join;
+import static java.lang.System.arraycopy;
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.getProperties;
 import static java.lang.System.getProperty;
@@ -33,7 +33,6 @@ import static java.util.stream.Collectors.toMap;
 import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.apiguardian.api.API.Status.EXPERIMENTAL;
 import static org.apiguardian.api.API.Status.STABLE;
-import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
 import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_CPUARCHITECTURE;
 import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSNAME;
 import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSVERSION;
@@ -57,6 +56,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.HexFormat;
 import java.util.IllformedLocaleException;
 import java.util.List;
 import java.util.Locale;
@@ -80,13 +80,13 @@ import org.tquadrat.foundation.lang.SoftLazy;
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SystemUtils.java 886 2021-03-27 11:16:53Z tquadrat $
+ *  @version $Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: SystemUtils.java 886 2021-03-27 11:16:53Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class SystemUtils
@@ -100,14 +100,14 @@ public final class SystemUtils
      *  UNIX/Linux and MacOX/OS-X.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: SystemUtils.java 886 2021-03-27 11:16:53Z tquadrat $
+     *  @version $Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      *
      *  @see SystemUtils#determineOperatingSystem()
      */
-    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 886 2021-03-27 11:16:53Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
     @API( status = STABLE, since = "0.0.6" )
     public static enum OperatingSystem
     {
@@ -546,25 +546,10 @@ public final class SystemUtils
             throw new ValidationException( format( "Node id is invalid: %1$d", nodeId ) );
         }
 
-        final var bytes = BigInteger.valueOf( nodeId ).toByteArray();
-        final var retValue = new StringBuilder( 17 );
-        var startIndex = 0;
-        while( ((startIndex + 1) < bytes.length) && (bytes [startIndex] == 0) )
-        {
-            ++startIndex;
-        }
-        for( var i = startIndex; (i + bytes.length) < 6; ++i )
-        {
-            retValue.append( "00-" );
-        }
-        for( var i = startIndex; i < bytes.length; ++i )
-        {
-            if( i > startIndex )
-            {
-                retValue.append( '-' );
-            }
-            retValue.append( format( "%1$02X", bytes [i] ) );
-        }
+        final var hexFormat = HexFormat.of();
+        final var s = hexFormat.toHexDigits( nodeId, 12 );
+        final var bytes = hexFormat.parseHex( s );
+        final var retValue = HexFormat.ofDelimiter( "-" ).withUpperCase().formatHex( bytes );
 
         //---* Done *----------------------------------------------------------
         return retValue.toString();
@@ -1080,28 +1065,15 @@ public final class SystemUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final long translateMACToNodeId( final String macAddress )
     {
-        requireNonNullArgument( macAddress, "macAddress" );
-
+        final var bytes = HexFormat.ofDelimiter( "-" ).withUpperCase().parseHex( requireNotEmptyArgument( macAddress, "macAddress" ) );
         final var MSG_InvalidMAC = "MAC address is invalid: %1$s";
-
-        final var bytes = splitString( macAddress, '-' );
         if( bytes.length != 6 )
         {
             throw new ValidationException( format( MSG_InvalidMAC, macAddress ) );
         }
-
-        BigInteger nodeId = null;
-        try
-        {
-            //noinspection MagicNumber
-            nodeId = new BigInteger( join( EMPTY_STRING, bytes ), 16 );
-        }
-        catch( final NumberFormatException e )
-        {
-            throw new ValidationException( format( MSG_InvalidMAC, macAddress ), e );
-        }
-
-        final var retValue = nodeId.longValue();
+        final byte [] bytes2 = new byte [7];
+        arraycopy( bytes, 0, bytes2, 1, 6 );
+        final var retValue = new BigInteger( bytes2 ).longValue();
 
         //---* Done *----------------------------------------------------------
         return retValue;

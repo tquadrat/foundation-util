@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2022 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -17,10 +17,11 @@
 
 package org.tquadrat.foundation.util;
 
-import static java.lang.System.arraycopy;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.StringUtils.format;
+
+import java.util.HexFormat;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
@@ -29,21 +30,24 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
 import org.tquadrat.foundation.exception.ValidationException;
 
 /**
- *  Library of utility methods useful in dealing with converting byte arrays
- *  to and from strings of hexadecimal digits. <br>
- *  <br>Parts of the code were adopted from the class
- *  <code>org.apache.catalina.util.HexUtils</code> (written by Craig R.
- *  McClanahan) out of the Tomcat source and modified to match the requirements
- *  of this project.
+ *  <p>{@summary A set of utility methods that are useful for the conversion of
+ *  byte arrays to and from strings of hexadecimal digits.}</p>
+ *  <p>Parts of the code were adopted from the class
+ *  {@code org.apache.catalina.util.HexUtils} (written by Craig R. McClanahan)
+ *  out of the Tomcat source and modified to match the requirements of this
+ *  project.</p>
+ *  <p>Partially, the methods got obsolete with the introduction of
+ *  {@link java.util.HexFormat}
+ *  in Java&nbsp;17.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Craig R. McClanahan
- *  @version $Id: HexUtils.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: HexUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HexUtils.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HexUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
 @UtilityClass
 public final class HexUtils
 {
@@ -59,12 +63,12 @@ public final class HexUtils
     ====** Methods **==========================================================
         \*---------*/
     /**
-     *  Converts a String of hexadecimal digits into the corresponding byte
-     *  array by encoding each two hexadecimal digits as a byte. The method
-     *  will not distinguish between upper or lower case for the digit from
-     *  {@code 0xA} to {@code 0xF}.<br>
-     *  <br>If the number of digits in the String is odd, the String will be
-     *  <i>prefixed</i> by an additional 0.
+     *  <p>{@summary Converts a String of hexadecimal digits into the
+     *  corresponding byte array by encoding each two hexadecimal digits as a
+     *  byte.} The method will not distinguish between upper or lower case for
+     *  the digit from {@code 0xA} to {@code 0xF}.</p>
+     *  <p>If the number of digits in the String is odd, the String will be
+     *  <i>prefixed</i> by an additional 0.</p>
      *
      *  @param  digits  Hexadecimal digits representation.
      *  @return The resulting byte array.
@@ -76,9 +80,10 @@ public final class HexUtils
     public static byte[] convertFromHexString( final CharSequence digits )
     {
         final var len = requireNotEmptyArgument( digits, "digits" ).length();
-        final var digitsString = digits.toString();
-        final var chars = ((len % 2) == 0) ? digitsString.toCharArray() : ("0" + digitsString).toCharArray();
-        final var retValue = convertFromHexCharArray( chars );
+        final var buffer = new StringBuilder( len + 1 );
+        if( len % 2 > 0 ) buffer.append( '0' );
+        buffer.append( digits );
+        final var retValue = HexFormat.of().parseHex( buffer );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -98,53 +103,11 @@ public final class HexUtils
      *      empty, or it contains an invalid character that cannot be
      *      interpreted as a hexadecimal digit.
      */
-    @SuppressWarnings( {"MethodCanBeVariableArityMethod", "MagicNumber"} )
+    @SuppressWarnings( "MethodCanBeVariableArityMethod" )
     @API( status = STABLE, since = "0.0.5" )
     public static final byte[] convertFromHexCharArray( final char [] digits )
     {
-        var len = requireNotEmptyArgument( digits, "digits" ).length;
-        final var f = new byte [] {16, 1};
-
-        char [] chars = null;
-        if( (len % 2) == 0 )
-        {
-            chars = digits;
-        }
-        else
-        {
-            chars = new char [len + 1];
-            chars [0] = '0';
-            arraycopy( digits, 0, chars, 1, len );
-            ++len;
-        }
-        final var retValue = new byte [len / 2];
-        byte resultByte;
-        char currentChar;
-        var rIndex = 0;  //  Index for retValue array.
-        int v;
-
-        ScanLoop:for( var i = 0; i < len; i += 2 )
-        {
-            resultByte = 0;
-
-            //---* Convert the digits *----------------------------------------
-            ConvertLoop: for( var j = 0; j < 2; ++j )
-            {
-                currentChar = chars [i + j];
-                v = Character.digit( currentChar, 0x10 );
-                if( v >= 0 )
-                {
-                    resultByte += v * f [j];
-                }
-                else
-                {
-                    throw new IllegalArgumentException( format( "The HexString '%1$S' contains an invalid character: %2$S", new String( digits ), Character.toString( currentChar ) ) );
-                }
-            }   //  ConvertLoop:
-
-            //---* Write the resulting byte *----------------------------------
-            retValue [rIndex++] = resultByte;
-        }   //  ScanLoop:
+        final var retValue = convertFromHexString( new String( requireNotEmptyArgument( digits, "digits" ) ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -165,8 +128,7 @@ public final class HexUtils
             throw new ValidationException( format( "The value %1$d cannot be converted to a single HexDigit", value ) );
         }
 
-        final var temp = value & 15;
-        final var retValue = (char) (temp >= 10 ? ((temp - 10) + 'A') : (temp + '0'));
+        final var retValue = HexFormat.of().withUpperCase().toLowHexDigit( value );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -180,23 +142,18 @@ public final class HexUtils
      *  @return The converted string.
      *  @throws IllegalArgumentException    The given byte array is
      *      {@code null} or empty.
+     *
+     *  @deprecated Use
+     *      {@link java.util.HexFormat#formatHex(byte[])}
+     *      instead, like this:
+     *      <pre><code>String s = HexFormat.of().withUpperCase().formatHex( bytes );</code></pre>
      */
-    @SuppressWarnings( "MagicNumber" )
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
+    @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = STABLE, since = "0.0.5" )
     public static final String convertToHexString( final byte[] bytes ) throws IllegalArgumentException
     {
-        final var buffer = new StringBuilder( requireNotEmptyArgument( bytes, "bytes" ).length * 2 );
-        int i;
-        for( final var b : bytes )
-        {
-            //---* Make sure that the value is in the range 0 < value < 256 *--
-            i = ((b + 256) % 256);
-
-            //---* Convert *---------------------------------------------------
-            buffer.append( convertToHexDigit( i >> 4 ) );
-            buffer.append( convertToHexDigit( i & 15 ) );
-        }
-        final var retValue = buffer.toString();
+        final var retValue = HexFormat.of().withUpperCase().formatHex( requireNotEmptyArgument( bytes, "bytes" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;

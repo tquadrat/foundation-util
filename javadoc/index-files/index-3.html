@@ -374,8 +374,9 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#convertFromHexString(java.lang.CharSequence)" class="member-name-link">convertFromHexString(CharSequence)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html" title="class in org.tquadrat.foundation.util">HexUtils</a></dt>
 <dd>
-<div class="block">Converts a String of hexadecimal digits into the corresponding byte
-  array by encoding each two hexadecimal digits as a byte.</div>
+<div class="block">Converts a String of hexadecimal digits into the
+  corresponding byte array by encoding each two hexadecimal digits as a
+  byte.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#convertIPAddress(java.lang.CharSequence)" class="member-name-link">convertIPAddress(CharSequence)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html" title="class in org.tquadrat.foundation.util">SystemUtils</a></dt>
 <dd>
@@ -389,8 +390,12 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html#convertToHexString(byte%5B%5D)" class="member-name-link">convertToHexString(byte[])</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/HexUtils.html" title="class in org.tquadrat.foundation.util">HexUtils</a></dt>
 <dd>
-<div class="block">Converts an array of bytes to a hex string where the digits from
-  <code>0xA</code> to <code>0xF</code> are all uppercase.</div>
+<div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
+<div class="deprecation-comment">Use
+      <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/HexFormat.html#formatHex(byte%5B%5D)" title="class or interface in java.util" class="external-link"><code>HexFormat.formatHex(byte[])</code></a>
+      instead, like this:
+      <pre><code>String s = HexFormat.of().withUpperCase().formatHex( bytes );</code></pre></div>
+</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#convertUnicodeToASCII(java.lang.CharSequence)" class="member-name-link">convertUnicodeToASCII(CharSequence)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html" title="class in org.tquadrat.foundation.util">CharSetUtils</a></dt>
 <dd>
