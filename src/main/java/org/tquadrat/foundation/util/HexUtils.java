@@ -42,12 +42,12 @@ import org.tquadrat.foundation.exception.ValidationException;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Craig R. McClanahan
- *  @version $Id: HexUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+ *  @version $Id: HexUtils.java 1022 2022-03-03 23:03:40Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HexUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HexUtils.java 1022 2022-03-03 23:03:40Z tquadrat $" )
 @UtilityClass
 public final class HexUtils
 {

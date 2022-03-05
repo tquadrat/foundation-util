@@ -98,13 +98,13 @@ import org.tquadrat.foundation.lang.internal.SharedFormatter;
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+ *  @version $Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -116,13 +116,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+     *  @version $Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -212,13 +212,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+     *  @version $Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {

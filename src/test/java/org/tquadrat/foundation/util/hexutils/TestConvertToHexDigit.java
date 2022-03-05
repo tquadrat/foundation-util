@@ -36,7 +36,7 @@ import org.tquadrat.foundation.util.HexUtils;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestConvertToHexDigit.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestConvertToHexDigit.java 1022 2022-03-03 23:03:40Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.hexutils.TestConvertToHexDigit" )
 public class TestConvertToHexDigit extends TestBaseClass
 {
