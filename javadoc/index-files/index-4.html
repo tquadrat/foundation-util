@@ -92,35 +92,22 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#deleteFolder(java.io.File)" class="member-name-link">deleteFolder(File)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></dt>
 <dd>
-<div class="block">Deletes the given
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link"><code>File</code></a>.</div>
+<div class="block">Deletes the folder (or file) that is determined by the
+  given
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link"><code>File</code></a>.
+  instance.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#deleteFolder(java.nio.file.Path)" class="member-name-link">deleteFolder(Path)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></dt>
 <dd>
-<div class="block">Deletes the given
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link"><code>Path</code></a>.</div>
+<div class="block">Deletes the folder (or file) that is determined by the
+  given
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link"><code>Path</code></a>
+  instance.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#determineCheckSum(java.io.File,java.lang.String)" class="member-name-link">determineCheckSum(File, String)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></dt>
 <dd>
-<div class="block">Calculates the check sum for the given file, using the algorithm
-  with the given name.<br>
-  <br>If the name is one of
-  
-  CRC32
-  Adler32
-  
-  it uses
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/CRC32.html" title="class or interface in java.util.zip" class="external-link"><code>CRC32</code></a>
-  or
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Adler32.html" title="class or interface in java.util.zip" class="external-link"><code>Adler32</code></a>
-  for the calculation, any other name is taken as the name for a
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>;
-  any JVM knows
-  MD5
-  SHA1
-  
-  others can be added installing additional
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/Provider.html" title="class or interface in java.security" class="external-link">security providers</a>.</div>
+<div class="block">Calculates the check sum for the given file, using the
+  algorithm with the given name.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html#determineCheckSum(java.io.File,java.security.MessageDigest)" class="member-name-link">determineCheckSum(File, MessageDigest)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></dt>
 <dd>

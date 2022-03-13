@@ -68,12 +68,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+ *  @version $Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -89,13 +89,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+     *  @version $Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -135,13 +135,13 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+     *  @version $Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "UtilityClassCanBeEnum" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -460,9 +460,11 @@ public final class IOUtils
     }   //  createTempDirectory()
 
     /**
-     *  Deletes the given
-     *  {@link Path}.
-     *  If it is a directory, it will remove its contents first, recursively.
+     *  <p>{@summary Deletes the folder (or file) that is determined by the
+     *  given
+     *  {@link Path}
+     *  instance.} If the argument denotes a directory, the method will remove
+     *  its contents first, recursively.</p>
      *
      *  @param  folder  The folder to remove; despite the name of the argument
      *      and the method, this can be also a plain file.
@@ -499,13 +501,14 @@ public final class IOUtils
     }   //  deleteFolder()
 
     /**
-     *  Deletes the given
+     *  <p>{@summary Deletes the folder (or file) that is determined by the
+     *  given
      *  {@link File}.
-     *  If it is a directory, it will remove its contents first,
-     *  recursively.<br>
-     *  <br>Calls
+     *  instance.} If the argument denotes a directory, the method will remove
+     *  its contents first, recursively.</p>
+     *  <p>Calls
      *  {@link #deleteFolder(Path)}
-     *  internally.
+     *  internally.</p>
      *
      *  @param  folder  The folder to remove; despite the name of the argument
      *      and the method, this can be also a plain file.
@@ -517,26 +520,29 @@ public final class IOUtils
     }   //  deleteFolder()
 
     /**
-     *  Calculates the check sum for the given file, using the algorithm
-     *  with the given name.<br>
-     *  <br>If the name is one of
+     *  <p>{@summary Calculates the check sum for the given file, using the
+     *  algorithm with the given name.}</p>
+     *  <p>If the name is one of</p>
      *  <ul>
-     *  <li>CRC32</li>
-     *  <li>Adler32</li>
+     *      <li>CRC32</li>
+     *      <li>Adler32</li>
      *  </ul>
-     *  it uses
+     *  <p>the method uses
      *  {@link java.util.zip.CRC32}
      *  or
      *  {@link java.util.zip.Adler32}
      *  for the calculation, any other name is taken as the name for a
      *  {@linkplain MessageDigest};
-     *  any JVM knows
-     *  <ul
-     *  ><li>MD5</li>
-     *  <li>SHA1</li>
+     *  all JVMs know</p>
+     *  <ul>
+     *      <li>MD5</li>
+     *      <li>SHA1</li>
      *  </ul>
-     *  others can be added installing additional
-     *  {@linkplain java.security.Provider security providers}.
+     *  <p>others can be added by installing additional
+     *  {@linkplain java.security.Provider security providers}.</p>
+     *  <p>This method calls
+     *  {@link #determineCheckSum(Path, String)}
+     *  internally.</p>
      *
      *  @param  file    The file to process.
      *  @param  algorithm   The name for the algorithm to use for the check sum
@@ -563,7 +569,7 @@ public final class IOUtils
      *      <li>CRC32</li>
      *      <li>Adler32</li>
      *  </ul>
-     *  <p>it uses
+     *  <p>the method uses
      *  {@link java.util.zip.CRC32}
      *  or
      *  {@link java.util.zip.Adler32}
@@ -574,7 +580,7 @@ public final class IOUtils
      *      <li>MD5</li>
      *      <li>SHA1</li>
      *  </ul>
-     *  <p>others can be added installing additional
+     *  <p>others can be added by installing additional
      *  {@linkplain java.security.Provider security providers}.</p>
      *
      *  @param  file    The file to process.
@@ -594,7 +600,9 @@ public final class IOUtils
             case "CRC32" -> format( "%Xd", determineCheckSum( file, new CRC32() ) );
             default -> {
                 final var messageDigest = MessageDigest.getInstance( algorithm );
-                yield HexFormat.of().withUpperCase().formatHex( determineCheckSum( file, messageDigest ) );
+                yield HexFormat.of()
+                    .withUpperCase()
+                    .formatHex( determineCheckSum( file, messageDigest ) );
             }
         };
 
@@ -713,12 +721,12 @@ public final class IOUtils
     public static final Appendable getNullAppendable() { return new NullAppendable(); }
 
     /**
-     *  Returns
+     *  <p>{@summary Returns
      *  {@link System#out}
      *  with a non-functional
      *  {@link OutputStream#close()}
-     *  method.<br>
-     *  <br>Assume the following scenario:
+     *  method.}</p>
+     *  <p>Assume the following scenario:</p>
      *  <pre><code>  &hellip;
      *  Optional&lt;File&gt; outputFile = &hellip;
      *  &hellip;
@@ -731,10 +739,10 @@ public final class IOUtils
      *       &hellip;
      *  }
      *  &hellip;</code></pre>
-     *  The output stream will be close at the end of the {@code try} block;
+     *  <p>The output stream will be close at the end of the {@code try} block;
      *  this is desired in case of a
      *  {@link java.io.FileOutputStream FileOutputStream},
-     *  but totally not wanted if the output stream is {@code System.out}.
+     *  but totally not wanted if the output stream is {@code System.out}.</p>
      *
      *  @return {@code System.out} without the {@code close()} method.
      */
