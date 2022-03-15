@@ -68,12 +68,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $
+ *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -89,13 +89,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $
+     *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -135,13 +135,13 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $
+     *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "UtilityClassCanBeEnum" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1028 2022-03-13 18:44:02Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -480,7 +480,15 @@ public final class IOUtils
             @Override
             public final FileVisitResult postVisitDirectory( final Path directory, final IOException exception ) throws IOException
             {
-                delete( directory );
+                try
+                {
+                    delete( directory );
+                }
+                catch( IOException e )
+                {
+                    if( nonNull( exception ) ) e.addSuppressed( exception );
+                    throw e;
+                }
 
                 //---* Done *--------------------------------------------------
                 return CONTINUE;
