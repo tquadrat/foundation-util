@@ -40,13 +40,13 @@ import org.tquadrat.foundation.util.internal.StringBasedComparator;
  *  {@link Comparator}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Comparators.java 1007 2022-02-05 01:03:43Z tquadrat $
+ *  @version $Id: Comparators.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: Comparators.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Comparators.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Comparators
 {
@@ -71,7 +71,7 @@ public final class Comparators
      *  provide always the same key.</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Comparators.java 1007 2022-02-05 01:03:43Z tquadrat $
+     *  @version $Id: Comparators.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.5
      *
      *  @param  <T> The type to order.
@@ -81,7 +81,7 @@ public final class Comparators
      *  @UMLGraph.link
      */
     @API( status = STABLE, since = "0.0.5" )
-    @ClassVersion( sourceVersion = "$Id: Comparators.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Comparators.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     @FunctionalInterface
     public interface KeyProvider<T,K>
     {
@@ -323,6 +323,7 @@ public final class Comparators
     @API( status = STABLE, since = "0.1.0" )
     public static final <T extends Number> Comparator<T> numberComparator()
     {
+        @SuppressWarnings( "OverlyLongLambda" )
         final var retValue = (Comparator<T>) ( v1, v2) ->
         {
             if( v1 instanceof Comparable comparable )
@@ -331,6 +332,7 @@ public final class Comparators
                 final var result = signum( comparable.compareTo( v2 ) );
                 return result;
             }
+            //noinspection NumericCastThatLosesPrecision
             return (int) Math.signum( v1.doubleValue() - v2.doubleValue() );
         };
 

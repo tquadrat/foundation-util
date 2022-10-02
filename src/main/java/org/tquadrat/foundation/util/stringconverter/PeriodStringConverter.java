@@ -69,12 +69,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see Period
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: PeriodStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: PeriodStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.7
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: PeriodStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: PeriodStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public final class PeriodStringConverter implements StringConverter<Period>
 {
@@ -101,6 +101,14 @@ public final class PeriodStringConverter implements StringConverter<Period>
      *  An instance of this class.
      */
     public static final PeriodStringConverter INSTANCE = new PeriodStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code PeriodStringConverter}.
+     */
+    public PeriodStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

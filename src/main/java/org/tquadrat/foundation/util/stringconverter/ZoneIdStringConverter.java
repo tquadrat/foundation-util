@@ -46,14 +46,14 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  {@link org.tquadrat.foundation.util.SystemUtils#getZoneIdAliasMap()}.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ZoneIdStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $
+ *  @version $Id: ZoneIdStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @see org.tquadrat.foundation.util.SystemUtils#createZoneIdAliasMap()
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ZoneIdStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ZoneIdStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class ZoneIdStringConverter implements StringConverter<ZoneId>
 {
@@ -80,6 +80,14 @@ public final class ZoneIdStringConverter implements StringConverter<ZoneId>
      *  An instance of this class.
      */
     public static final ZoneIdStringConverter INSTANCE = new ZoneIdStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code ZoneIdStringConverter}.
+     */
+    public ZoneIdStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

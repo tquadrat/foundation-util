@@ -50,13 +50,13 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to do the conversion to a String.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TimeZoneStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: TimeZoneStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "UseOfObsoleteDateTimeApi" )
-@ClassVersion( sourceVersion = "$Id: TimeZoneStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TimeZoneStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class TimeZoneStringConverter implements StringConverter<TimeZone>
 {
@@ -84,6 +84,14 @@ public final class TimeZoneStringConverter implements StringConverter<TimeZone>
      *  An instance of this class.
      */
     public static final TimeZoneStringConverter INSTANCE = new TimeZoneStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code TimeZoneStringConverter}.
+     */
+    public TimeZoneStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

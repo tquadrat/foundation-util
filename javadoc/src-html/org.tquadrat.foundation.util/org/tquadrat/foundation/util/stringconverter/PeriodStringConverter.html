@@ -82,12 +82,12 @@
 <span class="source-line-no">069</span><span id="line-69"> *  @see Period</span>
 <span class="source-line-no">070</span><span id="line-70"> *</span>
 <span class="source-line-no">071</span><span id="line-71"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">072</span><span id="line-72"> *  @version $Id: PeriodStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $</span>
+<span class="source-line-no">072</span><span id="line-72"> *  @version $Id: PeriodStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
 <span class="source-line-no">073</span><span id="line-73"> *  @since 0.0.7</span>
 <span class="source-line-no">074</span><span id="line-74"> *</span>
 <span class="source-line-no">075</span><span id="line-75"> *  @UMLGraph.link</span>
 <span class="source-line-no">076</span><span id="line-76"> */</span>
-<span class="source-line-no">077</span><span id="line-77">@ClassVersion( sourceVersion = "$Id: PeriodStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
+<span class="source-line-no">077</span><span id="line-77">@ClassVersion( sourceVersion = "$Id: PeriodStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
 <span class="source-line-no">078</span><span id="line-78">@API( status = STABLE, since = "0.0.7" )</span>
 <span class="source-line-no">079</span><span id="line-79">public final class PeriodStringConverter implements StringConverter&lt;Period&gt;</span>
 <span class="source-line-no">080</span><span id="line-80">{</span>
@@ -115,49 +115,57 @@
 <span class="source-line-no">102</span><span id="line-102">     */</span>
 <span class="source-line-no">103</span><span id="line-103">    public static final PeriodStringConverter INSTANCE = new PeriodStringConverter();</span>
 <span class="source-line-no">104</span><span id="line-104"></span>
-<span class="source-line-no">105</span><span id="line-105">        /*---------*\</span>
-<span class="source-line-no">106</span><span id="line-106">    ====** Methods **==========================================================</span>
-<span class="source-line-no">107</span><span id="line-107">        \*---------*/</span>
+<span class="source-line-no">105</span><span id="line-105">        /*--------------*\</span>
+<span class="source-line-no">106</span><span id="line-106">    ====** Constructors **=====================================================</span>
+<span class="source-line-no">107</span><span id="line-107">        \*--------------*/</span>
 <span class="source-line-no">108</span><span id="line-108">    /**</span>
-<span class="source-line-no">109</span><span id="line-109">     *  {@inheritDoc}</span>
+<span class="source-line-no">109</span><span id="line-109">     *  Creates a new instance of {@code PeriodStringConverter}.</span>
 <span class="source-line-no">110</span><span id="line-110">     */</span>
-<span class="source-line-no">111</span><span id="line-111">    @Override</span>
-<span class="source-line-no">112</span><span id="line-112">    public final Period fromString( final CharSequence source ) throws IllegalArgumentException</span>
-<span class="source-line-no">113</span><span id="line-113">    {</span>
-<span class="source-line-no">114</span><span id="line-114">        Period retValue = null;</span>
-<span class="source-line-no">115</span><span id="line-115">        if( nonNull( source ) )</span>
-<span class="source-line-no">116</span><span id="line-116">        {</span>
-<span class="source-line-no">117</span><span id="line-117">            try</span>
-<span class="source-line-no">118</span><span id="line-118">            {</span>
-<span class="source-line-no">119</span><span id="line-119">                retValue = Period.parse( source );</span>
-<span class="source-line-no">120</span><span id="line-120">            }</span>
-<span class="source-line-no">121</span><span id="line-121">            catch( final DateTimeParseException e )</span>
-<span class="source-line-no">122</span><span id="line-122">            {</span>
-<span class="source-line-no">123</span><span id="line-123">                throw new IllegalArgumentException( format( MSG_InvalidPeriod, source ), e );</span>
-<span class="source-line-no">124</span><span id="line-124">            }</span>
-<span class="source-line-no">125</span><span id="line-125">        }</span>
-<span class="source-line-no">126</span><span id="line-126"></span>
-<span class="source-line-no">127</span><span id="line-127">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">128</span><span id="line-128">        return retValue;</span>
-<span class="source-line-no">129</span><span id="line-129">    }   //  fromString()</span>
-<span class="source-line-no">130</span><span id="line-130"></span>
-<span class="source-line-no">131</span><span id="line-131">    /**</span>
-<span class="source-line-no">132</span><span id="line-132">     *  This method is used by the</span>
-<span class="source-line-no">133</span><span id="line-133">     *  {@link java.util.ServiceLoader}</span>
-<span class="source-line-no">134</span><span id="line-134">     *  to obtain the instance for this</span>
-<span class="source-line-no">135</span><span id="line-135">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
-<span class="source-line-no">136</span><span id="line-136">     *  implementation.</span>
-<span class="source-line-no">137</span><span id="line-137">     *</span>
-<span class="source-line-no">138</span><span id="line-138">     *  @return The instance for this {@code StringConverter} implementation.</span>
-<span class="source-line-no">139</span><span id="line-139">     */</span>
-<span class="source-line-no">140</span><span id="line-140">    @SuppressWarnings( "UseOfConcreteClass" )</span>
-<span class="source-line-no">141</span><span id="line-141">    public static final PeriodStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">142</span><span id="line-142">}</span>
-<span class="source-line-no">143</span><span id="line-143">//  class PeriodStringConverter</span>
-<span class="source-line-no">144</span><span id="line-144"></span>
-<span class="source-line-no">145</span><span id="line-145">/*</span>
-<span class="source-line-no">146</span><span id="line-146"> *  End of File</span>
-<span class="source-line-no">147</span><span id="line-147"> */</span>
+<span class="source-line-no">111</span><span id="line-111">    public PeriodStringConverter() {}</span>
+<span class="source-line-no">112</span><span id="line-112"></span>
+<span class="source-line-no">113</span><span id="line-113">        /*---------*\</span>
+<span class="source-line-no">114</span><span id="line-114">    ====** Methods **==========================================================</span>
+<span class="source-line-no">115</span><span id="line-115">        \*---------*/</span>
+<span class="source-line-no">116</span><span id="line-116">    /**</span>
+<span class="source-line-no">117</span><span id="line-117">     *  {@inheritDoc}</span>
+<span class="source-line-no">118</span><span id="line-118">     */</span>
+<span class="source-line-no">119</span><span id="line-119">    @Override</span>
+<span class="source-line-no">120</span><span id="line-120">    public final Period fromString( final CharSequence source ) throws IllegalArgumentException</span>
+<span class="source-line-no">121</span><span id="line-121">    {</span>
+<span class="source-line-no">122</span><span id="line-122">        Period retValue = null;</span>
+<span class="source-line-no">123</span><span id="line-123">        if( nonNull( source ) )</span>
+<span class="source-line-no">124</span><span id="line-124">        {</span>
+<span class="source-line-no">125</span><span id="line-125">            try</span>
+<span class="source-line-no">126</span><span id="line-126">            {</span>
+<span class="source-line-no">127</span><span id="line-127">                retValue = Period.parse( source );</span>
+<span class="source-line-no">128</span><span id="line-128">            }</span>
+<span class="source-line-no">129</span><span id="line-129">            catch( final DateTimeParseException e )</span>
+<span class="source-line-no">130</span><span id="line-130">            {</span>
+<span class="source-line-no">131</span><span id="line-131">                throw new IllegalArgumentException( format( MSG_InvalidPeriod, source ), e );</span>
+<span class="source-line-no">132</span><span id="line-132">            }</span>
+<span class="source-line-no">133</span><span id="line-133">        }</span>
+<span class="source-line-no">134</span><span id="line-134"></span>
+<span class="source-line-no">135</span><span id="line-135">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">136</span><span id="line-136">        return retValue;</span>
+<span class="source-line-no">137</span><span id="line-137">    }   //  fromString()</span>
+<span class="source-line-no">138</span><span id="line-138"></span>
+<span class="source-line-no">139</span><span id="line-139">    /**</span>
+<span class="source-line-no">140</span><span id="line-140">     *  This method is used by the</span>
+<span class="source-line-no">141</span><span id="line-141">     *  {@link java.util.ServiceLoader}</span>
+<span class="source-line-no">142</span><span id="line-142">     *  to obtain the instance for this</span>
+<span class="source-line-no">143</span><span id="line-143">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
+<span class="source-line-no">144</span><span id="line-144">     *  implementation.</span>
+<span class="source-line-no">145</span><span id="line-145">     *</span>
+<span class="source-line-no">146</span><span id="line-146">     *  @return The instance for this {@code StringConverter} implementation.</span>
+<span class="source-line-no">147</span><span id="line-147">     */</span>
+<span class="source-line-no">148</span><span id="line-148">    @SuppressWarnings( "UseOfConcreteClass" )</span>
+<span class="source-line-no">149</span><span id="line-149">    public static final PeriodStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">150</span><span id="line-150">}</span>
+<span class="source-line-no">151</span><span id="line-151">//  class PeriodStringConverter</span>
+<span class="source-line-no">152</span><span id="line-152"></span>
+<span class="source-line-no">153</span><span id="line-153">/*</span>
+<span class="source-line-no">154</span><span id="line-154"> *  End of File</span>
+<span class="source-line-no">155</span><span id="line-155"> */</span>
 
 
 

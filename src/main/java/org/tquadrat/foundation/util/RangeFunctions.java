@@ -35,14 +35,14 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Ben Gidley
- *  @version $Id: RangeFunctions.java 995 2022-01-23 01:09:35Z tquadrat $
+ *  @version $Id: RangeFunctions.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.7
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: RangeFunctions.java 995 2022-01-23 01:09:35Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeFunctions.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public final class RangeFunctions
 {
@@ -158,6 +158,7 @@ public final class RangeFunctions
      *  @return {@code true} if the given value is greater than the given
      *      border value, {@code false} otherwise.
      */
+    @SuppressWarnings( "CharacterComparison" )
     public static boolean isAbove( final char value, final char floor ) { return value > floor; }
 
     /**
@@ -281,6 +282,7 @@ public final class RangeFunctions
      *  @return {@code true} if the given value is less than the given
      *      border value, {@code false} otherwise.
      */
+    @SuppressWarnings( "CharacterComparison" )
     public static boolean isBelow( final char value, final char ceiling ) { return value < ceiling; }
 
     /**
@@ -370,6 +372,7 @@ public final class RangeFunctions
      *      {@code true}, it will be &quot;greater or equal&quot; and
      *      &quot;less or equal&quot;, respectively.
      */
+    @SuppressWarnings( "CharacterComparison" )
     public static boolean isBetween( final char value, final char floor, final char ceiling, final boolean include )
     {
         final var retValue = include ?

@@ -21,6 +21,7 @@ import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Stream.builder;
 import static org.apiguardian.api.API.Status.INTERNAL;
+import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
@@ -54,7 +55,7 @@ import org.tquadrat.foundation.util.StringUtils;
  *  @thanks Gary Gregory - ggregory@seagullsw.com
  *  @inspired Some code I found somewhere long time ago, originally written by
  *      Alexander Day Chaffee and Gary Gregory
- *  @version $Id: Entities.java 980 2022-01-06 15:29:19Z tquadrat $
+ *  @version $Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @see <a href="http://hotwired.lycos.com/webmonkey/reference/special_characters/">ISO Entities</a>
@@ -66,7 +67,7 @@ import org.tquadrat.foundation.util.StringUtils;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: Entities.java 980 2022-01-06 15:29:19Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class Entities
 {
@@ -80,12 +81,12 @@ public final class Entities
      *  @extauthor Alexander Day Chaffee - alex@purpletech.com
      *  @extauthor Gary Gregory - ggregory@seagullsw.com
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Entities.java 980 2022-01-06 15:29:19Z tquadrat $
+     *  @version $Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Entities.java 980 2022-01-06 15:29:19Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     private static interface EntityMap
     {
             /*---------*\
@@ -138,12 +139,12 @@ public final class Entities
      *  @extauthor Alexander Day Chaffee - alex@purpletech.com
      *  @extauthor Gary Gregory - ggregory@seagullsw.com
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Entities.java 980 2022-01-06 15:29:19Z tquadrat $
+     *  @version $Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Entities.java 980 2022-01-06 15:29:19Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     private static class PrimitiveEntityMap implements EntityMap
     {
             /*------------*\
@@ -318,6 +319,7 @@ public final class Entities
     {
         final var thisClass = getClass();
         final var packageName = thisClass.getPackageName().replace( '.', '/' );
+        @SuppressWarnings( "OverlyLongLambda" )
         final var resourceURLs = stream( resourceNames )
             .map( n ->
             {
@@ -328,6 +330,7 @@ public final class Entities
             } )
             .toArray( URL []::new );
 
+        @SuppressWarnings( "OverlyLongLambda" )
         final var supplier = (Supplier<EntityMap>) () ->
         {
             final EntityMap map = new PrimitiveEntityMap();
@@ -353,7 +356,7 @@ public final class Entities
      *  @param  firstAmp    The index of the first ampersand in the source.
      *  @throws IOException Problems on writing to the {@code buffer}.
      */
-    @SuppressWarnings( "MagicNumber" )
+    @SuppressWarnings( {"MagicNumber", "OverlyNestedMethod", "OverlyComplexMethod"} )
     private void doUnescape( final Appendable buffer, final CharSequence s, final int firstAmp ) throws IOException
     {
         assert nonNull( buffer ) : "buffer is null";
@@ -363,26 +366,29 @@ public final class Entities
         buffer.append( s, 0, firstAmp );
         final var str = s.toString();
         final var len = str.length();
-        char c, isHexChar;
-        int nextIndex, semiColonIndex, ampersandIndex, entityContentLen;
+        char isHexChar;
+        int nextIndex;
+        int semiColonIndex;
+        int ampersandIndex;
+        int entityContentLen;
         Optional<Integer> entityValue;
         ScanLoop: for( var i = firstAmp; i < len; ++i )
         {
-            c = str.charAt( i );
-            if( c == '&' )
+            final var currentCharacter = str.charAt( i );
+            if( currentCharacter == '&' )
             {
                 nextIndex = i + 1;
                 semiColonIndex = str.indexOf( ';', nextIndex );
                 if( semiColonIndex == -1 )
                 {
-                    buffer.append( c );
+                    buffer.append( '&' );
                     continue ScanLoop;
                 }
                 ampersandIndex = str.indexOf( '&', i + 1 );
                 if( (ampersandIndex != -1) && (ampersandIndex < semiColonIndex) )
                 {
                     //---* The text looks like "&...&...;" *-------------------
-                    buffer.append( c );
+                    buffer.append( '&' );
                     continue ScanLoop;
                 }
                 final var entityContent = str.substring( nextIndex, semiColonIndex );
@@ -408,7 +414,7 @@ public final class Entities
                                 };
                                 entityValue = value > 0xFFFFFF ? Optional.empty() : Optional.of( Integer.valueOf( value ) );
                             }
-                            catch( @SuppressWarnings( "unused" ) final NumberFormatException e )
+                            catch( final NumberFormatException ignored )
                             {
                                 entityValue = Optional.empty();
                             }
@@ -428,7 +434,7 @@ public final class Entities
             }
             else
             {
-                buffer.append( c );
+                buffer.append( currentCharacter );
             }
         }   //  ScanLoop:
     }   //  doUnescape()
@@ -463,8 +469,10 @@ public final class Entities
      *  @param  str The {@code String} to escape.
      *  @return A new escaped {@code String}.
      */
+    @SuppressWarnings( "UnnecessaryUnicodeEscape" )
     public final String escape( final CharSequence str )
     {
+        @SuppressWarnings( "NumericCastThatLosesPrecision" )
         final var retValue = requireNonNullArgument( str, "str" ).codePoints()
             .mapToObj( c -> entityName( c ).map( n -> format( "&%s;", n ) ).orElseGet( () -> c > 0x7F ? formatCodePoint( c ) : Character.toString( (char) c ) ) )
             .collect( joining() );
@@ -552,7 +560,7 @@ public final class Entities
         assert nonNull( entityMap ) : "entityMap is null";
         assert nonNull( resourceURL ) : "resourceURL is null";
 
-        try( final var reader = new BufferedReader( new InputStreamReader( resourceURL.openStream() ) ) )
+        try( final var reader = new BufferedReader( new InputStreamReader( resourceURL.openStream(), UTF8 ) ) )
         {
             reader.lines()
                 .filter( StringUtils::isNotEmptyOrBlank )

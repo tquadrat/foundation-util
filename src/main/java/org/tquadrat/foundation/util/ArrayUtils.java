@@ -45,14 +45,14 @@ import org.tquadrat.foundation.lang.Objects;
  *  allowed.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ArrayUtils.java 840 2021-01-10 21:37:03Z tquadrat $
+ *  @version $Id: ArrayUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: ArrayUtils.java 840 2021-01-10 21:37:03Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ArrayUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 public final class ArrayUtils
 {
         /*-----------*\
@@ -197,6 +197,7 @@ public final class ArrayUtils
      *  @return {@code true} if the value is in the list,
      *      {@code false} otherwise.
      */
+    @SuppressWarnings( "ImplicitNumericConversion" )
     @API( status = STABLE, since = "0.0.5" )
     public static boolean isIn( final byte v, final byte... list )
     {
@@ -241,6 +242,7 @@ public final class ArrayUtils
      *  @return {@code true} if the value is in the list,
      *      {@code false} otherwise.
      */
+    @SuppressWarnings( "FloatingPointEquality" )
     @API( status = STABLE, since = "0.0.5" )
     public static boolean isIn( final double v, final double... list )
     {
@@ -264,6 +266,7 @@ public final class ArrayUtils
      *  @return {@code true} if the value is in the list,
      *      {@code false} otherwise.
      */
+    @SuppressWarnings( "FloatingPointEquality" )
     @API( status = STABLE, since = "0.0.5" )
     public static boolean isIn( final float v, final float... list )
     {
@@ -327,6 +330,7 @@ public final class ArrayUtils
      *  @return {@code true} if the value is in the list,
      *      {@code false} otherwise.
      */
+    @SuppressWarnings( "ImplicitNumericConversion" )
     @API( status = STABLE, since = "0.0.5" )
     public static boolean isIn( final short v, final short... list )
     {
@@ -382,6 +386,7 @@ public final class ArrayUtils
      *  @param  list  The values.
      *  @return The greatest value in the list.
      */
+    @SuppressWarnings( "CharacterComparison" )
     @API( status = STABLE, since = "0.0.5" )
     public static char max( final char... list )
     {
@@ -527,6 +532,7 @@ public final class ArrayUtils
      *  @param  list  The values.
      *  @return The smallest value in the list.
      */
+    @SuppressWarnings( "CharacterComparison" )
     @API( status = STABLE, since = "0.0.5" )
     public static char min( final char... list )
     {
@@ -642,14 +648,13 @@ public final class ArrayUtils
         final var len = requireNonNullArgument( a, "a" ).length;
         if( len > 1 )
         {
-            T t;
             int pos;
             for( var i = 0; i < (len / 2); ++i )
             {
                 pos = len - 1 - i;
-                t = a [i];
+                final var temp = a [i];
                 a [i] = a [pos];
-                a [pos] = t;
+                a [pos] = temp;
             }
         }
     }   //  revert()
@@ -741,6 +746,7 @@ public final class ArrayUtils
         var retValue = EMPTY_STRING;
         if( array.length > 0 )
         {
+            @SuppressWarnings( "LocalVariableNamingConvention" )
             final var s = array.length > 1
                 ? nonNull( separator )
                     ? separator.toString()

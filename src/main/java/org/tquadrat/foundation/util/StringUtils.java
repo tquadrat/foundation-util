@@ -98,13 +98,13 @@ import org.tquadrat.foundation.lang.internal.SharedFormatter;
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $
+ *  @version $Id: StringUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -116,13 +116,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $
+     *  @version $Id: StringUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -212,13 +212,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $
+     *  @version $Id: StringUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1022 2022-03-03 23:03:40Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {
@@ -483,7 +483,7 @@ public final class StringUtils
      *  <li>If {@code text} is less than {@code maxWidth} characters long,
      *  return it unchanged.</li>
      *  <li>Else abbreviate it to <code>(substring( text, 0, max - 1 ) +
-     *  &quot;\u2026&quot; )</code>.</li>
+     *  &quot;&hellip;&quot; )</code>.</li>
      *  <li>If {@code maxWidth} is less than 4, throw an
      *  {@link ValidationException}.</li>
      *  <li>In no case it will return a String of length greater than
@@ -811,6 +811,7 @@ public final class StringUtils
         String retValue = null;
         if( nonNull( c ) )
         {
+            @SuppressWarnings( "LocalVariableNamingConvention" )
             final var s = c.toString();
             if( s.isEmpty() )
             {
@@ -1095,6 +1096,7 @@ public final class StringUtils
      *
      *  @since 0.0.5
      */
+    @SuppressWarnings( "OverlyComplexMethod" )
     @API( status = STABLE, since = "0.0.5" )
     public static final String escapeJSON( final CharSequence str )
     {
@@ -1103,42 +1105,28 @@ public final class StringUtils
         if( len > 0 )
         {
             final var buffer = new StringBuilder( len * 2 ).append( '"' );
+            @SuppressWarnings( "LocalVariableNamingConvention" )
             char c;
             for( var i = 0; i < len; ++i )
             {
                 c = str.charAt( i );
                 switch( c )
                 {
-                    case '\\':
-                    case '"':
-                    case '<':
-                    case '>':
-                    case '&':
-                        buffer.append( escapeCharacter( c ) );
-                        break;
+                    case '\\', '"', '<', '>', '&' -> buffer.append( escapeCharacter( c ) );
 
-                    case '\b':
-                        buffer.append( "\\b" );
-                        break;
+                    case '\b' -> buffer.append( "\\b" );
 
-                    case '\t':
-                        buffer.append( "\\t" );
-                        break;
+                    case '\t' -> buffer.append( "\\t" );
 
-                    case '\n':
-                        buffer.append( "\\n" );
-                        break;
+                    case '\n'-> buffer.append( "\\n" );
 
-                    case '\f':
-                        buffer.append( "\\f" );
-                        break;
+                    case '\f' -> buffer.append( "\\f" );
 
-                    case '\r':
-                        buffer.append( "\\r" );
-                        break;
+                    case '\r' -> buffer.append( "\\r" );
 
-                    default:
-                        //noinspection OverlyComplexBooleanExpression
+                    default ->
+                    {
+                        //noinspection OverlyComplexBooleanExpression,CharacterComparison,UnnecessaryUnicodeEscape
                         if( (c < ' ')
                             || ((c >= '\u0080') && (c < '\u00a0'))
                             || ((c >= '\u2000') && (c < '\u2100')) )
@@ -1149,7 +1137,7 @@ public final class StringUtils
                         {
                             buffer.append( c );
                         }
-                        break;
+                    }
                 }
             }
             buffer.append( '"' );
@@ -1314,6 +1302,7 @@ public final class StringUtils
      *      {@link CharSetUtils#escapeCharacter(char)}
      *      instead.
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
     public static final String escapeUnicode( final char c ) { return escapeCharacter( c ); }
@@ -1348,6 +1337,7 @@ public final class StringUtils
      *      {@link CharSetUtils#escapeCharacter(int)}
      *      instead.
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
     public static final String escapeUnicode( final int codePoint ) { return escapeCharacter( codePoint ); }
@@ -1433,6 +1423,7 @@ public final class StringUtils
      *      {@link Template#findVariables(CharSequence)}
      *      instead.
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
     public static final Collection<String> findVariables( final CharSequence text )
@@ -1646,6 +1637,7 @@ public final class StringUtils
      *      {@link Template#isValidVariableName(CharSequence)}
      *      instead.
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
     public static final boolean isValidVariableName( final CharSequence name )
@@ -2289,103 +2281,109 @@ public final class StringUtils
     }   //  replaceVariable()
 
     /**
-     *  Splits a String by the given separator character and returns an array
-     *  of all parts. In case a separator character is immediately followed by
-     *  another separator char, an empty String will be place to the array.
-     *  Beginning and end of the String are treated as separators, so if the
+     *  <p>{@summary Splits a String by the given separator character and
+     *  returns an array of all parts.} In case a separator character is
+     *  immediately followed by another separator character, an empty String
+     *  will be placed to the array.</p>
+     *  <p>Beginning and end of the String are treated as separators, so if the
      *  first character of the String is a separator, the returned array will
-     *  start with an empty string, as it will end with an empty String if the
-     *  last character is a separator.<br>
-     *  <br>In case the String is empty, the return value will be an array
-     *  containing just the empty String.
+     *  start with an empty String, as it will end with an empty String if the
+     *  last character is a separator.</p>
+     *  <p>In case the String is empty, the return value will be an array
+     *  containing just the empty String. It will not be empty.</p>
      *
-     *  @param  string  The String to split.
+     *  @param  s  The String to split.
      *  @param  separator   The separator character.
      *  @return The parts of the String.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String [] splitString( final CharSequence string, final char separator )
+    public static final String [] splitString( final CharSequence s, final char separator )
     {
-        return splitString( string, (int) separator );
+        return splitString( s, (int) separator );
     }   //  splitString()
 
     /**
-     *  Splits a String by the given separator character, identified by its
-     *  Unicode code point, and returns an array of all parts. In case a
-     *  separator character is immediately followed by another separator char,
-     *  an empty String will be placed to the array. Beginning and end of the
-     *  String are treated as separators, so if the first character of the
-     *  String is a separator, the returned array will start with an empty
-     *  String, as it will end with an empty String if the last character is a
-     *  separator.<br>
-     *  <br>In case the String is empty, the return value will be an array
-     *  containing just the empty String.
+     *  <p>{@summary Splits a String by the given separator character,
+     *  identified by its Unicode code point, and returns an array of all
+     *  parts.} In case a separator character is immediately followed by
+     *  another separator character, an empty String will be placed to the
+     *  array.</p>
+     *  <p>Beginning and end of the String are treated as separators, so if the
+     *  first character of the String is a separator, the returned array will
+     *  start with an empty String, as it will end with an empty String if the
+     *  last character is a separator.</p>
+     *  <p>In case the String is empty, the return value will be an array
+     *  containing just the empty String. It will not be empty.</p>
      *
-     *  @param  string  The String to split.
+     *  @param  s  The String to split.
      *  @param  separator   The code point for the separator character.
      *  @return The parts of the String.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String [] splitString( final CharSequence string, final int separator )
+    public static final String [] splitString( final CharSequence s, final int separator )
     {
-        final var retValue = stream( string, separator ).toArray( String []::new );
+        final var retValue = stream( s, separator ).toArray( String []::new );
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  splitString()
 
     /**
-     *  Splits a String by the given separator sequence and returns an array
-     *  of all parts. In case a separator sequence is immediately followed by
-     *  another separator sequence, an empty String will be placed to the
-     *  array. Beginning and end of the String are treated as separators, so if
-     *  the first part of the String equals the separator sequence, the
-     *  returned array will start with an empty String, as it will end with an
-     *  empty string if the last part would equal the separator sequence..<br>
-     *  <br>In case the String is empty, the return value will be an array
-     *  containing just the empty String.
+     *  <p>{@summary Splits a String by the given separator sequence and
+     *  returns an array of all parts.} In case a separator sequence is
+     *  immediately followed by another separator sequence, an empty String
+     *  will be placed to the array.</p>
+     *  <p>Beginning and end of the String are treated as separators, so if the
+     *  first part of the String equals the separator sequence, the returned
+     *  array will start with an empty String, as it will end with an empty
+     *  String if the last part would equal the separator sequence.</p>
+     *  <p>In case the String is empty, the return value will be an array
+     *  containing just the empty String. It will not be empty.</p>
      *
-     *  @param  string  The String to split.
+     *  @param  s  The String to split.
      *  @param  separator   The separator sequence.
      *  @return The parts of the String.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String [] splitString( final CharSequence string, final CharSequence separator )
+    public static final String [] splitString( final CharSequence s, final CharSequence separator )
     {
-        final var retValue = stream( string, separator).toArray( String []::new );
+        final var retValue = stream( s, separator).toArray( String []::new );
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  splitString()
 
     /**
-     *  Splits a String by the given separator character and returns a
+     *  <p>{@summary Splits a String by the given separator character and
+     *  returns an instance of
      *  {@link Stream}
-     *  of all parts. In case a separator character is immediately followed by
-     *  another separator char, an empty String will be put to the
-     *  {@code Stream}. Beginning and end of the String are treated as
-     *  separators, so if the first character of the String is a separator, the
-     *  returned {@code Stream} will start with an empty String, as it will end
-     *  with an empty String if the last character is a separator.<br>
-     *  <br>In case the String is empty, the return value will be a
-     *  {@code Stream} containing just the empty String.
+     *  providing all parts.} In case a separator character is immediately
+     *  followed by another separator character, an empty String will be put to
+     *  the {@code Stream}.</p>
+     *  <p>Beginning and end of the String are treated as separators, so if the
+     *  first character of the String is a separator, the returned
+     *  {@code Stream} will start with an empty String, as it will end with an
+     *  empty String if the last character is a separator.</p>
+     *  <p>In case the String is empty, the return value will be a
+     *  {@code Stream} containing just the empty String. It will not be
+     *  empty.</p>
      *
-     *  @param  string  The String to split.
+     *  @param  s  The String to split.
      *  @param  separator   The separator character.
      *  @return A {@code Stream} instance with the parts of the String.
      *
      *  @since 0.0.7
      */
     @API( status = STABLE, since = "0.0.7" )
-    public static final Stream<String> stream( final CharSequence string, final char separator )
+    public static final Stream<String> stream( final CharSequence s, final char separator )
     {
-        return stream( string, (int) separator );
+        return stream( s, (int) separator );
     }   //  stream()
 
     /**
@@ -2394,45 +2392,47 @@ public final class StringUtils
      *  {@link Stream}
      *  of all parts.} In case a separator character is immediately followed by
      *  another separator char, an empty String will be put to the
-     *  {@code Stream}. Beginning and end of the String are treated as
+     *  {@code Stream}.</p>
+     *  <p>Beginning and end of the String are treated as
      *  separators, so if the first character of the String is a separator, the
      *  returned {@code Stream} will start with an empty String, as it will end
      *  with an empty String if the last character is a separator.</p>
      *  <p>In case the String is empty, the return value will be a
-     *  {@code Stream} containing just the empty String.</p>
+     *  {@code Stream} containing just the empty String. It will not be
+     *  empty.</p>
      *
-     *  @param  string  The String to split.
+     *  @param  s  The String to split.
      *  @param  separator   The code point for the separator character.
      *  @return A {@code Stream} instance with the parts of the String.
      *
      *  @since 0.0.7
      */
     @API( status = STABLE, since = "0.0.7" )
-    public static final Stream<String> stream( final CharSequence string, final int separator )
+    public static final Stream<String> stream( final CharSequence s, final int separator )
     {
         //---* Process the string *--------------------------------------------
-        final var s = requireNonNullArgument( string, "string" ).codePoints().toArray();
+        final var codepoints = requireNonNullArgument( s, "s" ).codePoints().toArray();
         final var builder = Stream.<String>builder();
         var begin = -1;
-        for( var i = 0 ; i < s.length; ++i )
+        for( var i = 0 ; i < codepoints.length; ++i )
         {
             if( begin == -1 )
             {
                 begin = i;
             }
-            if( s [ i ] == separator )
+            if( codepoints [ i ] == separator )
             {
-                builder.add( new String( s, begin, i - begin ).intern() );
+                builder.add( new String( codepoints, begin, i - begin ).intern() );
                 begin = -1;
             }
         }
 
         //---* Add the rest *--------------------------------------------------
-        if( (begin >= 0) && (begin < s.length) )
+        if( (begin >= 0) && (begin < codepoints.length) )
         {
-            builder.add( new String( s, begin, s.length - begin ).intern() );
+            builder.add( new String( codepoints, begin, codepoints.length - begin ).intern() );
         }
-        if( (s.length == 0) || (s [s.length - 1] == separator) )
+        if( (codepoints.length == 0) || (codepoints [codepoints.length - 1] == separator) )
         {
             builder.add( EMPTY_STRING );
         }
@@ -2445,17 +2445,19 @@ public final class StringUtils
     }   //  stream()
 
     /**
-     *  Splits a String by the given separator sequence and returns a
+     *  <p>{@summary Splits a String by the given separator sequence and
+     *  returns an instance of
      *  {@link Stream}
-     *  of all parts. In case a separator sequence is immediately followed by
-     *  another separator sequence, an empty String will be put to the
-     *  {@code Stream}. Beginning and end of the String are treated as
-     *  separators, so if the first part of the String equals the separator
-     *  sequence, the returned {@code Stream} will start with an empty string,
-     *  as it will end with an empty String if the last part would equal the
-     *  separator sequence.<br>
-     *  <br>In case the String is empty, the return value will be a
-     *  {@code Stream} containing just the empty String.
+     *  containing all parts.} In case a separator sequence is immediately
+     *  followed by another separator sequence, an empty String will be put to
+     *  the {@code Stream}.</p>
+     *  <p>Beginning and end of the String are treated as separators, so if the
+     *  first part of the String equals the separator sequence, the returned
+     *  {@code Stream} will start with an empty string, as it will end with an
+     *  empty String if the last part would equal the separator sequence.</p>
+     *  <p>In case the String is empty, the return value will be a
+     *  {@code Stream} containing just the empty String. It will not be
+     *  empty.</p>
      *
      *  @param  string  The String to split.
      *  @param  separator   The separator sequence.
@@ -2463,11 +2465,14 @@ public final class StringUtils
      *
      *  @since 0.0.7
      */
+    @SuppressWarnings( "QuestionableName" )
     @API( status = STABLE, since = "0.0.7" )
     public static final Stream<String> stream( final CharSequence string, final CharSequence separator )
     {
         //---* Process the string *--------------------------------------------
-        var s = requireNonNullArgument( string, "string" ).toString();
+        @SuppressWarnings( "LocalVariableNamingConvention" )
+        var s = requireNonNullArgument( string, "s" ).toString();
+        @SuppressWarnings( "LocalVariableNamingConvention" )
         final var t = requireNotEmptyArgument( separator, "separator" ).toString();
 
         final var builder = Stream.<String>builder();
@@ -2487,7 +2492,7 @@ public final class StringUtils
                         builder.add( s.substring( 0, pos ) );
                         s = s.substring( pos + t.length() );
                     }
-                case -1 -> { /* Just leave the loop */ }
+                default -> { /* Just leave the loop */ }
             }   //  ResultHandlerSwitch:
         }
 
@@ -2502,23 +2507,25 @@ public final class StringUtils
     }   //  stream()
 
     /**
-     *  Splits a String using the given regular expression and returns a
+     *  <p>{@summary Splits a String using the given regular expression and
+     *  returns an instance of
      *  {@link Stream}
-     *  of all parts. In case a separator sequence is immediately followed by
-     *  another separator sequence, an empty String will be put to the
-     *  {@code Stream}. Beginning and end of the String are treated as
-     *  separators, so if the first part of the String equals the separator
-     *  sequence, the returned {@code Stream} will start with an empty string,
-     *  as it will end with an empty String if the last part would equal the
-     *  separator sequence.<br>
-     *  <br>In case the String is empty, the return value will be a
-     *  {@code Stream} containing just the empty String.
+     *  providing all parts.} In case a separator sequence is immediately
+     *  followed by another separator sequence, an empty String will be put to
+     *  the {@code Stream}.</p>
+     *  <p>Beginning and end of the String are treated as separators, so if the
+     *  first part of the String equals the separator sequence, the returned
+     *  {@code Stream} will start with an empty string, as it will end with an
+     *  empty String if the last part would equal the separator sequence.</p>
+     *  <p>In case the String is empty, the return value will be a
+     *  {@code Stream} containing just the empty String. It will not be
+     *  empty.</p>
      *
      *  @note This method behaves different from
      *      {@link String#split(String)}
      *      as it will return trailing empty Strings.
      *
-     *  @param  string  The String to split.
+     *  @param  s  The String to split.
      *  @param  pattern The separator sequence.
      *  @return The parts of the String.
      *
@@ -2528,24 +2535,24 @@ public final class StringUtils
      *  @since 0.0.7
      */
     @API( status = STABLE, since = "0.0.7" )
-    public static final Stream<String> stream( final CharSequence string, final Pattern pattern )
+    public static final Stream<String> stream( final CharSequence s, final Pattern pattern )
     {
         requireNonNullArgument( pattern, "pattern" );
 
         //---* Process the string *--------------------------------------------
         final var builder = Stream.<String>builder();
-        if( isEmpty( requireNonNullArgument( string, "string" ) ) )
+        if( isEmpty( requireNonNullArgument( s, "s" ) ) )
         {
             builder.add( EMPTY_STRING );
         }
         else
         {
-            final var parts = pattern.split( string );
+            final var parts = pattern.split( s );
             for( final var part : parts )
             {
                 builder.add( part );
             }
-            final var matcher = pattern.matcher( string );
+            final var matcher = pattern.matcher( s );
             var count = 0;
             while( matcher.find() ) ++count;
             //noinspection ForLoopWithMissingComponent
@@ -2620,15 +2627,16 @@ public final class StringUtils
     }   //  stripTags()
 
     /**
-     *  Strips characters from the given input that are not allowed (or should
-     *  be at least avoided) for a file or folder name on most or all operating
-     *  systems.<br>
-     *  <br>The following characters will be stripped:
+     *  <p>{@summary Strips characters from the given input that are not
+     *  allowed (or should be at least avoided) for a file or folder name on
+     *  most or all operating systems.}</p>
+     *  <p>The following characters will be stripped:</p>
      *  <dl>
      *  <dt><b>:</b> (colon)</dt><dd>On Windows systems it is used to separate
      *  the drive letter from the path and file name; on Unix-like operating
-     *  systems it would be valid, but it can cause issues on the {@code PATH}
-     *  and {@code CLASSPATH} variables on that operating systems.</dd>
+     *  systems (including MacOS) it would be valid, but it can cause issues on
+     *  the {@code PATH} and {@code CLASSPATH} variables on these operating
+     *  systems.</dd>
      *  <dt><b>\</b> (backslash)</dt><dd>On Windows systems it is used as the
      *  path separator, while on Unix-like operating systems it is problematic
      *  in other ways. For example, it is used to escape blanks in not-quoted
@@ -2661,16 +2669,16 @@ public final class StringUtils
      *  <dt>Whitespace</dt><dd>Only blanks will remain, any other whitespace
      *  characters are stripped.</dd>
      *  </dl>
-     *  Finally, the method will strip all leading and trailing blanks;
+     *  <p>Finally, the method will strip all leading and trailing blanks;
      *  although blanks are usually allowed, they are confusing when not
-     *  surrounded by some visible characters.
-     *  Especially regarding the characters that are critical for shells ('*',
-     *  '?', '&quot;', ''', '|', '&lt;', and '&gt;') this method is
+     *  surrounded by some visible characters.</p>
+     *  <p>Especially regarding the characters that are critical for shells
+     *  ('*', '?', '&quot;', ''', '|', '&lt;', and '&gt;') this method is
      *  over-cautious, as most shells could handle them after proper escaping
-     *  the offending characters or quoting the file name.<br>
-     *  <br>This method furthermore assumes that any other Unicode character is
+     *  the offending characters or quoting the file name.</p>
+     *  <p>This method furthermore assumes that any other Unicode character is
      *  valid for a file or folder name; unfortunately, there are filesystems
-     *  where this is not true.
+     *  where this is not true.</p>
      *
      *  @note   This method will not take care about the length of the returned
      *      String; this means the result to a call to this method may still be
@@ -2693,11 +2701,12 @@ public final class StringUtils
     {
         final var len = requireNotEmptyArgument( s, "s" ).length();
         final var buffer = new StringBuilder( len );
-        char c;
         ScanLoop: for( var i = 0; i < len; ++i )
         {
-            c = s.charAt( i );
-            Selector: switch( c )
+            final var currentCharacter = s.charAt( i );
+            Selector:
+            //noinspection SwitchStatementWithTooManyBranches
+            switch( currentCharacter )
             {
                 case ':':
                 case '\\':
@@ -2715,9 +2724,9 @@ public final class StringUtils
 
                 default:
                 {
-                    if( (c == ' ') || (!isISOControl( c ) && !isWhitespace( c )) )
+                    if( (currentCharacter == ' ') || (!isISOControl( currentCharacter ) && !isWhitespace( currentCharacter )) )
                     {
-                        buffer.append( c );
+                        buffer.append( currentCharacter );
                     }
                     break Selector;
                 }
@@ -2798,6 +2807,7 @@ public final class StringUtils
      *      {@link #decapitalize(CharSequence)}
      *      instead.
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.1.0" )
     @API( status = DEPRECATED, since = "0.0.5" )
     public static final String uncapitalize( final CharSequence s ) { return decapitalize( s ); }
@@ -2881,6 +2891,7 @@ public final class StringUtils
      *      {@link CharSetUtils#unescapeUnicode(CharSequence)}
      *      instead.
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since ="0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
     public static final String unescapeUnicode( final CharSequence s )

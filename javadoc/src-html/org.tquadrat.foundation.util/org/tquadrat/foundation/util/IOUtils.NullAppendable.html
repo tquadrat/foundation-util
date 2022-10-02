@@ -81,12 +81,12 @@
 <span class="source-line-no">068</span><span id="line-68"> *  methods.</span>
 <span class="source-line-no">069</span><span id="line-69"> *</span>
 <span class="source-line-no">070</span><span id="line-70"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">071</span><span id="line-71"> *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $</span>
+<span class="source-line-no">071</span><span id="line-71"> *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
 <span class="source-line-no">072</span><span id="line-72"> *  @since 0.0.5</span>
 <span class="source-line-no">073</span><span id="line-73"> *</span>
 <span class="source-line-no">074</span><span id="line-74"> *  @UMLGraph.link</span>
 <span class="source-line-no">075</span><span id="line-75"> */</span>
-<span class="source-line-no">076</span><span id="line-76">@ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )</span>
+<span class="source-line-no">076</span><span id="line-76">@ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
 <span class="source-line-no">077</span><span id="line-77">@UtilityClass</span>
 <span class="source-line-no">078</span><span id="line-78">public final class IOUtils</span>
 <span class="source-line-no">079</span><span id="line-79">{</span>
@@ -102,721 +102,735 @@
 <span class="source-line-no">089</span><span id="line-89">     *  not applicable from the application logic.</span>
 <span class="source-line-no">090</span><span id="line-90">     *</span>
 <span class="source-line-no">091</span><span id="line-91">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">092</span><span id="line-92">     *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $</span>
+<span class="source-line-no">092</span><span id="line-92">     *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
 <span class="source-line-no">093</span><span id="line-93">     *  @since 0.0.5</span>
 <span class="source-line-no">094</span><span id="line-94">     *</span>
 <span class="source-line-no">095</span><span id="line-95">     *  @UMLGraph.link</span>
 <span class="source-line-no">096</span><span id="line-96">     */</span>
 <span class="source-line-no">097</span><span id="line-97">    @SuppressWarnings( "PublicInnerClass" )</span>
-<span class="source-line-no">098</span><span id="line-98">    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )</span>
+<span class="source-line-no">098</span><span id="line-98">    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
 <span class="source-line-no">099</span><span id="line-99">    @API( status = STABLE, since = "0.1.0" )</span>
 <span class="source-line-no">100</span><span id="line-100">    public static class NullAppendable implements Appendable</span>
 <span class="source-line-no">101</span><span id="line-101">    {</span>
-<span class="source-line-no">102</span><span id="line-102">            /*---------*\</span>
-<span class="source-line-no">103</span><span id="line-103">        ====** Methods **==========================================================</span>
-<span class="source-line-no">104</span><span id="line-104">            \*---------*/</span>
+<span class="source-line-no">102</span><span id="line-102">            /*--------------*\</span>
+<span class="source-line-no">103</span><span id="line-103">        ====** Constructors **=====================================================</span>
+<span class="source-line-no">104</span><span id="line-104">            \*--------------*/</span>
 <span class="source-line-no">105</span><span id="line-105">        /**</span>
-<span class="source-line-no">106</span><span id="line-106">         *  Appends the specified character sequence to this Appendable. In fact,</span>
-<span class="source-line-no">107</span><span id="line-107">         *  it does nothing.</span>
-<span class="source-line-no">108</span><span id="line-108">         *</span>
-<span class="source-line-no">109</span><span id="line-109">         *  @param  csq {@inheritDoc}</span>
-<span class="source-line-no">110</span><span id="line-110">         */</span>
-<span class="source-line-no">111</span><span id="line-111">        @Override</span>
-<span class="source-line-no">112</span><span id="line-112">        public final Appendable append( final CharSequence csq ) throws IOException { return this; }</span>
-<span class="source-line-no">113</span><span id="line-113"></span>
-<span class="source-line-no">114</span><span id="line-114">        /**</span>
-<span class="source-line-no">115</span><span id="line-115">         *  Appends a subsequence of the specified character sequence to this</span>
-<span class="source-line-no">116</span><span id="line-116">         *  Appendable. In fact, it does nothing.</span>
-<span class="source-line-no">117</span><span id="line-117">         *</span>
-<span class="source-line-no">118</span><span id="line-118">         *  @param  csq {@inheritDoc}</span>
-<span class="source-line-no">119</span><span id="line-119">         */</span>
-<span class="source-line-no">120</span><span id="line-120">        @Override</span>
-<span class="source-line-no">121</span><span id="line-121">        public final Appendable append( final CharSequence csq, final int start, final int end ) throws IOException { return this; }</span>
-<span class="source-line-no">122</span><span id="line-122"></span>
-<span class="source-line-no">123</span><span id="line-123">        /**</span>
-<span class="source-line-no">124</span><span id="line-124">         *  Appends the specified character to this Appendable; in fact, it does</span>
-<span class="source-line-no">125</span><span id="line-125">         *  nothing.</span>
-<span class="source-line-no">126</span><span id="line-126">         *</span>
-<span class="source-line-no">127</span><span id="line-127">         *  @param  c   {@inheritDoc}</span>
-<span class="source-line-no">128</span><span id="line-128">         */</span>
-<span class="source-line-no">129</span><span id="line-129">        @Override</span>
-<span class="source-line-no">130</span><span id="line-130">        public final Appendable append( final char c ) throws IOException { return this; }</span>
-<span class="source-line-no">131</span><span id="line-131">    }</span>
-<span class="source-line-no">132</span><span id="line-132">    //  class NullAppendable</span>
-<span class="source-line-no">133</span><span id="line-133"></span>
-<span class="source-line-no">134</span><span id="line-134">    /**</span>
-<span class="source-line-no">135</span><span id="line-135">     *  The default file attributes.</span>
-<span class="source-line-no">136</span><span id="line-136">     *</span>
-<span class="source-line-no">137</span><span id="line-137">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">138</span><span id="line-138">     *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $</span>
-<span class="source-line-no">139</span><span id="line-139">     *  @since 0.0.6</span>
-<span class="source-line-no">140</span><span id="line-140">     *</span>
-<span class="source-line-no">141</span><span id="line-141">     *  @UMLGraph.link</span>
-<span class="source-line-no">142</span><span id="line-142">     */</span>
-<span class="source-line-no">143</span><span id="line-143">    @SuppressWarnings( "UtilityClassCanBeEnum" )</span>
-<span class="source-line-no">144</span><span id="line-144">    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )</span>
-<span class="source-line-no">145</span><span id="line-145">    @UtilityClass</span>
-<span class="source-line-no">146</span><span id="line-146">    private static final class PosixPermissions</span>
-<span class="source-line-no">147</span><span id="line-147">    {</span>
-<span class="source-line-no">148</span><span id="line-148">            /*------------------------*\</span>
-<span class="source-line-no">149</span><span id="line-149">        ====** Static Initialisations **=======================================</span>
-<span class="source-line-no">150</span><span id="line-150">            \*------------------------*/</span>
-<span class="source-line-no">151</span><span id="line-151">        /**</span>
-<span class="source-line-no">152</span><span id="line-152">         *  The default attributes for a temporary file.</span>
-<span class="source-line-no">153</span><span id="line-153">         *</span>
-<span class="source-line-no">154</span><span id="line-154">         *  @since 0.0.6</span>
-<span class="source-line-no">155</span><span id="line-155">         */</span>
-<span class="source-line-no">156</span><span id="line-156">        @API( status = INTERNAL, since = "0.0.6" )</span>
-<span class="source-line-no">157</span><span id="line-157">        static final FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; tempFilePermissions;</span>
-<span class="source-line-no">158</span><span id="line-158"></span>
+<span class="source-line-no">106</span><span id="line-106">         *  Creates a new instance of {@code NullAppendable}.</span>
+<span class="source-line-no">107</span><span id="line-107">         */</span>
+<span class="source-line-no">108</span><span id="line-108">        public NullAppendable() { super(); }</span>
+<span class="source-line-no">109</span><span id="line-109"></span>
+<span class="source-line-no">110</span><span id="line-110">            /*---------*\</span>
+<span class="source-line-no">111</span><span id="line-111">        ====** Methods **==========================================================</span>
+<span class="source-line-no">112</span><span id="line-112">            \*---------*/</span>
+<span class="source-line-no">113</span><span id="line-113">        /**</span>
+<span class="source-line-no">114</span><span id="line-114">         *  Appends the specified character sequence to this Appendable. In fact,</span>
+<span class="source-line-no">115</span><span id="line-115">         *  it does nothing.</span>
+<span class="source-line-no">116</span><span id="line-116">         *</span>
+<span class="source-line-no">117</span><span id="line-117">         *  @param  csq {@inheritDoc}</span>
+<span class="source-line-no">118</span><span id="line-118">         */</span>
+<span class="source-line-no">119</span><span id="line-119">        @Override</span>
+<span class="source-line-no">120</span><span id="line-120">        public final Appendable append( final CharSequence csq ) throws IOException { return this; }</span>
+<span class="source-line-no">121</span><span id="line-121"></span>
+<span class="source-line-no">122</span><span id="line-122">        /**</span>
+<span class="source-line-no">123</span><span id="line-123">         *  Appends a subsequence of the specified character sequence to this</span>
+<span class="source-line-no">124</span><span id="line-124">         *  Appendable. In fact, it does nothing.</span>
+<span class="source-line-no">125</span><span id="line-125">         *</span>
+<span class="source-line-no">126</span><span id="line-126">         *  @param  csq {@inheritDoc}</span>
+<span class="source-line-no">127</span><span id="line-127">         */</span>
+<span class="source-line-no">128</span><span id="line-128">        @Override</span>
+<span class="source-line-no">129</span><span id="line-129">        public final Appendable append( final CharSequence csq, final int start, final int end ) throws IOException { return this; }</span>
+<span class="source-line-no">130</span><span id="line-130"></span>
+<span class="source-line-no">131</span><span id="line-131">        /**</span>
+<span class="source-line-no">132</span><span id="line-132">         *  Appends the specified character to this Appendable; in fact, it does</span>
+<span class="source-line-no">133</span><span id="line-133">         *  nothing.</span>
+<span class="source-line-no">134</span><span id="line-134">         *</span>
+<span class="source-line-no">135</span><span id="line-135">         *  @param  c   {@inheritDoc}</span>
+<span class="source-line-no">136</span><span id="line-136">         */</span>
+<span class="source-line-no">137</span><span id="line-137">        @Override</span>
+<span class="source-line-no">138</span><span id="line-138">        public final Appendable append( final char c ) throws IOException { return this; }</span>
+<span class="source-line-no">139</span><span id="line-139">    }</span>
+<span class="source-line-no">140</span><span id="line-140">    //  class NullAppendable</span>
+<span class="source-line-no">141</span><span id="line-141"></span>
+<span class="source-line-no">142</span><span id="line-142">    /**</span>
+<span class="source-line-no">143</span><span id="line-143">     *  The default file attributes.</span>
+<span class="source-line-no">144</span><span id="line-144">     *</span>
+<span class="source-line-no">145</span><span id="line-145">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
+<span class="source-line-no">146</span><span id="line-146">     *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
+<span class="source-line-no">147</span><span id="line-147">     *  @since 0.0.6</span>
+<span class="source-line-no">148</span><span id="line-148">     *</span>
+<span class="source-line-no">149</span><span id="line-149">     *  @UMLGraph.link</span>
+<span class="source-line-no">150</span><span id="line-150">     */</span>
+<span class="source-line-no">151</span><span id="line-151">    @SuppressWarnings( {"UtilityClassCanBeEnum", "ClassWithoutConstructor"} )</span>
+<span class="source-line-no">152</span><span id="line-152">    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
+<span class="source-line-no">153</span><span id="line-153">    @UtilityClass</span>
+<span class="source-line-no">154</span><span id="line-154">    private static final class PosixPermissions</span>
+<span class="source-line-no">155</span><span id="line-155">    {</span>
+<span class="source-line-no">156</span><span id="line-156">            /*------------------------*\</span>
+<span class="source-line-no">157</span><span id="line-157">        ====** Static Initialisations **=======================================</span>
+<span class="source-line-no">158</span><span id="line-158">            \*------------------------*/</span>
 <span class="source-line-no">159</span><span id="line-159">        /**</span>
-<span class="source-line-no">160</span><span id="line-160">         *  The default attributes for a temporary folder.</span>
+<span class="source-line-no">160</span><span id="line-160">         *  The default attributes for a temporary file.</span>
 <span class="source-line-no">161</span><span id="line-161">         *</span>
 <span class="source-line-no">162</span><span id="line-162">         *  @since 0.0.6</span>
 <span class="source-line-no">163</span><span id="line-163">         */</span>
 <span class="source-line-no">164</span><span id="line-164">        @API( status = INTERNAL, since = "0.0.6" )</span>
-<span class="source-line-no">165</span><span id="line-165">        static final FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; tempDirPermissions;</span>
+<span class="source-line-no">165</span><span id="line-165">        static final FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; tempFilePermissions;</span>
 <span class="source-line-no">166</span><span id="line-166"></span>
-<span class="source-line-no">167</span><span id="line-167">        static</span>
-<span class="source-line-no">168</span><span id="line-168">        {</span>
-<span class="source-line-no">169</span><span id="line-169">            tempFilePermissions = PosixFilePermissions.asFileAttribute( EnumSet.of( OWNER_READ, OWNER_WRITE ) );</span>
-<span class="source-line-no">170</span><span id="line-170">            tempDirPermissions = PosixFilePermissions.asFileAttribute( EnumSet.of( OWNER_READ, OWNER_WRITE, OWNER_EXECUTE ) );</span>
-<span class="source-line-no">171</span><span id="line-171">        }</span>
-<span class="source-line-no">172</span><span id="line-172">    }</span>
-<span class="source-line-no">173</span><span id="line-173">    //  class PosixPermissions</span>
+<span class="source-line-no">167</span><span id="line-167">        /**</span>
+<span class="source-line-no">168</span><span id="line-168">         *  The default attributes for a temporary folder.</span>
+<span class="source-line-no">169</span><span id="line-169">         *</span>
+<span class="source-line-no">170</span><span id="line-170">         *  @since 0.0.6</span>
+<span class="source-line-no">171</span><span id="line-171">         */</span>
+<span class="source-line-no">172</span><span id="line-172">        @API( status = INTERNAL, since = "0.0.6" )</span>
+<span class="source-line-no">173</span><span id="line-173">        static final FileAttribute&lt;Set&lt;PosixFilePermission&gt;&gt; tempDirPermissions;</span>
 <span class="source-line-no">174</span><span id="line-174"></span>
-<span class="source-line-no">175</span><span id="line-175">        /*-----------*\</span>
-<span class="source-line-no">176</span><span id="line-176">    ====** Constants **========================================================</span>
-<span class="source-line-no">177</span><span id="line-177">        \*-----------*/</span>
-<span class="source-line-no">178</span><span id="line-178">    /**</span>
-<span class="source-line-no">179</span><span id="line-179">     *  Some methods in this class need a buffer; the size of this buffer is</span>
-<span class="source-line-no">180</span><span id="line-180">     *  defined here: {@value}.</span>
-<span class="source-line-no">181</span><span id="line-181">     */</span>
-<span class="source-line-no">182</span><span id="line-182">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">183</span><span id="line-183">    public static final int DEFAULT_BUFFER_SIZE = 8192;</span>
-<span class="source-line-no">184</span><span id="line-184"></span>
-<span class="source-line-no">185</span><span id="line-185">    /**</span>
-<span class="source-line-no">186</span><span id="line-186">     *  The flag that indicates if the default file systems is POSIX compliant.</span>
-<span class="source-line-no">187</span><span id="line-187">     *</span>
-<span class="source-line-no">188</span><span id="line-188">     *  @since 0.0.6</span>
+<span class="source-line-no">175</span><span id="line-175">        static</span>
+<span class="source-line-no">176</span><span id="line-176">        {</span>
+<span class="source-line-no">177</span><span id="line-177">            tempFilePermissions = PosixFilePermissions.asFileAttribute( EnumSet.of( OWNER_READ, OWNER_WRITE ) );</span>
+<span class="source-line-no">178</span><span id="line-178">            tempDirPermissions = PosixFilePermissions.asFileAttribute( EnumSet.of( OWNER_READ, OWNER_WRITE, OWNER_EXECUTE ) );</span>
+<span class="source-line-no">179</span><span id="line-179">        }</span>
+<span class="source-line-no">180</span><span id="line-180">    }</span>
+<span class="source-line-no">181</span><span id="line-181">    //  class PosixPermissions</span>
+<span class="source-line-no">182</span><span id="line-182"></span>
+<span class="source-line-no">183</span><span id="line-183">        /*-----------*\</span>
+<span class="source-line-no">184</span><span id="line-184">    ====** Constants **========================================================</span>
+<span class="source-line-no">185</span><span id="line-185">        \*-----------*/</span>
+<span class="source-line-no">186</span><span id="line-186">    /**</span>
+<span class="source-line-no">187</span><span id="line-187">     *  Some methods in this class need a buffer; the size of this buffer is</span>
+<span class="source-line-no">188</span><span id="line-188">     *  defined here: {@value}.</span>
 <span class="source-line-no">189</span><span id="line-189">     */</span>
-<span class="source-line-no">190</span><span id="line-190">    @API( status = STABLE, since = "0.0.6" )</span>
-<span class="source-line-no">191</span><span id="line-191">    public static final boolean DEFAULT_FILESYSTEM_IS_POSIX_COMPLIANT = FileSystems.getDefault().supportedFileAttributeViews().contains("posix");</span>
+<span class="source-line-no">190</span><span id="line-190">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">191</span><span id="line-191">    public static final int DEFAULT_BUFFER_SIZE = 8192;</span>
 <span class="source-line-no">192</span><span id="line-192"></span>
-<span class="source-line-no">193</span><span id="line-193">        /*--------------*\</span>
-<span class="source-line-no">194</span><span id="line-194">    ====** Constructors **=====================================================</span>
-<span class="source-line-no">195</span><span id="line-195">        \*--------------*/</span>
-<span class="source-line-no">196</span><span id="line-196">    /**</span>
-<span class="source-line-no">197</span><span id="line-197">     *  No instance allowed for this class.</span>
-<span class="source-line-no">198</span><span id="line-198">     */</span>
-<span class="source-line-no">199</span><span id="line-199">    private IOUtils() { throw new PrivateConstructorForStaticClassCalledError( IOUtils.class ); }</span>
+<span class="source-line-no">193</span><span id="line-193">    /**</span>
+<span class="source-line-no">194</span><span id="line-194">     *  The flag that indicates if the default file systems is POSIX compliant.</span>
+<span class="source-line-no">195</span><span id="line-195">     *</span>
+<span class="source-line-no">196</span><span id="line-196">     *  @since 0.0.6</span>
+<span class="source-line-no">197</span><span id="line-197">     */</span>
+<span class="source-line-no">198</span><span id="line-198">    @API( status = STABLE, since = "0.0.6" )</span>
+<span class="source-line-no">199</span><span id="line-199">    public static final boolean DEFAULT_FILESYSTEM_IS_POSIX_COMPLIANT = FileSystems.getDefault().supportedFileAttributeViews().contains("posix");</span>
 <span class="source-line-no">200</span><span id="line-200"></span>
-<span class="source-line-no">201</span><span id="line-201">        /*---------*\</span>
-<span class="source-line-no">202</span><span id="line-202">    ====** Methods **==========================================================</span>
-<span class="source-line-no">203</span><span id="line-203">        \*---------*/</span>
+<span class="source-line-no">201</span><span id="line-201">        /*--------------*\</span>
+<span class="source-line-no">202</span><span id="line-202">    ====** Constructors **=====================================================</span>
+<span class="source-line-no">203</span><span id="line-203">        \*--------------*/</span>
 <span class="source-line-no">204</span><span id="line-204">    /**</span>
-<span class="source-line-no">205</span><span id="line-205">     *  Unconditionally closes an object instance of a class that implements</span>
-<span class="source-line-no">206</span><span id="line-206">     *  the interface</span>
-<span class="source-line-no">207</span><span id="line-207">     *  {@link AutoCloseable}.&lt;br&gt;</span>
-<span class="source-line-no">208</span><span id="line-208">     *  Equivalent to</span>
-<span class="source-line-no">209</span><span id="line-209">     *  {@link AutoCloseable#close()},</span>
-<span class="source-line-no">210</span><span id="line-210">     *  except any exceptions will be ignored. This is typically used in</span>
-<span class="source-line-no">211</span><span id="line-211">     *  {@code finally} blocks.&lt;br&gt;</span>
-<span class="source-line-no">212</span><span id="line-212">     *  &lt;br&gt;Even after the introduction of {@code try-with-resources} with</span>
-<span class="source-line-no">213</span><span id="line-213">     *  Java&amp;nbsp;7, this method can be still helpful.</span>
-<span class="source-line-no">214</span><span id="line-214">     *</span>
-<span class="source-line-no">215</span><span id="line-215">     *  @param  c  The {@code AutoCloseable} instance to close, can be</span>
-<span class="source-line-no">216</span><span id="line-216">     *      {@code null} or already closed.</span>
-<span class="source-line-no">217</span><span id="line-217">     */</span>
-<span class="source-line-no">218</span><span id="line-218">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">219</span><span id="line-219">    public static final void closeQuietly( final AutoCloseable c )</span>
-<span class="source-line-no">220</span><span id="line-220">    {</span>
-<span class="source-line-no">221</span><span id="line-221">        try</span>
-<span class="source-line-no">222</span><span id="line-222">        {</span>
-<span class="source-line-no">223</span><span id="line-223">            if( nonNull( c ) ) c.close();</span>
-<span class="source-line-no">224</span><span id="line-224">        }</span>
-<span class="source-line-no">225</span><span id="line-225">        catch( @SuppressWarnings( "unused" ) final Exception e ) { /* Deliberately ignored! */ }</span>
-<span class="source-line-no">226</span><span id="line-226">    }   //  closeQuietly()</span>
-<span class="source-line-no">227</span><span id="line-227"></span>
-<span class="source-line-no">228</span><span id="line-228">    /**</span>
-<span class="source-line-no">229</span><span id="line-229">     *  Creates a directory by creating all nonexistent parent directories</span>
-<span class="source-line-no">230</span><span id="line-230">     *  first. Unlike the</span>
-<span class="source-line-no">231</span><span id="line-231">     *  {@link #createDirectory(File,FileAttribute...)}</span>
-<span class="source-line-no">232</span><span id="line-232">     *  method, an exception is not thrown if the directory could not be</span>
-<span class="source-line-no">233</span><span id="line-233">     *  created because it already exists.&lt;br&gt;</span>
-<span class="source-line-no">234</span><span id="line-234">     *  &lt;br&gt;The {@code attributes} parameter is optional to set</span>
-<span class="source-line-no">235</span><span id="line-235">     *  {@linkplain FileAttribute file-attributes}</span>
-<span class="source-line-no">236</span><span id="line-236">     *  atomically when creating the non-existent directories. Each file</span>
-<span class="source-line-no">237</span><span id="line-237">     *  attribute is identified by its</span>
-<span class="source-line-no">238</span><span id="line-238">     *  {@linkplain FileAttribute#name name}.</span>
-<span class="source-line-no">239</span><span id="line-239">     *  If more than one attribute of the same name is included in the array</span>
-<span class="source-line-no">240</span><span id="line-240">     *  then all but the last occurrence is ignored.&lt;br&gt;</span>
-<span class="source-line-no">241</span><span id="line-241">     *  &lt;br&gt;If this method fails, then it may do so after creating some, but</span>
-<span class="source-line-no">242</span><span id="line-242">     *  not all, of the parent directories.</span>
-<span class="source-line-no">243</span><span id="line-243">     *</span>
-<span class="source-line-no">244</span><span id="line-244">     *  @param  dir The directory to create.</span>
-<span class="source-line-no">245</span><span id="line-245">     *  @param  attributes  An optional list of file attributes to set</span>
-<span class="source-line-no">246</span><span id="line-246">     *      atomically when creating the directory.</span>
-<span class="source-line-no">247</span><span id="line-247">     *  @return The directory.</span>
-<span class="source-line-no">248</span><span id="line-248">     *  @throws UnsupportedOperationException   The attributes array contains</span>
-<span class="source-line-no">249</span><span id="line-249">     *      an attribute that cannot be set atomically when creating the</span>
-<span class="source-line-no">250</span><span id="line-250">     *      directory.</span>
-<span class="source-line-no">251</span><span id="line-251">     *  @throws java.nio.file.FileAlreadyExistsException    The {@code dir}</span>
-<span class="source-line-no">252</span><span id="line-252">     *      exists but is not a directory &lt;i&gt;(optional specific exception)&lt;/i&gt;.</span>
-<span class="source-line-no">253</span><span id="line-253">     *  @throws IOException An I/O error occurred.</span>
-<span class="source-line-no">254</span><span id="line-254">     *  @throws SecurityException   In the case a security manager is</span>
-<span class="source-line-no">255</span><span id="line-255">     *      installed, the</span>
-<span class="source-line-no">256</span><span id="line-256">     *      {@link SecurityManager#checkWrite(String) checkWrite()}</span>
-<span class="source-line-no">257</span><span id="line-257">     *      method is invoked prior to attempting to create a directory and its</span>
-<span class="source-line-no">258</span><span id="line-258">     *      {@link SecurityManager#checkRead(String) checkRead()}</span>
-<span class="source-line-no">259</span><span id="line-259">     *      is invoked for each parent directory that is checked. If</span>
-<span class="source-line-no">260</span><span id="line-260">     *      {@code dir} is not an absolute path then its</span>
-<span class="source-line-no">261</span><span id="line-261">     *      {@link File#getAbsoluteFile()}</span>
-<span class="source-line-no">262</span><span id="line-262">     *      method may need to be invoked to get its absolute path. This may</span>
-<span class="source-line-no">263</span><span id="line-263">     *      invoke the security manager's</span>
-<span class="source-line-no">264</span><span id="line-264">     *      {@link SecurityManager#checkPropertyAccess(String) checkPropertyAccess()}</span>
-<span class="source-line-no">265</span><span id="line-265">     *      method to check access to the system property {@code user.dir}.</span>
-<span class="source-line-no">266</span><span id="line-266">     *</span>
-<span class="source-line-no">267</span><span id="line-267">     *  @see Files#createDirectories(Path, FileAttribute...)</span>
-<span class="source-line-no">268</span><span id="line-268">     *  @see File#mkdirs()</span>
-<span class="source-line-no">269</span><span id="line-269">     *</span>
-<span class="source-line-no">270</span><span id="line-270">     *  @since 0.0.6</span>
-<span class="source-line-no">271</span><span id="line-271">     */</span>
-<span class="source-line-no">272</span><span id="line-272">    @SuppressWarnings( "removal" )</span>
-<span class="source-line-no">273</span><span id="line-273">    @API( status = STABLE, since = "0.0.6" )</span>
-<span class="source-line-no">274</span><span id="line-274">    public static final File createDirectories( final File dir, final FileAttribute&lt;?&gt;... attributes ) throws IOException</span>
-<span class="source-line-no">275</span><span id="line-275">    {</span>
-<span class="source-line-no">276</span><span id="line-276">        final var path = Files.createDirectories( requireNonNullArgument( dir, "dir" ).toPath(), requireNonNullArgument( attributes, "attributes" ) );</span>
-<span class="source-line-no">277</span><span id="line-277">        final var retValue = path.toFile();</span>
-<span class="source-line-no">278</span><span id="line-278"></span>
-<span class="source-line-no">279</span><span id="line-279">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">280</span><span id="line-280">        return retValue;</span>
-<span class="source-line-no">281</span><span id="line-281">    }   //  createDirectories()</span>
-<span class="source-line-no">282</span><span id="line-282"></span>
-<span class="source-line-no">283</span><span id="line-283">    /**</span>
-<span class="source-line-no">284</span><span id="line-284">     *  Creates a new directory. The check for the existence of the file and</span>
-<span class="source-line-no">285</span><span id="line-285">     *  the creation of the directory if it does not exist are a single</span>
-<span class="source-line-no">286</span><span id="line-286">     *  operation that is atomic with respect to all other filesystem</span>
-<span class="source-line-no">287</span><span id="line-287">     *  activities that might affect the directory. The</span>
-<span class="source-line-no">288</span><span id="line-288">     *  {@link #createDirectories(File, FileAttribute...) createDirectories()}</span>
-<span class="source-line-no">289</span><span id="line-289">     *  method should be used where it is required to create all nonexistent</span>
-<span class="source-line-no">290</span><span id="line-290">     *  parent directories first.&lt;br&gt;</span>
-<span class="source-line-no">291</span><span id="line-291">     *  &lt;br&gt;The {@code attributes} parameter is optional to set</span>
-<span class="source-line-no">292</span><span id="line-292">     *  {@linkplain FileAttribute file-attributes}</span>
-<span class="source-line-no">293</span><span id="line-293">     *  atomically when creating the directory. Each attribute is identified by</span>
-<span class="source-line-no">294</span><span id="line-294">     *  its</span>
-<span class="source-line-no">295</span><span id="line-295">     *  {@linkplain FileAttribute#name name}.</span>
-<span class="source-line-no">296</span><span id="line-296">     *  If more than one attribute of the same name is included in the array</span>
-<span class="source-line-no">297</span><span id="line-297">     *  then all but the last occurrence is ignored.</span>
-<span class="source-line-no">298</span><span id="line-298">     *</span>
-<span class="source-line-no">299</span><span id="line-299">     *  @param  dir The directory to create.</span>
-<span class="source-line-no">300</span><span id="line-300">     *  @param  attributes  An optional list of file attributes to set</span>
-<span class="source-line-no">301</span><span id="line-301">     *      atomically when creating the directory</span>
-<span class="source-line-no">302</span><span id="line-302">     *  @return The directory.</span>
-<span class="source-line-no">303</span><span id="line-303">     *  @throws UnsupportedOperationException   The attributes array contains</span>
-<span class="source-line-no">304</span><span id="line-304">     *      an attribute that cannot be set atomically when creating the</span>
-<span class="source-line-no">305</span><span id="line-305">     *      directory.</span>
-<span class="source-line-no">306</span><span id="line-306">     *  @throws java.nio.file.FileAlreadyExistsException    A directory could</span>
-<span class="source-line-no">307</span><span id="line-307">     *      not otherwise be created because a file of that name already exists</span>
-<span class="source-line-no">308</span><span id="line-308">     *      &lt;i&gt;(optional specific exception)&lt;/i&gt;.</span>
-<span class="source-line-no">309</span><span id="line-309">     *  @throws IOException An I/O error occurred or the parent directory does</span>
-<span class="source-line-no">310</span><span id="line-310">     *      not exist.</span>
-<span class="source-line-no">311</span><span id="line-311">     *  @throws SecurityException   In the case a security manager is</span>
-<span class="source-line-no">312</span><span id="line-312">     *      installed, the</span>
-<span class="source-line-no">313</span><span id="line-313">     *      {@link SecurityManager#checkWrite(String) checkWrite()}</span>
-<span class="source-line-no">314</span><span id="line-314">     *      method is invoked to check write access to the new directory.</span>
-<span class="source-line-no">315</span><span id="line-315">     *</span>
-<span class="source-line-no">316</span><span id="line-316">     *  @since 0.0.6</span>
-<span class="source-line-no">317</span><span id="line-317">     */</span>
-<span class="source-line-no">318</span><span id="line-318">    @SuppressWarnings( "removal" )</span>
-<span class="source-line-no">319</span><span id="line-319">    @API( status = STABLE, since = "0.0.6" )</span>
-<span class="source-line-no">320</span><span id="line-320">    public static File createDirectory( final File dir, final FileAttribute&lt;?&gt;... attributes ) throws IOException</span>
-<span class="source-line-no">321</span><span id="line-321">    {</span>
-<span class="source-line-no">322</span><span id="line-322">        final var path = Files.createDirectory( requireNonNullArgument( dir, "dir" ).toPath(), requireNonNullArgument( attributes, "attributes" ) );</span>
-<span class="source-line-no">323</span><span id="line-323">        final var retValue = path.toFile();</span>
-<span class="source-line-no">324</span><span id="line-324"></span>
-<span class="source-line-no">325</span><span id="line-325">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">326</span><span id="line-326">        return retValue;</span>
-<span class="source-line-no">327</span><span id="line-327">    }   //  createDirectory()</span>
-<span class="source-line-no">328</span><span id="line-328"></span>
-<span class="source-line-no">329</span><span id="line-329">    /**</span>
-<span class="source-line-no">330</span><span id="line-330">     *  Creates a directory named after the account name of the current user in</span>
-<span class="source-line-no">331</span><span id="line-331">     *  the default {@code temp} folder, determined by the system property</span>
-<span class="source-line-no">332</span><span id="line-332">     *  {@value org.tquadrat.foundation.lang.CommonConstants#PROPERTY_TEMPFOLDER}.&lt;br&gt;</span>
-<span class="source-line-no">333</span><span id="line-333">     *  &lt;br&gt;The access rights are set for the current user only (for UNIX, it</span>
-<span class="source-line-no">334</span><span id="line-334">     *  would be 700).&lt;br&gt;</span>
-<span class="source-line-no">335</span><span id="line-335">     *  &lt;br&gt;The new directory will &lt;i&gt;not&lt;/i&gt; be removed automatically after</span>
-<span class="source-line-no">336</span><span id="line-336">     *  program termination.&lt;br&gt;</span>
-<span class="source-line-no">337</span><span id="line-337">     *  &lt;br&gt;The class</span>
-<span class="source-line-no">338</span><span id="line-338">     *  {@link File}</span>
-<span class="source-line-no">339</span><span id="line-339">     *  provides a static method</span>
-<span class="source-line-no">340</span><span id="line-340">     *  {@link File#createTempFile(String, String) createTempFile()}</span>
-<span class="source-line-no">341</span><span id="line-341">     *  that creates a temporary file in the default temporary folder. As this</span>
-<span class="source-line-no">342</span><span id="line-342">     *  may be not a problem on a single-user Windows system with default</span>
-<span class="source-line-no">343</span><span id="line-343">     *  configuration, it will cause security problems on UNIX-like systems.</span>
-<span class="source-line-no">344</span><span id="line-344">     *  Therefore, it is recommended, to use</span>
-<span class="source-line-no">345</span><span id="line-345">     *  {@link File#createTempFile(String, String, File)}</span>
-<span class="source-line-no">346</span><span id="line-346">     *  instead, like this:</span>
-<span class="source-line-no">347</span><span id="line-347">     *  &lt;pre&gt;&lt;code&gt;File tempFile = File.createTempFile( "PREFIX", "EXT", createTempDirectory() );&lt;/code&gt;&lt;/pre&gt;</span>
-<span class="source-line-no">348</span><span id="line-348">     *  This will guarantee that the temporary files cannot be read by</span>
-<span class="source-line-no">349</span><span id="line-349">     *  other users.</span>
-<span class="source-line-no">350</span><span id="line-350">     *</span>
-<span class="source-line-no">351</span><span id="line-351">     *  @return The new temporary directory; it is guaranteed that the</span>
-<span class="source-line-no">352</span><span id="line-352">     *      directory exists after the call to this method returned.</span>
-<span class="source-line-no">353</span><span id="line-353">     *  @throws IOException Something has gone wrong.</span>
-<span class="source-line-no">354</span><span id="line-354">     *</span>
-<span class="source-line-no">355</span><span id="line-355">     *  @since 0.0.6</span>
-<span class="source-line-no">356</span><span id="line-356">     */</span>
-<span class="source-line-no">357</span><span id="line-357">    @API( status = STABLE, since = "0.0.6" )</span>
-<span class="source-line-no">358</span><span id="line-358">    public static File createTempDirectory() throws IOException</span>
-<span class="source-line-no">359</span><span id="line-359">    {</span>
-<span class="source-line-no">360</span><span id="line-360">        //---* Create the file object for the temp directory *-----------------</span>
-<span class="source-line-no">361</span><span id="line-361">        final var tempDir = new File( getProperty( PROPERTY_TEMPFOLDER ) );</span>
-<span class="source-line-no">362</span><span id="line-362">        final var userTempDir = new File( tempDir, getProperty( PROPERTY_USER_NAME ) );</span>
-<span class="source-line-no">363</span><span id="line-363"></span>
-<span class="source-line-no">364</span><span id="line-364">        //---* Get the file attributes *---------------------------------------</span>
-<span class="source-line-no">365</span><span id="line-365">        final FileAttribute&lt;?&gt; [] attributes = DEFAULT_FILESYSTEM_IS_POSIX_COMPLIANT ? new FileAttribute [] {PosixPermissions.tempDirPermissions} : new FileAttribute [0];</span>
-<span class="source-line-no">366</span><span id="line-366"></span>
-<span class="source-line-no">367</span><span id="line-367">        //---* Create the directory *------------------------------------------</span>
-<span class="source-line-no">368</span><span id="line-368">        final var retValue = createDirectories( userTempDir, attributes );</span>
-<span class="source-line-no">369</span><span id="line-369"></span>
-<span class="source-line-no">370</span><span id="line-370">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">371</span><span id="line-371">        return retValue;</span>
-<span class="source-line-no">372</span><span id="line-372">    }   //  createTempDirectory()</span>
-<span class="source-line-no">373</span><span id="line-373"></span>
-<span class="source-line-no">374</span><span id="line-374">    /**</span>
-<span class="source-line-no">375</span><span id="line-375">     *  Creates a new directory in the specified directory, using the given</span>
-<span class="source-line-no">376</span><span id="line-376">     *  prefix to generate its name.&lt;br&gt;</span>
-<span class="source-line-no">377</span><span id="line-377">     *  &lt;br&gt;The details as to how the name of the directory is constructed is</span>
-<span class="source-line-no">378</span><span id="line-378">     *  implementation dependent and therefore not specified. Where possible</span>
-<span class="source-line-no">379</span><span id="line-379">     *  the {@code prefix} is used to construct candidate names.&lt;br&gt;</span>
-<span class="source-line-no">380</span><span id="line-380">     *  &lt;br&gt;The {@code attributes} parameter is optional to set</span>
-<span class="source-line-no">381</span><span id="line-381">     *  {@linkplain FileAttribute file-attributes}</span>
-<span class="source-line-no">382</span><span id="line-382">     *  atomically when creating the directory. Each attribute is identified by</span>
-<span class="source-line-no">383</span><span id="line-383">     *  its</span>
-<span class="source-line-no">384</span><span id="line-384">     *  {@linkplain FileAttribute#name() name}.</span>
-<span class="source-line-no">385</span><span id="line-385">     *  If more than one attribute of the same name is included in the array</span>
-<span class="source-line-no">386</span><span id="line-386">     *  then all but the last occurrence is ignored.</span>
-<span class="source-line-no">387</span><span id="line-387">     *</span>
-<span class="source-line-no">388</span><span id="line-388">     *  @param  dir The directory in which to create the temporary directory.</span>
-<span class="source-line-no">389</span><span id="line-389">     *  @param  prefix  The prefix string to be used in generating the</span>
-<span class="source-line-no">390</span><span id="line-390">     *      directory's name; may be {@code null}.</span>
-<span class="source-line-no">391</span><span id="line-391">     *  @param  attributes  An optional list of file attributes to set</span>
-<span class="source-line-no">392</span><span id="line-392">     *      atomically when creating the directory.</span>
-<span class="source-line-no">393</span><span id="line-393">     *  @return The path to the newly created directory that did not exist</span>
-<span class="source-line-no">394</span><span id="line-394">     *      before this method was invoked.</span>
-<span class="source-line-no">395</span><span id="line-395">     *  @throws IllegalArgumentException    The prefix cannot be used to</span>
-<span class="source-line-no">396</span><span id="line-396">     *      generate a candidate directory name.</span>
-<span class="source-line-no">397</span><span id="line-397">     *  @throws UnsupportedOperationException   The attributes array contains</span>
-<span class="source-line-no">398</span><span id="line-398">     *      an attribute that cannot be set atomically when creating the</span>
-<span class="source-line-no">399</span><span id="line-399">     *      directory.</span>
-<span class="source-line-no">400</span><span id="line-400">     *  @throws IOException An I/O error occurs or {@code dir} does not exist.</span>
-<span class="source-line-no">401</span><span id="line-401">     *  @throws SecurityException   In the case a security manager is</span>
-<span class="source-line-no">402</span><span id="line-402">     *      installed, the</span>
-<span class="source-line-no">403</span><span id="line-403">     *      {@link SecurityManager#checkWrite(String) checkWrite()}</span>
-<span class="source-line-no">404</span><span id="line-404">     *      method is invoked to check write access when creating the</span>
-<span class="source-line-no">405</span><span id="line-405">     *      directory.</span>
-<span class="source-line-no">406</span><span id="line-406">     *</span>
-<span class="source-line-no">407</span><span id="line-407">     *  @see Files#createTempDirectory(Path, String, FileAttribute...)</span>
-<span class="source-line-no">408</span><span id="line-408">     *</span>
-<span class="source-line-no">409</span><span id="line-409">     *  @since 0.0.6</span>
-<span class="source-line-no">410</span><span id="line-410">     */</span>
-<span class="source-line-no">411</span><span id="line-411">    @SuppressWarnings( "removal" )</span>
-<span class="source-line-no">412</span><span id="line-412">    @API( status = STABLE, since = "0.0.6" )</span>
-<span class="source-line-no">413</span><span id="line-413">    public static Path createTempDirectory( final File dir, final String prefix, final FileAttribute&lt;?&gt;... attributes ) throws IOException</span>
-<span class="source-line-no">414</span><span id="line-414">    {</span>
-<span class="source-line-no">415</span><span id="line-415">        return Files.createTempDirectory( requireNonNullArgument( dir, "dir" ).toPath(), prefix, requireNonNullArgument( attributes, "attributes" ) );</span>
-<span class="source-line-no">416</span><span id="line-416">    }   //  createTempDirectory()</span>
-<span class="source-line-no">417</span><span id="line-417"></span>
-<span class="source-line-no">418</span><span id="line-418">    /**</span>
-<span class="source-line-no">419</span><span id="line-419">     *  Creates a new directory in the default temporary-file directory, using</span>
-<span class="source-line-no">420</span><span id="line-420">     *  the given prefix to generate its name.&lt;br&gt;</span>
-<span class="source-line-no">421</span><span id="line-421">     *  &lt;br&gt;This method works in exactly the manner specified by</span>
-<span class="source-line-no">422</span><span id="line-422">     *  {@link #createTempDirectory(File,String,FileAttribute[])}</span>
-<span class="source-line-no">423</span><span id="line-423">     *  method for the case that the {@code dir} parameter is the</span>
-<span class="source-line-no">424</span><span id="line-424">     *  temporary-file directory.</span>
-<span class="source-line-no">425</span><span id="line-425">     *</span>
-<span class="source-line-no">426</span><span id="line-426">     *  @param  prefix  The prefix string to be used in generating the</span>
-<span class="source-line-no">427</span><span id="line-427">     *      directory's name; may be {@code null}.</span>
-<span class="source-line-no">428</span><span id="line-428">     *  @param  attributes  An optional list of file attributes to set</span>
-<span class="source-line-no">429</span><span id="line-429">     *      atomically when creating the directory.</span>
-<span class="source-line-no">430</span><span id="line-430">     *  @return The</span>
-<span class="source-line-no">431</span><span id="line-431">     *      {@link File}</span>
-<span class="source-line-no">432</span><span id="line-432">     *      instance to the newly created directory that did not exist before</span>
-<span class="source-line-no">433</span><span id="line-433">     *      this method was invoked.</span>
-<span class="source-line-no">434</span><span id="line-434">     *  @throws IllegalArgumentException    The prefix cannot be used to</span>
-<span class="source-line-no">435</span><span id="line-435">     *      generate a candidate directory name.</span>
-<span class="source-line-no">436</span><span id="line-436">     *  @throws UnsupportedOperationException   The {@code attributes} array</span>
-<span class="source-line-no">437</span><span id="line-437">     *      contains an attribute that cannot be set atomically when creating</span>
-<span class="source-line-no">438</span><span id="line-438">     *      the directory.</span>
-<span class="source-line-no">439</span><span id="line-439">     *  @throws IOException An I/O error occurred or the temporary-file</span>
-<span class="source-line-no">440</span><span id="line-440">     *      directory does not exist.</span>
-<span class="source-line-no">441</span><span id="line-441">     *  @throws SecurityException   In the case a security manager is</span>
-<span class="source-line-no">442</span><span id="line-442">     *      installed, the</span>
-<span class="source-line-no">443</span><span id="line-443">     *      {@link SecurityManager#checkWrite(String) checkWrite()}</span>
-<span class="source-line-no">444</span><span id="line-444">     *      method is invoked to check write access when creating the</span>
-<span class="source-line-no">445</span><span id="line-445">     *      directory.</span>
-<span class="source-line-no">446</span><span id="line-446">     *</span>
-<span class="source-line-no">447</span><span id="line-447">     *  @see Files#createTempDirectory(String, FileAttribute...)</span>
-<span class="source-line-no">448</span><span id="line-448">     *</span>
-<span class="source-line-no">449</span><span id="line-449">     *  @since 0.0.6</span>
-<span class="source-line-no">450</span><span id="line-450">     */</span>
-<span class="source-line-no">451</span><span id="line-451">    @SuppressWarnings( "removal" )</span>
-<span class="source-line-no">452</span><span id="line-452">    @API( status = STABLE, since = "0.0.6" )</span>
-<span class="source-line-no">453</span><span id="line-453">    public static File createTempDirectory( final String prefix, final FileAttribute&lt;?&gt;... attributes ) throws IOException</span>
-<span class="source-line-no">454</span><span id="line-454">    {</span>
-<span class="source-line-no">455</span><span id="line-455">        final var path = Files.createTempDirectory( prefix, requireNonNullArgument( attributes, "attributes" ) );</span>
-<span class="source-line-no">456</span><span id="line-456">        final var retValue = path.toFile();</span>
-<span class="source-line-no">457</span><span id="line-457"></span>
-<span class="source-line-no">458</span><span id="line-458">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">459</span><span id="line-459">        return retValue;</span>
-<span class="source-line-no">460</span><span id="line-460">    }   //  createTempDirectory()</span>
-<span class="source-line-no">461</span><span id="line-461"></span>
-<span class="source-line-no">462</span><span id="line-462">    /**</span>
-<span class="source-line-no">463</span><span id="line-463">     *  &lt;p&gt;{@summary Deletes the folder (or file) that is determined by the</span>
-<span class="source-line-no">464</span><span id="line-464">     *  given</span>
-<span class="source-line-no">465</span><span id="line-465">     *  {@link Path}</span>
-<span class="source-line-no">466</span><span id="line-466">     *  instance.} If the argument denotes a directory, the method will remove</span>
-<span class="source-line-no">467</span><span id="line-467">     *  its contents first, recursively.&lt;/p&gt;</span>
-<span class="source-line-no">468</span><span id="line-468">     *</span>
-<span class="source-line-no">469</span><span id="line-469">     *  @param  folder  The folder to remove; despite the name of the argument</span>
-<span class="source-line-no">470</span><span id="line-470">     *      and the method, this can be also a plain file.</span>
-<span class="source-line-no">471</span><span id="line-471">     *  @throws IOException A problem occurred when deleting the {@code Path}.</span>
-<span class="source-line-no">472</span><span id="line-472">     */</span>
-<span class="source-line-no">473</span><span id="line-473">    public static final void deleteFolder( final Path folder ) throws IOException</span>
-<span class="source-line-no">474</span><span id="line-474">    {</span>
-<span class="source-line-no">475</span><span id="line-475">        walkFileTree( requireNonNullArgument( folder, "folder" ), new SimpleFileVisitor&lt;&gt;()</span>
-<span class="source-line-no">476</span><span id="line-476">        {</span>
-<span class="source-line-no">477</span><span id="line-477">            /**</span>
-<span class="source-line-no">478</span><span id="line-478">             * {@inheritDoc}</span>
-<span class="source-line-no">479</span><span id="line-479">             */</span>
-<span class="source-line-no">480</span><span id="line-480">            @Override</span>
-<span class="source-line-no">481</span><span id="line-481">            public final FileVisitResult postVisitDirectory( final Path directory, final IOException exception ) throws IOException</span>
-<span class="source-line-no">482</span><span id="line-482">            {</span>
-<span class="source-line-no">483</span><span id="line-483">                try</span>
-<span class="source-line-no">484</span><span id="line-484">                {</span>
-<span class="source-line-no">485</span><span id="line-485">                    delete( directory );</span>
-<span class="source-line-no">486</span><span id="line-486">                }</span>
-<span class="source-line-no">487</span><span id="line-487">                catch( IOException e )</span>
-<span class="source-line-no">488</span><span id="line-488">                {</span>
-<span class="source-line-no">489</span><span id="line-489">                    if( nonNull( exception ) ) e.addSuppressed( exception );</span>
-<span class="source-line-no">490</span><span id="line-490">                    throw e;</span>
-<span class="source-line-no">491</span><span id="line-491">                }</span>
-<span class="source-line-no">492</span><span id="line-492"></span>
-<span class="source-line-no">493</span><span id="line-493">                //---* Done *--------------------------------------------------</span>
-<span class="source-line-no">494</span><span id="line-494">                return CONTINUE;</span>
-<span class="source-line-no">495</span><span id="line-495">            }   //  postVisitDirectory()</span>
-<span class="source-line-no">496</span><span id="line-496"></span>
-<span class="source-line-no">497</span><span id="line-497">            /**</span>
-<span class="source-line-no">498</span><span id="line-498">             * {@inheritDoc}</span>
-<span class="source-line-no">499</span><span id="line-499">             */</span>
-<span class="source-line-no">500</span><span id="line-500">            @Override</span>
-<span class="source-line-no">501</span><span id="line-501">            public final FileVisitResult visitFile( final Path file, final BasicFileAttributes attributes ) throws IOException</span>
-<span class="source-line-no">502</span><span id="line-502">            {</span>
-<span class="source-line-no">503</span><span id="line-503">                delete( file );</span>
-<span class="source-line-no">504</span><span id="line-504"></span>
-<span class="source-line-no">505</span><span id="line-505">                //---* Done *--------------------------------------------------</span>
-<span class="source-line-no">506</span><span id="line-506">                return CONTINUE;</span>
-<span class="source-line-no">507</span><span id="line-507">            }   //  visitFile()</span>
-<span class="source-line-no">508</span><span id="line-508">        } );</span>
-<span class="source-line-no">509</span><span id="line-509">    }   //  deleteFolder()</span>
-<span class="source-line-no">510</span><span id="line-510"></span>
-<span class="source-line-no">511</span><span id="line-511">    /**</span>
-<span class="source-line-no">512</span><span id="line-512">     *  &lt;p&gt;{@summary Deletes the folder (or file) that is determined by the</span>
-<span class="source-line-no">513</span><span id="line-513">     *  given</span>
-<span class="source-line-no">514</span><span id="line-514">     *  {@link File}.</span>
-<span class="source-line-no">515</span><span id="line-515">     *  instance.} If the argument denotes a directory, the method will remove</span>
-<span class="source-line-no">516</span><span id="line-516">     *  its contents first, recursively.&lt;/p&gt;</span>
-<span class="source-line-no">517</span><span id="line-517">     *  &lt;p&gt;Calls</span>
-<span class="source-line-no">518</span><span id="line-518">     *  {@link #deleteFolder(Path)}</span>
-<span class="source-line-no">519</span><span id="line-519">     *  internally.&lt;/p&gt;</span>
-<span class="source-line-no">520</span><span id="line-520">     *</span>
-<span class="source-line-no">521</span><span id="line-521">     *  @param  folder  The folder to remove; despite the name of the argument</span>
-<span class="source-line-no">522</span><span id="line-522">     *      and the method, this can be also a plain file.</span>
-<span class="source-line-no">523</span><span id="line-523">     *  @throws IOException A problem occurred when deleting the {@code Path}.</span>
-<span class="source-line-no">524</span><span id="line-524">     */</span>
-<span class="source-line-no">525</span><span id="line-525">    public static final void deleteFolder( final File folder ) throws IOException</span>
-<span class="source-line-no">526</span><span id="line-526">    {</span>
-<span class="source-line-no">527</span><span id="line-527">        deleteFolder( requireNonNullArgument( folder, "folder" ).toPath() );</span>
-<span class="source-line-no">528</span><span id="line-528">    }   //  deleteFolder()</span>
-<span class="source-line-no">529</span><span id="line-529"></span>
-<span class="source-line-no">530</span><span id="line-530">    /**</span>
-<span class="source-line-no">531</span><span id="line-531">     *  &lt;p&gt;{@summary Calculates the check sum for the given file, using the</span>
-<span class="source-line-no">532</span><span id="line-532">     *  algorithm with the given name.}&lt;/p&gt;</span>
-<span class="source-line-no">533</span><span id="line-533">     *  &lt;p&gt;If the name is one of&lt;/p&gt;</span>
-<span class="source-line-no">534</span><span id="line-534">     *  &lt;ul&gt;</span>
-<span class="source-line-no">535</span><span id="line-535">     *      &lt;li&gt;CRC32&lt;/li&gt;</span>
-<span class="source-line-no">536</span><span id="line-536">     *      &lt;li&gt;Adler32&lt;/li&gt;</span>
-<span class="source-line-no">537</span><span id="line-537">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">538</span><span id="line-538">     *  &lt;p&gt;the method uses</span>
-<span class="source-line-no">539</span><span id="line-539">     *  {@link java.util.zip.CRC32}</span>
-<span class="source-line-no">540</span><span id="line-540">     *  or</span>
-<span class="source-line-no">541</span><span id="line-541">     *  {@link java.util.zip.Adler32}</span>
-<span class="source-line-no">542</span><span id="line-542">     *  for the calculation, any other name is taken as the name for a</span>
-<span class="source-line-no">543</span><span id="line-543">     *  {@linkplain MessageDigest};</span>
-<span class="source-line-no">544</span><span id="line-544">     *  all JVMs know&lt;/p&gt;</span>
-<span class="source-line-no">545</span><span id="line-545">     *  &lt;ul&gt;</span>
-<span class="source-line-no">546</span><span id="line-546">     *      &lt;li&gt;MD5&lt;/li&gt;</span>
-<span class="source-line-no">547</span><span id="line-547">     *      &lt;li&gt;SHA1&lt;/li&gt;</span>
-<span class="source-line-no">548</span><span id="line-548">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">549</span><span id="line-549">     *  &lt;p&gt;others can be added by installing additional</span>
-<span class="source-line-no">550</span><span id="line-550">     *  {@linkplain java.security.Provider security providers}.&lt;/p&gt;</span>
-<span class="source-line-no">551</span><span id="line-551">     *  &lt;p&gt;This method calls</span>
-<span class="source-line-no">552</span><span id="line-552">     *  {@link #determineCheckSum(Path, String)}</span>
-<span class="source-line-no">553</span><span id="line-553">     *  internally.&lt;/p&gt;</span>
-<span class="source-line-no">554</span><span id="line-554">     *</span>
-<span class="source-line-no">555</span><span id="line-555">     *  @param  file    The file to process.</span>
-<span class="source-line-no">556</span><span id="line-556">     *  @param  algorithm   The name for the algorithm to use for the check sum</span>
-<span class="source-line-no">557</span><span id="line-557">     *      calculation.</span>
-<span class="source-line-no">558</span><span id="line-558">     *  @return The check sum as a hex string.</span>
-<span class="source-line-no">559</span><span id="line-559">     *  @throws IOException Problems to process the file.</span>
-<span class="source-line-no">560</span><span id="line-560">     *  @throws NoSuchAlgorithmException    The provided algorithm does not</span>
-<span class="source-line-no">561</span><span id="line-561">     *      exist or the provider for it is not installed properly.</span>
-<span class="source-line-no">562</span><span id="line-562">     */</span>
-<span class="source-line-no">563</span><span id="line-563">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">564</span><span id="line-564">    public static final String determineCheckSum( final File file, final String algorithm ) throws IOException, NoSuchAlgorithmException</span>
-<span class="source-line-no">565</span><span id="line-565">    {</span>
-<span class="source-line-no">566</span><span id="line-566">        final var retValue = determineCheckSum( requireNonNullArgument( file, "file" ).toPath(), algorithm );</span>
-<span class="source-line-no">567</span><span id="line-567"></span>
-<span class="source-line-no">568</span><span id="line-568">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">569</span><span id="line-569">        return retValue;</span>
-<span class="source-line-no">570</span><span id="line-570">    }   //  determineCheckSum()</span>
-<span class="source-line-no">571</span><span id="line-571"></span>
-<span class="source-line-no">572</span><span id="line-572">    /**</span>
-<span class="source-line-no">573</span><span id="line-573">     *  &lt;p&gt;{@summary Calculates the check sum for the given file, using the</span>
-<span class="source-line-no">574</span><span id="line-574">     *  algorithm with the given name.}&lt;/p&gt;</span>
-<span class="source-line-no">575</span><span id="line-575">     *  &lt;p&gt;If the name is one of&lt;/p&gt;</span>
-<span class="source-line-no">576</span><span id="line-576">     *  &lt;ul&gt;</span>
-<span class="source-line-no">577</span><span id="line-577">     *      &lt;li&gt;CRC32&lt;/li&gt;</span>
-<span class="source-line-no">578</span><span id="line-578">     *      &lt;li&gt;Adler32&lt;/li&gt;</span>
-<span class="source-line-no">579</span><span id="line-579">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">580</span><span id="line-580">     *  &lt;p&gt;the method uses</span>
-<span class="source-line-no">581</span><span id="line-581">     *  {@link java.util.zip.CRC32}</span>
-<span class="source-line-no">582</span><span id="line-582">     *  or</span>
-<span class="source-line-no">583</span><span id="line-583">     *  {@link java.util.zip.Adler32}</span>
-<span class="source-line-no">584</span><span id="line-584">     *  for the calculation, any other name is taken as the name for a</span>
-<span class="source-line-no">585</span><span id="line-585">     *  {@linkplain MessageDigest};</span>
-<span class="source-line-no">586</span><span id="line-586">     *  all JVMs know&lt;/p&gt;</span>
-<span class="source-line-no">587</span><span id="line-587">     *  &lt;ul&gt;</span>
-<span class="source-line-no">588</span><span id="line-588">     *      &lt;li&gt;MD5&lt;/li&gt;</span>
-<span class="source-line-no">589</span><span id="line-589">     *      &lt;li&gt;SHA1&lt;/li&gt;</span>
-<span class="source-line-no">590</span><span id="line-590">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">591</span><span id="line-591">     *  &lt;p&gt;others can be added by installing additional</span>
-<span class="source-line-no">592</span><span id="line-592">     *  {@linkplain java.security.Provider security providers}.&lt;/p&gt;</span>
-<span class="source-line-no">593</span><span id="line-593">     *</span>
-<span class="source-line-no">594</span><span id="line-594">     *  @param  file    The file to process.</span>
-<span class="source-line-no">595</span><span id="line-595">     *  @param  algorithm   The name for the algorithm to use for the check sum</span>
-<span class="source-line-no">596</span><span id="line-596">     *      calculation.</span>
-<span class="source-line-no">597</span><span id="line-597">     *  @return The check sum as a hex string.</span>
-<span class="source-line-no">598</span><span id="line-598">     *  @throws IOException Problems to process the file.</span>
-<span class="source-line-no">599</span><span id="line-599">     *  @throws NoSuchAlgorithmException    The provided algorithm does not</span>
-<span class="source-line-no">600</span><span id="line-600">     *      exist or the provider for it is not installed properly.</span>
-<span class="source-line-no">601</span><span id="line-601">     */</span>
-<span class="source-line-no">602</span><span id="line-602">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">603</span><span id="line-603">    public static final String determineCheckSum( final Path file, final String algorithm ) throws IOException, NoSuchAlgorithmException</span>
-<span class="source-line-no">604</span><span id="line-604">    {</span>
-<span class="source-line-no">605</span><span id="line-605">        final var retValue = switch( requireNotEmptyArgument( algorithm, "algorithm" ) )</span>
-<span class="source-line-no">606</span><span id="line-606">        {</span>
-<span class="source-line-no">607</span><span id="line-607">            case "Adler32" -&gt; format( "%Xd", determineCheckSum( file, new Adler32() ) );</span>
-<span class="source-line-no">608</span><span id="line-608">            case "CRC32" -&gt; format( "%Xd", determineCheckSum( file, new CRC32() ) );</span>
-<span class="source-line-no">609</span><span id="line-609">            default -&gt; {</span>
-<span class="source-line-no">610</span><span id="line-610">                final var messageDigest = MessageDigest.getInstance( algorithm );</span>
-<span class="source-line-no">611</span><span id="line-611">                yield HexFormat.of()</span>
-<span class="source-line-no">612</span><span id="line-612">                    .withUpperCase()</span>
-<span class="source-line-no">613</span><span id="line-613">                    .formatHex( determineCheckSum( file, messageDigest ) );</span>
-<span class="source-line-no">614</span><span id="line-614">            }</span>
-<span class="source-line-no">615</span><span id="line-615">        };</span>
-<span class="source-line-no">616</span><span id="line-616"></span>
-<span class="source-line-no">617</span><span id="line-617">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">618</span><span id="line-618">        return retValue;</span>
-<span class="source-line-no">619</span><span id="line-619">    }   //  determineCheckSum()</span>
-<span class="source-line-no">620</span><span id="line-620"></span>
-<span class="source-line-no">621</span><span id="line-621">    /**</span>
-<span class="source-line-no">622</span><span id="line-622">     *  Calculates the check sum for the given file, using provided check sum</span>
-<span class="source-line-no">623</span><span id="line-623">     *  algorithm implementation.</span>
-<span class="source-line-no">624</span><span id="line-624">     *</span>
-<span class="source-line-no">625</span><span id="line-625">     *  @param  file    The file to process.</span>
-<span class="source-line-no">626</span><span id="line-626">     *  @param  algorithm   The check sum algorithm to use for the check sum</span>
-<span class="source-line-no">627</span><span id="line-627">     *      calculation.</span>
-<span class="source-line-no">628</span><span id="line-628">     *  @return The check sum.</span>
-<span class="source-line-no">629</span><span id="line-629">     *  @throws IOException Problems to process the file.</span>
-<span class="source-line-no">630</span><span id="line-630">     */</span>
-<span class="source-line-no">631</span><span id="line-631">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">632</span><span id="line-632">    public static final long determineCheckSum( final File file, final Checksum algorithm ) throws IOException</span>
-<span class="source-line-no">633</span><span id="line-633">    {</span>
-<span class="source-line-no">634</span><span id="line-634">        final var retValue = determineCheckSum( requireNonNullArgument( file, "file" ).toPath(), algorithm );</span>
-<span class="source-line-no">635</span><span id="line-635"></span>
-<span class="source-line-no">636</span><span id="line-636">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">637</span><span id="line-637">        return retValue;</span>
-<span class="source-line-no">638</span><span id="line-638">    }   //  determineCheckSum()</span>
-<span class="source-line-no">639</span><span id="line-639"></span>
-<span class="source-line-no">640</span><span id="line-640">    /**</span>
-<span class="source-line-no">641</span><span id="line-641">     *  Calculates the check sum for the given file, using provided check sum</span>
-<span class="source-line-no">642</span><span id="line-642">     *  algorithm implementation.</span>
-<span class="source-line-no">643</span><span id="line-643">     *</span>
-<span class="source-line-no">644</span><span id="line-644">     *  @param  file    The file to process.</span>
-<span class="source-line-no">645</span><span id="line-645">     *  @param  algorithm   The check sum algorithm to use for the check sum</span>
-<span class="source-line-no">646</span><span id="line-646">     *      calculation.</span>
-<span class="source-line-no">647</span><span id="line-647">     *  @return The check sum.</span>
-<span class="source-line-no">648</span><span id="line-648">     *  @throws IOException Problems to process the file.</span>
-<span class="source-line-no">649</span><span id="line-649">     */</span>
-<span class="source-line-no">650</span><span id="line-650">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">651</span><span id="line-651">    public static final long determineCheckSum( final Path file, final Checksum algorithm ) throws IOException</span>
-<span class="source-line-no">652</span><span id="line-652">    {</span>
-<span class="source-line-no">653</span><span id="line-653">        requireNonNullArgument( algorithm, "algorithm" ).reset();</span>
-<span class="source-line-no">654</span><span id="line-654">        try( final var inputStream = Files.newInputStream( requireNonNullArgument( file, "file" ), READ ) )</span>
-<span class="source-line-no">655</span><span id="line-655">        {</span>
-<span class="source-line-no">656</span><span id="line-656">            final var buffer = new byte [DEFAULT_BUFFER_SIZE];</span>
-<span class="source-line-no">657</span><span id="line-657">            var readBytes = 0;</span>
-<span class="source-line-no">658</span><span id="line-658">            while( (readBytes = inputStream.read( buffer )) &gt; 0 )</span>
-<span class="source-line-no">659</span><span id="line-659">            {</span>
-<span class="source-line-no">660</span><span id="line-660">                algorithm.update( buffer, 0, readBytes );</span>
-<span class="source-line-no">661</span><span id="line-661">            }</span>
-<span class="source-line-no">662</span><span id="line-662">        }</span>
-<span class="source-line-no">663</span><span id="line-663">        final var retValue = algorithm.getValue();</span>
-<span class="source-line-no">664</span><span id="line-664"></span>
-<span class="source-line-no">665</span><span id="line-665">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">666</span><span id="line-666">        return retValue;</span>
-<span class="source-line-no">667</span><span id="line-667">    }   //  determineCheckSum()</span>
-<span class="source-line-no">668</span><span id="line-668"></span>
-<span class="source-line-no">669</span><span id="line-669">    /**</span>
-<span class="source-line-no">670</span><span id="line-670">     *  Calculates the check sum for the given file, using the provided</span>
-<span class="source-line-no">671</span><span id="line-671">     *  {@link MessageDigest}.</span>
-<span class="source-line-no">672</span><span id="line-672">     *</span>
-<span class="source-line-no">673</span><span id="line-673">     *  @param  file    The file to process.</span>
-<span class="source-line-no">674</span><span id="line-674">     *  @param  algorithm   The {@code MessageDigest} to use for the check sum</span>
-<span class="source-line-no">675</span><span id="line-675">     *      calculation.</span>
-<span class="source-line-no">676</span><span id="line-676">     *  @return The check sum as a byte array.</span>
-<span class="source-line-no">677</span><span id="line-677">     *  @throws IOException Problems to process the file.</span>
-<span class="source-line-no">678</span><span id="line-678">     */</span>
-<span class="source-line-no">679</span><span id="line-679">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">680</span><span id="line-680">    public static final byte [] determineCheckSum( final File file, final MessageDigest algorithm ) throws IOException</span>
-<span class="source-line-no">681</span><span id="line-681">    {</span>
-<span class="source-line-no">682</span><span id="line-682">        final var retValue = determineCheckSum( requireNonNullArgument( file, "file" ).toPath(), algorithm );</span>
-<span class="source-line-no">683</span><span id="line-683"></span>
-<span class="source-line-no">684</span><span id="line-684">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">685</span><span id="line-685">        return retValue;</span>
-<span class="source-line-no">686</span><span id="line-686">    }   //  determineCheckSum()</span>
-<span class="source-line-no">687</span><span id="line-687"></span>
-<span class="source-line-no">688</span><span id="line-688">    /**</span>
-<span class="source-line-no">689</span><span id="line-689">     *  Calculates the check sum for the given file, using the provided</span>
-<span class="source-line-no">690</span><span id="line-690">     *  {@link MessageDigest}.</span>
-<span class="source-line-no">691</span><span id="line-691">     *</span>
-<span class="source-line-no">692</span><span id="line-692">     *  @param  file    The file to process.</span>
-<span class="source-line-no">693</span><span id="line-693">     *  @param  algorithm   The {@code MessageDigest} to use for the check sum</span>
-<span class="source-line-no">694</span><span id="line-694">     *      calculation.</span>
-<span class="source-line-no">695</span><span id="line-695">     *  @return The check sum as a byte array.</span>
-<span class="source-line-no">696</span><span id="line-696">     *  @throws IOException Problems to process the file.</span>
-<span class="source-line-no">697</span><span id="line-697">     */</span>
-<span class="source-line-no">698</span><span id="line-698">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">699</span><span id="line-699">    public static final byte [] determineCheckSum( final Path file, final MessageDigest algorithm ) throws IOException</span>
-<span class="source-line-no">700</span><span id="line-700">    {</span>
-<span class="source-line-no">701</span><span id="line-701">        requireNonNullArgument( algorithm, "algorithm" ).reset();</span>
-<span class="source-line-no">702</span><span id="line-702">        try( final var inputStream = Files.newInputStream( requireNonNullArgument( file, "file" ), READ ) )</span>
-<span class="source-line-no">703</span><span id="line-703">        {</span>
-<span class="source-line-no">704</span><span id="line-704">            final var buffer = new byte [DEFAULT_BUFFER_SIZE];</span>
-<span class="source-line-no">705</span><span id="line-705">            var readBytes = 0;</span>
-<span class="source-line-no">706</span><span id="line-706">            while( (readBytes = inputStream.read( buffer )) &gt; 0 )</span>
-<span class="source-line-no">707</span><span id="line-707">            {</span>
-<span class="source-line-no">708</span><span id="line-708">                algorithm.update( buffer, 0, readBytes );</span>
-<span class="source-line-no">709</span><span id="line-709">            }</span>
-<span class="source-line-no">710</span><span id="line-710">        }</span>
-<span class="source-line-no">711</span><span id="line-711">        final var retValue = algorithm.digest();</span>
-<span class="source-line-no">712</span><span id="line-712"></span>
-<span class="source-line-no">713</span><span id="line-713">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">714</span><span id="line-714">        return retValue;</span>
-<span class="source-line-no">715</span><span id="line-715">    }   //  determineCheckSum()</span>
-<span class="source-line-no">716</span><span id="line-716"></span>
-<span class="source-line-no">717</span><span id="line-717">    /**</span>
-<span class="source-line-no">718</span><span id="line-718">     *  Returns an</span>
-<span class="source-line-no">719</span><span id="line-719">     *  {@link Appendable}</span>
-<span class="source-line-no">720</span><span id="line-720">     *  that just swallows any data that is written to it, like the</span>
-<span class="source-line-no">721</span><span id="line-721">     *  {@code /dev/null} device of a Unix or Linux machine, or {@code NUL:}</span>
-<span class="source-line-no">722</span><span id="line-722">     *  on Windows.</span>
-<span class="source-line-no">723</span><span id="line-723">     *</span>
-<span class="source-line-no">724</span><span id="line-724">     *  @return A null appendable.</span>
-<span class="source-line-no">725</span><span id="line-725">     *</span>
-<span class="source-line-no">726</span><span id="line-726">     *  @see NullAppendable</span>
-<span class="source-line-no">727</span><span id="line-727">     */</span>
-<span class="source-line-no">728</span><span id="line-728">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">729</span><span id="line-729">    public static final Appendable getNullAppendable() { return new NullAppendable(); }</span>
-<span class="source-line-no">730</span><span id="line-730"></span>
-<span class="source-line-no">731</span><span id="line-731">    /**</span>
-<span class="source-line-no">732</span><span id="line-732">     *  &lt;p&gt;{@summary Returns</span>
-<span class="source-line-no">733</span><span id="line-733">     *  {@link System#out}</span>
-<span class="source-line-no">734</span><span id="line-734">     *  with a non-functional</span>
-<span class="source-line-no">735</span><span id="line-735">     *  {@link OutputStream#close()}</span>
-<span class="source-line-no">736</span><span id="line-736">     *  method.}&lt;/p&gt;</span>
-<span class="source-line-no">737</span><span id="line-737">     *  &lt;p&gt;Assume the following scenario:&lt;/p&gt;</span>
-<span class="source-line-no">738</span><span id="line-738">     *  &lt;pre&gt;&lt;code&gt;  &amp;hellip;</span>
-<span class="source-line-no">739</span><span id="line-739">     *  Optional&amp;lt;File&amp;gt; outputFile = &amp;hellip;</span>
-<span class="source-line-no">740</span><span id="line-740">     *  &amp;hellip;</span>
-<span class="source-line-no">741</span><span id="line-741">     *  PrintStream outputStream = outputFile.isPresent() ? new PrintStream( new FileOutputStream( outputFile.get() ) ) : IOUtils.getUncloseableOut();</span>
-<span class="source-line-no">742</span><span id="line-742">     *  try( outputStream )</span>
-<span class="source-line-no">743</span><span id="line-743">     *  {</span>
-<span class="source-line-no">744</span><span id="line-744">     *      &amp;#47;**</span>
-<span class="source-line-no">745</span><span id="line-745">     *       * Print something ...</span>
-<span class="source-line-no">746</span><span id="line-746">     *       *&amp;#47;</span>
-<span class="source-line-no">747</span><span id="line-747">     *       &amp;hellip;</span>
-<span class="source-line-no">748</span><span id="line-748">     *  }</span>
-<span class="source-line-no">749</span><span id="line-749">     *  &amp;hellip;&lt;/code&gt;&lt;/pre&gt;</span>
-<span class="source-line-no">750</span><span id="line-750">     *  &lt;p&gt;The output stream will be close at the end of the {@code try} block;</span>
-<span class="source-line-no">751</span><span id="line-751">     *  this is desired in case of a</span>
-<span class="source-line-no">752</span><span id="line-752">     *  {@link java.io.FileOutputStream FileOutputStream},</span>
-<span class="source-line-no">753</span><span id="line-753">     *  but totally not wanted if the output stream is {@code System.out}.&lt;/p&gt;</span>
-<span class="source-line-no">754</span><span id="line-754">     *</span>
-<span class="source-line-no">755</span><span id="line-755">     *  @return {@code System.out} without the {@code close()} method.</span>
-<span class="source-line-no">756</span><span id="line-756">     */</span>
-<span class="source-line-no">757</span><span id="line-757">    @API( status = STABLE, since = "0.0.7" )</span>
-<span class="source-line-no">758</span><span id="line-758">    public static final PrintStream getUncloseableOut()</span>
-<span class="source-line-no">759</span><span id="line-759">    {</span>
-<span class="source-line-no">760</span><span id="line-760">        final var retValue = new PrintStream( out )</span>
-<span class="source-line-no">761</span><span id="line-761">        {</span>
-<span class="source-line-no">762</span><span id="line-762">            /**</span>
-<span class="source-line-no">763</span><span id="line-763">             *  {@inheritDoc}</span>
-<span class="source-line-no">764</span><span id="line-764">             */</span>
-<span class="source-line-no">765</span><span id="line-765">            @Override</span>
-<span class="source-line-no">766</span><span id="line-766">            public final void close() { /* Does nothing */ }</span>
-<span class="source-line-no">767</span><span id="line-767">        };</span>
-<span class="source-line-no">768</span><span id="line-768"></span>
-<span class="source-line-no">769</span><span id="line-769">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">770</span><span id="line-770">        return retValue;</span>
-<span class="source-line-no">771</span><span id="line-771">    }   //  getUncloseableOut()</span>
-<span class="source-line-no">772</span><span id="line-772"></span>
-<span class="source-line-no">773</span><span id="line-773">    /**</span>
-<span class="source-line-no">774</span><span id="line-774">     *  &lt;p&gt;{@summary Reads the complete content of the provided</span>
-<span class="source-line-no">775</span><span id="line-775">     *  {@link Reader}</span>
-<span class="source-line-no">776</span><span id="line-776">     *  into a</span>
-<span class="source-line-no">777</span><span id="line-777">     *  {@link String}.}&lt;/p&gt;</span>
-<span class="source-line-no">778</span><span id="line-778">     *  &lt;p&gt;Obviously this method is feasible only for files with a limited</span>
-<span class="source-line-no">779</span><span id="line-779">     *  size.&lt;/p&gt;</span>
-<span class="source-line-no">780</span><span id="line-780">     *</span>
-<span class="source-line-no">781</span><span id="line-781">     *  @param  reader  The {@code Reader} instance.</span>
-<span class="source-line-no">782</span><span id="line-782">     *  @return The content of the provided {@code Reader}.</span>
-<span class="source-line-no">783</span><span id="line-783">     *  @throws IOException Problems on reading from the {@code Reader}.</span>
-<span class="source-line-no">784</span><span id="line-784">     */</span>
-<span class="source-line-no">785</span><span id="line-785">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">786</span><span id="line-786">    public static final String loadToString( final Reader reader ) throws IOException</span>
-<span class="source-line-no">787</span><span id="line-787">    {</span>
-<span class="source-line-no">788</span><span id="line-788">        final var builder = new StringBuilder( DEFAULT_BUFFER_SIZE );</span>
-<span class="source-line-no">789</span><span id="line-789">        final var buffer = new char [DEFAULT_BUFFER_SIZE];</span>
-<span class="source-line-no">790</span><span id="line-790">        var bytesRead = requireNonNullArgument( reader, "reader" ).read( buffer );</span>
-<span class="source-line-no">791</span><span id="line-791">        while( bytesRead &gt; 0 )</span>
-<span class="source-line-no">792</span><span id="line-792">        {</span>
-<span class="source-line-no">793</span><span id="line-793">            builder.append( buffer, 0, bytesRead );</span>
-<span class="source-line-no">794</span><span id="line-794">            bytesRead = reader.read( buffer );</span>
-<span class="source-line-no">795</span><span id="line-795">        }</span>
-<span class="source-line-no">796</span><span id="line-796">        final var retValue = builder.toString();</span>
-<span class="source-line-no">797</span><span id="line-797"></span>
-<span class="source-line-no">798</span><span id="line-798">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">799</span><span id="line-799">        return retValue;</span>
-<span class="source-line-no">800</span><span id="line-800">    }   //  loadToString()</span>
-<span class="source-line-no">801</span><span id="line-801">}</span>
-<span class="source-line-no">802</span><span id="line-802">//  class IOUtils</span>
-<span class="source-line-no">803</span><span id="line-803"></span>
-<span class="source-line-no">804</span><span id="line-804">/*</span>
-<span class="source-line-no">805</span><span id="line-805"> *  End of File</span>
-<span class="source-line-no">806</span><span id="line-806"> */</span>
+<span class="source-line-no">205</span><span id="line-205">     *  No instance allowed for this class.</span>
+<span class="source-line-no">206</span><span id="line-206">     */</span>
+<span class="source-line-no">207</span><span id="line-207">    private IOUtils() { throw new PrivateConstructorForStaticClassCalledError( IOUtils.class ); }</span>
+<span class="source-line-no">208</span><span id="line-208"></span>
+<span class="source-line-no">209</span><span id="line-209">        /*---------*\</span>
+<span class="source-line-no">210</span><span id="line-210">    ====** Methods **==========================================================</span>
+<span class="source-line-no">211</span><span id="line-211">        \*---------*/</span>
+<span class="source-line-no">212</span><span id="line-212">    /**</span>
+<span class="source-line-no">213</span><span id="line-213">     *  Unconditionally closes an object instance of a class that implements</span>
+<span class="source-line-no">214</span><span id="line-214">     *  the interface</span>
+<span class="source-line-no">215</span><span id="line-215">     *  {@link AutoCloseable}.&lt;br&gt;</span>
+<span class="source-line-no">216</span><span id="line-216">     *  Equivalent to</span>
+<span class="source-line-no">217</span><span id="line-217">     *  {@link AutoCloseable#close()},</span>
+<span class="source-line-no">218</span><span id="line-218">     *  except any exceptions will be ignored. This is typically used in</span>
+<span class="source-line-no">219</span><span id="line-219">     *  {@code finally} blocks.&lt;br&gt;</span>
+<span class="source-line-no">220</span><span id="line-220">     *  &lt;br&gt;Even after the introduction of {@code try-with-resources} with</span>
+<span class="source-line-no">221</span><span id="line-221">     *  Java&amp;nbsp;7, this method can be still helpful.</span>
+<span class="source-line-no">222</span><span id="line-222">     *</span>
+<span class="source-line-no">223</span><span id="line-223">     *  @param  c  The {@code AutoCloseable} instance to close, can be</span>
+<span class="source-line-no">224</span><span id="line-224">     *      {@code null} or already closed.</span>
+<span class="source-line-no">225</span><span id="line-225">     */</span>
+<span class="source-line-no">226</span><span id="line-226">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">227</span><span id="line-227">    public static final void closeQuietly( final AutoCloseable c )</span>
+<span class="source-line-no">228</span><span id="line-228">    {</span>
+<span class="source-line-no">229</span><span id="line-229">        try</span>
+<span class="source-line-no">230</span><span id="line-230">        {</span>
+<span class="source-line-no">231</span><span id="line-231">            if( nonNull( c ) ) c.close();</span>
+<span class="source-line-no">232</span><span id="line-232">        }</span>
+<span class="source-line-no">233</span><span id="line-233">        catch( final Exception ignored ) { /* Deliberately ignored! */ }</span>
+<span class="source-line-no">234</span><span id="line-234">    }   //  closeQuietly()</span>
+<span class="source-line-no">235</span><span id="line-235"></span>
+<span class="source-line-no">236</span><span id="line-236">    /**</span>
+<span class="source-line-no">237</span><span id="line-237">     *  Creates a directory by creating all nonexistent parent directories</span>
+<span class="source-line-no">238</span><span id="line-238">     *  first. Unlike the</span>
+<span class="source-line-no">239</span><span id="line-239">     *  {@link #createDirectory(File,FileAttribute...)}</span>
+<span class="source-line-no">240</span><span id="line-240">     *  method, an exception is not thrown if the directory could not be</span>
+<span class="source-line-no">241</span><span id="line-241">     *  created because it already exists.&lt;br&gt;</span>
+<span class="source-line-no">242</span><span id="line-242">     *  &lt;br&gt;The {@code attributes} parameter is optional to set</span>
+<span class="source-line-no">243</span><span id="line-243">     *  {@linkplain FileAttribute file-attributes}</span>
+<span class="source-line-no">244</span><span id="line-244">     *  atomically when creating the non-existent directories. Each file</span>
+<span class="source-line-no">245</span><span id="line-245">     *  attribute is identified by its</span>
+<span class="source-line-no">246</span><span id="line-246">     *  {@linkplain FileAttribute#name name}.</span>
+<span class="source-line-no">247</span><span id="line-247">     *  If more than one attribute of the same name is included in the array</span>
+<span class="source-line-no">248</span><span id="line-248">     *  then all but the last occurrence is ignored.&lt;br&gt;</span>
+<span class="source-line-no">249</span><span id="line-249">     *  &lt;br&gt;If this method fails, then it may do so after creating some, but</span>
+<span class="source-line-no">250</span><span id="line-250">     *  not all, of the parent directories.</span>
+<span class="source-line-no">251</span><span id="line-251">     *</span>
+<span class="source-line-no">252</span><span id="line-252">     *  @param  dir The directory to create.</span>
+<span class="source-line-no">253</span><span id="line-253">     *  @param  attributes  An optional list of file attributes to set</span>
+<span class="source-line-no">254</span><span id="line-254">     *      atomically when creating the directory.</span>
+<span class="source-line-no">255</span><span id="line-255">     *  @return The directory.</span>
+<span class="source-line-no">256</span><span id="line-256">     *  @throws UnsupportedOperationException   The attributes array contains</span>
+<span class="source-line-no">257</span><span id="line-257">     *      an attribute that cannot be set atomically when creating the</span>
+<span class="source-line-no">258</span><span id="line-258">     *      directory.</span>
+<span class="source-line-no">259</span><span id="line-259">     *  @throws java.nio.file.FileAlreadyExistsException    The {@code dir}</span>
+<span class="source-line-no">260</span><span id="line-260">     *      exists but is not a directory &lt;i&gt;(optional specific exception)&lt;/i&gt;.</span>
+<span class="source-line-no">261</span><span id="line-261">     *  @throws IOException An I/O error occurred.</span>
+<span class="source-line-no">262</span><span id="line-262">     *  @throws SecurityException   In the case a security manager is</span>
+<span class="source-line-no">263</span><span id="line-263">     *      installed, the</span>
+<span class="source-line-no">264</span><span id="line-264">     *      {@link SecurityManager#checkWrite(String) checkWrite()}</span>
+<span class="source-line-no">265</span><span id="line-265">     *      method is invoked prior to attempting to create a directory and its</span>
+<span class="source-line-no">266</span><span id="line-266">     *      {@link SecurityManager#checkRead(String) checkRead()}</span>
+<span class="source-line-no">267</span><span id="line-267">     *      is invoked for each parent directory that is checked. If</span>
+<span class="source-line-no">268</span><span id="line-268">     *      {@code dir} is not an absolute path then its</span>
+<span class="source-line-no">269</span><span id="line-269">     *      {@link File#getAbsoluteFile()}</span>
+<span class="source-line-no">270</span><span id="line-270">     *      method may need to be invoked to get its absolute path. This may</span>
+<span class="source-line-no">271</span><span id="line-271">     *      invoke the security manager's</span>
+<span class="source-line-no">272</span><span id="line-272">     *      {@link SecurityManager#checkPropertyAccess(String) checkPropertyAccess()}</span>
+<span class="source-line-no">273</span><span id="line-273">     *      method to check access to the system property {@code user.dir}.</span>
+<span class="source-line-no">274</span><span id="line-274">     *</span>
+<span class="source-line-no">275</span><span id="line-275">     *  @see Files#createDirectories(Path, FileAttribute...)</span>
+<span class="source-line-no">276</span><span id="line-276">     *  @see File#mkdirs()</span>
+<span class="source-line-no">277</span><span id="line-277">     *</span>
+<span class="source-line-no">278</span><span id="line-278">     *  @since 0.0.6</span>
+<span class="source-line-no">279</span><span id="line-279">     */</span>
+<span class="source-line-no">280</span><span id="line-280">    @SuppressWarnings( "removal" )</span>
+<span class="source-line-no">281</span><span id="line-281">    @API( status = STABLE, since = "0.0.6" )</span>
+<span class="source-line-no">282</span><span id="line-282">    public static final File createDirectories( final File dir, final FileAttribute&lt;?&gt;... attributes ) throws IOException</span>
+<span class="source-line-no">283</span><span id="line-283">    {</span>
+<span class="source-line-no">284</span><span id="line-284">        final var path = Files.createDirectories( requireNonNullArgument( dir, "dir" ).toPath(), requireNonNullArgument( attributes, "attributes" ) );</span>
+<span class="source-line-no">285</span><span id="line-285">        final var retValue = path.toFile();</span>
+<span class="source-line-no">286</span><span id="line-286"></span>
+<span class="source-line-no">287</span><span id="line-287">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">288</span><span id="line-288">        return retValue;</span>
+<span class="source-line-no">289</span><span id="line-289">    }   //  createDirectories()</span>
+<span class="source-line-no">290</span><span id="line-290"></span>
+<span class="source-line-no">291</span><span id="line-291">    /**</span>
+<span class="source-line-no">292</span><span id="line-292">     *  Creates a new directory. The check for the existence of the file and</span>
+<span class="source-line-no">293</span><span id="line-293">     *  the creation of the directory if it does not exist are a single</span>
+<span class="source-line-no">294</span><span id="line-294">     *  operation that is atomic with respect to all other filesystem</span>
+<span class="source-line-no">295</span><span id="line-295">     *  activities that might affect the directory. The</span>
+<span class="source-line-no">296</span><span id="line-296">     *  {@link #createDirectories(File, FileAttribute...) createDirectories()}</span>
+<span class="source-line-no">297</span><span id="line-297">     *  method should be used where it is required to create all nonexistent</span>
+<span class="source-line-no">298</span><span id="line-298">     *  parent directories first.&lt;br&gt;</span>
+<span class="source-line-no">299</span><span id="line-299">     *  &lt;br&gt;The {@code attributes} parameter is optional to set</span>
+<span class="source-line-no">300</span><span id="line-300">     *  {@linkplain FileAttribute file-attributes}</span>
+<span class="source-line-no">301</span><span id="line-301">     *  atomically when creating the directory. Each attribute is identified by</span>
+<span class="source-line-no">302</span><span id="line-302">     *  its</span>
+<span class="source-line-no">303</span><span id="line-303">     *  {@linkplain FileAttribute#name name}.</span>
+<span class="source-line-no">304</span><span id="line-304">     *  If more than one attribute of the same name is included in the array</span>
+<span class="source-line-no">305</span><span id="line-305">     *  then all but the last occurrence is ignored.</span>
+<span class="source-line-no">306</span><span id="line-306">     *</span>
+<span class="source-line-no">307</span><span id="line-307">     *  @param  dir The directory to create.</span>
+<span class="source-line-no">308</span><span id="line-308">     *  @param  attributes  An optional list of file attributes to set</span>
+<span class="source-line-no">309</span><span id="line-309">     *      atomically when creating the directory</span>
+<span class="source-line-no">310</span><span id="line-310">     *  @return The directory.</span>
+<span class="source-line-no">311</span><span id="line-311">     *  @throws UnsupportedOperationException   The attributes array contains</span>
+<span class="source-line-no">312</span><span id="line-312">     *      an attribute that cannot be set atomically when creating the</span>
+<span class="source-line-no">313</span><span id="line-313">     *      directory.</span>
+<span class="source-line-no">314</span><span id="line-314">     *  @throws java.nio.file.FileAlreadyExistsException    A directory could</span>
+<span class="source-line-no">315</span><span id="line-315">     *      not otherwise be created because a file of that name already exists</span>
+<span class="source-line-no">316</span><span id="line-316">     *      &lt;i&gt;(optional specific exception)&lt;/i&gt;.</span>
+<span class="source-line-no">317</span><span id="line-317">     *  @throws IOException An I/O error occurred or the parent directory does</span>
+<span class="source-line-no">318</span><span id="line-318">     *      not exist.</span>
+<span class="source-line-no">319</span><span id="line-319">     *  @throws SecurityException   In the case a security manager is</span>
+<span class="source-line-no">320</span><span id="line-320">     *      installed, the</span>
+<span class="source-line-no">321</span><span id="line-321">     *      {@link SecurityManager#checkWrite(String) checkWrite()}</span>
+<span class="source-line-no">322</span><span id="line-322">     *      method is invoked to check write access to the new directory.</span>
+<span class="source-line-no">323</span><span id="line-323">     *</span>
+<span class="source-line-no">324</span><span id="line-324">     *  @since 0.0.6</span>
+<span class="source-line-no">325</span><span id="line-325">     */</span>
+<span class="source-line-no">326</span><span id="line-326">    @SuppressWarnings( "removal" )</span>
+<span class="source-line-no">327</span><span id="line-327">    @API( status = STABLE, since = "0.0.6" )</span>
+<span class="source-line-no">328</span><span id="line-328">    public static File createDirectory( final File dir, final FileAttribute&lt;?&gt;... attributes ) throws IOException</span>
+<span class="source-line-no">329</span><span id="line-329">    {</span>
+<span class="source-line-no">330</span><span id="line-330">        final var path = Files.createDirectory( requireNonNullArgument( dir, "dir" ).toPath(), requireNonNullArgument( attributes, "attributes" ) );</span>
+<span class="source-line-no">331</span><span id="line-331">        final var retValue = path.toFile();</span>
+<span class="source-line-no">332</span><span id="line-332"></span>
+<span class="source-line-no">333</span><span id="line-333">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">334</span><span id="line-334">        return retValue;</span>
+<span class="source-line-no">335</span><span id="line-335">    }   //  createDirectory()</span>
+<span class="source-line-no">336</span><span id="line-336"></span>
+<span class="source-line-no">337</span><span id="line-337">    /**</span>
+<span class="source-line-no">338</span><span id="line-338">     *  Creates a directory named after the account name of the current user in</span>
+<span class="source-line-no">339</span><span id="line-339">     *  the default {@code temp} folder, determined by the system property</span>
+<span class="source-line-no">340</span><span id="line-340">     *  {@value org.tquadrat.foundation.lang.CommonConstants#PROPERTY_TEMPFOLDER}.&lt;br&gt;</span>
+<span class="source-line-no">341</span><span id="line-341">     *  &lt;br&gt;The access rights are set for the current user only (for UNIX, it</span>
+<span class="source-line-no">342</span><span id="line-342">     *  would be 700).&lt;br&gt;</span>
+<span class="source-line-no">343</span><span id="line-343">     *  &lt;br&gt;The new directory will &lt;i&gt;not&lt;/i&gt; be removed automatically after</span>
+<span class="source-line-no">344</span><span id="line-344">     *  program termination.&lt;br&gt;</span>
+<span class="source-line-no">345</span><span id="line-345">     *  &lt;br&gt;The class</span>
+<span class="source-line-no">346</span><span id="line-346">     *  {@link File}</span>
+<span class="source-line-no">347</span><span id="line-347">     *  provides a static method</span>
+<span class="source-line-no">348</span><span id="line-348">     *  {@link File#createTempFile(String, String) createTempFile()}</span>
+<span class="source-line-no">349</span><span id="line-349">     *  that creates a temporary file in the default temporary folder. As this</span>
+<span class="source-line-no">350</span><span id="line-350">     *  may be not a problem on a single-user Windows system with default</span>
+<span class="source-line-no">351</span><span id="line-351">     *  configuration, it will cause security problems on UNIX-like systems.</span>
+<span class="source-line-no">352</span><span id="line-352">     *  Therefore, it is recommended, to use</span>
+<span class="source-line-no">353</span><span id="line-353">     *  {@link File#createTempFile(String, String, File)}</span>
+<span class="source-line-no">354</span><span id="line-354">     *  instead, like this:</span>
+<span class="source-line-no">355</span><span id="line-355">     *  &lt;pre&gt;&lt;code&gt;File tempFile = File.createTempFile( "PREFIX", "EXT", createTempDirectory() );&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="source-line-no">356</span><span id="line-356">     *  This will guarantee that the temporary files cannot be read by</span>
+<span class="source-line-no">357</span><span id="line-357">     *  other users.</span>
+<span class="source-line-no">358</span><span id="line-358">     *</span>
+<span class="source-line-no">359</span><span id="line-359">     *  @return The new temporary directory; it is guaranteed that the</span>
+<span class="source-line-no">360</span><span id="line-360">     *      directory exists after the call to this method returned.</span>
+<span class="source-line-no">361</span><span id="line-361">     *  @throws IOException Something has gone wrong.</span>
+<span class="source-line-no">362</span><span id="line-362">     *</span>
+<span class="source-line-no">363</span><span id="line-363">     *  @since 0.0.6</span>
+<span class="source-line-no">364</span><span id="line-364">     */</span>
+<span class="source-line-no">365</span><span id="line-365">    @API( status = STABLE, since = "0.0.6" )</span>
+<span class="source-line-no">366</span><span id="line-366">    public static File createTempDirectory() throws IOException</span>
+<span class="source-line-no">367</span><span id="line-367">    {</span>
+<span class="source-line-no">368</span><span id="line-368">        //---* Create the file object for the temp directory *-----------------</span>
+<span class="source-line-no">369</span><span id="line-369">        final var tempDir = new File( getProperty( PROPERTY_TEMPFOLDER ) );</span>
+<span class="source-line-no">370</span><span id="line-370">        final var userTempDir = new File( tempDir, getProperty( PROPERTY_USER_NAME ) );</span>
+<span class="source-line-no">371</span><span id="line-371"></span>
+<span class="source-line-no">372</span><span id="line-372">        //---* Get the file attributes *---------------------------------------</span>
+<span class="source-line-no">373</span><span id="line-373">        @SuppressWarnings( "ZeroLengthArrayAllocation" )</span>
+<span class="source-line-no">374</span><span id="line-374">        final FileAttribute&lt;?&gt; [] attributes = DEFAULT_FILESYSTEM_IS_POSIX_COMPLIANT ? new FileAttribute [] {PosixPermissions.tempDirPermissions} : new FileAttribute [0];</span>
+<span class="source-line-no">375</span><span id="line-375"></span>
+<span class="source-line-no">376</span><span id="line-376">        //---* Create the directory *------------------------------------------</span>
+<span class="source-line-no">377</span><span id="line-377">        final var retValue = createDirectories( userTempDir, attributes );</span>
+<span class="source-line-no">378</span><span id="line-378"></span>
+<span class="source-line-no">379</span><span id="line-379">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">380</span><span id="line-380">        return retValue;</span>
+<span class="source-line-no">381</span><span id="line-381">    }   //  createTempDirectory()</span>
+<span class="source-line-no">382</span><span id="line-382"></span>
+<span class="source-line-no">383</span><span id="line-383">    /**</span>
+<span class="source-line-no">384</span><span id="line-384">     *  Creates a new directory in the specified directory, using the given</span>
+<span class="source-line-no">385</span><span id="line-385">     *  prefix to generate its name.&lt;br&gt;</span>
+<span class="source-line-no">386</span><span id="line-386">     *  &lt;br&gt;The details as to how the name of the directory is constructed is</span>
+<span class="source-line-no">387</span><span id="line-387">     *  implementation dependent and therefore not specified. Where possible</span>
+<span class="source-line-no">388</span><span id="line-388">     *  the {@code prefix} is used to construct candidate names.&lt;br&gt;</span>
+<span class="source-line-no">389</span><span id="line-389">     *  &lt;br&gt;The {@code attributes} parameter is optional to set</span>
+<span class="source-line-no">390</span><span id="line-390">     *  {@linkplain FileAttribute file-attributes}</span>
+<span class="source-line-no">391</span><span id="line-391">     *  atomically when creating the directory. Each attribute is identified by</span>
+<span class="source-line-no">392</span><span id="line-392">     *  its</span>
+<span class="source-line-no">393</span><span id="line-393">     *  {@linkplain FileAttribute#name() name}.</span>
+<span class="source-line-no">394</span><span id="line-394">     *  If more than one attribute of the same name is included in the array</span>
+<span class="source-line-no">395</span><span id="line-395">     *  then all but the last occurrence is ignored.</span>
+<span class="source-line-no">396</span><span id="line-396">     *</span>
+<span class="source-line-no">397</span><span id="line-397">     *  @param  dir The directory in which to create the temporary directory.</span>
+<span class="source-line-no">398</span><span id="line-398">     *  @param  prefix  The prefix string to be used in generating the</span>
+<span class="source-line-no">399</span><span id="line-399">     *      directory's name; may be {@code null}.</span>
+<span class="source-line-no">400</span><span id="line-400">     *  @param  attributes  An optional list of file attributes to set</span>
+<span class="source-line-no">401</span><span id="line-401">     *      atomically when creating the directory.</span>
+<span class="source-line-no">402</span><span id="line-402">     *  @return The path to the newly created directory that did not exist</span>
+<span class="source-line-no">403</span><span id="line-403">     *      before this method was invoked.</span>
+<span class="source-line-no">404</span><span id="line-404">     *  @throws IllegalArgumentException    The prefix cannot be used to</span>
+<span class="source-line-no">405</span><span id="line-405">     *      generate a candidate directory name.</span>
+<span class="source-line-no">406</span><span id="line-406">     *  @throws UnsupportedOperationException   The attributes array contains</span>
+<span class="source-line-no">407</span><span id="line-407">     *      an attribute that cannot be set atomically when creating the</span>
+<span class="source-line-no">408</span><span id="line-408">     *      directory.</span>
+<span class="source-line-no">409</span><span id="line-409">     *  @throws IOException An I/O error occurs or {@code dir} does not exist.</span>
+<span class="source-line-no">410</span><span id="line-410">     *  @throws SecurityException   In the case a security manager is</span>
+<span class="source-line-no">411</span><span id="line-411">     *      installed, the</span>
+<span class="source-line-no">412</span><span id="line-412">     *      {@link SecurityManager#checkWrite(String) checkWrite()}</span>
+<span class="source-line-no">413</span><span id="line-413">     *      method is invoked to check write access when creating the</span>
+<span class="source-line-no">414</span><span id="line-414">     *      directory.</span>
+<span class="source-line-no">415</span><span id="line-415">     *</span>
+<span class="source-line-no">416</span><span id="line-416">     *  @see Files#createTempDirectory(Path, String, FileAttribute...)</span>
+<span class="source-line-no">417</span><span id="line-417">     *</span>
+<span class="source-line-no">418</span><span id="line-418">     *  @since 0.0.6</span>
+<span class="source-line-no">419</span><span id="line-419">     */</span>
+<span class="source-line-no">420</span><span id="line-420">    @SuppressWarnings( "removal" )</span>
+<span class="source-line-no">421</span><span id="line-421">    @API( status = STABLE, since = "0.0.6" )</span>
+<span class="source-line-no">422</span><span id="line-422">    public static Path createTempDirectory( final File dir, final String prefix, final FileAttribute&lt;?&gt;... attributes ) throws IOException</span>
+<span class="source-line-no">423</span><span id="line-423">    {</span>
+<span class="source-line-no">424</span><span id="line-424">        return Files.createTempDirectory( requireNonNullArgument( dir, "dir" ).toPath(), prefix, requireNonNullArgument( attributes, "attributes" ) );</span>
+<span class="source-line-no">425</span><span id="line-425">    }   //  createTempDirectory()</span>
+<span class="source-line-no">426</span><span id="line-426"></span>
+<span class="source-line-no">427</span><span id="line-427">    /**</span>
+<span class="source-line-no">428</span><span id="line-428">     *  Creates a new directory in the default temporary-file directory, using</span>
+<span class="source-line-no">429</span><span id="line-429">     *  the given prefix to generate its name.&lt;br&gt;</span>
+<span class="source-line-no">430</span><span id="line-430">     *  &lt;br&gt;This method works in exactly the manner specified by</span>
+<span class="source-line-no">431</span><span id="line-431">     *  {@link #createTempDirectory(File,String,FileAttribute[])}</span>
+<span class="source-line-no">432</span><span id="line-432">     *  method for the case that the {@code dir} parameter is the</span>
+<span class="source-line-no">433</span><span id="line-433">     *  temporary-file directory.</span>
+<span class="source-line-no">434</span><span id="line-434">     *</span>
+<span class="source-line-no">435</span><span id="line-435">     *  @param  prefix  The prefix string to be used in generating the</span>
+<span class="source-line-no">436</span><span id="line-436">     *      directory's name; may be {@code null}.</span>
+<span class="source-line-no">437</span><span id="line-437">     *  @param  attributes  An optional list of file attributes to set</span>
+<span class="source-line-no">438</span><span id="line-438">     *      atomically when creating the directory.</span>
+<span class="source-line-no">439</span><span id="line-439">     *  @return The</span>
+<span class="source-line-no">440</span><span id="line-440">     *      {@link File}</span>
+<span class="source-line-no">441</span><span id="line-441">     *      instance to the newly created directory that did not exist before</span>
+<span class="source-line-no">442</span><span id="line-442">     *      this method was invoked.</span>
+<span class="source-line-no">443</span><span id="line-443">     *  @throws IllegalArgumentException    The prefix cannot be used to</span>
+<span class="source-line-no">444</span><span id="line-444">     *      generate a candidate directory name.</span>
+<span class="source-line-no">445</span><span id="line-445">     *  @throws UnsupportedOperationException   The {@code attributes} array</span>
+<span class="source-line-no">446</span><span id="line-446">     *      contains an attribute that cannot be set atomically when creating</span>
+<span class="source-line-no">447</span><span id="line-447">     *      the directory.</span>
+<span class="source-line-no">448</span><span id="line-448">     *  @throws IOException An I/O error occurred or the temporary-file</span>
+<span class="source-line-no">449</span><span id="line-449">     *      directory does not exist.</span>
+<span class="source-line-no">450</span><span id="line-450">     *  @throws SecurityException   In the case a security manager is</span>
+<span class="source-line-no">451</span><span id="line-451">     *      installed, the</span>
+<span class="source-line-no">452</span><span id="line-452">     *      {@link SecurityManager#checkWrite(String) checkWrite()}</span>
+<span class="source-line-no">453</span><span id="line-453">     *      method is invoked to check write access when creating the</span>
+<span class="source-line-no">454</span><span id="line-454">     *      directory.</span>
+<span class="source-line-no">455</span><span id="line-455">     *</span>
+<span class="source-line-no">456</span><span id="line-456">     *  @see Files#createTempDirectory(String, FileAttribute...)</span>
+<span class="source-line-no">457</span><span id="line-457">     *</span>
+<span class="source-line-no">458</span><span id="line-458">     *  @since 0.0.6</span>
+<span class="source-line-no">459</span><span id="line-459">     */</span>
+<span class="source-line-no">460</span><span id="line-460">    @SuppressWarnings( "removal" )</span>
+<span class="source-line-no">461</span><span id="line-461">    @API( status = STABLE, since = "0.0.6" )</span>
+<span class="source-line-no">462</span><span id="line-462">    public static File createTempDirectory( final String prefix, final FileAttribute&lt;?&gt;... attributes ) throws IOException</span>
+<span class="source-line-no">463</span><span id="line-463">    {</span>
+<span class="source-line-no">464</span><span id="line-464">        final var path = Files.createTempDirectory( prefix, requireNonNullArgument( attributes, "attributes" ) );</span>
+<span class="source-line-no">465</span><span id="line-465">        final var retValue = path.toFile();</span>
+<span class="source-line-no">466</span><span id="line-466"></span>
+<span class="source-line-no">467</span><span id="line-467">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">468</span><span id="line-468">        return retValue;</span>
+<span class="source-line-no">469</span><span id="line-469">    }   //  createTempDirectory()</span>
+<span class="source-line-no">470</span><span id="line-470"></span>
+<span class="source-line-no">471</span><span id="line-471">    /**</span>
+<span class="source-line-no">472</span><span id="line-472">     *  &lt;p&gt;{@summary Deletes the folder (or file) that is determined by the</span>
+<span class="source-line-no">473</span><span id="line-473">     *  given</span>
+<span class="source-line-no">474</span><span id="line-474">     *  {@link Path}</span>
+<span class="source-line-no">475</span><span id="line-475">     *  instance.} If the argument denotes a directory, the method will remove</span>
+<span class="source-line-no">476</span><span id="line-476">     *  its contents first, recursively.&lt;/p&gt;</span>
+<span class="source-line-no">477</span><span id="line-477">     *</span>
+<span class="source-line-no">478</span><span id="line-478">     *  @param  folder  The folder to remove; despite the name of the argument</span>
+<span class="source-line-no">479</span><span id="line-479">     *      and the method, this can be also a plain file.</span>
+<span class="source-line-no">480</span><span id="line-480">     *  @throws IOException A problem occurred when deleting the {@code Path}.</span>
+<span class="source-line-no">481</span><span id="line-481">     */</span>
+<span class="source-line-no">482</span><span id="line-482">    public static final void deleteFolder( final Path folder ) throws IOException</span>
+<span class="source-line-no">483</span><span id="line-483">    {</span>
+<span class="source-line-no">484</span><span id="line-484">        //noinspection AnonymousInnerClass,OverlyComplexAnonymousInnerClass</span>
+<span class="source-line-no">485</span><span id="line-485">        walkFileTree( requireNonNullArgument( folder, "folder" ), new SimpleFileVisitor&lt;&gt;()</span>
+<span class="source-line-no">486</span><span id="line-486">        {</span>
+<span class="source-line-no">487</span><span id="line-487">            /**</span>
+<span class="source-line-no">488</span><span id="line-488">             * {@inheritDoc}</span>
+<span class="source-line-no">489</span><span id="line-489">             */</span>
+<span class="source-line-no">490</span><span id="line-490">            @Override</span>
+<span class="source-line-no">491</span><span id="line-491">            public final FileVisitResult postVisitDirectory( final Path directory, final IOException exception ) throws IOException</span>
+<span class="source-line-no">492</span><span id="line-492">            {</span>
+<span class="source-line-no">493</span><span id="line-493">                try</span>
+<span class="source-line-no">494</span><span id="line-494">                {</span>
+<span class="source-line-no">495</span><span id="line-495">                    delete( directory );</span>
+<span class="source-line-no">496</span><span id="line-496">                }</span>
+<span class="source-line-no">497</span><span id="line-497">                catch( final IOException e )</span>
+<span class="source-line-no">498</span><span id="line-498">                {</span>
+<span class="source-line-no">499</span><span id="line-499">                    if( nonNull( exception ) ) e.addSuppressed( exception );</span>
+<span class="source-line-no">500</span><span id="line-500">                    throw e;</span>
+<span class="source-line-no">501</span><span id="line-501">                }</span>
+<span class="source-line-no">502</span><span id="line-502"></span>
+<span class="source-line-no">503</span><span id="line-503">                //---* Done *--------------------------------------------------</span>
+<span class="source-line-no">504</span><span id="line-504">                return CONTINUE;</span>
+<span class="source-line-no">505</span><span id="line-505">            }   //  postVisitDirectory()</span>
+<span class="source-line-no">506</span><span id="line-506"></span>
+<span class="source-line-no">507</span><span id="line-507">            /**</span>
+<span class="source-line-no">508</span><span id="line-508">             * {@inheritDoc}</span>
+<span class="source-line-no">509</span><span id="line-509">             */</span>
+<span class="source-line-no">510</span><span id="line-510">            @Override</span>
+<span class="source-line-no">511</span><span id="line-511">            public final FileVisitResult visitFile( final Path file, final BasicFileAttributes attributes ) throws IOException</span>
+<span class="source-line-no">512</span><span id="line-512">            {</span>
+<span class="source-line-no">513</span><span id="line-513">                delete( file );</span>
+<span class="source-line-no">514</span><span id="line-514"></span>
+<span class="source-line-no">515</span><span id="line-515">                //---* Done *--------------------------------------------------</span>
+<span class="source-line-no">516</span><span id="line-516">                return CONTINUE;</span>
+<span class="source-line-no">517</span><span id="line-517">            }   //  visitFile()</span>
+<span class="source-line-no">518</span><span id="line-518">        } );</span>
+<span class="source-line-no">519</span><span id="line-519">    }   //  deleteFolder()</span>
+<span class="source-line-no">520</span><span id="line-520"></span>
+<span class="source-line-no">521</span><span id="line-521">    /**</span>
+<span class="source-line-no">522</span><span id="line-522">     *  &lt;p&gt;{@summary Deletes the folder (or file) that is determined by the</span>
+<span class="source-line-no">523</span><span id="line-523">     *  given</span>
+<span class="source-line-no">524</span><span id="line-524">     *  {@link File}.</span>
+<span class="source-line-no">525</span><span id="line-525">     *  instance.} If the argument denotes a directory, the method will remove</span>
+<span class="source-line-no">526</span><span id="line-526">     *  its contents first, recursively.&lt;/p&gt;</span>
+<span class="source-line-no">527</span><span id="line-527">     *  &lt;p&gt;Calls</span>
+<span class="source-line-no">528</span><span id="line-528">     *  {@link #deleteFolder(Path)}</span>
+<span class="source-line-no">529</span><span id="line-529">     *  internally.&lt;/p&gt;</span>
+<span class="source-line-no">530</span><span id="line-530">     *</span>
+<span class="source-line-no">531</span><span id="line-531">     *  @param  folder  The folder to remove; despite the name of the argument</span>
+<span class="source-line-no">532</span><span id="line-532">     *      and the method, this can be also a plain file.</span>
+<span class="source-line-no">533</span><span id="line-533">     *  @throws IOException A problem occurred when deleting the {@code Path}.</span>
+<span class="source-line-no">534</span><span id="line-534">     */</span>
+<span class="source-line-no">535</span><span id="line-535">    public static final void deleteFolder( final File folder ) throws IOException</span>
+<span class="source-line-no">536</span><span id="line-536">    {</span>
+<span class="source-line-no">537</span><span id="line-537">        deleteFolder( requireNonNullArgument( folder, "folder" ).toPath() );</span>
+<span class="source-line-no">538</span><span id="line-538">    }   //  deleteFolder()</span>
+<span class="source-line-no">539</span><span id="line-539"></span>
+<span class="source-line-no">540</span><span id="line-540">    /**</span>
+<span class="source-line-no">541</span><span id="line-541">     *  &lt;p&gt;{@summary Calculates the check sum for the given file, using the</span>
+<span class="source-line-no">542</span><span id="line-542">     *  algorithm with the given name.}&lt;/p&gt;</span>
+<span class="source-line-no">543</span><span id="line-543">     *  &lt;p&gt;If the name is one of&lt;/p&gt;</span>
+<span class="source-line-no">544</span><span id="line-544">     *  &lt;ul&gt;</span>
+<span class="source-line-no">545</span><span id="line-545">     *      &lt;li&gt;CRC32&lt;/li&gt;</span>
+<span class="source-line-no">546</span><span id="line-546">     *      &lt;li&gt;Adler32&lt;/li&gt;</span>
+<span class="source-line-no">547</span><span id="line-547">     *  &lt;/ul&gt;</span>
+<span class="source-line-no">548</span><span id="line-548">     *  &lt;p&gt;the method uses</span>
+<span class="source-line-no">549</span><span id="line-549">     *  {@link java.util.zip.CRC32}</span>
+<span class="source-line-no">550</span><span id="line-550">     *  or</span>
+<span class="source-line-no">551</span><span id="line-551">     *  {@link java.util.zip.Adler32}</span>
+<span class="source-line-no">552</span><span id="line-552">     *  for the calculation, any other name is taken as the name for a</span>
+<span class="source-line-no">553</span><span id="line-553">     *  {@linkplain MessageDigest};</span>
+<span class="source-line-no">554</span><span id="line-554">     *  all JVMs know&lt;/p&gt;</span>
+<span class="source-line-no">555</span><span id="line-555">     *  &lt;ul&gt;</span>
+<span class="source-line-no">556</span><span id="line-556">     *      &lt;li&gt;MD5&lt;/li&gt;</span>
+<span class="source-line-no">557</span><span id="line-557">     *      &lt;li&gt;SHA1&lt;/li&gt;</span>
+<span class="source-line-no">558</span><span id="line-558">     *  &lt;/ul&gt;</span>
+<span class="source-line-no">559</span><span id="line-559">     *  &lt;p&gt;others can be added by installing additional</span>
+<span class="source-line-no">560</span><span id="line-560">     *  {@linkplain java.security.Provider security providers}.&lt;/p&gt;</span>
+<span class="source-line-no">561</span><span id="line-561">     *  &lt;p&gt;This method calls</span>
+<span class="source-line-no">562</span><span id="line-562">     *  {@link #determineCheckSum(Path, String)}</span>
+<span class="source-line-no">563</span><span id="line-563">     *  internally.&lt;/p&gt;</span>
+<span class="source-line-no">564</span><span id="line-564">     *</span>
+<span class="source-line-no">565</span><span id="line-565">     *  @param  file    The file to process.</span>
+<span class="source-line-no">566</span><span id="line-566">     *  @param  algorithm   The name for the algorithm to use for the check sum</span>
+<span class="source-line-no">567</span><span id="line-567">     *      calculation.</span>
+<span class="source-line-no">568</span><span id="line-568">     *  @return The check sum as a hex string.</span>
+<span class="source-line-no">569</span><span id="line-569">     *  @throws IOException Problems to process the file.</span>
+<span class="source-line-no">570</span><span id="line-570">     *  @throws NoSuchAlgorithmException    The provided algorithm does not</span>
+<span class="source-line-no">571</span><span id="line-571">     *      exist or the provider for it is not installed properly.</span>
+<span class="source-line-no">572</span><span id="line-572">     */</span>
+<span class="source-line-no">573</span><span id="line-573">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">574</span><span id="line-574">    public static final String determineCheckSum( final File file, final String algorithm ) throws IOException, NoSuchAlgorithmException</span>
+<span class="source-line-no">575</span><span id="line-575">    {</span>
+<span class="source-line-no">576</span><span id="line-576">        final var retValue = determineCheckSum( requireNonNullArgument( file, "file" ).toPath(), algorithm );</span>
+<span class="source-line-no">577</span><span id="line-577"></span>
+<span class="source-line-no">578</span><span id="line-578">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">579</span><span id="line-579">        return retValue;</span>
+<span class="source-line-no">580</span><span id="line-580">    }   //  determineCheckSum()</span>
+<span class="source-line-no">581</span><span id="line-581"></span>
+<span class="source-line-no">582</span><span id="line-582">    /**</span>
+<span class="source-line-no">583</span><span id="line-583">     *  &lt;p&gt;{@summary Calculates the check sum for the given file, using the</span>
+<span class="source-line-no">584</span><span id="line-584">     *  algorithm with the given name.}&lt;/p&gt;</span>
+<span class="source-line-no">585</span><span id="line-585">     *  &lt;p&gt;If the name is one of&lt;/p&gt;</span>
+<span class="source-line-no">586</span><span id="line-586">     *  &lt;ul&gt;</span>
+<span class="source-line-no">587</span><span id="line-587">     *      &lt;li&gt;CRC32&lt;/li&gt;</span>
+<span class="source-line-no">588</span><span id="line-588">     *      &lt;li&gt;Adler32&lt;/li&gt;</span>
+<span class="source-line-no">589</span><span id="line-589">     *  &lt;/ul&gt;</span>
+<span class="source-line-no">590</span><span id="line-590">     *  &lt;p&gt;the method uses</span>
+<span class="source-line-no">591</span><span id="line-591">     *  {@link java.util.zip.CRC32}</span>
+<span class="source-line-no">592</span><span id="line-592">     *  or</span>
+<span class="source-line-no">593</span><span id="line-593">     *  {@link java.util.zip.Adler32}</span>
+<span class="source-line-no">594</span><span id="line-594">     *  for the calculation, any other name is taken as the name for a</span>
+<span class="source-line-no">595</span><span id="line-595">     *  {@linkplain MessageDigest};</span>
+<span class="source-line-no">596</span><span id="line-596">     *  all JVMs know&lt;/p&gt;</span>
+<span class="source-line-no">597</span><span id="line-597">     *  &lt;ul&gt;</span>
+<span class="source-line-no">598</span><span id="line-598">     *      &lt;li&gt;MD5&lt;/li&gt;</span>
+<span class="source-line-no">599</span><span id="line-599">     *      &lt;li&gt;SHA1&lt;/li&gt;</span>
+<span class="source-line-no">600</span><span id="line-600">     *  &lt;/ul&gt;</span>
+<span class="source-line-no">601</span><span id="line-601">     *  &lt;p&gt;others can be added by installing additional</span>
+<span class="source-line-no">602</span><span id="line-602">     *  {@linkplain java.security.Provider security providers}.&lt;/p&gt;</span>
+<span class="source-line-no">603</span><span id="line-603">     *</span>
+<span class="source-line-no">604</span><span id="line-604">     *  @param  file    The file to process.</span>
+<span class="source-line-no">605</span><span id="line-605">     *  @param  algorithm   The name for the algorithm to use for the check sum</span>
+<span class="source-line-no">606</span><span id="line-606">     *      calculation.</span>
+<span class="source-line-no">607</span><span id="line-607">     *  @return The check sum as a hex string.</span>
+<span class="source-line-no">608</span><span id="line-608">     *  @throws IOException Problems to process the file.</span>
+<span class="source-line-no">609</span><span id="line-609">     *  @throws NoSuchAlgorithmException    The provided algorithm does not</span>
+<span class="source-line-no">610</span><span id="line-610">     *      exist or the provider for it is not installed properly.</span>
+<span class="source-line-no">611</span><span id="line-611">     */</span>
+<span class="source-line-no">612</span><span id="line-612">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">613</span><span id="line-613">    public static final String determineCheckSum( final Path file, final String algorithm ) throws IOException, NoSuchAlgorithmException</span>
+<span class="source-line-no">614</span><span id="line-614">    {</span>
+<span class="source-line-no">615</span><span id="line-615">        final var retValue = switch( requireNotEmptyArgument( algorithm, "algorithm" ) )</span>
+<span class="source-line-no">616</span><span id="line-616">        {</span>
+<span class="source-line-no">617</span><span id="line-617">            case "Adler32" -&gt; format( "%Xd", determineCheckSum( file, new Adler32() ) );</span>
+<span class="source-line-no">618</span><span id="line-618">            case "CRC32" -&gt; format( "%Xd", determineCheckSum( file, new CRC32() ) );</span>
+<span class="source-line-no">619</span><span id="line-619">            default -&gt; {</span>
+<span class="source-line-no">620</span><span id="line-620">                final var messageDigest = MessageDigest.getInstance( algorithm );</span>
+<span class="source-line-no">621</span><span id="line-621">                yield HexFormat.of()</span>
+<span class="source-line-no">622</span><span id="line-622">                    .withUpperCase()</span>
+<span class="source-line-no">623</span><span id="line-623">                    .formatHex( determineCheckSum( file, messageDigest ) );</span>
+<span class="source-line-no">624</span><span id="line-624">            }</span>
+<span class="source-line-no">625</span><span id="line-625">        };</span>
+<span class="source-line-no">626</span><span id="line-626"></span>
+<span class="source-line-no">627</span><span id="line-627">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">628</span><span id="line-628">        return retValue;</span>
+<span class="source-line-no">629</span><span id="line-629">    }   //  determineCheckSum()</span>
+<span class="source-line-no">630</span><span id="line-630"></span>
+<span class="source-line-no">631</span><span id="line-631">    /**</span>
+<span class="source-line-no">632</span><span id="line-632">     *  Calculates the check sum for the given file, using provided check sum</span>
+<span class="source-line-no">633</span><span id="line-633">     *  algorithm implementation.</span>
+<span class="source-line-no">634</span><span id="line-634">     *</span>
+<span class="source-line-no">635</span><span id="line-635">     *  @param  file    The file to process.</span>
+<span class="source-line-no">636</span><span id="line-636">     *  @param  algorithm   The check sum algorithm to use for the check sum</span>
+<span class="source-line-no">637</span><span id="line-637">     *      calculation.</span>
+<span class="source-line-no">638</span><span id="line-638">     *  @return The check sum.</span>
+<span class="source-line-no">639</span><span id="line-639">     *  @throws IOException Problems to process the file.</span>
+<span class="source-line-no">640</span><span id="line-640">     */</span>
+<span class="source-line-no">641</span><span id="line-641">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">642</span><span id="line-642">    public static final long determineCheckSum( final File file, final Checksum algorithm ) throws IOException</span>
+<span class="source-line-no">643</span><span id="line-643">    {</span>
+<span class="source-line-no">644</span><span id="line-644">        final var retValue = determineCheckSum( requireNonNullArgument( file, "file" ).toPath(), algorithm );</span>
+<span class="source-line-no">645</span><span id="line-645"></span>
+<span class="source-line-no">646</span><span id="line-646">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">647</span><span id="line-647">        return retValue;</span>
+<span class="source-line-no">648</span><span id="line-648">    }   //  determineCheckSum()</span>
+<span class="source-line-no">649</span><span id="line-649"></span>
+<span class="source-line-no">650</span><span id="line-650">    /**</span>
+<span class="source-line-no">651</span><span id="line-651">     *  Calculates the check sum for the given file, using provided check sum</span>
+<span class="source-line-no">652</span><span id="line-652">     *  algorithm implementation.</span>
+<span class="source-line-no">653</span><span id="line-653">     *</span>
+<span class="source-line-no">654</span><span id="line-654">     *  @param  file    The file to process.</span>
+<span class="source-line-no">655</span><span id="line-655">     *  @param  algorithm   The check sum algorithm to use for the check sum</span>
+<span class="source-line-no">656</span><span id="line-656">     *      calculation.</span>
+<span class="source-line-no">657</span><span id="line-657">     *  @return The check sum.</span>
+<span class="source-line-no">658</span><span id="line-658">     *  @throws IOException Problems to process the file.</span>
+<span class="source-line-no">659</span><span id="line-659">     */</span>
+<span class="source-line-no">660</span><span id="line-660">    @SuppressWarnings( "NestedAssignment" )</span>
+<span class="source-line-no">661</span><span id="line-661">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">662</span><span id="line-662">    public static final long determineCheckSum( final Path file, final Checksum algorithm ) throws IOException</span>
+<span class="source-line-no">663</span><span id="line-663">    {</span>
+<span class="source-line-no">664</span><span id="line-664">        requireNonNullArgument( algorithm, "algorithm" ).reset();</span>
+<span class="source-line-no">665</span><span id="line-665">        try( final var inputStream = Files.newInputStream( requireNonNullArgument( file, "file" ), READ ) )</span>
+<span class="source-line-no">666</span><span id="line-666">        {</span>
+<span class="source-line-no">667</span><span id="line-667">            final var buffer = new byte [DEFAULT_BUFFER_SIZE];</span>
+<span class="source-line-no">668</span><span id="line-668">            var readBytes = 0;</span>
+<span class="source-line-no">669</span><span id="line-669">            while( (readBytes = inputStream.read( buffer )) &gt; 0 )</span>
+<span class="source-line-no">670</span><span id="line-670">            {</span>
+<span class="source-line-no">671</span><span id="line-671">                algorithm.update( buffer, 0, readBytes );</span>
+<span class="source-line-no">672</span><span id="line-672">            }</span>
+<span class="source-line-no">673</span><span id="line-673">        }</span>
+<span class="source-line-no">674</span><span id="line-674">        final var retValue = algorithm.getValue();</span>
+<span class="source-line-no">675</span><span id="line-675"></span>
+<span class="source-line-no">676</span><span id="line-676">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">677</span><span id="line-677">        return retValue;</span>
+<span class="source-line-no">678</span><span id="line-678">    }   //  determineCheckSum()</span>
+<span class="source-line-no">679</span><span id="line-679"></span>
+<span class="source-line-no">680</span><span id="line-680">    /**</span>
+<span class="source-line-no">681</span><span id="line-681">     *  Calculates the check sum for the given file, using the provided</span>
+<span class="source-line-no">682</span><span id="line-682">     *  {@link MessageDigest}.</span>
+<span class="source-line-no">683</span><span id="line-683">     *</span>
+<span class="source-line-no">684</span><span id="line-684">     *  @param  file    The file to process.</span>
+<span class="source-line-no">685</span><span id="line-685">     *  @param  algorithm   The {@code MessageDigest} to use for the check sum</span>
+<span class="source-line-no">686</span><span id="line-686">     *      calculation.</span>
+<span class="source-line-no">687</span><span id="line-687">     *  @return The check sum as a byte array.</span>
+<span class="source-line-no">688</span><span id="line-688">     *  @throws IOException Problems to process the file.</span>
+<span class="source-line-no">689</span><span id="line-689">     */</span>
+<span class="source-line-no">690</span><span id="line-690">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">691</span><span id="line-691">    public static final byte [] determineCheckSum( final File file, final MessageDigest algorithm ) throws IOException</span>
+<span class="source-line-no">692</span><span id="line-692">    {</span>
+<span class="source-line-no">693</span><span id="line-693">        final var retValue = determineCheckSum( requireNonNullArgument( file, "file" ).toPath(), algorithm );</span>
+<span class="source-line-no">694</span><span id="line-694"></span>
+<span class="source-line-no">695</span><span id="line-695">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">696</span><span id="line-696">        return retValue;</span>
+<span class="source-line-no">697</span><span id="line-697">    }   //  determineCheckSum()</span>
+<span class="source-line-no">698</span><span id="line-698"></span>
+<span class="source-line-no">699</span><span id="line-699">    /**</span>
+<span class="source-line-no">700</span><span id="line-700">     *  Calculates the check sum for the given file, using the provided</span>
+<span class="source-line-no">701</span><span id="line-701">     *  {@link MessageDigest}.</span>
+<span class="source-line-no">702</span><span id="line-702">     *</span>
+<span class="source-line-no">703</span><span id="line-703">     *  @param  file    The file to process.</span>
+<span class="source-line-no">704</span><span id="line-704">     *  @param  algorithm   The {@code MessageDigest} to use for the check sum</span>
+<span class="source-line-no">705</span><span id="line-705">     *      calculation.</span>
+<span class="source-line-no">706</span><span id="line-706">     *  @return The check sum as a byte array.</span>
+<span class="source-line-no">707</span><span id="line-707">     *  @throws IOException Problems to process the file.</span>
+<span class="source-line-no">708</span><span id="line-708">     */</span>
+<span class="source-line-no">709</span><span id="line-709">    @SuppressWarnings( "NestedAssignment" )</span>
+<span class="source-line-no">710</span><span id="line-710">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">711</span><span id="line-711">    public static final byte [] determineCheckSum( final Path file, final MessageDigest algorithm ) throws IOException</span>
+<span class="source-line-no">712</span><span id="line-712">    {</span>
+<span class="source-line-no">713</span><span id="line-713">        requireNonNullArgument( algorithm, "algorithm" ).reset();</span>
+<span class="source-line-no">714</span><span id="line-714">        try( final var inputStream = Files.newInputStream( requireNonNullArgument( file, "file" ), READ ) )</span>
+<span class="source-line-no">715</span><span id="line-715">        {</span>
+<span class="source-line-no">716</span><span id="line-716">            final var buffer = new byte [DEFAULT_BUFFER_SIZE];</span>
+<span class="source-line-no">717</span><span id="line-717">            var readBytes = 0;</span>
+<span class="source-line-no">718</span><span id="line-718">            while( (readBytes = inputStream.read( buffer )) &gt; 0 )</span>
+<span class="source-line-no">719</span><span id="line-719">            {</span>
+<span class="source-line-no">720</span><span id="line-720">                algorithm.update( buffer, 0, readBytes );</span>
+<span class="source-line-no">721</span><span id="line-721">            }</span>
+<span class="source-line-no">722</span><span id="line-722">        }</span>
+<span class="source-line-no">723</span><span id="line-723">        final var retValue = algorithm.digest();</span>
+<span class="source-line-no">724</span><span id="line-724"></span>
+<span class="source-line-no">725</span><span id="line-725">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">726</span><span id="line-726">        return retValue;</span>
+<span class="source-line-no">727</span><span id="line-727">    }   //  determineCheckSum()</span>
+<span class="source-line-no">728</span><span id="line-728"></span>
+<span class="source-line-no">729</span><span id="line-729">    /**</span>
+<span class="source-line-no">730</span><span id="line-730">     *  Returns an</span>
+<span class="source-line-no">731</span><span id="line-731">     *  {@link Appendable}</span>
+<span class="source-line-no">732</span><span id="line-732">     *  that just swallows any data that is written to it, like the</span>
+<span class="source-line-no">733</span><span id="line-733">     *  {@code /dev/null} device of a Unix or Linux machine, or {@code NUL:}</span>
+<span class="source-line-no">734</span><span id="line-734">     *  on Windows.</span>
+<span class="source-line-no">735</span><span id="line-735">     *</span>
+<span class="source-line-no">736</span><span id="line-736">     *  @return A null appendable.</span>
+<span class="source-line-no">737</span><span id="line-737">     *</span>
+<span class="source-line-no">738</span><span id="line-738">     *  @see NullAppendable</span>
+<span class="source-line-no">739</span><span id="line-739">     */</span>
+<span class="source-line-no">740</span><span id="line-740">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">741</span><span id="line-741">    public static final Appendable getNullAppendable() { return new NullAppendable(); }</span>
+<span class="source-line-no">742</span><span id="line-742"></span>
+<span class="source-line-no">743</span><span id="line-743">    /**</span>
+<span class="source-line-no">744</span><span id="line-744">     *  &lt;p&gt;{@summary Returns</span>
+<span class="source-line-no">745</span><span id="line-745">     *  {@link System#out}</span>
+<span class="source-line-no">746</span><span id="line-746">     *  with a non-functional</span>
+<span class="source-line-no">747</span><span id="line-747">     *  {@link OutputStream#close()}</span>
+<span class="source-line-no">748</span><span id="line-748">     *  method.}&lt;/p&gt;</span>
+<span class="source-line-no">749</span><span id="line-749">     *  &lt;p&gt;Assume the following scenario:&lt;/p&gt;</span>
+<span class="source-line-no">750</span><span id="line-750">     *  &lt;pre&gt;&lt;code&gt;  &amp;hellip;</span>
+<span class="source-line-no">751</span><span id="line-751">     *  Optional&amp;lt;File&amp;gt; outputFile = &amp;hellip;</span>
+<span class="source-line-no">752</span><span id="line-752">     *  &amp;hellip;</span>
+<span class="source-line-no">753</span><span id="line-753">     *  PrintStream outputStream = outputFile.isPresent() ? new PrintStream( new FileOutputStream( outputFile.get() ) ) : IOUtils.getUncloseableOut();</span>
+<span class="source-line-no">754</span><span id="line-754">     *  try( outputStream )</span>
+<span class="source-line-no">755</span><span id="line-755">     *  {</span>
+<span class="source-line-no">756</span><span id="line-756">     *      &amp;#47;**</span>
+<span class="source-line-no">757</span><span id="line-757">     *       * Print something ...</span>
+<span class="source-line-no">758</span><span id="line-758">     *       *&amp;#47;</span>
+<span class="source-line-no">759</span><span id="line-759">     *       &amp;hellip;</span>
+<span class="source-line-no">760</span><span id="line-760">     *  }</span>
+<span class="source-line-no">761</span><span id="line-761">     *  &amp;hellip;&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="source-line-no">762</span><span id="line-762">     *  &lt;p&gt;The output stream will be close at the end of the {@code try} block;</span>
+<span class="source-line-no">763</span><span id="line-763">     *  this is desired in case of a</span>
+<span class="source-line-no">764</span><span id="line-764">     *  {@link java.io.FileOutputStream FileOutputStream},</span>
+<span class="source-line-no">765</span><span id="line-765">     *  but totally not wanted if the output stream is {@code System.out}.&lt;/p&gt;</span>
+<span class="source-line-no">766</span><span id="line-766">     *</span>
+<span class="source-line-no">767</span><span id="line-767">     *  @return {@code System.out} without the {@code close()} method.</span>
+<span class="source-line-no">768</span><span id="line-768">     */</span>
+<span class="source-line-no">769</span><span id="line-769">    @SuppressWarnings( "ImplicitDefaultCharsetUsage" )</span>
+<span class="source-line-no">770</span><span id="line-770">    @API( status = STABLE, since = "0.0.7" )</span>
+<span class="source-line-no">771</span><span id="line-771">    public static final PrintStream getUncloseableOut()</span>
+<span class="source-line-no">772</span><span id="line-772">    {</span>
+<span class="source-line-no">773</span><span id="line-773">        @SuppressWarnings( {"AnonymousInnerClass", "UseOfSystemOutOrSystemErr"} )</span>
+<span class="source-line-no">774</span><span id="line-774">        final var retValue = new PrintStream( out )</span>
+<span class="source-line-no">775</span><span id="line-775">        {</span>
+<span class="source-line-no">776</span><span id="line-776">            /**</span>
+<span class="source-line-no">777</span><span id="line-777">             *  {@inheritDoc}</span>
+<span class="source-line-no">778</span><span id="line-778">             */</span>
+<span class="source-line-no">779</span><span id="line-779">            @Override</span>
+<span class="source-line-no">780</span><span id="line-780">            public final void close() { /* Does nothing */ }</span>
+<span class="source-line-no">781</span><span id="line-781">        };</span>
+<span class="source-line-no">782</span><span id="line-782"></span>
+<span class="source-line-no">783</span><span id="line-783">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">784</span><span id="line-784">        return retValue;</span>
+<span class="source-line-no">785</span><span id="line-785">    }   //  getUncloseableOut()</span>
+<span class="source-line-no">786</span><span id="line-786"></span>
+<span class="source-line-no">787</span><span id="line-787">    /**</span>
+<span class="source-line-no">788</span><span id="line-788">     *  &lt;p&gt;{@summary Reads the complete content of the provided</span>
+<span class="source-line-no">789</span><span id="line-789">     *  {@link Reader}</span>
+<span class="source-line-no">790</span><span id="line-790">     *  into a</span>
+<span class="source-line-no">791</span><span id="line-791">     *  {@link String}.}&lt;/p&gt;</span>
+<span class="source-line-no">792</span><span id="line-792">     *  &lt;p&gt;Obviously this method is feasible only for files with a limited</span>
+<span class="source-line-no">793</span><span id="line-793">     *  size.&lt;/p&gt;</span>
+<span class="source-line-no">794</span><span id="line-794">     *</span>
+<span class="source-line-no">795</span><span id="line-795">     *  @param  reader  The {@code Reader} instance.</span>
+<span class="source-line-no">796</span><span id="line-796">     *  @return The content of the provided {@code Reader}.</span>
+<span class="source-line-no">797</span><span id="line-797">     *  @throws IOException Problems on reading from the {@code Reader}.</span>
+<span class="source-line-no">798</span><span id="line-798">     */</span>
+<span class="source-line-no">799</span><span id="line-799">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">800</span><span id="line-800">    public static final String loadToString( final Reader reader ) throws IOException</span>
+<span class="source-line-no">801</span><span id="line-801">    {</span>
+<span class="source-line-no">802</span><span id="line-802">        final var builder = new StringBuilder( DEFAULT_BUFFER_SIZE );</span>
+<span class="source-line-no">803</span><span id="line-803">        final var buffer = new char [DEFAULT_BUFFER_SIZE];</span>
+<span class="source-line-no">804</span><span id="line-804">        var bytesRead = requireNonNullArgument( reader, "reader" ).read( buffer );</span>
+<span class="source-line-no">805</span><span id="line-805">        while( bytesRead &gt; 0 )</span>
+<span class="source-line-no">806</span><span id="line-806">        {</span>
+<span class="source-line-no">807</span><span id="line-807">            builder.append( buffer, 0, bytesRead );</span>
+<span class="source-line-no">808</span><span id="line-808">            bytesRead = reader.read( buffer );</span>
+<span class="source-line-no">809</span><span id="line-809">        }</span>
+<span class="source-line-no">810</span><span id="line-810">        final var retValue = builder.toString();</span>
+<span class="source-line-no">811</span><span id="line-811"></span>
+<span class="source-line-no">812</span><span id="line-812">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">813</span><span id="line-813">        return retValue;</span>
+<span class="source-line-no">814</span><span id="line-814">    }   //  loadToString()</span>
+<span class="source-line-no">815</span><span id="line-815">}</span>
+<span class="source-line-no">816</span><span id="line-816">//  class IOUtils</span>
+<span class="source-line-no">817</span><span id="line-817"></span>
+<span class="source-line-no">818</span><span id="line-818">/*</span>
+<span class="source-line-no">819</span><span id="line-819"> *  End of File</span>
+<span class="source-line-no">820</span><span id="line-820"> */</span>
 
 
 

@@ -46,12 +46,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  {@link IllegalArgumentException}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: FileStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: FileStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: FileStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: FileStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class FileStringConverter implements StringConverter<File>
 {
@@ -78,6 +78,14 @@ public final class FileStringConverter implements StringConverter<File>
      *  An instance of this class.
      */
     public static final FileStringConverter INSTANCE = new FileStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code FileStringConverter}.
+     */
+    public FileStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

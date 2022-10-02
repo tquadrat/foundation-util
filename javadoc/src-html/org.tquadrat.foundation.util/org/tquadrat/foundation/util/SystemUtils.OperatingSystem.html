@@ -93,13 +93,13 @@
 <span class="source-line-no">080</span><span id="line-80"> *  methods.</span>
 <span class="source-line-no">081</span><span id="line-81"> *</span>
 <span class="source-line-no">082</span><span id="line-82"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">083</span><span id="line-83"> *  @version $Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $</span>
+<span class="source-line-no">083</span><span id="line-83"> *  @version $Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
 <span class="source-line-no">084</span><span id="line-84"> *  @since 0.0.5</span>
 <span class="source-line-no">085</span><span id="line-85"> *</span>
 <span class="source-line-no">086</span><span id="line-86"> *  @UMLGraph.link</span>
 <span class="source-line-no">087</span><span id="line-87"> */</span>
 <span class="source-line-no">088</span><span id="line-88">@SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )</span>
-<span class="source-line-no">089</span><span id="line-89">@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )</span>
+<span class="source-line-no">089</span><span id="line-89">@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
 <span class="source-line-no">090</span><span id="line-90">@API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">091</span><span id="line-91">@UtilityClass</span>
 <span class="source-line-no">092</span><span id="line-92">public final class SystemUtils</span>
@@ -113,14 +113,14 @@
 <span class="source-line-no">100</span><span id="line-100">     *  UNIX/Linux and MacOX/OS-X.</span>
 <span class="source-line-no">101</span><span id="line-101">     *</span>
 <span class="source-line-no">102</span><span id="line-102">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">103</span><span id="line-103">     *  @version $Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $</span>
+<span class="source-line-no">103</span><span id="line-103">     *  @version $Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
 <span class="source-line-no">104</span><span id="line-104">     *  @since 0.0.6</span>
 <span class="source-line-no">105</span><span id="line-105">     *</span>
 <span class="source-line-no">106</span><span id="line-106">     *  @UMLGraph.link</span>
 <span class="source-line-no">107</span><span id="line-107">     *</span>
 <span class="source-line-no">108</span><span id="line-108">     *  @see SystemUtils#determineOperatingSystem()</span>
 <span class="source-line-no">109</span><span id="line-109">     */</span>
-<span class="source-line-no">110</span><span id="line-110">    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )</span>
+<span class="source-line-no">110</span><span id="line-110">    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
 <span class="source-line-no">111</span><span id="line-111">    @API( status = STABLE, since = "0.0.6" )</span>
 <span class="source-line-no">112</span><span id="line-112">    public static enum OperatingSystem</span>
 <span class="source-line-no">113</span><span id="line-113">    {</span>
@@ -336,7 +336,7 @@
 <span class="source-line-no">323</span><span id="line-323">    }   //  createPseudoNodeId()</span>
 <span class="source-line-no">324</span><span id="line-324"></span>
 <span class="source-line-no">325</span><span id="line-325">    /**</span>
-<span class="source-line-no">326</span><span id="line-326">     *  Creates the alias map for the old (deprecated) zone ids that is used</span>
+<span class="source-line-no">326</span><span id="line-326">     *  Creates the alias map for the old (deprecated) zone ids that are used</span>
 <span class="source-line-no">327</span><span id="line-327">     *  for the call to</span>
 <span class="source-line-no">328</span><span id="line-328">     *  {@link ZoneId#of(String, java.util.Map)}</span>
 <span class="source-line-no">329</span><span id="line-329">     *  to retrieve a</span>
@@ -385,187 +385,187 @@
 <span class="source-line-no">372</span><span id="line-372">     *      adapter is active on this machine.</span>
 <span class="source-line-no">373</span><span id="line-373">     *  @throws SocketException Problems to retrieve the internet address.</span>
 <span class="source-line-no">374</span><span id="line-374">     */</span>
-<span class="source-line-no">375</span><span id="line-375">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">376</span><span id="line-376">    public static final Optional&lt;InetAddress&gt; determineIPAddress() throws SocketException</span>
-<span class="source-line-no">377</span><span id="line-377">    {</span>
-<span class="source-line-no">378</span><span id="line-378">        Optional&lt;InetAddress&gt; retValue = Optional.empty();</span>
-<span class="source-line-no">379</span><span id="line-379"></span>
-<span class="source-line-no">380</span><span id="line-380">        List&lt;InetAddress&gt; addresses;</span>
-<span class="source-line-no">381</span><span id="line-381">        ScanLoop: for( final var i : getNetworkInterfaces() )</span>
-<span class="source-line-no">382</span><span id="line-382">        {</span>
-<span class="source-line-no">383</span><span id="line-383">            /*</span>
-<span class="source-line-no">384</span><span id="line-384">             * Due to the nature of the scan logic, the returned address will</span>
-<span class="source-line-no">385</span><span id="line-385">             * always be that of the last NIC in sequence that is not the</span>
-<span class="source-line-no">386</span><span id="line-386">             * loopback interface.</span>
-<span class="source-line-no">387</span><span id="line-387">             */</span>
-<span class="source-line-no">388</span><span id="line-388">            if( i.isUp() )</span>
-<span class="source-line-no">389</span><span id="line-389">            {</span>
-<span class="source-line-no">390</span><span id="line-390">                addresses = list( i.getInetAddresses() );</span>
-<span class="source-line-no">391</span><span id="line-391">                AddressLoop: for( final var address : addresses )</span>
-<span class="source-line-no">392</span><span id="line-392">                {</span>
-<span class="source-line-no">393</span><span id="line-393">                    /*</span>
-<span class="source-line-no">394</span><span id="line-394">                     * The AddressLoop terminates early, when the first IPv4</span>
-<span class="source-line-no">395</span><span id="line-395">                     * address for the NIC was found.</span>
-<span class="source-line-no">396</span><span id="line-396">                     */</span>
-<span class="source-line-no">397</span><span id="line-397">                    if( i.isLoopback() )</span>
-<span class="source-line-no">398</span><span id="line-398">                    {</span>
-<span class="source-line-no">399</span><span id="line-399">                        /*</span>
-<span class="source-line-no">400</span><span id="line-400">                         * We take {@code loopback} if we do not get</span>
-<span class="source-line-no">401</span><span id="line-401">                         * something better ...</span>
-<span class="source-line-no">402</span><span id="line-402">                         */</span>
-<span class="source-line-no">403</span><span id="line-403">                        if( retValue.isEmpty() )</span>
-<span class="source-line-no">404</span><span id="line-404">                        {</span>
-<span class="source-line-no">405</span><span id="line-405">                            retValue = Optional.of( address );</span>
-<span class="source-line-no">406</span><span id="line-406">                            if( address instanceof Inet4Address ) break AddressLoop;</span>
-<span class="source-line-no">407</span><span id="line-407">                        }</span>
-<span class="source-line-no">408</span><span id="line-408">                        else if( !(retValue.get() instanceof Inet4Address) )</span>
-<span class="source-line-no">409</span><span id="line-409">                        {</span>
-<span class="source-line-no">410</span><span id="line-410">                            retValue = Optional.of( address );</span>
-<span class="source-line-no">411</span><span id="line-411">                            break AddressLoop;</span>
-<span class="source-line-no">412</span><span id="line-412">                        }</span>
-<span class="source-line-no">413</span><span id="line-413">                    }</span>
-<span class="source-line-no">414</span><span id="line-414">                    else</span>
-<span class="source-line-no">415</span><span id="line-415">                    {</span>
-<span class="source-line-no">416</span><span id="line-416">                        retValue = Optional.of( address );</span>
-<span class="source-line-no">417</span><span id="line-417">                        if( address instanceof Inet4Address ) break AddressLoop;</span>
-<span class="source-line-no">418</span><span id="line-418">                    }</span>
-<span class="source-line-no">419</span><span id="line-419">                }</span>
-<span class="source-line-no">420</span><span id="line-420">            }</span>
-<span class="source-line-no">421</span><span id="line-421">        }   //  ScanLoop:</span>
-<span class="source-line-no">422</span><span id="line-422"></span>
-<span class="source-line-no">423</span><span id="line-423">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">424</span><span id="line-424">        return retValue;</span>
-<span class="source-line-no">425</span><span id="line-425">    }   //  determineIPAddress()</span>
-<span class="source-line-no">426</span><span id="line-426"></span>
-<span class="source-line-no">427</span><span id="line-427">    /**</span>
-<span class="source-line-no">428</span><span id="line-428">     *  Determines all the IP addresses of the machine this program is running</span>
-<span class="source-line-no">429</span><span id="line-429">     *  on.</span>
-<span class="source-line-no">430</span><span id="line-430">     *</span>
-<span class="source-line-no">431</span><span id="line-431">     *  @return The IP addresses.</span>
-<span class="source-line-no">432</span><span id="line-432">     */</span>
-<span class="source-line-no">433</span><span id="line-433">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">434</span><span id="line-434">    public static final InetAddress [] determineIPAddresses()</span>
-<span class="source-line-no">435</span><span id="line-435">    {</span>
-<span class="source-line-no">436</span><span id="line-436">        final var retValue = getNetworkInterfaces().stream()</span>
-<span class="source-line-no">437</span><span id="line-437">            .flatMap( i -&gt; list( i.getInetAddresses() ).stream() )</span>
-<span class="source-line-no">438</span><span id="line-438">            .toArray( InetAddress []::new );</span>
-<span class="source-line-no">439</span><span id="line-439"></span>
-<span class="source-line-no">440</span><span id="line-440">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">441</span><span id="line-441">        return retValue;</span>
-<span class="source-line-no">442</span><span id="line-442">    }   //  determineIPAddresses()</span>
-<span class="source-line-no">443</span><span id="line-443"></span>
-<span class="source-line-no">444</span><span id="line-444">    /**</span>
-<span class="source-line-no">445</span><span id="line-445">     *  Determines the operating system.</span>
-<span class="source-line-no">446</span><span id="line-446">     *</span>
-<span class="source-line-no">447</span><span id="line-447">     *  @return The operating system.</span>
-<span class="source-line-no">448</span><span id="line-448">     */</span>
-<span class="source-line-no">449</span><span id="line-449">    private static final OperatingSystem determineOperatingSystem()</span>
-<span class="source-line-no">450</span><span id="line-450">    {</span>
-<span class="source-line-no">451</span><span id="line-451">        /*</span>
-<span class="source-line-no">452</span><span id="line-452">         * TODO Add more criteria for each family. And perhaps it should be</span>
-<span class="source-line-no">453</span><span id="line-453">         * distinguished between Linux, BSD and Unix (and there between HP-UX</span>
-<span class="source-line-no">454</span><span id="line-454">         * and AIX) ...</span>
-<span class="source-line-no">455</span><span id="line-455">         */</span>
-<span class="source-line-no">456</span><span id="line-456">        var retValue = OperatingSystem.UNKNOWN;</span>
-<span class="source-line-no">457</span><span id="line-457"></span>
-<span class="source-line-no">458</span><span id="line-458">        /*</span>
-<span class="source-line-no">459</span><span id="line-459">         * All currently known MS-DOS and Windows versions and their file</span>
-<span class="source-line-no">460</span><span id="line-460">         * systems use the backslash as the separator for folders.</span>
-<span class="source-line-no">461</span><span id="line-461">         * They also use the semicolon as the PATH separator.</span>
-<span class="source-line-no">462</span><span id="line-462">         */</span>
-<span class="source-line-no">463</span><span id="line-463">        final var fileSeparator = File.separatorChar;</span>
-<span class="source-line-no">464</span><span id="line-464">        final var pathSeparator = File.pathSeparatorChar;</span>
-<span class="source-line-no">465</span><span id="line-465">        if( (fileSeparator == '\\') &amp;&amp; (pathSeparator == ';') )</span>
-<span class="source-line-no">466</span><span id="line-466">        {</span>
-<span class="source-line-no">467</span><span id="line-467">            retValue = OperatingSystem.WINDOWS;</span>
-<span class="source-line-no">468</span><span id="line-468">        }</span>
-<span class="source-line-no">469</span><span id="line-469">        else if( (fileSeparator == '/') &amp;&amp; (pathSeparator == ':') )</span>
-<span class="source-line-no">470</span><span id="line-470">        {</span>
-<span class="source-line-no">471</span><span id="line-471">            if( getProperty( PROPERTY_OSNAME ).toLowerCase( ROOT ).contains( "osx" ) )</span>
-<span class="source-line-no">472</span><span id="line-472">            {</span>
-<span class="source-line-no">473</span><span id="line-473">                retValue = OperatingSystem.OSX;</span>
-<span class="source-line-no">474</span><span id="line-474">            }</span>
-<span class="source-line-no">475</span><span id="line-475">            else</span>
-<span class="source-line-no">476</span><span id="line-476">            {</span>
-<span class="source-line-no">477</span><span id="line-477">                retValue = OperatingSystem.UNIX;</span>
-<span class="source-line-no">478</span><span id="line-478">            }</span>
-<span class="source-line-no">479</span><span id="line-479">        }</span>
-<span class="source-line-no">480</span><span id="line-480"></span>
-<span class="source-line-no">481</span><span id="line-481">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">482</span><span id="line-482">        return retValue;</span>
-<span class="source-line-no">483</span><span id="line-483">    }   //  determineOperatingSystem()</span>
-<span class="source-line-no">484</span><span id="line-484"></span>
-<span class="source-line-no">485</span><span id="line-485">    /**</span>
-<span class="source-line-no">486</span><span id="line-486">     *  Determines those IP addresses of the machine this program is running</span>
-<span class="source-line-no">487</span><span id="line-487">     *  on that are used to communicate with the outside world. This means that</span>
-<span class="source-line-no">488</span><span id="line-488">     *  only those &lt;i&gt;active&lt;/i&gt; network interfaces are considered that are</span>
-<span class="source-line-no">489</span><span id="line-489">     *  &lt;i&gt;not&lt;/i&gt; a loopback interface.</span>
-<span class="source-line-no">490</span><span id="line-490">     *</span>
-<span class="source-line-no">491</span><span id="line-491">     *  @return The IP addresses.</span>
-<span class="source-line-no">492</span><span id="line-492">     */</span>
-<span class="source-line-no">493</span><span id="line-493">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">494</span><span id="line-494">    public static final InetAddress [] determineOutboundIPAddresses()</span>
-<span class="source-line-no">495</span><span id="line-495">    {</span>
-<span class="source-line-no">496</span><span id="line-496">        final var retValue = getNetworkInterfaces().stream()</span>
-<span class="source-line-no">497</span><span id="line-497">            .filter( i -&gt;</span>
-<span class="source-line-no">498</span><span id="line-498">            {</span>
-<span class="source-line-no">499</span><span id="line-499">                try</span>
-<span class="source-line-no">500</span><span id="line-500">                {</span>
-<span class="source-line-no">501</span><span id="line-501">                    return i.isUp() &amp;&amp; !i.isLoopback();</span>
-<span class="source-line-no">502</span><span id="line-502">                }</span>
-<span class="source-line-no">503</span><span id="line-503">                catch( @SuppressWarnings( "unused" ) final SocketException e )</span>
-<span class="source-line-no">504</span><span id="line-504">                {</span>
-<span class="source-line-no">505</span><span id="line-505">                    return false;</span>
-<span class="source-line-no">506</span><span id="line-506">                }</span>
-<span class="source-line-no">507</span><span id="line-507">            } )</span>
-<span class="source-line-no">508</span><span id="line-508">            .flatMap( i -&gt; list( i.getInetAddresses() ).stream() )</span>
-<span class="source-line-no">509</span><span id="line-509">            .toArray( InetAddress []::new );</span>
-<span class="source-line-no">510</span><span id="line-510"></span>
-<span class="source-line-no">511</span><span id="line-511">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">512</span><span id="line-512">        return retValue;</span>
-<span class="source-line-no">513</span><span id="line-513">    }   //  determineOutboundIPAddresses()</span>
-<span class="source-line-no">514</span><span id="line-514"></span>
-<span class="source-line-no">515</span><span id="line-515">    /**</span>
-<span class="source-line-no">516</span><span id="line-516">     *  Determines those IP addresses of the machine this program is running</span>
-<span class="source-line-no">517</span><span id="line-517">     *  on that are used to communicate with the outside world. This means that</span>
-<span class="source-line-no">518</span><span id="line-518">     *  only those &lt;i&gt;active&lt;/i&gt; network interfaces are considered that are</span>
-<span class="source-line-no">519</span><span id="line-519">     *  &lt;i&gt;not&lt;/i&gt; a loopback interface.</span>
-<span class="source-line-no">520</span><span id="line-520">     *</span>
-<span class="source-line-no">521</span><span id="line-521">     *  @return The IP addresses.</span>
-<span class="source-line-no">522</span><span id="line-522">     *</span>
-<span class="source-line-no">523</span><span id="line-523">     *  @deprecated Use</span>
-<span class="source-line-no">524</span><span id="line-524">     *      {@link #determineOutboundIPAddresses()}</span>
-<span class="source-line-no">525</span><span id="line-525">     *      instead.</span>
-<span class="source-line-no">526</span><span id="line-526">     */</span>
-<span class="source-line-no">527</span><span id="line-527">    @API( status = DEPRECATED )</span>
-<span class="source-line-no">528</span><span id="line-528">    @Deprecated( forRemoval = true )</span>
-<span class="source-line-no">529</span><span id="line-529">    public static InetAddress [] determineOutsideIPAddresses()</span>
-<span class="source-line-no">530</span><span id="line-530">    {</span>
-<span class="source-line-no">531</span><span id="line-531">        return determineOutboundIPAddresses();</span>
-<span class="source-line-no">532</span><span id="line-532">    }   //  determineOutsideIPAddresses()</span>
-<span class="source-line-no">533</span><span id="line-533"></span>
-<span class="source-line-no">534</span><span id="line-534">    /**</span>
-<span class="source-line-no">535</span><span id="line-535">     *  Formats the given node id as a MAC address string.</span>
-<span class="source-line-no">536</span><span id="line-536">     *</span>
-<span class="source-line-no">537</span><span id="line-537">     *  @param  nodeId  The node id.</span>
-<span class="source-line-no">538</span><span id="line-538">     *  @return The MAC address string.</span>
-<span class="source-line-no">539</span><span id="line-539">     */</span>
-<span class="source-line-no">540</span><span id="line-540">    @SuppressWarnings( "MagicNumber" )</span>
-<span class="source-line-no">541</span><span id="line-541">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">542</span><span id="line-542">    public static final String formatNodeIdAsMAC( final long nodeId )</span>
-<span class="source-line-no">543</span><span id="line-543">    {</span>
-<span class="source-line-no">544</span><span id="line-544">        if( nodeId != (nodeId &amp; 0x0000FFFFFFFFFFFFL) )</span>
-<span class="source-line-no">545</span><span id="line-545">        {</span>
-<span class="source-line-no">546</span><span id="line-546">            throw new ValidationException( format( "Node id is invalid: %1$d", nodeId ) );</span>
-<span class="source-line-no">547</span><span id="line-547">        }</span>
-<span class="source-line-no">548</span><span id="line-548"></span>
-<span class="source-line-no">549</span><span id="line-549">        final var hexFormat = HexFormat.of();</span>
-<span class="source-line-no">550</span><span id="line-550">        final var s = hexFormat.toHexDigits( nodeId, 12 );</span>
-<span class="source-line-no">551</span><span id="line-551">        final var bytes = hexFormat.parseHex( s );</span>
+<span class="source-line-no">375</span><span id="line-375">    @SuppressWarnings( "OverlyNestedMethod" )</span>
+<span class="source-line-no">376</span><span id="line-376">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">377</span><span id="line-377">    public static final Optional&lt;InetAddress&gt; determineIPAddress() throws SocketException</span>
+<span class="source-line-no">378</span><span id="line-378">    {</span>
+<span class="source-line-no">379</span><span id="line-379">        Optional&lt;InetAddress&gt; retValue = Optional.empty();</span>
+<span class="source-line-no">380</span><span id="line-380"></span>
+<span class="source-line-no">381</span><span id="line-381">        List&lt;InetAddress&gt; addresses;</span>
+<span class="source-line-no">382</span><span id="line-382">        ScanLoop: for( final var i : getNetworkInterfaces() )</span>
+<span class="source-line-no">383</span><span id="line-383">        {</span>
+<span class="source-line-no">384</span><span id="line-384">            /*</span>
+<span class="source-line-no">385</span><span id="line-385">             * Due to the nature of the scan logic, the returned address will</span>
+<span class="source-line-no">386</span><span id="line-386">             * always be that of the last NIC in sequence that is not the</span>
+<span class="source-line-no">387</span><span id="line-387">             * loopback interface.</span>
+<span class="source-line-no">388</span><span id="line-388">             */</span>
+<span class="source-line-no">389</span><span id="line-389">            if( i.isUp() )</span>
+<span class="source-line-no">390</span><span id="line-390">            {</span>
+<span class="source-line-no">391</span><span id="line-391">                addresses = list( i.getInetAddresses() );</span>
+<span class="source-line-no">392</span><span id="line-392">                AddressLoop: for( final var address : addresses )</span>
+<span class="source-line-no">393</span><span id="line-393">                {</span>
+<span class="source-line-no">394</span><span id="line-394">                    /*</span>
+<span class="source-line-no">395</span><span id="line-395">                     * The AddressLoop terminates early, when the first IPv4</span>
+<span class="source-line-no">396</span><span id="line-396">                     * address for the NIC was found.</span>
+<span class="source-line-no">397</span><span id="line-397">                     */</span>
+<span class="source-line-no">398</span><span id="line-398">                    if( i.isLoopback() )</span>
+<span class="source-line-no">399</span><span id="line-399">                    {</span>
+<span class="source-line-no">400</span><span id="line-400">                        /*</span>
+<span class="source-line-no">401</span><span id="line-401">                         * We take {@code loopback} if we do not get</span>
+<span class="source-line-no">402</span><span id="line-402">                         * something better ...</span>
+<span class="source-line-no">403</span><span id="line-403">                         */</span>
+<span class="source-line-no">404</span><span id="line-404">                        if( retValue.isEmpty() )</span>
+<span class="source-line-no">405</span><span id="line-405">                        {</span>
+<span class="source-line-no">406</span><span id="line-406">                            retValue = Optional.of( address );</span>
+<span class="source-line-no">407</span><span id="line-407">                            if( address instanceof Inet4Address ) break AddressLoop;</span>
+<span class="source-line-no">408</span><span id="line-408">                        }</span>
+<span class="source-line-no">409</span><span id="line-409">                        else if( !(retValue.get() instanceof Inet4Address) )</span>
+<span class="source-line-no">410</span><span id="line-410">                        {</span>
+<span class="source-line-no">411</span><span id="line-411">                            retValue = Optional.of( address );</span>
+<span class="source-line-no">412</span><span id="line-412">                            break AddressLoop;</span>
+<span class="source-line-no">413</span><span id="line-413">                        }</span>
+<span class="source-line-no">414</span><span id="line-414">                    }</span>
+<span class="source-line-no">415</span><span id="line-415">                    else</span>
+<span class="source-line-no">416</span><span id="line-416">                    {</span>
+<span class="source-line-no">417</span><span id="line-417">                        retValue = Optional.of( address );</span>
+<span class="source-line-no">418</span><span id="line-418">                        if( address instanceof Inet4Address ) break AddressLoop;</span>
+<span class="source-line-no">419</span><span id="line-419">                    }</span>
+<span class="source-line-no">420</span><span id="line-420">                }</span>
+<span class="source-line-no">421</span><span id="line-421">            }</span>
+<span class="source-line-no">422</span><span id="line-422">        }   //  ScanLoop:</span>
+<span class="source-line-no">423</span><span id="line-423"></span>
+<span class="source-line-no">424</span><span id="line-424">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">425</span><span id="line-425">        return retValue;</span>
+<span class="source-line-no">426</span><span id="line-426">    }   //  determineIPAddress()</span>
+<span class="source-line-no">427</span><span id="line-427"></span>
+<span class="source-line-no">428</span><span id="line-428">    /**</span>
+<span class="source-line-no">429</span><span id="line-429">     *  Determines all the IP addresses of the machine this program is running</span>
+<span class="source-line-no">430</span><span id="line-430">     *  on.</span>
+<span class="source-line-no">431</span><span id="line-431">     *</span>
+<span class="source-line-no">432</span><span id="line-432">     *  @return The IP addresses.</span>
+<span class="source-line-no">433</span><span id="line-433">     */</span>
+<span class="source-line-no">434</span><span id="line-434">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">435</span><span id="line-435">    public static final InetAddress [] determineIPAddresses()</span>
+<span class="source-line-no">436</span><span id="line-436">    {</span>
+<span class="source-line-no">437</span><span id="line-437">        final var retValue = getNetworkInterfaces().stream()</span>
+<span class="source-line-no">438</span><span id="line-438">            .flatMap( i -&gt; list( i.getInetAddresses() ).stream() )</span>
+<span class="source-line-no">439</span><span id="line-439">            .toArray( InetAddress []::new );</span>
+<span class="source-line-no">440</span><span id="line-440"></span>
+<span class="source-line-no">441</span><span id="line-441">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">442</span><span id="line-442">        return retValue;</span>
+<span class="source-line-no">443</span><span id="line-443">    }   //  determineIPAddresses()</span>
+<span class="source-line-no">444</span><span id="line-444"></span>
+<span class="source-line-no">445</span><span id="line-445">    /**</span>
+<span class="source-line-no">446</span><span id="line-446">     *  Determines the operating system.</span>
+<span class="source-line-no">447</span><span id="line-447">     *</span>
+<span class="source-line-no">448</span><span id="line-448">     *  @return The operating system.</span>
+<span class="source-line-no">449</span><span id="line-449">     */</span>
+<span class="source-line-no">450</span><span id="line-450">    private static final OperatingSystem determineOperatingSystem()</span>
+<span class="source-line-no">451</span><span id="line-451">    {</span>
+<span class="source-line-no">452</span><span id="line-452">        /*</span>
+<span class="source-line-no">453</span><span id="line-453">         * TODO Add more criteria for each family. And perhaps it should be</span>
+<span class="source-line-no">454</span><span id="line-454">         * distinguished between Linux, BSD and Unix (and there between HP-UX</span>
+<span class="source-line-no">455</span><span id="line-455">         * and AIX) ...</span>
+<span class="source-line-no">456</span><span id="line-456">         */</span>
+<span class="source-line-no">457</span><span id="line-457">        var retValue = OperatingSystem.UNKNOWN;</span>
+<span class="source-line-no">458</span><span id="line-458"></span>
+<span class="source-line-no">459</span><span id="line-459">        /*</span>
+<span class="source-line-no">460</span><span id="line-460">         * All currently known MS-DOS and Windows versions and their file</span>
+<span class="source-line-no">461</span><span id="line-461">         * systems use the backslash as the separator for folders.</span>
+<span class="source-line-no">462</span><span id="line-462">         * They also use the semicolon as the PATH separator.</span>
+<span class="source-line-no">463</span><span id="line-463">         */</span>
+<span class="source-line-no">464</span><span id="line-464">        final var fileSeparator = File.separatorChar;</span>
+<span class="source-line-no">465</span><span id="line-465">        final var pathSeparator = File.pathSeparatorChar;</span>
+<span class="source-line-no">466</span><span id="line-466">        if( (fileSeparator == '\\') &amp;&amp; (pathSeparator == ';') )</span>
+<span class="source-line-no">467</span><span id="line-467">        {</span>
+<span class="source-line-no">468</span><span id="line-468">            retValue = OperatingSystem.WINDOWS;</span>
+<span class="source-line-no">469</span><span id="line-469">        }</span>
+<span class="source-line-no">470</span><span id="line-470">        else if( (fileSeparator == '/') &amp;&amp; (pathSeparator == ':') )</span>
+<span class="source-line-no">471</span><span id="line-471">        {</span>
+<span class="source-line-no">472</span><span id="line-472">            if( getProperty( PROPERTY_OSNAME ).toLowerCase( ROOT ).contains( "osx" ) )</span>
+<span class="source-line-no">473</span><span id="line-473">            {</span>
+<span class="source-line-no">474</span><span id="line-474">                retValue = OperatingSystem.OSX;</span>
+<span class="source-line-no">475</span><span id="line-475">            }</span>
+<span class="source-line-no">476</span><span id="line-476">            else</span>
+<span class="source-line-no">477</span><span id="line-477">            {</span>
+<span class="source-line-no">478</span><span id="line-478">                retValue = OperatingSystem.UNIX;</span>
+<span class="source-line-no">479</span><span id="line-479">            }</span>
+<span class="source-line-no">480</span><span id="line-480">        }</span>
+<span class="source-line-no">481</span><span id="line-481"></span>
+<span class="source-line-no">482</span><span id="line-482">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">483</span><span id="line-483">        return retValue;</span>
+<span class="source-line-no">484</span><span id="line-484">    }   //  determineOperatingSystem()</span>
+<span class="source-line-no">485</span><span id="line-485"></span>
+<span class="source-line-no">486</span><span id="line-486">    /**</span>
+<span class="source-line-no">487</span><span id="line-487">     *  Determines those IP addresses of the machine this program is running</span>
+<span class="source-line-no">488</span><span id="line-488">     *  on that are used to communicate with the outside world. This means that</span>
+<span class="source-line-no">489</span><span id="line-489">     *  only those &lt;i&gt;active&lt;/i&gt; network interfaces are considered that are</span>
+<span class="source-line-no">490</span><span id="line-490">     *  &lt;i&gt;not&lt;/i&gt; a loopback interface.</span>
+<span class="source-line-no">491</span><span id="line-491">     *</span>
+<span class="source-line-no">492</span><span id="line-492">     *  @return The IP addresses.</span>
+<span class="source-line-no">493</span><span id="line-493">     */</span>
+<span class="source-line-no">494</span><span id="line-494">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">495</span><span id="line-495">    public static final InetAddress [] determineOutboundIPAddresses()</span>
+<span class="source-line-no">496</span><span id="line-496">    {</span>
+<span class="source-line-no">497</span><span id="line-497">        final var retValue = getNetworkInterfaces().stream()</span>
+<span class="source-line-no">498</span><span id="line-498">            .filter( i -&gt;</span>
+<span class="source-line-no">499</span><span id="line-499">            {</span>
+<span class="source-line-no">500</span><span id="line-500">                try</span>
+<span class="source-line-no">501</span><span id="line-501">                {</span>
+<span class="source-line-no">502</span><span id="line-502">                    return i.isUp() &amp;&amp; !i.isLoopback();</span>
+<span class="source-line-no">503</span><span id="line-503">                }</span>
+<span class="source-line-no">504</span><span id="line-504">                catch( final SocketException ignored )</span>
+<span class="source-line-no">505</span><span id="line-505">                {</span>
+<span class="source-line-no">506</span><span id="line-506">                    return false;</span>
+<span class="source-line-no">507</span><span id="line-507">                }</span>
+<span class="source-line-no">508</span><span id="line-508">            } )</span>
+<span class="source-line-no">509</span><span id="line-509">            .flatMap( i -&gt; list( i.getInetAddresses() ).stream() )</span>
+<span class="source-line-no">510</span><span id="line-510">            .toArray( InetAddress []::new );</span>
+<span class="source-line-no">511</span><span id="line-511"></span>
+<span class="source-line-no">512</span><span id="line-512">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">513</span><span id="line-513">        return retValue;</span>
+<span class="source-line-no">514</span><span id="line-514">    }   //  determineOutboundIPAddresses()</span>
+<span class="source-line-no">515</span><span id="line-515"></span>
+<span class="source-line-no">516</span><span id="line-516">    /**</span>
+<span class="source-line-no">517</span><span id="line-517">     *  Determines those IP addresses of the machine this program is running</span>
+<span class="source-line-no">518</span><span id="line-518">     *  on that are used to communicate with the outside world. This means that</span>
+<span class="source-line-no">519</span><span id="line-519">     *  only those &lt;i&gt;active&lt;/i&gt; network interfaces are considered that are</span>
+<span class="source-line-no">520</span><span id="line-520">     *  &lt;i&gt;not&lt;/i&gt; a loopback interface.</span>
+<span class="source-line-no">521</span><span id="line-521">     *</span>
+<span class="source-line-no">522</span><span id="line-522">     *  @return The IP addresses.</span>
+<span class="source-line-no">523</span><span id="line-523">     *</span>
+<span class="source-line-no">524</span><span id="line-524">     *  @deprecated Use</span>
+<span class="source-line-no">525</span><span id="line-525">     *      {@link #determineOutboundIPAddresses()}</span>
+<span class="source-line-no">526</span><span id="line-526">     *      instead.</span>
+<span class="source-line-no">527</span><span id="line-527">     */</span>
+<span class="source-line-no">528</span><span id="line-528">    @API( status = DEPRECATED )</span>
+<span class="source-line-no">529</span><span id="line-529">    @Deprecated( forRemoval = true )</span>
+<span class="source-line-no">530</span><span id="line-530">    public static InetAddress [] determineOutsideIPAddresses()</span>
+<span class="source-line-no">531</span><span id="line-531">    {</span>
+<span class="source-line-no">532</span><span id="line-532">        return determineOutboundIPAddresses();</span>
+<span class="source-line-no">533</span><span id="line-533">    }   //  determineOutsideIPAddresses()</span>
+<span class="source-line-no">534</span><span id="line-534"></span>
+<span class="source-line-no">535</span><span id="line-535">    /**</span>
+<span class="source-line-no">536</span><span id="line-536">     *  Formats the given node id as a MAC address string.</span>
+<span class="source-line-no">537</span><span id="line-537">     *</span>
+<span class="source-line-no">538</span><span id="line-538">     *  @param  nodeId  The node id.</span>
+<span class="source-line-no">539</span><span id="line-539">     *  @return The MAC address string.</span>
+<span class="source-line-no">540</span><span id="line-540">     */</span>
+<span class="source-line-no">541</span><span id="line-541">    @SuppressWarnings( "MagicNumber" )</span>
+<span class="source-line-no">542</span><span id="line-542">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">543</span><span id="line-543">    public static final String formatNodeIdAsMAC( final long nodeId )</span>
+<span class="source-line-no">544</span><span id="line-544">    {</span>
+<span class="source-line-no">545</span><span id="line-545">        if( nodeId != (nodeId &amp; 0x0000FFFFFFFFFFFFL) )</span>
+<span class="source-line-no">546</span><span id="line-546">        {</span>
+<span class="source-line-no">547</span><span id="line-547">            throw new ValidationException( format( "Node id is invalid: %1$d", nodeId ) );</span>
+<span class="source-line-no">548</span><span id="line-548">        }</span>
+<span class="source-line-no">549</span><span id="line-549"></span>
+<span class="source-line-no">550</span><span id="line-550">        final var hexFormat = HexFormat.of();</span>
+<span class="source-line-no">551</span><span id="line-551">        final var bytes = hexFormat.parseHex( hexFormat.toHexDigits( nodeId, 12 ) );</span>
 <span class="source-line-no">552</span><span id="line-552">        final var retValue = HexFormat.ofDelimiter( "-" ).withUpperCase().formatHex( bytes );</span>
 <span class="source-line-no">553</span><span id="line-553"></span>
 <span class="source-line-no">554</span><span id="line-554">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">555</span><span id="line-555">        return retValue.toString();</span>
+<span class="source-line-no">555</span><span id="line-555">        return retValue;</span>
 <span class="source-line-no">556</span><span id="line-556">    }   //  formatNodeIdAsMAC()</span>
 <span class="source-line-no">557</span><span id="line-557"></span>
 <span class="source-line-no">558</span><span id="line-558">    /**</span>
@@ -602,7 +602,7 @@
 <span class="source-line-no">589</span><span id="line-589">        {</span>
 <span class="source-line-no">590</span><span id="line-590">            retValue = List.copyOf( list( java.net.NetworkInterface.getNetworkInterfaces() ) );</span>
 <span class="source-line-no">591</span><span id="line-591">        }</span>
-<span class="source-line-no">592</span><span id="line-592">        catch( @SuppressWarnings( "unused" ) final SocketException e )</span>
+<span class="source-line-no">592</span><span id="line-592">        catch( final SocketException ignored )</span>
 <span class="source-line-no">593</span><span id="line-593">        {</span>
 <span class="source-line-no">594</span><span id="line-594">            /*</span>
 <span class="source-line-no">595</span><span id="line-595">             * There are no NICs on this machine, so we return the empty list.</span>
@@ -618,38 +618,38 @@
 <span class="source-line-no">605</span><span id="line-605">     *</span>
 <span class="source-line-no">606</span><span id="line-606">     *  @return The node id.</span>
 <span class="source-line-no">607</span><span id="line-607">     */</span>
-<span class="source-line-no">608</span><span id="line-608">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">609</span><span id="line-609">    public static final long getNodeId()</span>
-<span class="source-line-no">610</span><span id="line-610">    {</span>
-<span class="source-line-no">611</span><span id="line-611">        if( isNull( m_Node ) )</span>
-<span class="source-line-no">612</span><span id="line-612">        {</span>
-<span class="source-line-no">613</span><span id="line-613">            final var interfaces = getNetworkInterfaces();</span>
-<span class="source-line-no">614</span><span id="line-614">            var randomGenerationRequired = interfaces.isEmpty();</span>
-<span class="source-line-no">615</span><span id="line-615">            if( !randomGenerationRequired )</span>
-<span class="source-line-no">616</span><span id="line-616">            {</span>
-<span class="source-line-no">617</span><span id="line-617">                var count = interfaces.size();</span>
-<span class="source-line-no">618</span><span id="line-618">                ScanLoop: for( final var nic : interfaces )</span>
-<span class="source-line-no">619</span><span id="line-619">                {</span>
-<span class="source-line-no">620</span><span id="line-620">                    try</span>
-<span class="source-line-no">621</span><span id="line-621">                    {</span>
-<span class="source-line-no">622</span><span id="line-622">                        if( (--count &gt; 0) &amp;&amp; (nic.isLoopback() || nic.isVirtual()) )</span>
-<span class="source-line-no">623</span><span id="line-623">                        {</span>
-<span class="source-line-no">624</span><span id="line-624">                            /*</span>
-<span class="source-line-no">625</span><span id="line-625">                             * We prefer a real hardware NIC if we can get one.</span>
-<span class="source-line-no">626</span><span id="line-626">                             */</span>
-<span class="source-line-no">627</span><span id="line-627">                            continue ScanLoop;</span>
-<span class="source-line-no">628</span><span id="line-628">                        }</span>
-<span class="source-line-no">629</span><span id="line-629"></span>
-<span class="source-line-no">630</span><span id="line-630">                        final var hardwareAddress = nic.getHardwareAddress();</span>
-<span class="source-line-no">631</span><span id="line-631">                        if( nonNull( hardwareAddress ) &amp;&amp; (hardwareAddress.length &gt; 0) )</span>
-<span class="source-line-no">632</span><span id="line-632">                        {</span>
-<span class="source-line-no">633</span><span id="line-633">                            final var i = new BigInteger( hardwareAddress );</span>
+<span class="source-line-no">608</span><span id="line-608">    @SuppressWarnings( "OverlyComplexMethod" )</span>
+<span class="source-line-no">609</span><span id="line-609">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">610</span><span id="line-610">    public static final long getNodeId()</span>
+<span class="source-line-no">611</span><span id="line-611">    {</span>
+<span class="source-line-no">612</span><span id="line-612">        if( isNull( m_Node ) )</span>
+<span class="source-line-no">613</span><span id="line-613">        {</span>
+<span class="source-line-no">614</span><span id="line-614">            final var interfaces = getNetworkInterfaces();</span>
+<span class="source-line-no">615</span><span id="line-615">            var randomGenerationRequired = interfaces.isEmpty();</span>
+<span class="source-line-no">616</span><span id="line-616">            if( !randomGenerationRequired )</span>
+<span class="source-line-no">617</span><span id="line-617">            {</span>
+<span class="source-line-no">618</span><span id="line-618">                var count = interfaces.size();</span>
+<span class="source-line-no">619</span><span id="line-619">                ScanLoop: for( final var nic : interfaces )</span>
+<span class="source-line-no">620</span><span id="line-620">                {</span>
+<span class="source-line-no">621</span><span id="line-621">                    try</span>
+<span class="source-line-no">622</span><span id="line-622">                    {</span>
+<span class="source-line-no">623</span><span id="line-623">                        if( (--count &gt; 0) &amp;&amp; (nic.isLoopback() || nic.isVirtual()) )</span>
+<span class="source-line-no">624</span><span id="line-624">                        {</span>
+<span class="source-line-no">625</span><span id="line-625">                            /*</span>
+<span class="source-line-no">626</span><span id="line-626">                             * We prefer a real hardware NIC if we can get one.</span>
+<span class="source-line-no">627</span><span id="line-627">                             */</span>
+<span class="source-line-no">628</span><span id="line-628">                            continue ScanLoop;</span>
+<span class="source-line-no">629</span><span id="line-629">                        }</span>
+<span class="source-line-no">630</span><span id="line-630"></span>
+<span class="source-line-no">631</span><span id="line-631">                        final var hardwareAddress = nic.getHardwareAddress();</span>
+<span class="source-line-no">632</span><span id="line-632">                        if( nonNull( hardwareAddress ) &amp;&amp; (hardwareAddress.length &gt; 0) )</span>
+<span class="source-line-no">633</span><span id="line-633">                        {</span>
 <span class="source-line-no">634</span><span id="line-634">                            //noinspection MagicNumber</span>
-<span class="source-line-no">635</span><span id="line-635">                            m_Node = Long.valueOf( i.longValue() &amp; 0x0000FFFFFFFFFFFFL );</span>
+<span class="source-line-no">635</span><span id="line-635">                            m_Node = Long.valueOf( new BigInteger( hardwareAddress ).longValue() &amp; 0x0000FFFFFFFFFFFFL );</span>
 <span class="source-line-no">636</span><span id="line-636">                            break ScanLoop;</span>
 <span class="source-line-no">637</span><span id="line-637">                        }</span>
 <span class="source-line-no">638</span><span id="line-638">                    }</span>
-<span class="source-line-no">639</span><span id="line-639">                    catch( @SuppressWarnings( "unused" ) final SocketException e )</span>
+<span class="source-line-no">639</span><span id="line-639">                    catch( final SocketException ignored )</span>
 <span class="source-line-no">640</span><span id="line-640">                    {</span>
 <span class="source-line-no">641</span><span id="line-641">                        /*</span>
 <span class="source-line-no">642</span><span id="line-642">                         *  If a SocketException is caught here, this indicates</span>
@@ -809,294 +809,297 @@
 <span class="source-line-no">796</span><span id="line-796">     *      {@link Template#replaceVariableFromSystemData(CharSequence, Map[])}</span>
 <span class="source-line-no">797</span><span id="line-797">     *      instead.</span>
 <span class="source-line-no">798</span><span id="line-798">     */</span>
-<span class="source-line-no">799</span><span id="line-799">    @SafeVarargs</span>
-<span class="source-line-no">800</span><span id="line-800">    @Deprecated( since = "0.1.0", forRemoval = true )</span>
-<span class="source-line-no">801</span><span id="line-801">    @API( status = DEPRECATED, since = "0.0.5" )</span>
-<span class="source-line-no">802</span><span id="line-802">    public static final String replaceSystemVariable( final CharSequence text, final Map&lt;String,? extends Object&gt;... additionalSources )</span>
-<span class="source-line-no">803</span><span id="line-803">    {</span>
-<span class="source-line-no">804</span><span id="line-804">        return Template.replaceVariableFromSystemData( text, additionalSources );</span>
-<span class="source-line-no">805</span><span id="line-805">    }   //  replaceSystemVariable()</span>
-<span class="source-line-no">806</span><span id="line-806"></span>
-<span class="source-line-no">807</span><span id="line-807">    /**</span>
-<span class="source-line-no">808</span><span id="line-808">     *  An implementation of</span>
-<span class="source-line-no">809</span><span id="line-809">     *  {@link Thread#sleep}</span>
-<span class="source-line-no">810</span><span id="line-810">     *  that does not throw an exception in case it will be interrupted.</span>
-<span class="source-line-no">811</span><span id="line-811">     *</span>
-<span class="source-line-no">812</span><span id="line-812">     *  @param  millis  The time to sleep in milliseconds.</span>
-<span class="source-line-no">813</span><span id="line-813">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
-<span class="source-line-no">814</span><span id="line-814">     *      terminated as planned.</span>
-<span class="source-line-no">815</span><span id="line-815">     */</span>
-<span class="source-line-no">816</span><span id="line-816">    @SuppressWarnings( "BusyWait" )</span>
-<span class="source-line-no">817</span><span id="line-817">    @API( status = STABLE, since = "0.0.7" )</span>
-<span class="source-line-no">818</span><span id="line-818">    public static final boolean repose( final long millis )</span>
-<span class="source-line-no">819</span><span id="line-819">    {</span>
-<span class="source-line-no">820</span><span id="line-820">        var retValue = true;</span>
-<span class="source-line-no">821</span><span id="line-821">        final var endTimeMillis  = currentTimeMillis() + millis;</span>
-<span class="source-line-no">822</span><span id="line-822">        SleepLoop: while( currentTimeMillis() &lt; endTimeMillis )</span>
-<span class="source-line-no">823</span><span id="line-823">        {</span>
-<span class="source-line-no">824</span><span id="line-824">            try</span>
-<span class="source-line-no">825</span><span id="line-825">            {</span>
-<span class="source-line-no">826</span><span id="line-826">                Thread.sleep( max( 0, endTimeMillis - currentTimeMillis() ) );</span>
-<span class="source-line-no">827</span><span id="line-827">                retValue = false;</span>
-<span class="source-line-no">828</span><span id="line-828">            }</span>
-<span class="source-line-no">829</span><span id="line-829">            catch( @SuppressWarnings( "unused" ) final InterruptedException e )</span>
-<span class="source-line-no">830</span><span id="line-830">            {</span>
-<span class="source-line-no">831</span><span id="line-831">               if( currentThread().isInterrupted() ) break SleepLoop;</span>
-<span class="source-line-no">832</span><span id="line-832">            }</span>
-<span class="source-line-no">833</span><span id="line-833">        }   //  SleepLoop:</span>
-<span class="source-line-no">834</span><span id="line-834"></span>
-<span class="source-line-no">835</span><span id="line-835">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">836</span><span id="line-836">        return retValue;</span>
-<span class="source-line-no">837</span><span id="line-837">    }   //  repose()</span>
-<span class="source-line-no">838</span><span id="line-838"></span>
-<span class="source-line-no">839</span><span id="line-839">    /**</span>
-<span class="source-line-no">840</span><span id="line-840">     *  An implementation of</span>
-<span class="source-line-no">841</span><span id="line-841">     *  {@link #repose(long)}</span>
-<span class="source-line-no">842</span><span id="line-842">     *  that takes an instance of</span>
-<span class="source-line-no">843</span><span id="line-843">     *  {@link Duration}</span>
-<span class="source-line-no">844</span><span id="line-844">     *  to determine the time to sleep.</span>
-<span class="source-line-no">845</span><span id="line-845">     *</span>
-<span class="source-line-no">846</span><span id="line-846">     *  @param  duration    The time to sleep.</span>
-<span class="source-line-no">847</span><span id="line-847">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
-<span class="source-line-no">848</span><span id="line-848">     *      terminated as planned.</span>
-<span class="source-line-no">849</span><span id="line-849">     */</span>
-<span class="source-line-no">850</span><span id="line-850">    @API( status = STABLE, since = "0.0.7" )</span>
-<span class="source-line-no">851</span><span id="line-851">    public static final boolean repose( final Duration duration )</span>
-<span class="source-line-no">852</span><span id="line-852">    {</span>
-<span class="source-line-no">853</span><span id="line-853">        final var milliseconds = requireNonNullArgument( duration, "duration" ).toMillis();</span>
-<span class="source-line-no">854</span><span id="line-854">        final var retValue = repose( milliseconds );</span>
-<span class="source-line-no">855</span><span id="line-855"></span>
-<span class="source-line-no">856</span><span id="line-856">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">857</span><span id="line-857">        return retValue;</span>
-<span class="source-line-no">858</span><span id="line-858">    }   //  repose()</span>
-<span class="source-line-no">859</span><span id="line-859"></span>
-<span class="source-line-no">860</span><span id="line-860">    /**</span>
-<span class="source-line-no">861</span><span id="line-861">     *  An implementation of</span>
-<span class="source-line-no">862</span><span id="line-862">     *  {@link #sleepUntil(Instant)}</span>
-<span class="source-line-no">863</span><span id="line-863">     *  that does not throw an exception when interrupted.</span>
-<span class="source-line-no">864</span><span id="line-864">     *</span>
-<span class="source-line-no">865</span><span id="line-865">     *  @param  until   The end time for the sleep period.</span>
-<span class="source-line-no">866</span><span id="line-866">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
-<span class="source-line-no">867</span><span id="line-867">     *      terminated as planned.</span>
-<span class="source-line-no">868</span><span id="line-868">     */</span>
-<span class="source-line-no">869</span><span id="line-869">    @API( status = STABLE, since = "0.0.7" )</span>
-<span class="source-line-no">870</span><span id="line-870">    public static final boolean reposeUntil( final Instant until )</span>
-<span class="source-line-no">871</span><span id="line-871">    {</span>
-<span class="source-line-no">872</span><span id="line-872">        var retValue = true;</span>
-<span class="source-line-no">873</span><span id="line-873">        SleepLoop: while( Instant.now().isBefore( requireNonNullArgument( until, "until" ) ) )</span>
-<span class="source-line-no">874</span><span id="line-874">        {</span>
-<span class="source-line-no">875</span><span id="line-875">            try</span>
-<span class="source-line-no">876</span><span id="line-876">            {</span>
-<span class="source-line-no">877</span><span id="line-877">                sleep( Duration.between( Instant.now(), until ) );</span>
-<span class="source-line-no">878</span><span id="line-878">                retValue = false;</span>
-<span class="source-line-no">879</span><span id="line-879">            }</span>
-<span class="source-line-no">880</span><span id="line-880">            catch( @SuppressWarnings( "unused" ) final InterruptedException e )</span>
-<span class="source-line-no">881</span><span id="line-881">            {</span>
-<span class="source-line-no">882</span><span id="line-882">                if( currentThread().isInterrupted() ) break SleepLoop;</span>
-<span class="source-line-no">883</span><span id="line-883">            }</span>
-<span class="source-line-no">884</span><span id="line-884">        }</span>
-<span class="source-line-no">885</span><span id="line-885"></span>
-<span class="source-line-no">886</span><span id="line-886">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">887</span><span id="line-887">        return retValue;</span>
-<span class="source-line-no">888</span><span id="line-888">    }   //  reposeUntil()</span>
-<span class="source-line-no">889</span><span id="line-889">    /**</span>
-<span class="source-line-no">890</span><span id="line-890">     *  Retrieves an instance of</span>
-<span class="source-line-no">891</span><span id="line-891">     *  {@link Locale}</span>
-<span class="source-line-no">892</span><span id="line-892">     *  for the given locale name. This method will lookup the requested locale</span>
-<span class="source-line-no">893</span><span id="line-893">     *  first in the locales returned by</span>
-<span class="source-line-no">894</span><span id="line-894">     *  {@link Locale#getAvailableLocales()}</span>
-<span class="source-line-no">895</span><span id="line-895">     *  before it will create a new instance of {@code Locale} using</span>
-<span class="source-line-no">896</span><span id="line-896">     *  {@link java.util.Locale.Builder Locale.Builder}.&lt;br&gt;</span>
-<span class="source-line-no">897</span><span id="line-897">     *  &lt;br&gt;The method will return</span>
-<span class="source-line-no">898</span><span id="line-898">     *  {@link Optional#empty()}</span>
-<span class="source-line-no">899</span><span id="line-899">     *  when the format of the given {@code localeName} is invalid.&lt;br&gt;</span>
-<span class="source-line-no">900</span><span id="line-900">     *  &lt;br&gt;If none of the already existing instances of {@code Locale} matches</span>
-<span class="source-line-no">901</span><span id="line-901">     *  the given name, the language part, the country part, the variant part</span>
-<span class="source-line-no">902</span><span id="line-902">     *  and the script part (if provided) are used to create a new instance. If</span>
-<span class="source-line-no">903</span><span id="line-903">     *  extensions are given, they will be ignored.&lt;br&gt;</span>
-<span class="source-line-no">904</span><span id="line-904">     *  &lt;br&gt;If the given locale name is empty or contains only whitespace, the</span>
-<span class="source-line-no">905</span><span id="line-905">     *  method will return</span>
-<span class="source-line-no">906</span><span id="line-906">     *  {@link Locale#ROOT}.</span>
-<span class="source-line-no">907</span><span id="line-907">     *</span>
-<span class="source-line-no">908</span><span id="line-908">     *  @param  localeName  The name of the locale.</span>
-<span class="source-line-no">909</span><span id="line-909">     *  @return An instance of</span>
-<span class="source-line-no">910</span><span id="line-910">     *      {@link Optional}</span>
-<span class="source-line-no">911</span><span id="line-911">     *      that holds the instance of {@code Locale} for the given name.</span>
-<span class="source-line-no">912</span><span id="line-912">     */</span>
-<span class="source-line-no">913</span><span id="line-913">    @SuppressWarnings( "AssignmentToNull" )</span>
-<span class="source-line-no">914</span><span id="line-914">    @API( status = STABLE, since = "0.0.6" )</span>
-<span class="source-line-no">915</span><span id="line-915">    public static final Optional&lt;Locale&gt; retrieveLocale( final CharSequence localeName )</span>
-<span class="source-line-no">916</span><span id="line-916">    {</span>
-<span class="source-line-no">917</span><span id="line-917">        final var name = requireNonNullArgument( localeName, "localeName" ).toString();</span>
-<span class="source-line-no">918</span><span id="line-918">        final var locale = name.isBlank()</span>
-<span class="source-line-no">919</span><span id="line-919">            ? ROOT</span>
-<span class="source-line-no">920</span><span id="line-920">            : stream( Locale.getAvailableLocales() )</span>
-<span class="source-line-no">921</span><span id="line-921">                  .filter( l -&gt; l.toString().equals( name ) )</span>
-<span class="source-line-no">922</span><span id="line-922">                  .findFirst()</span>
-<span class="source-line-no">923</span><span id="line-923">                  .orElseGet( () -&gt;</span>
-<span class="source-line-no">924</span><span id="line-924">                  {</span>
-<span class="source-line-no">925</span><span id="line-925">                      Locale result = null;</span>
-<span class="source-line-no">926</span><span id="line-926">                      final var parts = splitString( name, '_' );</span>
-<span class="source-line-no">927</span><span id="line-927">                      try</span>
-<span class="source-line-no">928</span><span id="line-928">                      {</span>
-<span class="source-line-no">929</span><span id="line-929">                          final var builder = new Locale.Builder();</span>
-<span class="source-line-no">930</span><span id="line-930">                          ComposeSwitch: result = switch( parts.length )</span>
-<span class="source-line-no">931</span><span id="line-931">                          {</span>
-<span class="source-line-no">932</span><span id="line-932">                              case 1 -&gt; builder.setLanguage( parts[0] ).build();</span>
-<span class="source-line-no">933</span><span id="line-933">                              case 2 -&gt; builder.setLanguage( parts[0] ).setRegion( parts[1] ).build();</span>
-<span class="source-line-no">934</span><span id="line-934">                              case 3 -&gt; {</span>
-<span class="source-line-no">935</span><span id="line-935">                                  builder.setLanguage( parts[0] ).setRegion( parts[1] );</span>
-<span class="source-line-no">936</span><span id="line-936">                                  if( parts[2].startsWith( "#" ) )</span>
-<span class="source-line-no">937</span><span id="line-937">                                  {</span>
-<span class="source-line-no">938</span><span id="line-938">                                      if( parts[2].length() == 4 )</span>
-<span class="source-line-no">939</span><span id="line-939">                                          builder.setScript( parts[2].substring( 1 ) );</span>
-<span class="source-line-no">940</span><span id="line-940">                                  }</span>
-<span class="source-line-no">941</span><span id="line-941">                                  else</span>
-<span class="source-line-no">942</span><span id="line-942">                                  {</span>
-<span class="source-line-no">943</span><span id="line-943">                                      builder.setVariant( parts[2] );</span>
+<span class="source-line-no">799</span><span id="line-799">    @SuppressWarnings( "DeprecatedIsStillUsed" )</span>
+<span class="source-line-no">800</span><span id="line-800">    @SafeVarargs</span>
+<span class="source-line-no">801</span><span id="line-801">    @Deprecated( since = "0.1.0", forRemoval = true )</span>
+<span class="source-line-no">802</span><span id="line-802">    @API( status = DEPRECATED, since = "0.0.5" )</span>
+<span class="source-line-no">803</span><span id="line-803">    public static final String replaceSystemVariable( final CharSequence text, final Map&lt;String,? extends Object&gt;... additionalSources )</span>
+<span class="source-line-no">804</span><span id="line-804">    {</span>
+<span class="source-line-no">805</span><span id="line-805">        return Template.replaceVariableFromSystemData( text, additionalSources );</span>
+<span class="source-line-no">806</span><span id="line-806">    }   //  replaceSystemVariable()</span>
+<span class="source-line-no">807</span><span id="line-807"></span>
+<span class="source-line-no">808</span><span id="line-808">    /**</span>
+<span class="source-line-no">809</span><span id="line-809">     *  An implementation of</span>
+<span class="source-line-no">810</span><span id="line-810">     *  {@link Thread#sleep}</span>
+<span class="source-line-no">811</span><span id="line-811">     *  that does not throw an exception in case it will be interrupted.</span>
+<span class="source-line-no">812</span><span id="line-812">     *</span>
+<span class="source-line-no">813</span><span id="line-813">     *  @param  millis  The time to sleep in milliseconds.</span>
+<span class="source-line-no">814</span><span id="line-814">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
+<span class="source-line-no">815</span><span id="line-815">     *      terminated as planned.</span>
+<span class="source-line-no">816</span><span id="line-816">     */</span>
+<span class="source-line-no">817</span><span id="line-817">    @SuppressWarnings( {"BusyWait", "BooleanMethodNameMustStartWithQuestion"} )</span>
+<span class="source-line-no">818</span><span id="line-818">    @API( status = STABLE, since = "0.0.7" )</span>
+<span class="source-line-no">819</span><span id="line-819">    public static final boolean repose( final long millis )</span>
+<span class="source-line-no">820</span><span id="line-820">    {</span>
+<span class="source-line-no">821</span><span id="line-821">        var retValue = true;</span>
+<span class="source-line-no">822</span><span id="line-822">        final var endTimeMillis  = currentTimeMillis() + millis;</span>
+<span class="source-line-no">823</span><span id="line-823">        SleepLoop: while( currentTimeMillis() &lt; endTimeMillis )</span>
+<span class="source-line-no">824</span><span id="line-824">        {</span>
+<span class="source-line-no">825</span><span id="line-825">            try</span>
+<span class="source-line-no">826</span><span id="line-826">            {</span>
+<span class="source-line-no">827</span><span id="line-827">                Thread.sleep( max( 0, endTimeMillis - currentTimeMillis() ) );</span>
+<span class="source-line-no">828</span><span id="line-828">                retValue = false;</span>
+<span class="source-line-no">829</span><span id="line-829">            }</span>
+<span class="source-line-no">830</span><span id="line-830">            catch( final InterruptedException ignored )</span>
+<span class="source-line-no">831</span><span id="line-831">            {</span>
+<span class="source-line-no">832</span><span id="line-832">               if( currentThread().isInterrupted() ) break SleepLoop;</span>
+<span class="source-line-no">833</span><span id="line-833">            }</span>
+<span class="source-line-no">834</span><span id="line-834">        }   //  SleepLoop:</span>
+<span class="source-line-no">835</span><span id="line-835"></span>
+<span class="source-line-no">836</span><span id="line-836">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">837</span><span id="line-837">        return retValue;</span>
+<span class="source-line-no">838</span><span id="line-838">    }   //  repose()</span>
+<span class="source-line-no">839</span><span id="line-839"></span>
+<span class="source-line-no">840</span><span id="line-840">    /**</span>
+<span class="source-line-no">841</span><span id="line-841">     *  An implementation of</span>
+<span class="source-line-no">842</span><span id="line-842">     *  {@link #repose(long)}</span>
+<span class="source-line-no">843</span><span id="line-843">     *  that takes an instance of</span>
+<span class="source-line-no">844</span><span id="line-844">     *  {@link Duration}</span>
+<span class="source-line-no">845</span><span id="line-845">     *  to determine the time to sleep.</span>
+<span class="source-line-no">846</span><span id="line-846">     *</span>
+<span class="source-line-no">847</span><span id="line-847">     *  @param  duration    The time to sleep.</span>
+<span class="source-line-no">848</span><span id="line-848">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
+<span class="source-line-no">849</span><span id="line-849">     *      terminated as planned.</span>
+<span class="source-line-no">850</span><span id="line-850">     */</span>
+<span class="source-line-no">851</span><span id="line-851">    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )</span>
+<span class="source-line-no">852</span><span id="line-852">    @API( status = STABLE, since = "0.0.7" )</span>
+<span class="source-line-no">853</span><span id="line-853">    public static final boolean repose( final Duration duration )</span>
+<span class="source-line-no">854</span><span id="line-854">    {</span>
+<span class="source-line-no">855</span><span id="line-855">        final var milliseconds = requireNonNullArgument( duration, "duration" ).toMillis();</span>
+<span class="source-line-no">856</span><span id="line-856">        final var retValue = repose( milliseconds );</span>
+<span class="source-line-no">857</span><span id="line-857"></span>
+<span class="source-line-no">858</span><span id="line-858">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">859</span><span id="line-859">        return retValue;</span>
+<span class="source-line-no">860</span><span id="line-860">    }   //  repose()</span>
+<span class="source-line-no">861</span><span id="line-861"></span>
+<span class="source-line-no">862</span><span id="line-862">    /**</span>
+<span class="source-line-no">863</span><span id="line-863">     *  An implementation of</span>
+<span class="source-line-no">864</span><span id="line-864">     *  {@link #sleepUntil(Instant)}</span>
+<span class="source-line-no">865</span><span id="line-865">     *  that does not throw an exception when interrupted.</span>
+<span class="source-line-no">866</span><span id="line-866">     *</span>
+<span class="source-line-no">867</span><span id="line-867">     *  @param  until   The end time for the sleep period.</span>
+<span class="source-line-no">868</span><span id="line-868">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
+<span class="source-line-no">869</span><span id="line-869">     *      terminated as planned.</span>
+<span class="source-line-no">870</span><span id="line-870">     */</span>
+<span class="source-line-no">871</span><span id="line-871">    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )</span>
+<span class="source-line-no">872</span><span id="line-872">    @API( status = STABLE, since = "0.0.7" )</span>
+<span class="source-line-no">873</span><span id="line-873">    public static final boolean reposeUntil( final Instant until )</span>
+<span class="source-line-no">874</span><span id="line-874">    {</span>
+<span class="source-line-no">875</span><span id="line-875">        var retValue = true;</span>
+<span class="source-line-no">876</span><span id="line-876">        SleepLoop: while( Instant.now().isBefore( requireNonNullArgument( until, "until" ) ) )</span>
+<span class="source-line-no">877</span><span id="line-877">        {</span>
+<span class="source-line-no">878</span><span id="line-878">            try</span>
+<span class="source-line-no">879</span><span id="line-879">            {</span>
+<span class="source-line-no">880</span><span id="line-880">                sleep( Duration.between( Instant.now(), until ) );</span>
+<span class="source-line-no">881</span><span id="line-881">                retValue = false;</span>
+<span class="source-line-no">882</span><span id="line-882">            }</span>
+<span class="source-line-no">883</span><span id="line-883">            catch( final InterruptedException ignored )</span>
+<span class="source-line-no">884</span><span id="line-884">            {</span>
+<span class="source-line-no">885</span><span id="line-885">                if( currentThread().isInterrupted() ) break SleepLoop;</span>
+<span class="source-line-no">886</span><span id="line-886">            }</span>
+<span class="source-line-no">887</span><span id="line-887">        }</span>
+<span class="source-line-no">888</span><span id="line-888"></span>
+<span class="source-line-no">889</span><span id="line-889">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">890</span><span id="line-890">        return retValue;</span>
+<span class="source-line-no">891</span><span id="line-891">    }   //  reposeUntil()</span>
+<span class="source-line-no">892</span><span id="line-892">    /**</span>
+<span class="source-line-no">893</span><span id="line-893">     *  Retrieves an instance of</span>
+<span class="source-line-no">894</span><span id="line-894">     *  {@link Locale}</span>
+<span class="source-line-no">895</span><span id="line-895">     *  for the given locale name. This method will look up the requested</span>
+<span class="source-line-no">896</span><span id="line-896">     *  locale first in the locales returned by</span>
+<span class="source-line-no">897</span><span id="line-897">     *  {@link Locale#getAvailableLocales()}</span>
+<span class="source-line-no">898</span><span id="line-898">     *  before it will create a new instance of {@code Locale} using</span>
+<span class="source-line-no">899</span><span id="line-899">     *  {@link java.util.Locale.Builder Locale.Builder}.&lt;br&gt;</span>
+<span class="source-line-no">900</span><span id="line-900">     *  &lt;br&gt;The method will return</span>
+<span class="source-line-no">901</span><span id="line-901">     *  {@link Optional#empty()}</span>
+<span class="source-line-no">902</span><span id="line-902">     *  when the format of the given {@code localeName} is invalid.&lt;br&gt;</span>
+<span class="source-line-no">903</span><span id="line-903">     *  &lt;br&gt;If none of the already existing instances of {@code Locale} matches</span>
+<span class="source-line-no">904</span><span id="line-904">     *  the given name, the language part, the country part, the variant part</span>
+<span class="source-line-no">905</span><span id="line-905">     *  and the script part (if provided) are used to create a new instance. If</span>
+<span class="source-line-no">906</span><span id="line-906">     *  extensions are given, they will be ignored.&lt;br&gt;</span>
+<span class="source-line-no">907</span><span id="line-907">     *  &lt;br&gt;If the given locale name is empty or contains only whitespace, the</span>
+<span class="source-line-no">908</span><span id="line-908">     *  method will return</span>
+<span class="source-line-no">909</span><span id="line-909">     *  {@link Locale#ROOT}.</span>
+<span class="source-line-no">910</span><span id="line-910">     *</span>
+<span class="source-line-no">911</span><span id="line-911">     *  @param  localeName  The name of the locale.</span>
+<span class="source-line-no">912</span><span id="line-912">     *  @return An instance of</span>
+<span class="source-line-no">913</span><span id="line-913">     *      {@link Optional}</span>
+<span class="source-line-no">914</span><span id="line-914">     *      that holds the instance of {@code Locale} for the given name.</span>
+<span class="source-line-no">915</span><span id="line-915">     */</span>
+<span class="source-line-no">916</span><span id="line-916">    @SuppressWarnings( {"AssignmentToNull", "OverlyNestedMethod", "OverlyComplexMethod"} )</span>
+<span class="source-line-no">917</span><span id="line-917">    @API( status = STABLE, since = "0.0.6" )</span>
+<span class="source-line-no">918</span><span id="line-918">    public static final Optional&lt;Locale&gt; retrieveLocale( final CharSequence localeName )</span>
+<span class="source-line-no">919</span><span id="line-919">    {</span>
+<span class="source-line-no">920</span><span id="line-920">        final var name = requireNonNullArgument( localeName, "localeName" ).toString();</span>
+<span class="source-line-no">921</span><span id="line-921">        @SuppressWarnings( "OverlyLongLambda" )</span>
+<span class="source-line-no">922</span><span id="line-922">        final var locale = name.isBlank()</span>
+<span class="source-line-no">923</span><span id="line-923">            ? ROOT</span>
+<span class="source-line-no">924</span><span id="line-924">            : stream( Locale.getAvailableLocales() )</span>
+<span class="source-line-no">925</span><span id="line-925">                  .filter( l -&gt; l.toString().equals( name ) )</span>
+<span class="source-line-no">926</span><span id="line-926">                  .findFirst()</span>
+<span class="source-line-no">927</span><span id="line-927">                  .orElseGet( () -&gt;</span>
+<span class="source-line-no">928</span><span id="line-928">                  {</span>
+<span class="source-line-no">929</span><span id="line-929">                      Locale result = null;</span>
+<span class="source-line-no">930</span><span id="line-930">                      final var parts = splitString( name, '_' );</span>
+<span class="source-line-no">931</span><span id="line-931">                      try</span>
+<span class="source-line-no">932</span><span id="line-932">                      {</span>
+<span class="source-line-no">933</span><span id="line-933">                          final var builder = new Locale.Builder();</span>
+<span class="source-line-no">934</span><span id="line-934">                          ComposeSwitch: result = switch( parts.length )</span>
+<span class="source-line-no">935</span><span id="line-935">                          {</span>
+<span class="source-line-no">936</span><span id="line-936">                              case 1 -&gt; builder.setLanguage( parts[0] ).build();</span>
+<span class="source-line-no">937</span><span id="line-937">                              case 2 -&gt; builder.setLanguage( parts[0] ).setRegion( parts[1] ).build();</span>
+<span class="source-line-no">938</span><span id="line-938">                              case 3 -&gt; {</span>
+<span class="source-line-no">939</span><span id="line-939">                                  builder.setLanguage( parts[0] ).setRegion( parts[1] );</span>
+<span class="source-line-no">940</span><span id="line-940">                                  if( parts[2].startsWith( "#" ) )</span>
+<span class="source-line-no">941</span><span id="line-941">                                  {</span>
+<span class="source-line-no">942</span><span id="line-942">                                      if( parts[2].length() == 4 )</span>
+<span class="source-line-no">943</span><span id="line-943">                                          builder.setScript( parts[2].substring( 1 ) );</span>
 <span class="source-line-no">944</span><span id="line-944">                                  }</span>
-<span class="source-line-no">945</span><span id="line-945">                                  yield builder.build();</span>
-<span class="source-line-no">946</span><span id="line-946">                              }</span>
-<span class="source-line-no">947</span><span id="line-947">                              case 4 -&gt; {</span>
-<span class="source-line-no">948</span><span id="line-948">                                  builder.setLanguage( parts[0] ).setRegion( parts[1] );</span>
-<span class="source-line-no">949</span><span id="line-949">                                  if( parts[2].startsWith( "#" ) )</span>
-<span class="source-line-no">950</span><span id="line-950">                                  {</span>
-<span class="source-line-no">951</span><span id="line-951">                                      builder.setScript( parts[2].substring( 1 ) );</span>
-<span class="source-line-no">952</span><span id="line-952">                                  }</span>
-<span class="source-line-no">953</span><span id="line-953">                                  else</span>
+<span class="source-line-no">945</span><span id="line-945">                                  else</span>
+<span class="source-line-no">946</span><span id="line-946">                                  {</span>
+<span class="source-line-no">947</span><span id="line-947">                                      builder.setVariant( parts[2] );</span>
+<span class="source-line-no">948</span><span id="line-948">                                  }</span>
+<span class="source-line-no">949</span><span id="line-949">                                  yield builder.build();</span>
+<span class="source-line-no">950</span><span id="line-950">                              }</span>
+<span class="source-line-no">951</span><span id="line-951">                              case 4 -&gt; {</span>
+<span class="source-line-no">952</span><span id="line-952">                                  builder.setLanguage( parts[0] ).setRegion( parts[1] );</span>
+<span class="source-line-no">953</span><span id="line-953">                                  if( parts[2].startsWith( "#" ) )</span>
 <span class="source-line-no">954</span><span id="line-954">                                  {</span>
-<span class="source-line-no">955</span><span id="line-955">                                      builder.setVariant( parts[2] );</span>
-<span class="source-line-no">956</span><span id="line-956">                                      if( parts[3].startsWith( "#" ) )</span>
-<span class="source-line-no">957</span><span id="line-957">                                      {</span>
-<span class="source-line-no">958</span><span id="line-958">                                          if( parts[3].length() == 4 )</span>
-<span class="source-line-no">959</span><span id="line-959">                                              builder.setScript( parts[3].substring( 1 ) );</span>
-<span class="source-line-no">960</span><span id="line-960">                                      }</span>
-<span class="source-line-no">961</span><span id="line-961">                                  }</span>
-<span class="source-line-no">962</span><span id="line-962">                                  yield builder.build();</span>
-<span class="source-line-no">963</span><span id="line-963">                              }</span>
-<span class="source-line-no">964</span><span id="line-964">                              case 5 -&gt; builder.setLanguage( parts[0] ).setRegion( parts[1] ).setVariant( parts[2] ).setScript( parts[3].substring( 1 ) ).build();</span>
-<span class="source-line-no">965</span><span id="line-965">                              default -&gt; null; // Invalid input ...</span>
-<span class="source-line-no">966</span><span id="line-966">                          };    //  ComposeSwitch:</span>
-<span class="source-line-no">967</span><span id="line-967">                      }</span>
-<span class="source-line-no">968</span><span id="line-968">                      catch( @SuppressWarnings( "unused" ) final IllformedLocaleException e )</span>
-<span class="source-line-no">969</span><span id="line-969">                      {</span>
-<span class="source-line-no">970</span><span id="line-970">                          result = null;</span>
+<span class="source-line-no">955</span><span id="line-955">                                      builder.setScript( parts[2].substring( 1 ) );</span>
+<span class="source-line-no">956</span><span id="line-956">                                  }</span>
+<span class="source-line-no">957</span><span id="line-957">                                  else</span>
+<span class="source-line-no">958</span><span id="line-958">                                  {</span>
+<span class="source-line-no">959</span><span id="line-959">                                      builder.setVariant( parts[2] );</span>
+<span class="source-line-no">960</span><span id="line-960">                                      if( parts[3].startsWith( "#" ) )</span>
+<span class="source-line-no">961</span><span id="line-961">                                      {</span>
+<span class="source-line-no">962</span><span id="line-962">                                          if( parts[3].length() == 4 )</span>
+<span class="source-line-no">963</span><span id="line-963">                                              builder.setScript( parts[3].substring( 1 ) );</span>
+<span class="source-line-no">964</span><span id="line-964">                                      }</span>
+<span class="source-line-no">965</span><span id="line-965">                                  }</span>
+<span class="source-line-no">966</span><span id="line-966">                                  yield builder.build();</span>
+<span class="source-line-no">967</span><span id="line-967">                              }</span>
+<span class="source-line-no">968</span><span id="line-968">                              case 5 -&gt; builder.setLanguage( parts[0] ).setRegion( parts[1] ).setVariant( parts[2] ).setScript( parts[3].substring( 1 ) ).build();</span>
+<span class="source-line-no">969</span><span id="line-969">                              default -&gt; null; // Invalid input ...</span>
+<span class="source-line-no">970</span><span id="line-970">                          };    //  ComposeSwitch:</span>
 <span class="source-line-no">971</span><span id="line-971">                      }</span>
-<span class="source-line-no">972</span><span id="line-972">                      return result;</span>
-<span class="source-line-no">973</span><span id="line-973">                  } );</span>
-<span class="source-line-no">974</span><span id="line-974"></span>
-<span class="source-line-no">975</span><span id="line-975">        final var retValue = Optional.ofNullable( locale );</span>
-<span class="source-line-no">976</span><span id="line-976"></span>
-<span class="source-line-no">977</span><span id="line-977">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">978</span><span id="line-978">        return retValue;</span>
-<span class="source-line-no">979</span><span id="line-979">    }   //  retrieveLocale()</span>
+<span class="source-line-no">972</span><span id="line-972">                      catch( final IllformedLocaleException ignored )</span>
+<span class="source-line-no">973</span><span id="line-973">                      {</span>
+<span class="source-line-no">974</span><span id="line-974">                          result = null;</span>
+<span class="source-line-no">975</span><span id="line-975">                      }</span>
+<span class="source-line-no">976</span><span id="line-976">                      return result;</span>
+<span class="source-line-no">977</span><span id="line-977">                  } );</span>
+<span class="source-line-no">978</span><span id="line-978"></span>
+<span class="source-line-no">979</span><span id="line-979">        final var retValue = Optional.ofNullable( locale );</span>
 <span class="source-line-no">980</span><span id="line-980"></span>
-<span class="source-line-no">981</span><span id="line-981">    /**</span>
-<span class="source-line-no">982</span><span id="line-982">     *  An implementation of</span>
-<span class="source-line-no">983</span><span id="line-983">     *  {@link Thread#sleep}</span>
-<span class="source-line-no">984</span><span id="line-984">     *  that takes an instance of</span>
-<span class="source-line-no">985</span><span id="line-985">     *  {@link Duration}</span>
-<span class="source-line-no">986</span><span id="line-986">     *  to determine the time to sleep.</span>
-<span class="source-line-no">987</span><span id="line-987">     *</span>
-<span class="source-line-no">988</span><span id="line-988">     *  @param  duration    The time to sleep.</span>
-<span class="source-line-no">989</span><span id="line-989">     *  @throws InterruptedException    Another thread has interrupted the</span>
-<span class="source-line-no">990</span><span id="line-990">     *      current thread (that one executing {@code sleep()}. The</span>
-<span class="source-line-no">991</span><span id="line-991">     *      &lt;i&gt;interrupted status&lt;/i&gt; of the current thread is cleared when</span>
-<span class="source-line-no">992</span><span id="line-992">     *      this exception is thrown.</span>
-<span class="source-line-no">993</span><span id="line-993">     */</span>
-<span class="source-line-no">994</span><span id="line-994">    @API( status = STABLE, since = "0.0.7" )</span>
-<span class="source-line-no">995</span><span id="line-995">    public static final void sleep( final Duration duration ) throws InterruptedException</span>
-<span class="source-line-no">996</span><span id="line-996">    {</span>
-<span class="source-line-no">997</span><span id="line-997">        final var milliseconds = requireNonNullArgument( duration, "duration" ).toMillis();</span>
-<span class="source-line-no">998</span><span id="line-998">        Thread.sleep( milliseconds );</span>
-<span class="source-line-no">999</span><span id="line-999">    }   //  sleep()</span>
-<span class="source-line-no">1000</span><span id="line-1000"></span>
-<span class="source-line-no">1001</span><span id="line-1001">    /**</span>
-<span class="source-line-no">1002</span><span id="line-1002">     *  Causes the currently executing thread to sleep (temporarily cease</span>
-<span class="source-line-no">1003</span><span id="line-1003">     *  execution) until the specified time, subject to the precision and</span>
-<span class="source-line-no">1004</span><span id="line-1004">     *  accuracy of system timers and schedulers. The thread does not lose</span>
-<span class="source-line-no">1005</span><span id="line-1005">     *  ownership of any monitors.</span>
-<span class="source-line-no">1006</span><span id="line-1006">     *</span>
-<span class="source-line-no">1007</span><span id="line-1007">     *  @param  until   The end time for the sleep.</span>
-<span class="source-line-no">1008</span><span id="line-1008">     *  @throws InterruptedException    Another thread has interrupted the</span>
-<span class="source-line-no">1009</span><span id="line-1009">     *      current thread (that one executing {@code sleep()}. The</span>
-<span class="source-line-no">1010</span><span id="line-1010">     *      &lt;i&gt;interrupted status&lt;/i&gt; of the current thread is cleared when</span>
-<span class="source-line-no">1011</span><span id="line-1011">     *      this exception is thrown.</span>
-<span class="source-line-no">1012</span><span id="line-1012">     *</span>
-<span class="source-line-no">1013</span><span id="line-1013">     *  @see Thread#sleep(long)</span>
-<span class="source-line-no">1014</span><span id="line-1014">     *</span>
-<span class="source-line-no">1015</span><span id="line-1015">     *  @since 0.0.7</span>
-<span class="source-line-no">1016</span><span id="line-1016">     */</span>
-<span class="source-line-no">1017</span><span id="line-1017">    @API( status = STABLE, since = "0.0.7" )</span>
-<span class="source-line-no">1018</span><span id="line-1018">    public static final void sleepUntil( final Instant until ) throws InterruptedException</span>
-<span class="source-line-no">1019</span><span id="line-1019">    {</span>
-<span class="source-line-no">1020</span><span id="line-1020">        final var milliseconds = max( 0, requireNonNullArgument( until, "until" ).toEpochMilli() - currentTimeMillis() );</span>
-<span class="source-line-no">1021</span><span id="line-1021">        Thread.sleep( milliseconds );</span>
-<span class="source-line-no">1022</span><span id="line-1022">    }   //  sleepUntil()</span>
-<span class="source-line-no">1023</span><span id="line-1023"></span>
-<span class="source-line-no">1024</span><span id="line-1024">    /**</span>
-<span class="source-line-no">1025</span><span id="line-1025">     *  &lt;p&gt;{@summary Returns the</span>
-<span class="source-line-no">1026</span><span id="line-1026">     *  {@linkplain System#getProperties() system properties}}</span>
-<span class="source-line-no">1027</span><span id="line-1027">     *  as a</span>
-<span class="source-line-no">1028</span><span id="line-1028">     *  {@link Map Map&amp;lt;String,String&amp;gt;}.&lt;/p&gt;</span>
-<span class="source-line-no">1029</span><span id="line-1029">     *  &lt;p&gt;{@link System#getProperties()}</span>
-<span class="source-line-no">1030</span><span id="line-1030">     *  returns an instance of</span>
-<span class="source-line-no">1031</span><span id="line-1031">     *  {@link java.util.Properties}, and that is implementing</span>
-<span class="source-line-no">1032</span><span id="line-1032">     *  {@code Map&lt;String,Object&gt;}. Although it is unlikely that a value is</span>
-<span class="source-line-no">1033</span><span id="line-1033">     *  &lt;i&gt;not&lt;/i&gt; a String (if not impossible &amp;hellip;), this method allows</span>
-<span class="source-line-no">1034</span><span id="line-1034">     *  to enforce it.&lt;/p&gt;</span>
-<span class="source-line-no">1035</span><span id="line-1035">     *</span>
-<span class="source-line-no">1036</span><span id="line-1036">     *  @note   A mere cast to {@code Map&lt;String,String&gt;} does not work</span>
-<span class="source-line-no">1037</span><span id="line-1037">     *      &amp;hellip;</span>
-<span class="source-line-no">1038</span><span id="line-1038">     *</span>
-<span class="source-line-no">1039</span><span id="line-1039">     *  @return A unmodifiable map with the system properties as Strings.</span>
-<span class="source-line-no">1040</span><span id="line-1040">     */</span>
-<span class="source-line-no">1041</span><span id="line-1041">    public static final Map&lt;String,String&gt; systemPropertiesAsStringMap()</span>
-<span class="source-line-no">1042</span><span id="line-1042">    {</span>
-<span class="source-line-no">1043</span><span id="line-1043">        final Map&lt;String,String&gt; map = new HashMap&lt;&gt;();</span>
-<span class="source-line-no">1044</span><span id="line-1044">        final var properties = getProperties();</span>
-<span class="source-line-no">1045</span><span id="line-1045">        for( final var key : properties.stringPropertyNames() )</span>
-<span class="source-line-no">1046</span><span id="line-1046">        {</span>
-<span class="source-line-no">1047</span><span id="line-1047">            map.put( key, properties.getProperty( key ) );</span>
-<span class="source-line-no">1048</span><span id="line-1048">        }</span>
-<span class="source-line-no">1049</span><span id="line-1049">        final var retValue = Map.copyOf( map );</span>
-<span class="source-line-no">1050</span><span id="line-1050"></span>
-<span class="source-line-no">1051</span><span id="line-1051">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">1052</span><span id="line-1052">        return retValue;</span>
-<span class="source-line-no">1053</span><span id="line-1053">    }   //  systemPropertiesAsStringMap()</span>
+<span class="source-line-no">981</span><span id="line-981">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">982</span><span id="line-982">        return retValue;</span>
+<span class="source-line-no">983</span><span id="line-983">    }   //  retrieveLocale()</span>
+<span class="source-line-no">984</span><span id="line-984"></span>
+<span class="source-line-no">985</span><span id="line-985">    /**</span>
+<span class="source-line-no">986</span><span id="line-986">     *  An implementation of</span>
+<span class="source-line-no">987</span><span id="line-987">     *  {@link Thread#sleep}</span>
+<span class="source-line-no">988</span><span id="line-988">     *  that takes an instance of</span>
+<span class="source-line-no">989</span><span id="line-989">     *  {@link Duration}</span>
+<span class="source-line-no">990</span><span id="line-990">     *  to determine the time to sleep.</span>
+<span class="source-line-no">991</span><span id="line-991">     *</span>
+<span class="source-line-no">992</span><span id="line-992">     *  @param  duration    The time to sleep.</span>
+<span class="source-line-no">993</span><span id="line-993">     *  @throws InterruptedException    Another thread has interrupted the</span>
+<span class="source-line-no">994</span><span id="line-994">     *      current thread (that one executing {@code sleep()}. The</span>
+<span class="source-line-no">995</span><span id="line-995">     *      &lt;i&gt;interrupted status&lt;/i&gt; of the current thread is cleared when</span>
+<span class="source-line-no">996</span><span id="line-996">     *      this exception is thrown.</span>
+<span class="source-line-no">997</span><span id="line-997">     */</span>
+<span class="source-line-no">998</span><span id="line-998">    @API( status = STABLE, since = "0.0.7" )</span>
+<span class="source-line-no">999</span><span id="line-999">    public static final void sleep( final Duration duration ) throws InterruptedException</span>
+<span class="source-line-no">1000</span><span id="line-1000">    {</span>
+<span class="source-line-no">1001</span><span id="line-1001">        final var milliseconds = requireNonNullArgument( duration, "duration" ).toMillis();</span>
+<span class="source-line-no">1002</span><span id="line-1002">        Thread.sleep( milliseconds );</span>
+<span class="source-line-no">1003</span><span id="line-1003">    }   //  sleep()</span>
+<span class="source-line-no">1004</span><span id="line-1004"></span>
+<span class="source-line-no">1005</span><span id="line-1005">    /**</span>
+<span class="source-line-no">1006</span><span id="line-1006">     *  Causes the currently executing thread to sleep (temporarily cease</span>
+<span class="source-line-no">1007</span><span id="line-1007">     *  execution) until the specified time, subject to the precision and</span>
+<span class="source-line-no">1008</span><span id="line-1008">     *  accuracy of system timers and schedulers. The thread does not lose</span>
+<span class="source-line-no">1009</span><span id="line-1009">     *  ownership of any monitors.</span>
+<span class="source-line-no">1010</span><span id="line-1010">     *</span>
+<span class="source-line-no">1011</span><span id="line-1011">     *  @param  until   The end time for the sleep.</span>
+<span class="source-line-no">1012</span><span id="line-1012">     *  @throws InterruptedException    Another thread has interrupted the</span>
+<span class="source-line-no">1013</span><span id="line-1013">     *      current thread (that one executing {@code sleep()}. The</span>
+<span class="source-line-no">1014</span><span id="line-1014">     *      &lt;i&gt;interrupted status&lt;/i&gt; of the current thread is cleared when</span>
+<span class="source-line-no">1015</span><span id="line-1015">     *      this exception is thrown.</span>
+<span class="source-line-no">1016</span><span id="line-1016">     *</span>
+<span class="source-line-no">1017</span><span id="line-1017">     *  @see Thread#sleep(long)</span>
+<span class="source-line-no">1018</span><span id="line-1018">     *</span>
+<span class="source-line-no">1019</span><span id="line-1019">     *  @since 0.0.7</span>
+<span class="source-line-no">1020</span><span id="line-1020">     */</span>
+<span class="source-line-no">1021</span><span id="line-1021">    @API( status = STABLE, since = "0.0.7" )</span>
+<span class="source-line-no">1022</span><span id="line-1022">    public static final void sleepUntil( final Instant until ) throws InterruptedException</span>
+<span class="source-line-no">1023</span><span id="line-1023">    {</span>
+<span class="source-line-no">1024</span><span id="line-1024">        final var milliseconds = max( 0, requireNonNullArgument( until, "until" ).toEpochMilli() - currentTimeMillis() );</span>
+<span class="source-line-no">1025</span><span id="line-1025">        Thread.sleep( milliseconds );</span>
+<span class="source-line-no">1026</span><span id="line-1026">    }   //  sleepUntil()</span>
+<span class="source-line-no">1027</span><span id="line-1027"></span>
+<span class="source-line-no">1028</span><span id="line-1028">    /**</span>
+<span class="source-line-no">1029</span><span id="line-1029">     *  &lt;p&gt;{@summary Returns the</span>
+<span class="source-line-no">1030</span><span id="line-1030">     *  {@linkplain System#getProperties() system properties}}</span>
+<span class="source-line-no">1031</span><span id="line-1031">     *  as a</span>
+<span class="source-line-no">1032</span><span id="line-1032">     *  {@link Map Map&amp;lt;String,String&amp;gt;}.&lt;/p&gt;</span>
+<span class="source-line-no">1033</span><span id="line-1033">     *  &lt;p&gt;{@link System#getProperties()}</span>
+<span class="source-line-no">1034</span><span id="line-1034">     *  returns an instance of</span>
+<span class="source-line-no">1035</span><span id="line-1035">     *  {@link java.util.Properties}, and that is implementing</span>
+<span class="source-line-no">1036</span><span id="line-1036">     *  {@code Map&lt;String,Object&gt;}. Although it is unlikely that a value is</span>
+<span class="source-line-no">1037</span><span id="line-1037">     *  &lt;i&gt;not&lt;/i&gt; a String (if not impossible &amp;hellip;), this method allows</span>
+<span class="source-line-no">1038</span><span id="line-1038">     *  to enforce it.&lt;/p&gt;</span>
+<span class="source-line-no">1039</span><span id="line-1039">     *</span>
+<span class="source-line-no">1040</span><span id="line-1040">     *  @note   A mere cast to {@code Map&lt;String,String&gt;} does not work</span>
+<span class="source-line-no">1041</span><span id="line-1041">     *      &amp;hellip;</span>
+<span class="source-line-no">1042</span><span id="line-1042">     *</span>
+<span class="source-line-no">1043</span><span id="line-1043">     *  @return An unmodifiable map with the system properties as Strings.</span>
+<span class="source-line-no">1044</span><span id="line-1044">     */</span>
+<span class="source-line-no">1045</span><span id="line-1045">    public static final Map&lt;String,String&gt; systemPropertiesAsStringMap()</span>
+<span class="source-line-no">1046</span><span id="line-1046">    {</span>
+<span class="source-line-no">1047</span><span id="line-1047">        final Map&lt;String,String&gt; map = new HashMap&lt;&gt;();</span>
+<span class="source-line-no">1048</span><span id="line-1048">        final var properties = getProperties();</span>
+<span class="source-line-no">1049</span><span id="line-1049">        for( final var key : properties.stringPropertyNames() )</span>
+<span class="source-line-no">1050</span><span id="line-1050">        {</span>
+<span class="source-line-no">1051</span><span id="line-1051">            map.put( key, properties.getProperty( key ) );</span>
+<span class="source-line-no">1052</span><span id="line-1052">        }</span>
+<span class="source-line-no">1053</span><span id="line-1053">        final var retValue = Map.copyOf( map );</span>
 <span class="source-line-no">1054</span><span id="line-1054"></span>
-<span class="source-line-no">1055</span><span id="line-1055">    /**</span>
-<span class="source-line-no">1056</span><span id="line-1056">     *  &lt;p&gt;{@summary Translates a given MAC address into a numerical node</span>
-<span class="source-line-no">1057</span><span id="line-1057">     *  id.}&lt;/p&gt;</span>
-<span class="source-line-no">1058</span><span id="line-1058">     *  &lt;p&gt;A MAC address is a string consisting of 12 hex digits, grouped by</span>
-<span class="source-line-no">1059</span><span id="line-1059">     *  two, each group separated by a hyphen:</span>
-<span class="source-line-no">1060</span><span id="line-1060">     *  &lt;code&gt;&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;&lt;/code&gt;&lt;/p&gt;</span>
-<span class="source-line-no">1061</span><span id="line-1061">     *</span>
-<span class="source-line-no">1062</span><span id="line-1062">     *  @param  macAddress  The MAC address to translate.</span>
-<span class="source-line-no">1063</span><span id="line-1063">     *  @return The node id.</span>
-<span class="source-line-no">1064</span><span id="line-1064">     */</span>
-<span class="source-line-no">1065</span><span id="line-1065">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">1066</span><span id="line-1066">    public static final long translateMACToNodeId( final String macAddress )</span>
-<span class="source-line-no">1067</span><span id="line-1067">    {</span>
-<span class="source-line-no">1068</span><span id="line-1068">        final var bytes = HexFormat.ofDelimiter( "-" ).withUpperCase().parseHex( requireNotEmptyArgument( macAddress, "macAddress" ) );</span>
-<span class="source-line-no">1069</span><span id="line-1069">        final var MSG_InvalidMAC = "MAC address is invalid: %1$s";</span>
-<span class="source-line-no">1070</span><span id="line-1070">        if( bytes.length != 6 )</span>
-<span class="source-line-no">1071</span><span id="line-1071">        {</span>
-<span class="source-line-no">1072</span><span id="line-1072">            throw new ValidationException( format( MSG_InvalidMAC, macAddress ) );</span>
-<span class="source-line-no">1073</span><span id="line-1073">        }</span>
-<span class="source-line-no">1074</span><span id="line-1074">        final byte [] bytes2 = new byte [7];</span>
-<span class="source-line-no">1075</span><span id="line-1075">        arraycopy( bytes, 0, bytes2, 1, 6 );</span>
-<span class="source-line-no">1076</span><span id="line-1076">        final var retValue = new BigInteger( bytes2 ).longValue();</span>
-<span class="source-line-no">1077</span><span id="line-1077"></span>
-<span class="source-line-no">1078</span><span id="line-1078">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">1079</span><span id="line-1079">        return retValue;</span>
-<span class="source-line-no">1080</span><span id="line-1080">    }   //  translateMACToNodeId()</span>
-<span class="source-line-no">1081</span><span id="line-1081">}</span>
-<span class="source-line-no">1082</span><span id="line-1082">//  class SystemUtils</span>
-<span class="source-line-no">1083</span><span id="line-1083"></span>
-<span class="source-line-no">1084</span><span id="line-1084">/*</span>
-<span class="source-line-no">1085</span><span id="line-1085"> *  End of File</span>
-<span class="source-line-no">1086</span><span id="line-1086"> */</span>
+<span class="source-line-no">1055</span><span id="line-1055">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">1056</span><span id="line-1056">        return retValue;</span>
+<span class="source-line-no">1057</span><span id="line-1057">    }   //  systemPropertiesAsStringMap()</span>
+<span class="source-line-no">1058</span><span id="line-1058"></span>
+<span class="source-line-no">1059</span><span id="line-1059">    /**</span>
+<span class="source-line-no">1060</span><span id="line-1060">     *  &lt;p&gt;{@summary Translates a given MAC address into a numerical node</span>
+<span class="source-line-no">1061</span><span id="line-1061">     *  id.}&lt;/p&gt;</span>
+<span class="source-line-no">1062</span><span id="line-1062">     *  &lt;p&gt;A MAC address is a string consisting of 12 hex digits, grouped by</span>
+<span class="source-line-no">1063</span><span id="line-1063">     *  two, each group separated by a hyphen:</span>
+<span class="source-line-no">1064</span><span id="line-1064">     *  &lt;code&gt;&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;-&lt;i&gt;xx&lt;/i&gt;&lt;/code&gt;&lt;/p&gt;</span>
+<span class="source-line-no">1065</span><span id="line-1065">     *</span>
+<span class="source-line-no">1066</span><span id="line-1066">     *  @param  macAddress  The MAC address to translate.</span>
+<span class="source-line-no">1067</span><span id="line-1067">     *  @return The node id.</span>
+<span class="source-line-no">1068</span><span id="line-1068">     */</span>
+<span class="source-line-no">1069</span><span id="line-1069">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">1070</span><span id="line-1070">    public static final long translateMACToNodeId( final String macAddress )</span>
+<span class="source-line-no">1071</span><span id="line-1071">    {</span>
+<span class="source-line-no">1072</span><span id="line-1072">        final var bytes = HexFormat.ofDelimiter( "-" ).withUpperCase().parseHex( requireNotEmptyArgument( macAddress, "macAddress" ) );</span>
+<span class="source-line-no">1073</span><span id="line-1073">        if( bytes.length != 6 )</span>
+<span class="source-line-no">1074</span><span id="line-1074">        {</span>
+<span class="source-line-no">1075</span><span id="line-1075">            throw new ValidationException( format( "MAC address is invalid: %1$s", macAddress ) );</span>
+<span class="source-line-no">1076</span><span id="line-1076">        }</span>
+<span class="source-line-no">1077</span><span id="line-1077">        final var bytes2 = new byte [7];</span>
+<span class="source-line-no">1078</span><span id="line-1078">        arraycopy( bytes, 0, bytes2, 1, 6 );</span>
+<span class="source-line-no">1079</span><span id="line-1079">        final var retValue = new BigInteger( bytes2 ).longValue();</span>
+<span class="source-line-no">1080</span><span id="line-1080"></span>
+<span class="source-line-no">1081</span><span id="line-1081">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">1082</span><span id="line-1082">        return retValue;</span>
+<span class="source-line-no">1083</span><span id="line-1083">    }   //  translateMACToNodeId()</span>
+<span class="source-line-no">1084</span><span id="line-1084">}</span>
+<span class="source-line-no">1085</span><span id="line-1085">//  class SystemUtils</span>
+<span class="source-line-no">1086</span><span id="line-1086"></span>
+<span class="source-line-no">1087</span><span id="line-1087">/*</span>
+<span class="source-line-no">1088</span><span id="line-1088"> *  End of File</span>
+<span class="source-line-no">1089</span><span id="line-1089"> */</span>
 
 
 

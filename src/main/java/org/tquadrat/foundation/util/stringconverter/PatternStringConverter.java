@@ -39,12 +39,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  values.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: PatternStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: PatternStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: PatternStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: PatternStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class PatternStringConverter implements StringConverter<Pattern>
 {
@@ -71,6 +71,14 @@ public final class PatternStringConverter implements StringConverter<Pattern>
      *  An instance of this class.
      */
     public static final PatternStringConverter INSTANCE = new PatternStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code PatternStringConverter}.
+     */
+    public PatternStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

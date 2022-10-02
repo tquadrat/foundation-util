@@ -68,12 +68,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $
+ *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -89,16 +89,24 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $
+     *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
+            /*--------------*\
+        ====** Constructors **=====================================================
+            \*--------------*/
+        /**
+         *  Creates a new instance of {@code NullAppendable}.
+         */
+        public NullAppendable() { super(); }
+
             /*---------*\
         ====** Methods **==========================================================
             \*---------*/
@@ -135,13 +143,13 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $
+     *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
-    @SuppressWarnings( "UtilityClassCanBeEnum" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1029 2022-03-15 00:29:29Z tquadrat $" )
+    @SuppressWarnings( {"UtilityClassCanBeEnum", "ClassWithoutConstructor"} )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -222,7 +230,7 @@ public final class IOUtils
         {
             if( nonNull( c ) ) c.close();
         }
-        catch( @SuppressWarnings( "unused" ) final Exception e ) { /* Deliberately ignored! */ }
+        catch( final Exception ignored ) { /* Deliberately ignored! */ }
     }   //  closeQuietly()
 
     /**
@@ -362,6 +370,7 @@ public final class IOUtils
         final var userTempDir = new File( tempDir, getProperty( PROPERTY_USER_NAME ) );
 
         //---* Get the file attributes *---------------------------------------
+        @SuppressWarnings( "ZeroLengthArrayAllocation" )
         final FileAttribute<?> [] attributes = DEFAULT_FILESYSTEM_IS_POSIX_COMPLIANT ? new FileAttribute [] {PosixPermissions.tempDirPermissions} : new FileAttribute [0];
 
         //---* Create the directory *------------------------------------------
@@ -472,6 +481,7 @@ public final class IOUtils
      */
     public static final void deleteFolder( final Path folder ) throws IOException
     {
+        //noinspection AnonymousInnerClass,OverlyComplexAnonymousInnerClass
         walkFileTree( requireNonNullArgument( folder, "folder" ), new SimpleFileVisitor<>()
         {
             /**
@@ -484,7 +494,7 @@ public final class IOUtils
                 {
                     delete( directory );
                 }
-                catch( IOException e )
+                catch( final IOException e )
                 {
                     if( nonNull( exception ) ) e.addSuppressed( exception );
                     throw e;
@@ -647,6 +657,7 @@ public final class IOUtils
      *  @return The check sum.
      *  @throws IOException Problems to process the file.
      */
+    @SuppressWarnings( "NestedAssignment" )
     @API( status = STABLE, since = "0.0.5" )
     public static final long determineCheckSum( final Path file, final Checksum algorithm ) throws IOException
     {
@@ -695,6 +706,7 @@ public final class IOUtils
      *  @return The check sum as a byte array.
      *  @throws IOException Problems to process the file.
      */
+    @SuppressWarnings( "NestedAssignment" )
     @API( status = STABLE, since = "0.0.5" )
     public static final byte [] determineCheckSum( final Path file, final MessageDigest algorithm ) throws IOException
     {
@@ -754,9 +766,11 @@ public final class IOUtils
      *
      *  @return {@code System.out} without the {@code close()} method.
      */
+    @SuppressWarnings( "ImplicitDefaultCharsetUsage" )
     @API( status = STABLE, since = "0.0.7" )
     public static final PrintStream getUncloseableOut()
     {
+        @SuppressWarnings( {"AnonymousInnerClass", "UseOfSystemOutOrSystemErr"} )
         final var retValue = new PrintStream( out )
         {
             /**

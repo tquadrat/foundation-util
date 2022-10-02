@@ -20,7 +20,8 @@ import static java.util.UUID.fromString;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_String_ARRAY;
 import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
-import static org.tquadrat.foundation.lang.Objects.*;
+import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
+import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateMD5Hash;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateSHA1Hash;
 import static org.tquadrat.foundation.util.SystemUtils.createPseudoNodeId;
@@ -126,7 +127,7 @@ import org.tquadrat.foundation.exception.UnsupportedEnumError;
  *   };</code></pre>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -136,7 +137,7 @@ import org.tquadrat.foundation.exception.UnsupportedEnumError;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils
@@ -219,6 +220,7 @@ public final class UniqueIdUtils
     /**
      *  The UUIDs for the predefined name spaces, according to RFC 4122.
      */
+    @SuppressWarnings( "StaticCollection" )
     private static final Map<String,UUID> m_Namespaces;
 
     /**
@@ -334,7 +336,7 @@ public final class UniqueIdUtils
      *
      *  @see UUID#nameUUIDFromBytes(byte[])
      */
-    @SuppressWarnings( "MagicNumber" )
+    @SuppressWarnings( {"MagicNumber", "ImplicitNumericConversion"} )
     @API( status = STABLE, since = "0.0.5" )
     public static UUID nameUUIDFromBytes( final byte [] name, final HashType hashType )
     {
@@ -411,6 +413,7 @@ public final class UniqueIdUtils
     @API( status = STABLE, since = "0.0.5" )
     public static UUID nameUUIDFromString( final UUID namespace, final CharSequence name, final HashType hashType )
     {
+        @SuppressWarnings( "LocalVariableNamingConvention" )
         final var n = requireNonNullArgument( namespace, "namespace" ).toString() + requireNonNullArgument( name, "name" );
 
         //---* Create the UUID *-----------------------------------------------
@@ -475,6 +478,7 @@ public final class UniqueIdUtils
      *      used for the UUID.
      *  @return The UUID.
      */
+    @SuppressWarnings( "ConstantExpression" )
     @API( status = STABLE, since = "0.0.5" )
     public static UUID timebasedUUID( final long nodeId )
     {

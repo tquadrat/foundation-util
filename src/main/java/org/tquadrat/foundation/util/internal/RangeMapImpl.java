@@ -37,14 +37,14 @@ import org.tquadrat.foundation.util.RangeMap;
  *  {@link RangeMap}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: RangeMapImpl.java 995 2022-01-23 01:09:35Z tquadrat $
+ *  @version $Id: RangeMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.7
  *
  *  @param <T>  The type of the mapped value.
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: RangeMapImpl.java 995 2022-01-23 01:09:35Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public sealed class RangeMapImpl<T> implements RangeMap<T>
     permits FinalRangeMap
@@ -228,9 +228,9 @@ public sealed class RangeMapImpl<T> implements RangeMap<T>
      */
     @SuppressWarnings( "UseOfConcreteClass" )
     @Override
-    public RangeMapImpl<T> setDefault( final T defaultValue )
+    public RangeMapImpl<T> setDefault( final T value )
     {
-        final var entry = new Pair<>( Double.valueOf( Double.MAX_VALUE ), requireNonNullArgument( defaultValue, "defaultValue" ) );
+        final var entry = new Pair<>( Double.valueOf( Double.MAX_VALUE ), requireNonNullArgument( value, "defaultValue" ) );
         if( !m_Ranges.add( entry ) )
         {
             m_Ranges.remove( entry );
@@ -242,8 +242,7 @@ public sealed class RangeMapImpl<T> implements RangeMap<T>
     }   //  setDefault()
 
     /**
-     *  Returns an immutable copy of the given
-     *  {@link RangeMapImpl}.
+     *  Returns an immutable copy of the given {@code RangeMapImpl}.
      *
      *  @param  <T> The type of the mapped value.
      *  @param  other   The other Range map.

@@ -54,12 +54,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see java.util.Base64#getDecoder()
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: BASE64StringConverter.java 1007 2022-02-05 01:03:43Z tquadrat $
+ *  @version $Id: BASE64StringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: BASE64StringConverter.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: BASE64StringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class BASE64StringConverter implements StringConverter<String>
 {
@@ -78,6 +78,14 @@ public final class BASE64StringConverter implements StringConverter<String>
      */
     @Serial
     private static final long serialVersionUID = 1L;
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code BASE64StringConverter}.
+     */
+    public BASE64StringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

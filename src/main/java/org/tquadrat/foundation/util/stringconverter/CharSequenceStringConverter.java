@@ -39,14 +39,23 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  (at best), this implementation exists for cases where a string converter is
  *  retrieved based on the data type; it can simplify the code when no special
  *  case must be considered for {@code CharSequence}.</p>
+ *  <p>Obviously, the method
+ *  {@link #fromString(CharSequence) fromString()}
+ *  will not necessarily return an instance of the exact type that may have
+ *  been used with
+ *  {@link #toString(CharSequence) toString()};
+ *  it will return an instance of
+ *  {@link String},
+ *  as that is the best matching implementation of {@code CharSequence} for
+ *  this purpose.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: CharSequenceStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: CharSequenceStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: CharSequenceStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharSequenceStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class CharSequenceStringConverter implements StringConverter<CharSequence>
 {
@@ -65,6 +74,14 @@ public final class CharSequenceStringConverter implements StringConverter<CharSe
      *  An instance of this class.
      */
     public static final CharSequenceStringConverter INSTANCE = new CharSequenceStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code CharSequenceStringConverter}.
+     */
+    public CharSequenceStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

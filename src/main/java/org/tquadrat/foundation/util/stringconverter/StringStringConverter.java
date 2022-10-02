@@ -41,12 +41,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  be considered for String.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: StringStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: StringStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class StringStringConverter implements StringConverter<String>
 {
@@ -65,6 +65,14 @@ public final class StringStringConverter implements StringConverter<String>
      *  An instance of this class.
      */
     public static final StringStringConverter INSTANCE = new StringStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code StringStringConverter}.
+     */
+    public StringStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

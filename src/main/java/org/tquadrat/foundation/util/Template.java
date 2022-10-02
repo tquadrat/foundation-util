@@ -96,12 +96,12 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 1015 2022-02-09 08:25:36Z tquadrat $
+ *  @version $Id: Template.java 1032 2022-04-10 17:27:44Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: Template.java 1015 2022-02-09 08:25:36Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Template.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class Template implements Serializable
 {
@@ -287,7 +287,7 @@ public class Template implements Serializable
         {
             determineIPAddress().ifPresent( i -> retValue.put( VARNAME_IPAddress, i ) );
         }
-        catch( @SuppressWarnings( "unused" ) final SocketException e ) { /* Deliberately ignored */ }
+        catch( final SocketException ignored ) { /* Deliberately ignored */ }
 
         //---* Done *----------------------------------------------------------
         return retValue;

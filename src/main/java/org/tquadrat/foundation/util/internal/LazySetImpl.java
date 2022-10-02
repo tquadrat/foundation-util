@@ -41,15 +41,14 @@ import org.tquadrat.foundation.util.LazySet;
  *  {@link LazySet}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazySetImpl.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: LazySetImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this set.
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: LazySetImpl.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazySetImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class LazySetImpl<E> implements LazySet<E>
 {
@@ -158,7 +157,6 @@ public final class LazySetImpl<E> implements LazySet<E>
     /**
      *  {@inheritDoc}
      */
-    @SuppressWarnings( {"rawtypes", "TypeMayBeWeakened", "preview"} )
     @Override
     public final boolean equals( final Object o )
     {

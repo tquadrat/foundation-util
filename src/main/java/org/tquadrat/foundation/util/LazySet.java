@@ -34,7 +34,7 @@ import org.tquadrat.foundation.util.internal.LazySetImpl;
  *  that will be initialised only when required.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazySet.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: LazySet.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this set.
@@ -49,8 +49,7 @@ import org.tquadrat.foundation.util.internal.LazySetImpl;
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( "preview" )
-@ClassVersion( sourceVersion = "$Id: LazySet.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazySet.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public sealed interface LazySet<E> extends Set<E>
     permits LazySetImpl

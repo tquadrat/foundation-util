@@ -43,12 +43,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to obtain an instance of {@code Locale} based on the given value.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LocaleStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: LocaleStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: LocaleStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LocaleStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class LocaleStringConverter implements StringConverter<Locale>
 {
@@ -75,6 +75,14 @@ public final class LocaleStringConverter implements StringConverter<Locale>
      *  An instance of this class.
      */
     public static final LocaleStringConverter INSTANCE = new LocaleStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code LocaleStringConverter}.
+     */
+    public LocaleStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

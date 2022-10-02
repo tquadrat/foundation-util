@@ -55,13 +55,13 @@ import org.tquadrat.foundation.util.internal.HeadTailListImpl;
  *  @param  <T> The element type of the list.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: HeadTailList.java 995 2022-01-23 01:09:35Z tquadrat $
+ *  @version $Id: HeadTailList.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.4
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: HeadTailList.java 995 2022-01-23 01:09:35Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HeadTailList.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.4" )
 public sealed interface HeadTailList<T> extends Iterable<T>
     permits HeadTailListImpl
@@ -121,7 +121,6 @@ public sealed interface HeadTailList<T> extends Iterable<T>
         var retValue = false;
         if( nonNull( element ) )
         {
-            //noinspection ForLoopWithMissingComponent
             for( final var i = iterator(); i.hasNext() && !retValue; ) retValue = i.next().equals( element );
         }
 
@@ -181,6 +180,7 @@ public sealed interface HeadTailList<T> extends Iterable<T>
      *  @param  elements    The elements.
      *  @return The new list.
      */
+    @SafeVarargs
     public static <E> HeadTailList<E> from( final E... elements )
     {
         HeadTailList<E> retValue = empty();
@@ -243,7 +243,6 @@ public sealed interface HeadTailList<T> extends Iterable<T>
     /**
      *  {@inheritDoc}
      */
-    @SuppressWarnings( "AbstractMethodOverridesAbstractMethod" )
     @Override
     public Iterator<T> iterator();
 
@@ -258,6 +257,7 @@ public sealed interface HeadTailList<T> extends Iterable<T>
      *  @param  list    The list to merge into this one.
      *  @return The new list.
      */
+    @SuppressWarnings( "LocalVariableNamingConvention" )
     public default HeadTailList<T> merge( final HeadTailList<? extends T> list )
     {
         @SuppressWarnings( "unchecked" )
@@ -304,9 +304,9 @@ public sealed interface HeadTailList<T> extends Iterable<T>
         var retValue = this;
         if( !requireNonNullArgument( list, "list" ).isEmpty() )
         {
-            final var l = new ArrayList<>( list );
-            reverse( l );
-            for( final var e : l ) retValue = retValue.add( e );
+            final var temporaryList = new ArrayList<>( list );
+            reverse( temporaryList );
+            for( final var e : temporaryList ) retValue = retValue.add( e );
         }
 
         //---* Done *----------------------------------------------------------

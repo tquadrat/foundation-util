@@ -39,13 +39,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @param  <T> The type that is handled by this class.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: NumberStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: NumberStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( "preview" )
-@ClassVersion( sourceVersion = "$Id: NumberStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: NumberStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public abstract sealed class NumberStringConverter<T extends Number> implements StringConverter<T>
     permits org.tquadrat.foundation.util.stringconverter.BigDecimalStringConverter,

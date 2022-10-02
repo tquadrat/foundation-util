@@ -90,11 +90,11 @@
 <span class="source-line-no">077</span><span id="line-77"> *  &lt;/table&gt;</span>
 <span class="source-line-no">078</span><span id="line-78"> *</span>
 <span class="source-line-no">079</span><span id="line-79"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">080</span><span id="line-80"> *  @version $Id: TextStringConverter.java 934 2021-12-06 15:19:40Z tquadrat $</span>
+<span class="source-line-no">080</span><span id="line-80"> *  @version $Id: TextStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
 <span class="source-line-no">081</span><span id="line-81"> *  @UMLGraph.link</span>
 <span class="source-line-no">082</span><span id="line-82"> *  @since 0.1.0</span>
 <span class="source-line-no">083</span><span id="line-83"> */</span>
-<span class="source-line-no">084</span><span id="line-84">@ClassVersion( sourceVersion = "$Id: TextStringConverter.java 934 2021-12-06 15:19:40Z tquadrat $" )</span>
+<span class="source-line-no">084</span><span id="line-84">@ClassVersion( sourceVersion = "$Id: TextStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
 <span class="source-line-no">085</span><span id="line-85">@API( status = STABLE, since = "0.1.0" )</span>
 <span class="source-line-no">086</span><span id="line-86">public final class TextStringConverter implements StringConverter&lt;String&gt;</span>
 <span class="source-line-no">087</span><span id="line-87">{</span>
@@ -114,84 +114,92 @@
 <span class="source-line-no">101</span><span id="line-101">     */</span>
 <span class="source-line-no">102</span><span id="line-102">    public static final TextStringConverter INSTANCE = new TextStringConverter();</span>
 <span class="source-line-no">103</span><span id="line-103"></span>
-<span class="source-line-no">104</span><span id="line-104">        /*---------*\</span>
-<span class="source-line-no">105</span><span id="line-105">    ====** Methods **==========================================================</span>
-<span class="source-line-no">106</span><span id="line-106">        \*---------*/</span>
+<span class="source-line-no">104</span><span id="line-104">        /*--------------*\</span>
+<span class="source-line-no">105</span><span id="line-105">    ====** Constructors **=====================================================</span>
+<span class="source-line-no">106</span><span id="line-106">        \*--------------*/</span>
 <span class="source-line-no">107</span><span id="line-107">    /**</span>
-<span class="source-line-no">108</span><span id="line-108">     *  Returns the escape sequence for the given special character, or the</span>
-<span class="source-line-no">109</span><span id="line-109">     *  character itself if it does not need an escape.</span>
-<span class="source-line-no">110</span><span id="line-110">     *</span>
-<span class="source-line-no">111</span><span id="line-111">     *  @param  c   The character.</span>
-<span class="source-line-no">112</span><span id="line-112">     *  @return  The escape sequence.</span>
-<span class="source-line-no">113</span><span id="line-113">     */</span>
-<span class="source-line-no">114</span><span id="line-114">    private final IntStream escape( final int c )</span>
-<span class="source-line-no">115</span><span id="line-115">    {</span>
-<span class="source-line-no">116</span><span id="line-116">        final var retValue = switch( c )</span>
-<span class="source-line-no">117</span><span id="line-117">        {</span>
-<span class="source-line-no">118</span><span id="line-118">            case '\b' -&gt; IntStream.of( '\\', 'b' );</span>
-<span class="source-line-no">119</span><span id="line-119">            case '\t' -&gt; IntStream.of( '\\', 't' );</span>
-<span class="source-line-no">120</span><span id="line-120">            case '\n' -&gt; IntStream.of( '\\', 'n' );</span>
-<span class="source-line-no">121</span><span id="line-121">            case '\f' -&gt; IntStream.of( '\\', 'f' );</span>
-<span class="source-line-no">122</span><span id="line-122">            case '\r' -&gt; IntStream.of( '\\', 'r' );</span>
-<span class="source-line-no">123</span><span id="line-123">            case '\\' -&gt; IntStream.of( '\\', '\\' );</span>
-<span class="source-line-no">124</span><span id="line-124">            default -&gt; c &lt; 0x20</span>
-<span class="source-line-no">125</span><span id="line-125">                ? IntStream.concat( IntStream.of( '\\' ), Integer.toString( c, 8 ).codePoints() )</span>
-<span class="source-line-no">126</span><span id="line-126">                : IntStream.of( c );</span>
-<span class="source-line-no">127</span><span id="line-127">        };</span>
-<span class="source-line-no">128</span><span id="line-128"></span>
-<span class="source-line-no">129</span><span id="line-129">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">130</span><span id="line-130">        return retValue;</span>
-<span class="source-line-no">131</span><span id="line-131">    }   //  escape()</span>
-<span class="source-line-no">132</span><span id="line-132"></span>
-<span class="source-line-no">133</span><span id="line-133">    /**</span>
-<span class="source-line-no">134</span><span id="line-134">     *  {@inheritDoc}</span>
-<span class="source-line-no">135</span><span id="line-135">     */</span>
-<span class="source-line-no">136</span><span id="line-136">    @Override</span>
-<span class="source-line-no">137</span><span id="line-137">    public final String fromString( final CharSequence source ) throws IllegalArgumentException</span>
-<span class="source-line-no">138</span><span id="line-138">    {</span>
-<span class="source-line-no">139</span><span id="line-139">        final var retValue = isNull( source ) ? null : source.toString().translateEscapes();</span>
+<span class="source-line-no">108</span><span id="line-108">     *  Creates a new instance of {@code TextStringConverter}.</span>
+<span class="source-line-no">109</span><span id="line-109">     */</span>
+<span class="source-line-no">110</span><span id="line-110">    public TextStringConverter() {}</span>
+<span class="source-line-no">111</span><span id="line-111"></span>
+<span class="source-line-no">112</span><span id="line-112">        /*---------*\</span>
+<span class="source-line-no">113</span><span id="line-113">    ====** Methods **==========================================================</span>
+<span class="source-line-no">114</span><span id="line-114">        \*---------*/</span>
+<span class="source-line-no">115</span><span id="line-115">    /**</span>
+<span class="source-line-no">116</span><span id="line-116">     *  Returns the escape sequence for the given special character, or the</span>
+<span class="source-line-no">117</span><span id="line-117">     *  character itself if it does not need an escape.</span>
+<span class="source-line-no">118</span><span id="line-118">     *</span>
+<span class="source-line-no">119</span><span id="line-119">     *  @param  c   The character.</span>
+<span class="source-line-no">120</span><span id="line-120">     *  @return  The escape sequence.</span>
+<span class="source-line-no">121</span><span id="line-121">     */</span>
+<span class="source-line-no">122</span><span id="line-122">    private final IntStream escape( final int c )</span>
+<span class="source-line-no">123</span><span id="line-123">    {</span>
+<span class="source-line-no">124</span><span id="line-124">        final var retValue = switch( c )</span>
+<span class="source-line-no">125</span><span id="line-125">        {</span>
+<span class="source-line-no">126</span><span id="line-126">            case '\b' -&gt; IntStream.of( '\\', 'b' );</span>
+<span class="source-line-no">127</span><span id="line-127">            case '\t' -&gt; IntStream.of( '\\', 't' );</span>
+<span class="source-line-no">128</span><span id="line-128">            case '\n' -&gt; IntStream.of( '\\', 'n' );</span>
+<span class="source-line-no">129</span><span id="line-129">            case '\f' -&gt; IntStream.of( '\\', 'f' );</span>
+<span class="source-line-no">130</span><span id="line-130">            case '\r' -&gt; IntStream.of( '\\', 'r' );</span>
+<span class="source-line-no">131</span><span id="line-131">            case '\\' -&gt; IntStream.of( '\\', '\\' );</span>
+<span class="source-line-no">132</span><span id="line-132">            default -&gt; c &lt; 0x20</span>
+<span class="source-line-no">133</span><span id="line-133">                ? IntStream.concat( IntStream.of( '\\' ), Integer.toString( c, 8 ).codePoints() )</span>
+<span class="source-line-no">134</span><span id="line-134">                : IntStream.of( c );</span>
+<span class="source-line-no">135</span><span id="line-135">        };</span>
+<span class="source-line-no">136</span><span id="line-136"></span>
+<span class="source-line-no">137</span><span id="line-137">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">138</span><span id="line-138">        return retValue;</span>
+<span class="source-line-no">139</span><span id="line-139">    }   //  escape()</span>
 <span class="source-line-no">140</span><span id="line-140"></span>
-<span class="source-line-no">141</span><span id="line-141">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">142</span><span id="line-142">        return retValue;</span>
-<span class="source-line-no">143</span><span id="line-143">    }   //  fromString()</span>
-<span class="source-line-no">144</span><span id="line-144"></span>
-<span class="source-line-no">145</span><span id="line-145">    /**</span>
-<span class="source-line-no">146</span><span id="line-146">     *  {@inheritDoc}</span>
-<span class="source-line-no">147</span><span id="line-147">     */</span>
-<span class="source-line-no">148</span><span id="line-148">    @Override</span>
-<span class="source-line-no">149</span><span id="line-149">    public final String toString( final String source )</span>
-<span class="source-line-no">150</span><span id="line-150">    {</span>
-<span class="source-line-no">151</span><span id="line-151">        String retValue = null;</span>
-<span class="source-line-no">152</span><span id="line-152">        if( nonNull( source ) )</span>
-<span class="source-line-no">153</span><span id="line-153">        {</span>
-<span class="source-line-no">154</span><span id="line-154">            var text = source;</span>
-<span class="source-line-no">155</span><span id="line-155">            var prefix = EMPTY_STRING;</span>
-<span class="source-line-no">156</span><span id="line-156">            var suffix = EMPTY_STRING;</span>
-<span class="source-line-no">157</span><span id="line-157">            if( text.startsWith( " " ) )</span>
-<span class="source-line-no">158</span><span id="line-158">            {</span>
-<span class="source-line-no">159</span><span id="line-159">                prefix = "\\s";</span>
-<span class="source-line-no">160</span><span id="line-160">                text = text.length() &gt; 1 ? text.substring( 1 ) : EMPTY_STRING;</span>
-<span class="source-line-no">161</span><span id="line-161">            }</span>
-<span class="source-line-no">162</span><span id="line-162">            if( text.endsWith( " " ) )</span>
-<span class="source-line-no">163</span><span id="line-163">            {</span>
-<span class="source-line-no">164</span><span id="line-164">                suffix = "\\s";</span>
-<span class="source-line-no">165</span><span id="line-165">                text = text.substring( 0, text.length() - 1 );</span>
-<span class="source-line-no">166</span><span id="line-166">            }</span>
-<span class="source-line-no">167</span><span id="line-167">            final var codePoints = text.codePoints()</span>
-<span class="source-line-no">168</span><span id="line-168">                .flatMap( this::escape )</span>
-<span class="source-line-no">169</span><span id="line-169">                .toArray();</span>
-<span class="source-line-no">170</span><span id="line-170">            retValue = prefix + new String( codePoints, 0, codePoints.length ) + suffix;</span>
-<span class="source-line-no">171</span><span id="line-171">        }</span>
-<span class="source-line-no">172</span><span id="line-172"></span>
-<span class="source-line-no">173</span><span id="line-173">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">174</span><span id="line-174">        return retValue;</span>
-<span class="source-line-no">175</span><span id="line-175">    }   //  toString()</span>
-<span class="source-line-no">176</span><span id="line-176">}</span>
-<span class="source-line-no">177</span><span id="line-177">//  class TextStringConverter</span>
-<span class="source-line-no">178</span><span id="line-178"></span>
-<span class="source-line-no">179</span><span id="line-179">/*</span>
-<span class="source-line-no">180</span><span id="line-180"> *  End of File</span>
-<span class="source-line-no">181</span><span id="line-181"> */</span>
+<span class="source-line-no">141</span><span id="line-141">    /**</span>
+<span class="source-line-no">142</span><span id="line-142">     *  {@inheritDoc}</span>
+<span class="source-line-no">143</span><span id="line-143">     */</span>
+<span class="source-line-no">144</span><span id="line-144">    @Override</span>
+<span class="source-line-no">145</span><span id="line-145">    public final String fromString( final CharSequence source ) throws IllegalArgumentException</span>
+<span class="source-line-no">146</span><span id="line-146">    {</span>
+<span class="source-line-no">147</span><span id="line-147">        final var retValue = isNull( source ) ? null : source.toString().translateEscapes();</span>
+<span class="source-line-no">148</span><span id="line-148"></span>
+<span class="source-line-no">149</span><span id="line-149">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">150</span><span id="line-150">        return retValue;</span>
+<span class="source-line-no">151</span><span id="line-151">    }   //  fromString()</span>
+<span class="source-line-no">152</span><span id="line-152"></span>
+<span class="source-line-no">153</span><span id="line-153">    /**</span>
+<span class="source-line-no">154</span><span id="line-154">     *  {@inheritDoc}</span>
+<span class="source-line-no">155</span><span id="line-155">     */</span>
+<span class="source-line-no">156</span><span id="line-156">    @Override</span>
+<span class="source-line-no">157</span><span id="line-157">    public final String toString( final String source )</span>
+<span class="source-line-no">158</span><span id="line-158">    {</span>
+<span class="source-line-no">159</span><span id="line-159">        String retValue = null;</span>
+<span class="source-line-no">160</span><span id="line-160">        if( nonNull( source ) )</span>
+<span class="source-line-no">161</span><span id="line-161">        {</span>
+<span class="source-line-no">162</span><span id="line-162">            var text = source;</span>
+<span class="source-line-no">163</span><span id="line-163">            var prefix = EMPTY_STRING;</span>
+<span class="source-line-no">164</span><span id="line-164">            var suffix = EMPTY_STRING;</span>
+<span class="source-line-no">165</span><span id="line-165">            if( text.startsWith( " " ) )</span>
+<span class="source-line-no">166</span><span id="line-166">            {</span>
+<span class="source-line-no">167</span><span id="line-167">                prefix = "\\s";</span>
+<span class="source-line-no">168</span><span id="line-168">                text = text.length() &gt; 1 ? text.substring( 1 ) : EMPTY_STRING;</span>
+<span class="source-line-no">169</span><span id="line-169">            }</span>
+<span class="source-line-no">170</span><span id="line-170">            if( text.endsWith( " " ) )</span>
+<span class="source-line-no">171</span><span id="line-171">            {</span>
+<span class="source-line-no">172</span><span id="line-172">                suffix = "\\s";</span>
+<span class="source-line-no">173</span><span id="line-173">                text = text.substring( 0, text.length() - 1 );</span>
+<span class="source-line-no">174</span><span id="line-174">            }</span>
+<span class="source-line-no">175</span><span id="line-175">            final var codePoints = text.codePoints()</span>
+<span class="source-line-no">176</span><span id="line-176">                .flatMap( this::escape )</span>
+<span class="source-line-no">177</span><span id="line-177">                .toArray();</span>
+<span class="source-line-no">178</span><span id="line-178">            retValue = prefix + new String( codePoints, 0, codePoints.length ) + suffix;</span>
+<span class="source-line-no">179</span><span id="line-179">        }</span>
+<span class="source-line-no">180</span><span id="line-180"></span>
+<span class="source-line-no">181</span><span id="line-181">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">182</span><span id="line-182">        return retValue;</span>
+<span class="source-line-no">183</span><span id="line-183">    }   //  toString()</span>
+<span class="source-line-no">184</span><span id="line-184">}</span>
+<span class="source-line-no">185</span><span id="line-185">//  class TextStringConverter</span>
+<span class="source-line-no">186</span><span id="line-186"></span>
+<span class="source-line-no">187</span><span id="line-187">/*</span>
+<span class="source-line-no">188</span><span id="line-188"> *  End of File</span>
+<span class="source-line-no">189</span><span id="line-189"> */</span>
 
 
 

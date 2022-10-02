@@ -114,7 +114,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="LazySortedMapImpl.html" title="class in org.tquadrat.foundation.util.internal">LazySortedMapImpl</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: LazyMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: LazyMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#INTERNAL" title="class or interface in org.apiguardian.api" class="external-link">INTERNAL</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
 </span><span class="modifiers">public sealed class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-48">LazyMapImpl</a>&lt;K,<wbr>V&gt;</span>
@@ -127,7 +127,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: LazyMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $</dd>
+<dd>$Id: LazyMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.5</dd>
 
@@ -311,14 +311,14 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="m_Holder">
 <h3>m_Holder</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/Lazy.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">Lazy</a>&lt;? extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-60">m_Holder</a></span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/Lazy.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">Lazy</a>&lt;? extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-59">m_Holder</a></span></div>
 <div class="block">The holder for the real map.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_SupplierPopulates">
 <h3>m_SupplierPopulates</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-66">m_SupplierPopulates</a></span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-65">m_SupplierPopulates</a></span></div>
 <div class="block">The flag that indicates whether the provided supplier will put values
   to the list on initialisation.</div>
 </section>
@@ -334,7 +334,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="&lt;init&gt;(boolean,java.util.function.Supplier)">
 <h3>LazyMapImpl</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-80">LazyMapImpl</a></span><wbr><span class="parameters">(boolean&nbsp;doPopulate,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-79">LazyMapImpl</a></span><wbr><span class="parameters">(boolean&nbsp;doPopulate,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;? extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;&nbsp;supplier)</span></div>
 <div class="block">Creates a new <code>LazyMapImpl</code> instance.</div>
 <dl class="notes">
@@ -350,7 +350,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="&lt;init&gt;(java.util.Map)">
 <h3>LazyMapImpl</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-92">LazyMapImpl</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&nbsp;value)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-91">LazyMapImpl</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&nbsp;value)</span></div>
 <div class="block">Creates a new <code>LazyMapImpl</code> instance that is initialised with the
   given value.</div>
 <dl class="notes">
@@ -370,7 +370,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="clear()">
 <h3>clear</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-104">clear</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-103">clear</a></span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#clear()" title="class or interface in java.util" class="external-link">clear</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -380,7 +380,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="containsKey(java.lang.Object)">
 <h3>containsKey</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-114">containsKey</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;key)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-113">containsKey</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;key)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#containsKey(java.lang.Object)" title="class or interface in java.util" class="external-link">containsKey</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -390,7 +390,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="containsValue(java.lang.Object)">
 <h3>containsValue</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-127">containsValue</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;value)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-126">containsValue</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;value)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#containsValue(java.lang.Object)" title="class or interface in java.util" class="external-link">containsValue</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -400,7 +400,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="entrySet()">
 <h3>entrySet</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.Entry.html" title="class or interface in java.util" class="external-link">Map.Entry</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-140">entrySet</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.Entry.html" title="class or interface in java.util" class="external-link">Map.Entry</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-139">entrySet</a></span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#entrySet()" title="class or interface in java.util" class="external-link">entrySet</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -410,7 +410,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="equals(java.lang.Object)">
 <h3>equals</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-154">equals</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-152">equals</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;o)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#equals(java.lang.Object)" title="class or interface in java.util" class="external-link">equals</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -422,7 +422,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="get(java.lang.Object)">
 <h3>get</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-182">get</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;key)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-179">get</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;key)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#get(java.lang.Object)" title="class or interface in java.util" class="external-link">get</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -432,7 +432,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="hashCode()">
 <h3>hashCode</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-196">hashCode</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-193">hashCode</a></span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#hashCode()" title="class or interface in java.util" class="external-link">hashCode</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -444,7 +444,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="holder()">
 <h3>holder</h3>
-<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/Lazy.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">Lazy</a>&lt;? extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-210">holder</a></span>()</div>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/Lazy.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">Lazy</a>&lt;? extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-207">holder</a></span>()</div>
 <div class="block">Gives access to the internal
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/Lazy.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>Lazy</code></a>
   instance for derived classes.</div>
@@ -458,7 +458,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="ifPresent(java.util.function.Consumer)">
 <h3>ifPresent</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-215">ifPresent</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html" title="class or interface in java.util.function" class="external-link">Consumer</a>&lt;? super <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;&nbsp;consumer)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-212">ifPresent</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html" title="class or interface in java.util.function" class="external-link">Consumer</a>&lt;? super <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&gt;&nbsp;consumer)</span></div>
 <div class="block">If this <code>LazyMap</code> instance has been initialised already, the
   provided
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Consumer.html" title="class or interface in java.util.function" class="external-link"><code>Consumer</code></a>
@@ -474,7 +474,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="init()">
 <h3>init</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-225">init</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-222">init</a></span>()</div>
 <div class="block">Forces the initialisation of this <code>LazyMap</code> instance.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -485,7 +485,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="isEmpty()">
 <h3>isEmpty</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-231">isEmpty</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-228">isEmpty</a></span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#isEmpty()" title="class or interface in java.util" class="external-link">isEmpty</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -495,7 +495,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="isPresent()">
 <h3>isPresent</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-243">isPresent</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-240">isPresent</a></span>()</div>
 <div class="block">Checks whether this <code>LazyMap</code> instance has been initialised
   already.</div>
 <dl class="notes">
@@ -510,7 +510,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="keySet()">
 <h3>keySet</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-249">keySet</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link">Set</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-246">keySet</a></span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#keySet()" title="class or interface in java.util" class="external-link">keySet</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -520,7 +520,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="put(K,V)">
 <h3 id="put(java.lang.Object,java.lang.Object)">put</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-263">put</a></span><wbr><span class="parameters">(<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>&nbsp;key,
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-259">put</a></span><wbr><span class="parameters">(<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>&nbsp;key,
  <a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&nbsp;value)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -531,7 +531,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="putAll(java.util.Map)">
 <h3>putAll</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-275">putAll</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr>? extends <a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&nbsp;map)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-271">putAll</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;? extends <a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr>? extends <a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;&nbsp;map)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#putAll(java.util.Map)" title="class or interface in java.util" class="external-link">putAll</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -541,7 +541,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="remove(java.lang.Object)">
 <h3>remove</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-281">remove</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;key)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-277">remove</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>&nbsp;key)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#remove(java.lang.Object)" title="class or interface in java.util" class="external-link">remove</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -551,7 +551,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="size()">
 <h3>size</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-295">size</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-291">size</a></span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#size()" title="class or interface in java.util" class="external-link">size</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>
@@ -561,7 +561,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="toString()">
 <h3>toString</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-307">toString</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-303">toString</a></span>()</div>
 <dl class="notes">
 <dt>Overrides:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a></code>&nbsp;in class&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></code></dd>
@@ -571,7 +571,7 @@ implements <a href="../LazyMap.html" title="interface in org.tquadrat.foundation
 <li>
 <section class="detail" id="values()">
 <h3>values</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-319">values</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Collection.html" title="class or interface in java.util" class="external-link">Collection</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#line-315">values</a></span>()</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html#values()" title="class or interface in java.util" class="external-link">values</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">K</a>,<wbr><a href="LazyMapImpl.html" title="type parameter in LazyMapImpl">V</a>&gt;</code></dd>

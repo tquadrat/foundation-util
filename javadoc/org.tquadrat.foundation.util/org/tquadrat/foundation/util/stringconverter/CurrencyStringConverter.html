@@ -89,7 +89,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a></code>, <code><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">StringConverter</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Currency.html" title="class or interface in java.util" class="external-link">Currency</a>&gt;</code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: CurrencyStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: CurrencyStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.0")
 </span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-55">CurrencyStringConverter</a></span>
@@ -115,7 +115,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: CurrencyStringConverter.java 997 2022-01-26 14:55:05Z tquadrat $</dd>
+<dd>$Id: CurrencyStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.6</dd>
 <dt>See Also:</dt>
@@ -175,7 +175,9 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E()" class="member-name-link">CurrencyStringConverter</a>()</code></div>
-<div class="col-last even-row-color">&nbsp;</div>
+<div class="col-last even-row-color">
+<div class="block">Creates a new instance of <code>CurrencyStringConverter</code>.</div>
+</div>
 </div>
 </section>
 </li>
@@ -240,7 +242,8 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="&lt;init&gt;()">
 <h3>CurrencyStringConverter</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-57">CurrencyStringConverter</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-81">CurrencyStringConverter</a></span>()</div>
+<div class="block">Creates a new instance of <code>CurrencyStringConverter</code>.</div>
 </section>
 </li>
 </ul>
@@ -254,7 +257,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="fromString(java.lang.CharSequence)">
 <h3>fromString</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Currency.html" title="class or interface in java.util" class="external-link">Currency</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-81">fromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;source)</span>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Currency.html" title="class or interface in java.util" class="external-link">Currency</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-89">fromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;source)</span>
                           throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -267,7 +270,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="provider()">
 <h3>provider</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="CurrencyStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CurrencyStringConverter</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-99">provider</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="CurrencyStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">CurrencyStringConverter</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-107">provider</a></span>()</div>
 <div class="block">This method is used by the
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ServiceLoader.html" title="class or interface in java.util" class="external-link"><code>ServiceLoader</code></a>
   to obtain the instance for this
@@ -282,7 +285,7 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
 <li>
 <section class="detail" id="toString(java.util.Currency)">
 <h3>toString</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-105">toString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Currency.html" title="class or interface in java.util" class="external-link">Currency</a>&nbsp;source)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/CurrencyStringConverter.html#line-113">toString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Currency.html" title="class or interface in java.util" class="external-link">Currency</a>&nbsp;source)</span></div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html#toString(T)" title="class or interface in org.tquadrat.foundation.lang" class="external-link">toString</a></code>&nbsp;in interface&nbsp;<code><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">StringConverter</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Currency.html" title="class or interface in java.util" class="external-link">Currency</a>&gt;</code></dd>

@@ -86,12 +86,12 @@
 <span class="source-line-no">073</span><span id="line-73"> *  @see Duration</span>
 <span class="source-line-no">074</span><span id="line-74"> *</span>
 <span class="source-line-no">075</span><span id="line-75"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">076</span><span id="line-76"> *  @version $Id: DurationStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $</span>
+<span class="source-line-no">076</span><span id="line-76"> *  @version $Id: DurationStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
 <span class="source-line-no">077</span><span id="line-77"> *  @since 0.0.7</span>
 <span class="source-line-no">078</span><span id="line-78"> *</span>
 <span class="source-line-no">079</span><span id="line-79"> *  @UMLGraph.link</span>
 <span class="source-line-no">080</span><span id="line-80"> */</span>
-<span class="source-line-no">081</span><span id="line-81">@ClassVersion( sourceVersion = "$Id: DurationStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )</span>
+<span class="source-line-no">081</span><span id="line-81">@ClassVersion( sourceVersion = "$Id: DurationStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
 <span class="source-line-no">082</span><span id="line-82">@API( status = STABLE, since = "0.0.7" )</span>
 <span class="source-line-no">083</span><span id="line-83">public final class DurationStringConverter implements StringConverter&lt;Duration&gt;</span>
 <span class="source-line-no">084</span><span id="line-84">{</span>
@@ -119,49 +119,57 @@
 <span class="source-line-no">106</span><span id="line-106">     */</span>
 <span class="source-line-no">107</span><span id="line-107">    public static final DurationStringConverter INSTANCE = new DurationStringConverter();</span>
 <span class="source-line-no">108</span><span id="line-108"></span>
-<span class="source-line-no">109</span><span id="line-109">        /*---------*\</span>
-<span class="source-line-no">110</span><span id="line-110">    ====** Methods **==========================================================</span>
-<span class="source-line-no">111</span><span id="line-111">        \*---------*/</span>
+<span class="source-line-no">109</span><span id="line-109">        /*--------------*\</span>
+<span class="source-line-no">110</span><span id="line-110">    ====** Constructors **=====================================================</span>
+<span class="source-line-no">111</span><span id="line-111">        \*--------------*/</span>
 <span class="source-line-no">112</span><span id="line-112">    /**</span>
-<span class="source-line-no">113</span><span id="line-113">     *  {@inheritDoc}</span>
+<span class="source-line-no">113</span><span id="line-113">     *  Creates a new instance of {@code DurationStringConverter}.</span>
 <span class="source-line-no">114</span><span id="line-114">     */</span>
-<span class="source-line-no">115</span><span id="line-115">    @Override</span>
-<span class="source-line-no">116</span><span id="line-116">    public final Duration fromString( final CharSequence source ) throws IllegalArgumentException</span>
-<span class="source-line-no">117</span><span id="line-117">    {</span>
-<span class="source-line-no">118</span><span id="line-118">        Duration retValue = null;</span>
-<span class="source-line-no">119</span><span id="line-119">        if( nonNull( source ) )</span>
-<span class="source-line-no">120</span><span id="line-120">        {</span>
-<span class="source-line-no">121</span><span id="line-121">            try</span>
-<span class="source-line-no">122</span><span id="line-122">            {</span>
-<span class="source-line-no">123</span><span id="line-123">                retValue = Duration.parse( source );</span>
-<span class="source-line-no">124</span><span id="line-124">            }</span>
-<span class="source-line-no">125</span><span id="line-125">            catch( final DateTimeParseException e )</span>
-<span class="source-line-no">126</span><span id="line-126">            {</span>
-<span class="source-line-no">127</span><span id="line-127">                throw new IllegalArgumentException( format( MSG_InvalidDuration, source ), e );</span>
-<span class="source-line-no">128</span><span id="line-128">            }</span>
-<span class="source-line-no">129</span><span id="line-129">        }</span>
-<span class="source-line-no">130</span><span id="line-130"></span>
-<span class="source-line-no">131</span><span id="line-131">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">132</span><span id="line-132">        return retValue;</span>
-<span class="source-line-no">133</span><span id="line-133">    }   //  fromString()</span>
-<span class="source-line-no">134</span><span id="line-134"></span>
-<span class="source-line-no">135</span><span id="line-135">    /**</span>
-<span class="source-line-no">136</span><span id="line-136">     *  This method is used by the</span>
-<span class="source-line-no">137</span><span id="line-137">     *  {@link java.util.ServiceLoader}</span>
-<span class="source-line-no">138</span><span id="line-138">     *  to obtain the instance for this</span>
-<span class="source-line-no">139</span><span id="line-139">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
-<span class="source-line-no">140</span><span id="line-140">     *  implementation.</span>
-<span class="source-line-no">141</span><span id="line-141">     *</span>
-<span class="source-line-no">142</span><span id="line-142">     *  @return The instance for this {@code StringConverter} implementation.</span>
-<span class="source-line-no">143</span><span id="line-143">     */</span>
-<span class="source-line-no">144</span><span id="line-144">    @SuppressWarnings( "UseOfConcreteClass" )</span>
-<span class="source-line-no">145</span><span id="line-145">    public static final DurationStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">146</span><span id="line-146">}</span>
-<span class="source-line-no">147</span><span id="line-147">//  class DurationStringConverter</span>
-<span class="source-line-no">148</span><span id="line-148"></span>
-<span class="source-line-no">149</span><span id="line-149">/*</span>
-<span class="source-line-no">150</span><span id="line-150"> *  End of File</span>
-<span class="source-line-no">151</span><span id="line-151"> */</span>
+<span class="source-line-no">115</span><span id="line-115">    public DurationStringConverter() {}</span>
+<span class="source-line-no">116</span><span id="line-116"></span>
+<span class="source-line-no">117</span><span id="line-117">        /*---------*\</span>
+<span class="source-line-no">118</span><span id="line-118">    ====** Methods **==========================================================</span>
+<span class="source-line-no">119</span><span id="line-119">        \*---------*/</span>
+<span class="source-line-no">120</span><span id="line-120">    /**</span>
+<span class="source-line-no">121</span><span id="line-121">     *  {@inheritDoc}</span>
+<span class="source-line-no">122</span><span id="line-122">     */</span>
+<span class="source-line-no">123</span><span id="line-123">    @Override</span>
+<span class="source-line-no">124</span><span id="line-124">    public final Duration fromString( final CharSequence source ) throws IllegalArgumentException</span>
+<span class="source-line-no">125</span><span id="line-125">    {</span>
+<span class="source-line-no">126</span><span id="line-126">        Duration retValue = null;</span>
+<span class="source-line-no">127</span><span id="line-127">        if( nonNull( source ) )</span>
+<span class="source-line-no">128</span><span id="line-128">        {</span>
+<span class="source-line-no">129</span><span id="line-129">            try</span>
+<span class="source-line-no">130</span><span id="line-130">            {</span>
+<span class="source-line-no">131</span><span id="line-131">                retValue = Duration.parse( source );</span>
+<span class="source-line-no">132</span><span id="line-132">            }</span>
+<span class="source-line-no">133</span><span id="line-133">            catch( final DateTimeParseException e )</span>
+<span class="source-line-no">134</span><span id="line-134">            {</span>
+<span class="source-line-no">135</span><span id="line-135">                throw new IllegalArgumentException( format( MSG_InvalidDuration, source ), e );</span>
+<span class="source-line-no">136</span><span id="line-136">            }</span>
+<span class="source-line-no">137</span><span id="line-137">        }</span>
+<span class="source-line-no">138</span><span id="line-138"></span>
+<span class="source-line-no">139</span><span id="line-139">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">140</span><span id="line-140">        return retValue;</span>
+<span class="source-line-no">141</span><span id="line-141">    }   //  fromString()</span>
+<span class="source-line-no">142</span><span id="line-142"></span>
+<span class="source-line-no">143</span><span id="line-143">    /**</span>
+<span class="source-line-no">144</span><span id="line-144">     *  This method is used by the</span>
+<span class="source-line-no">145</span><span id="line-145">     *  {@link java.util.ServiceLoader}</span>
+<span class="source-line-no">146</span><span id="line-146">     *  to obtain the instance for this</span>
+<span class="source-line-no">147</span><span id="line-147">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
+<span class="source-line-no">148</span><span id="line-148">     *  implementation.</span>
+<span class="source-line-no">149</span><span id="line-149">     *</span>
+<span class="source-line-no">150</span><span id="line-150">     *  @return The instance for this {@code StringConverter} implementation.</span>
+<span class="source-line-no">151</span><span id="line-151">     */</span>
+<span class="source-line-no">152</span><span id="line-152">    @SuppressWarnings( "UseOfConcreteClass" )</span>
+<span class="source-line-no">153</span><span id="line-153">    public static final DurationStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">154</span><span id="line-154">}</span>
+<span class="source-line-no">155</span><span id="line-155">//  class DurationStringConverter</span>
+<span class="source-line-no">156</span><span id="line-156"></span>
+<span class="source-line-no">157</span><span id="line-157">/*</span>
+<span class="source-line-no">158</span><span id="line-158"> *  End of File</span>
+<span class="source-line-no">159</span><span id="line-159"> */</span>
 
 
 

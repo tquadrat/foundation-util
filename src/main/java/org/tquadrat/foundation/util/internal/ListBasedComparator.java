@@ -45,12 +45,12 @@ import org.tquadrat.foundation.util.Comparators.KeyProvider;
  *      the same as the type itself.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $
+ *  @version $Id: ListBasedComparator.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public class ListBasedComparator<T,K> implements Comparator<T>
 {
@@ -63,7 +63,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *  that returns the instance itself as the sort order key.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $
+     *  @version $Id: ListBasedComparator.java 1032 2022-04-10 17:27:44Z tquadrat $
      *
      *  @param  <T> The type to order.
      *  @param  <K> The key type that is used to determine the order; this may
@@ -72,9 +72,17 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     public static class SimpleKeyProvider<T,K extends T> implements KeyProvider<T,K>
     {
+            /*--------------*\
+        ====** Constructors **=====================================================
+            \*--------------*/
+        /**
+         *  Creates a new instance of {@code SimpleKeyProvider}.
+         */
+        public SimpleKeyProvider() { /* Just exists */ }
+
             /*---------*\
         ====** Methods **======================================================
             \*---------*/
@@ -122,7 +130,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *      that are not listed.
      *  @param  keys    The sort order keys.
      */
-    @SuppressWarnings( {"unchecked", "MethodCanBeVariableArityMethod"} )
+    @SuppressWarnings( "MethodCanBeVariableArityMethod" )
     public ListBasedComparator( final KeyProvider<T,K> keyProvider, final Comparator<? super K> comparator, final K [] keys )
     {
         m_Keys = requireNonNullArgument( keys, "keys" );

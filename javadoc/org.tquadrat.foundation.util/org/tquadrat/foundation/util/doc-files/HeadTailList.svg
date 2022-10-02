@@ -287,7 +287,7 @@
                     <text x='5.000'
                           y='154.000'>+ forEachReverse(action:java.util.function.Consumer&lt;? super T&gt;):void</text>
                     <text x='5.000'
-                          y='165.000'>- _forEachReverse(action:java.util.function.Consumer&lt;? super T&gt;):void</text>
+                          y='165.000'>- internalForEachReverse(action:java.util.function.Consumer&lt;? super T&gt;):void</text>
                     <text x='5.000'
                           y='176.000'>+ hashCode():int</text>
                     <text x='5.000'

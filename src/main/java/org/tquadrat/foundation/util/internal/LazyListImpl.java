@@ -46,15 +46,15 @@ import org.tquadrat.foundation.util.LazyList;
  *  {@link LazyList}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazyListImpl.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: LazyListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this list.
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: LazyListImpl.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@SuppressWarnings( "OverlyComplexClass" )
+@ClassVersion( sourceVersion = "$Id: LazyListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class LazyListImpl<E> implements LazyList<E>
 {
@@ -186,7 +186,6 @@ public final class LazyListImpl<E> implements LazyList<E>
     /**
      *  {@inheritDoc}
      */
-    @SuppressWarnings( {"rawtypes", "TypeMayBeWeakened", "preview"} )
     @Override
     public final boolean equals( final Object o )
     {

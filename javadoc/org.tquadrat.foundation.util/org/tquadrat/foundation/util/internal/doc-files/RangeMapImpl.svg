@@ -174,7 +174,7 @@
                     <text x='5.000'
                           y='198.000'>+ removeRange(key:double):org.tquadrat.foundation.util.RangeMap&lt;T&gt;</text>
                     <text x='5.000'
-                          y='209.000'>+ setDefault(defaultValue:T):org.tquadrat.foundation.util.internal.RangeMapImpl&lt;T&gt;</text>
+                          y='209.000'>+ setDefault(value:T):org.tquadrat.foundation.util.internal.RangeMapImpl&lt;T&gt;</text>
                     <text x='5.000'
                           y='220.000'
                           class='static'>+ unmodifiableRangeMap(other:org.tquadrat.foundation.util.internal.RangeMapImpl&lt;? extends T&gt;):org.tquadrat.foundation.util.internal.RangeMapImpl&lt;T&gt;</text>
@@ -235,7 +235,7 @@
                     <text x='5.000'
                           y='88.000'>+ removeRange(key:double):org.tquadrat.foundation.util.RangeMap&lt;T&gt;</text>
                     <text x='5.000'
-                          y='99.000'>+ setDefault(defaultValue:T):org.tquadrat.foundation.util.internal.FinalRangeMap&lt;T&gt;</text>
+                          y='99.000'>+ setDefault(value:T):org.tquadrat.foundation.util.internal.FinalRangeMap&lt;T&gt;</text>
                 </g>
                 <g transform='translate(501.000 0.000)'>
                     <rect x='0.000'

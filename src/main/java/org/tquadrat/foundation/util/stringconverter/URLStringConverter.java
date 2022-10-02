@@ -46,12 +46,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to create a {@code URL} instance from the given value.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: URLStringConverter.java 1003 2022-02-02 11:07:25Z tquadrat $
+ *  @version $Id: URLStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: URLStringConverter.java 1003 2022-02-02 11:07:25Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: URLStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public sealed class URLStringConverter implements StringConverter<URL>
     permits EncodedURLStringConverter
@@ -79,6 +79,14 @@ public sealed class URLStringConverter implements StringConverter<URL>
      *  An instance of this class.
      */
     public static final URLStringConverter INSTANCE = new URLStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code URLStringConverter}.
+     */
+    public URLStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

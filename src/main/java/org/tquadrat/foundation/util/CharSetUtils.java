@@ -56,7 +56,7 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  @since 0.1.0
  */
 @SuppressWarnings( "MagicNumber" )
-@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 @UtilityClass
 public final class CharSetUtils
@@ -105,6 +105,7 @@ public final class CharSetUtils
                 {
                     @SuppressWarnings( "cast" )
                     final var codePoint = b;
+                    //noinspection ImplicitNumericConversion
                     buffer.append( (codePoint < ' ') || (codePoint >= 0x007F)
                         ? escapeCharacter( codePoint )
                         : Character.toString( codePoint ) );
@@ -152,15 +153,15 @@ public final class CharSetUtils
                 final var buffer = new StringBuilder( inputLength );
                 ScanLoop: while( inputPos < inputLength )
                 {
-                    final var c = input.charAt( inputPos );
-                    if( c == '\\' )
+                    final var currentChar = input.charAt( inputPos );
+                    if( currentChar == '\\' )
                     {
                         //---* Is this an escape sequence? *-------------------
                         inputPos += extractEscapeSequence( buffer, pattern, input.subSequence( inputPos, min( inputLength, inputPos + 12 ) ) );
                         continue ScanLoop;
                     }
 
-                    buffer.append( c );
+                    buffer.append( currentChar );
                     ++inputPos;
                 }   //  ScanLoop:
                 retValue = buffer.toString();
@@ -198,13 +199,13 @@ public final class CharSetUtils
             else
             {
                 //---* Normalise the String *----------------------------------
+                @SuppressWarnings( "LocalVariableNamingConvention" )
                 final var s = isNull( normalization )
                     ? input
                     : isNormalized( input, normalization )
                         ? input
                         : normalize( input, normalization );
 
-                //noinspection MagicNumber
                 retValue = s.codePoints()
                     .mapToObj( codePoint ->
                         isPrintableASCIICharacter( codePoint )
@@ -387,7 +388,7 @@ public final class CharSetUtils
                         buffer.append( unescapeUnicode( chunk ) );
                         retValue = 12;
                     }
-                    catch( @SuppressWarnings( "unused" ) final ValidationException e ) { /* Deliberately ignored */ }
+                    catch( final ValidationException ignored ) { /* Deliberately ignored */ }
                 }
 
                 if( retValue == 1 )
@@ -397,7 +398,7 @@ public final class CharSetUtils
                         buffer.append( unescapeUnicode( c1 ) );
                         retValue = 6;
                     }
-                    catch( @SuppressWarnings( "unused" ) final ValidationException e ) { /* Deliberately ignored */ }
+                    catch( final ValidationException ignored ) { /* Deliberately ignored */ }
                 }
             }
         }
@@ -433,37 +434,37 @@ public final class CharSetUtils
         if( (len != 6) && (len != 12) ) throw new ValidationException( "The length of a Unicode String must be 6 or 12 characters" );
         if( !s.subSequence( 0, 2 ).equals( "\\u" ) ) throw new ValidationException( "Unicode String must start with '\\u'" );
 
-        final var MSG_CANNOTPARSE = "Cannot parse '%s' as a Unicode Escape String";
-        final var c = breakString( s, 6 )
+        final var msgCannotparse = "Cannot parse '%s' as a Unicode Escape String";
+        @SuppressWarnings( "NumericCastThatLosesPrecision" )
+        final var characters = breakString( s, 6 )
             .mapToInt( chunk ->
             {
                 try
                 {
-                    //noinspection MagicNumber
                     return Integer.parseInt( chunk.subSequence( 2, 6 ).toString(), 0x10 );
                 }
                 catch( final NumberFormatException e )
                 {
-                    throw new ValidationException( format( MSG_CANNOTPARSE, s ), e );
+                    throw new ValidationException( format( msgCannotparse, s ), e );
                 }
             } )
             .mapToObj( i -> Character.valueOf( (char) i ) )
             .toArray( Character []::new );
 
-        final var codePoint = switch( c.length )
+        final var codePoint = switch( characters.length )
             {
-                case 1 -> c [0];
+                case 1 -> characters [0];
                 case 2 ->
                     {
-                        if( !isSurrogatePair( c [0], c [1] ) )
+                        if( !isSurrogatePair( characters [0], characters [1] ) )
                         {
-                            throw new ValidationException( format( MSG_CANNOTPARSE, s ) );
+                            throw new ValidationException( format( msgCannotparse, s ) );
                         }
-                        yield toCodePoint( c [0], c [1] );
+                        yield toCodePoint( characters [0], characters [1] );
                     }
-                default -> throw new ValidationException( format( MSG_CANNOTPARSE, s ) );
+                default -> throw new ValidationException( format( msgCannotparse, s ) );
             };
-        if( !Character.isValidCodePoint( codePoint ) ) throw new ValidationException( format( MSG_CANNOTPARSE, s ) );
+        if( !Character.isValidCodePoint( codePoint ) ) throw new ValidationException( format( msgCannotparse, s ) );
         final var retValue = new String( toChars( codePoint ) );
 
         //---* Done *----------------------------------------------------------

@@ -37,7 +37,7 @@ import org.tquadrat.foundation.util.LazyMap;
  *  {@link LazyMap}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazyMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: LazyMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @param <K> The type of keys maintained by this map
@@ -45,8 +45,7 @@ import org.tquadrat.foundation.util.LazyMap;
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( "preview" )
-@ClassVersion( sourceVersion = "$Id: LazyMapImpl.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazyMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     permits LazySortedMapImpl
@@ -141,7 +140,6 @@ public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     public final Set<Entry<K,V>> entrySet()
     {
         if( m_SupplierPopulates ) init();
-        @SuppressWarnings( "unchecked" )
         final var retValue = m_Holder.map( Map::entrySet ).orElse( emptySet() );
 
         //---* Done *----------------------------------------------------------
@@ -151,7 +149,6 @@ public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     /**
      *  {@inheritDoc}
      */
-    @SuppressWarnings( "rawtypes" )
     @Override
     public final boolean equals( final Object o )
     {
@@ -250,7 +247,6 @@ public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     public final Set<K> keySet()
     {
         if( m_SupplierPopulates ) init();
-        @SuppressWarnings( "unchecked" )
         final var retValue = m_Holder.map( Map::keySet ).orElse( emptySet() );
 
         //---* Done *----------------------------------------------------------
@@ -320,7 +316,6 @@ public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     public final Collection<V> values()
     {
         if( m_SupplierPopulates ) init();
-        @SuppressWarnings( "unchecked" )
         final var retValue = m_Holder.map( Map::values ).orElse( emptySet() );
 
         //---* Done *----------------------------------------------------------

@@ -35,7 +35,7 @@ import org.tquadrat.foundation.util.internal.LazyListImpl;
  *  that will be initialised only when required.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazyList.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: LazyList.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this list.
@@ -50,8 +50,7 @@ import org.tquadrat.foundation.util.internal.LazyListImpl;
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( "preview" )
-@ClassVersion( sourceVersion = "$Id: LazyList.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazyList.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public sealed interface LazyList<E> extends List<E>
     permits LazyListImpl

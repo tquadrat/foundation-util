@@ -30,11 +30,11 @@ import org.tquadrat.foundation.util.RangeMap;
  *
  *  @param <T> The type of the mapped value.
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: FinalRangeMap.java 995 2022-01-23 01:09:35Z tquadrat $
+ *  @version $Id: FinalRangeMap.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @UMLGraph.link
  *  @since 0.0.7
  */
-@ClassVersion( sourceVersion = "$Id: FinalRangeMap.java 995 2022-01-23 01:09:35Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: FinalRangeMap.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public final class FinalRangeMap<T> extends RangeMapImpl<T>
 {
@@ -101,7 +101,7 @@ public final class FinalRangeMap<T> extends RangeMapImpl<T>
      */
     @SuppressWarnings( "UseOfConcreteClass" )
     @Override
-    public final FinalRangeMap<T> setDefault( final T defaultValue ) {throw new UnsupportedOperationException( "setDefault" );}
+    public final FinalRangeMap<T> setDefault( final T value ) {throw new UnsupportedOperationException( "setDefault" );}
 }
 //  class FinalRangeMap
 

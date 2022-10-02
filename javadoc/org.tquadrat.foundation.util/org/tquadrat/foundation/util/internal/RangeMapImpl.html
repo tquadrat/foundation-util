@@ -104,7 +104,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="FinalRangeMap.html" title="class in org.tquadrat.foundation.util.internal">FinalRangeMap</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: RangeMapImpl.java 995 2022-01-23 01:09:35Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: RangeMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
 </span><span class="modifiers">public sealed class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html#line-47">RangeMapImpl</a>&lt;T&gt;</span>
@@ -117,7 +117,7 @@ implements <a href="../RangeMap.html" title="interface in org.tquadrat.foundatio
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: RangeMapImpl.java 995 2022-01-23 01:09:35Z tquadrat $</dd>
+<dd>$Id: RangeMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.7</dd>
 <dt>See Also:</dt>
@@ -253,7 +253,7 @@ implements <a href="../RangeMap.html" title="interface in org.tquadrat.foundatio
 <div class="block">Removes a range.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;<a href="RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&gt;</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDefault(T)" class="member-name-link">setDefault</a><wbr>(<a href="RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&nbsp;defaultValue)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setDefault(T)" class="member-name-link">setDefault</a><wbr>(<a href="RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&nbsp;value)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the default value and overwrites that one that was
   set on creation of the range map.</div>
@@ -261,8 +261,7 @@ implements <a href="../RangeMap.html" title="interface in org.tquadrat.foundatio
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;<a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;T&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#unmodifiableRangeMap(org.tquadrat.foundation.util.internal.RangeMapImpl)" class="member-name-link">unmodifiableRangeMap</a><wbr>(<a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;? extends T&gt;&nbsp;other)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Returns an immutable copy of the given
-  <a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal"><code>RangeMapImpl</code></a>.</div>
+<div class="block">Returns an immutable copy of the given <code>RangeMapImpl</code>.</div>
 </div>
 </div>
 </div>
@@ -504,7 +503,7 @@ implements <a href="../RangeMap.html" title="interface in org.tquadrat.foundatio
 <li>
 <section class="detail" id="setDefault(T)">
 <h3 id="setDefault(java.lang.Object)">setDefault</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;<a href="RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html#line-229">setDefault</a></span><wbr><span class="parameters">(<a href="RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&nbsp;defaultValue)</span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;<a href="RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html#line-229">setDefault</a></span><wbr><span class="parameters">(<a href="RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&nbsp;value)</span></div>
 <div class="block"><p>Sets the default value and overwrites that one that was
   set on creation of the range map.</p>
   <p>The default value is that one that is returned if the key is above
@@ -516,7 +515,7 @@ implements <a href="../RangeMap.html" title="interface in org.tquadrat.foundatio
 <dt>Specified by:</dt>
 <dd><code><a href="../RangeMap.html#setDefault(T)">setDefault</a></code>&nbsp;in interface&nbsp;<code><a href="../RangeMap.html" title="interface in org.tquadrat.foundation.util">RangeMap</a>&lt;<a href="RangeMapImpl.html" title="type parameter in RangeMapImpl">T</a>&gt;</code></dd>
 <dt>Parameters:</dt>
-<dd><code>defaultValue</code> - The mapped value.</dd>
+<dd><code>value</code> - The mapped value.</dd>
 <dt>Returns:</dt>
 <dd>A reference to this range map instance.</dd>
 <dt>See Also:</dt>
@@ -531,9 +530,8 @@ implements <a href="../RangeMap.html" title="interface in org.tquadrat.foundatio
 <li>
 <section class="detail" id="unmodifiableRangeMap(org.tquadrat.foundation.util.internal.RangeMapImpl)">
 <h3>unmodifiableRangeMap</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;T&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html#line-252">unmodifiableRangeMap</a></span><wbr><span class="parameters">(<a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;? extends T&gt;&nbsp;other)</span></div>
-<div class="block">Returns an immutable copy of the given
-  <a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal"><code>RangeMapImpl</code></a>.</div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;T&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/RangeMapImpl.html#line-251">unmodifiableRangeMap</a></span><wbr><span class="parameters">(<a href="RangeMapImpl.html" title="class in org.tquadrat.foundation.util.internal">RangeMapImpl</a>&lt;? extends T&gt;&nbsp;other)</span></div>
+<div class="block">Returns an immutable copy of the given <code>RangeMapImpl</code>.</div>
 <dl class="notes">
 <dt>Type Parameters:</dt>
 <dd><code>T</code> - The type of the mapped value.</dd>

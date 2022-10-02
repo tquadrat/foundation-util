@@ -77,11 +77,11 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  </table>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TextStringConverter.java 934 2021-12-06 15:19:40Z tquadrat $
+ *  @version $Id: TextStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: TextStringConverter.java 934 2021-12-06 15:19:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TextStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public final class TextStringConverter implements StringConverter<String>
 {
@@ -100,6 +100,14 @@ public final class TextStringConverter implements StringConverter<String>
      *  An instance of this class.
      */
     public static final TextStringConverter INSTANCE = new TextStringConverter();
+
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code TextStringConverter}.
+     */
+    public TextStringConverter() {}
 
         /*---------*\
     ====** Methods **==========================================================

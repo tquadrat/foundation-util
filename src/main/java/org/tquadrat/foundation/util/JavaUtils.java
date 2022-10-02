@@ -88,13 +88,13 @@ import org.tquadrat.foundation.lang.DebugOutput;
  *  allowed.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: JavaUtils.java 997 2022-01-26 14:55:05Z tquadrat $
+ *  @version $Id: JavaUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: JavaUtils.java 997 2022-01-26 14:55:05Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: JavaUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @UtilityClass
 public final class JavaUtils
 {
@@ -141,6 +141,7 @@ public final class JavaUtils
      *  {@link #loadClass(ClassLoader, String)}
      *  to return those classes, we use this table.
      */
+    @SuppressWarnings( "StaticCollection" )
     private static final Map<String,Class<?>> m_PrimitiveClasses;
 
     static
@@ -152,7 +153,7 @@ public final class JavaUtils
          * "-ea" (assertions enabled), this code sequence is not tested in all
          * branches.
          */
-        //noinspection AssertWithSideEffects,PointlessBooleanExpression
+        //noinspection AssertWithSideEffects,PointlessBooleanExpression,NestedAssignment
         assert (m_AssertionOn = true) == true : "Assertion is switched off";
 
         //---* Create the table with the primitive type class objects *--------
@@ -322,12 +323,12 @@ public final class JavaUtils
         try
         {
             //---* First, we will see if we are the main thread *--------------
-            final var t = currentThread();
+            final var currentThread = currentThread();
             StackTraceElement [] stackTrace;
-            if( "main".equals( t.getName() ) )
+            if( "main".equals( currentThread.getName() ) )
             {
                 //---* Search for the method main() *--------------------------
-                stackTrace = t.getStackTrace();
+                stackTrace = currentThread.getStackTrace();
                 mainClassName = searchStackTrace( stackTrace, "main" );
 
                 if( isNull( mainClassName ) )
@@ -366,7 +367,7 @@ public final class JavaUtils
                 }   //  ThreadSearchLoop:
             }
         }
-        catch( @SuppressWarnings( "unused" ) final SecurityException e ) { /* Deliberately ignored */ }
+        catch( final SecurityException ignored ) { /* Deliberately ignored */ }
 
         //---* Compose the return value *--------------------------------------
         final var retValue = Optional.ofNullable( mainClassName );
@@ -453,7 +454,7 @@ public final class JavaUtils
                 }
             }
         }
-        catch( @SuppressWarnings( "unused" ) final SecurityException e ) { /* Deliberately ignored */ }
+        catch( final SecurityException ignored ) { /* Deliberately ignored */ }
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -481,6 +482,7 @@ public final class JavaUtils
      *
      *  @since 0.1.0
      */
+    @SuppressWarnings( "NestedAssignment" )
     @API( status = STABLE, since = "0.1.0" )
     public static final boolean isAddMethod( final Element element )
     {
@@ -590,6 +592,7 @@ public final class JavaUtils
      *  @return {@code true} if the element is a getter method, {@code false}
      *      otherwise.
      */
+    @SuppressWarnings( {"OverlyComplexMethod", "NestedAssignment"} )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isGetter( final Element element )
     {
@@ -784,6 +787,7 @@ public final class JavaUtils
      *  @return {@code true} if the method is a setter, {@code false}
      *      otherwise.
      */
+    @SuppressWarnings( "NestedAssignment" )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isSetter( final Element element )
     {
@@ -1055,13 +1059,13 @@ public final class JavaUtils
         Class<? extends T> resultClass = null;
         try
         {
-            final var c = Class.forName( requireNotEmptyArgument( classname, "classname" ), false, requireNonNullArgument( classLoader, "classLoader" ) );
-            if( requireNonNullArgument( implementing, "implementing" ).isAssignableFrom( c ) )
+            final var candidateClass = Class.forName( requireNotEmptyArgument( classname, "classname" ), false, requireNonNullArgument( classLoader, "classLoader" ) );
+            if( requireNonNullArgument( implementing, "implementing" ).isAssignableFrom( candidateClass ) )
             {
-                resultClass = c.asSubclass( implementing );
+                resultClass = candidateClass.asSubclass( implementing );
             }
         }
-        catch( @SuppressWarnings( "unused" ) final ClassNotFoundException e ) { /* Deliberately ignored */ }
+        catch( final ClassNotFoundException ignored ) { /* Deliberately ignored */ }
 
         //---* Create the return value *---------------------------------------
         final Optional<Class<? extends T>> retValue = Optional.ofNullable( resultClass );
@@ -1142,12 +1146,12 @@ public final class JavaUtils
     }   //  retrieveGetter()
 
     /**
-     *  Retrieves the getter for the property with the given name.<br>
-     *  <br>Usually, a getter method has to be public, but for some purposes,
+     *  <p>{@summary Retrieves the getter for the property with the given name.}</p>
+     *  <p>Usually, a getter method has to be public, but for some purposes,
      *  it may be package local, protected or even private. A method returned
      *  by a call to this method will not cause
      *  {@link #isGetter(Method)}
-     *  to return {@code true} in all cases.
+     *  to return {@code true} in all cases.</p>
      *
      *  @param  beanClass   The class for the getter.
      *  @param  propertyName    The name of the property.
@@ -1158,7 +1162,7 @@ public final class JavaUtils
      *      that holds the getter method; will be empty if there is no getter
      *      for the given property on the provided class.
      */
-    @SuppressWarnings( "AssignmentToNull" )
+    @SuppressWarnings( {"AssignmentToNull", "OverlyComplexMethod"} )
     @API( status = STABLE, since = "0.0.5" )
     public static final Optional<Method> retrieveGetter( final Class<?> beanClass, final String propertyName, final boolean isPublic )
     {
@@ -1177,7 +1181,7 @@ public final class JavaUtils
                 {
                     method = beanClass.getDeclaredMethod( getterName );
                 }
-                catch( @SuppressWarnings( "unused" ) final NoSuchMethodException e ) { /* Will be deliberately ignored */ }
+                catch( final NoSuchMethodException ignored ) { /* Will be deliberately ignored */ }
             }
 
             if( isNull( method ) )
@@ -1186,7 +1190,7 @@ public final class JavaUtils
                 {
                     method = beanClass.getMethod( getterName );
                 }
-                catch( @SuppressWarnings( "unused" ) final NoSuchMethodException e ) { /* Will be deliberately ignored */ }
+                catch( final NoSuchMethodException ignored ) { /* Will be deliberately ignored */ }
             }
 
             if( isNull( method ) )
@@ -1199,7 +1203,7 @@ public final class JavaUtils
                     {
                         method = beanClass.getDeclaredMethod( getterName );
                     }
-                    catch( @SuppressWarnings( "unused" ) final NoSuchMethodException e ) { /* Will be deliberately ignored */ }
+                    catch( final NoSuchMethodException ignored ) { /* Will be deliberately ignored */ }
                 }
 
                 if( isNull( method ) )
@@ -1208,7 +1212,7 @@ public final class JavaUtils
                     {
                         method = beanClass.getMethod( getterName );
                     }
-                    catch( @SuppressWarnings( "unused" ) final NoSuchMethodException e ) { /* Will be deliberately ignored */ }
+                    catch( final NoSuchMethodException ignored ) { /* Will be deliberately ignored */ }
                 }
 
                 //---* Check the return type *---------------------------------
@@ -1326,7 +1330,7 @@ public final class JavaUtils
             final var method = sourceClass.getMethod( methodName, args );
             retValue = Optional.of( method );
         }
-        catch( final NoSuchMethodException e ) { /* Deliberately ignored */ }
+        catch( final NoSuchMethodException ignored ) { /* Deliberately ignored */ }
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1434,7 +1438,7 @@ public final class JavaUtils
                  */
                 method = beanClass.getDeclaredMethod( composeSetterName( propertyName ), propertyType );
             }
-            catch( @SuppressWarnings( "unused" ) final NoSuchMethodException e ) { /* Will be deliberately ignored */ }
+            catch( final NoSuchMethodException ignored ) { /* Will be deliberately ignored */ }
         }
 
         /*
@@ -1449,7 +1453,7 @@ public final class JavaUtils
             {
                 method = beanClass.getMethod( composeSetterName( propertyName ), propertyType );
             }
-            catch( @SuppressWarnings( "unused" ) final NoSuchMethodException e ) { /* Will be deliberately ignored */ }
+            catch( final NoSuchMethodException ignored ) { /* Will be deliberately ignored */ }
         }
 
         /*
@@ -1554,6 +1558,7 @@ public final class JavaUtils
      *  @see javax.lang.model.element.Modifier#NON_SEALED
      *  @see javax.lang.model.element.Modifier#SEALED
      */
+    @SuppressWarnings( "OverlyComplexMethod" )
     @API( status = STABLE, since = "0.0.5" )
     public static final Set<Modifier> translateModifiers( final int modifiers )
     {

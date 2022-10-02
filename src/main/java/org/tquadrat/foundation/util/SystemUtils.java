@@ -80,13 +80,13 @@ import org.tquadrat.foundation.lang.SoftLazy;
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+ *  @version $Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class SystemUtils
@@ -100,14 +100,14 @@ public final class SystemUtils
      *  UNIX/Linux and MacOX/OS-X.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+     *  @version $Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      *
      *  @see SystemUtils#determineOperatingSystem()
      */
-    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     @API( status = STABLE, since = "0.0.6" )
     public static enum OperatingSystem
     {
@@ -323,7 +323,7 @@ public final class SystemUtils
     }   //  createPseudoNodeId()
 
     /**
-     *  Creates the alias map for the old (deprecated) zone ids that is used
+     *  Creates the alias map for the old (deprecated) zone ids that are used
      *  for the call to
      *  {@link ZoneId#of(String, java.util.Map)}
      *  to retrieve a
@@ -372,6 +372,7 @@ public final class SystemUtils
      *      adapter is active on this machine.
      *  @throws SocketException Problems to retrieve the internet address.
      */
+    @SuppressWarnings( "OverlyNestedMethod" )
     @API( status = STABLE, since = "0.0.5" )
     public static final Optional<InetAddress> determineIPAddress() throws SocketException
     {
@@ -500,7 +501,7 @@ public final class SystemUtils
                 {
                     return i.isUp() && !i.isLoopback();
                 }
-                catch( @SuppressWarnings( "unused" ) final SocketException e )
+                catch( final SocketException ignored )
                 {
                     return false;
                 }
@@ -547,12 +548,11 @@ public final class SystemUtils
         }
 
         final var hexFormat = HexFormat.of();
-        final var s = hexFormat.toHexDigits( nodeId, 12 );
-        final var bytes = hexFormat.parseHex( s );
+        final var bytes = hexFormat.parseHex( hexFormat.toHexDigits( nodeId, 12 ) );
         final var retValue = HexFormat.ofDelimiter( "-" ).withUpperCase().formatHex( bytes );
 
         //---* Done *----------------------------------------------------------
-        return retValue.toString();
+        return retValue;
     }   //  formatNodeIdAsMAC()
 
     /**
@@ -589,7 +589,7 @@ public final class SystemUtils
         {
             retValue = List.copyOf( list( java.net.NetworkInterface.getNetworkInterfaces() ) );
         }
-        catch( @SuppressWarnings( "unused" ) final SocketException e )
+        catch( final SocketException ignored )
         {
             /*
              * There are no NICs on this machine, so we return the empty list.
@@ -605,6 +605,7 @@ public final class SystemUtils
      *
      *  @return The node id.
      */
+    @SuppressWarnings( "OverlyComplexMethod" )
     @API( status = STABLE, since = "0.0.5" )
     public static final long getNodeId()
     {
@@ -630,13 +631,12 @@ public final class SystemUtils
                         final var hardwareAddress = nic.getHardwareAddress();
                         if( nonNull( hardwareAddress ) && (hardwareAddress.length > 0) )
                         {
-                            final var i = new BigInteger( hardwareAddress );
                             //noinspection MagicNumber
-                            m_Node = Long.valueOf( i.longValue() & 0x0000FFFFFFFFFFFFL );
+                            m_Node = Long.valueOf( new BigInteger( hardwareAddress ).longValue() & 0x0000FFFFFFFFFFFFL );
                             break ScanLoop;
                         }
                     }
-                    catch( @SuppressWarnings( "unused" ) final SocketException e )
+                    catch( final SocketException ignored )
                     {
                         /*
                          *  If a SocketException is caught here, this indicates
@@ -796,6 +796,7 @@ public final class SystemUtils
      *      {@link Template#replaceVariableFromSystemData(CharSequence, Map[])}
      *      instead.
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @SafeVarargs
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
@@ -813,7 +814,7 @@ public final class SystemUtils
      *  @return  {@code true} if the sleep was interrupted, {@code false} if it
      *      terminated as planned.
      */
-    @SuppressWarnings( "BusyWait" )
+    @SuppressWarnings( {"BusyWait", "BooleanMethodNameMustStartWithQuestion"} )
     @API( status = STABLE, since = "0.0.7" )
     public static final boolean repose( final long millis )
     {
@@ -826,7 +827,7 @@ public final class SystemUtils
                 Thread.sleep( max( 0, endTimeMillis - currentTimeMillis() ) );
                 retValue = false;
             }
-            catch( @SuppressWarnings( "unused" ) final InterruptedException e )
+            catch( final InterruptedException ignored )
             {
                if( currentThread().isInterrupted() ) break SleepLoop;
             }
@@ -847,6 +848,7 @@ public final class SystemUtils
      *  @return  {@code true} if the sleep was interrupted, {@code false} if it
      *      terminated as planned.
      */
+    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
     @API( status = STABLE, since = "0.0.7" )
     public static final boolean repose( final Duration duration )
     {
@@ -866,6 +868,7 @@ public final class SystemUtils
      *  @return  {@code true} if the sleep was interrupted, {@code false} if it
      *      terminated as planned.
      */
+    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
     @API( status = STABLE, since = "0.0.7" )
     public static final boolean reposeUntil( final Instant until )
     {
@@ -877,7 +880,7 @@ public final class SystemUtils
                 sleep( Duration.between( Instant.now(), until ) );
                 retValue = false;
             }
-            catch( @SuppressWarnings( "unused" ) final InterruptedException e )
+            catch( final InterruptedException ignored )
             {
                 if( currentThread().isInterrupted() ) break SleepLoop;
             }
@@ -889,8 +892,8 @@ public final class SystemUtils
     /**
      *  Retrieves an instance of
      *  {@link Locale}
-     *  for the given locale name. This method will lookup the requested locale
-     *  first in the locales returned by
+     *  for the given locale name. This method will look up the requested
+     *  locale first in the locales returned by
      *  {@link Locale#getAvailableLocales()}
      *  before it will create a new instance of {@code Locale} using
      *  {@link java.util.Locale.Builder Locale.Builder}.<br>
@@ -910,11 +913,12 @@ public final class SystemUtils
      *      {@link Optional}
      *      that holds the instance of {@code Locale} for the given name.
      */
-    @SuppressWarnings( "AssignmentToNull" )
+    @SuppressWarnings( {"AssignmentToNull", "OverlyNestedMethod", "OverlyComplexMethod"} )
     @API( status = STABLE, since = "0.0.6" )
     public static final Optional<Locale> retrieveLocale( final CharSequence localeName )
     {
         final var name = requireNonNullArgument( localeName, "localeName" ).toString();
+        @SuppressWarnings( "OverlyLongLambda" )
         final var locale = name.isBlank()
             ? ROOT
             : stream( Locale.getAvailableLocales() )
@@ -965,7 +969,7 @@ public final class SystemUtils
                               default -> null; // Invalid input ...
                           };    //  ComposeSwitch:
                       }
-                      catch( @SuppressWarnings( "unused" ) final IllformedLocaleException e )
+                      catch( final IllformedLocaleException ignored )
                       {
                           result = null;
                       }
@@ -1036,7 +1040,7 @@ public final class SystemUtils
      *  @note   A mere cast to {@code Map<String,String>} does not work
      *      &hellip;
      *
-     *  @return A unmodifiable map with the system properties as Strings.
+     *  @return An unmodifiable map with the system properties as Strings.
      */
     public static final Map<String,String> systemPropertiesAsStringMap()
     {
@@ -1066,12 +1070,11 @@ public final class SystemUtils
     public static final long translateMACToNodeId( final String macAddress )
     {
         final var bytes = HexFormat.ofDelimiter( "-" ).withUpperCase().parseHex( requireNotEmptyArgument( macAddress, "macAddress" ) );
-        final var MSG_InvalidMAC = "MAC address is invalid: %1$s";
         if( bytes.length != 6 )
         {
-            throw new ValidationException( format( MSG_InvalidMAC, macAddress ) );
+            throw new ValidationException( format( "MAC address is invalid: %1$s", macAddress ) );
         }
-        final byte [] bytes2 = new byte [7];
+        final var bytes2 = new byte [7];
         arraycopy( bytes, 0, bytes2, 1, 6 );
         final var retValue = new BigInteger( bytes2 ).longValue();
 

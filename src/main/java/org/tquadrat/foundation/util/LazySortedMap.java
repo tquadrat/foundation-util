@@ -33,7 +33,7 @@ import org.tquadrat.foundation.util.internal.LazySortedMapImpl;
  *  that will be initialised only when required.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazySortedMap.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: LazySortedMap.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.5
  *
  *  @param <K> The type of keys maintained by this map.
@@ -43,8 +43,7 @@ import org.tquadrat.foundation.util.internal.LazySortedMapImpl;
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( "preview" )
-@ClassVersion( sourceVersion = "$Id: LazySortedMap.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazySortedMap.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public sealed interface LazySortedMap<K,V> extends LazyMap<K,V>, SortedMap<K,V>
     permits LazySortedMapImpl

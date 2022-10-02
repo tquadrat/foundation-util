@@ -50,14 +50,14 @@
 <span class="source-line-no">037</span><span id="line-37"> *  {@link RangeMap}.</span>
 <span class="source-line-no">038</span><span id="line-38"> *</span>
 <span class="source-line-no">039</span><span id="line-39"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">040</span><span id="line-40"> *  @version $Id: RangeMapImpl.java 995 2022-01-23 01:09:35Z tquadrat $</span>
+<span class="source-line-no">040</span><span id="line-40"> *  @version $Id: RangeMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
 <span class="source-line-no">041</span><span id="line-41"> *  @since 0.0.7</span>
 <span class="source-line-no">042</span><span id="line-42"> *</span>
 <span class="source-line-no">043</span><span id="line-43"> *  @param &lt;T&gt;  The type of the mapped value.</span>
 <span class="source-line-no">044</span><span id="line-44"> *</span>
 <span class="source-line-no">045</span><span id="line-45"> *  @UMLGraph.link</span>
 <span class="source-line-no">046</span><span id="line-46"> */</span>
-<span class="source-line-no">047</span><span id="line-47">@ClassVersion( sourceVersion = "$Id: RangeMapImpl.java 995 2022-01-23 01:09:35Z tquadrat $" )</span>
+<span class="source-line-no">047</span><span id="line-47">@ClassVersion( sourceVersion = "$Id: RangeMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
 <span class="source-line-no">048</span><span id="line-48">@API( status = STABLE, since = "0.0.7" )</span>
 <span class="source-line-no">049</span><span id="line-49">public sealed class RangeMapImpl&lt;T&gt; implements RangeMap&lt;T&gt;</span>
 <span class="source-line-no">050</span><span id="line-50">    permits FinalRangeMap</span>
@@ -241,9 +241,9 @@
 <span class="source-line-no">228</span><span id="line-228">     */</span>
 <span class="source-line-no">229</span><span id="line-229">    @SuppressWarnings( "UseOfConcreteClass" )</span>
 <span class="source-line-no">230</span><span id="line-230">    @Override</span>
-<span class="source-line-no">231</span><span id="line-231">    public RangeMapImpl&lt;T&gt; setDefault( final T defaultValue )</span>
+<span class="source-line-no">231</span><span id="line-231">    public RangeMapImpl&lt;T&gt; setDefault( final T value )</span>
 <span class="source-line-no">232</span><span id="line-232">    {</span>
-<span class="source-line-no">233</span><span id="line-233">        final var entry = new Pair&lt;&gt;( Double.valueOf( Double.MAX_VALUE ), requireNonNullArgument( defaultValue, "defaultValue" ) );</span>
+<span class="source-line-no">233</span><span id="line-233">        final var entry = new Pair&lt;&gt;( Double.valueOf( Double.MAX_VALUE ), requireNonNullArgument( value, "defaultValue" ) );</span>
 <span class="source-line-no">234</span><span id="line-234">        if( !m_Ranges.add( entry ) )</span>
 <span class="source-line-no">235</span><span id="line-235">        {</span>
 <span class="source-line-no">236</span><span id="line-236">            m_Ranges.remove( entry );</span>
@@ -255,27 +255,26 @@
 <span class="source-line-no">242</span><span id="line-242">    }   //  setDefault()</span>
 <span class="source-line-no">243</span><span id="line-243"></span>
 <span class="source-line-no">244</span><span id="line-244">    /**</span>
-<span class="source-line-no">245</span><span id="line-245">     *  Returns an immutable copy of the given</span>
-<span class="source-line-no">246</span><span id="line-246">     *  {@link RangeMapImpl}.</span>
-<span class="source-line-no">247</span><span id="line-247">     *</span>
-<span class="source-line-no">248</span><span id="line-248">     *  @param  &lt;T&gt; The type of the mapped value.</span>
-<span class="source-line-no">249</span><span id="line-249">     *  @param  other   The other Range map.</span>
-<span class="source-line-no">250</span><span id="line-250">     *  @return The immutable copy.</span>
-<span class="source-line-no">251</span><span id="line-251">     */</span>
-<span class="source-line-no">252</span><span id="line-252">    @SuppressWarnings( "UseOfConcreteClass" )</span>
-<span class="source-line-no">253</span><span id="line-253">    public static &lt;T&gt; RangeMapImpl&lt;T&gt; unmodifiableRangeMap( final RangeMapImpl&lt;? extends T&gt; other )</span>
-<span class="source-line-no">254</span><span id="line-254">    {</span>
-<span class="source-line-no">255</span><span id="line-255">        final RangeMapImpl&lt;T&gt; retValue = new FinalRangeMap&lt;&gt;( requireNonNullArgument( other, "other" ) );</span>
-<span class="source-line-no">256</span><span id="line-256"></span>
-<span class="source-line-no">257</span><span id="line-257">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">258</span><span id="line-258">        return retValue;</span>
-<span class="source-line-no">259</span><span id="line-259">    }   //  unmodifiableRangeMap()</span>
-<span class="source-line-no">260</span><span id="line-260">}</span>
-<span class="source-line-no">261</span><span id="line-261">//  class RangeMapImpl</span>
-<span class="source-line-no">262</span><span id="line-262"></span>
-<span class="source-line-no">263</span><span id="line-263">/*</span>
-<span class="source-line-no">264</span><span id="line-264"> *  End of File</span>
-<span class="source-line-no">265</span><span id="line-265"> */</span>
+<span class="source-line-no">245</span><span id="line-245">     *  Returns an immutable copy of the given {@code RangeMapImpl}.</span>
+<span class="source-line-no">246</span><span id="line-246">     *</span>
+<span class="source-line-no">247</span><span id="line-247">     *  @param  &lt;T&gt; The type of the mapped value.</span>
+<span class="source-line-no">248</span><span id="line-248">     *  @param  other   The other Range map.</span>
+<span class="source-line-no">249</span><span id="line-249">     *  @return The immutable copy.</span>
+<span class="source-line-no">250</span><span id="line-250">     */</span>
+<span class="source-line-no">251</span><span id="line-251">    @SuppressWarnings( "UseOfConcreteClass" )</span>
+<span class="source-line-no">252</span><span id="line-252">    public static &lt;T&gt; RangeMapImpl&lt;T&gt; unmodifiableRangeMap( final RangeMapImpl&lt;? extends T&gt; other )</span>
+<span class="source-line-no">253</span><span id="line-253">    {</span>
+<span class="source-line-no">254</span><span id="line-254">        final RangeMapImpl&lt;T&gt; retValue = new FinalRangeMap&lt;&gt;( requireNonNullArgument( other, "other" ) );</span>
+<span class="source-line-no">255</span><span id="line-255"></span>
+<span class="source-line-no">256</span><span id="line-256">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">257</span><span id="line-257">        return retValue;</span>
+<span class="source-line-no">258</span><span id="line-258">    }   //  unmodifiableRangeMap()</span>
+<span class="source-line-no">259</span><span id="line-259">}</span>
+<span class="source-line-no">260</span><span id="line-260">//  class RangeMapImpl</span>
+<span class="source-line-no">261</span><span id="line-261"></span>
+<span class="source-line-no">262</span><span id="line-262">/*</span>
+<span class="source-line-no">263</span><span id="line-263"> *  End of File</span>
+<span class="source-line-no">264</span><span id="line-264"> */</span>
 
 
 

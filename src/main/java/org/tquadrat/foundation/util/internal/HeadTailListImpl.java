@@ -47,12 +47,12 @@ import org.tquadrat.foundation.util.HeadTailList;
  *  @param  <T> The element type of the list.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: HeadTailListImpl.java 995 2022-01-23 01:09:35Z tquadrat $
+ *  @version $Id: HeadTailListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
  *  @since 0.0.4
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HeadTailListImpl.java 995 2022-01-23 01:09:35Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HeadTailListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.4" )
 public final class HeadTailListImpl<T> implements HeadTailList<T>
 {
@@ -68,12 +68,12 @@ public final class HeadTailListImpl<T> implements HeadTailList<T>
      *  @param  <T> The element type of the list.
      *
      *  @author Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: HeadTailListImpl.java 995 2022-01-23 01:09:35Z tquadrat $
+     *  @version $Id: HeadTailListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
      *  @since 0.0.4
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: HeadTailListImpl.java 995 2022-01-23 01:09:35Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: HeadTailListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
     @API( status = INTERNAL, since = "0.0.4" )
     private static class IteratorImpl<T> implements Iterator<T>
     {
@@ -167,7 +167,7 @@ public final class HeadTailListImpl<T> implements HeadTailList<T>
     {
         m_Head = null;
         m_Tail = this;
-        m_HashCode = 31 * 31;
+        m_HashCode = 961;
         m_Size = 0;
     }   //  HeadTailListImpl()
 
@@ -241,7 +241,7 @@ public final class HeadTailListImpl<T> implements HeadTailList<T>
     @Override
     public final void forEachReverse( final Consumer<? super T> action )
     {
-        _forEachReverse( requireNonNullArgument( action, "action" ) );
+        internalForEachReverse( requireNonNullArgument( action, "action" ) );
     }   //  forEach()
 
     /**
@@ -252,11 +252,11 @@ public final class HeadTailListImpl<T> implements HeadTailList<T>
      *
      *  @param  action  The action.
      */
-    private final void _forEachReverse( final Consumer<? super T> action )
+    private final void internalForEachReverse( final Consumer<? super T> action )
     {
         if( nonNull( m_Head ) )
         {
-            ((HeadTailListImpl<T>) m_Tail)._forEachReverse( action );
+            ((HeadTailListImpl<T>) m_Tail).internalForEachReverse( action );
             action.accept( m_Head );
         }
     }   //  _forEachReverse()
@@ -303,7 +303,8 @@ public final class HeadTailListImpl<T> implements HeadTailList<T>
     @Override
     public final Spliterator<T> spliterator()
     {
-        final var retValue = Spliterators.spliterator( iterator(), m_Size, SIZED | NONNULL | IMMUTABLE );
+        @SuppressWarnings( "ConstantExpression" )
+        final var retValue = Spliterators.spliterator( iterator(), (long) m_Size, SIZED | NONNULL | IMMUTABLE );
 
         //---* Done *----------------------------------------------------------
         return retValue;
