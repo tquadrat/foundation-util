@@ -29,6 +29,7 @@ org.tquadrat.foundation.util.stringconverter.ShortStringConverter
 org.tquadrat.foundation.util.stringconverter.StringStringConverter
 org.tquadrat.foundation.util.stringconverter.TimeUnitStringConverter
 org.tquadrat.foundation.util.stringconverter.TimeZoneStringConverter
+org.tquadrat.foundation.util.stringconverter.TSIDStringConverter
 org.tquadrat.foundation.util.stringconverter.URIStringConverter
 org.tquadrat.foundation.util.stringconverter.URLStringConverter
 org.tquadrat.foundation.util.stringconverter.UUIDStringConverter

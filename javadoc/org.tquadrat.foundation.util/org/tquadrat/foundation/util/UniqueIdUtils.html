@@ -8,25 +8,40 @@
 <meta name="description" content="declaration: module: org.tquadrat.foundation.util, package: org.tquadrat.foundation.util, class: UniqueIdUtils">
 <meta name="generator" content="javadoc/ClassWriterImpl">
 <meta name="keywords" content="org.tquadrat.foundation.util.UniqueIdUtils class">
+<meta name="keywords" content="BIT_MASK">
+<meta name="keywords" content="ONE_HUNDRED">
+<meta name="keywords" content="ONE_MILLION">
 <meta name="keywords" content="PROPERTY_USE_PSEUDO_NODE_ID">
+<meta name="keywords" content="TSID_Size">
 <meta name="keywords" content="UUID_Size">
 <meta name="keywords" content="m_ClockSeq">
 <meta name="keywords" content="m_LastClockSeqRequest">
+<meta name="keywords" content="m_LastTSIDCreationTime">
+<meta name="keywords" content="m_TSIDCounter">
+<meta name="keywords" content="m_Base32Decoder">
+<meta name="keywords" content="m_ClockSeqGuard">
 <meta name="keywords" content="m_DummyNodeId">
 <meta name="keywords" content="m_Namespaces">
 <meta name="keywords" content="m_NodeId">
+<meta name="keywords" content="m_TSIDGuard">
 <meta name="keywords" content="m_UsePseudoNodeId">
 <meta name="keywords" content="getClockSequence()">
 <meta name="keywords" content="getNamespaceUUID()">
 <meta name="keywords" content="listNamespaces()">
 <meta name="keywords" content="nameUUIDFromBytes()">
 <meta name="keywords" content="nameUUIDFromString()">
+<meta name="keywords" content="newTSID()">
+<meta name="keywords" content="newTSIDInternal()">
 <meta name="keywords" content="randomUUID()">
 <meta name="keywords" content="sequenceUUID()">
 <meta name="keywords" content="timebasedUUID()">
 <meta name="keywords" content="timebasedUUIDFromDummyNode()">
 <meta name="keywords" content="timebasedUUIDFromNodeName()">
+<meta name="keywords" content="tsidFromNumber()">
+<meta name="keywords" content="tsidFromString()">
+<meta name="keywords" content="uuidFromNumber()">
 <meta name="keywords" content="uuidFromString()">
+<meta name="keywords" content="uuidToNumber()">
 <link rel="stylesheet" type="text/css" href="../../../../../stylesheet.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../script-dir/jquery-ui.min.css" title="Style">
 <link rel="stylesheet" type="text/css" href="../../../../../jquery-ui.overrides.css" title="Style">
@@ -99,24 +114,34 @@ loadScripts(document, 'script');</script>
 </div>
 <section class="class-description" id="class-description">
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: UniqueIdUtils.java 1032 2022-04-10 17:27:44Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: UniqueIdUtils.java 1038 2022-12-15 00:40:53Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
 <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/UtilityClass.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@UtilityClass</a>
-</span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-140">UniqueIdUtils</a></span>
+</span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-171">UniqueIdUtils</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">This static class provides some utility methods that are helpful when
-  working with unique ids as defined through RFC&nbsp;4122. It extends the
+<div class="block"><p>This static class provides some utility methods that are helpful when
+  working with unique ids.</p>
+  <p>All methods in this class are final, no instance of this class is
+  allowed.</p>
+  <p>First it extends the capabilities of the class
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
+  that is a part of the Java Runtime library; it implements Universal Unique
+  ids as defined through RFC&nbsp;4122. It extends the
   capabilities of the Java Runtime class
-  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>.<br>
-  <br>All methods in this class are final, no instance of this class is
-  allowed.<br>
-  <br>The methods
-  <a href="#nameUUIDFromBytes(byte%5B%5D,org.tquadrat.foundation.util.UniqueIdUtils.HashType)"><code>nameUUIDFromBytes(byte[], HashType)</code></a>,
-  <a href="#nameUUIDFromString(java.lang.CharSequence,org.tquadrat.foundation.util.UniqueIdUtils.HashType)"><code>nameUUIDFromString(CharSequence, HashType)</code></a>,
-  <a href="#nameUUIDFromString(java.util.UUID,java.lang.CharSequence,org.tquadrat.foundation.util.UniqueIdUtils.HashType)"><code>nameUUIDFromString(UUID, CharSequence, HashType)</code></a>,
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>.</p>
+  <p>Second, it provides the factory methods for a shorter unique id that can
+  work better with database indexes, implemented through
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>. For details, refer to the description
+  <a href="#TSID">below</a>.</p>
+
+  <h2>RFC&nbsp;4122 UUID</h2>
+  <p>The methods
+  <a href="#nameUUIDFromBytes(byte%5B%5D,org.tquadrat.foundation.util.UniqueIdUtils.HashType)"><code>nameUUIDFromBytes(byte[],HashType)</code></a>,
+  <a href="#nameUUIDFromString(java.lang.CharSequence,org.tquadrat.foundation.util.UniqueIdUtils.HashType)"><code>nameUUIDFromString(CharSequence,HashType)</code></a>,
+  <a href="#nameUUIDFromString(java.util.UUID,java.lang.CharSequence,org.tquadrat.foundation.util.UniqueIdUtils.HashType)"><code>nameUUIDFromString(UUID, CharSequence,HashType)</code></a>,
   <a href="#randomUUID()"><code>randomUUID()</code></a>,
-  <a href="#sequenceUUID(long,long)"><code>sequenceUUID(long, long)</code></a>,
+  <a href="#sequenceUUID(long,long)"><code>sequenceUUID(long,long)</code></a>,
   <a href="#timebasedUUID()"><code>timebasedUUID()</code></a>,
   <a href="#timebasedUUID(long)"><code>timebasedUUID(long)</code></a>,
   <a href="#timebasedUUIDFromNodeName(java.lang.CharSequence)"><code>timebasedUUIDFromNodeName(CharSequence)</code></a>,
@@ -131,20 +156,20 @@ loadScripts(document, 'script');</script>
   <code>nameUUIDFromBytes(byte[],HashType)</code> delegates to
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html#nameUUIDFromBytes(byte%5B%5D)" title="class or interface in java.util" class="external-link"><code>UUID.nameUUIDFromBytes(byte[])</code></a>
   for <code>hashType</code> equal to
-  <a href="UniqueIdUtils.HashType.html#HASH_MD5"><code>UniqueIdUtils.HashType.HASH_MD5</code></a>.<br>
-  <br>Currently, this class supports only the generation of UUIDs with the
+  <a href="UniqueIdUtils.HashType.html#HASH_MD5"><code>UniqueIdUtils.HashType.HASH_MD5</code></a>.</p>
+  <p>Currently, this class supports only the generation of UUIDs with the
   types&nbsp;1 (not supported by
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>),
   3, 4, and 5, although the method
   <a href="#uuidFromString(java.lang.CharSequence)"><code>uuidFromString(CharSequence)</code></a>
   is also capable of converting UUID Strings representing the type&nbsp;2
-  into valid UUID instances.<br>
-  <br>The type 0 as generated by
-  <a href="#sequenceUUID(long,long)"><code>sequenceUUID(long, long)</code></a>
-  is not defined by RFC&nbsp;4122.<br>
-  <h2>The sample Implementation for a UUID Generator</h2>
-  The source code for this sample implementation in C was taken from
-  <a href="http://www.ietf.org/rfc/rfc4122.txt">RFC&nbsp;4122</a>.
+  into valid UUID instances.</p>
+  <p>The type 0 as generated by
+  <a href="#sequenceUUID(long,long)"><code>sequenceUUID(long,long)</code></a>
+  is not defined by RFC&nbsp;4122.</p>
+  <h3>The sample Implementation for a UUID Generator</h3>
+  <p>The source code for this sample implementation in C was taken from
+  <a href="http://www.ietf.org/rfc/rfc4122.txt">RFC&nbsp;4122</a>.</p>
   <ul>
   <li><a href="doc-files/uuid.h"><code>uuid.h</code></a></li>
   <li><a href="doc-files/uuid.c"><code>uuid.c</code></a></li>
@@ -153,10 +178,10 @@ loadScripts(document, 'script');</script>
   <li><a href="doc-files/utest.c"><code>utest.c</code></a></li>
   <li><a href="doc-files/copyrt.h"><code>copyrt.h</code></a></li>
   </ul>
-  The appendix C of RFC&nbsp;4122 also lists the name space IDs for some
+  <p>The appendix C of RFC&nbsp;4122 also lists the name space IDs for some
   potentially interesting name spaces, as initialized C structures and in the
-  string representation defined by the RFC.<br>
-  <br><pre><code>   &#47;* Name string is a fully-qualified domain name *&#47;
+  string representation defined by the RFC.</p>
+  <pre><code>   &#47;* Name string is a fully-qualified domain name *&#47;
    uuid_t NameSpace_DNS = { &#47;* 6ba7b810-9dad-11d1-80b4-00c04fd430c8 *&#47;
        0x6ba7b810,
        0x9dad,
@@ -186,12 +211,19 @@ loadScripts(document, 'script');</script>
        0x9dad,
        0x11d1,
        0x80, 0xb4, 0x00, 0xc0, 0x4f, 0xd4, 0x30, 0xc8
-   };</code></pre></div>
+   };</code></pre>
+
+  <h2><a id="TSID">Time-sorted ID (TSID)</a></h2>
+  <p>The class
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  provides a unique id with 64-bit length (versus the 128-bit of UUID) that
+  is sortable based on the creation time.</p>
+  <p>It's textual representation is also suitable for XML ids.</p></div>
 <dl class="notes">
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: UniqueIdUtils.java 1032 2022-04-10 17:27:44Z tquadrat $</dd>
+<dd>$Id: UniqueIdUtils.java 1038 2022-12-15 00:40:53Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.0.5</dd>
 <dt>See Also:</dt>
@@ -251,20 +283,40 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></code></div>
+<div class="col-second even-row-color"><code><a href="#BIT_MASK" class="member-name-link">BIT_MASK</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">The bit mask used for the conversion from and to a number.</div>
+</div>
+<div class="col-first odd-row-color"><code>private static final <a href="Base32.Decoder.html" title="class in org.tquadrat.foundation.util">Base32.Decoder</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#m_Base32Decoder" class="member-name-link">m_Base32Decoder</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">The Base&nbsp;32 decoder for the TSIDs.</div>
+</div>
 <div class="col-first even-row-color"><code>private static long</code></div>
 <div class="col-second even-row-color"><code><a href="#m_ClockSeq" class="member-name-link">m_ClockSeq</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">The clock sequence.</div>
 </div>
-<div class="col-first odd-row-color"><code>private static final long</code></div>
-<div class="col-second odd-row-color"><code><a href="#m_DummyNodeId" class="member-name-link">m_DummyNodeId</a></code></div>
+<div class="col-first odd-row-color"><code>private static final <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#m_ClockSeqGuard" class="member-name-link">m_ClockSeqGuard</a></code></div>
 <div class="col-last odd-row-color">
+<div class="block">The guard for the clock sequence.</div>
+</div>
+<div class="col-first even-row-color"><code>private static final long</code></div>
+<div class="col-second even-row-color"><code><a href="#m_DummyNodeId" class="member-name-link">m_DummyNodeId</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">The dummy node id that is used to generate UUIDs, if required.</div>
 </div>
-<div class="col-first even-row-color"><code>private static long</code></div>
-<div class="col-second even-row-color"><code><a href="#m_LastClockSeqRequest" class="member-name-link">m_LastClockSeqRequest</a></code></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><code>private static long</code></div>
+<div class="col-second odd-row-color"><code><a href="#m_LastClockSeqRequest" class="member-name-link">m_LastClockSeqRequest</a></code></div>
+<div class="col-last odd-row-color">
 <div class="block">The last time when a clock sequence was requested.</div>
+</div>
+<div class="col-first even-row-color"><code>private static long</code></div>
+<div class="col-second even-row-color"><code><a href="#m_LastTSIDCreationTime" class="member-name-link">m_LastTSIDCreationTime</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">The millisecond when the last TSID was created.</div>
 </div>
 <div class="col-first odd-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&gt;</code></div>
 <div class="col-second odd-row-color"><code><a href="#m_Namespaces" class="member-name-link">m_Namespaces</a></code></div>
@@ -276,6 +328,17 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">The node id that is used to generate UUIDs.</div>
 </div>
+<div class="col-first odd-row-color"><code>private static int</code></div>
+<div class="col-second odd-row-color"><code><a href="#m_TSIDCounter" class="member-name-link">m_TSIDCounter</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">The counter TSIDs that were created in the current millisecond.</div>
+</div>
+<div class="col-first even-row-color"><code>private static final <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></code></div>
+<div class="col-second even-row-color"><code><a href="#m_TSIDGuard" class="member-name-link">m_TSIDGuard</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">The guard for the field that are used for the creation of a
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>.</div>
+</div>
 <div class="col-first odd-row-color"><code>private static final boolean</code></div>
 <div class="col-second odd-row-color"><code><a href="#m_UsePseudoNodeId" class="member-name-link">m_UsePseudoNodeId</a></code></div>
 <div class="col-last odd-row-color">
@@ -286,22 +349,32 @@ loadScripts(document, 'script');</script>
   &quot;<a href="#PROPERTY_USE_PSEUDO_NODE_ID">"org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId"</a>&quot;.<br>
   <br>Using a pseudo node id would generate anonymous UUIDs.</div>
 </div>
+<div class="col-first even-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></code></div>
+<div class="col-second even-row-color"><code><a href="#ONE_HUNDRED" class="member-name-link">ONE_HUNDRED</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">Divisor for the calculation of the timestamp.</div>
+</div>
+<div class="col-first odd-row-color"><code>private static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#ONE_MILLION" class="member-name-link">ONE_MILLION</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">Factor for the conversion of milliseconds to nanoseconds.</div>
+</div>
 <div class="col-first even-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color"><code><a href="#PROPERTY_USE_PSEUDO_NODE_ID" class="member-name-link">PROPERTY_USE_PSEUDO_NODE_ID</a></code></div>
 <div class="col-last even-row-color">
-<div class="block">The internal system property for the flag controlling that only pseudo
-  node ids should be used to generate
+<div class="block">The name for the internal system property for the flag
+  controlling that only pseudo node ids should be used to generate
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
-  instances of type 1: "org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId".<br>
-  <br>A value of <code>true</code> means that only pseudo ids will be used
-  throughout the current run of the program, while <code>false</code>
-  (the default) means that a MAC address is used for the calculation of a
-  node id, if available.<br>
-  <br>This system property is not necessarily configured.</div>
+  instances of type 1: "org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId".</div>
 </div>
 <div class="col-first odd-row-color"><code>static final int</code></div>
-<div class="col-second odd-row-color"><code><a href="#UUID_Size" class="member-name-link">UUID_Size</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#TSID_Size" class="member-name-link">TSID_Size</a></code></div>
 <div class="col-last odd-row-color">
+<div class="block">The character count for a <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>: 14.</div>
+</div>
+<div class="col-first even-row-color"><code>static final int</code></div>
+<div class="col-second even-row-color"><code><a href="#UUID_Size" class="member-name-link">UUID_Size</a></code></div>
+<div class="col-last even-row-color">
 <div class="block">The character count for a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>: 36.</div>
 </div>
 </div>
@@ -335,22 +408,22 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static long</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getClockSequence()" class="member-name-link">getClockSequence</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static final long</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getClockSequence(long)" class="member-name-link">getClockSequence</a><wbr>(long&nbsp;currentTime)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Returns the clock sequence.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#getNamespaceUUID(java.lang.String)" class="member-name-link">getNamespaceUUID</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;key)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Returns the UUID for the namespace with the given name.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#listNamespaces()" class="member-name-link">listNamespaces</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Returns the names of the known UUID namespaces.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#nameUUIDFromBytes(byte%5B%5D,org.tquadrat.foundation.util.UniqueIdUtils.HashType)" class="member-name-link">nameUUIDFromBytes</a><wbr>(byte[]&nbsp;name,
  <a href="UniqueIdUtils.HashType.html" title="enum class in org.tquadrat.foundation.util">UniqueIdUtils.HashType</a>&nbsp;hashType)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
@@ -363,7 +436,7 @@ loadScripts(document, 'script');</script>
   designated name space, although this is neither enforced nor checked by
   this method.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#nameUUIDFromString(java.lang.CharSequence,org.tquadrat.foundation.util.UniqueIdUtils.HashType)" class="member-name-link">nameUUIDFromString</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;name,
  <a href="UniqueIdUtils.HashType.html" title="enum class in org.tquadrat.foundation.util">UniqueIdUtils.HashType</a>&nbsp;hashType)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
@@ -375,7 +448,7 @@ loadScripts(document, 'script');</script>
   designated name space, although this is neither enforced nor checked by
   this method.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#nameUUIDFromString(java.util.UUID,java.lang.CharSequence,org.tquadrat.foundation.util.UniqueIdUtils.HashType)" class="member-name-link">nameUUIDFromString</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;namespace,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;name,
  <a href="UniqueIdUtils.HashType.html" title="enum class in org.tquadrat.foundation.util">UniqueIdUtils.HashType</a>&nbsp;hashType)</code></div>
@@ -386,50 +459,98 @@ loadScripts(document, 'script');</script>
   <br>This method will always return the same output if the input is the
   same.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#randomUUID()" class="member-name-link">randomUUID</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newTSID()" class="member-name-link">newTSID</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a new
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  instance.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newTSID(int)" class="member-name-link">newTSID</a><wbr>(int&nbsp;nodeId)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a new
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  instance.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static final <a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#newTSIDInternal(long)" class="member-name-link">newTSIDInternal</a><wbr>(long&nbsp;nodeId)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a new
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  instance without checking the <code>nodeId</code> argument.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#randomUUID()" class="member-name-link">randomUUID</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Static factory to retrieve a type 4 (pseudo randomly generated) UUID.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sequenceUUID(long,long)" class="member-name-link">sequenceUUID</a><wbr>(long&nbsp;mostSignificant,
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sequenceUUID(long,long)" class="member-name-link">sequenceUUID</a><wbr>(long&nbsp;mostSignificant,
  long&nbsp;leastSignificant)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Creates a sequence UUID from the given values; this UUID will have the
-  type 0 (that is not officially defined).<br>
-  <br>UUIDs of this type are used to define globally identical keys,
-  meaning that this method will always return the same output if the
-  input is the same.</div>
-</div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#timebasedUUID()" class="member-name-link">timebasedUUID</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a sequence UUID from the given values; this UUID
+  will have the type 0 (that is not officially defined).</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#timebasedUUID()" class="member-name-link">timebasedUUID</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a time-based (version type 1) UUID using the internal node id.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#timebasedUUID(long)" class="member-name-link">timebasedUUID</a><wbr>(long&nbsp;nodeId)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#timebasedUUID(long)" class="member-name-link">timebasedUUID</a><wbr>(long&nbsp;nodeId)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a time-based (version type 1) UUID, using the given node id.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#timebasedUUIDFromDummyNode()" class="member-name-link">timebasedUUIDFromDummyNode</a>()</code></div>
-<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#timebasedUUIDFromDummyNode()" class="member-name-link">timebasedUUIDFromDummyNode</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a time-based (version type 1) UUID from a dummy node id.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#timebasedUUIDFromNodeName(java.lang.CharSequence)" class="member-name-link">timebasedUUIDFromNodeName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;nodeName)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#timebasedUUIDFromNodeName(java.lang.CharSequence)" class="member-name-link">timebasedUUIDFromNodeName</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;nodeName)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a time-based (version type 1) UUID from the given node
   name.<br>
   <br>The provided node name will be hashed (using MD5), the bytes from
   the result will be converted into
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link"><code>BigInteger</code></a>.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#tsidFromNumber(long)" class="member-name-link">tsidFromNumber</a><wbr>(long&nbsp;number)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  from the given number.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#tsidFromString(java.lang.CharSequence)" class="member-name-link">tsidFromString</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;s)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  from the given String.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#uuidFromNumber(java.math.BigInteger)" class="member-name-link">uuidFromNumber</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;value)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Creates a
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
+  from the given number (more precise, the
+  given
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link"><code>BigInteger</code></a>).</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#uuidFromString(java.lang.CharSequence)" class="member-name-link">uuidFromString</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;uuid)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Creates a UUID from the string standard representation.<br>
-  <br>The UUID string representation is as described by this BNF:</div>
+<div class="block">Creates a UUID from the string standard
+  representation.</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#uuidToNumber(java.util.UUID)" class="member-name-link">uuidToNumber</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;uuid)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
+<div class="block">Returns a number (more precise, an instance of
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link"><code>BigInteger</code></a>)
+  that represents the given UUID.</div>
 </div>
 </div>
 </div>
@@ -449,25 +570,62 @@ loadScripts(document, 'script');</script>
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
+<section class="detail" id="BIT_MASK">
+<h3>BIT_MASK</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-204">BIT_MASK</a></span></div>
+<div class="block">The bit mask used for the conversion from and to a number.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="ONE_HUNDRED">
+<h3>ONE_HUNDRED</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-209">ONE_HUNDRED</a></span></div>
+<div class="block">Divisor for the calculation of the timestamp.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="ONE_MILLION">
+<h3>ONE_MILLION</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-214">ONE_MILLION</a></span></div>
+<div class="block">Factor for the conversion of milliseconds to nanoseconds.</div>
+</section>
+</li>
+<li>
 <section class="detail" id="PROPERTY_USE_PSEUDO_NODE_ID">
 <h3>PROPERTY_USE_PSEUDO_NODE_ID</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-181">PROPERTY_USE_PSEUDO_NODE_ID</a></span></div>
-<div class="block">The internal system property for the flag controlling that only pseudo
-  node ids should be used to generate
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-229">PROPERTY_USE_PSEUDO_NODE_ID</a></span></div>
+<div class="block"><p>The name for the internal system property for the flag
+  controlling that only pseudo node ids should be used to generate
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
-  instances of type 1: "org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId".<br>
-  <br>A value of <code>true</code> means that only pseudo ids will be used
+  instances of type 1: "org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId".</p>
+  <p>A value of <code>true</code> means that only pseudo ids will be used
   throughout the current run of the program, while <code>false</code>
   (the default) means that a MAC address is used for the calculation of a
-  node id, if available.<br>
-  <br>This system property is not necessarily configured.</div>
+  node id, if available.</p>
+  <p>This system property is not necessarily configured.</p></div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
+<li><a href="SystemUtils.html#PROPERTY_NODE_ID"><code>SystemUtils.PROPERTY_NODE_ID</code></a></li>
 <li><a href="../../../../../constant-values.html#org.tquadrat.foundation.util.UniqueIdUtils.PROPERTY_USE_PSEUDO_NODE_ID">Constant Field Values</a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="TSID_Size">
+<h3>TSID_Size</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-235">TSID_Size</a></span></div>
+<div class="block">The character count for a <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>: 14.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="../../../../../constant-values.html#org.tquadrat.foundation.util.UniqueIdUtils.TSID_Size">Constant Field Values</a></li>
 </ul>
 </dd>
 </dl>
@@ -478,7 +636,7 @@ loadScripts(document, 'script');</script>
 <h3>UUID_Size</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-187">UUID_Size</a></span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-240">UUID_Size</a></span></div>
 <div class="block">The character count for a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>: 36.</div>
 <dl class="notes">
 <dt>See Also:</dt>
@@ -493,21 +651,57 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="m_ClockSeq">
 <h3>m_ClockSeq</h3>
-<div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-196">m_ClockSeq</a></span></div>
+<div class="member-signature"><span class="modifiers">private static volatile</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-249">m_ClockSeq</a></span></div>
 <div class="block">The clock sequence.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_LastClockSeqRequest">
 <h3>m_LastClockSeqRequest</h3>
-<div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-201">m_LastClockSeqRequest</a></span></div>
+<div class="member-signature"><span class="modifiers">private static volatile</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-254">m_LastClockSeqRequest</a></span></div>
 <div class="block">The last time when a clock sequence was requested.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="m_LastTSIDCreationTime">
+<h3>m_LastTSIDCreationTime</h3>
+<div class="member-signature"><span class="modifiers">private static volatile</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-259">m_LastTSIDCreationTime</a></span></div>
+<div class="block">The millisecond when the last TSID was created.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="m_TSIDCounter">
+<h3>m_TSIDCounter</h3>
+<div class="member-signature"><span class="modifiers">private static volatile</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-264">m_TSIDCounter</a></span></div>
+<div class="block">The counter TSIDs that were created in the current millisecond.</div>
+</section>
+</li>
+<li>
+<section class="detail" id="m_Base32Decoder">
+<h3>m_Base32Decoder</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="Base32.Decoder.html" title="class in org.tquadrat.foundation.util">Base32.Decoder</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-282">m_Base32Decoder</a></span></div>
+<div class="block">The Base&nbsp;32 decoder for the TSIDs.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#tsidFromString(java.lang.CharSequence)"><code>tsidFromString(CharSequence)</code></a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="m_ClockSeqGuard">
+<h3>m_ClockSeqGuard</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-287">m_ClockSeqGuard</a></span></div>
+<div class="block">The guard for the clock sequence.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_DummyNodeId">
 <h3>m_DummyNodeId</h3>
-<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-218">m_DummyNodeId</a></span></div>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-293">m_DummyNodeId</a></span></div>
 <div class="block">The dummy node id that is used to generate UUIDs, if required. This is
   always a random value.</div>
 </section>
@@ -515,22 +709,43 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="m_Namespaces">
 <h3>m_Namespaces</h3>
-<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-223">m_Namespaces</a></span></div>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-298">m_Namespaces</a></span></div>
 <div class="block">The UUIDs for the predefined name spaces, according to RFC 4122.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_NodeId">
 <h3>m_NodeId</h3>
-<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-230">m_NodeId</a></span></div>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-305">m_NodeId</a></span></div>
 <div class="block">The node id that is used to generate UUIDs. This is either the MAC
   address of one of the NICs in the current system, or a random value.</div>
 </section>
 </li>
 <li>
+<section class="detail" id="m_TSIDGuard">
+<h3>m_TSIDGuard</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-324">m_TSIDGuard</a></span></div>
+<div class="block"><p>The guard for the field that are used for the creation of a
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>.</p>
+  <p>These are:</p>
+  <ul>
+      <li><a href="#m_LastTSIDCreationTime"><code>m_LastTSIDCreationTime</code></a></li>
+      <li><a href="#m_TSIDCounter"><code>m_TSIDCounter</code></a></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul></div>
+</section>
+</li>
+<li>
 <section class="detail" id="m_UsePseudoNodeId">
 <h3>m_UsePseudoNodeId</h3>
-<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-240">m_UsePseudoNodeId</a></span></div>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-334">m_UsePseudoNodeId</a></span></div>
 <div class="block">This flag controls if
   <a href="#m_NodeId"><code>m_NodeId</code></a>
   is forced to be a random value.<br>
@@ -550,7 +765,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="&lt;init&gt;()">
 <h3>UniqueIdUtils</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-209">UniqueIdUtils</a></span>()</div>
+<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-272">UniqueIdUtils</a></span>()</div>
 <div class="block">No instance of this class is allowed!</div>
 </section>
 </li>
@@ -563,12 +778,17 @@ loadScripts(document, 'script');</script>
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="getClockSequence()">
+<section class="detail" id="getClockSequence(long)">
 <h3>getClockSequence</h3>
-<div class="member-signature"><span class="modifiers">private static</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-278">getClockSequence</a></span>()</div>
-<div class="block">Returns the clock sequence. It will be initialised with a random number
-  on each time the program starts.</div>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-383">getClockSequence</a></span><wbr><span class="parameters">(long&nbsp;currentTime)</span></div>
+<div class="block"><p>Returns the clock sequence. It will be initialised with a
+  random number on each time the program starts, and it remains unchanged
+  until the system detects a clock shift; in that case, it will be
+  increased by one.</p>
+  <p>An overflow for the clock sequence is possible, but does not harm.</p></div>
 <dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>currentTime</code> - The current time.</dd>
 <dt>Returns:</dt>
 <dd>The clock sequence.</dd>
 </dl>
@@ -579,7 +799,7 @@ loadScripts(document, 'script');</script>
 <h3>getNamespaceUUID</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-306">getNamespaceUUID</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;key)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-415">getNamespaceUUID</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;key)</span></div>
 <div class="block">Returns the UUID for the namespace with the given name.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -595,7 +815,7 @@ loadScripts(document, 'script');</script>
 <h3>listNamespaces</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-314">listNamespaces</a></span>()</div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-423">listNamespaces</a></span>()</div>
 <div class="block">Returns the names of the known UUID namespaces.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -608,7 +828,7 @@ loadScripts(document, 'script');</script>
 <h3>nameUUIDFromBytes</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-339">nameUUIDFromBytes</a></span><wbr><span class="parameters">(byte[]&nbsp;name,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-448">nameUUIDFromBytes</a></span><wbr><span class="parameters">(byte[]&nbsp;name,
  <a href="UniqueIdUtils.HashType.html" title="enum class in org.tquadrat.foundation.util">UniqueIdUtils.HashType</a>&nbsp;hashType)</span></div>
 <div class="block">Static factory to retrieve a type&nbsp;3 (name based, MD5 hashed) or a
   type&nbsp;5 (name based, SHA hashed) UUID based on the specified byte
@@ -638,7 +858,7 @@ loadScripts(document, 'script');</script>
 <h3>nameUUIDFromString</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-386">nameUUIDFromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;name,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-495">nameUUIDFromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;name,
  <a href="UniqueIdUtils.HashType.html" title="enum class in org.tquadrat.foundation.util">UniqueIdUtils.HashType</a>&nbsp;hashType)</span></div>
 <div class="block">Creates a name-based (version type&nbsp;3 or type&nbsp;5, depending on
   the provided hash type) UUID from the given String.<br>
@@ -667,7 +887,7 @@ loadScripts(document, 'script');</script>
 <h3>nameUUIDFromString</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-413">nameUUIDFromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;namespace,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-522">nameUUIDFromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;namespace,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;name,
  <a href="UniqueIdUtils.HashType.html" title="enum class in org.tquadrat.foundation.util">UniqueIdUtils.HashType</a>&nbsp;hashType)</span></div>
 <div class="block">Creates a name-based (version type&nbsp;3 or type&nbsp;5, depending on
@@ -692,11 +912,59 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="newTSID()">
+<h3>newTSID</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-542">newTSID</a></span>()</div>
+<div class="block"><p>Creates a new
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  instance.</p></div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The <code>TSID</code> instance.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="newTSID(int)">
+<h3>newTSID</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-559">newTSID</a></span><wbr><span class="parameters">(int&nbsp;nodeId)</span></div>
+<div class="block"><p>Creates a new
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  instance.</p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>nodeId</code> - The node id; a number between 0 (included) and 1024
+      (excluded).</dd>
+<dt>Returns:</dt>
+<dd>The <code>TSID</code> instance.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="newTSIDInternal(long)">
+<h3>newTSIDInternal</h3>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-586">newTSIDInternal</a></span><wbr><span class="parameters">(long&nbsp;nodeId)</span></div>
+<div class="block"><p>Creates a new
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  instance without checking the <code>nodeId</code> argument. Called only by
+  <a href="#newTSID()"><code>newTSID()</code></a>
+  and
+  <a href="#newTSID(int)"><code>newTSID(int)</code></a>.</p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>nodeId</code> - The node id; a number between 0 (included) and 1024
+      (excluded).</dd>
+<dt>Returns:</dt>
+<dd>The <code>TSID</code> instance.</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="randomUUID()">
 <h3>randomUUID</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-437">randomUUID</a></span>()</div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-637">randomUUID</a></span>()</div>
 <div class="block">Static factory to retrieve a type 4 (pseudo randomly generated) UUID.
   The UUID is generated using a cryptographically strong pseudo random
   number generator.<br>
@@ -719,13 +987,13 @@ loadScripts(document, 'script');</script>
 <h3>sequenceUUID</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-452">sequenceUUID</a></span><wbr><span class="parameters">(long&nbsp;mostSignificant,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-652">sequenceUUID</a></span><wbr><span class="parameters">(long&nbsp;mostSignificant,
  long&nbsp;leastSignificant)</span></div>
-<div class="block">Creates a sequence UUID from the given values; this UUID will have the
-  type 0 (that is not officially defined).<br>
-  <br>UUIDs of this type are used to define globally identical keys,
+<div class="block"><p>Creates a sequence UUID from the given values; this UUID
+  will have the type 0 (that is not officially defined).</p>
+  <p>UUIDs of this type are used to define globally identical keys,
   meaning that this method will always return the same output if the
-  input is the same.</div>
+  input is the same.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>mostSignificant</code> - The most significant bits for the new UUID.</dd>
@@ -741,7 +1009,7 @@ loadScripts(document, 'script');</script>
 <h3>timebasedUUID</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-481">timebasedUUID</a></span><wbr><span class="parameters">(long&nbsp;nodeId)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-681">timebasedUUID</a></span><wbr><span class="parameters">(long&nbsp;nodeId)</span></div>
 <div class="block">Creates a time-based (version type 1) UUID, using the given node id.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -757,7 +1025,7 @@ loadScripts(document, 'script');</script>
 <h3>timebasedUUID</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-513">timebasedUUID</a></span>()</div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-712">timebasedUUID</a></span>()</div>
 <div class="block">Creates a time-based (version type 1) UUID using the internal node id.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -777,7 +1045,7 @@ loadScripts(document, 'script');</script>
 <h3>timebasedUUIDFromDummyNode</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-528">timebasedUUIDFromDummyNode</a></span>()</div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-727">timebasedUUIDFromDummyNode</a></span>()</div>
 <div class="block">Creates a time-based (version type 1) UUID from a dummy node id.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -790,7 +1058,7 @@ loadScripts(document, 'script');</script>
 <h3>timebasedUUIDFromNodeName</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-552">timebasedUUIDFromNodeName</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;nodeName)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-751">timebasedUUIDFromNodeName</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;nodeName)</span></div>
 <div class="block">Creates a time-based (version type 1) UUID from the given node
   name.<br>
   <br>The provided node name will be hashed (using MD5), the bytes from
@@ -809,16 +1077,70 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="detail" id="tsidFromNumber(long)">
+<h3>tsidFromNumber</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-772">tsidFromNumber</a></span><wbr><span class="parameters">(long&nbsp;number)</span></div>
+<div class="block"><p>Creates a
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  from the given number.</p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>number</code> - The TSID numerical value.</dd>
+<dt>Returns:</dt>
+<dd>The id.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="tsidFromString(java.lang.CharSequence)">
+<h3>tsidFromString</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-793">tsidFromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;s)</span></div>
+<div class="block"><p>Creates a
+  <a href="TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  from the given String. The TSID String is the
+  <a href="https://www.crockford.com/base32.html">Crockfords's Base&nbsp;32</a>
+  representation of the numerical id, prefixed by the letter 'X'.</p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>s</code> - The TSID String.</dd>
+<dt>Returns:</dt>
+<dd>The id.</dd>
+<dt>Throws:</dt>
+<dd><code><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/exception/ValidationException.html" title="class or interface in org.tquadrat.foundation.exception" class="external-link">ValidationException</a></code> - The provided String is not a valid TSID
+      representation; it is either too short, does not start with 'X',
+      or the suffix is not a valid Base&nbsp;32 String.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="uuidFromNumber(java.math.BigInteger)">
+<h3>uuidFromNumber</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-817">uuidFromNumber</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;value)</span></div>
+<div class="block"><p>Creates a
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
+  from the given number (more precise, the
+  given
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link"><code>BigInteger</code></a>).</p></div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>value</code> - The number.</dd>
+<dt>Returns:</dt>
+<dd>The UUID.</dd>
+</dl>
+</section>
+</li>
+<li>
 <section class="detail" id="uuidFromString(java.lang.CharSequence)">
 <h3>uuidFromString</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-594">uuidFromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;uuid)</span>
-                           throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a>,
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-857">uuidFromString</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;uuid)</span>
+                                 throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a>,
 <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/exception/EmptyArgumentException.html" title="class or interface in org.tquadrat.foundation.exception" class="external-link">EmptyArgumentException</a>,
 <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/exception/NullArgumentException.html" title="class or interface in org.tquadrat.foundation.exception" class="external-link">NullArgumentException</a></span></div>
-<div class="block">Creates a UUID from the string standard representation.<br>
-  <br>The UUID string representation is as described by this BNF:
+<div class="block"><p>Creates a UUID from the string standard
+  representation.</p>
+  <p>The UUID string representation is as described by this BNF:</p>
   <pre>
   UUID                   = &lt;time_low&gt; "-" &lt;time_mid&gt; "-"
                            &lt;time_high_and_version&gt; "-"
@@ -834,7 +1156,7 @@ loadScripts(document, 'script');</script>
         &quot;0&quot; | &quot;1&quot; | &quot;2&quot; | &quot;3&quot; | &quot;4&quot; | &quot;5&quot; | &quot;6&quot; | &quot;7&quot; | &quot;8&quot; | &quot;9&quot;
       | &quot;a&quot; | &quot;b&quot; | &quot;c&quot; | &quot;d&quot; | &quot;e&quot; | &quot;f&quot;
       | &quot;A&quot; | &quot;B&quot; | &quot;C&quot; | &quot;D&quot; | &quot;E&quot; | &quot;F&quot;
- </pre></div>
+  </pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>uuid</code> - The UUID string representation.</dd>
@@ -851,6 +1173,25 @@ loadScripts(document, 'script');</script>
 <li><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html#toString()" title="class or interface in java.util" class="external-link"><code>UUID.toString()</code></a></li>
 </ul>
 </dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="uuidToNumber(java.util.UUID)">
+<h3>uuidToNumber</h3>
+<div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
+     <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.0")
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#line-876">uuidToNumber</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;uuid)</span></div>
+<div class="block">Returns a number (more precise, an instance of
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link"><code>BigInteger</code></a>)
+  that represents the given UUID.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>uuid</code> - The UUID to convert.</dd>
+<dt>Returns:</dt>
+<dd>The number that represents the UUID.</dd>
+<dt>Since:</dt>
+<dd>0.1.0</dd>
 </dl>
 </section>
 </li>

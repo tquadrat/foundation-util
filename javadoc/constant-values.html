@@ -79,6 +79,17 @@ loadScripts(document, 'script');</script>
 </div>
 </li>
 <li>
+<div class="caption"><span>org.tquadrat.foundation.util.<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Base32.html" title="class in org.tquadrat.foundation.util">Base32</a></span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Constant Field</div>
+<div class="table-header col-last">Value</div>
+<div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.Base32.RADIX">private&nbsp;static&nbsp;final&nbsp;int</code></div>
+<div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Base32.html#RADIX">RADIX</a></code></div>
+<div class="col-last even-row-color"><code>32</code></div>
+</div>
+</li>
+<li>
 <div class="caption"><span>org.tquadrat.foundation.util.<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/IOUtils.html" title="class in org.tquadrat.foundation.util">IOUtils</a></span></div>
 <div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
@@ -170,12 +181,21 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Constant Field</div>
 <div class="table-header col-last">Value</div>
+<div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.SystemUtils.m_NodeIdBits">private&nbsp;static&nbsp;final&nbsp;long</code></div>
+<div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#m_NodeIdBits">m_NodeIdBits</a></code></div>
+<div class="col-last even-row-color"><code>281474976710655L</code></div>
+<div class="col-first odd-row-color"><code id="org.tquadrat.foundation.util.SystemUtils.m_NodeIdSign">private&nbsp;static&nbsp;final&nbsp;long</code></div>
+<div class="col-second odd-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#m_NodeIdSign">m_NodeIdSign</a></code></div>
+<div class="col-last odd-row-color"><code>1099511627776L</code></div>
 <div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.SystemUtils.MAC_ADDRESS_Size">public&nbsp;static&nbsp;final&nbsp;int</code></div>
 <div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#MAC_ADDRESS_Size">MAC_ADDRESS_Size</a></code></div>
 <div class="col-last even-row-color"><code>17</code></div>
 <div class="col-first odd-row-color"><code id="org.tquadrat.foundation.util.SystemUtils.PATTERN_IPv4_ADDRESS">public&nbsp;static&nbsp;final&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#PATTERN_IPv4_ADDRESS">PATTERN_IPv4_ADDRESS</a></code></div>
 <div class="col-last odd-row-color"><code>"^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$"</code></div>
+<div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.SystemUtils.PROPERTY_NODE_ID">public&nbsp;static&nbsp;final&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#PROPERTY_NODE_ID">PROPERTY_NODE_ID</a></code></div>
+<div class="col-last even-row-color"><code>"org.tquadrat.foundation.util.SystemUtils.NodeId"</code></div>
 </div>
 </li>
 <li>
@@ -208,6 +228,29 @@ loadScripts(document, 'script');</script>
 </div>
 </li>
 <li>
+<div class="caption"><span>org.tquadrat.foundation.util.<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Constant Field</div>
+<div class="table-header col-last">Value</div>
+<div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.TSID.BEGIN_OF_EPOCH">public&nbsp;static&nbsp;final&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html#BEGIN_OF_EPOCH">BEGIN_OF_EPOCH</a></code></div>
+<div class="col-last even-row-color"><code>"2022-01-01T00:00:00.000Z"</code></div>
+<div class="col-first odd-row-color"><code id="org.tquadrat.foundation.util.TSID.MAX_IDS_PER_MILLISECOND">public&nbsp;static&nbsp;final&nbsp;int</code></div>
+<div class="col-second odd-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html#MAX_IDS_PER_MILLISECOND">MAX_IDS_PER_MILLISECOND</a></code></div>
+<div class="col-last odd-row-color"><code>4096</code></div>
+<div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.TSID.MAX_NODES">public&nbsp;static&nbsp;final&nbsp;int</code></div>
+<div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html#MAX_NODES">MAX_NODES</a></code></div>
+<div class="col-last even-row-color"><code>1024</code></div>
+<div class="col-first odd-row-color"><code id="org.tquadrat.foundation.util.TSID.PROPERTY_TSID_NODE">public&nbsp;static&nbsp;final&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second odd-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html#PROPERTY_TSID_NODE">PROPERTY_TSID_NODE</a></code></div>
+<div class="col-last odd-row-color"><code>"org.tquadrat.util.tsid.node"</code></div>
+<div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.TSID.TSID_Size">public&nbsp;static&nbsp;final&nbsp;int</code></div>
+<div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html#TSID_Size">TSID_Size</a></code></div>
+<div class="col-last even-row-color"><code>14</code></div>
+</div>
+</li>
+<li>
 <div class="caption"><span>org.tquadrat.foundation.util.<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html" title="class in org.tquadrat.foundation.util">UniqueIdUtils</a></span></div>
 <div class="summary-table three-column-summary">
 <div class="table-header col-first">Modifier and Type</div>
@@ -216,9 +259,12 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.UniqueIdUtils.PROPERTY_USE_PSEUDO_NODE_ID">public&nbsp;static&nbsp;final&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#PROPERTY_USE_PSEUDO_NODE_ID">PROPERTY_USE_PSEUDO_NODE_ID</a></code></div>
 <div class="col-last even-row-color"><code>"org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId"</code></div>
-<div class="col-first odd-row-color"><code id="org.tquadrat.foundation.util.UniqueIdUtils.UUID_Size">public&nbsp;static&nbsp;final&nbsp;int</code></div>
-<div class="col-second odd-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#UUID_Size">UUID_Size</a></code></div>
-<div class="col-last odd-row-color"><code>36</code></div>
+<div class="col-first odd-row-color"><code id="org.tquadrat.foundation.util.UniqueIdUtils.TSID_Size">public&nbsp;static&nbsp;final&nbsp;int</code></div>
+<div class="col-second odd-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#TSID_Size">TSID_Size</a></code></div>
+<div class="col-last odd-row-color"><code>14</code></div>
+<div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.UniqueIdUtils.UUID_Size">public&nbsp;static&nbsp;final&nbsp;int</code></div>
+<div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#UUID_Size">UUID_Size</a></code></div>
+<div class="col-last even-row-color"><code>36</code></div>
 </div>
 </li>
 </ul>
@@ -378,6 +424,17 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.stringconverter.TimeZoneStringConverter.MSG_UnknownTimeZone">public&nbsp;static&nbsp;final&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeZoneStringConverter.html#MSG_UnknownTimeZone">MSG_UnknownTimeZone</a></code></div>
 <div class="col-last even-row-color"><code>"Unknown TimeZone: %1$s"</code></div>
+</div>
+</li>
+<li>
+<div class="caption"><span>org.tquadrat.foundation.util.stringconverter.<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TSIDStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">TSIDStringConverter</a></span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Modifier and Type</div>
+<div class="table-header col-second">Constant Field</div>
+<div class="table-header col-last">Value</div>
+<div class="col-first even-row-color"><code id="org.tquadrat.foundation.util.stringconverter.TSIDStringConverter.MSG_InvalidTSIDFormat">public&nbsp;static&nbsp;final&nbsp;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
+<div class="col-second even-row-color"><code><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TSIDStringConverter.html#MSG_InvalidTSIDFormat">MSG_InvalidTSIDFormat</a></code></div>
+<div class="col-last even-row-color"><code>"\'%1$s\' cannot be parsed as a valid TSID"</code></div>
 </div>
 </li>
 <li>

@@ -98,13 +98,13 @@ import org.tquadrat.foundation.lang.internal.SharedFormatter;
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1033 2022-10-02 13:14:39Z tquadrat $
+ *  @version $Id: StringUtils.java 1037 2022-12-15 00:35:17Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1033 2022-10-02 13:14:39Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1037 2022-12-15 00:35:17Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -116,13 +116,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1033 2022-10-02 13:14:39Z tquadrat $
+     *  @version $Id: StringUtils.java 1037 2022-12-15 00:35:17Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1033 2022-10-02 13:14:39Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1037 2022-12-15 00:35:17Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -212,13 +212,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1033 2022-10-02 13:14:39Z tquadrat $
+     *  @version $Id: StringUtils.java 1037 2022-12-15 00:35:17Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1033 2022-10-02 13:14:39Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1037 2022-12-15 00:35:17Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {
@@ -1904,6 +1904,8 @@ public final class StringUtils
      *  @param  s   The input string.
      *  @return The normalised String, only containing ASCII characters; it
      *      could be empty.
+     *
+     *  TODO Check the implementation and the results!! 2022-12-10
      */
     public static final String normalizeToASCII( final CharSequence s )
     {
@@ -2083,6 +2085,8 @@ public final class StringUtils
      *  @param  s   The input string.
      *  @return The normalised String, not containing any diacritical
      *      characters.
+     *
+     *  TODO Check the implementation and the results!! 2022-12-10
      */
     public static final String removeDiacriticalMarks( final CharSequence s )
     {
@@ -2103,10 +2107,10 @@ public final class StringUtils
      *  </code>
      *
      *  @param  c   The character to repeat.
-     *  @param  repeat  The number of times to repeat {@code c}; a negative
+     *  @param  count   The number of times to repeat {@code c}; a negative
      *      value will be treated as zero.
      *  @return A new String consisting of the given character repeated
-     *      {@code repeat} times, or the empty String if {@code repeat} was 0
+     *      {@code count} times, or the empty String if {@code count} was 0
      *      or negative.
      *
      *  @see String#repeat(int)
@@ -2114,9 +2118,9 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String repeat( final char c, final int repeat )
+    public static final String repeat( final char c, final int count )
     {
-        final var retValue = (repeat > 0 ? Character.toString( c ).repeat( repeat ) : EMPTY_STRING).intern();
+        final var retValue = ( count > 0 ? Character.toString( c ).repeat( count ) : EMPTY_STRING).intern();
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -2134,10 +2138,10 @@ public final class StringUtils
      *  </code>
      *
      *  @param  codePoint   The character to repeat.
-     *  @param  repeat  The number of times to repeat {@code c}; a negative
+     *  @param  count   The number of times to repeat {@code c}; a negative
      *      value will be treated as zero.
      *  @return A new String consisting of the given character repeated
-     *      {@code repeat} times, or the empty String if {@code repeat} was 0
+     *      {@code count} times, or the empty String if {@code count} was 0
      *      or negative, or {@code null} if the code point is invalid.
      *
      *  @see Character#isValidCodePoint(int)
@@ -2146,11 +2150,11 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String repeat( final int codePoint, final int repeat )
+    public static final String repeat( final int codePoint, final int count )
     {
-        final var retValue = (repeat > 0)
+        final var retValue = (count > 0)
             ? isValidCodePoint( codePoint )
-                ? Character.toString( codePoint ).repeat( repeat ).intern()
+                ? Character.toString( codePoint ).repeat( count ).intern()
                 : null
             : EMPTY_STRING;
 
@@ -2172,10 +2176,10 @@ public final class StringUtils
      *  </code>
      *
      *  @param  s The String to repeat, may be {@code null}.
-     *  @param repeat   The number of times to repeat {@code str}; a negative
+     *  @param  count   The number of times to repeat {@code str}; a negative
      *      value will be treated as zero.
      *  @return A new String consisting of the original String repeated,
-     *      {@code repeat} times, the empty String if {@code repeat} was 0
+     *      {@code count} times, the empty String if {@code count} was 0
      *      or negative, or {@code null} if the input String was
      *      {@code null}, too.
      *
@@ -2184,12 +2188,12 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String repeat( final CharSequence s, final int repeat )
+    public static final String repeat( final CharSequence s, final int count )
     {
         final var retValue =
             nonNull( s )
-                ? (repeat > 0) && !s.isEmpty()
-                    ? s.toString().repeat( repeat )
+                ? (count > 0) && !s.isEmpty()
+                    ? s.toString().repeat( count )
                     : EMPTY_STRING
                 : null;
 
@@ -2705,7 +2709,7 @@ public final class StringUtils
         {
             final var currentCharacter = s.charAt( i );
             Selector:
-            //noinspection SwitchStatementWithTooManyBranches
+            //noinspection SwitchStatementWithTooManyBranches,EnhancedSwitchMigration
             switch( currentCharacter )
             {
                 case ':':

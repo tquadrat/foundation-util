@@ -436,8 +436,16 @@ loadScripts(document, 'script');</script>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/TimeZone.html#getID()" title="class or interface in java.util" class="external-link"><code>TimeZone.getID()</code></a>
   to do the conversion to a String.</div>
 </div>
-<div class="col-first even-row-color"><a href="class-use/URIStringConverter.html#org.tquadrat.foundation.util.stringconverter">URIStringConverter</a></div>
+<div class="col-first even-row-color"><a href="class-use/TSIDStringConverter.html#org.tquadrat.foundation.util.stringconverter">TSIDStringConverter</a></div>
 <div class="col-last even-row-color">
+<div class="block">An implementation of
+  <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
+  for
+  <a href="../TSID.html" title="interface in org.tquadrat.foundation.util"><code>TSID</code></a>
+  values.</div>
+</div>
+<div class="col-first odd-row-color"><a href="class-use/URIStringConverter.html#org.tquadrat.foundation.util.stringconverter">URIStringConverter</a></div>
+<div class="col-last odd-row-color">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
@@ -449,47 +457,42 @@ loadScripts(document, 'script');</script>
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URI.html#%3Cinit%3E(java.lang.String)" title="class or interface in java.net" class="external-link"><code>URI(String)</code></a>
   to create a <code>URI</code> instance from the given value.</div>
 </div>
-<div class="col-first odd-row-color"><a href="class-use/URLStringConverter.html#org.tquadrat.foundation.util.stringconverter">URLStringConverter</a></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><a href="class-use/URLStringConverter.html#org.tquadrat.foundation.util.stringconverter">URLStringConverter</a></div>
+<div class="col-last even-row-color">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/net/URL.html" title="class or interface in java.net" class="external-link"><code>URL</code></a>
   values.</div>
 </div>
-<div class="col-first even-row-color"><a href="class-use/UUIDStringConverter.html#org.tquadrat.foundation.util.stringconverter">UUIDStringConverter</a></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><a href="class-use/UUIDStringConverter.html#org.tquadrat.foundation.util.stringconverter">UUIDStringConverter</a></div>
+<div class="col-last odd-row-color">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
-  values.<br>
-  <br>The method
-  <a href="UUIDStringConverter.html#fromString(java.lang.CharSequence)"><code>UUIDStringConverter.fromString(CharSequence)</code></a>
-  will use
-  <a href="../UniqueIdUtils.html#uuidFromString(java.lang.CharSequence)"><code>UniqueIdUtils.uuidFromString(CharSequence)</code></a>
-  to create a <code>UUID</code> instance based on the given value.</div>
+  values.</div>
 </div>
-<div class="col-first odd-row-color"><a href="class-use/YearMonthStringConverter.html#org.tquadrat.foundation.util.stringconverter">YearMonthStringConverter</a></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><a href="class-use/YearMonthStringConverter.html#org.tquadrat.foundation.util.stringconverter">YearMonthStringConverter</a></div>
+<div class="col-last even-row-color">
 <div class="block">The implementation of
   <a href="TimeDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>TimeDateStringConverter</code></a>
   for <code>java.time.YearMonth</code>.</div>
 </div>
-<div class="col-first even-row-color"><a href="class-use/YearStringConverter.html#org.tquadrat.foundation.util.stringconverter">YearStringConverter</a></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><a href="class-use/YearStringConverter.html#org.tquadrat.foundation.util.stringconverter">YearStringConverter</a></div>
+<div class="col-last odd-row-color">
 <div class="block">The implementation of
   <a href="TimeDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>TimeDateStringConverter</code></a>
   for <code>java.time.Year</code>.</div>
 </div>
-<div class="col-first odd-row-color"><a href="class-use/ZonedDateTimeStringConverter.html#org.tquadrat.foundation.util.stringconverter">ZonedDateTimeStringConverter</a></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><a href="class-use/ZonedDateTimeStringConverter.html#org.tquadrat.foundation.util.stringconverter">ZonedDateTimeStringConverter</a></div>
+<div class="col-last even-row-color">
 <div class="block">The implementation of
   <a href="TimeDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>TimeDateStringConverter</code></a>
   for <code>java.time.ZonedDateTime</code>.</div>
 </div>
-<div class="col-first even-row-color"><a href="class-use/ZoneIdStringConverter.html#org.tquadrat.foundation.util.stringconverter">ZoneIdStringConverter</a></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><a href="class-use/ZoneIdStringConverter.html#org.tquadrat.foundation.util.stringconverter">ZoneIdStringConverter</a></div>
+<div class="col-last odd-row-color">
 <div class="block">An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for

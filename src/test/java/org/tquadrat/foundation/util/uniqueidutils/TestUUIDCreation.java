@@ -17,23 +17,11 @@
 
 package org.tquadrat.foundation.util.uniqueidutils;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.EmptyArgumentException;
-import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.testutil.TestBaseClass;
-import org.tquadrat.foundation.util.UniqueIdUtils;
-import org.tquadrat.foundation.util.UniqueIdUtils.HashType;
-
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.UUID;
-
 import static java.lang.String.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
@@ -49,6 +37,19 @@ import static org.tquadrat.foundation.util.UniqueIdUtils.timebasedUUID;
 import static org.tquadrat.foundation.util.UniqueIdUtils.timebasedUUIDFromNodeName;
 import static org.tquadrat.foundation.util.UniqueIdUtils.uuidFromString;
 
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.UUID;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.exception.EmptyArgumentException;
+import org.tquadrat.foundation.exception.NullArgumentException;
+import org.tquadrat.foundation.testutil.TestBaseClass;
+import org.tquadrat.foundation.util.UniqueIdUtils;
+import org.tquadrat.foundation.util.UniqueIdUtils.HashType;
+
 /**
  *  This class tests the UUID creation methods from
  *  {@link UniqueIdUtils}.
@@ -56,7 +57,7 @@ import static org.tquadrat.foundation.util.UniqueIdUtils.uuidFromString;
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestUUIDCreation.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestUUIDCreation.java 1037 2022-12-15 00:35:17Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.uniqueidutils.TestUUIDCreation" )
 public class TestUUIDCreation extends TestBaseClass
 {
@@ -106,18 +107,7 @@ public class TestUUIDCreation extends TestBaseClass
 
         assertNotEquals( uuid2, uuid1 );
 
-        try
-        {
-            uuid1 = timebasedUUIDFromNodeName( null );
-            assertNotNull( uuid1 );
-            fail( "Expected Exception was not thrown" );
-        }
-        catch( final Exception e )
-        {
-            final Class<? extends Exception> expectedException = NullArgumentException.class;
-            final var isExpectedException = expectedException.isInstance( e );
-            assertTrue( isExpectedException, format( "Wrong Exception type; caught '%2$s' but '%1$s' was expected", expectedException.getName(), e.getClass().getName() ) );
-        }
+        assertThrows( NullArgumentException.class, () -> timebasedUUIDFromNodeName( null ) );
 
         final var nodeName = "tquadrat.org";
         uuid1 = timebasedUUIDFromNodeName( nodeName );

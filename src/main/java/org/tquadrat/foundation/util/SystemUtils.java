@@ -32,6 +32,7 @@ import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
 import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.apiguardian.api.API.Status.EXPERIMENTAL;
+import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_CPUARCHITECTURE;
 import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSNAME;
@@ -80,13 +81,13 @@ import org.tquadrat.foundation.lang.SoftLazy;
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: SystemUtils.java 1037 2022-12-15 00:35:17Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1037 2022-12-15 00:35:17Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class SystemUtils
@@ -100,14 +101,14 @@ public final class SystemUtils
      *  UNIX/Linux and MacOX/OS-X.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: SystemUtils.java 1037 2022-12-15 00:35:17Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      *
      *  @see SystemUtils#determineOperatingSystem()
      */
-    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1037 2022-12-15 00:35:17Z tquadrat $" )
     @API( status = STABLE, since = "0.0.6" )
     public static enum OperatingSystem
     {
@@ -174,16 +175,57 @@ public final class SystemUtils
     ====** Constants **========================================================
         \*-----------*/
     /**
+     *  The valid bits for a node id: {@value}.
+     *
+     *  @see #m_Node
+     */
+    @API( status = INTERNAL, since = "0.1.0" )
+    private static final long m_NodeIdBits = 0x0000FFFFFFFFFFFFL;
+
+    /**
+     *  The sign bit for a node id: {@value}.
+     *
+     *  @see #m_Node
+     */
+    @API( status = INTERNAL, since = "0.1.0" )
+    private static final long m_NodeIdSign = 0x0000010000000000L;
+
+    /**
      *  The length of a String containing a MAC address: {@value}.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final int MAC_ADDRESS_Size = 17;
 
     /**
+     *  Factor for the conversion of milliseconds to nanoseconds.
+     */
+    private static final BigInteger ONE_MILLION = BigInteger.valueOf( 1_000_000 );
+
+    /**
+     *  Factor for the conversion of seconds to milliseconds.
+     */
+    private static final BigInteger ONE_THOUSAND = BigInteger.valueOf( 1_000 );
+
+    /**
      *  The regular expression for a valid IPv4 address: {@value}.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final String PATTERN_IPv4_ADDRESS = "^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$";
+
+    /**
+     *  <p>{@summary The name of the system property for the node id:
+     *  {@value}.}</p>
+     *  <p>The value has to be a positive number. It will be parsed by
+     *  {@link Long#decode(String)};
+     *  this means, it could be a decimal, a hex or an octal number – so be
+     *  careful with leading zeroes!</p>
+     *  <p>This system property is not necessarily configured; if missing, the
+     *  node id will be determined by the hardware address of the NIC.</p>
+     *
+     *  @see #getNodeId()
+     */
+    @API( status = STABLE, since = "0.1.0" )
+    public static final String PROPERTY_NODE_ID = "org.tquadrat.foundation.util.SystemUtils.NodeId";
 
         /*------------*\
     ====** Attributes **=======================================================
@@ -225,6 +267,13 @@ public final class SystemUtils
 
     static
     {
+        //---* The node id *---------------------------------------------------
+        final var nodeId = Long.getLong( PROPERTY_NODE_ID );
+        if( nonNull( nodeId ) )
+        {
+            m_Node = Long.valueOf( (nodeId.longValue() & m_NodeIdBits) | m_NodeIdSign );
+        }
+
         //---* The operating system *------------------------------------------
         m_OperatingSystem = Lazy.use( SystemUtils::determineOperatingSystem );
 
@@ -245,10 +294,9 @@ public final class SystemUtils
         m_Random = Lazy.use( Random::new );
 
         //---* The time adjustment *-------------------------------------------
-        final var thousand = BigInteger.valueOf( 1000 );
-        final var timeDelta = BigInteger.valueOf( TIME_DELTA_BEGINGREGORIAN2BEGINEPOCH ).multiply( thousand ).multiply( thousand );
+        final var timeDelta = BigInteger.valueOf( TIME_DELTA_BEGINGREGORIAN2BEGINEPOCH ).multiply( ONE_THOUSAND ).multiply( ONE_MILLION );
         final var nanoNow = BigInteger.valueOf( nanoTime() );
-        final var milliNow = BigInteger.valueOf( currentTimeMillis() ).multiply( thousand );
+        final var milliNow = BigInteger.valueOf( currentTimeMillis() ).multiply( ONE_MILLION );
         m_NanoAdjust = milliNow.subtract( nanoNow ).add( timeDelta );
 
         //---* Initialise the ZoneId Alias Map *-------------------------------
@@ -267,9 +315,9 @@ public final class SystemUtils
     ====** Methods **==========================================================
         \*---------*/
     /**
-     *  Converts an IP address that is given as a string into an
+     *  <p>{@summary Converts an IP address that is given as a string into an
      *  {@link InetAddress}
-     *  object.
+     *  object.}</p>
      *
      *  TODO Currently this method do not process IPv6 addresses properly.
      *
@@ -306,17 +354,17 @@ public final class SystemUtils
     }   //  convertIPAddress()
 
     /**
-     *  Returns a pseudo node id; this is useful in cases a machine does not
-     *  have a network card (NIC) so that a MAC address could not be obtained,
-     *  or if the real node id should not be used.<br>
-     *  <br>Each call to this method will return a new value.
+     *  <p>{@summary Returns a pseudo node id; this is useful in cases a
+     *  machine does not have a network card (NIC) so that a MAC address could
+     *  not be obtained, or if the real node id should not be used.}</p>
+     *  <p>Each call to this method will return a new value.</p>
      *
      *  @return The node id.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final long createPseudoNodeId()
     {
-        final var retValue = (getRandom().nextLong() & 0x0000FFFFFFFFFFFFL) | 0x0000010000000000L;
+        final var retValue = (getRandom().nextLong() & m_NodeIdBits) | m_NodeIdSign;
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -384,7 +432,7 @@ public final class SystemUtils
             /*
              * Due to the nature of the scan logic, the returned address will
              * always be that of the last NIC in sequence that is not the
-             * loopback interface.
+             * {@code loopback} interface.
              */
             if( i.isUp() )
             {
@@ -398,8 +446,8 @@ public final class SystemUtils
                     if( i.isLoopback() )
                     {
                         /*
-                         * We take {@code loopback} if we do not get
-                         * something better ...
+                         * We take loopback if we do not get something
+                         * better ...
                          */
                         if( retValue.isEmpty() )
                         {
@@ -487,7 +535,7 @@ public final class SystemUtils
      *  Determines those IP addresses of the machine this program is running
      *  on that are used to communicate with the outside world. This means that
      *  only those <i>active</i> network interfaces are considered that are
-     *  <i>not</i> a loopback interface.
+     *  <i>not</i> a {@code loopback} interface.
      *
      *  @return The IP addresses.
      */
@@ -517,7 +565,7 @@ public final class SystemUtils
      *  Determines those IP addresses of the machine this program is running
      *  on that are used to communicate with the outside world. This means that
      *  only those <i>active</i> network interfaces are considered that are
-     *  <i>not</i> a loopback interface.
+     *  <i>not</i> a {@code loopback} interface.
      *
      *  @return The IP addresses.
      *
@@ -538,11 +586,10 @@ public final class SystemUtils
      *  @param  nodeId  The node id.
      *  @return The MAC address string.
      */
-    @SuppressWarnings( "MagicNumber" )
     @API( status = STABLE, since = "0.0.5" )
     public static final String formatNodeIdAsMAC( final long nodeId )
     {
-        if( nodeId != (nodeId & 0x0000FFFFFFFFFFFFL) )
+        if( nodeId != (nodeId & m_NodeIdBits) )
         {
             throw new ValidationException( format( "Node id is invalid: %1$d", nodeId ) );
         }
@@ -572,7 +619,7 @@ public final class SystemUtils
      *  of all the network interfaces on this machine. Instead of throwing an
      *  exception, the method will return an empty collection in case the
      *  machine do not have network configured. Otherwise, the collection
-     *  contains at least one element, possibly representing a loopback
+     *  contains at least one element, possibly representing a {@code loopback}
      *  interface that only supports communication between entities on this
      *  machine.
      *
@@ -604,6 +651,8 @@ public final class SystemUtils
      *  Returns the unique id of this node.
      *
      *  @return The node id.
+     *
+     *  @see #PROPERTY_NODE_ID
      */
     @SuppressWarnings( "OverlyComplexMethod" )
     @API( status = STABLE, since = "0.0.5" )
@@ -631,8 +680,7 @@ public final class SystemUtils
                         final var hardwareAddress = nic.getHardwareAddress();
                         if( nonNull( hardwareAddress ) && (hardwareAddress.length > 0) )
                         {
-                            //noinspection MagicNumber
-                            m_Node = Long.valueOf( new BigInteger( hardwareAddress ).longValue() & 0x0000FFFFFFFFFFFFL );
+                            m_Node = Long.valueOf( new BigInteger( hardwareAddress ).longValue() & m_NodeIdBits );
                             break ScanLoop;
                         }
                     }

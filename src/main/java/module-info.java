@@ -45,6 +45,7 @@ import org.tquadrat.foundation.util.stringconverter.PatternStringConverter;
 import org.tquadrat.foundation.util.stringconverter.PeriodStringConverter;
 import org.tquadrat.foundation.util.stringconverter.ShortStringConverter;
 import org.tquadrat.foundation.util.stringconverter.StringStringConverter;
+import org.tquadrat.foundation.util.stringconverter.TSIDStringConverter;
 import org.tquadrat.foundation.util.stringconverter.TimeUnitStringConverter;
 import org.tquadrat.foundation.util.stringconverter.TimeZoneStringConverter;
 import org.tquadrat.foundation.util.stringconverter.URIStringConverter;
@@ -61,7 +62,7 @@ import org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter
  *  @provides   org.tquadrat.foundation.lang.StringConverter    Implementations
  *      of String converters.
  *
- *  @version $Id: module-info.java 1007 2022-02-05 01:03:43Z tquadrat $
+ *  @version $Id: module-info.java 1037 2022-12-15 00:35:17Z tquadrat $
  *
  *  @todo task.list
  */
@@ -107,6 +108,7 @@ module org.tquadrat.foundation.util
         StringStringConverter,
         TimeUnitStringConverter,
         TimeZoneStringConverter,
+        TSIDStringConverter,
         URIStringConverter,
         URLStringConverter,
         UUIDStringConverter,

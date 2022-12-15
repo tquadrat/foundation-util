@@ -315,13 +315,13 @@
                           class='static'>+ removeDiacriticalMarks(s:java.lang.CharSequence):java.lang.String</text>
                     <text x='5.000'
                           y='696.000'
-                          class='static'>+ repeat(c:char,repeat:int):java.lang.String</text>
+                          class='static'>+ repeat(c:char,count:int):java.lang.String</text>
                     <text x='5.000'
                           y='707.000'
-                          class='static'>+ repeat(codePoint:int,repeat:int):java.lang.String</text>
+                          class='static'>+ repeat(codePoint:int,count:int):java.lang.String</text>
                     <text x='5.000'
                           y='718.000'
-                          class='static'>+ repeat(s:java.lang.CharSequence,repeat:int):java.lang.String</text>
+                          class='static'>+ repeat(s:java.lang.CharSequence,count:int):java.lang.String</text>
                     <text x='5.000'
                           y='729.000'
                           class='static'>+ replaceVariable(text:java.lang.CharSequence,sources:java.util.Map&lt;java.lang.String,? extends java.lang.Object&gt;&#x2026;):java.lang.String</text>

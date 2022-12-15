@@ -134,7 +134,7 @@ loadScripts(document, 'script');</script>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html" class="type-name-link" title="class in org.tquadrat.foundation.util">UniqueIdUtils</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/package-summary.html">org.tquadrat.foundation.util</a></dt>
 <dd>
 <div class="block">This static class provides some utility methods that are helpful when
-  working with unique ids as defined through RFC&nbsp;4122.</div>
+  working with unique ids.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#%3Cinit%3E()" class="member-name-link">UniqueIdUtils()</a> - Constructor for class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html" title="class in org.tquadrat.foundation.util">UniqueIdUtils</a></dt>
 <dd>
@@ -249,10 +249,18 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">The character count for a <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>: 36.</div>
 </dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#uuidFromNumber(java.math.BigInteger)" class="member-name-link">uuidFromNumber(BigInteger)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html" title="class in org.tquadrat.foundation.util">UniqueIdUtils</a></dt>
+<dd>
+<div class="block">Creates a
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
+  from the given number (more precise, the
+  given
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link"><code>BigInteger</code></a>).</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#uuidFromString(java.lang.CharSequence)" class="member-name-link">uuidFromString(CharSequence)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html" title="class in org.tquadrat.foundation.util">UniqueIdUtils</a></dt>
 <dd>
-<div class="block">Creates a UUID from the string standard representation.<br>
-  <br>The UUID string representation is as described by this BNF:</div>
+<div class="block">Creates a UUID from the string standard
+  representation.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/UUIDStringConverter.html" class="type-name-link" title="class in org.tquadrat.foundation.util.stringconverter">UUIDStringConverter</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/package-summary.html">org.tquadrat.foundation.util.stringconverter</a></dt>
 <dd>
@@ -260,16 +268,17 @@ loadScripts(document, 'script');</script>
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
-  values.<br>
-  <br>The method
-  <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/UUIDStringConverter.html#fromString(java.lang.CharSequence)"><code>UUIDStringConverter.fromString(CharSequence)</code></a>
-  will use
-  <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#uuidFromString(java.lang.CharSequence)"><code>UniqueIdUtils.uuidFromString(CharSequence)</code></a>
-  to create a <code>UUID</code> instance based on the given value.</div>
+  values.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/UUIDStringConverter.html#%3Cinit%3E()" class="member-name-link">UUIDStringConverter()</a> - Constructor for class org.tquadrat.foundation.util.stringconverter.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/UUIDStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">UUIDStringConverter</a></dt>
 <dd>
 <div class="block">Creates a new instance of <code>UUIDStringConverter</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#uuidToNumber(java.util.UUID)" class="member-name-link">uuidToNumber(UUID)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html" title="class in org.tquadrat.foundation.util">UniqueIdUtils</a></dt>
+<dd>
+<div class="block">Returns a number (more precise, an instance of
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link"><code>BigInteger</code></a>)
+  that represents the given UUID.</div>
 </dd>
 </dl>
 <a href="index-1.html">A</a>&nbsp;<a href="index-2.html">B</a>&nbsp;<a href="index-3.html">C</a>&nbsp;<a href="index-4.html">D</a>&nbsp;<a href="index-5.html">E</a>&nbsp;<a href="index-6.html">F</a>&nbsp;<a href="index-7.html">G</a>&nbsp;<a href="index-8.html">H</a>&nbsp;<a href="index-9.html">I</a>&nbsp;<a href="index-10.html">J</a>&nbsp;<a href="index-11.html">K</a>&nbsp;<a href="index-12.html">L</a>&nbsp;<a href="index-13.html">M</a>&nbsp;<a href="index-14.html">N</a>&nbsp;<a href="index-15.html">O</a>&nbsp;<a href="index-16.html">P</a>&nbsp;<a href="index-17.html">Q</a>&nbsp;<a href="index-18.html">R</a>&nbsp;<a href="index-19.html">S</a>&nbsp;<a href="index-20.html">T</a>&nbsp;<a href="index-21.html">U</a>&nbsp;<a href="index-22.html">V</a>&nbsp;<a href="index-23.html">W</a>&nbsp;<a href="index-24.html">X</a>&nbsp;<a href="index-25.html">Y</a>&nbsp;<a href="index-26.html">Z</a>&nbsp;<br><a href="../allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="../allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="../constant-values.html">Constant&nbsp;Field&nbsp;Values</a><span class="vertical-separator">|</span><a href="../serialized-form.html">Serialized&nbsp;Form</a></main>

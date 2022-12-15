@@ -66,6 +66,11 @@ loadScripts(document, 'script');</script>
 <div class="block">Internal utility classes for the util module of the Foundation library plus
   the implementations for the exported components.</div>
 </div>
+<div class="col-first even-row-color"><a href="#org.tquadrat.foundation.util.stringconverter">org.tquadrat.foundation.util.stringconverter</a></div>
+<div class="col-last even-row-color">
+<div class="block">This package provides classes that allow to convert certain
+  object instances into String and vice versa.</div>
+</div>
 </div>
 <section class="package-uses">
 <ul class="block-list">
@@ -75,6 +80,18 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><a href="class-use/Base32.Decoder.html#org.tquadrat.foundation.util">Base32.Decoder</a></div>
+<div class="col-last even-row-color">
+<div class="block">The Decoder for
+  <a href="https://www.crockford.com/base32.html">Crockfords's Base&nbsp;32</a>
+  format.</div>
+</div>
+<div class="col-first odd-row-color"><a href="class-use/Base32.Encoder.html#org.tquadrat.foundation.util">Base32.Encoder</a></div>
+<div class="col-last odd-row-color">
+<div class="block">The Encoder for
+  <a href="https://www.crockford.com/base32.html">Crockfords's Base&nbsp;32</a>
+  format.</div>
+</div>
 <div class="col-first even-row-color"><a href="class-use/Comparators.KeyProvider.html#org.tquadrat.foundation.util">Comparators.KeyProvider</a></div>
 <div class="col-last even-row-color">
 <div class="block">Implementations of this interface provides the sort order
@@ -142,8 +159,13 @@ loadScripts(document, 'script');</script>
   <br>Currently, we can distinguish only between Microsoft Windows,
   UNIX/Linux and MacOX/OS-X.</div>
 </div>
-<div class="col-first even-row-color"><a href="class-use/UniqueIdUtils.HashType.html#org.tquadrat.foundation.util">UniqueIdUtils.HashType</a></div>
+<div class="col-first even-row-color"><a href="class-use/TSID.html#org.tquadrat.foundation.util">TSID</a></div>
 <div class="col-last even-row-color">
+<div class="block">The definition for a 64-bit time-based and time-sorted unique
+  id.</div>
+</div>
+<div class="col-first odd-row-color"><a href="class-use/UniqueIdUtils.HashType.html#org.tquadrat.foundation.util">UniqueIdUtils.HashType</a></div>
+<div class="col-last odd-row-color">
 <div class="block">Two different hash types are used for name-based UUIDs.</div>
 </div>
 </div>
@@ -155,45 +177,70 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><a href="class-use/Comparators.KeyProvider.html#org.tquadrat.foundation.util.internal">Comparators.KeyProvider</a></div>
+<div class="col-first even-row-color"><a href="class-use/Base32.Encoder.html#org.tquadrat.foundation.util.internal">Base32.Encoder</a></div>
 <div class="col-last even-row-color">
+<div class="block">The Encoder for
+  <a href="https://www.crockford.com/base32.html">Crockfords's Base&nbsp;32</a>
+  format.</div>
+</div>
+<div class="col-first odd-row-color"><a href="class-use/Comparators.KeyProvider.html#org.tquadrat.foundation.util.internal">Comparators.KeyProvider</a></div>
+<div class="col-last odd-row-color">
 <div class="block">Implementations of this interface provides the sort order
   key from the given instance of the type.</div>
 </div>
-<div class="col-first odd-row-color"><a href="class-use/HeadTailList.html#org.tquadrat.foundation.util.internal">HeadTailList</a></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><a href="class-use/HeadTailList.html#org.tquadrat.foundation.util.internal">HeadTailList</a></div>
+<div class="col-last even-row-color">
 <div class="block">A <code>HeadTailList</code> is an unmodifiable list data
   structure</div>
 </div>
-<div class="col-first even-row-color"><a href="class-use/LazyList.html#org.tquadrat.foundation.util.internal">LazyList</a></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><a href="class-use/LazyList.html#org.tquadrat.foundation.util.internal">LazyList</a></div>
+<div class="col-last odd-row-color">
 <div class="block">The interface for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link"><code>List</code></a>
   that will be initialised only when required.</div>
 </div>
-<div class="col-first odd-row-color"><a href="class-use/LazyMap.html#org.tquadrat.foundation.util.internal">LazyMap</a></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><a href="class-use/LazyMap.html#org.tquadrat.foundation.util.internal">LazyMap</a></div>
+<div class="col-last even-row-color">
 <div class="block">The interface for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link"><code>Map</code></a>
   that will be initialised only when required.</div>
 </div>
-<div class="col-first even-row-color"><a href="class-use/LazySet.html#org.tquadrat.foundation.util.internal">LazySet</a></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><a href="class-use/LazySet.html#org.tquadrat.foundation.util.internal">LazySet</a></div>
+<div class="col-last odd-row-color">
 <div class="block">The interface for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Set.html" title="class or interface in java.util" class="external-link"><code>Set</code></a>
   that will be initialised only when required.</div>
 </div>
-<div class="col-first odd-row-color"><a href="class-use/LazySortedMap.html#org.tquadrat.foundation.util.internal">LazySortedMap</a></div>
-<div class="col-last odd-row-color">
+<div class="col-first even-row-color"><a href="class-use/LazySortedMap.html#org.tquadrat.foundation.util.internal">LazySortedMap</a></div>
+<div class="col-last even-row-color">
 <div class="block">The interface for a
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/SortedMap.html" title="class or interface in java.util" class="external-link"><code>SortedMap</code></a>
   that will be initialised only when required.</div>
 </div>
-<div class="col-first even-row-color"><a href="class-use/RangeMap.html#org.tquadrat.foundation.util.internal">RangeMap</a></div>
-<div class="col-last even-row-color">
+<div class="col-first odd-row-color"><a href="class-use/RangeMap.html#org.tquadrat.foundation.util.internal">RangeMap</a></div>
+<div class="col-last odd-row-color">
 <div class="block"><code>A range map is used to map a value to a given numerical range.</code>
   The lower border of the lowest range is always
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Double.html#MAX_VALUE" title="class or interface in java.lang" class="external-link"><code>-Double.MAX_VALUE</code></a>.</div>
+</div>
+<div class="col-first even-row-color"><a href="class-use/TSID.html#org.tquadrat.foundation.util.internal">TSID</a></div>
+<div class="col-last even-row-color">
+<div class="block">The definition for a 64-bit time-based and time-sorted unique
+  id.</div>
+</div>
+</div>
+</section>
+</li>
+<li>
+<section class="detail" id="org.tquadrat.foundation.util.stringconverter">
+<div class="caption"><span>Classes in <a href="package-summary.html">org.tquadrat.foundation.util</a> used by <a href="stringconverter/package-summary.html">org.tquadrat.foundation.util.stringconverter</a></span></div>
+<div class="summary-table two-column-summary">
+<div class="table-header col-first">Class</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><a href="class-use/TSID.html#org.tquadrat.foundation.util.stringconverter">TSID</a></div>
+<div class="col-last even-row-color">
+<div class="block">The definition for a 64-bit time-based and time-sorted unique
+  id.</div>
 </div>
 </div>
 </section>

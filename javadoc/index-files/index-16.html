@@ -301,17 +301,22 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Creates a new primitive entity map.</div>
 </dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#PROPERTY_NODE_ID" class="member-name-link">PROPERTY_NODE_ID</a> - Static variable in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html" title="class in org.tquadrat.foundation.util">SystemUtils</a></dt>
+<dd>
+<div class="block">The name of the system property for the node id:
+  "org.tquadrat.foundation.util.SystemUtils.NodeId".</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html#PROPERTY_TSID_NODE" class="member-name-link">PROPERTY_TSID_NODE</a> - Static variable in interface org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html" title="interface in org.tquadrat.foundation.util">TSID</a></dt>
+<dd>
+<div class="block">The property name for the node value that is used for the generation of
+  the ids: "org.tquadrat.util.tsid.node".</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#PROPERTY_USE_PSEUDO_NODE_ID" class="member-name-link">PROPERTY_USE_PSEUDO_NODE_ID</a> - Static variable in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html" title="class in org.tquadrat.foundation.util">UniqueIdUtils</a></dt>
 <dd>
-<div class="block">The internal system property for the flag controlling that only pseudo
-  node ids should be used to generate
+<div class="block">The name for the internal system property for the flag
+  controlling that only pseudo node ids should be used to generate
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link"><code>UUID</code></a>
-  instances of type 1: "org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId".<br>
-  <br>A value of <code>true</code> means that only pseudo ids will be used
-  throughout the current run of the program, while <code>false</code>
-  (the default) means that a MAC address is used for the calculation of a
-  node id, if available.<br>
-  <br>This system property is not necessarily configured.</div>
+  instances of type 1: "org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId".</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/BigDecimalStringConverter.html#provider()" class="member-name-link">provider()</a> - Static method in class org.tquadrat.foundation.util.stringconverter.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/BigDecimalStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">BigDecimalStringConverter</a></dt>
 <dd>
@@ -554,6 +559,14 @@ loadScripts(document, 'script');</script>
   implementation.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeZoneStringConverter.html#provider()" class="member-name-link">provider()</a> - Static method in class org.tquadrat.foundation.util.stringconverter.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeZoneStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">TimeZoneStringConverter</a></dt>
+<dd>
+<div class="block">This method is used by the
+  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ServiceLoader.html" title="class or interface in java.util" class="external-link"><code>ServiceLoader</code></a>
+  to obtain the instance for this
+  <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
+  implementation.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TSIDStringConverter.html#provider()" class="member-name-link">provider()</a> - Static method in class org.tquadrat.foundation.util.stringconverter.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TSIDStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">TSIDStringConverter</a></dt>
 <dd>
 <div class="block">This method is used by the
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/ServiceLoader.html" title="class or interface in java.util" class="external-link"><code>ServiceLoader</code></a>

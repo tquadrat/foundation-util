@@ -32,24 +32,24 @@ import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
- *  An implementation of
+ *  <p>{@summary An implementation of
  *  {@link StringConverter}
  *  for
  *  {@link UUID}
- *  values.<br>
- *  <br>The method
+ *  values.}</p>
+ *  <p>The method
  *  {@link #fromString(CharSequence)}
  *  will use
  *  {@link org.tquadrat.foundation.util.UniqueIdUtils#uuidFromString(CharSequence)}
- *  to create a {@code UUID} instance based on the given value.
+ *  to create a {@code UUID} instance based on the given value.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UUIDStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: UUIDStringConverter.java 1037 2022-12-15 00:35:17Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: UUIDStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UUIDStringConverter.java 1037 2022-12-15 00:35:17Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class UUIDStringConverter implements StringConverter<UUID>
 {
