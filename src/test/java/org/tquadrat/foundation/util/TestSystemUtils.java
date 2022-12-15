@@ -32,9 +32,9 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link org.tquadrat.foundation.util.SystemUtils}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestSystemUtils.java 1037 2022-12-15 00:35:17Z tquadrat $
+ *  @version $Id: TestSystemUtils.java 1039 2022-12-15 00:57:02Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestSystemUtils.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestSystemUtils.java 1039 2022-12-15 00:57:02Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.SystemUtils" )
 public class TestSystemUtils extends TestBaseClass
 {

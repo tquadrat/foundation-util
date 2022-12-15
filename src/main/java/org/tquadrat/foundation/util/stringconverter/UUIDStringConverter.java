@@ -44,12 +44,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to create a {@code UUID} instance based on the given value.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UUIDStringConverter.java 1037 2022-12-15 00:35:17Z tquadrat $
+ *  @version $Id: UUIDStringConverter.java 1039 2022-12-15 00:57:02Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: UUIDStringConverter.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UUIDStringConverter.java 1039 2022-12-15 00:57:02Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class UUIDStringConverter implements StringConverter<UUID>
 {
