@@ -118,6 +118,7 @@ public class TestVersion7UUID extends TestBaseClass
                         endLatch.countDown();
                     }
                 } );
+            //noinspection OverlyLongLambda
             thread.setUncaughtExceptionHandler(
                 (t,e) ->
                 {
