@@ -341,7 +341,7 @@ public final class UniqueIdUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final UUID UUID_MAX;
 
-    /*
+    /**
      *  The nil UUID.
      */
     @API( status = STABLE, since = "0.0.5" )
