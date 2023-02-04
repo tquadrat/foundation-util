@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -161,7 +161,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *  <p>It's textual representation is also suitable for XML ids.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1040 2022-12-15 03:56:33Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1044 2023-02-04 09:58:19Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -172,7 +172,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1040 2022-12-15 03:56:33Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1044 2023-02-04 09:58:19Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils
