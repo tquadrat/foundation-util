@@ -152,7 +152,7 @@
                           y='58.000'>- IOUtils()</text>
                     <text x='5.000'
                           y='69.000'
-                          class='static'>+ closeQuietly(c:java.lang.AutoCloseable):void</text>
+                          class='static'>+ closeQuietly(closeable:java.lang.AutoCloseable):void</text>
                     <text x='5.000'
                           y='80.000'
                           class='static'>+ createDirectories(dir:java.io.File,attributes:java.nio.file.attribute.FileAttribute&lt;?&gt;&#x2026;):java.io.File</text>

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -31,6 +31,7 @@ import org.tquadrat.foundation.util.stringconverter.DoubleStringConverter;
 import org.tquadrat.foundation.util.stringconverter.DurationStringConverter;
 import org.tquadrat.foundation.util.stringconverter.FileStringConverter;
 import org.tquadrat.foundation.util.stringconverter.FloatStringConverter;
+import org.tquadrat.foundation.util.stringconverter.HashStringConverter;
 import org.tquadrat.foundation.util.stringconverter.InetAddressStringConverter;
 import org.tquadrat.foundation.util.stringconverter.InstantStringConverter;
 import org.tquadrat.foundation.util.stringconverter.IntegerStringConverter;
@@ -62,7 +63,7 @@ import org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter
  *  @provides   org.tquadrat.foundation.lang.StringConverter    Implementations
  *      of String converters.
  *
- *  @version $Id: module-info.java 1037 2022-12-15 00:35:17Z tquadrat $
+ *  @version $Id: module-info.java 1045 2023-02-07 23:09:17Z tquadrat $
  *
  *  @todo task.list
  */
@@ -92,6 +93,7 @@ module org.tquadrat.foundation.util
         DurationStringConverter,
         FileStringConverter,
         FloatStringConverter,
+        HashStringConverter,
         InetAddressStringConverter,
         InstantStringConverter,
         IntegerStringConverter,

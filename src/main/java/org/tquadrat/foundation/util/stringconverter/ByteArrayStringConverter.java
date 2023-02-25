@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -50,12 +50,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see java.util.Base64#getDecoder()
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ByteArrayStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: ByteArrayStringConverter.java 1045 2023-02-07 23:09:17Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ByteArrayStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ByteArrayStringConverter.java 1045 2023-02-07 23:09:17Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public final class ByteArrayStringConverter implements StringConverter<byte[]>
 {
@@ -107,7 +107,6 @@ public final class ByteArrayStringConverter implements StringConverter<byte[]>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final ByteArrayStringConverter provider() { return INSTANCE; }
 
     /**

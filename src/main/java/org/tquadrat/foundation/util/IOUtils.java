@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -22,7 +22,6 @@ import static java.lang.System.out;
 import static java.nio.file.FileVisitResult.CONTINUE;
 import static java.nio.file.Files.delete;
 import static java.nio.file.Files.walkFileTree;
-import static java.nio.file.StandardOpenOption.READ;
 import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
 import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
 import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
@@ -33,7 +32,6 @@ import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_USER_NAME;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,7 +50,6 @@ import java.nio.file.attribute.PosixFilePermissions;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.EnumSet;
-import java.util.HexFormat;
 import java.util.Set;
 import java.util.zip.Adler32;
 import java.util.zip.CRC32;
@@ -68,12 +65,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: IOUtils.java 1045 2023-02-07 23:09:17Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1045 2023-02-07 23:09:17Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -89,13 +86,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: IOUtils.java 1045 2023-02-07 23:09:17Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1045 2023-02-07 23:09:17Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -143,13 +140,13 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: IOUtils.java 1045 2023-02-07 23:09:17Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( {"UtilityClassCanBeEnum", "ClassWithoutConstructor"} )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1045 2023-02-07 23:09:17Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -220,15 +217,15 @@ public final class IOUtils
      *  <br>Even after the introduction of {@code try-with-resources} with
      *  Java&nbsp;7, this method can be still helpful.
      *
-     *  @param  c  The {@code AutoCloseable} instance to close, can be
+     *  @param  closeable   The {@code AutoCloseable} instance to close, can be
      *      {@code null} or already closed.
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final void closeQuietly( final AutoCloseable c )
+    public static final void closeQuietly( final AutoCloseable closeable )
     {
         try
         {
-            if( nonNull( c ) ) c.close();
+            if( nonNull( closeable ) ) closeable.close();
         }
         catch( final Exception ignored ) { /* Deliberately ignored! */ }
     }   //  closeQuietly()
@@ -614,14 +611,9 @@ public final class IOUtils
     {
         final var retValue = switch( requireNotEmptyArgument( algorithm, "algorithm" ) )
         {
-            case "Adler32" -> format( "%Xd", determineCheckSum( file, new Adler32() ) );
-            case "CRC32" -> format( "%Xd", determineCheckSum( file, new CRC32() ) );
-            default -> {
-                final var messageDigest = MessageDigest.getInstance( algorithm );
-                yield HexFormat.of()
-                    .withUpperCase()
-                    .formatHex( determineCheckSum( file, messageDigest ) );
-            }
+            case "Adler32" -> Hash.create( file, new Adler32() ).toString();
+            case "CRC32" -> Hash.create( file, new CRC32() ).toString();
+            default -> Hash.create( file, MessageDigest.getInstance( algorithm ) ).toString();
         };
 
         //---* Done *----------------------------------------------------------
@@ -657,21 +649,12 @@ public final class IOUtils
      *  @return The check sum.
      *  @throws IOException Problems to process the file.
      */
-    @SuppressWarnings( "NestedAssignment" )
     @API( status = STABLE, since = "0.0.5" )
     public static final long determineCheckSum( final Path file, final Checksum algorithm ) throws IOException
     {
-        requireNonNullArgument( algorithm, "algorithm" ).reset();
-        try( final var inputStream = Files.newInputStream( requireNonNullArgument( file, "file" ), READ ) )
-        {
-            final var buffer = new byte [DEFAULT_BUFFER_SIZE];
-            var readBytes = 0;
-            while( (readBytes = inputStream.read( buffer )) > 0 )
-            {
-                algorithm.update( buffer, 0, readBytes );
-            }
-        }
-        final var retValue = algorithm.getValue();
+        final var retValue = Hash.create( file, algorithm )
+            .number()
+            .longValue();
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -706,21 +689,10 @@ public final class IOUtils
      *  @return The check sum as a byte array.
      *  @throws IOException Problems to process the file.
      */
-    @SuppressWarnings( "NestedAssignment" )
     @API( status = STABLE, since = "0.0.5" )
     public static final byte [] determineCheckSum( final Path file, final MessageDigest algorithm ) throws IOException
     {
-        requireNonNullArgument( algorithm, "algorithm" ).reset();
-        try( final var inputStream = Files.newInputStream( requireNonNullArgument( file, "file" ), READ ) )
-        {
-            final var buffer = new byte [DEFAULT_BUFFER_SIZE];
-            var readBytes = 0;
-            while( (readBytes = inputStream.read( buffer )) > 0 )
-            {
-                algorithm.update( buffer, 0, readBytes );
-            }
-        }
-        final var retValue = algorithm.digest();
+        final var retValue = Hash.create( file, algorithm ).bytes();
 
         //---* Done *----------------------------------------------------------
         return retValue;

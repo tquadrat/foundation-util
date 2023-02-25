@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2022 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> *</span>
@@ -63,12 +63,12 @@
 <span class="source-line-no">050</span><span id="line-50"> *  @see java.util.Base64#getDecoder()</span>
 <span class="source-line-no">051</span><span id="line-51"> *</span>
 <span class="source-line-no">052</span><span id="line-52"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">053</span><span id="line-53"> *  @version $Id: ByteArrayStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
+<span class="source-line-no">053</span><span id="line-53"> *  @version $Id: ByteArrayStringConverter.java 1045 2023-02-07 23:09:17Z tquadrat $</span>
 <span class="source-line-no">054</span><span id="line-54"> *  @since 0.1.0</span>
 <span class="source-line-no">055</span><span id="line-55"> *</span>
 <span class="source-line-no">056</span><span id="line-56"> *  @UMLGraph.link</span>
 <span class="source-line-no">057</span><span id="line-57"> */</span>
-<span class="source-line-no">058</span><span id="line-58">@ClassVersion( sourceVersion = "$Id: ByteArrayStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
+<span class="source-line-no">058</span><span id="line-58">@ClassVersion( sourceVersion = "$Id: ByteArrayStringConverter.java 1045 2023-02-07 23:09:17Z tquadrat $" )</span>
 <span class="source-line-no">059</span><span id="line-59">@API( status = STABLE, since = "0.1.0" )</span>
 <span class="source-line-no">060</span><span id="line-60">public final class ByteArrayStringConverter implements StringConverter&lt;byte[]&gt;</span>
 <span class="source-line-no">061</span><span id="line-61">{</span>
@@ -120,34 +120,33 @@
 <span class="source-line-no">107</span><span id="line-107">     *</span>
 <span class="source-line-no">108</span><span id="line-108">     *  @return The instance for this {@code StringConverter} implementation.</span>
 <span class="source-line-no">109</span><span id="line-109">     */</span>
-<span class="source-line-no">110</span><span id="line-110">    @SuppressWarnings( "UseOfConcreteClass" )</span>
-<span class="source-line-no">111</span><span id="line-111">    public static final ByteArrayStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">112</span><span id="line-112"></span>
-<span class="source-line-no">113</span><span id="line-113">    /**</span>
-<span class="source-line-no">114</span><span id="line-114">     *  Provides the subject class for this converter.</span>
-<span class="source-line-no">115</span><span id="line-115">     *</span>
-<span class="source-line-no">116</span><span id="line-116">     *  @return The subject class.</span>
-<span class="source-line-no">117</span><span id="line-117">     */</span>
-<span class="source-line-no">118</span><span id="line-118">    @SuppressWarnings( "PublicMethodNotExposedInInterface" )</span>
-<span class="source-line-no">119</span><span id="line-119">    public final Collection&lt;Class&lt;?&gt;&gt; getSubjectClass() { return List.of( byte [].class ); }</span>
-<span class="source-line-no">120</span><span id="line-120"></span>
-<span class="source-line-no">121</span><span id="line-121">    /**</span>
-<span class="source-line-no">122</span><span id="line-122">     *  {@inheritDoc}</span>
-<span class="source-line-no">123</span><span id="line-123">     */</span>
-<span class="source-line-no">124</span><span id="line-124">    @Override</span>
-<span class="source-line-no">125</span><span id="line-125">    public final String toString( final byte [] source )</span>
-<span class="source-line-no">126</span><span id="line-126">    {</span>
-<span class="source-line-no">127</span><span id="line-127">        final var retValue = isNull( source ) ? null : new String( getEncoder().encode( source ), ASCII );</span>
-<span class="source-line-no">128</span><span id="line-128"></span>
-<span class="source-line-no">129</span><span id="line-129">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">130</span><span id="line-130">        return retValue;</span>
-<span class="source-line-no">131</span><span id="line-131">    }   //  toString()</span>
-<span class="source-line-no">132</span><span id="line-132">}</span>
-<span class="source-line-no">133</span><span id="line-133">//  class ByteArrayStringConverter</span>
-<span class="source-line-no">134</span><span id="line-134"></span>
-<span class="source-line-no">135</span><span id="line-135">/*</span>
-<span class="source-line-no">136</span><span id="line-136"> *  End of File</span>
-<span class="source-line-no">137</span><span id="line-137"> */</span>
+<span class="source-line-no">110</span><span id="line-110">    public static final ByteArrayStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">111</span><span id="line-111"></span>
+<span class="source-line-no">112</span><span id="line-112">    /**</span>
+<span class="source-line-no">113</span><span id="line-113">     *  Provides the subject class for this converter.</span>
+<span class="source-line-no">114</span><span id="line-114">     *</span>
+<span class="source-line-no">115</span><span id="line-115">     *  @return The subject class.</span>
+<span class="source-line-no">116</span><span id="line-116">     */</span>
+<span class="source-line-no">117</span><span id="line-117">    @SuppressWarnings( "PublicMethodNotExposedInInterface" )</span>
+<span class="source-line-no">118</span><span id="line-118">    public final Collection&lt;Class&lt;?&gt;&gt; getSubjectClass() { return List.of( byte [].class ); }</span>
+<span class="source-line-no">119</span><span id="line-119"></span>
+<span class="source-line-no">120</span><span id="line-120">    /**</span>
+<span class="source-line-no">121</span><span id="line-121">     *  {@inheritDoc}</span>
+<span class="source-line-no">122</span><span id="line-122">     */</span>
+<span class="source-line-no">123</span><span id="line-123">    @Override</span>
+<span class="source-line-no">124</span><span id="line-124">    public final String toString( final byte [] source )</span>
+<span class="source-line-no">125</span><span id="line-125">    {</span>
+<span class="source-line-no">126</span><span id="line-126">        final var retValue = isNull( source ) ? null : new String( getEncoder().encode( source ), ASCII );</span>
+<span class="source-line-no">127</span><span id="line-127"></span>
+<span class="source-line-no">128</span><span id="line-128">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">129</span><span id="line-129">        return retValue;</span>
+<span class="source-line-no">130</span><span id="line-130">    }   //  toString()</span>
+<span class="source-line-no">131</span><span id="line-131">}</span>
+<span class="source-line-no">132</span><span id="line-132">//  class ByteArrayStringConverter</span>
+<span class="source-line-no">133</span><span id="line-133"></span>
+<span class="source-line-no">134</span><span id="line-134">/*</span>
+<span class="source-line-no">135</span><span id="line-135"> *  End of File</span>
+<span class="source-line-no">136</span><span id="line-136"> */</span>
 
 
 

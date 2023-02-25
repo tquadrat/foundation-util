@@ -13,6 +13,7 @@ org.tquadrat.foundation.util.stringconverter.DoubleStringConverter
 org.tquadrat.foundation.util.stringconverter.DurationStringConverter
 org.tquadrat.foundation.util.stringconverter.FileStringConverter
 org.tquadrat.foundation.util.stringconverter.FloatStringConverter
+org.tquadrat.foundation.util.stringconverter.HashStringConverter
 org.tquadrat.foundation.util.stringconverter.InetAddressStringConverter
 org.tquadrat.foundation.util.stringconverter.InstantStringConverter
 org.tquadrat.foundation.util.stringconverter.IntegerStringConverter
