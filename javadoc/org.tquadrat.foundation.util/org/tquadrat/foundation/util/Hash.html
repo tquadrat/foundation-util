@@ -91,7 +91,7 @@ loadScripts(document, 'script');</script>
 <dd><code><a href="internal/HashImpl.html" title="class in org.tquadrat.foundation.util.internal">HashImpl</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: Hash.java 1045 2023-02-07 23:09:17Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: Hash.java 1052 2023-03-06 06:30:36Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.1")
 </span><span class="modifiers">public sealed interface </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-49">Hash</a></span><span class="extends-implements">
@@ -99,12 +99,12 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <span class="permits">permits <a href="internal/HashImpl.html" title="class in org.tquadrat.foundation.util.internal">HashImpl</a></span></div>
 <div class="block"><p>The definition for a wrapper around hash values of any kind.
   These hashes are often used as checksums to validate the integrity of files
-  or messages.</p>></div>
+  or messages.</p></div>
 <dl class="notes">
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: Hash.java 1045 2023-02-07 23:09:17Z tquadrat $</dd>
+<dd>$Id: Hash.java 1052 2023-03-06 06:30:36Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.1.1</dd>
 
@@ -259,7 +259,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="bytes()">
 <h3>bytes</h3>
-<div class="member-signature"><span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-67">bytes</a></span>()</div>
+<div class="member-signature"><span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-63">bytes</a></span>()</div>
 <div class="block">Returns the hash as an array of bytes.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -270,7 +270,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="clone()">
 <h3>clone</h3>
-<div class="member-signature"><span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-74">clone</a></span>()</div>
+<div class="member-signature"><span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-70">clone</a></span>()</div>
 <div class="block">Creates and returns a copy of this object.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -281,33 +281,37 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="create(byte[],java.util.zip.Checksum)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-82">create</a></span><wbr><span class="parameters">(byte[]&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-79">create</a></span><wbr><span class="parameters">(byte[]&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Checksum.html" title="class or interface in java.util.zip" class="external-link">Checksum</a>&nbsp;algorithm)</span></div>
 <div class="block">Creates the hash for the given byte array, using the given algorithm.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input data.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="create(java.lang.CharSequence,java.util.zip.Checksum)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-93">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-91">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Checksum.html" title="class or interface in java.util.zip" class="external-link">Checksum</a>&nbsp;algorithm)</span></div>
 <div class="block">Creates the hash for the given String, using the given algorithm.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input data.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="create(java.lang.CharSequence,java.nio.charset.Charset,java.util.zip.Checksum)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-105">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-104">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/charset/Charset.html" title="class or interface in java.nio.charset" class="external-link">Charset</a>&nbsp;encoding,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Checksum.html" title="class or interface in java.util.zip" class="external-link">Checksum</a>&nbsp;algorithm)</span></div>
 <div class="block">Creates the hash for the given String, using the given algorithm.</div>
@@ -316,6 +320,8 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <dd><code>data</code> - The input data.</dd>
 <dd><code>encoding</code> - The encoding for the String.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 </dl>
 </section>
 </li>
@@ -330,6 +336,8 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input data.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - Problems to process the file.</dd>
 </dl>
@@ -338,7 +346,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="create(java.nio.file.Path,java.util.zip.Checksum)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-129">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-130">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/zip/Checksum.html" title="class or interface in java.util.zip" class="external-link">Checksum</a>&nbsp;algorithm)</span>
             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Creates the hash for the given file, using the given algorithm.</div>
@@ -346,6 +354,8 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input data.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - Problems to process the file.</dd>
 </dl>
@@ -354,33 +364,37 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="create(byte[],java.security.MessageDigest)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-140">create</a></span><wbr><span class="parameters">(byte[]&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-142">create</a></span><wbr><span class="parameters">(byte[]&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>&nbsp;algorithm)</span></div>
 <div class="block">Creates the hash for the given byte array, using the given algorithm.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input data.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="create(java.lang.CharSequence,java.security.MessageDigest)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-151">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-154">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>&nbsp;algorithm)</span></div>
 <div class="block">Creates the hash for the given String, using the given algorithm.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input data.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="create(java.lang.CharSequence,java.nio.charset.Charset,java.security.MessageDigest)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-163">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-167">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/charset/Charset.html" title="class or interface in java.nio.charset" class="external-link">Charset</a>&nbsp;encoding,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>&nbsp;algorithm)</span></div>
 <div class="block">Creates the hash for the given String, using the given algorithm.</div>
@@ -389,13 +403,15 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <dd><code>data</code> - The input data.</dd>
 <dd><code>encoding</code> - The encoding for the String.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="create(java.io.File,java.security.MessageDigest)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-175">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-180">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>&nbsp;algorithm)</span>
             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Creates the hash for the given file, using the given algorithm.</div>
@@ -403,6 +419,8 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input data.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - Problems to process the file.</dd>
 </dl>
@@ -411,7 +429,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="create(java.nio.file.Path,java.security.MessageDigest)">
 <h3>create</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-187">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;data,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-193">create</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/nio/file/Path.html" title="class or interface in java.nio.file" class="external-link">Path</a>&nbsp;data,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/security/MessageDigest.html" title="class or interface in java.security" class="external-link">MessageDigest</a>&nbsp;algorithm)</span>
             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Creates the hash for the given file, using the given algorithm.</div>
@@ -419,6 +437,8 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <dt>Parameters:</dt>
 <dd><code>data</code> - The input data.</dd>
 <dd><code>algorithm</code> - The algorithm</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - Problems to process the file.</dd>
 </dl>
@@ -427,29 +447,33 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="from(byte[])">
 <h3>from</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-197">from</a></span><wbr><span class="parameters">(byte[]&nbsp;hashValue)</span></div>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-204">from</a></span><wbr><span class="parameters">(byte[]&nbsp;hashValue)</span></div>
 <div class="block">Creates an instance of <code>Hash</code> from the given byte array.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>hashValue</code> - The hash value.</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="from(java.lang.CharSequence)">
 <h3>from</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-204">from</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;hashValue)</span></div>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="Hash.html" title="interface in org.tquadrat.foundation.util">Hash</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-212">from</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;hashValue)</span></div>
 <div class="block">Creates an instance of <code>Hash</code> from the given String.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>hashValue</code> - The hash value.</dd>
+<dt>Returns:</dt>
+<dd>A new instance of <code>Hash</code>.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="number()">
 <h3>number</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-211">number</a></span>()</div>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-219">number</a></span>()</div>
 <div class="block">Returns this hash as a number.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -460,7 +484,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="validate(byte[])">
 <h3>validate</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-220">validate</a></span><wbr><span class="parameters">(byte[]&nbsp;hashValue)</span></div>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-228">validate</a></span><wbr><span class="parameters">(byte[]&nbsp;hashValue)</span></div>
 <div class="block">Validates whether the given hash value matches with this hash instance.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -474,7 +498,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="validate(long)">
 <h3>validate</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-229">validate</a></span><wbr><span class="parameters">(long&nbsp;hashValue)</span></div>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-237">validate</a></span><wbr><span class="parameters">(long&nbsp;hashValue)</span></div>
 <div class="block">Validates whether the given hash value matches with this hash instance.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -488,7 +512,7 @@ extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/ja
 <li>
 <section class="detail" id="validate(java.lang.CharSequence)">
 <h3>validate</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-238">validate</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;hashValue)</span></div>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Hash.html#line-246">validate</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;hashValue)</span></div>
 <div class="block">Validates whether the given hash value matches with this hash instance.</div>
 <dl class="notes">
 <dt>Parameters:</dt>

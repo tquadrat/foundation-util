@@ -43,23 +43,15 @@ import org.tquadrat.foundation.util.Hash;
  *  The implementation for the interface
  *  {@link Hash}.
  *
- *  @version $Id: HashImpl.java 1045 2023-02-07 23:09:17Z tquadrat $
+ *  @version $Id: HashImpl.java 1052 2023-03-06 06:30:36Z tquadrat $
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @UMLGraph.link
  *  @since 0.1.1
  */
-@ClassVersion( sourceVersion = "$Id: HashImpl.java 1045 2023-02-07 23:09:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HashImpl.java 1052 2023-03-06 06:30:36Z tquadrat $" )
 @API( status = INTERNAL, since = "0.1.1" )
 public final class HashImpl implements Hash
 {
-        /*---------------*\
-    ====** Inner Classes **====================================================
-        \*---------------*/
-
-        /*-----------*\
-    ====** Constants **========================================================
-        \*-----------*/
-
         /*------------*\
     ====** Attributes **=======================================================
         \*------------*/
@@ -126,6 +118,7 @@ public final class HashImpl implements Hash
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code HashImpl}.
      */
     public static final HashImpl create( final byte [] data, final Checksum algorithm )
     {
@@ -143,6 +136,7 @@ public final class HashImpl implements Hash
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code HashImpl}.
      *  @throws IOException Problems to process the file.
      */
     public static Hash create( final Path data, final Checksum algorithm ) throws IOException
@@ -169,6 +163,7 @@ public final class HashImpl implements Hash
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code HashImpl}.
      */
     public static final HashImpl create( final byte [] data, final MessageDigest algorithm )
     {
@@ -186,6 +181,7 @@ public final class HashImpl implements Hash
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
      *  @throws IOException Problems to process the file.
+     *  @return A new instance of {@code HashImpl}.
      */
     public static Hash create( final Path data, final MessageDigest algorithm ) throws IOException
     {
@@ -226,6 +222,7 @@ public final class HashImpl implements Hash
      *  Creates an instance of {@code Hash} from the given String.
      *
      *  @param  hashValue   The hash value.
+     *  @return A new instance of {@code HashImpl}.
      */
     public static final HashImpl from( final CharSequence hashValue )
     {

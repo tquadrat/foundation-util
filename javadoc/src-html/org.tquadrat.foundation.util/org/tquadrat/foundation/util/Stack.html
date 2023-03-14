@@ -53,7 +53,7 @@
 <span class="source-line-no">040</span><span id="line-40"> *  &lt;p&gt;This implementation is not synchronised, but thread-safe.&lt;/p&gt;</span>
 <span class="source-line-no">041</span><span id="line-41"> *</span>
 <span class="source-line-no">042</span><span id="line-42"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">043</span><span id="line-43"> *  @version $Id: Stack.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
+<span class="source-line-no">043</span><span id="line-43"> *  @version $Id: Stack.java 1052 2023-03-06 06:30:36Z tquadrat $</span>
 <span class="source-line-no">044</span><span id="line-44"> *  @since 0.0.5</span>
 <span class="source-line-no">045</span><span id="line-45"> *</span>
 <span class="source-line-no">046</span><span id="line-46"> *  @param  &lt;T&gt; The type for the stack entries.</span>
@@ -63,7 +63,7 @@
 <span class="source-line-no">050</span><span id="line-50"> *  @see    java.util.Stack</span>
 <span class="source-line-no">051</span><span id="line-51"> */</span>
 <span class="source-line-no">052</span><span id="line-52">@SuppressWarnings( "NewClassNamingConvention" )</span>
-<span class="source-line-no">053</span><span id="line-53">@ClassVersion( sourceVersion = "$Id: Stack.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
+<span class="source-line-no">053</span><span id="line-53">@ClassVersion( sourceVersion = "$Id: Stack.java 1052 2023-03-06 06:30:36Z tquadrat $" )</span>
 <span class="source-line-no">054</span><span id="line-54">@API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">055</span><span id="line-55">public final class Stack&lt;T&gt;</span>
 <span class="source-line-no">056</span><span id="line-56">{</span>
@@ -79,12 +79,12 @@
 <span class="source-line-no">066</span><span id="line-66">     *      {@code &lt;T&gt;} that is inherited from the surrounding class.</span>
 <span class="source-line-no">067</span><span id="line-67">     *</span>
 <span class="source-line-no">068</span><span id="line-68">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">069</span><span id="line-69">     *  @version $Id: Stack.java 1032 2022-04-10 17:27:44Z tquadrat $</span>
+<span class="source-line-no">069</span><span id="line-69">     *  @version $Id: Stack.java 1052 2023-03-06 06:30:36Z tquadrat $</span>
 <span class="source-line-no">070</span><span id="line-70">     *  @since 0.0.5</span>
 <span class="source-line-no">071</span><span id="line-71">     *</span>
 <span class="source-line-no">072</span><span id="line-72">     *  @UMLGraph.link</span>
 <span class="source-line-no">073</span><span id="line-73">     */</span>
-<span class="source-line-no">074</span><span id="line-74">    @ClassVersion( sourceVersion = "$Id: Stack.java 1032 2022-04-10 17:27:44Z tquadrat $" )</span>
+<span class="source-line-no">074</span><span id="line-74">    @ClassVersion( sourceVersion = "$Id: Stack.java 1052 2023-03-06 06:30:36Z tquadrat $" )</span>
 <span class="source-line-no">075</span><span id="line-75">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">076</span><span id="line-76">    private final class Entry</span>
 <span class="source-line-no">077</span><span id="line-77">    {</span>
@@ -134,7 +134,7 @@
 <span class="source-line-no">121</span><span id="line-121">         *</span>
 <span class="source-line-no">122</span><span id="line-122">         *  @return The tail.</span>
 <span class="source-line-no">123</span><span id="line-123">         */</span>
-<span class="source-line-no">124</span><span id="line-124">        @SuppressWarnings( {"UseOfConcreteClass", "ReturnOfInnerClass"} )</span>
+<span class="source-line-no">124</span><span id="line-124">        @SuppressWarnings( "ReturnOfInnerClass" )</span>
 <span class="source-line-no">125</span><span id="line-125">        public final Entry tail() { return m_Tail; }</span>
 <span class="source-line-no">126</span><span id="line-126">    }</span>
 <span class="source-line-no">127</span><span id="line-127">    //  class Entry</span>

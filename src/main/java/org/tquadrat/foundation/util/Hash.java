@@ -39,23 +39,19 @@ import org.tquadrat.foundation.util.internal.HashImpl;
 /**
  *  <p>{@summary The definition for a wrapper around hash values of any kind.}
  *  These hashes are often used as checksums to validate the integrity of files
- *  or messages.</p>>
+ *  or messages.</p>
  *
- *  @version $Id: Hash.java 1045 2023-02-07 23:09:17Z tquadrat $
+ *  @version $Id: Hash.java 1052 2023-03-06 06:30:36Z tquadrat $
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @UMLGraph.link
  *  @since 0.1.1
  */
 @SuppressWarnings( "NewClassNamingConvention" )
-@ClassVersion( sourceVersion = "$Id: Hash.java 1045 2023-02-07 23:09:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Hash.java 1052 2023-03-06 06:30:36Z tquadrat $" )
 @API( status = STABLE, since = "0.1.1" )
 public sealed interface Hash extends Cloneable, Serializable
     permits HashImpl
 {
-        /*-----------*\
-    ====** Constants **========================================================
-        \*-----------*/
-
         /*---------*\
     ====** Methods **==========================================================
         \*---------*/
@@ -78,6 +74,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash create( final byte [] data, final Checksum algorithm )
     {
@@ -89,6 +86,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash create( final CharSequence data, final Checksum algorithm )
     {
@@ -101,6 +99,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *  @param  data    The input data.
      *  @param  encoding    The encoding for the String.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash create( final CharSequence data, final Charset encoding, final Checksum algorithm )
     {
@@ -112,6 +111,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      *  @throws IOException Problems to process the file.
      */
     public static Hash create( final File data, final Checksum algorithm ) throws IOException
@@ -124,6 +124,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      *  @throws IOException Problems to process the file.
      */
     public static Hash create( final Path data, final Checksum algorithm ) throws IOException
@@ -136,6 +137,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash create( final byte [] data, final MessageDigest algorithm )
     {
@@ -147,6 +149,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash create( final CharSequence data, final MessageDigest algorithm )
     {
@@ -159,6 +162,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *  @param  data    The input data.
      *  @param  encoding    The encoding for the String.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash create( final CharSequence data, final Charset encoding, final MessageDigest algorithm )
     {
@@ -171,6 +175,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
      *  @throws IOException Problems to process the file.
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash create( final File data, final MessageDigest algorithm ) throws IOException
     {
@@ -182,6 +187,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *
      *  @param  data    The input data.
      *  @param  algorithm   The algorithm
+     *  @return A new instance of {@code Hash}.
      *  @throws IOException Problems to process the file.
      */
     public static Hash create( final Path data, final MessageDigest algorithm ) throws IOException
@@ -193,6 +199,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *  Creates an instance of {@code Hash} from the given byte array.
      *
      *  @param  hashValue   The hash value.
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash from( final byte [] hashValue ) { return new HashImpl( hashValue ); }
 
@@ -200,6 +207,7 @@ public sealed interface Hash extends Cloneable, Serializable
      *  Creates an instance of {@code Hash} from the given String.
      *
      *  @param  hashValue   The hash value.
+     *  @return A new instance of {@code Hash}.
      */
     public static Hash from( final CharSequence hashValue ) { return HashImpl.from( hashValue ); }
 

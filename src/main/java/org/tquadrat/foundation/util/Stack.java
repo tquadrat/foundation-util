@@ -40,7 +40,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  <p>This implementation is not synchronised, but thread-safe.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Stack.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: Stack.java 1052 2023-03-06 06:30:36Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <T> The type for the stack entries.
@@ -50,7 +50,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  @see    java.util.Stack
  */
 @SuppressWarnings( "NewClassNamingConvention" )
-@ClassVersion( sourceVersion = "$Id: Stack.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Stack.java 1052 2023-03-06 06:30:36Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Stack<T>
 {
@@ -66,12 +66,12 @@ public final class Stack<T>
      *      {@code <T>} that is inherited from the surrounding class.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Stack.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: Stack.java 1052 2023-03-06 06:30:36Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Stack.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Stack.java 1052 2023-03-06 06:30:36Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     private final class Entry
     {
@@ -121,7 +121,7 @@ public final class Stack<T>
          *
          *  @return The tail.
          */
-        @SuppressWarnings( {"UseOfConcreteClass", "ReturnOfInnerClass"} )
+        @SuppressWarnings( "ReturnOfInnerClass" )
         public final Entry tail() { return m_Tail; }
     }
     //  class Entry
