@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2022 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -30,6 +30,8 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  An implementation of
  *  {@link Comparator}
  *  that compares object instances based on their String representation.
+ *
+ *  @param  <T> The type of the objects to compare.
  *
  *  @version $Id: StringBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org

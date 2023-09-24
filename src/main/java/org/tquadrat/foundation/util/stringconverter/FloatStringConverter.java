@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -92,7 +92,6 @@ public final class FloatStringConverter extends NumberStringConverter<Float>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final FloatStringConverter provider() { return INSTANCE; }
 }
 //  class FloatStringConverter

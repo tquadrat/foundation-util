@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -18,9 +18,9 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
+import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.io.Serial;
 import java.time.Duration;
@@ -149,7 +149,6 @@ public final class DurationStringConverter implements StringConverter<Duration>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final DurationStringConverter provider() { return INSTANCE; }
 }
 //  class DurationStringConverter

@@ -209,7 +209,7 @@ public final class HashImpl implements Hash
     public final boolean equals( final Object o )
     {
         var retValue = this == o;
-        if( !retValue && o instanceof HashImpl other )
+        if( !retValue && o instanceof final HashImpl other )
         {
             retValue = Arrays.equals( m_HashValue, other.m_HashValue );
         }

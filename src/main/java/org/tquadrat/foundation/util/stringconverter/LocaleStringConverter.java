@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2019 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -18,9 +18,9 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
+import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.isNull;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.SystemUtils.retrieveLocale;
 
 import java.io.Serial;
@@ -108,7 +108,6 @@ public final class LocaleStringConverter implements StringConverter<Locale>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final LocaleStringConverter provider() { return INSTANCE; }
 }
 //  class LocaleStringConverter

@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2020 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> * Licensed to the public under the agreements of the GNU Lesser General Public</span>
@@ -174,7 +174,7 @@
 <span class="source-line-no">161</span><span id="line-161">    public final boolean equals( final Object o )</span>
 <span class="source-line-no">162</span><span id="line-162">    {</span>
 <span class="source-line-no">163</span><span id="line-163">        var retValue = o == this;</span>
-<span class="source-line-no">164</span><span id="line-164">        if( !retValue &amp;&amp; (o instanceof Set other) )</span>
+<span class="source-line-no">164</span><span id="line-164">        if( !retValue &amp;&amp; (o instanceof final Set&lt;?&gt; other) )</span>
 <span class="source-line-no">165</span><span id="line-165">        {</span>
 <span class="source-line-no">166</span><span id="line-166">            /*</span>
 <span class="source-line-no">167</span><span id="line-167">             * Collections are equal if their contents is equal. Refer to the</span>
@@ -202,7 +202,7 @@
 <span class="source-line-no">189</span><span id="line-189">    {</span>
 <span class="source-line-no">190</span><span id="line-190">        if( m_SupplierPopulates ) init();</span>
 <span class="source-line-no">191</span><span id="line-191">        java.util.Objects.requireNonNull( action );</span>
-<span class="source-line-no">192</span><span id="line-192">        m_Holder.ifPresent(s -&gt; s.forEach( action ) );</span>
+<span class="source-line-no">192</span><span id="line-192">        m_Holder.ifPresent( set -&gt; set.forEach( action ) );</span>
 <span class="source-line-no">193</span><span id="line-193">    }   //  forEach()</span>
 <span class="source-line-no">194</span><span id="line-194"></span>
 <span class="source-line-no">195</span><span id="line-195">    /**</span>
@@ -310,7 +310,7 @@
 <span class="source-line-no">297</span><span id="line-297">    public final Spliterator&lt;E&gt; spliterator()</span>
 <span class="source-line-no">298</span><span id="line-298">    {</span>
 <span class="source-line-no">299</span><span id="line-299">        if( m_SupplierPopulates ) init();</span>
-<span class="source-line-no">300</span><span id="line-300">        final var retValue = m_Holder.map( s -&gt; Spliterators.spliterator( s, Spliterator.DISTINCT ) ).orElse( Spliterators.emptySpliterator() );</span>
+<span class="source-line-no">300</span><span id="line-300">        final var retValue = m_Holder.map( set -&gt; Spliterators.spliterator( set, Spliterator.DISTINCT ) ).orElse( Spliterators.emptySpliterator() );</span>
 <span class="source-line-no">301</span><span id="line-301"></span>
 <span class="source-line-no">302</span><span id="line-302">        //---* Done *----------------------------------------------------------</span>
 <span class="source-line-no">303</span><span id="line-303">        return retValue;</span>

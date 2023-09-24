@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -95,7 +95,7 @@ public class InstantStringConverter extends TimeDateStringConverter<Instant>
     @Override
     protected final Instant parseDateTime( final CharSequence source, final Optional<DateTimeFormatter> formatter ) throws DateTimeParseException
     {
-        final var retValue = formatter.map( f -> Instant.from( f.parse( source ) ) ).orElse( Instant.parse( source ) );
+        final var retValue = formatter.map( dateTimeFormatter -> Instant.from( dateTimeFormatter.parse( source ) ) ).orElse( Instant.parse( source ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -110,7 +110,6 @@ public class InstantStringConverter extends TimeDateStringConverter<Instant>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final InstantStringConverter provider() { return INSTANCE; }
 }
 //  class InstantStringConverter

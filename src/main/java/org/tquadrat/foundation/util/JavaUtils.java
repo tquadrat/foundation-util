@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2021 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -53,7 +53,6 @@ import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.lang.Objects.requireValidArgument;
 import static org.tquadrat.foundation.util.StringUtils.capitalize;
 import static org.tquadrat.foundation.util.StringUtils.decapitalize;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.isNotEmpty;
 
 import javax.lang.model.SourceVersion;
@@ -432,19 +431,19 @@ public final class JavaUtils
      *  that do not initialise the respective data structures
      *  appropriately.</p>
      *
-     *  @param  c   The class to inspect.
+     *  @param  candidateClass   The class to inspect.
      *  @return An instance of
      *      {@link Optional}
      *      that holds the URL for the code source.
      */
     @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.5" )
-    public static final Optional<URL> getCodeSource( final Class<?> c )
+    public static final Optional<URL> getCodeSource( final Class<?> candidateClass )
     {
         Optional<URL> retValue = Optional.empty();
         try
         {
-            final var protectionDomain = requireNonNullArgument( c, "c" ).getProtectionDomain();
+            final var protectionDomain = requireNonNullArgument( candidateClass, "candidateClass" ).getProtectionDomain();
             if( nonNull( protectionDomain ) )
             {
                 final var codeSource = protectionDomain.getCodeSource();
@@ -505,10 +504,10 @@ public final class JavaUtils
                     retValue = (name.length() > pos) && Character.isUpperCase( name.charAt( pos ) );
 
                     //---* Check the number of parameters *--------------------
-                    retValue &= (methodElement.getParameters().size() == 1);
+                    retValue = retValue && (methodElement.getParameters().size() == 1);
 
                     //---* Check the return value *----------------------------
-                    retValue &= methodElement.getReturnType() instanceof NoType;
+                    retValue = retValue && (methodElement.getReturnType() instanceof NoType);
                 }
             }
         }
@@ -554,10 +553,10 @@ public final class JavaUtils
         var retValue = isPublic( modifier ) && !isStatic( modifier );
 
         //---* Check the name *------------------------------------------------
-        retValue &= "equals".equals( method.getName() );
+        retValue = retValue && "equals".equals( method.getName() );
 
         //---* Check the return value *----------------------------------------
-        retValue &= method.getReturnType().equals( boolean.class );
+        retValue = retValue && method.getReturnType().equals( boolean.class );
 
         //---* Check the parameters *------------------------------------------
         if( retValue )
@@ -730,13 +729,13 @@ public final class JavaUtils
         var retValue = isPublic( modifier ) && !isStatic( modifier );
 
         //---* Check the name *------------------------------------------------
-        retValue &= "hashCode".equals( method.getName() );
+        retValue = retValue && "hashCode".equals( method.getName() );
 
         //---* Check the return value *----------------------------------------
-        retValue &= method.getReturnType().equals( int.class );
+        retValue = retValue && method.getReturnType().equals( int.class );
 
         //---* Check the number of parameters *--------------------------------
-        retValue &= (method.getParameterTypes().length == 0);
+        retValue = retValue && (method.getParameterTypes().length == 0);
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -760,10 +759,10 @@ public final class JavaUtils
         var retValue = isPublic( modifier ) && isStatic( modifier );
 
         //---* Check the name *------------------------------------------------
-        retValue &= "main".equals( method.getName() );
+        retValue = retValue && "main".equals( method.getName() );
 
         //---* Check the return value *----------------------------------------
-        retValue &= method.getReturnType().equals( void.class );
+        retValue = retValue && method.getReturnType().equals( void.class );
 
         //---* Check the number of parameters *--------------------------------
         if( retValue )
@@ -810,10 +809,10 @@ public final class JavaUtils
                     retValue = (name.length() > pos) && Character.isUpperCase( name.charAt( pos ) );
 
                     //---* Check the number of parameters *--------------------
-                    retValue &= (methodElement.getParameters().size() == 1);
+                    retValue = retValue && (methodElement.getParameters().size() == 1);
 
                     //---* Check the return value *----------------------------
-                    retValue &= methodElement.getReturnType() instanceof NoType;
+                    retValue = retValue && (methodElement.getReturnType() instanceof NoType);
                 }
             }
         }
@@ -848,14 +847,14 @@ public final class JavaUtils
 
             //---* Check if there is a property name *-------------------------
             final var pos = PREFIX_SET.length();
-            retValue &= (name.length() > pos) && Character.isUpperCase( name.charAt( pos ) );
+            retValue = retValue && ((name.length() > pos) && Character.isUpperCase( name.charAt( pos ) ));
         }
 
         //---* Check the number of parameters *--------------------------------
-        retValue &= (method.getParameterTypes().length == 1);
+        retValue = retValue && (method.getParameterTypes().length == 1);
 
         //---* Check the return value *----------------------------------------
-        retValue &= method.getReturnType().equals( void.class );
+        retValue = retValue && method.getReturnType().equals( void.class );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -881,13 +880,13 @@ public final class JavaUtils
         var retValue = isPublic( modifier ) && !isStatic( modifier );
 
         //---* Check the name *------------------------------------------------
-        retValue &= "toString".equals( method.getName() );
+        retValue = retValue && "toString".equals( method.getName() );
 
         //---* Check the return value *----------------------------------------
-        retValue &= method.getReturnType().equals( String.class );
+        retValue = retValue && method.getReturnType().equals( String.class );
 
         //---* Check the number of parameters *--------------------------------
-        retValue &= (method.getParameterTypes().length == 0);
+        retValue = retValue && (method.getParameterTypes().length == 0);
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1360,7 +1359,7 @@ public final class JavaUtils
         }
         else
         {
-            final var methodName = requireValidArgument( method, "method", v -> isGetter( v ) || isSetter( v ) || isAddMethod( v ), $ -> format( "'%s()' is not a valid type of method", method.getSimpleName() ) ).getSimpleName().toString();
+            final var methodName = requireValidArgument( method, "method", v -> isGetter( v ) || isSetter( v ) || isAddMethod( v ), $ -> "'%s()' is not a valid type of method".formatted( method.getSimpleName() ) ).getSimpleName().toString();
 
             /*
              * We know that the method is either a getter, a setter or an 'add'

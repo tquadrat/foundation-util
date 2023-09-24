@@ -178,7 +178,7 @@
                           class='static'>+ getCallersClassLoader():java.lang.ClassLoader</text>
                     <text x='5.000'
                           y='179.000'
-                          class='static'>+ getCodeSource(c:java.lang.Class&lt;?&gt;):java.util.Optional&lt;java.net.URL&gt;</text>
+                          class='static'>+ getCodeSource(candidateClass:java.lang.Class&lt;?&gt;):java.util.Optional&lt;java.net.URL&gt;</text>
                     <text x='5.000'
                           y='190.000'
                           class='static'>+ isAddMethod(element:javax.lang.model.element.Element):boolean</text>

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -79,7 +79,6 @@ public final class DayOfWeekStringConverter extends EnumStringConverter<DayOfWee
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final DayOfWeekStringConverter provider() { return INSTANCE; }
 }
 //  class DayOfWeekStringConverter

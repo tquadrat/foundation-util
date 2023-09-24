@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -27,6 +27,7 @@ import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 
 import java.util.Collection;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
@@ -177,7 +178,7 @@ public final class LazyListImpl<E> implements LazyList<E>
     {
         java.util.Objects.requireNonNull( c );
         @SuppressWarnings( "unlikely-arg-type" )
-        final var retValue = (m_Holder.isPresent() || m_SupplierPopulates) && m_Holder.get().containsAll( c );
+        final var retValue = (m_Holder.isPresent() || m_SupplierPopulates) && new HashSet<>( m_Holder.get() ).containsAll( c );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -190,7 +191,7 @@ public final class LazyListImpl<E> implements LazyList<E>
     public final boolean equals( final Object o )
     {
         var retValue = o == this;
-        if( !retValue && (o instanceof List other) )
+        if( !retValue && (o instanceof final List<?> other) )
         {
             /*
              * Refer to the Javadoc for List::equals: Lists are considered
@@ -218,7 +219,7 @@ public final class LazyListImpl<E> implements LazyList<E>
     {
         if( m_SupplierPopulates ) init();
         java.util.Objects.requireNonNull( action );
-        m_Holder.ifPresent( l -> l.forEach( action ) );
+        m_Holder.ifPresent( list -> list.forEach( action ) );
     }   //  forEach()
 
     /**
@@ -398,7 +399,7 @@ public final class LazyListImpl<E> implements LazyList<E>
     public final void replaceAll( final UnaryOperator<E> operator )
     {
         if( m_SupplierPopulates ) init();
-        m_Holder.ifPresent( l -> l.replaceAll( operator ) );
+        m_Holder.ifPresent( list -> list.replaceAll( operator ) );
     }   //  replaceAll()
 
     /**
@@ -446,7 +447,7 @@ public final class LazyListImpl<E> implements LazyList<E>
     public final void sort( final Comparator<? super E> c )
     {
         if( m_SupplierPopulates ) init();
-        m_Holder.ifPresent( l -> l.sort( c ) );
+        m_Holder.ifPresent( list -> list.sort( c ) );
     }   //  sort()
 
     /**

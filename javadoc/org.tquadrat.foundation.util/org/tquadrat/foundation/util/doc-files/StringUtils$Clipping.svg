@@ -159,7 +159,7 @@
                           class='static'>+ valueOf(name:java.lang.String):org.tquadrat.foundation.util.StringUtils.Clipping</text>
                     <text x='5.000'
                           y='91.000'
-                          class='abstract'># clip(s:java.lang.CharSequence,length:int):java.lang.String</text>
+                          class='abstract'># clip(input:java.lang.CharSequence,length:int):java.lang.String</text>
                 </g>
             </g>
         </symbol>

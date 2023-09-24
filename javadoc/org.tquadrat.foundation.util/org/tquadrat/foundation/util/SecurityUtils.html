@@ -239,26 +239,21 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#calculateDiffieHellmanEncryptionKey(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)" class="member-name-link">calculateDiffieHellmanEncryptionKey</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;p,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;a,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;b)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#calculateDiffieHellmanEncryptionKey(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)" class="member-name-link">calculateDiffieHellmanEncryptionKey</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;prime,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;localSecret,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;remoteSecret)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Performs the calculation for the Diffie-Hellmann-Merkle key exchange
-  procedure.<br>
-  <br>From Wikipedia: &quot;<cite>Diffie–Hellman establishes a shared
-  secret that can be used for secret communications while exchanging data
-  over a public network.</div>
+<div class="block">Performs the calculation for the Diffie-Hellmann-Merkle
+  key exchange procedure.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#calculateDiffieHellmanPublicValue(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)" class="member-name-link">calculateDiffieHellmanPublicValue</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;p,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;g,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;a)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#calculateDiffieHellmanPublicValue(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)" class="member-name-link">calculateDiffieHellmanPublicValue</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;prime,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;root,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;localSecret)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Calculates the value that will be transmitted to the other party on the
-  exchange of an encryption key using the Diffie-Hellman-Merkle key
-  exchange scheme.<br>
-  <br>This method performs the following calculation:<br>
-  <br><code>A = g<sup>a</sup> mod p</code><br>.</div>
+<div class="block">Calculates the value that will be transmitted to the other
+  party on the exchange of an encryption key using the
+  Diffie-Hellman-Merkle key exchange scheme.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#calculateMD5CheckSum(java.io.File)" class="member-name-link">calculateMD5CheckSum</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file)</code></div>
@@ -361,8 +356,8 @@ loadScripts(document, 'script');</script>
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list-long">
-<li><a href="#calculateDiffieHellmanEncryptionKey(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanEncryptionKey(BigInteger, BigInteger, BigInteger)</code></a></li>
-<li><a href="#calculateDiffieHellmanPublicValue(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanPublicValue(BigInteger, BigInteger, BigInteger)</code></a></li>
+<li><a href="#calculateDiffieHellmanEncryptionKey(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</code></a></li>
+<li><a href="#calculateDiffieHellmanPublicValue(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanPublicValue(BigInteger,BigInteger,BigInteger)</code></a></li>
 <li><a href="http://tools.ietf.org/html/rfc2412#page-45">http://tools.ietf.org/html/rfc2412#page-45</a></li>
 </ul>
 </dd>
@@ -381,8 +376,8 @@ loadScripts(document, 'script');</script>
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list-long">
-<li><a href="#calculateDiffieHellmanEncryptionKey(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanEncryptionKey(BigInteger, BigInteger, BigInteger)</code></a></li>
-<li><a href="#calculateDiffieHellmanPublicValue(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanPublicValue(BigInteger, BigInteger, BigInteger)</code></a></li>
+<li><a href="#calculateDiffieHellmanEncryptionKey(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</code></a></li>
+<li><a href="#calculateDiffieHellmanPublicValue(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanPublicValue(BigInteger,BigInteger,BigInteger)</code></a></li>
 <li><a href="http://tools.ietf.org/html/rfc2412#page-45">http://tools.ietf.org/html/rfc2412#page-45</a></li>
 </ul>
 </dd>
@@ -532,12 +527,12 @@ loadScripts(document, 'script');</script>
 <h3>calculateDiffieHellmanEncryptionKey</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-234">calculateDiffieHellmanEncryptionKey</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;p,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;a,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;b)</span></div>
-<div class="block">Performs the calculation for the Diffie-Hellmann-Merkle key exchange
-  procedure.<br>
-  <br>From Wikipedia: &quot;<cite>Diffie–Hellman establishes a shared
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-237">calculateDiffieHellmanEncryptionKey</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;prime,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;localSecret,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;remoteSecret)</span></div>
+<div class="block"><p>Performs the calculation for the Diffie-Hellmann-Merkle
+  key exchange procedure.</p>
+  <p>From Wikipedia:</p> <blockquote><p>Diffie–Hellman establishes a shared
   secret that can be used for secret communications while exchanging data
   over a public network. Diffie–Hellman key exchange (D-H) is a specific
   method of exchanging cryptographic keys. It is one of the earliest
@@ -546,31 +541,38 @@ loadScripts(document, 'script');</script>
   that have no prior knowledge of each other to jointly establish a
   shared secret key over an insecure communications channel. This key can
   then be used to encrypt subsequent communications using a symmetric key
-  cipher.<br>
-  <br>The scheme was first published by Whitfield Diffie and Martin
+  cipher.</p>
+  <p>The scheme was first published by Whitfield Diffie and Martin
   Hellman in 1976, although it had been separately invented a few years
   earlier within GCHQ, the British signals intelligence agency, by James
   H. Ellis, Clifford Cocks and Malcolm J. Williamson but was kept
   classified. In 2002, Hellman suggested the algorithm be called
   Diffie–Hellman–Merkle key exchange in recognition of Ralph Merkle's
   contribution to the invention of public-key cryptography (Hellman,
-  2002).<br>
-  <br>Although Diffie–Hellman key agreement itself is an anonymous
+  2002).</p>
+  <p>Although Diffie–Hellman key agreement itself is an anonymous
   (non-authenticated) key-agreement protocol, it provides the basis for a
   variety of authenticated protocols, and is used to provide <i>perfect
   forward secrecy</i> in Transport Layer Security's ephemeral modes
   (referred to as EDH or DHE depending on the cipher
-  suite).</cite>&quot;<br>
-  <br>This method performs the following calculation:<br>
-  <br><code>K = B<sup>a</sup> mod p</code><br></div>
+  suite).</p></blockquote>
+  <p>This method performs the following calculation:</p>
+  <pre><code>K = remoteSecret<sup>localSecret</sup> mod prime</code></pre></div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>p</code> - A large prime that is known to both communication partners.</dd>
-<dd><code>a</code> - The secret number that was used to create the public value
-      sent to the other party.</dd>
-<dd><code>b</code> - The public value that the other party created</dd>
+<dd><code>prime</code> - A large prime that is known to both communication
+      partners.</dd>
+<dd><code>localSecret</code> - The secret number that was used to create the
+      public value sent to the other party.</dd>
+<dd><code>remoteSecret</code> - The public value that the other party created.</dd>
 <dt>Returns:</dt>
 <dd>The encryption key <i>K</i>.</dd>
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list-long">
+<li><a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Wikipedia: Diffie–Hellman key exchange</a></li>
+</ul>
+</dd>
 </dl>
 </section>
 </li>
@@ -579,25 +581,25 @@ loadScripts(document, 'script');</script>
 <h3>calculateDiffieHellmanPublicValue</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-257">calculateDiffieHellmanPublicValue</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;p,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;g,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;a)</span></div>
-<div class="block">Calculates the value that will be transmitted to the other party on the
-  exchange of an encryption key using the Diffie-Hellman-Merkle key
-  exchange scheme.<br>
-  <br>This method performs the following calculation:<br>
-  <br><code>A = g<sup>a</sup> mod p</code><br>.</div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-261">calculateDiffieHellmanPublicValue</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;prime,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;root,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/math/BigInteger.html" title="class or interface in java.math" class="external-link">BigInteger</a>&nbsp;localSecret)</span></div>
+<div class="block"><p>Calculates the value that will be transmitted to the other
+  party on the exchange of an encryption key using the
+  Diffie-Hellman-Merkle key exchange scheme.</p>>
+  <p>This method performs the following calculation:</p>
+  <pre><code>A = root<sup>random</sup> mod prime</code></pre>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>p</code> - A large prime that is known to both communication partners.</dd>
-<dd><code>g</code> - A primitive root <i>mod <code>p</code></i>.</dd>
-<dd><code>a</code> - The secret random number.</dd>
+<dd><code>prime</code> - A large prime that is known to both communication partners.</dd>
+<dd><code>root</code> - A primitive root <i>mod <code>prime</code></i>.</dd>
+<dd><code>localSecret</code> - The secret random number.</dd>
 <dt>Returns:</dt>
 <dd>The value <i>A</i> to transmit to the other party.</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list-long">
-<li><a href="#calculateDiffieHellmanEncryptionKey(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanEncryptionKey(BigInteger, BigInteger, BigInteger)</code></a></li>
+<li><a href="#calculateDiffieHellmanEncryptionKey(java.math.BigInteger,java.math.BigInteger,java.math.BigInteger)"><code>calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</code></a></li>
 </ul>
 </dd>
 </dl>
@@ -608,7 +610,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateMD5CheckSum</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-273">calculateMD5CheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file)</span>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-278">calculateMD5CheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file)</span>
                                          throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Calculates a checksum for the given file, based on the MD5 algorithm.</div>
 <dl class="notes">
@@ -626,7 +628,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateSHACheckSum</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-296">calculateSHACheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file)</span>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-301">calculateSHACheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file)</span>
                                          throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Calculates a checksum for the given file, based on the SHA-1 algorithm.</div>
 <dl class="notes">
@@ -644,7 +646,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateSHA256CheckSum</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.8")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-320">calculateSHA256CheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file)</span>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-325">calculateSHA256CheckSum</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/File.html" title="class or interface in java.io" class="external-link">File</a>&nbsp;file)</span>
                                             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Calculates a checksum for the given file, based on the SHA-256
   algorithm.</div>
@@ -663,7 +665,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateMD5Hash</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-351">calculateMD5Hash</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-356">calculateMD5Hash</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
 <div class="block">Creates a MD5 hash from the given string.<br>
   <br>The output string will contain the digits from <code>0xA</code> to
   <code>0xF</code> all as lower
@@ -691,7 +693,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateMD5Hash</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-376">calculateMD5Hash</a></span><wbr><span class="parameters">(byte[]&nbsp;input)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-381">calculateMD5Hash</a></span><wbr><span class="parameters">(byte[]&nbsp;input)</span></div>
 <div class="block">Creates a MD5 hash from the given byte sequence.<br>
   <br> This method is not very efficient for calculating the hash value
   for (large) files as it would require to load the whole file into
@@ -715,7 +717,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateSHA1Hash</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-408">calculateSHA1Hash</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-413">calculateSHA1Hash</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
 <div class="block">Creates an SHA-1 hash from the given string.<br>
   <br>The output string will contain the digits from <code>0xA</code> to
   <code>0xF</code> all as lower
@@ -743,7 +745,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateSHA1Hash</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-433">calculateSHA1Hash</a></span><wbr><span class="parameters">(byte[]&nbsp;input)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-438">calculateSHA1Hash</a></span><wbr><span class="parameters">(byte[]&nbsp;input)</span></div>
 <div class="block">Creates an SHA-1 hash from the given byte sequence.<br>
   <br> This method is not very efficient for calculating the hash value
   for (large) files as it would require to load the whole file into
@@ -767,7 +769,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateSHA256Hash</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.8")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-465">calculateSHA256Hash</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-470">calculateSHA256Hash</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
 <div class="block">Creates an SHA-256 hash from the given string.<br>
   <br>The output string will contain the digits from <code>0xA</code> to
   <code>0xF</code> all as lower
@@ -795,7 +797,7 @@ loadScripts(document, 'script');</script>
 <h3>calculateSHA256Hash</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.8")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-490">calculateSHA256Hash</a></span><wbr><span class="parameters">(byte[]&nbsp;input)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">byte[]</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#line-495">calculateSHA256Hash</a></span><wbr><span class="parameters">(byte[]&nbsp;input)</span></div>
 <div class="block">Creates an SHA-256 hash from the given byte sequence.<br>
   <br> This method is not very efficient for calculating the hash value
   for (large) files as it would require to load the whole file into

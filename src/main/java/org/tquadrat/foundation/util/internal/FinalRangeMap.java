@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2022 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -75,7 +75,6 @@ public final class FinalRangeMap<T> extends RangeMapImpl<T>
      *
      * @return {@inheritDoc}
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     @Override
     public final FinalRangeMap<T> addRange( final double key, final T value ) {throw new UnsupportedOperationException( "addRange" );}
 
@@ -99,7 +98,6 @@ public final class FinalRangeMap<T> extends RangeMapImpl<T>
      *
      * @return {@inheritDoc}
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     @Override
     public final FinalRangeMap<T> setDefault( final T value ) {throw new UnsupportedOperationException( "setDefault" );}
 }

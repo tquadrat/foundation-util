@@ -212,7 +212,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="col-second even-row-color"><code><a href="#VARIABLE_PATTERN" class="member-name-link">VARIABLE_PATTERN</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">The regular expression to identify a variable in a char sequence:
-  "\\$\\{((?:_)|(?:[~/=%:&amp;]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\p{Digit}|_|.)*?))}".</div>
+  "\\$\\{((?:_)|(?:[~/=%:&amp;]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\d|_|.)*?))}".</div>
 </div>
 <div class="col-first odd-row-color"><code>static final <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color"><code><a href="#VARIABLE_TEMPLATE" class="member-name-link">VARIABLE_TEMPLATE</a></code></div>
@@ -288,7 +288,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="block">Builds the source map with the additional data.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#escapeRegexReplacement(java.lang.CharSequence)" class="member-name-link">escapeRegexReplacement</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;s)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#escapeRegexReplacement(java.lang.CharSequence)" class="member-name-link">escapeRegexReplacement</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Escapes backslash ('\') and dollar sign ('$') for regex replacements.</div>
 </div>
@@ -334,7 +334,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
   <a href="#VARIABLE_PATTERN"><code>VARIABLE_PATTERN</code></a>).</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#hasVariables(java.lang.CharSequence)" class="member-name-link">hasVariables</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;s)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#hasVariables(java.lang.CharSequence)" class="member-name-link">hasVariables</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Checks whether the given String contains at least one variable of the
   form <code>${<i>&lt;name&gt;</i>}</code> (matching the pattern given in
@@ -346,7 +346,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="block">Test whether the given String is a valid variable name.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isVariable(java.lang.CharSequence)" class="member-name-link">isVariable</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;s)</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#isVariable(java.lang.CharSequence)" class="member-name-link">isVariable</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Checks whether the given String is a variable in the form
   <code>${<i>&lt;name&gt;</i>}</code>, according to the pattern provided
@@ -534,7 +534,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.0")
 </span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#line-170">VARIABLE_PATTERN</a></span></div>
 <div class="block">The regular expression to identify a variable in a char sequence:
-  "\\$\\{((?:_)|(?:[~/=%:&amp;]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\p{Digit}|_|.)*?))}".</div>
+  "\\$\\{((?:_)|(?:[~/=%:&amp;]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\d|_|.)*?))}".</div>
 <dl class="notes">
 <dt>Since:</dt>
 <dd>0.1.0</dd>
@@ -681,11 +681,11 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <h3>escapeRegexReplacement</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#INTERNAL" title="class or interface in org.apiguardian.api" class="external-link">INTERNAL</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.0")
-</span><span class="modifiers">private static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#line-306">escapeRegexReplacement</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;s)</span></div>
+</span><span class="modifiers">private static</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#line-306">escapeRegexReplacement</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
 <div class="block">Escapes backslash ('\') and dollar sign ('$') for regex replacements.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>s</code> - The source string.</dd>
+<dd><code>input</code> - The source string.</dd>
 <dt>Returns:</dt>
 <dd>The string with the escaped characters.</dd>
 <dt>Since:</dt>
@@ -826,13 +826,13 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <h3>hasVariables</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.0")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#line-467">hasVariables</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;s)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#line-467">hasVariables</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
 <div class="block">Checks whether the given String contains at least one variable of the
   form <code>${<i>&lt;name&gt;</i>}</code> (matching the pattern given in
   <a href="#VARIABLE_PATTERN"><code>VARIABLE_PATTERN</code></a>).</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>s</code> - The String to test; can be <code>null</code>.</dd>
+<dd><code>input</code> - The String to test; can be <code>null</code>.</dd>
 <dt>Returns:</dt>
 <dd><code>true</code> if the String contains at least one variable,
       <code>false</code> otherwise.</dd>
@@ -900,14 +900,14 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <h3>isVariable</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.0")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#line-530">isVariable</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;s)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#line-530">isVariable</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
 <div class="block">Checks whether the given String is a variable in the form
   <code>${<i>&lt;name&gt;</i>}</code>, according to the pattern provided
   in
   <a href="#VARIABLE_PATTERN"><code>VARIABLE_PATTERN</code></a>.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>s</code> - The String to test; can be <code>null</code>.</dd>
+<dd><code>input</code> - The String to test; can be <code>null</code>.</dd>
 <dt>Returns:</dt>
 <dd><code>true</code> if the given String is not <code>null</code>, not the
       empty String, and it matches the given pattern, <code>false</code>

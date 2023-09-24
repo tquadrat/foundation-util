@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -323,10 +323,10 @@ public final class Comparators
     @API( status = STABLE, since = "0.1.0" )
     public static final <T extends Number> Comparator<T> numberComparator()
     {
-        @SuppressWarnings( "OverlyLongLambda" )
         final var retValue = (Comparator<T>) ( v1, v2) ->
         {
-            if( v1 instanceof Comparable comparable )
+            //noinspection rawtypes
+            if( v1 instanceof final Comparable comparable )
             {
                 @SuppressWarnings( "unchecked" )
                 final var result = signum( comparable.compareTo( v2 ) );

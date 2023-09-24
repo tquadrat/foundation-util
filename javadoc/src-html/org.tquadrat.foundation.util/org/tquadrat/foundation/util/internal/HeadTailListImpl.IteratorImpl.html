@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2022 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> *</span>
@@ -233,7 +233,7 @@
 <span class="source-line-no">220</span><span id="line-220">    public final boolean equals( final Object o )</span>
 <span class="source-line-no">221</span><span id="line-221">    {</span>
 <span class="source-line-no">222</span><span id="line-222">        var retValue = this == o;</span>
-<span class="source-line-no">223</span><span id="line-223">        if( !retValue &amp;&amp; (o instanceof HeadTailList other) )</span>
+<span class="source-line-no">223</span><span id="line-223">        if( !retValue &amp;&amp; (o instanceof final HeadTailList&lt;?&gt; other) )</span>
 <span class="source-line-no">224</span><span id="line-224">        {</span>
 <span class="source-line-no">225</span><span id="line-225">            retValue = (m_Size == other.size()) &amp;&amp; (m_HashCode == other.hashCode());</span>
 <span class="source-line-no">226</span><span id="line-226">            if( retValue )</span>

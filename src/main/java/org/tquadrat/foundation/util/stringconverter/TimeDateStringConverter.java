@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -18,11 +18,11 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
+import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;
 
 import java.io.IOException;
@@ -231,7 +231,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
     @Serial
     private final void writeObject( final ObjectOutputStream out) throws IOException
     {
-        if( m_Formatter.isPresent() ) throw new IOException( format( "Cannot serialize instance of '%s' with DateTimeFormatter set", getClass().getName() ) );
+        if( m_Formatter.isPresent() ) throw new IOException( "Cannot serialize instance of '%s' with DateTimeFormatter set".formatted( getClass().getName() ) );
         out.defaultWriteObject();
     }   //  writeObject()
 }

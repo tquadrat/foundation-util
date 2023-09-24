@@ -165,7 +165,7 @@
                     <text y='129.000'
                           class='static'>- m_TSIDCounter:int</text>
                     <text y='140.000'
-                          class='static'>- m_UUID7Counter:java.util.concurrent.atomic.AtomicInteger</text>
+                          class='static final'>- m_UUID7Counter:java.util.concurrent.atomic.AtomicInteger</text>
                     <text y='151.000'
                           class='static final'>- m_Base32Decoder:org.tquadrat.foundation.util.Base32.Decoder</text>
                     <text y='162.000'
@@ -236,7 +236,7 @@
                           class='static'>+ tsidFromNumber(number:long):org.tquadrat.foundation.util.TSID</text>
                     <text x='5.000'
                           y='443.000'
-                          class='static'>+ tsidFromString(s:java.lang.CharSequence):org.tquadrat.foundation.util.TSID</text>
+                          class='static'>+ tsidFromString(input:java.lang.CharSequence):org.tquadrat.foundation.util.TSID</text>
                     <text x='5.000'
                           y='454.000'
                           class='static'>+ uuidFromNumber(value:java.math.BigInteger):java.util.UUID</text>

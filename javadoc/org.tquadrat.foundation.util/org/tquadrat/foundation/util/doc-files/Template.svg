@@ -173,7 +173,7 @@
                           class='static'>- createAdditionalSource():java.util.Map&lt;java.lang.String,java.lang.Object&gt;</text>
                     <text x='5.000'
                           y='179.000'
-                          class='static'>- escapeRegexReplacement(s:java.lang.CharSequence):java.lang.String</text>
+                          class='static'>- escapeRegexReplacement(input:java.lang.CharSequence):java.lang.String</text>
                     <text x='5.000'
                           y='190.000'
                           class='static'>+ findVariables(text:java.lang.CharSequence):java.util.Set&lt;java.lang.String&gt;</text>
@@ -187,7 +187,7 @@
                           y='234.000'>+ hasVariable(name:java.lang.String):boolean</text>
                     <text x='5.000'
                           y='245.000'
-                          class='static'>+ hasVariables(s:java.lang.CharSequence):boolean</text>
+                          class='static'>+ hasVariables(input:java.lang.CharSequence):boolean</text>
                     <text x='5.000'
                           y='256.000'>+ hasVariables():boolean</text>
                     <text x='5.000'
@@ -195,7 +195,7 @@
                           class='static'>+ isValidVariableName(name:java.lang.CharSequence):boolean</text>
                     <text x='5.000'
                           y='278.000'
-                          class='static'>+ isVariable(s:java.lang.CharSequence):boolean</text>
+                          class='static'>+ isVariable(input:java.lang.CharSequence):boolean</text>
                     <text x='5.000'
                           y='289.000'
                           class='static'>+ replaceVariable(text:java.lang.CharSequence,sources:java.util.Map&lt;java.lang.String,? extends java.lang.Object&gt;&#x2026;):java.lang.String</text>

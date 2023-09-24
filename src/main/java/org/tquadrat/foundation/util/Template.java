@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2022 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.lang.String.format;
 import static java.lang.System.arraycopy;
 import static java.lang.System.getProperties;
 import static java.lang.System.getenv;
@@ -25,7 +26,6 @@ import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.isNotEmptyOrBlank;
 import static org.tquadrat.foundation.util.SystemUtils.determineIPAddress;
 import static org.tquadrat.foundation.util.SystemUtils.getMACAddress;
@@ -169,7 +169,7 @@ public class Template implements Serializable
      */
     @SuppressWarnings( "RegExpUnnecessaryNonCapturingGroup" )
     @API( status = STABLE, since = "0.1.0" )
-    public static final String VARIABLE_PATTERN = "\\$\\{((?:_)|(?:[~/=%:&]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\p{Digit}|_|.)*?))}";
+    public static final String VARIABLE_PATTERN = "\\$\\{((?:_)|(?:[~/=%:&]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\d|_|.)*?))}";
 
     /**
      *  <p>{@summary The template for variables: {@value}.} The argument is the
@@ -285,7 +285,7 @@ public class Template implements Serializable
         );
         try
         {
-            determineIPAddress().ifPresent( i -> retValue.put( VARNAME_IPAddress, i ) );
+            determineIPAddress().ifPresent( inetAddress -> retValue.put( VARNAME_IPAddress, inetAddress ) );
         }
         catch( final SocketException ignored ) { /* Deliberately ignored */ }
 
@@ -296,7 +296,7 @@ public class Template implements Serializable
     /**
      *  Escapes backslash ('\') and dollar sign ('$') for regex replacements.
      *
-     *  @param  s   The source string.
+     *  @param  input   The source string.
      *  @return The string with the escaped characters.
      *
      *  @see java.util.regex.Matcher#appendReplacement(StringBuffer,String)
@@ -304,18 +304,18 @@ public class Template implements Serializable
      *  @since 0.1.0
      */
     @API( status = INTERNAL, since = "0.1.0" )
-    private static String escapeRegexReplacement( final CharSequence s )
+    private static String escapeRegexReplacement( final CharSequence input )
     {
-        assert nonNull( s ) : "s is null";
+        assert nonNull( input ) : "input is null";
 
         //---* Escape the backslashes and dollar signs *-------------------
-        final var len = s.length();
+        final var len = input.length();
         final var retValue = new StringBuilder( (len * 12) / 10 );
         @SuppressWarnings( "LocalVariableNamingConvention" )
         char c;
         EscapeLoop: for( var i = 0; i < len; ++i )
         {
-            c = s.charAt( i );
+            c = input.charAt( i );
             switch( c )
             {
                 case '\\':
@@ -443,7 +443,7 @@ public class Template implements Serializable
      */
     public final boolean hasVariable( final String name )
     {
-        if( !isValidVariableName( name ) ) throw new IllegalArgumentException( format( "%s is not a valid variable name", name ) );
+        if( !isValidVariableName( name ) ) throw new IllegalArgumentException( "%s is not a valid variable name".formatted( name ) );
 
         final var retValue = findVariables().contains( name );
 
@@ -456,7 +456,7 @@ public class Template implements Serializable
      *  form <code>${<i>&lt;name&gt;</i>}</code> (matching the pattern given in
      *  {@link #VARIABLE_PATTERN}).
      *
-     *  @param  s   The String to test; can be {@code null}.
+     *  @param  input   The String to test; can be {@code null}.
      *  @return {@code true} if the String contains at least one variable,
      *      {@code false} otherwise.
      *
@@ -465,9 +465,9 @@ public class Template implements Serializable
      *  @since 0.1.0
      */
     @API( status = STABLE, since = "0.1.0" )
-    public static final boolean hasVariables( final CharSequence s )
+    public static final boolean hasVariables( final CharSequence input )
     {
-        final var retValue = isNotEmptyOrBlank( s ) && m_VariablePattern.matcher( s ).find();
+        final var retValue = isNotEmptyOrBlank( input ) && m_VariablePattern.matcher( input ).find();
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -520,7 +520,7 @@ public class Template implements Serializable
      *  in
      *  {@link #VARIABLE_PATTERN}.
      *
-     *  @param  s   The String to test; can be {@code null}.
+     *  @param  input   The String to test; can be {@code null}.
      *  @return {@code true} if the given String is not {@code null}, not the
      *      empty String, and it matches the given pattern, {@code false}
      *      otherwise.
@@ -528,9 +528,9 @@ public class Template implements Serializable
      *  @since 0.1.0
      */
     @API( status = STABLE, since = "0.1.0" )
-    public static final boolean isVariable( final CharSequence s )
+    public static final boolean isVariable( final CharSequence input )
     {
-        final var retValue = isNotEmptyOrBlank( s ) && m_VariablePattern.matcher( s ).matches();
+        final var retValue = isNotEmptyOrBlank( input ) && m_VariablePattern.matcher( input ).matches();
 
         //---* Done *----------------------------------------------------------
         return retValue;

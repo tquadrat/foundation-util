@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2022 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -24,7 +24,6 @@ import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
 import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.math.BigInteger;
 
@@ -277,7 +276,7 @@ public final class Base32
         {
             if( requireNonNullArgument( value, "value" ).signum() < 0 )
             {
-                throw new ValidationException( format( "%d is negative", value ) );
+                throw new ValidationException( "%d is negative".formatted( value ) );
             }
             final var buffer = value.toString( RADIX )
                 .toUpperCase( ROOT );
@@ -395,7 +394,7 @@ public final class Base32
          *  <p>{@summary Encodes the given value to a Crockford's Base&nbsp;32
          *  String.}</p>
          *  <p>This is the converse operation to
-         *  {@link Encoder#encodeToString(byte[])}.</p>
+         *  {@link Decoder#decodeToString(byte[])}.</p>
          *
          *  @param  value   The value to encode.
          *  @return The result.
@@ -429,6 +428,7 @@ public final class Base32
     /**
      *  The lowercase symbols for the Base&nbsp;32 alphabet.
      */
+    @SuppressWarnings( "unused" )
     private static final char[] ALPHABET_LOWERCASE =  { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'j', 'k', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z' };
 
     /**
@@ -563,7 +563,6 @@ public final class Base32
      *
      *  @return The decoder.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final Decoder getDecoder() { return m_Decoder; }
 
     /**
@@ -573,7 +572,6 @@ public final class Base32
      *
      *  @return The encoder.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final Encoder getEncoder() { return m_Encoder; }
 }
 //  class Base32

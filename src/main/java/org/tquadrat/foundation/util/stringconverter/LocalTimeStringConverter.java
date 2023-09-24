@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2019 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -109,7 +109,6 @@ public class LocalTimeStringConverter extends TimeDateStringConverter<LocalTime>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final LocalTimeStringConverter provider() { return INSTANCE; }
 }
 //  class LocalTimeStringConverter

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-20120 by Thomas Thrien.
+ * Copyright © 2002-20123 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -153,7 +153,7 @@ public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     public final boolean equals( final Object o )
     {
         var retValue = o == this;
-        if( !retValue && (o instanceof Map other) )
+        if( !retValue && (o instanceof final Map<?,?> other) )
         {
             /*
              * Collections are equal if their contents is equal. Refer to the
@@ -181,7 +181,7 @@ public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     {
         if( m_SupplierPopulates ) init();
         @SuppressWarnings( "unlikely-arg-type" )
-        final var retValue = m_Holder.map( m -> m.get( key ) ).orElse( null );
+        final var retValue = m_Holder.map( map -> map.get( key ) ).orElse( null );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -279,7 +279,7 @@ public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     {
         if( m_SupplierPopulates ) init();
         @SuppressWarnings( "unlikely-arg-type" )
-        final var retValue = m_Holder.map( m -> m.remove( key ) ).orElse( null );
+        final var retValue = m_Holder.map( map -> map.remove( key ) ).orElse( null );
 
         //---* Done *----------------------------------------------------------
         return retValue;

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2020 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -23,6 +23,7 @@ import static java.lang.Character.isSurrogatePair;
 import static java.lang.Character.toChars;
 import static java.lang.Character.toCodePoint;
 import static java.lang.Integer.min;
+import static java.lang.String.format;
 import static java.text.Normalizer.isNormalized;
 import static java.text.Normalizer.normalize;
 import static java.util.regex.Pattern.compile;
@@ -33,7 +34,6 @@ import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.StringUtils.breakString;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.isEmpty;
 
 import java.text.Normalizer;
@@ -103,9 +103,8 @@ public final class CharSetUtils
                 final var buffer = new StringBuilder();
                 for( final var b : bytes )
                 {
-                    @SuppressWarnings( "cast" )
-                    final var codePoint = b;
-                    //noinspection ImplicitNumericConversion
+                    final var codePoint = (int) b;
+                    //noinspection NonStrictComparisonCanBeEquality
                     buffer.append( (codePoint < ' ') || (codePoint >= 0x007F)
                         ? escapeCharacter( codePoint )
                         : Character.toString( codePoint ) );
@@ -199,14 +198,13 @@ public final class CharSetUtils
             else
             {
                 //---* Normalise the String *----------------------------------
-                @SuppressWarnings( "LocalVariableNamingConvention" )
-                final var s = isNull( normalization )
+                final var sequence = isNull( normalization )
                     ? input
                     : isNormalized( input, normalization )
                         ? input
                         : normalize( input, normalization );
 
-                retValue = s.codePoints()
+                retValue = sequence.codePoints()
                     .mapToObj( codePoint ->
                         isPrintableASCIICharacter( codePoint )
                         ? Character.toString( codePoint )
@@ -419,7 +417,7 @@ public final class CharSetUtils
      *  Strings, in Java {@code .properties} files, in C/C++ source code, in
      *  JavaScript source, &hellip;
      *
-     *  @param  s   The input String with the Unicode escape sequence.
+     *  @param  input   The input String with the Unicode escape sequence.
      *  @return The Unicode character.
      *  @throws ValidationException The input is {@code null}, empty, or cannot
      *      be parsed as a unicode escape sequence.
@@ -427,16 +425,16 @@ public final class CharSetUtils
      *  @since 0.1.5
      */
     @API( status = STABLE, since = "0.1.5" )
-    public static final String unescapeUnicode( final CharSequence s )
+    public static final String unescapeUnicode( final CharSequence input )
     {
-        final var len = requireNotEmptyArgument( s, "s" ).length();
+        final var len = requireNotEmptyArgument( input, "input" ).length();
         //noinspection MagicNumber
         if( (len != 6) && (len != 12) ) throw new ValidationException( "The length of a Unicode String must be 6 or 12 characters" );
-        if( !s.subSequence( 0, 2 ).equals( "\\u" ) ) throw new ValidationException( "Unicode String must start with '\\u'" );
+        if( !input.subSequence( 0, 2 ).equals( "\\u" ) ) throw new ValidationException( "Unicode String must start with '\\u'" );
 
         final var msgCannotparse = "Cannot parse '%s' as a Unicode Escape String";
         @SuppressWarnings( "NumericCastThatLosesPrecision" )
-        final var characters = breakString( s, 6 )
+        final var characters = breakString( input, 6 )
             .mapToInt( chunk ->
             {
                 try
@@ -445,7 +443,7 @@ public final class CharSetUtils
                 }
                 catch( final NumberFormatException e )
                 {
-                    throw new ValidationException( format( msgCannotparse, s ), e );
+                    throw new ValidationException( format( msgCannotparse, input ), e );
                 }
             } )
             .mapToObj( i -> Character.valueOf( (char) i ) )
@@ -458,13 +456,13 @@ public final class CharSetUtils
                     {
                         if( !isSurrogatePair( characters [0], characters [1] ) )
                         {
-                            throw new ValidationException( format( msgCannotparse, s ) );
+                            throw new ValidationException( format( msgCannotparse, input ) );
                         }
                         yield toCodePoint( characters [0], characters [1] );
                     }
-                default -> throw new ValidationException( format( msgCannotparse, s ) );
+                default -> throw new ValidationException( format( msgCannotparse, input ) );
             };
-        if( !Character.isValidCodePoint( codePoint ) ) throw new ValidationException( format( msgCannotparse, s ) );
+        if( !Character.isValidCodePoint( codePoint ) ) throw new ValidationException( format( msgCannotparse, input ) );
         final var retValue = new String( toChars( codePoint ) );
 
         //---* Done *----------------------------------------------------------

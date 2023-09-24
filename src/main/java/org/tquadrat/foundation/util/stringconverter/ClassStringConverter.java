@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -18,11 +18,11 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
+import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.util.JavaUtils.getCallersClassLoader;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;
 
 import java.io.Serial;
@@ -87,6 +87,14 @@ public final class ClassStringConverter implements StringConverter<Class<?>>
      */
     public static final ClassStringConverter INSTANCE = new ClassStringConverter();
 
+        /*--------------*\
+    ====** Constructors **=====================================================
+        \*--------------*/
+    /**
+     *  Creates a new instance of {@code ClassStringConverter}.
+     */
+    public ClassStringConverter() { /* Just exists */ }
+
         /*---------*\
     ====** Methods **==========================================================
         \*---------*/
@@ -124,7 +132,6 @@ public final class ClassStringConverter implements StringConverter<Class<?>>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final ClassStringConverter provider() { return INSTANCE; }
 
     /**

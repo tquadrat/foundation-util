@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> *  Copyright © 2002-2022 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> *  Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> *  All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> *  Licensed to the public under the agreements of the GNU Lesser General Public</span>
@@ -30,15 +30,15 @@
 <span class="source-line-no">017</span><span id="line-17"></span>
 <span class="source-line-no">018</span><span id="line-18">package org.tquadrat.foundation.util;</span>
 <span class="source-line-no">019</span><span id="line-19"></span>
-<span class="source-line-no">020</span><span id="line-20">import static java.lang.System.arraycopy;</span>
-<span class="source-line-no">021</span><span id="line-21">import static java.lang.System.getProperties;</span>
-<span class="source-line-no">022</span><span id="line-22">import static java.lang.System.getenv;</span>
-<span class="source-line-no">023</span><span id="line-23">import static java.util.regex.Pattern.compile;</span>
-<span class="source-line-no">024</span><span id="line-24">import static org.apiguardian.api.API.Status.INTERNAL;</span>
-<span class="source-line-no">025</span><span id="line-25">import static org.apiguardian.api.API.Status.STABLE;</span>
-<span class="source-line-no">026</span><span id="line-26">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
-<span class="source-line-no">027</span><span id="line-27">import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;</span>
-<span class="source-line-no">028</span><span id="line-28">import static org.tquadrat.foundation.util.StringUtils.format;</span>
+<span class="source-line-no">020</span><span id="line-20">import static java.lang.String.format;</span>
+<span class="source-line-no">021</span><span id="line-21">import static java.lang.System.arraycopy;</span>
+<span class="source-line-no">022</span><span id="line-22">import static java.lang.System.getProperties;</span>
+<span class="source-line-no">023</span><span id="line-23">import static java.lang.System.getenv;</span>
+<span class="source-line-no">024</span><span id="line-24">import static java.util.regex.Pattern.compile;</span>
+<span class="source-line-no">025</span><span id="line-25">import static org.apiguardian.api.API.Status.INTERNAL;</span>
+<span class="source-line-no">026</span><span id="line-26">import static org.apiguardian.api.API.Status.STABLE;</span>
+<span class="source-line-no">027</span><span id="line-27">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
+<span class="source-line-no">028</span><span id="line-28">import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;</span>
 <span class="source-line-no">029</span><span id="line-29">import static org.tquadrat.foundation.util.StringUtils.isNotEmptyOrBlank;</span>
 <span class="source-line-no">030</span><span id="line-30">import static org.tquadrat.foundation.util.SystemUtils.determineIPAddress;</span>
 <span class="source-line-no">031</span><span id="line-31">import static org.tquadrat.foundation.util.SystemUtils.getMACAddress;</span>
@@ -182,7 +182,7 @@
 <span class="source-line-no">169</span><span id="line-169">     */</span>
 <span class="source-line-no">170</span><span id="line-170">    @SuppressWarnings( "RegExpUnnecessaryNonCapturingGroup" )</span>
 <span class="source-line-no">171</span><span id="line-171">    @API( status = STABLE, since = "0.1.0" )</span>
-<span class="source-line-no">172</span><span id="line-172">    public static final String VARIABLE_PATTERN = "\\$\\{((?:_)|(?:[~/=%:&amp;]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\p{Digit}|_|.)*?))}";</span>
+<span class="source-line-no">172</span><span id="line-172">    public static final String VARIABLE_PATTERN = "\\$\\{((?:_)|(?:[~/=%:&amp;]?\\p{IsAlphabetic}(?:\\p{IsAlphabetic}|\\d|_|.)*?))}";</span>
 <span class="source-line-no">173</span><span id="line-173"></span>
 <span class="source-line-no">174</span><span id="line-174">    /**</span>
 <span class="source-line-no">175</span><span id="line-175">     *  &lt;p&gt;{@summary The template for variables: {@value}.} The argument is the</span>
@@ -298,7 +298,7 @@
 <span class="source-line-no">285</span><span id="line-285">        );</span>
 <span class="source-line-no">286</span><span id="line-286">        try</span>
 <span class="source-line-no">287</span><span id="line-287">        {</span>
-<span class="source-line-no">288</span><span id="line-288">            determineIPAddress().ifPresent( i -&gt; retValue.put( VARNAME_IPAddress, i ) );</span>
+<span class="source-line-no">288</span><span id="line-288">            determineIPAddress().ifPresent( inetAddress -&gt; retValue.put( VARNAME_IPAddress, inetAddress ) );</span>
 <span class="source-line-no">289</span><span id="line-289">        }</span>
 <span class="source-line-no">290</span><span id="line-290">        catch( final SocketException ignored ) { /* Deliberately ignored */ }</span>
 <span class="source-line-no">291</span><span id="line-291"></span>
@@ -309,7 +309,7 @@
 <span class="source-line-no">296</span><span id="line-296">    /**</span>
 <span class="source-line-no">297</span><span id="line-297">     *  Escapes backslash ('\') and dollar sign ('$') for regex replacements.</span>
 <span class="source-line-no">298</span><span id="line-298">     *</span>
-<span class="source-line-no">299</span><span id="line-299">     *  @param  s   The source string.</span>
+<span class="source-line-no">299</span><span id="line-299">     *  @param  input   The source string.</span>
 <span class="source-line-no">300</span><span id="line-300">     *  @return The string with the escaped characters.</span>
 <span class="source-line-no">301</span><span id="line-301">     *</span>
 <span class="source-line-no">302</span><span id="line-302">     *  @see java.util.regex.Matcher#appendReplacement(StringBuffer,String)</span>
@@ -317,18 +317,18 @@
 <span class="source-line-no">304</span><span id="line-304">     *  @since 0.1.0</span>
 <span class="source-line-no">305</span><span id="line-305">     */</span>
 <span class="source-line-no">306</span><span id="line-306">    @API( status = INTERNAL, since = "0.1.0" )</span>
-<span class="source-line-no">307</span><span id="line-307">    private static String escapeRegexReplacement( final CharSequence s )</span>
+<span class="source-line-no">307</span><span id="line-307">    private static String escapeRegexReplacement( final CharSequence input )</span>
 <span class="source-line-no">308</span><span id="line-308">    {</span>
-<span class="source-line-no">309</span><span id="line-309">        assert nonNull( s ) : "s is null";</span>
+<span class="source-line-no">309</span><span id="line-309">        assert nonNull( input ) : "input is null";</span>
 <span class="source-line-no">310</span><span id="line-310"></span>
 <span class="source-line-no">311</span><span id="line-311">        //---* Escape the backslashes and dollar signs *-------------------</span>
-<span class="source-line-no">312</span><span id="line-312">        final var len = s.length();</span>
+<span class="source-line-no">312</span><span id="line-312">        final var len = input.length();</span>
 <span class="source-line-no">313</span><span id="line-313">        final var retValue = new StringBuilder( (len * 12) / 10 );</span>
 <span class="source-line-no">314</span><span id="line-314">        @SuppressWarnings( "LocalVariableNamingConvention" )</span>
 <span class="source-line-no">315</span><span id="line-315">        char c;</span>
 <span class="source-line-no">316</span><span id="line-316">        EscapeLoop: for( var i = 0; i &lt; len; ++i )</span>
 <span class="source-line-no">317</span><span id="line-317">        {</span>
-<span class="source-line-no">318</span><span id="line-318">            c = s.charAt( i );</span>
+<span class="source-line-no">318</span><span id="line-318">            c = input.charAt( i );</span>
 <span class="source-line-no">319</span><span id="line-319">            switch( c )</span>
 <span class="source-line-no">320</span><span id="line-320">            {</span>
 <span class="source-line-no">321</span><span id="line-321">                case '\\':</span>
@@ -456,7 +456,7 @@
 <span class="source-line-no">443</span><span id="line-443">     */</span>
 <span class="source-line-no">444</span><span id="line-444">    public final boolean hasVariable( final String name )</span>
 <span class="source-line-no">445</span><span id="line-445">    {</span>
-<span class="source-line-no">446</span><span id="line-446">        if( !isValidVariableName( name ) ) throw new IllegalArgumentException( format( "%s is not a valid variable name", name ) );</span>
+<span class="source-line-no">446</span><span id="line-446">        if( !isValidVariableName( name ) ) throw new IllegalArgumentException( "%s is not a valid variable name".formatted( name ) );</span>
 <span class="source-line-no">447</span><span id="line-447"></span>
 <span class="source-line-no">448</span><span id="line-448">        final var retValue = findVariables().contains( name );</span>
 <span class="source-line-no">449</span><span id="line-449"></span>
@@ -469,7 +469,7 @@
 <span class="source-line-no">456</span><span id="line-456">     *  form &lt;code&gt;${&lt;i&gt;&amp;lt;name&amp;gt;&lt;/i&gt;}&lt;/code&gt; (matching the pattern given in</span>
 <span class="source-line-no">457</span><span id="line-457">     *  {@link #VARIABLE_PATTERN}).</span>
 <span class="source-line-no">458</span><span id="line-458">     *</span>
-<span class="source-line-no">459</span><span id="line-459">     *  @param  s   The String to test; can be {@code null}.</span>
+<span class="source-line-no">459</span><span id="line-459">     *  @param  input   The String to test; can be {@code null}.</span>
 <span class="source-line-no">460</span><span id="line-460">     *  @return {@code true} if the String contains at least one variable,</span>
 <span class="source-line-no">461</span><span id="line-461">     *      {@code false} otherwise.</span>
 <span class="source-line-no">462</span><span id="line-462">     *</span>
@@ -478,9 +478,9 @@
 <span class="source-line-no">465</span><span id="line-465">     *  @since 0.1.0</span>
 <span class="source-line-no">466</span><span id="line-466">     */</span>
 <span class="source-line-no">467</span><span id="line-467">    @API( status = STABLE, since = "0.1.0" )</span>
-<span class="source-line-no">468</span><span id="line-468">    public static final boolean hasVariables( final CharSequence s )</span>
+<span class="source-line-no">468</span><span id="line-468">    public static final boolean hasVariables( final CharSequence input )</span>
 <span class="source-line-no">469</span><span id="line-469">    {</span>
-<span class="source-line-no">470</span><span id="line-470">        final var retValue = isNotEmptyOrBlank( s ) &amp;&amp; m_VariablePattern.matcher( s ).find();</span>
+<span class="source-line-no">470</span><span id="line-470">        final var retValue = isNotEmptyOrBlank( input ) &amp;&amp; m_VariablePattern.matcher( input ).find();</span>
 <span class="source-line-no">471</span><span id="line-471"></span>
 <span class="source-line-no">472</span><span id="line-472">        //---* Done *----------------------------------------------------------</span>
 <span class="source-line-no">473</span><span id="line-473">        return retValue;</span>
@@ -533,7 +533,7 @@
 <span class="source-line-no">520</span><span id="line-520">     *  in</span>
 <span class="source-line-no">521</span><span id="line-521">     *  {@link #VARIABLE_PATTERN}.</span>
 <span class="source-line-no">522</span><span id="line-522">     *</span>
-<span class="source-line-no">523</span><span id="line-523">     *  @param  s   The String to test; can be {@code null}.</span>
+<span class="source-line-no">523</span><span id="line-523">     *  @param  input   The String to test; can be {@code null}.</span>
 <span class="source-line-no">524</span><span id="line-524">     *  @return {@code true} if the given String is not {@code null}, not the</span>
 <span class="source-line-no">525</span><span id="line-525">     *      empty String, and it matches the given pattern, {@code false}</span>
 <span class="source-line-no">526</span><span id="line-526">     *      otherwise.</span>
@@ -541,9 +541,9 @@
 <span class="source-line-no">528</span><span id="line-528">     *  @since 0.1.0</span>
 <span class="source-line-no">529</span><span id="line-529">     */</span>
 <span class="source-line-no">530</span><span id="line-530">    @API( status = STABLE, since = "0.1.0" )</span>
-<span class="source-line-no">531</span><span id="line-531">    public static final boolean isVariable( final CharSequence s )</span>
+<span class="source-line-no">531</span><span id="line-531">    public static final boolean isVariable( final CharSequence input )</span>
 <span class="source-line-no">532</span><span id="line-532">    {</span>
-<span class="source-line-no">533</span><span id="line-533">        final var retValue = isNotEmptyOrBlank( s ) &amp;&amp; m_VariablePattern.matcher( s ).matches();</span>
+<span class="source-line-no">533</span><span id="line-533">        final var retValue = isNotEmptyOrBlank( input ) &amp;&amp; m_VariablePattern.matcher( input ).matches();</span>
 <span class="source-line-no">534</span><span id="line-534"></span>
 <span class="source-line-no">535</span><span id="line-535">        //---* Done *----------------------------------------------------------</span>
 <span class="source-line-no">536</span><span id="line-536">        return retValue;</span>

@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2020 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> *</span>
@@ -31,11 +31,11 @@
 <span class="source-line-no">018</span><span id="line-18"></span>
 <span class="source-line-no">019</span><span id="line-19">package org.tquadrat.foundation.util.stringconverter;</span>
 <span class="source-line-no">020</span><span id="line-20"></span>
-<span class="source-line-no">021</span><span id="line-21">import static org.apiguardian.api.API.Status.STABLE;</span>
-<span class="source-line-no">022</span><span id="line-22">import static org.tquadrat.foundation.lang.Objects.isNull;</span>
-<span class="source-line-no">023</span><span id="line-23">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
-<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.util.JavaUtils.getCallersClassLoader;</span>
-<span class="source-line-no">025</span><span id="line-25">import static org.tquadrat.foundation.util.StringUtils.format;</span>
+<span class="source-line-no">021</span><span id="line-21">import static java.lang.String.format;</span>
+<span class="source-line-no">022</span><span id="line-22">import static org.apiguardian.api.API.Status.STABLE;</span>
+<span class="source-line-no">023</span><span id="line-23">import static org.tquadrat.foundation.lang.Objects.isNull;</span>
+<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
+<span class="source-line-no">025</span><span id="line-25">import static org.tquadrat.foundation.util.JavaUtils.getCallersClassLoader;</span>
 <span class="source-line-no">026</span><span id="line-26">import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;</span>
 <span class="source-line-no">027</span><span id="line-27"></span>
 <span class="source-line-no">028</span><span id="line-28">import java.io.Serial;</span>
@@ -100,63 +100,70 @@
 <span class="source-line-no">087</span><span id="line-87">     */</span>
 <span class="source-line-no">088</span><span id="line-88">    public static final ClassStringConverter INSTANCE = new ClassStringConverter();</span>
 <span class="source-line-no">089</span><span id="line-89"></span>
-<span class="source-line-no">090</span><span id="line-90">        /*---------*\</span>
-<span class="source-line-no">091</span><span id="line-91">    ====** Methods **==========================================================</span>
-<span class="source-line-no">092</span><span id="line-92">        \*---------*/</span>
+<span class="source-line-no">090</span><span id="line-90">        /*--------------*\</span>
+<span class="source-line-no">091</span><span id="line-91">    ====** Constructors **=====================================================</span>
+<span class="source-line-no">092</span><span id="line-92">        \*--------------*/</span>
 <span class="source-line-no">093</span><span id="line-93">    /**</span>
-<span class="source-line-no">094</span><span id="line-94">     *  {@inheritDoc}</span>
+<span class="source-line-no">094</span><span id="line-94">     *  Creates a new instance of {@code ClassStringConverter}.</span>
 <span class="source-line-no">095</span><span id="line-95">     */</span>
-<span class="source-line-no">096</span><span id="line-96">    @Override</span>
-<span class="source-line-no">097</span><span id="line-97">    public final Class&lt;?&gt; fromString( final CharSequence source ) throws IllegalArgumentException</span>
-<span class="source-line-no">098</span><span id="line-98">    {</span>
-<span class="source-line-no">099</span><span id="line-99">        Class&lt;?&gt; retValue = null;</span>
-<span class="source-line-no">100</span><span id="line-100">        if( nonNull( source ) )</span>
-<span class="source-line-no">101</span><span id="line-101">        {</span>
-<span class="source-line-no">102</span><span id="line-102">            if( isEmptyOrBlank( source ) ) throw new IllegalArgumentException( format( MSG_UnknownClass, source ) );</span>
-<span class="source-line-no">103</span><span id="line-103">            try</span>
-<span class="source-line-no">104</span><span id="line-104">            {</span>
-<span class="source-line-no">105</span><span id="line-105">                final var classLoader = getCallersClassLoader();</span>
-<span class="source-line-no">106</span><span id="line-106">                retValue = Class.forName( source.toString(), false, classLoader );</span>
-<span class="source-line-no">107</span><span id="line-107">            }</span>
-<span class="source-line-no">108</span><span id="line-108">            catch( final ClassNotFoundException e )</span>
-<span class="source-line-no">109</span><span id="line-109">            {</span>
-<span class="source-line-no">110</span><span id="line-110">                throw new IllegalArgumentException( format( MSG_UnknownClass, source ), e );</span>
-<span class="source-line-no">111</span><span id="line-111">            }</span>
-<span class="source-line-no">112</span><span id="line-112">        }</span>
-<span class="source-line-no">113</span><span id="line-113"></span>
-<span class="source-line-no">114</span><span id="line-114">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">115</span><span id="line-115">        return retValue;</span>
-<span class="source-line-no">116</span><span id="line-116">    }   //  fromString()</span>
-<span class="source-line-no">117</span><span id="line-117"></span>
-<span class="source-line-no">118</span><span id="line-118">    /**</span>
-<span class="source-line-no">119</span><span id="line-119">     *  This method is used by the</span>
-<span class="source-line-no">120</span><span id="line-120">     *  {@link java.util.ServiceLoader}</span>
-<span class="source-line-no">121</span><span id="line-121">     *  to obtain the instance for this</span>
-<span class="source-line-no">122</span><span id="line-122">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
-<span class="source-line-no">123</span><span id="line-123">     *  implementation.</span>
-<span class="source-line-no">124</span><span id="line-124">     *</span>
-<span class="source-line-no">125</span><span id="line-125">     *  @return The instance for this {@code StringConverter} implementation.</span>
-<span class="source-line-no">126</span><span id="line-126">     */</span>
-<span class="source-line-no">127</span><span id="line-127">    @SuppressWarnings( "UseOfConcreteClass" )</span>
-<span class="source-line-no">128</span><span id="line-128">    public static final ClassStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">129</span><span id="line-129"></span>
-<span class="source-line-no">130</span><span id="line-130">    /**</span>
-<span class="source-line-no">131</span><span id="line-131">     *  {@inheritDoc}</span>
-<span class="source-line-no">132</span><span id="line-132">     */</span>
-<span class="source-line-no">133</span><span id="line-133">    @Override</span>
-<span class="source-line-no">134</span><span id="line-134">    public final String toString( final Class&lt;?&gt; source )</span>
-<span class="source-line-no">135</span><span id="line-135">    {</span>
-<span class="source-line-no">136</span><span id="line-136">        final var retValue = isNull( source) ? null : source.getName();</span>
-<span class="source-line-no">137</span><span id="line-137"></span>
-<span class="source-line-no">138</span><span id="line-138">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">139</span><span id="line-139">        return retValue;</span>
-<span class="source-line-no">140</span><span id="line-140">    }   //  toString()</span>
-<span class="source-line-no">141</span><span id="line-141">}</span>
-<span class="source-line-no">142</span><span id="line-142">//  class ClassStringConverter</span>
-<span class="source-line-no">143</span><span id="line-143"></span>
-<span class="source-line-no">144</span><span id="line-144">/*</span>
-<span class="source-line-no">145</span><span id="line-145"> *  End of File</span>
-<span class="source-line-no">146</span><span id="line-146"> */</span>
+<span class="source-line-no">096</span><span id="line-96">    public ClassStringConverter() { /* Just exists */ }</span>
+<span class="source-line-no">097</span><span id="line-97"></span>
+<span class="source-line-no">098</span><span id="line-98">        /*---------*\</span>
+<span class="source-line-no">099</span><span id="line-99">    ====** Methods **==========================================================</span>
+<span class="source-line-no">100</span><span id="line-100">        \*---------*/</span>
+<span class="source-line-no">101</span><span id="line-101">    /**</span>
+<span class="source-line-no">102</span><span id="line-102">     *  {@inheritDoc}</span>
+<span class="source-line-no">103</span><span id="line-103">     */</span>
+<span class="source-line-no">104</span><span id="line-104">    @Override</span>
+<span class="source-line-no">105</span><span id="line-105">    public final Class&lt;?&gt; fromString( final CharSequence source ) throws IllegalArgumentException</span>
+<span class="source-line-no">106</span><span id="line-106">    {</span>
+<span class="source-line-no">107</span><span id="line-107">        Class&lt;?&gt; retValue = null;</span>
+<span class="source-line-no">108</span><span id="line-108">        if( nonNull( source ) )</span>
+<span class="source-line-no">109</span><span id="line-109">        {</span>
+<span class="source-line-no">110</span><span id="line-110">            if( isEmptyOrBlank( source ) ) throw new IllegalArgumentException( format( MSG_UnknownClass, source ) );</span>
+<span class="source-line-no">111</span><span id="line-111">            try</span>
+<span class="source-line-no">112</span><span id="line-112">            {</span>
+<span class="source-line-no">113</span><span id="line-113">                final var classLoader = getCallersClassLoader();</span>
+<span class="source-line-no">114</span><span id="line-114">                retValue = Class.forName( source.toString(), false, classLoader );</span>
+<span class="source-line-no">115</span><span id="line-115">            }</span>
+<span class="source-line-no">116</span><span id="line-116">            catch( final ClassNotFoundException e )</span>
+<span class="source-line-no">117</span><span id="line-117">            {</span>
+<span class="source-line-no">118</span><span id="line-118">                throw new IllegalArgumentException( format( MSG_UnknownClass, source ), e );</span>
+<span class="source-line-no">119</span><span id="line-119">            }</span>
+<span class="source-line-no">120</span><span id="line-120">        }</span>
+<span class="source-line-no">121</span><span id="line-121"></span>
+<span class="source-line-no">122</span><span id="line-122">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">123</span><span id="line-123">        return retValue;</span>
+<span class="source-line-no">124</span><span id="line-124">    }   //  fromString()</span>
+<span class="source-line-no">125</span><span id="line-125"></span>
+<span class="source-line-no">126</span><span id="line-126">    /**</span>
+<span class="source-line-no">127</span><span id="line-127">     *  This method is used by the</span>
+<span class="source-line-no">128</span><span id="line-128">     *  {@link java.util.ServiceLoader}</span>
+<span class="source-line-no">129</span><span id="line-129">     *  to obtain the instance for this</span>
+<span class="source-line-no">130</span><span id="line-130">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
+<span class="source-line-no">131</span><span id="line-131">     *  implementation.</span>
+<span class="source-line-no">132</span><span id="line-132">     *</span>
+<span class="source-line-no">133</span><span id="line-133">     *  @return The instance for this {@code StringConverter} implementation.</span>
+<span class="source-line-no">134</span><span id="line-134">     */</span>
+<span class="source-line-no">135</span><span id="line-135">    public static final ClassStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">136</span><span id="line-136"></span>
+<span class="source-line-no">137</span><span id="line-137">    /**</span>
+<span class="source-line-no">138</span><span id="line-138">     *  {@inheritDoc}</span>
+<span class="source-line-no">139</span><span id="line-139">     */</span>
+<span class="source-line-no">140</span><span id="line-140">    @Override</span>
+<span class="source-line-no">141</span><span id="line-141">    public final String toString( final Class&lt;?&gt; source )</span>
+<span class="source-line-no">142</span><span id="line-142">    {</span>
+<span class="source-line-no">143</span><span id="line-143">        final var retValue = isNull( source) ? null : source.getName();</span>
+<span class="source-line-no">144</span><span id="line-144"></span>
+<span class="source-line-no">145</span><span id="line-145">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">146</span><span id="line-146">        return retValue;</span>
+<span class="source-line-no">147</span><span id="line-147">    }   //  toString()</span>
+<span class="source-line-no">148</span><span id="line-148">}</span>
+<span class="source-line-no">149</span><span id="line-149">//  class ClassStringConverter</span>
+<span class="source-line-no">150</span><span id="line-150"></span>
+<span class="source-line-no">151</span><span id="line-151">/*</span>
+<span class="source-line-no">152</span><span id="line-152"> *  End of File</span>
+<span class="source-line-no">153</span><span id="line-153"> */</span>
 
 
 

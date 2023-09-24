@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2021 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util.internal;
 
+import static java.lang.String.format;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Stream.builder;
@@ -26,7 +27,6 @@ import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;
 import static org.tquadrat.foundation.util.StringUtils.isNotEmptyOrBlank;
 
@@ -185,7 +185,7 @@ public final class Entities
             {
                 m_NameToValue.put( name, value );
                 final var previousName = m_ValueToName.put( value, name );
-                assert isNull( previousName ) : format( "Duplicate: %s, %s, %d", name, previousName, value );
+                assert isNull( previousName ) : "Duplicate: %s, %s, %d".formatted( name, previousName, value );
             }
             else
             {
@@ -319,18 +319,16 @@ public final class Entities
     {
         final var thisClass = getClass();
         final var packageName = thisClass.getPackageName().replace( '.', '/' );
-        @SuppressWarnings( "OverlyLongLambda" )
         final var resourceURLs = stream( resourceNames )
-            .map( n ->
+            .map( name ->
             {
-                final var resourceName = format( "/%s/%s", packageName, n );
+                final var resourceName = format( "/%s/%s", packageName, name );
                 final var resourceURL = thisClass.getResource( resourceName );
-                assert nonNull( resourceURL ) : format( "URL is null for %s", resourceName );
+                assert nonNull( resourceURL ) : "URL is null for %s".formatted( resourceName );
                 return resourceURL;
             } )
             .toArray( URL []::new );
 
-        @SuppressWarnings( "OverlyLongLambda" )
         final var supplier = (Supplier<EntityMap>) () ->
         {
             final EntityMap map = new PrimitiveEntityMap();
@@ -352,19 +350,19 @@ public final class Entities
      *  from the 0 index again.
      *
      *  @param  buffer  The buffer to write the results to.
-     *  @param  s   The source {@code String} to unescape.
+     *  @param  source  The source {@code String} to unescape.
      *  @param  firstAmp    The index of the first ampersand in the source.
      *  @throws IOException Problems on writing to the {@code buffer}.
      */
     @SuppressWarnings( {"MagicNumber", "OverlyNestedMethod", "OverlyComplexMethod"} )
-    private void doUnescape( final Appendable buffer, final CharSequence s, final int firstAmp ) throws IOException
+    private void doUnescape( final Appendable buffer, final CharSequence source, final int firstAmp ) throws IOException
     {
         assert nonNull( buffer ) : "buffer is null";
-        assert nonNull( s ) : "s is null";
+        assert nonNull( source ) : "source is null";
         assert firstAmp >= 0 : "firstAmp is less than 0";
 
-        buffer.append( s, 0, firstAmp );
-        final var str = s.toString();
+        buffer.append( source, 0, firstAmp );
+        final var str = source.toString();
         final var len = str.length();
         char isHexChar;
         int nextIndex;
@@ -466,15 +464,17 @@ public final class Entities
      *  {@code addEntity( "foo", "0xA1" )}, a call to
      *  {@code escape( "\u00A1" )} will return {@code "&foo;"}.
      *
-     *  @param  str The {@code String} to escape.
+     *  @param  source  The {@code String} to escape.
      *  @return A new escaped {@code String}.
      */
     @SuppressWarnings( "UnnecessaryUnicodeEscape" )
-    public final String escape( final CharSequence str )
+    public final String escape( final CharSequence source )
     {
         @SuppressWarnings( "NumericCastThatLosesPrecision" )
-        final var retValue = requireNonNullArgument( str, "str" ).codePoints()
-            .mapToObj( c -> entityName( c ).map( n -> format( "&%s;", n ) ).orElseGet( () -> c > 0x7F ? formatCodePoint( c ) : Character.toString( (char) c ) ) )
+        final var retValue = requireNonNullArgument( source, "source" )
+            .codePoints()
+            .mapToObj( codePoint -> entityName( codePoint ).map( name -> format( "&%s;", name ) )
+                .orElseGet( () -> codePoint > 0x7F ? formatCodePoint( codePoint ) : Character.toString( (char) codePoint ) ) )
             .collect( joining() );
 
         //---* Done *----------------------------------------------------------
@@ -489,16 +489,16 @@ public final class Entities
      *
      *  @param  appendable  The {@code Appendable} to write the results of the
      *      escaping to.
-     *  @param  str The {@code String} to escape.
+     *  @param  input   The {@code String} to escape.
      *  @throws IOException when {@code Appendable} passed throws the exception
      *      from calls to the
      *      {@link Appendable#append(char)}
      *      method.
      *  @see #escape(CharSequence)
      */
-    public final void escape( final Appendable appendable, final CharSequence str ) throws IOException
+    public final void escape( final Appendable appendable, final CharSequence input ) throws IOException
     {
-        requireNonNullArgument( appendable, "appendable" ).append( escape( requireNonNullArgument( str, "str" ) ) );
+        requireNonNullArgument( appendable, "appendable" ).append( escape( requireNonNullArgument( input, "input" ) ) );
     }   //  escape()
 
     /**
@@ -539,7 +539,7 @@ public final class Entities
                 @SuppressWarnings( "OptionalGetWithoutIsPresent" )
                 final var value = entityValue( e ).get().intValue();
                 final var unicode = Character.getName( value );
-                return format( "&%1$s; = &#%2$d = &#%2$X%3$s", e, value, isEmptyOrBlank( unicode ) ? "" : format( " (%s)", unicode ) );
+                return "&%1$s; = &#%2$d = &#%2$X%3$s".formatted( e, value, isEmptyOrBlank( unicode ) ? "" : format( " (%s)", unicode ) );
             } )
             .toArray( String []::new );
 
@@ -564,8 +564,8 @@ public final class Entities
         {
             reader.lines()
                 .filter( StringUtils::isNotEmptyOrBlank )
-                .filter( l -> !l.startsWith( "#" ) )
-                .forEach( l -> parseAndAdd( entityMap, l ) );
+                .filter( line -> !line.startsWith( "#" ) )
+                .forEach( line -> parseAndAdd( entityMap, line ) );
         }
         catch( final IOException e )
         {
@@ -604,23 +604,24 @@ public final class Entities
     }   //  parseAndAdd()
 
     /**
-     *  Unescapes the entities in a {@code String}.<br>
-     *  <br>For example, if you have called {@code addEntity( "foo", 0xA1 )},
-     *  a call to {@code unescape( "&foo;")} will return {@code "\u00A1"}.
+     *  <p>{@summary Unescapes the entities in a {@code String}.}</p>
+     *  <p>For example, if you have called {@code addEntity( "foo", 0xA1 )},
+     *  a call to {@code unescape( "&foo;")} will return {@code "\u00A1"}.</p>
      *
-     *  @param  str The {@code String} to escape.
+     *  @param  input   The {@code String} to escape.
      *  @return A new escaped {@code String}.
      */
-    public final String unescape( final CharSequence str )
+    @SuppressWarnings( "UnnecessaryUnicodeEscape" )
+    public final String unescape( final CharSequence input )
     {
-        var retValue = requireNonNullArgument( str, "str" ).toString();
+        var retValue = requireNonNullArgument( input, "input" ).toString();
         final var firstAmp = retValue.indexOf( '&' );
         if( firstAmp >= 0 )
         {
-            final var buffer = new StringBuilder( str.length() * 2 );
+            final var buffer = new StringBuilder( input.length() * 2 );
             try
             {
-                doUnescape( buffer, str, firstAmp );
+                doUnescape( buffer, input, firstAmp );
             }
             catch( final IOException e )
             {
@@ -644,23 +645,23 @@ public final class Entities
      *  passed.
      *
      *  @param  appendable  The {@code Appendable} to write the results to.
-     *  @param  str The source {@code String} to unescape.
+     *  @param  input   The source {@code String} to unescape.
      *  @throws IOException when {@code Appendable} passed throws the exception
      *      from calls to the
      *      {@link Appendable#append(char)}
      *      method.
      *  @see #unescape(CharSequence)
      */
-    public final void unescape( final Appendable appendable, final CharSequence str ) throws IOException
+    public final void unescape( final Appendable appendable, final CharSequence input ) throws IOException
     {
-        final var firstAmp = requireNonNullArgument( str, "str" ).toString().indexOf( "&" );
+        final var firstAmp = requireNonNullArgument( input, "input" ).toString().indexOf( "&" );
         if( firstAmp >= 0 )
         {
-            doUnescape( requireNonNullArgument( appendable, "appendable" ), str, firstAmp );
+            doUnescape( requireNonNullArgument( appendable, "appendable" ), input, firstAmp );
         }
         else
         {
-            requireNonNullArgument( appendable, "appendable" ).append( str );
+            requireNonNullArgument( appendable, "appendable" ).append( input );
         }
     }   //  unescape()
 }

@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2021 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> * Licensed to the public under the agreements of the GNU Lesser General Public</span>
@@ -30,16 +30,16 @@
 <span class="source-line-no">017</span><span id="line-17"></span>
 <span class="source-line-no">018</span><span id="line-18">package org.tquadrat.foundation.util.internal;</span>
 <span class="source-line-no">019</span><span id="line-19"></span>
-<span class="source-line-no">020</span><span id="line-20">import static java.util.Arrays.stream;</span>
-<span class="source-line-no">021</span><span id="line-21">import static java.util.stream.Collectors.joining;</span>
-<span class="source-line-no">022</span><span id="line-22">import static java.util.stream.Stream.builder;</span>
-<span class="source-line-no">023</span><span id="line-23">import static org.apiguardian.api.API.Status.INTERNAL;</span>
-<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.lang.CommonConstants.UTF8;</span>
-<span class="source-line-no">025</span><span id="line-25">import static org.tquadrat.foundation.lang.Objects.isNull;</span>
-<span class="source-line-no">026</span><span id="line-26">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
-<span class="source-line-no">027</span><span id="line-27">import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;</span>
-<span class="source-line-no">028</span><span id="line-28">import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;</span>
-<span class="source-line-no">029</span><span id="line-29">import static org.tquadrat.foundation.util.StringUtils.format;</span>
+<span class="source-line-no">020</span><span id="line-20">import static java.lang.String.format;</span>
+<span class="source-line-no">021</span><span id="line-21">import static java.util.Arrays.stream;</span>
+<span class="source-line-no">022</span><span id="line-22">import static java.util.stream.Collectors.joining;</span>
+<span class="source-line-no">023</span><span id="line-23">import static java.util.stream.Stream.builder;</span>
+<span class="source-line-no">024</span><span id="line-24">import static org.apiguardian.api.API.Status.INTERNAL;</span>
+<span class="source-line-no">025</span><span id="line-25">import static org.tquadrat.foundation.lang.CommonConstants.UTF8;</span>
+<span class="source-line-no">026</span><span id="line-26">import static org.tquadrat.foundation.lang.Objects.isNull;</span>
+<span class="source-line-no">027</span><span id="line-27">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
+<span class="source-line-no">028</span><span id="line-28">import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;</span>
+<span class="source-line-no">029</span><span id="line-29">import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;</span>
 <span class="source-line-no">030</span><span id="line-30">import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;</span>
 <span class="source-line-no">031</span><span id="line-31">import static org.tquadrat.foundation.util.StringUtils.isNotEmptyOrBlank;</span>
 <span class="source-line-no">032</span><span id="line-32"></span>
@@ -198,7 +198,7 @@
 <span class="source-line-no">185</span><span id="line-185">            {</span>
 <span class="source-line-no">186</span><span id="line-186">                m_NameToValue.put( name, value );</span>
 <span class="source-line-no">187</span><span id="line-187">                final var previousName = m_ValueToName.put( value, name );</span>
-<span class="source-line-no">188</span><span id="line-188">                assert isNull( previousName ) : format( "Duplicate: %s, %s, %d", name, previousName, value );</span>
+<span class="source-line-no">188</span><span id="line-188">                assert isNull( previousName ) : "Duplicate: %s, %s, %d".formatted( name, previousName, value );</span>
 <span class="source-line-no">189</span><span id="line-189">            }</span>
 <span class="source-line-no">190</span><span id="line-190">            else</span>
 <span class="source-line-no">191</span><span id="line-191">            {</span>
@@ -332,162 +332,162 @@
 <span class="source-line-no">319</span><span id="line-319">    {</span>
 <span class="source-line-no">320</span><span id="line-320">        final var thisClass = getClass();</span>
 <span class="source-line-no">321</span><span id="line-321">        final var packageName = thisClass.getPackageName().replace( '.', '/' );</span>
-<span class="source-line-no">322</span><span id="line-322">        @SuppressWarnings( "OverlyLongLambda" )</span>
-<span class="source-line-no">323</span><span id="line-323">        final var resourceURLs = stream( resourceNames )</span>
-<span class="source-line-no">324</span><span id="line-324">            .map( n -&gt;</span>
-<span class="source-line-no">325</span><span id="line-325">            {</span>
-<span class="source-line-no">326</span><span id="line-326">                final var resourceName = format( "/%s/%s", packageName, n );</span>
-<span class="source-line-no">327</span><span id="line-327">                final var resourceURL = thisClass.getResource( resourceName );</span>
-<span class="source-line-no">328</span><span id="line-328">                assert nonNull( resourceURL ) : format( "URL is null for %s", resourceName );</span>
-<span class="source-line-no">329</span><span id="line-329">                return resourceURL;</span>
-<span class="source-line-no">330</span><span id="line-330">            } )</span>
-<span class="source-line-no">331</span><span id="line-331">            .toArray( URL []::new );</span>
-<span class="source-line-no">332</span><span id="line-332"></span>
-<span class="source-line-no">333</span><span id="line-333">        @SuppressWarnings( "OverlyLongLambda" )</span>
-<span class="source-line-no">334</span><span id="line-334">        final var supplier = (Supplier&lt;EntityMap&gt;) () -&gt;</span>
-<span class="source-line-no">335</span><span id="line-335">        {</span>
-<span class="source-line-no">336</span><span id="line-336">            final EntityMap map = new PrimitiveEntityMap();</span>
-<span class="source-line-no">337</span><span id="line-337">            for( final var resourceURL : resourceURLs )</span>
-<span class="source-line-no">338</span><span id="line-338">            {</span>
-<span class="source-line-no">339</span><span id="line-339">                loadEntities( map, resourceURL );</span>
-<span class="source-line-no">340</span><span id="line-340">            }</span>
-<span class="source-line-no">341</span><span id="line-341">            return map;</span>
-<span class="source-line-no">342</span><span id="line-342">        };</span>
-<span class="source-line-no">343</span><span id="line-343"></span>
-<span class="source-line-no">344</span><span id="line-344">        m_EntityMap = Lazy.use( supplier );</span>
-<span class="source-line-no">345</span><span id="line-345">    }   //  Entities()</span>
-<span class="source-line-no">346</span><span id="line-346"></span>
-<span class="source-line-no">347</span><span id="line-347">        /*---------*\</span>
-<span class="source-line-no">348</span><span id="line-348">    ====** Methods **==========================================================</span>
-<span class="source-line-no">349</span><span id="line-349">        \*---------*/</span>
-<span class="source-line-no">350</span><span id="line-350">    /**</span>
-<span class="source-line-no">351</span><span id="line-351">     *  Underlying unescape method that allows the optimisation of not starting</span>
-<span class="source-line-no">352</span><span id="line-352">     *  from the 0 index again.</span>
-<span class="source-line-no">353</span><span id="line-353">     *</span>
-<span class="source-line-no">354</span><span id="line-354">     *  @param  buffer  The buffer to write the results to.</span>
-<span class="source-line-no">355</span><span id="line-355">     *  @param  s   The source {@code String} to unescape.</span>
-<span class="source-line-no">356</span><span id="line-356">     *  @param  firstAmp    The index of the first ampersand in the source.</span>
-<span class="source-line-no">357</span><span id="line-357">     *  @throws IOException Problems on writing to the {@code buffer}.</span>
-<span class="source-line-no">358</span><span id="line-358">     */</span>
-<span class="source-line-no">359</span><span id="line-359">    @SuppressWarnings( {"MagicNumber", "OverlyNestedMethod", "OverlyComplexMethod"} )</span>
-<span class="source-line-no">360</span><span id="line-360">    private void doUnescape( final Appendable buffer, final CharSequence s, final int firstAmp ) throws IOException</span>
-<span class="source-line-no">361</span><span id="line-361">    {</span>
-<span class="source-line-no">362</span><span id="line-362">        assert nonNull( buffer ) : "buffer is null";</span>
-<span class="source-line-no">363</span><span id="line-363">        assert nonNull( s ) : "s is null";</span>
-<span class="source-line-no">364</span><span id="line-364">        assert firstAmp &gt;= 0 : "firstAmp is less than 0";</span>
-<span class="source-line-no">365</span><span id="line-365"></span>
-<span class="source-line-no">366</span><span id="line-366">        buffer.append( s, 0, firstAmp );</span>
-<span class="source-line-no">367</span><span id="line-367">        final var str = s.toString();</span>
-<span class="source-line-no">368</span><span id="line-368">        final var len = str.length();</span>
-<span class="source-line-no">369</span><span id="line-369">        char isHexChar;</span>
-<span class="source-line-no">370</span><span id="line-370">        int nextIndex;</span>
-<span class="source-line-no">371</span><span id="line-371">        int semiColonIndex;</span>
-<span class="source-line-no">372</span><span id="line-372">        int ampersandIndex;</span>
-<span class="source-line-no">373</span><span id="line-373">        int entityContentLen;</span>
-<span class="source-line-no">374</span><span id="line-374">        Optional&lt;Integer&gt; entityValue;</span>
-<span class="source-line-no">375</span><span id="line-375">        ScanLoop: for( var i = firstAmp; i &lt; len; ++i )</span>
-<span class="source-line-no">376</span><span id="line-376">        {</span>
-<span class="source-line-no">377</span><span id="line-377">            final var currentCharacter = str.charAt( i );</span>
-<span class="source-line-no">378</span><span id="line-378">            if( currentCharacter == '&amp;' )</span>
-<span class="source-line-no">379</span><span id="line-379">            {</span>
-<span class="source-line-no">380</span><span id="line-380">                nextIndex = i + 1;</span>
-<span class="source-line-no">381</span><span id="line-381">                semiColonIndex = str.indexOf( ';', nextIndex );</span>
-<span class="source-line-no">382</span><span id="line-382">                if( semiColonIndex == -1 )</span>
-<span class="source-line-no">383</span><span id="line-383">                {</span>
-<span class="source-line-no">384</span><span id="line-384">                    buffer.append( '&amp;' );</span>
-<span class="source-line-no">385</span><span id="line-385">                    continue ScanLoop;</span>
-<span class="source-line-no">386</span><span id="line-386">                }</span>
-<span class="source-line-no">387</span><span id="line-387">                ampersandIndex = str.indexOf( '&amp;', i + 1 );</span>
-<span class="source-line-no">388</span><span id="line-388">                if( (ampersandIndex != -1) &amp;&amp; (ampersandIndex &lt; semiColonIndex) )</span>
-<span class="source-line-no">389</span><span id="line-389">                {</span>
-<span class="source-line-no">390</span><span id="line-390">                    //---* The text looks like "&amp;...&amp;...;" *-------------------</span>
-<span class="source-line-no">391</span><span id="line-391">                    buffer.append( '&amp;' );</span>
-<span class="source-line-no">392</span><span id="line-392">                    continue ScanLoop;</span>
-<span class="source-line-no">393</span><span id="line-393">                }</span>
-<span class="source-line-no">394</span><span id="line-394">                final var entityContent = str.substring( nextIndex, semiColonIndex );</span>
-<span class="source-line-no">395</span><span id="line-395">                entityValue = Optional.empty();</span>
-<span class="source-line-no">396</span><span id="line-396">                entityContentLen = entityContent.length();</span>
-<span class="source-line-no">397</span><span id="line-397">                if( entityContentLen &gt; 0 )</span>
-<span class="source-line-no">398</span><span id="line-398">                {</span>
-<span class="source-line-no">399</span><span id="line-399">                    if( entityContent.charAt( 0 ) == '#' )</span>
-<span class="source-line-no">400</span><span id="line-400">                    {</span>
-<span class="source-line-no">401</span><span id="line-401">                        /*</span>
-<span class="source-line-no">402</span><span id="line-402">                         * Escaped value content is an integer (decimal or</span>
-<span class="source-line-no">403</span><span id="line-403">                         * hexadecimal)</span>
-<span class="source-line-no">404</span><span id="line-404">                         */</span>
-<span class="source-line-no">405</span><span id="line-405">                        if( entityContentLen &gt; 1 )</span>
-<span class="source-line-no">406</span><span id="line-406">                        {</span>
-<span class="source-line-no">407</span><span id="line-407">                            isHexChar = entityContent.charAt( 1 );</span>
-<span class="source-line-no">408</span><span id="line-408">                            try</span>
-<span class="source-line-no">409</span><span id="line-409">                            {</span>
-<span class="source-line-no">410</span><span id="line-410">                                final var value = switch( isHexChar )</span>
-<span class="source-line-no">411</span><span id="line-411">                                {</span>
-<span class="source-line-no">412</span><span id="line-412">                                    case 'X', 'x' -&gt; Integer.parseInt( entityContent.substring( 2 ), 0x10 );</span>
-<span class="source-line-no">413</span><span id="line-413">                                    default -&gt; Integer.parseInt( entityContent.substring( 1 ), 10 );</span>
-<span class="source-line-no">414</span><span id="line-414">                                };</span>
-<span class="source-line-no">415</span><span id="line-415">                                entityValue = value &gt; 0xFFFFFF ? Optional.empty() : Optional.of( Integer.valueOf( value ) );</span>
-<span class="source-line-no">416</span><span id="line-416">                            }</span>
-<span class="source-line-no">417</span><span id="line-417">                            catch( final NumberFormatException ignored )</span>
-<span class="source-line-no">418</span><span id="line-418">                            {</span>
-<span class="source-line-no">419</span><span id="line-419">                                entityValue = Optional.empty();</span>
-<span class="source-line-no">420</span><span id="line-420">                            }</span>
-<span class="source-line-no">421</span><span id="line-421">                        }</span>
-<span class="source-line-no">422</span><span id="line-422">                    }</span>
-<span class="source-line-no">423</span><span id="line-423">                    else</span>
-<span class="source-line-no">424</span><span id="line-424">                    {</span>
-<span class="source-line-no">425</span><span id="line-425">                        //---* Escaped value content is an entity name *-------</span>
-<span class="source-line-no">426</span><span id="line-426">                        entityValue = entityValue( entityContent );</span>
-<span class="source-line-no">427</span><span id="line-427">                    }</span>
-<span class="source-line-no">428</span><span id="line-428">                }</span>
-<span class="source-line-no">429</span><span id="line-429">                buffer.append( entityValue.map( v -&gt; Character.toString( v.intValue() ) ).orElseGet( () -&gt; format( "&amp;%s;", entityContent ) ) );</span>
-<span class="source-line-no">430</span><span id="line-430"></span>
-<span class="source-line-no">431</span><span id="line-431">                //---* Move  the index up to the semi-colon *------------------</span>
-<span class="source-line-no">432</span><span id="line-432">                //noinspection AssignmentToForLoopParameter</span>
-<span class="source-line-no">433</span><span id="line-433">                i = semiColonIndex;</span>
-<span class="source-line-no">434</span><span id="line-434">            }</span>
-<span class="source-line-no">435</span><span id="line-435">            else</span>
-<span class="source-line-no">436</span><span id="line-436">            {</span>
-<span class="source-line-no">437</span><span id="line-437">                buffer.append( currentCharacter );</span>
-<span class="source-line-no">438</span><span id="line-438">            }</span>
-<span class="source-line-no">439</span><span id="line-439">        }   //  ScanLoop:</span>
-<span class="source-line-no">440</span><span id="line-440">    }   //  doUnescape()</span>
-<span class="source-line-no">441</span><span id="line-441"></span>
-<span class="source-line-no">442</span><span id="line-442">    /**</span>
-<span class="source-line-no">443</span><span id="line-443">     *  Returns the name of the entity identified by the specified value.</span>
-<span class="source-line-no">444</span><span id="line-444">     *</span>
-<span class="source-line-no">445</span><span id="line-445">     *  @param  value   The value to locate.</span>
-<span class="source-line-no">446</span><span id="line-446">     *  @return An instance of</span>
-<span class="source-line-no">447</span><span id="line-447">     *      {@link Optional}</span>
-<span class="source-line-no">448</span><span id="line-448">     *      that holds the entity name that is associated with the specified</span>
-<span class="source-line-no">449</span><span id="line-449">     *      value.</span>
-<span class="source-line-no">450</span><span id="line-450">     */</span>
-<span class="source-line-no">451</span><span id="line-451">    public final Optional&lt;String&gt; entityName( final int value ) { return m_EntityMap.get().name( value ); }</span>
-<span class="source-line-no">452</span><span id="line-452"></span>
-<span class="source-line-no">453</span><span id="line-453">    /**</span>
-<span class="source-line-no">454</span><span id="line-454">     *  Returns the value of the entity identified by the specified name.</span>
-<span class="source-line-no">455</span><span id="line-455">     *</span>
-<span class="source-line-no">456</span><span id="line-456">     *  @param  name    The name to locate.</span>
-<span class="source-line-no">457</span><span id="line-457">     *  @return An instance of</span>
-<span class="source-line-no">458</span><span id="line-458">     *      {@link Optional}</span>
-<span class="source-line-no">459</span><span id="line-459">     *      that holds the entity value associated with the specified name.</span>
-<span class="source-line-no">460</span><span id="line-460">     */</span>
-<span class="source-line-no">461</span><span id="line-461">    public final Optional&lt;Integer&gt; entityValue( final String name ) { return m_EntityMap.get().value( name ); }</span>
-<span class="source-line-no">462</span><span id="line-462"></span>
-<span class="source-line-no">463</span><span id="line-463">    /**</span>
-<span class="source-line-no">464</span><span id="line-464">     *  Escapes the characters in a {@code String}.&lt;br&gt;</span>
-<span class="source-line-no">465</span><span id="line-465">     *  &lt;br&gt;For example, if you have called</span>
-<span class="source-line-no">466</span><span id="line-466">     *  {@code addEntity( "foo", "0xA1" )}, a call to</span>
-<span class="source-line-no">467</span><span id="line-467">     *  {@code escape( "\u00A1" )} will return {@code "&amp;foo;"}.</span>
-<span class="source-line-no">468</span><span id="line-468">     *</span>
-<span class="source-line-no">469</span><span id="line-469">     *  @param  str The {@code String} to escape.</span>
-<span class="source-line-no">470</span><span id="line-470">     *  @return A new escaped {@code String}.</span>
-<span class="source-line-no">471</span><span id="line-471">     */</span>
-<span class="source-line-no">472</span><span id="line-472">    @SuppressWarnings( "UnnecessaryUnicodeEscape" )</span>
-<span class="source-line-no">473</span><span id="line-473">    public final String escape( final CharSequence str )</span>
-<span class="source-line-no">474</span><span id="line-474">    {</span>
-<span class="source-line-no">475</span><span id="line-475">        @SuppressWarnings( "NumericCastThatLosesPrecision" )</span>
-<span class="source-line-no">476</span><span id="line-476">        final var retValue = requireNonNullArgument( str, "str" ).codePoints()</span>
-<span class="source-line-no">477</span><span id="line-477">            .mapToObj( c -&gt; entityName( c ).map( n -&gt; format( "&amp;%s;", n ) ).orElseGet( () -&gt; c &gt; 0x7F ? formatCodePoint( c ) : Character.toString( (char) c ) ) )</span>
+<span class="source-line-no">322</span><span id="line-322">        final var resourceURLs = stream( resourceNames )</span>
+<span class="source-line-no">323</span><span id="line-323">            .map( name -&gt;</span>
+<span class="source-line-no">324</span><span id="line-324">            {</span>
+<span class="source-line-no">325</span><span id="line-325">                final var resourceName = format( "/%s/%s", packageName, name );</span>
+<span class="source-line-no">326</span><span id="line-326">                final var resourceURL = thisClass.getResource( resourceName );</span>
+<span class="source-line-no">327</span><span id="line-327">                assert nonNull( resourceURL ) : "URL is null for %s".formatted( resourceName );</span>
+<span class="source-line-no">328</span><span id="line-328">                return resourceURL;</span>
+<span class="source-line-no">329</span><span id="line-329">            } )</span>
+<span class="source-line-no">330</span><span id="line-330">            .toArray( URL []::new );</span>
+<span class="source-line-no">331</span><span id="line-331"></span>
+<span class="source-line-no">332</span><span id="line-332">        final var supplier = (Supplier&lt;EntityMap&gt;) () -&gt;</span>
+<span class="source-line-no">333</span><span id="line-333">        {</span>
+<span class="source-line-no">334</span><span id="line-334">            final EntityMap map = new PrimitiveEntityMap();</span>
+<span class="source-line-no">335</span><span id="line-335">            for( final var resourceURL : resourceURLs )</span>
+<span class="source-line-no">336</span><span id="line-336">            {</span>
+<span class="source-line-no">337</span><span id="line-337">                loadEntities( map, resourceURL );</span>
+<span class="source-line-no">338</span><span id="line-338">            }</span>
+<span class="source-line-no">339</span><span id="line-339">            return map;</span>
+<span class="source-line-no">340</span><span id="line-340">        };</span>
+<span class="source-line-no">341</span><span id="line-341"></span>
+<span class="source-line-no">342</span><span id="line-342">        m_EntityMap = Lazy.use( supplier );</span>
+<span class="source-line-no">343</span><span id="line-343">    }   //  Entities()</span>
+<span class="source-line-no">344</span><span id="line-344"></span>
+<span class="source-line-no">345</span><span id="line-345">        /*---------*\</span>
+<span class="source-line-no">346</span><span id="line-346">    ====** Methods **==========================================================</span>
+<span class="source-line-no">347</span><span id="line-347">        \*---------*/</span>
+<span class="source-line-no">348</span><span id="line-348">    /**</span>
+<span class="source-line-no">349</span><span id="line-349">     *  Underlying unescape method that allows the optimisation of not starting</span>
+<span class="source-line-no">350</span><span id="line-350">     *  from the 0 index again.</span>
+<span class="source-line-no">351</span><span id="line-351">     *</span>
+<span class="source-line-no">352</span><span id="line-352">     *  @param  buffer  The buffer to write the results to.</span>
+<span class="source-line-no">353</span><span id="line-353">     *  @param  source  The source {@code String} to unescape.</span>
+<span class="source-line-no">354</span><span id="line-354">     *  @param  firstAmp    The index of the first ampersand in the source.</span>
+<span class="source-line-no">355</span><span id="line-355">     *  @throws IOException Problems on writing to the {@code buffer}.</span>
+<span class="source-line-no">356</span><span id="line-356">     */</span>
+<span class="source-line-no">357</span><span id="line-357">    @SuppressWarnings( {"MagicNumber", "OverlyNestedMethod", "OverlyComplexMethod"} )</span>
+<span class="source-line-no">358</span><span id="line-358">    private void doUnescape( final Appendable buffer, final CharSequence source, final int firstAmp ) throws IOException</span>
+<span class="source-line-no">359</span><span id="line-359">    {</span>
+<span class="source-line-no">360</span><span id="line-360">        assert nonNull( buffer ) : "buffer is null";</span>
+<span class="source-line-no">361</span><span id="line-361">        assert nonNull( source ) : "source is null";</span>
+<span class="source-line-no">362</span><span id="line-362">        assert firstAmp &gt;= 0 : "firstAmp is less than 0";</span>
+<span class="source-line-no">363</span><span id="line-363"></span>
+<span class="source-line-no">364</span><span id="line-364">        buffer.append( source, 0, firstAmp );</span>
+<span class="source-line-no">365</span><span id="line-365">        final var str = source.toString();</span>
+<span class="source-line-no">366</span><span id="line-366">        final var len = str.length();</span>
+<span class="source-line-no">367</span><span id="line-367">        char isHexChar;</span>
+<span class="source-line-no">368</span><span id="line-368">        int nextIndex;</span>
+<span class="source-line-no">369</span><span id="line-369">        int semiColonIndex;</span>
+<span class="source-line-no">370</span><span id="line-370">        int ampersandIndex;</span>
+<span class="source-line-no">371</span><span id="line-371">        int entityContentLen;</span>
+<span class="source-line-no">372</span><span id="line-372">        Optional&lt;Integer&gt; entityValue;</span>
+<span class="source-line-no">373</span><span id="line-373">        ScanLoop: for( var i = firstAmp; i &lt; len; ++i )</span>
+<span class="source-line-no">374</span><span id="line-374">        {</span>
+<span class="source-line-no">375</span><span id="line-375">            final var currentCharacter = str.charAt( i );</span>
+<span class="source-line-no">376</span><span id="line-376">            if( currentCharacter == '&amp;' )</span>
+<span class="source-line-no">377</span><span id="line-377">            {</span>
+<span class="source-line-no">378</span><span id="line-378">                nextIndex = i + 1;</span>
+<span class="source-line-no">379</span><span id="line-379">                semiColonIndex = str.indexOf( ';', nextIndex );</span>
+<span class="source-line-no">380</span><span id="line-380">                if( semiColonIndex == -1 )</span>
+<span class="source-line-no">381</span><span id="line-381">                {</span>
+<span class="source-line-no">382</span><span id="line-382">                    buffer.append( '&amp;' );</span>
+<span class="source-line-no">383</span><span id="line-383">                    continue ScanLoop;</span>
+<span class="source-line-no">384</span><span id="line-384">                }</span>
+<span class="source-line-no">385</span><span id="line-385">                ampersandIndex = str.indexOf( '&amp;', i + 1 );</span>
+<span class="source-line-no">386</span><span id="line-386">                if( (ampersandIndex != -1) &amp;&amp; (ampersandIndex &lt; semiColonIndex) )</span>
+<span class="source-line-no">387</span><span id="line-387">                {</span>
+<span class="source-line-no">388</span><span id="line-388">                    //---* The text looks like "&amp;...&amp;...;" *-------------------</span>
+<span class="source-line-no">389</span><span id="line-389">                    buffer.append( '&amp;' );</span>
+<span class="source-line-no">390</span><span id="line-390">                    continue ScanLoop;</span>
+<span class="source-line-no">391</span><span id="line-391">                }</span>
+<span class="source-line-no">392</span><span id="line-392">                final var entityContent = str.substring( nextIndex, semiColonIndex );</span>
+<span class="source-line-no">393</span><span id="line-393">                entityValue = Optional.empty();</span>
+<span class="source-line-no">394</span><span id="line-394">                entityContentLen = entityContent.length();</span>
+<span class="source-line-no">395</span><span id="line-395">                if( entityContentLen &gt; 0 )</span>
+<span class="source-line-no">396</span><span id="line-396">                {</span>
+<span class="source-line-no">397</span><span id="line-397">                    if( entityContent.charAt( 0 ) == '#' )</span>
+<span class="source-line-no">398</span><span id="line-398">                    {</span>
+<span class="source-line-no">399</span><span id="line-399">                        /*</span>
+<span class="source-line-no">400</span><span id="line-400">                         * Escaped value content is an integer (decimal or</span>
+<span class="source-line-no">401</span><span id="line-401">                         * hexadecimal)</span>
+<span class="source-line-no">402</span><span id="line-402">                         */</span>
+<span class="source-line-no">403</span><span id="line-403">                        if( entityContentLen &gt; 1 )</span>
+<span class="source-line-no">404</span><span id="line-404">                        {</span>
+<span class="source-line-no">405</span><span id="line-405">                            isHexChar = entityContent.charAt( 1 );</span>
+<span class="source-line-no">406</span><span id="line-406">                            try</span>
+<span class="source-line-no">407</span><span id="line-407">                            {</span>
+<span class="source-line-no">408</span><span id="line-408">                                final var value = switch( isHexChar )</span>
+<span class="source-line-no">409</span><span id="line-409">                                {</span>
+<span class="source-line-no">410</span><span id="line-410">                                    case 'X', 'x' -&gt; Integer.parseInt( entityContent.substring( 2 ), 0x10 );</span>
+<span class="source-line-no">411</span><span id="line-411">                                    default -&gt; Integer.parseInt( entityContent.substring( 1 ), 10 );</span>
+<span class="source-line-no">412</span><span id="line-412">                                };</span>
+<span class="source-line-no">413</span><span id="line-413">                                entityValue = value &gt; 0xFFFFFF ? Optional.empty() : Optional.of( Integer.valueOf( value ) );</span>
+<span class="source-line-no">414</span><span id="line-414">                            }</span>
+<span class="source-line-no">415</span><span id="line-415">                            catch( final NumberFormatException ignored )</span>
+<span class="source-line-no">416</span><span id="line-416">                            {</span>
+<span class="source-line-no">417</span><span id="line-417">                                entityValue = Optional.empty();</span>
+<span class="source-line-no">418</span><span id="line-418">                            }</span>
+<span class="source-line-no">419</span><span id="line-419">                        }</span>
+<span class="source-line-no">420</span><span id="line-420">                    }</span>
+<span class="source-line-no">421</span><span id="line-421">                    else</span>
+<span class="source-line-no">422</span><span id="line-422">                    {</span>
+<span class="source-line-no">423</span><span id="line-423">                        //---* Escaped value content is an entity name *-------</span>
+<span class="source-line-no">424</span><span id="line-424">                        entityValue = entityValue( entityContent );</span>
+<span class="source-line-no">425</span><span id="line-425">                    }</span>
+<span class="source-line-no">426</span><span id="line-426">                }</span>
+<span class="source-line-no">427</span><span id="line-427">                buffer.append( entityValue.map( v -&gt; Character.toString( v.intValue() ) ).orElseGet( () -&gt; format( "&amp;%s;", entityContent ) ) );</span>
+<span class="source-line-no">428</span><span id="line-428"></span>
+<span class="source-line-no">429</span><span id="line-429">                //---* Move  the index up to the semi-colon *------------------</span>
+<span class="source-line-no">430</span><span id="line-430">                //noinspection AssignmentToForLoopParameter</span>
+<span class="source-line-no">431</span><span id="line-431">                i = semiColonIndex;</span>
+<span class="source-line-no">432</span><span id="line-432">            }</span>
+<span class="source-line-no">433</span><span id="line-433">            else</span>
+<span class="source-line-no">434</span><span id="line-434">            {</span>
+<span class="source-line-no">435</span><span id="line-435">                buffer.append( currentCharacter );</span>
+<span class="source-line-no">436</span><span id="line-436">            }</span>
+<span class="source-line-no">437</span><span id="line-437">        }   //  ScanLoop:</span>
+<span class="source-line-no">438</span><span id="line-438">    }   //  doUnescape()</span>
+<span class="source-line-no">439</span><span id="line-439"></span>
+<span class="source-line-no">440</span><span id="line-440">    /**</span>
+<span class="source-line-no">441</span><span id="line-441">     *  Returns the name of the entity identified by the specified value.</span>
+<span class="source-line-no">442</span><span id="line-442">     *</span>
+<span class="source-line-no">443</span><span id="line-443">     *  @param  value   The value to locate.</span>
+<span class="source-line-no">444</span><span id="line-444">     *  @return An instance of</span>
+<span class="source-line-no">445</span><span id="line-445">     *      {@link Optional}</span>
+<span class="source-line-no">446</span><span id="line-446">     *      that holds the entity name that is associated with the specified</span>
+<span class="source-line-no">447</span><span id="line-447">     *      value.</span>
+<span class="source-line-no">448</span><span id="line-448">     */</span>
+<span class="source-line-no">449</span><span id="line-449">    public final Optional&lt;String&gt; entityName( final int value ) { return m_EntityMap.get().name( value ); }</span>
+<span class="source-line-no">450</span><span id="line-450"></span>
+<span class="source-line-no">451</span><span id="line-451">    /**</span>
+<span class="source-line-no">452</span><span id="line-452">     *  Returns the value of the entity identified by the specified name.</span>
+<span class="source-line-no">453</span><span id="line-453">     *</span>
+<span class="source-line-no">454</span><span id="line-454">     *  @param  name    The name to locate.</span>
+<span class="source-line-no">455</span><span id="line-455">     *  @return An instance of</span>
+<span class="source-line-no">456</span><span id="line-456">     *      {@link Optional}</span>
+<span class="source-line-no">457</span><span id="line-457">     *      that holds the entity value associated with the specified name.</span>
+<span class="source-line-no">458</span><span id="line-458">     */</span>
+<span class="source-line-no">459</span><span id="line-459">    public final Optional&lt;Integer&gt; entityValue( final String name ) { return m_EntityMap.get().value( name ); }</span>
+<span class="source-line-no">460</span><span id="line-460"></span>
+<span class="source-line-no">461</span><span id="line-461">    /**</span>
+<span class="source-line-no">462</span><span id="line-462">     *  Escapes the characters in a {@code String}.&lt;br&gt;</span>
+<span class="source-line-no">463</span><span id="line-463">     *  &lt;br&gt;For example, if you have called</span>
+<span class="source-line-no">464</span><span id="line-464">     *  {@code addEntity( "foo", "0xA1" )}, a call to</span>
+<span class="source-line-no">465</span><span id="line-465">     *  {@code escape( "\u00A1" )} will return {@code "&amp;foo;"}.</span>
+<span class="source-line-no">466</span><span id="line-466">     *</span>
+<span class="source-line-no">467</span><span id="line-467">     *  @param  source  The {@code String} to escape.</span>
+<span class="source-line-no">468</span><span id="line-468">     *  @return A new escaped {@code String}.</span>
+<span class="source-line-no">469</span><span id="line-469">     */</span>
+<span class="source-line-no">470</span><span id="line-470">    @SuppressWarnings( "UnnecessaryUnicodeEscape" )</span>
+<span class="source-line-no">471</span><span id="line-471">    public final String escape( final CharSequence source )</span>
+<span class="source-line-no">472</span><span id="line-472">    {</span>
+<span class="source-line-no">473</span><span id="line-473">        @SuppressWarnings( "NumericCastThatLosesPrecision" )</span>
+<span class="source-line-no">474</span><span id="line-474">        final var retValue = requireNonNullArgument( source, "source" )</span>
+<span class="source-line-no">475</span><span id="line-475">            .codePoints()</span>
+<span class="source-line-no">476</span><span id="line-476">            .mapToObj( codePoint -&gt; entityName( codePoint ).map( name -&gt; format( "&amp;%s;", name ) )</span>
+<span class="source-line-no">477</span><span id="line-477">                .orElseGet( () -&gt; codePoint &gt; 0x7F ? formatCodePoint( codePoint ) : Character.toString( (char) codePoint ) ) )</span>
 <span class="source-line-no">478</span><span id="line-478">            .collect( joining() );</span>
 <span class="source-line-no">479</span><span id="line-479"></span>
 <span class="source-line-no">480</span><span id="line-480">        //---* Done *----------------------------------------------------------</span>
@@ -502,16 +502,16 @@
 <span class="source-line-no">489</span><span id="line-489">     *</span>
 <span class="source-line-no">490</span><span id="line-490">     *  @param  appendable  The {@code Appendable} to write the results of the</span>
 <span class="source-line-no">491</span><span id="line-491">     *      escaping to.</span>
-<span class="source-line-no">492</span><span id="line-492">     *  @param  str The {@code String} to escape.</span>
+<span class="source-line-no">492</span><span id="line-492">     *  @param  input   The {@code String} to escape.</span>
 <span class="source-line-no">493</span><span id="line-493">     *  @throws IOException when {@code Appendable} passed throws the exception</span>
 <span class="source-line-no">494</span><span id="line-494">     *      from calls to the</span>
 <span class="source-line-no">495</span><span id="line-495">     *      {@link Appendable#append(char)}</span>
 <span class="source-line-no">496</span><span id="line-496">     *      method.</span>
 <span class="source-line-no">497</span><span id="line-497">     *  @see #escape(CharSequence)</span>
 <span class="source-line-no">498</span><span id="line-498">     */</span>
-<span class="source-line-no">499</span><span id="line-499">    public final void escape( final Appendable appendable, final CharSequence str ) throws IOException</span>
+<span class="source-line-no">499</span><span id="line-499">    public final void escape( final Appendable appendable, final CharSequence input ) throws IOException</span>
 <span class="source-line-no">500</span><span id="line-500">    {</span>
-<span class="source-line-no">501</span><span id="line-501">        requireNonNullArgument( appendable, "appendable" ).append( escape( requireNonNullArgument( str, "str" ) ) );</span>
+<span class="source-line-no">501</span><span id="line-501">        requireNonNullArgument( appendable, "appendable" ).append( escape( requireNonNullArgument( input, "input" ) ) );</span>
 <span class="source-line-no">502</span><span id="line-502">    }   //  escape()</span>
 <span class="source-line-no">503</span><span id="line-503"></span>
 <span class="source-line-no">504</span><span id="line-504">    /**</span>
@@ -552,7 +552,7 @@
 <span class="source-line-no">539</span><span id="line-539">                @SuppressWarnings( "OptionalGetWithoutIsPresent" )</span>
 <span class="source-line-no">540</span><span id="line-540">                final var value = entityValue( e ).get().intValue();</span>
 <span class="source-line-no">541</span><span id="line-541">                final var unicode = Character.getName( value );</span>
-<span class="source-line-no">542</span><span id="line-542">                return format( "&amp;%1$s; = &amp;#%2$d = &amp;#%2$X%3$s", e, value, isEmptyOrBlank( unicode ) ? "" : format( " (%s)", unicode ) );</span>
+<span class="source-line-no">542</span><span id="line-542">                return "&amp;%1$s; = &amp;#%2$d = &amp;#%2$X%3$s".formatted( e, value, isEmptyOrBlank( unicode ) ? "" : format( " (%s)", unicode ) );</span>
 <span class="source-line-no">543</span><span id="line-543">            } )</span>
 <span class="source-line-no">544</span><span id="line-544">            .toArray( String []::new );</span>
 <span class="source-line-no">545</span><span id="line-545"></span>
@@ -577,8 +577,8 @@
 <span class="source-line-no">564</span><span id="line-564">        {</span>
 <span class="source-line-no">565</span><span id="line-565">            reader.lines()</span>
 <span class="source-line-no">566</span><span id="line-566">                .filter( StringUtils::isNotEmptyOrBlank )</span>
-<span class="source-line-no">567</span><span id="line-567">                .filter( l -&gt; !l.startsWith( "#" ) )</span>
-<span class="source-line-no">568</span><span id="line-568">                .forEach( l -&gt; parseAndAdd( entityMap, l ) );</span>
+<span class="source-line-no">567</span><span id="line-567">                .filter( line -&gt; !line.startsWith( "#" ) )</span>
+<span class="source-line-no">568</span><span id="line-568">                .forEach( line -&gt; parseAndAdd( entityMap, line ) );</span>
 <span class="source-line-no">569</span><span id="line-569">        }</span>
 <span class="source-line-no">570</span><span id="line-570">        catch( final IOException e )</span>
 <span class="source-line-no">571</span><span id="line-571">        {</span>
@@ -617,71 +617,72 @@
 <span class="source-line-no">604</span><span id="line-604">    }   //  parseAndAdd()</span>
 <span class="source-line-no">605</span><span id="line-605"></span>
 <span class="source-line-no">606</span><span id="line-606">    /**</span>
-<span class="source-line-no">607</span><span id="line-607">     *  Unescapes the entities in a {@code String}.&lt;br&gt;</span>
-<span class="source-line-no">608</span><span id="line-608">     *  &lt;br&gt;For example, if you have called {@code addEntity( "foo", 0xA1 )},</span>
-<span class="source-line-no">609</span><span id="line-609">     *  a call to {@code unescape( "&amp;foo;")} will return {@code "\u00A1"}.</span>
+<span class="source-line-no">607</span><span id="line-607">     *  &lt;p&gt;{@summary Unescapes the entities in a {@code String}.}&lt;/p&gt;</span>
+<span class="source-line-no">608</span><span id="line-608">     *  &lt;p&gt;For example, if you have called {@code addEntity( "foo", 0xA1 )},</span>
+<span class="source-line-no">609</span><span id="line-609">     *  a call to {@code unescape( "&amp;foo;")} will return {@code "\u00A1"}.&lt;/p&gt;</span>
 <span class="source-line-no">610</span><span id="line-610">     *</span>
-<span class="source-line-no">611</span><span id="line-611">     *  @param  str The {@code String} to escape.</span>
+<span class="source-line-no">611</span><span id="line-611">     *  @param  input   The {@code String} to escape.</span>
 <span class="source-line-no">612</span><span id="line-612">     *  @return A new escaped {@code String}.</span>
 <span class="source-line-no">613</span><span id="line-613">     */</span>
-<span class="source-line-no">614</span><span id="line-614">    public final String unescape( final CharSequence str )</span>
-<span class="source-line-no">615</span><span id="line-615">    {</span>
-<span class="source-line-no">616</span><span id="line-616">        var retValue = requireNonNullArgument( str, "str" ).toString();</span>
-<span class="source-line-no">617</span><span id="line-617">        final var firstAmp = retValue.indexOf( '&amp;' );</span>
-<span class="source-line-no">618</span><span id="line-618">        if( firstAmp &gt;= 0 )</span>
-<span class="source-line-no">619</span><span id="line-619">        {</span>
-<span class="source-line-no">620</span><span id="line-620">            final var buffer = new StringBuilder( str.length() * 2 );</span>
-<span class="source-line-no">621</span><span id="line-621">            try</span>
-<span class="source-line-no">622</span><span id="line-622">            {</span>
-<span class="source-line-no">623</span><span id="line-623">                doUnescape( buffer, str, firstAmp );</span>
-<span class="source-line-no">624</span><span id="line-624">            }</span>
-<span class="source-line-no">625</span><span id="line-625">            catch( final IOException e )</span>
-<span class="source-line-no">626</span><span id="line-626">            {</span>
-<span class="source-line-no">627</span><span id="line-627">                /*</span>
-<span class="source-line-no">628</span><span id="line-628">                 * Operations on a StringBuilder should not cause an</span>
-<span class="source-line-no">629</span><span id="line-629">                 * IOException.</span>
-<span class="source-line-no">630</span><span id="line-630">                 */</span>
-<span class="source-line-no">631</span><span id="line-631">                throw new UnexpectedExceptionError( e );</span>
-<span class="source-line-no">632</span><span id="line-632">            }</span>
-<span class="source-line-no">633</span><span id="line-633">            retValue = buffer.toString();</span>
-<span class="source-line-no">634</span><span id="line-634">        }</span>
-<span class="source-line-no">635</span><span id="line-635"></span>
-<span class="source-line-no">636</span><span id="line-636">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">637</span><span id="line-637">        return retValue;</span>
-<span class="source-line-no">638</span><span id="line-638">    }   //  unescape()</span>
-<span class="source-line-no">639</span><span id="line-639"></span>
-<span class="source-line-no">640</span><span id="line-640">    /**</span>
-<span class="source-line-no">641</span><span id="line-641">     *  Unescapes the escaped entities in the {@code String} passed and writes</span>
-<span class="source-line-no">642</span><span id="line-642">     *  the result to the</span>
-<span class="source-line-no">643</span><span id="line-643">     *  {@link Appendable}</span>
-<span class="source-line-no">644</span><span id="line-644">     *  passed.</span>
-<span class="source-line-no">645</span><span id="line-645">     *</span>
-<span class="source-line-no">646</span><span id="line-646">     *  @param  appendable  The {@code Appendable} to write the results to.</span>
-<span class="source-line-no">647</span><span id="line-647">     *  @param  str The source {@code String} to unescape.</span>
-<span class="source-line-no">648</span><span id="line-648">     *  @throws IOException when {@code Appendable} passed throws the exception</span>
-<span class="source-line-no">649</span><span id="line-649">     *      from calls to the</span>
-<span class="source-line-no">650</span><span id="line-650">     *      {@link Appendable#append(char)}</span>
-<span class="source-line-no">651</span><span id="line-651">     *      method.</span>
-<span class="source-line-no">652</span><span id="line-652">     *  @see #unescape(CharSequence)</span>
-<span class="source-line-no">653</span><span id="line-653">     */</span>
-<span class="source-line-no">654</span><span id="line-654">    public final void unescape( final Appendable appendable, final CharSequence str ) throws IOException</span>
-<span class="source-line-no">655</span><span id="line-655">    {</span>
-<span class="source-line-no">656</span><span id="line-656">        final var firstAmp = requireNonNullArgument( str, "str" ).toString().indexOf( "&amp;" );</span>
-<span class="source-line-no">657</span><span id="line-657">        if( firstAmp &gt;= 0 )</span>
-<span class="source-line-no">658</span><span id="line-658">        {</span>
-<span class="source-line-no">659</span><span id="line-659">            doUnescape( requireNonNullArgument( appendable, "appendable" ), str, firstAmp );</span>
-<span class="source-line-no">660</span><span id="line-660">        }</span>
-<span class="source-line-no">661</span><span id="line-661">        else</span>
-<span class="source-line-no">662</span><span id="line-662">        {</span>
-<span class="source-line-no">663</span><span id="line-663">            requireNonNullArgument( appendable, "appendable" ).append( str );</span>
-<span class="source-line-no">664</span><span id="line-664">        }</span>
-<span class="source-line-no">665</span><span id="line-665">    }   //  unescape()</span>
-<span class="source-line-no">666</span><span id="line-666">}</span>
-<span class="source-line-no">667</span><span id="line-667">//  class Entities</span>
-<span class="source-line-no">668</span><span id="line-668"></span>
-<span class="source-line-no">669</span><span id="line-669">/*</span>
-<span class="source-line-no">670</span><span id="line-670"> *  End of File</span>
-<span class="source-line-no">671</span><span id="line-671"> */</span>
+<span class="source-line-no">614</span><span id="line-614">    @SuppressWarnings( "UnnecessaryUnicodeEscape" )</span>
+<span class="source-line-no">615</span><span id="line-615">    public final String unescape( final CharSequence input )</span>
+<span class="source-line-no">616</span><span id="line-616">    {</span>
+<span class="source-line-no">617</span><span id="line-617">        var retValue = requireNonNullArgument( input, "input" ).toString();</span>
+<span class="source-line-no">618</span><span id="line-618">        final var firstAmp = retValue.indexOf( '&amp;' );</span>
+<span class="source-line-no">619</span><span id="line-619">        if( firstAmp &gt;= 0 )</span>
+<span class="source-line-no">620</span><span id="line-620">        {</span>
+<span class="source-line-no">621</span><span id="line-621">            final var buffer = new StringBuilder( input.length() * 2 );</span>
+<span class="source-line-no">622</span><span id="line-622">            try</span>
+<span class="source-line-no">623</span><span id="line-623">            {</span>
+<span class="source-line-no">624</span><span id="line-624">                doUnescape( buffer, input, firstAmp );</span>
+<span class="source-line-no">625</span><span id="line-625">            }</span>
+<span class="source-line-no">626</span><span id="line-626">            catch( final IOException e )</span>
+<span class="source-line-no">627</span><span id="line-627">            {</span>
+<span class="source-line-no">628</span><span id="line-628">                /*</span>
+<span class="source-line-no">629</span><span id="line-629">                 * Operations on a StringBuilder should not cause an</span>
+<span class="source-line-no">630</span><span id="line-630">                 * IOException.</span>
+<span class="source-line-no">631</span><span id="line-631">                 */</span>
+<span class="source-line-no">632</span><span id="line-632">                throw new UnexpectedExceptionError( e );</span>
+<span class="source-line-no">633</span><span id="line-633">            }</span>
+<span class="source-line-no">634</span><span id="line-634">            retValue = buffer.toString();</span>
+<span class="source-line-no">635</span><span id="line-635">        }</span>
+<span class="source-line-no">636</span><span id="line-636"></span>
+<span class="source-line-no">637</span><span id="line-637">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">638</span><span id="line-638">        return retValue;</span>
+<span class="source-line-no">639</span><span id="line-639">    }   //  unescape()</span>
+<span class="source-line-no">640</span><span id="line-640"></span>
+<span class="source-line-no">641</span><span id="line-641">    /**</span>
+<span class="source-line-no">642</span><span id="line-642">     *  Unescapes the escaped entities in the {@code String} passed and writes</span>
+<span class="source-line-no">643</span><span id="line-643">     *  the result to the</span>
+<span class="source-line-no">644</span><span id="line-644">     *  {@link Appendable}</span>
+<span class="source-line-no">645</span><span id="line-645">     *  passed.</span>
+<span class="source-line-no">646</span><span id="line-646">     *</span>
+<span class="source-line-no">647</span><span id="line-647">     *  @param  appendable  The {@code Appendable} to write the results to.</span>
+<span class="source-line-no">648</span><span id="line-648">     *  @param  input   The source {@code String} to unescape.</span>
+<span class="source-line-no">649</span><span id="line-649">     *  @throws IOException when {@code Appendable} passed throws the exception</span>
+<span class="source-line-no">650</span><span id="line-650">     *      from calls to the</span>
+<span class="source-line-no">651</span><span id="line-651">     *      {@link Appendable#append(char)}</span>
+<span class="source-line-no">652</span><span id="line-652">     *      method.</span>
+<span class="source-line-no">653</span><span id="line-653">     *  @see #unescape(CharSequence)</span>
+<span class="source-line-no">654</span><span id="line-654">     */</span>
+<span class="source-line-no">655</span><span id="line-655">    public final void unescape( final Appendable appendable, final CharSequence input ) throws IOException</span>
+<span class="source-line-no">656</span><span id="line-656">    {</span>
+<span class="source-line-no">657</span><span id="line-657">        final var firstAmp = requireNonNullArgument( input, "input" ).toString().indexOf( "&amp;" );</span>
+<span class="source-line-no">658</span><span id="line-658">        if( firstAmp &gt;= 0 )</span>
+<span class="source-line-no">659</span><span id="line-659">        {</span>
+<span class="source-line-no">660</span><span id="line-660">            doUnescape( requireNonNullArgument( appendable, "appendable" ), input, firstAmp );</span>
+<span class="source-line-no">661</span><span id="line-661">        }</span>
+<span class="source-line-no">662</span><span id="line-662">        else</span>
+<span class="source-line-no">663</span><span id="line-663">        {</span>
+<span class="source-line-no">664</span><span id="line-664">            requireNonNullArgument( appendable, "appendable" ).append( input );</span>
+<span class="source-line-no">665</span><span id="line-665">        }</span>
+<span class="source-line-no">666</span><span id="line-666">    }   //  unescape()</span>
+<span class="source-line-no">667</span><span id="line-667">}</span>
+<span class="source-line-no">668</span><span id="line-668">//  class Entities</span>
+<span class="source-line-no">669</span><span id="line-669"></span>
+<span class="source-line-no">670</span><span id="line-670">/*</span>
+<span class="source-line-no">671</span><span id="line-671"> *  End of File</span>
+<span class="source-line-no">672</span><span id="line-672"> */</span>
 
 
 

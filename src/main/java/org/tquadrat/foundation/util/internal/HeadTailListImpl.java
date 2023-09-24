@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -220,7 +220,7 @@ public final class HeadTailListImpl<T> implements HeadTailList<T>
     public final boolean equals( final Object o )
     {
         var retValue = this == o;
-        if( !retValue && (o instanceof HeadTailList other) )
+        if( !retValue && (o instanceof final HeadTailList<?> other) )
         {
             retValue = (m_Size == other.size()) && (m_HashCode == other.hashCode());
             if( retValue )

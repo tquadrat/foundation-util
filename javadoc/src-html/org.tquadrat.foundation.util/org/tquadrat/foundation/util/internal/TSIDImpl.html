@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> *  Copyright © 2002-2022 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> *  Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> *  All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> *  Licensed to the public under the agreements of the GNU Lesser General Public</span>
@@ -32,9 +32,9 @@
 <span class="source-line-no">019</span><span id="line-19"></span>
 <span class="source-line-no">020</span><span id="line-20">import static java.lang.Integer.signum;</span>
 <span class="source-line-no">021</span><span id="line-21">import static java.lang.Long.compare;</span>
-<span class="source-line-no">022</span><span id="line-22">import static org.apiguardian.api.API.Status.STABLE;</span>
-<span class="source-line-no">023</span><span id="line-23">import static org.tquadrat.foundation.util.Base32.getEncoder;</span>
-<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.util.StringUtils.format;</span>
+<span class="source-line-no">022</span><span id="line-22">import static java.lang.String.format;</span>
+<span class="source-line-no">023</span><span id="line-23">import static org.apiguardian.api.API.Status.STABLE;</span>
+<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.util.Base32.getEncoder;</span>
 <span class="source-line-no">025</span><span id="line-25">import static org.tquadrat.foundation.util.StringUtils.repeat;</span>
 <span class="source-line-no">026</span><span id="line-26">import static org.tquadrat.foundation.util.SystemUtils.getRandom;</span>
 <span class="source-line-no">027</span><span id="line-27"></span>
@@ -115,7 +115,7 @@
 <span class="source-line-no">102</span><span id="line-102">        else</span>
 <span class="source-line-no">103</span><span id="line-103">        {</span>
 <span class="source-line-no">104</span><span id="line-104">            //noinspection LocalVariableNamingConvention</span>
-<span class="source-line-no">105</span><span id="line-105">            final var e = new ValidationException( format( "Node id '%d' is too large, value must be less than %d", nodeId, MAX_NODES ) );</span>
+<span class="source-line-no">105</span><span id="line-105">            final var e = new ValidationException( "Node id '%d' is too large, value must be less than %d".formatted( nodeId, MAX_NODES ) );</span>
 <span class="source-line-no">106</span><span id="line-106">            throw new ExceptionInInitializerError( e );</span>
 <span class="source-line-no">107</span><span id="line-107">        }</span>
 <span class="source-line-no">108</span><span id="line-108"></span>
@@ -164,7 +164,7 @@
 <span class="source-line-no">151</span><span id="line-151">    public final boolean equals( final Object o )</span>
 <span class="source-line-no">152</span><span id="line-152">    {</span>
 <span class="source-line-no">153</span><span id="line-153">        var retValue = this == o;</span>
-<span class="source-line-no">154</span><span id="line-154">        if( !retValue &amp;&amp; o instanceof TSIDImpl other )</span>
+<span class="source-line-no">154</span><span id="line-154">        if( !retValue &amp;&amp; o instanceof final TSIDImpl other )</span>
 <span class="source-line-no">155</span><span id="line-155">        {</span>
 <span class="source-line-no">156</span><span id="line-156">            retValue = m_Id == other.m_Id;</span>
 <span class="source-line-no">157</span><span id="line-157">        }</span>

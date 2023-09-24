@@ -95,12 +95,12 @@ loadScripts(document, 'script');</script>
 </span><span class="modifiers">public final class </span><span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/PeriodStringConverter.html#line-77">PeriodStringConverter</a></span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">StringConverter</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Period.html" title="class or interface in java.time" class="external-link">Period</a>&gt;</span></div>
-<div class="block">An implementation of
+<div class="block"><p>An implementation of
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
   for
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Period.html" title="class or interface in java.time" class="external-link"><code>Period</code></a>
-  values.<br>
-  <br>While the method
+  values.</p>
+  <p>While the method
   <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html#toString(T)" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>toString(Period)</code></a>
   simply uses
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Period.html#toString()" title="class or interface in java.time" class="external-link"><code>Period.toString()</code></a>,
@@ -110,19 +110,19 @@ implements <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquad
   <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/time/Period.html#parse(java.lang.CharSequence)" title="class or interface in java.time" class="external-link"><code>Period.parse(CharSequence)</code></a>
   to create the <code>Period</code> instance for the given value. The formats
   accepted are based on the ISO-8601 period formats <code>PnYnMnD</code> and
-  <code>PnW</code>.<br>
-  <br>The string starts with an optional sign, denoted by the ASCII negative
+  <code>PnW</code>.</p>
+  <p>The string starts with an optional sign, denoted by the ASCII negative
   ('-') or positive ('+') symbol. If negative, the whole period is
-  negated.<br>
-  <br>The ASCII letter &quot;P&quot; is next in upper or lower case.<br>
-  <br>There are then four sections, each consisting of a number and a suffix.
-  At least one of the four sections must be present.<br>
-  <br>The sections have suffixes in ASCII of &quot;Y&quot;, &quot;M&quot;,
+  negated.</p>
+  <p>The ASCII letter &quot;P&quot; is next in upper or lower case.</p>
+  <p>There are then four sections, each consisting of a number and a suffix.
+  At least one of the four sections must be present.</p>
+  <p>The sections have suffixes in ASCII of &quot;Y&quot;, &quot;M&quot;,
   &quot;W&quot; and &quot;D&quot; for years, months, weeks and days, accepted
-  in upper or lower case.<br>
-  <br>The suffixes must occur in order. The number part of each section must
+  in upper or lower case.</p>
+  <p>The suffixes must occur in order. The number part of each section must
   consist of ASCII digits. The number may be prefixed by the ASCII negative
-  or positive symbol. The number must parse to an <code>int</code>.</div>
+  or positive symbol. The number must parse to an <code>int</code>.</p></div>
 <dl class="notes">
 <dt><span class="simpleTagLabel">Notes:</span></dt>
 <dd>

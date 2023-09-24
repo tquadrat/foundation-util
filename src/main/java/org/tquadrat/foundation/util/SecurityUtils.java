@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -17,13 +17,13 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.util.IOUtils.determineCheckSum;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.io.File;
 import java.io.IOException;
@@ -65,8 +65,8 @@ public final class SecurityUtils
     /**
      *  A recommended prime for the Diffie-Hellman-Merkle key exchange scheme.
      *
-     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger, BigInteger, BigInteger)
-     *  @see #calculateDiffieHellmanPublicValue(BigInteger, BigInteger, BigInteger)
+     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)
+     *  @see #calculateDiffieHellmanPublicValue(BigInteger,BigInteger,BigInteger)
      *  @see <a href="http://tools.ietf.org/html/rfc2412#page-45">http://tools.ietf.org/html/rfc2412#page-45</a>
      */
     @API( status = STABLE, since = "0.0.5" )
@@ -85,8 +85,8 @@ public final class SecurityUtils
      *  A recommended prime modulus (primitive root) for the
      *  Diffie-Hellman-Merkle key exchange scheme.
      *
-     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger, BigInteger, BigInteger)
-     *  @see #calculateDiffieHellmanPublicValue(BigInteger, BigInteger, BigInteger)
+     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)
+     *  @see #calculateDiffieHellmanPublicValue(BigInteger,BigInteger,BigInteger)
      *  @see <a href="http://tools.ietf.org/html/rfc2412#page-45">http://tools.ietf.org/html/rfc2412#page-45</a>
      */
     @API( status = STABLE, since = "0.0.5" )
@@ -196,9 +196,9 @@ public final class SecurityUtils
     ====** Methods **==========================================================
         \*---------*/
     /**
-     *  Performs the calculation for the Diffie-Hellmann-Merkle key exchange
-     *  procedure.<br>
-     *  <br>From Wikipedia: &quot;<cite>Diffie–Hellman establishes a shared
+     *  <p>{@summary Performs the calculation for the Diffie-Hellmann-Merkle
+     *  key exchange procedure.}</p>
+     *  <p>From Wikipedia:</p> <blockquote><p>Diffie–Hellman establishes a shared
      *  secret that can be used for secret communications while exchanging data
      *  over a public network. Diffie–Hellman key exchange (D-H) is a specific
      *  method of exchanging cryptographic keys. It is one of the earliest
@@ -207,57 +207,62 @@ public final class SecurityUtils
      *  that have no prior knowledge of each other to jointly establish a
      *  shared secret key over an insecure communications channel. This key can
      *  then be used to encrypt subsequent communications using a symmetric key
-     *  cipher.<br>
-     *  <br>The scheme was first published by Whitfield Diffie and Martin
+     *  cipher.</p>
+     *  <p>The scheme was first published by Whitfield Diffie and Martin
      *  Hellman in 1976, although it had been separately invented a few years
      *  earlier within GCHQ, the British signals intelligence agency, by James
      *  H. Ellis, Clifford Cocks and Malcolm J. Williamson but was kept
      *  classified. In 2002, Hellman suggested the algorithm be called
      *  Diffie–Hellman–Merkle key exchange in recognition of Ralph Merkle's
      *  contribution to the invention of public-key cryptography (Hellman,
-     *  2002).<br>
-     *  <br>Although Diffie–Hellman key agreement itself is an anonymous
+     *  2002).</p>
+     *  <p>Although Diffie–Hellman key agreement itself is an anonymous
      *  (non-authenticated) key-agreement protocol, it provides the basis for a
      *  variety of authenticated protocols, and is used to provide <i>perfect
      *  forward secrecy</i> in Transport Layer Security's ephemeral modes
      *  (referred to as EDH or DHE depending on the cipher
-     *  suite).</cite>&quot;<br>
-     *  <br>This method performs the following calculation:<br>
-     *  <br><code>K = B<sup>a</sup> mod p</code><br>
+     *  suite).</p></blockquote>
+     *  <p>This method performs the following calculation:</p>
+     *  <pre><code>K = remoteSecret<sup>localSecret</sup> mod prime</code></pre>
      *
-     *  @param  p   A large prime that is known to both communication partners.
-     *  @param  a   The secret number that was used to create the public value
-     *      sent to the other party.
-     *  @param  b   The public value that the other party created
+     *  @param  prime   A large prime that is known to both communication
+     *      partners.
+     *  @param  localSecret The secret number that was used to create the
+     *      public value sent to the other party.
+     *  @param  remoteSecret    The public value that the other party created.
      *  @return The encryption key <i>K</i>.
+     *
+     *  @see <a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange">Wikipedia: Diffie–Hellman key exchange</a>
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final BigInteger calculateDiffieHellmanEncryptionKey( final BigInteger p, final BigInteger a, final BigInteger b )
+    public static final BigInteger calculateDiffieHellmanEncryptionKey( final BigInteger prime, final BigInteger localSecret, final BigInteger remoteSecret )
     {
-        final var retValue = requireNonNullArgument( b, "b" ).modPow( requireNonNullArgument( a, "a" ), requireNonNullArgument( p, "p" ) );
+        final var retValue = requireNonNullArgument( remoteSecret, "remoteSecret" )
+            .modPow( requireNonNullArgument( localSecret, "localSecret" ), requireNonNullArgument( prime, "prime" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  calculateDiffieHellmanEncryptionKey()
 
     /**
-     *  Calculates the value that will be transmitted to the other party on the
-     *  exchange of an encryption key using the Diffie-Hellman-Merkle key
-     *  exchange scheme.<br>
-     *  <br>This method performs the following calculation:<br>
-     *  <br><code>A = g<sup>a</sup> mod p</code><br>.
+     *  <p>{@summary Calculates the value that will be transmitted to the other
+     *  party on the exchange of an encryption key using the
+     *  Diffie-Hellman-Merkle key exchange scheme.}</p>>
+     *  <p>This method performs the following calculation:</p>
+     *  <pre><code>A = root<sup>random</sup> mod prime</code></pre>.
      *
-     *  @param  p   A large prime that is known to both communication partners.
-     *  @param  g   A primitive root <i>mod {@code p}</i>.
-     *  @param  a   The secret random number.
+     *  @param  prime   A large prime that is known to both communication partners.
+     *  @param  root    A primitive root <i>mod {@code prime}</i>.
+     *  @param  localSecret The secret random number.
      *  @return The value <i>A</i> to transmit to the other party.
      *
-     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger, BigInteger, BigInteger)
+     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final BigInteger calculateDiffieHellmanPublicValue( final BigInteger p, final BigInteger g, final BigInteger a )
+    public static final BigInteger calculateDiffieHellmanPublicValue( final BigInteger prime, final BigInteger root, final BigInteger localSecret )
     {
-        final var retValue = requireNonNullArgument( g, "g" ).modPow( requireNonNullArgument( a, "a" ), requireNonNullArgument( p, "p" ) );
+        final var retValue = requireNonNullArgument( root, "root" )
+            .modPow( requireNonNullArgument( localSecret, "localSecret" ), requireNonNullArgument( prime, "prime" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;

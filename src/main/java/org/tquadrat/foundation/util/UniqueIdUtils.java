@@ -29,7 +29,6 @@ import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.Base32.getDecoder;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateMD5Hash;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateSHA1Hash;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.repeat;
 import static org.tquadrat.foundation.util.SystemUtils.createPseudoNodeId;
 import static org.tquadrat.foundation.util.SystemUtils.currentTimeNanos;
@@ -271,7 +270,7 @@ public final class UniqueIdUtils
     /**
      *  The counter for version 7 UUIDs.
      */
-    private static AtomicInteger m_UUID7Counter = new AtomicInteger( getRandom().nextInt() );
+    private static final AtomicInteger m_UUID7Counter = new AtomicInteger( getRandom().nextInt() );
 
         /*--------------*\
     ====** Constructors **=====================================================
@@ -477,6 +476,7 @@ public final class UniqueIdUtils
                 shaBytes[6] &= 0x0f; // Clear version
                 shaBytes[6] |= 0x50; // Set to version 5
                 shaBytes[8] &= 0x3f; // Clear variant
+                //noinspection lossy-conversions
                 shaBytes[8] |= 0x80; // Set to IETF variant
 
                 var mostSigBits = 0L;
@@ -540,11 +540,10 @@ public final class UniqueIdUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final UUID nameUUIDFromString( final UUID namespace, final CharSequence name, final HashType hashType )
     {
-        @SuppressWarnings( "LocalVariableNamingConvention" )
-        final var n = requireNonNullArgument( namespace, "namespace" ).toString() + requireNonNullArgument( name, "name" );
+        final var namespaceName = requireNonNullArgument( namespace, "namespace" ).toString() + requireNonNullArgument( name, "name" );
 
         //---* Create the UUID *-----------------------------------------------
-        final var retValue = nameUUIDFromBytes( n.getBytes( UTF8 ), hashType );
+        final var retValue = nameUUIDFromBytes( namespaceName.getBytes( UTF8 ), hashType );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -576,11 +575,11 @@ public final class UniqueIdUtils
      */
     public static final TSID newTSID( final int nodeId )
     {
-        if( 0 > nodeId ) throw new ValidationException( format( "nodeId '%d' is less than zero", nodeId ) );
+        if( 0 > nodeId ) throw new ValidationException( "nodeId '%d' is less than zero".formatted( nodeId ) );
         if( nodeId >= MAX_NODES )
         {
             //noinspection ConstantExpression
-            throw new ValidationException( format( "nodeId '%d' is greater than %d", nodeId, MAX_NODES - 1 ) );
+            throw new ValidationException( "nodeId '%d' is greater than %d".formatted( nodeId, MAX_NODES - 1 ) );
         }
 
         final var retValue = newTSIDInternal( (long) nodeId );
@@ -802,18 +801,18 @@ public final class UniqueIdUtils
      *  {@href https://www.crockford.com/base32.html Crockfords's Base&nbsp;32}
      *  representation of the numerical id, prefixed by the letter 'X'.</p>
      *
-     *  @param  s   The TSID String.
+     *  @param  input   The TSID String.
      *  @return The id.
      *  @throws ValidationException The provided String is not a valid TSID
      *      representation; it is either too short, does not start with 'X',
      *      or the suffix is not a valid Base&nbsp;32 String.
      */
-    public static final TSID tsidFromString( final CharSequence s )
+    public static final TSID tsidFromString( final CharSequence input )
     {
-        if( requireNotBlankArgument( s, "s" ).length() != TSID_Size ) throw new ValidationException( format( "TSID String '%s' too short", s ) );
-        if( !s.toString().toUpperCase( ROOT ).startsWith( "X" ) ) throw new ValidationException( format( "TSID String '%s' does not start with 'X'", s ) );
+        if( requireNotBlankArgument( input, "input" ).length() != TSID_Size ) throw new ValidationException( "TSID String '%s' too short".formatted( input ) );
+        if( !input.toString().toUpperCase( ROOT ).startsWith( "X" ) ) throw new ValidationException( "TSID String '%s' does not start with 'X'".formatted( input ) );
 
-        final var number = m_Base32Decoder.decodeToNumber( s.toString().substring( 1 ) )
+        final var number = m_Base32Decoder.decodeToNumber( input.toString().substring( 1 ) )
             .longValue();
 
         final var retValue = new TSIDImpl( number );

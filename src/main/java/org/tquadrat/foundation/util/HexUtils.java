@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -19,7 +19,6 @@ package org.tquadrat.foundation.util;
 
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.util.HexFormat;
 
@@ -125,7 +124,7 @@ public final class HexUtils
     {
         if( (value < 0) || (value > 15) )
         {
-            throw new ValidationException( format( "The value %1$d cannot be converted to a single HexDigit", value ) );
+            throw new ValidationException( "The value %1$d cannot be converted to a single HexDigit".formatted( value ) );
         }
 
         final var retValue = HexFormat.of().withUpperCase().toLowHexDigit( value );

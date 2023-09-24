@@ -183,7 +183,7 @@
                           class='static'>- extractEscapeSequence(buffer:java.lang.StringBuilder,pattern:java.util.regex.Pattern,chunk:java.lang.CharSequence):int</text>
                     <text x='5.000'
                           y='179.000'
-                          class='static'>+ unescapeUnicode(s:java.lang.CharSequence):java.lang.String</text>
+                          class='static'>+ unescapeUnicode(input:java.lang.CharSequence):java.lang.String</text>
                 </g>
             </g>
         </symbol>

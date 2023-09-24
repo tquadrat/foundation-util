@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2022 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -19,9 +19,9 @@ package org.tquadrat.foundation.util.internal;
 
 import static java.lang.Integer.signum;
 import static java.lang.Long.compare;
+import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.util.Base32.getEncoder;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.repeat;
 import static org.tquadrat.foundation.util.SystemUtils.getRandom;
 
@@ -102,7 +102,7 @@ public final class TSIDImpl implements TSID
         else
         {
             //noinspection LocalVariableNamingConvention
-            final var e = new ValidationException( format( "Node id '%d' is too large, value must be less than %d", nodeId, MAX_NODES ) );
+            final var e = new ValidationException( "Node id '%d' is too large, value must be less than %d".formatted( nodeId, MAX_NODES ) );
             throw new ExceptionInInitializerError( e );
         }
 
@@ -151,7 +151,7 @@ public final class TSIDImpl implements TSID
     public final boolean equals( final Object o )
     {
         var retValue = this == o;
-        if( !retValue && o instanceof TSIDImpl other )
+        if( !retValue && o instanceof final TSIDImpl other )
         {
             retValue = m_Id == other.m_Id;
         }

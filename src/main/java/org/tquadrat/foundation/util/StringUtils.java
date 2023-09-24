@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 20002-2022 by Thomas Thrien.
+ * Copyright © 20002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -79,7 +79,6 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
 import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
 import org.tquadrat.foundation.exception.ValidationException;
-import org.tquadrat.foundation.lang.internal.SharedFormatter;
 
 /**
  *  Library of utility methods that are useful when dealing with Strings. <br>
@@ -139,7 +138,7 @@ public final class StringUtils
              *  {@inheritDoc}
              */
             @Override
-            protected final String clip( final CharSequence s, final int length ) { return s.toString(); }
+            protected final String clip( final CharSequence input, final int length ) { return input.toString(); }
         },
 
         /**
@@ -152,9 +151,11 @@ public final class StringUtils
              *  {@inheritDoc}
              */
             @Override
-            protected final String clip( final CharSequence s, final int length )
+            protected final String clip( final CharSequence input, final int length )
             {
-                final var retValue = (s.length() > length ? s.subSequence( 0, length ) : s).toString();
+                final var retValue = (
+                    input.length() > length ? input.subSequence( 0, length ) :
+                    input).toString();
 
                 //---* Done *--------------------------------------------------
                 return retValue;
@@ -173,7 +174,7 @@ public final class StringUtils
              *  {@inheritDoc}
              */
             @Override
-            protected final String clip( final CharSequence s, final int length ) { return abbreviate( s, length ); }
+            protected final String clip( final CharSequence input, final int length ) { return abbreviate( input, length ); }
         },
 
         /**
@@ -188,7 +189,7 @@ public final class StringUtils
              *  {@inheritDoc}
              */
             @Override
-            protected final String clip( final CharSequence s, final int length ) { return abbreviateMiddle( s, length ); }
+            protected final String clip( final CharSequence input, final int length ) { return abbreviateMiddle( input, length ); }
         };
 
             /*---------*\
@@ -197,11 +198,11 @@ public final class StringUtils
         /**
          *  Clips the given input String.
          *
-         *  @param  s   The input String.
+         *  @param  input   The input String.
          *  @param  length  The target length.
          *  @return The result String.
          */
-        protected abstract String clip( final CharSequence s, final int length );
+        protected abstract String clip( final CharSequence input, final int length );
     }
     //  enum Clipping
 
@@ -235,11 +236,11 @@ public final class StringUtils
              *  {@inheritDoc}
              */
             @Override
-            protected final String pad( final CharSequence s, final int padSize, final char c )
+            protected final String pad( final CharSequence input, final int padSize, final char c )
             {
                 final var rightSize = padSize / 2;
                 final var leftSize = padSize - rightSize;
-                final var retValue = padding( leftSize, c ) + s.toString() + padding( rightSize, c );
+                final var retValue = padding( leftSize, c ) + input.toString() + padding( rightSize, c );
 
                 //---* Done *--------------------------------------------------
                 return retValue;
@@ -256,9 +257,9 @@ public final class StringUtils
              *  {@inheritDoc}
              */
             @Override
-            protected final String pad( final CharSequence s, final int padSize, final char c )
+            protected final String pad( final CharSequence input, final int padSize, final char c )
             {
-                return padding( padSize, c ) + s.toString();
+                return padding( padSize, c ) + input.toString();
             }   //  pad()
         },
 
@@ -271,9 +272,9 @@ public final class StringUtils
              *  {@inheritDoc}
              */
             @Override
-            protected final String pad( final CharSequence s, final int padSize, final char c )
+            protected final String pad( final CharSequence input, final int padSize, final char c )
             {
-                return s.toString() + padding( padSize, c );
+                return input.toString() + padding( padSize, c );
             }   //  pad()
         };
 
@@ -283,16 +284,16 @@ public final class StringUtils
         /**
          *  Pads the given input String.
          *
-         *  @param  s   The input String.
+         *  @param  input   The input String.
          *  @param  padSize The pad size.
          *  @param  c   The pad character.
          *  @return The result String.
          */
-        protected abstract String pad( final CharSequence s, final int padSize, final char c );
+        protected abstract String pad( final CharSequence input, final int padSize, final char c );
 
         /**
-         *  Returns padding using the specified pad character repeated to the
-         *  given length.<br>
+         *  <p>{@summary Returns padding using the specified pad character repeated to the
+          *  given length.}</p>
          *  <br><code>
          *  Padding.padding(&nbsp;0,&nbsp;'e'&nbsp;)&nbsp;&rArr;&nbsp;""<br>
          *  Padding.padding(&nbsp;3,&nbsp;'e'&nbsp;)&nbsp;&rArr;&nbsp;"eee"<br>
@@ -343,8 +344,11 @@ public final class StringUtils
      *  (per thread): {@value}.
      *
      *  @since 0.0.5
+     *
+     *  @deprecated No longer used!
      */
-    @API( status = STABLE, since = "0.0.5" )
+    @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.3.0" )
     public static final int FORMAT_INITIAL_BUFFERSIZE = 2048;
 
     /**
@@ -623,7 +627,7 @@ public final class StringUtils
      *  StringUtils.abbreviateMiddle("abcdefgh", 4) = IllegalArgumentException
      *  </pre>
      *
-     *  @param  str The String to check, may be {@code null}.
+     *  @param  input   The String to check, may be {@code null}.
      *  @param  maxWidth    The maximum length of result String, must be at
      *      least 5.
      *  @return The abbreviated String, or {@code null} if the input was
@@ -634,26 +638,26 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String abbreviateMiddle( final CharSequence str, final int maxWidth )
+    public static final String abbreviateMiddle( final CharSequence input, final int maxWidth )
     {
         final var ellipsis = Character.toString( CHAR_ELLIPSIS ).intern();
 
         String retValue = null;
-        if( nonNull( str ) )
+        if( nonNull( input ) )
         {
             if( maxWidth < 5 ) throw new ValidationException( format( MSG_AbbrTooShort, 5 ) );
 
-            final var len = str.length();
+            final var len = input.length();
             if( len > maxWidth )
             {
                 final var suffixLength = (maxWidth - 1) / 2;
                 final var prefixLength = maxWidth - 1 - suffixLength;
                 final var suffixStart = len - suffixLength;
-                retValue = str.subSequence( 0, prefixLength ) + ellipsis + str.subSequence( suffixStart, suffixStart + suffixLength );
+                retValue = input.subSequence( 0, prefixLength ) + ellipsis + input.subSequence( suffixStart, suffixStart + suffixLength );
             }
             else
             {
-                retValue = str.toString();
+                retValue = input.toString();
             }
         }
 
@@ -672,7 +676,7 @@ public final class StringUtils
      *  {@link List}):</p>
      *  <pre><code>breakString( &lt;<i>string</i>&gt;, &lt;<i>chunk</i>&gt; ).collect( Collectors.toList() )</code></pre>
      *
-     *  @param  s   The string.
+     *  @param  input   The string.
      *  @param  chunk   The chunk size.
      *  @return The chunks from the string; the last chunk could be shorter
      *      than the others.
@@ -684,19 +688,19 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final Stream<String> breakString( final CharSequence s, final int chunk )
+    public static final Stream<String> breakString( final CharSequence input, final int chunk )
     {
-        if( chunk < 1 ) throw new ValidationException( format( "Chunk size must not be zero or a negative number: %d", chunk ) );
+        if( chunk < 1 ) throw new ValidationException( "Chunk size must not be zero or a negative number: %d".formatted( chunk ) );
 
         final Builder<String> builder = Stream.builder();
-        final var len = requireNonNullArgument( s, "s" ).length();
+        final var len = requireNonNullArgument( input, "input" ).length();
         var pos = 0;
         while( (pos + chunk) < len )
         {
-            builder.add( s.subSequence( pos, pos + chunk ).toString() );
+            builder.add( input.subSequence( pos, pos + chunk ).toString() );
             pos += chunk;
         }
-        if( pos < len ) builder.add( s.subSequence( pos, len ).toString() );
+        if( pos < len ) builder.add( input.subSequence( pos, len ).toString() );
 
         final var retValue = builder.build();
 
@@ -738,7 +742,7 @@ public final class StringUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final Stream<String> breakText( final CharSequence text, final int lineLength )
     {
-        if( lineLength < 1 ) throw new ValidationException( format( "Line length size must not be zero or a negative number: %d", lineLength ) );
+        if( lineLength < 1 ) throw new ValidationException( "Line length size must not be zero or a negative number: %d".formatted( lineLength ) );
 
         final Builder<String> builder = Stream.builder();
 
@@ -752,10 +756,10 @@ public final class StringUtils
             {
                 final var buffer = new StringBuilder();
                 final var chunks = line.split( "\\s" );
-                SplitLoop: for( final var c : chunks )
+                SplitLoop: for( final var chunk : chunks )
                 {
-                    if( c.isEmpty() ) continue SplitLoop;
-                    if( (buffer.length() + 1 + c.length()) < lineLength )
+                    if( chunk.isEmpty() ) continue SplitLoop;
+                    if( (buffer.length() + 1 + chunk.length()) < lineLength )
                     {
                         if( isNotEmpty( buffer) ) buffer.append( ' ' );
                     }
@@ -767,7 +771,7 @@ public final class StringUtils
                             buffer.setLength( 0 );
                         }
                     }
-                    buffer.append( c );
+                    buffer.append( chunk );
                 }   //  SplitLoop:
                 if( isNotEmpty( buffer ) ) builder.add( buffer.toString() );
             }
@@ -797,7 +801,7 @@ public final class StringUtils
      *  even for the locale {@code tr_TR} (although &quot;&#x130;stanbul&quot;
      *  would be correct).</p>
      *
-     *  @param c    The String to capitalise, can be {@code null}.
+     *  @param input    The String to capitalise, can be {@code null}.
      *  @return The capitalised String, or {@code null} if the argument
      *      was already {@code null}.
      *
@@ -806,13 +810,13 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String capitalize( final CharSequence c )
+    public static final String capitalize( final CharSequence input )
     {
         String retValue = null;
-        if( nonNull( c ) )
+        if( nonNull( input ) )
         {
             @SuppressWarnings( "LocalVariableNamingConvention" )
-            final var s = c.toString();
+            final var s = input.toString();
             if( s.isEmpty() )
             {
                 retValue = s;
@@ -972,7 +976,7 @@ public final class StringUtils
      *  {@link #capitalize(CharSequence)}.
      *  Use this method to normalise the name of bean attributes.
      *
-     *  @param  s   The String to <i>decapitalise</i>, may be {@code null}.
+     *  @param  input   The String to <i>decapitalise</i>, may be {@code null}.
      *  @return The <i>decapitalised</i> String, {@code null} if the argument
      *      was {@code null}.
      *  @see #capitalize(CharSequence)
@@ -980,16 +984,16 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.1.0" )
-    public static final String decapitalize( final CharSequence s )
+    public static final String decapitalize( final CharSequence input )
     {
         String retValue = null;
 
-        if( nonNull( s ) )
+        if( nonNull( input ) )
         {
             retValue = EMPTY_STRING;
-            if( isNotEmpty( s ) )
+            if( isNotEmpty( input ) )
             {
-                final var str = s.toString();
+                final var str = input.toString();
                 retValue = (toLowerCase( str.charAt( 0 ) ) + str.substring( 1 )).intern();
             }
         }
@@ -1020,7 +1024,7 @@ public final class StringUtils
      *  (&amp;apos;) that was not a legal entity for HTML before HTML&nbsp;5 is
      *  now supported.</p>
      *
-     *  @param  str The {@code String} to escape, may be {@code null}.
+     *  @param  input   The {@code String} to escape, may be {@code null}.
      *  @return A new escaped {@code String}, or {@code null} if the
      *      argument was already {@code null}.
      *
@@ -1036,12 +1040,12 @@ public final class StringUtils
     /*
      *  For some unknown reasons, JavaDoc will not accept the entities &#x7403;
      *  and &#x4F53; (for '球' and '体'), therefore it was required to add the
-     *  Chinese character directly into the comment above.
+     *  Chinese characters directly into the comment above.
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String escapeHTML( final CharSequence str )
+    public static final String escapeHTML( final CharSequence input )
     {
-        final var retValue = nonNull( str ) ? HTML50.escape( str ) : null;
+        final var retValue = nonNull( input ) ? HTML50.escape( input ) : null;
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1055,7 +1059,7 @@ public final class StringUtils
      *  {@link #escapeHTML(CharSequence)}.
      *
      *  @param  appendable  The appendable object receiving the escaped string.
-     *  @param  str  The {@code String} to escape, may be {@code null}.
+     *  @param  input   The {@code String} to escape, may be {@code null}.
      *  @throws NullArgumentException   The appendable is {@code null}.
      *  @throws IOException when {@code Appendable} passed throws the exception
      *      from calls to the
@@ -1073,11 +1077,11 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final void escapeHTML( final Appendable appendable, final CharSequence str ) throws IOException
+    public static final void escapeHTML( final Appendable appendable, final CharSequence input ) throws IOException
     {
         requireNonNullArgument( appendable, "appendable" );
 
-        if( nonNull( str ) ) HTML50.escape( appendable, str );
+        if( nonNull( input ) ) HTML50.escape( appendable, input );
     }   //  escapeHTML()
 
     /**
@@ -1090,18 +1094,18 @@ public final class StringUtils
      *  unescaped quote or backslash, so these are translated to Unicode
      *  escapes also.
      *
-     *  @param  str The string to escape to the JSON format; it may be empty,
-     *      but not {@code null}.
+     *  @param  input   The string to escape to the JSON format; it may be
+     *      empty, but not {@code null}.
      *  @return A string correctly formatted for insertion in a JSON text.
      *
      *  @since 0.0.5
      */
     @SuppressWarnings( "OverlyComplexMethod" )
     @API( status = STABLE, since = "0.0.5" )
-    public static final String escapeJSON( final CharSequence str )
+    public static final String escapeJSON( final CharSequence input )
     {
         var retValue = "\"\""; // The JSON empty string.
-        final var len = requireNonNullArgument( str, "str" ).length();
+        final var len = requireNonNullArgument( input, "input" ).length();
         if( len > 0 )
         {
             final var buffer = new StringBuilder( len * 2 ).append( '"' );
@@ -1109,7 +1113,7 @@ public final class StringUtils
             char c;
             for( var i = 0; i < len; ++i )
             {
-                c = str.charAt( i );
+                c = input.charAt( i );
                 switch( c )
                 {
                     case '\\', '"', '<', '>', '&' -> buffer.append( escapeCharacter( c ) );
@@ -1214,25 +1218,25 @@ public final class StringUtils
     /**
      *  Escapes the characters in a {@code String} using Regex escapes.
      *
-     *  @param  str The {@code String} to escape, may be {@code null}.
+     *  @param  input   The {@code String} to escape, may be {@code null}.
      *  @return A new escaped {@code String}, or {@code null} if the argument
      *      was already {@code null}.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String escapeRegex( final CharSequence str )
+    public static final String escapeRegex( final CharSequence input )
     {
         String retValue = null;
-        if( nonNull( str ) )
+        if( nonNull( input ) )
         {
-            final var len = str.length();
+            final var len = input.length();
             if( len > 0 )
             {
                 final var buffer = new StringBuilder( (len * 12) / 10 );
                 try
                 {
-                    escapeRegex( buffer, str );
+                    escapeRegex( buffer, input );
                 }
                 catch( final IOException e )
                 {
@@ -1260,7 +1264,7 @@ public final class StringUtils
      *  {@link Appendable}.
      *
      *  @param  appendable  The appendable receiving the escaped string.
-     *  @param  str  The {@code String} to escape. If {@code null} or the empty
+     *  @param  input   The {@code String} to escape. If {@code null} or the empty
      *      String, nothing will be put to the appendable.
      *  @throws NullArgumentException   The appendable is {@code null}.
      *  @throws IOException when {@code Appendable} passed throws the exception
@@ -1271,15 +1275,15 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final void escapeRegex( final Appendable appendable, final CharSequence str ) throws IOException
+    public static final void escapeRegex( final Appendable appendable, final CharSequence input ) throws IOException
     {
         requireNonNullArgument( appendable, "appendable" );
 
-        if( isNotEmpty( str ) )
+        if( isNotEmpty( input ) )
         {
-            ScanLoop: for( var i = 0; i < str.length(); ++i )
+            ScanLoop: for( var i = 0; i < input.length(); ++i )
             {
-                escapeRegex( appendable, str.charAt( i ) );
+                escapeRegex( appendable, input.charAt( i ) );
             }   //  ScanLoop:
         }
     }   //  escapeRegex()
@@ -1351,16 +1355,16 @@ public final class StringUtils
      *  <p><code>&amp;quot;bread&amp;quot; &amp;amp;
      *  &amp;quot;butter&amp;quot;</code>.</p>
      *
-     *  @param  str The {@code String} to escape, may be null.
+     *  @param  input   The {@code String} to escape, may be null.
      *  @return A new escaped {@code String}, or {@code null} if the
      *      argument was already {@code null}.
      *
      *  @see #unescapeXML(CharSequence)
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String escapeXML( final CharSequence str )
+    public static final String escapeXML( final CharSequence input )
     {
-        final var retValue = nonNull( str ) ? XML.escape( str ) : null;
+        final var retValue = nonNull( input ) ? XML.escape( input ) : null;
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1377,7 +1381,7 @@ public final class StringUtils
      *  &amp;quot;butter&amp;quot;</code>.</p>
      *
      *  @param  appendable  The appendable object receiving the escaped string.
-     *  @param  str  The {@code String} to escape, may be {@code null}.
+     *  @param  input   The {@code String} to escape, may be {@code null}.
      *  @throws NullArgumentException   The appendable is {@code null}.
      *  @throws IOException when {@code Appendable} passed throws the exception
      *      from calls to the
@@ -1390,11 +1394,11 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final void escapeXML( final Appendable appendable, final CharSequence str ) throws IOException
+    public static final void escapeXML( final Appendable appendable, final CharSequence input ) throws IOException
     {
         requireNonNullArgument( appendable, "appendable" );
 
-        if( nonNull( str ) ) XML.escape( appendable, str );
+        if( nonNull( input ) ) XML.escape( appendable, input );
     }   //  escapeXML()
 
     /**
@@ -1471,11 +1475,16 @@ public final class StringUtils
      *  @see  java.util.Formatter
      *
      *  @since 0.0.5
+     *  @deprecated
+     *      {@link org.tquadrat.foundation.lang.internal.SharedFormatter}
+     *      got obsolete. See there.
      */
-    @API( status = STABLE, since = "0.0.5" )
+    @SuppressWarnings( "removal" )
+    @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.3.0" )
     public static final String format( final String format, final Object... args ) throws IllegalFormatException
     {
-        return SharedFormatter.format( format, args );
+        return String.format( format, args );
     }   //  format()
 
     /**
@@ -1522,11 +1531,16 @@ public final class StringUtils
      *  @see  java.util.Formatter
      *
      *  @since 0.0.5
+     *  @deprecated
+     *      {@link org.tquadrat.foundation.lang.internal.SharedFormatter}
+     *      got obsolete. See there.
      */
-    @API( status = STABLE, since = "0.0.5" )
+    @SuppressWarnings( "removal" )
+    @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.3.0" )
     public static final String format( final Locale locale, final String format, final Object... args ) throws IllegalFormatException
     {
-        return SharedFormatter.format( locale, format, args );
+        return String.format( locale, format, args );
     }   //  format()
 
     /**
@@ -1534,7 +1548,7 @@ public final class StringUtils
      *  form <code>${<i>&lt;name&gt;</i>}</code> (matching the pattern given in
      *  {@link #VARIABLE_PATTERN}).
      *
-     *  @param  s   The String to test; can be {@code null}.
+     *  @param  input   The String to test; can be {@code null}.
      *  @return {@code true} if the String contains at least one variable,
      *      {@code false} otherwise.
      *
@@ -1547,28 +1561,28 @@ public final class StringUtils
      */
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = STABLE, since = "0.0.4" )
-    public static final boolean hasVariable( final CharSequence s )
+    public static final boolean hasVariable( final CharSequence input )
     {
-        return Template.hasVariables( s );
+        return Template.hasVariables( input );
     }   //  hasVariable()
 
     /**
      *  Tests if the given String is {@code null} or the empty String.
      *
-     *  @param  s   The String to test.
+     *  @param  input   The String to test.
      *  @return {@code true} if the given String reference is
      *      {@code null} or the empty String.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final boolean isEmpty( final CharSequence s ) { return isNull( s ) || s.isEmpty(); }
+    public static final boolean isEmpty( final CharSequence input ) { return isNull( input ) || input.isEmpty(); }
 
     /**
      *  Tests if the given String is {@code null}, the empty String, or just
      *  containing whitespace.
      *
-     *  @param  s   The String to test.
+     *  @param  input   The String to test.
      *  @return {@code true} if the given String reference is not
      *      {@code null} and not the empty String.
      *
@@ -1577,9 +1591,9 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final boolean isEmptyOrBlank( final CharSequence s )
+    public static final boolean isEmptyOrBlank( final CharSequence input )
     {
-        final var retValue = isNull( s ) || s.toString().isBlank();
+        final var retValue = isNull( input ) || input.toString().isBlank();
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1589,20 +1603,20 @@ public final class StringUtils
      *  Tests if the given String is not {@code null} and not the empty
      *  String.
      *
-     *  @param  s   The String to test.
+     *  @param  input   The String to test.
      *  @return {@code true} if the given String reference is not
      *      {@code null} and not the empty String.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final boolean isNotEmpty( final CharSequence s ) { return nonNull( s ) && !s.isEmpty(); }
+    public static final boolean isNotEmpty( final CharSequence input ) { return nonNull( input ) && !input.isEmpty(); }
 
     /**
      *  Tests if the given String is not {@code null}, not the empty String,
      *  and that it contains other characters than just whitespace.
      *
-     *  @param  s   The String to test.
+     *  @param  input   The String to test.
      *  @return {@code true} if the given String reference is not
      *      {@code null} and not the empty String, and it contains other
      *      characters than just whitespace.
@@ -1612,9 +1626,9 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final boolean isNotEmptyOrBlank( final CharSequence s )
+    public static final boolean isNotEmptyOrBlank( final CharSequence input )
     {
-        final var retValue = nonNull( s ) && !s.toString().isBlank();
+        final var retValue = nonNull( input ) && !input.toString().isBlank();
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1651,7 +1665,7 @@ public final class StringUtils
      *  in
      *  {@link #VARIABLE_PATTERN}.
      *
-     *  @param  s   The String to test; can be {@code null}.
+     *  @param  input   The String to test; can be {@code null}.
      *  @return {@code true} if the given String is not {@code null}, not the
      *      empty String, and it matches the given pattern, {@code false}
      *      otherwise.
@@ -1663,16 +1677,16 @@ public final class StringUtils
      */
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.4" )
-    public static final boolean isVariable( final CharSequence s )
+    public static final boolean isVariable( final CharSequence input )
     {
-        return Template.isVariable( s );
+        return Template.isVariable( input );
     }   //  isVariable()
 
     /**
      *  Combines the given String array to a single string, with the given
      *  separator.
      *
-     *  @param  s   The input sequence.
+     *  @param  input   The input sequence.
      *  @param  separator   The separator; may be empty, but not {@code null}.
      *  @return The combined String. If the input sequence array is empty, the
      *      empty String will be returned.
@@ -1683,9 +1697,9 @@ public final class StringUtils
      */
     @API( status = DEPRECATED, since = "0.0.4" )
     @Deprecated( since = "Java 9", forRemoval = true )
-    public static final String joinString( final CharSequence [] s, final CharSequence separator )
+    public static final String joinString( final CharSequence [] input, final CharSequence separator )
     {
-        final var retValue = join( requireNonNullArgument( separator, "separator" ), requireNonNullArgument( s, "s" ) );
+        final var retValue = join( requireNonNullArgument( separator, "separator" ), requireNonNullArgument( input, "input" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1696,7 +1710,7 @@ public final class StringUtils
      *  {@link Collection}
      *  of String to a single string, with the given separator.
      *
-     *  @param  s   The input sequence.
+     *  @param  input   The input sequence.
      *  @param  separator   The separator; may be empty, but not {@code null}.
      *  @return The combined String. If the input sequence collection is empty,
      *      the empty String will be returned.
@@ -1707,9 +1721,9 @@ public final class StringUtils
      */
     @API( status = DEPRECATED, since = "0.0.4" )
     @Deprecated( since = "Java 9", forRemoval = true )
-    public static final String joinString( final Collection<? extends CharSequence> s, final CharSequence separator )
+    public static final String joinString( final Collection<? extends CharSequence> input, final CharSequence separator )
     {
-        final var retValue = join( requireNonNullArgument( separator, "separator" ), requireNonNullArgument( s, "s" ) );
+        final var retValue = join( requireNonNullArgument( separator, "separator" ), requireNonNullArgument( input, "input" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1720,7 +1734,7 @@ public final class StringUtils
      *  {@link Stream}
      *  of Strings to a single string, with the given separator.
      *
-     *  @param  s   The input sequence.
+     *  @param  input   The input sequence.
      *  @param  separator   The separator; may be empty, but not {@code null}.
      *  @return The combined String. If the input sequence stream is empty,
      *      the empty String will be returned.
@@ -1734,9 +1748,9 @@ public final class StringUtils
      */
     @API( status = DEPRECATED, since = "0.0.4" )
     @Deprecated( forRemoval = true, since = "Java 8" )
-    public static final String joinString( final Stream<? extends CharSequence> s, final CharSequence separator )
+    public static final String joinString( final Stream<? extends CharSequence> input, final CharSequence separator )
     {
-        final var retValue = requireNonNullArgument( s, "s" ).collect( joining( separator ) );
+        final var retValue = requireNonNullArgument( input, "input" ).collect( joining( separator ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1746,7 +1760,7 @@ public final class StringUtils
      *  Combines the given String array to a single string, with the given
      *  separator.
      *
-     *  @param  s   The input sequence.
+     *  @param  input   The input sequence.
      *  @param  separator   The separator.
      *  @return The combined String. If the input sequence array is empty, the
      *      empty String will be returned.
@@ -1757,9 +1771,9 @@ public final class StringUtils
      */
     @Deprecated( forRemoval = true, since = "Java 8" )
     @API( status = DEPRECATED, since = "0.0.4" )
-    public static final String joinString( final CharSequence [] s, final char separator )
+    public static final String joinString( final CharSequence [] input, final char separator )
     {
-        final var retValue = join( Character.toString( separator), requireNonNullArgument( s, "s" ) );
+        final var retValue = join( Character.toString( separator), requireNonNullArgument( input, "input" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1769,7 +1783,7 @@ public final class StringUtils
      *  Combines the given String array to a single string, with the given
      *  separator.
      *
-     *  @param  s   The input sequence.
+     *  @param  input   The input sequence.
      *  @param  separator   The separator.
      *  @return The combined String. If the input sequence collection is empty, the
      *      empty String will be returned.
@@ -1780,9 +1794,9 @@ public final class StringUtils
      */
     @Deprecated( forRemoval = true, since = "Java 8" )
     @API( status = DEPRECATED, since = "0.0.4" )
-    public static final String joinString( final Iterable<? extends CharSequence> s, final char separator )
+    public static final String joinString( final Iterable<? extends CharSequence> input, final char separator )
     {
-        final var retValue = join( Character.toString( separator), requireNonNullArgument( s, "s" ) );
+        final var retValue = join( Character.toString( separator), requireNonNullArgument( input, "input" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1840,7 +1854,7 @@ public final class StringUtils
     public static final int maxContentLength( final Stream<? extends CharSequence> stream )
     {
         final var retValue = requireNonNullArgument( stream, "stream" )
-            .mapToInt( s -> nonNull( s ) ? s.length() : -1 )
+            .mapToInt( string -> nonNull( string ) ? string.length() : -1 )
             .max()
             .orElse( Integer.MIN_VALUE );
 
@@ -1901,19 +1915,19 @@ public final class StringUtils
      *  @note   The scandinavian letters 'ø' and 'Ø' are not diacritical
      *      letters, nevertheless they will be replaced.
      *
-     *  @param  s   The input string.
+     *  @param  input   The input string.
      *  @return The normalised String, only containing ASCII characters; it
      *      could be empty.
      *
      *  TODO Check the implementation and the results!! 2022-12-10
      */
-    public static final String normalizeToASCII( final CharSequence s )
+    public static final String normalizeToASCII( final CharSequence input )
     {
-        final var input = requireNonNullArgument( s, "s" ).toString()
+        final var str = requireNonNullArgument( input, "s" ).toString()
             .replace( "ß", "ss" )
             .replace( 'ø', 'o' )
             .replace( 'Ø', 'O' );
-        final var retValue = normalize( input, NFD )
+        final var retValue = normalize( str, NFD )
             .replaceAll( "[^\\p{ASCII}]", EMPTY_STRING );
 
         //---* Done *----------------------------------------------------------
@@ -1924,30 +1938,30 @@ public final class StringUtils
      *  Brings the given string to the given length and uses the provided
      *  padding character to fill up the string.
      *
-     *  @param  s   The string to format.
+     *  @param  input   The string to format.
      *  @param  length  The desired length; if 0 or less, the given string is
      *      returned, regardless of {@code clip}.
      *  @param  c   The pad character.
      *  @param  mode    The
      *      {@linkplain StringUtils.Padding pad mode}.
-     *  @param  clip    {@code true} if the input string {@code s} should
-     *      be cut in case it is longer than {@code length}, {@code false}
-     *      if it has to be returned unchanged .
+     *  @param  clip    {@code true} if the input string should be cut in case
+     *      it is longer than {@code length}, {@code false} if it has to be
+     *      returned unchanged .
      *  @return The re-formatted string.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String pad( final CharSequence s, final int length, final char c, final Padding mode, final boolean clip )
+    public static final String pad( final CharSequence input, final int length, final char c, final Padding mode, final boolean clip )
     {
-        return pad( s, length, c, mode, clip ? CLIPPING_CUT : CLIPPING_NONE );
+        return pad( input, length, c, mode, clip ? CLIPPING_CUT : CLIPPING_NONE );
     }   //  pad()
 
     /**
      *  Brings the given string to the given length and uses the provided
      *  padding character to fill up the string.
      *
-     *  @param  s   The string to format.
+     *  @param  input   The string to format.
      *  @param  length  The desired length; if 0 or less, the given string is
      *      returned, regardless of {@code clip}.
      *  @param  c   The pad character.
@@ -1960,33 +1974,33 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String pad( final CharSequence s, final int length, final char c, final Padding mode, final Clipping clip )
+    public static final String pad( final CharSequence input, final int length, final char c, final Padding mode, final Clipping clip )
     {
         //noinspection OverlyComplexBooleanExpression
         if( ((requireNonNullArgument( clip, "clip" ) == CLIPPING_ABBREVIATE) && (length < 4)) || ((clip == CLIPPING_ABBREVIATE_MIDDLE) && (length < 5)) )
         {
-            throw new ValidationException( format( "Length %d is too short for clipping mode %s", length, clip.toString() ) );
+            throw new ValidationException( "Length %d is too short for clipping mode %s".formatted( length, clip.toString() ) );
         }
         requireNonNullArgument( mode, "mode" );
 
         final String retValue;
-        final var currentLength = requireNonNullArgument( s, "s" ).length();
+        final var currentLength = requireNonNullArgument( input, "input" ).length();
 
         if( (length > 0) && (length != currentLength) )
         {
             if( currentLength > length )
             {
-                retValue = clip.clip( s, length );
+                retValue = clip.clip( input, length );
             }
             else
             {
                 final var padSize = length - currentLength;
-                retValue = mode.pad( s, padSize, c );
+                retValue = mode.pad( input, padSize, c );
             }
         }
         else
         {
-            retValue = s.toString();
+            retValue = input.toString();
         }
 
         //---* Done *----------------------------------------------------------
@@ -1994,13 +2008,13 @@ public final class StringUtils
     }   //  pad()
 
     /**
-     *  Fills up the given string to the given length by adding blanks on both
-     *  sides; will abbreviate the string if it is longer than the given
-     *  length. The minimum length is 5.<br>
-     *  <br>This is a shortcut to a call to
-     *  {@link #pad(CharSequence,int,char,Padding,Clipping) pad( s, length, ' ', PADDING_CENTER, CLIPPING_ABBREVIATE_MIDDLE ) }.
+     *  <p>{@summary Fills up the given string to the given length by adding
+     *  blanks on both sides; will abbreviate the string if it is longer than
+     *  the given length.} The minimum length is 5.</p>
+     *  <p>This is a shortcut to a call to
+     *  {@link #pad(CharSequence,int,char,Padding,Clipping) pad( input, length, ' ', PADDING_CENTER, CLIPPING_ABBREVIATE_MIDDLE ) }.</p>
      *
-     *  @param  s   The string to format.
+     *  @param  input   The string to format.
      *  @param  length  The desired length; minimum value is 5.
      *  @return The re-formatted string.
      *
@@ -2010,16 +2024,16 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String padCenter( final CharSequence s, final int length ) { return pad( s, length, ' ', PADDING_CENTER, CLIPPING_ABBREVIATE_MIDDLE ); }
+    public static final String padCenter( final CharSequence input, final int length ) { return pad( input, length, ' ', PADDING_CENTER, CLIPPING_ABBREVIATE_MIDDLE ); }
 
     /**
-     *  Fills up the given string to the given length by adding blanks on the
-     *  left side;  will abbreviate the string if it is longer than the given
-     *  length. The minimum length is 4.<br>
-     *  <br>This is a shortcut to a call to
-     *  {@link #pad(CharSequence,int,char,Padding,Clipping) pad( s, length, ' ', PADDING_LEFT, CLIPPING_ABBREVIATE ) }.
+     *  <p>{@summary Fills up the given string to the given length by adding
+     *  blanks on the left side;  will abbreviate the string if it is longer
+     *  than the given length.} The minimum length is 4.</p>
+     *  <p>This is a shortcut to a call to
+     *  {@link #pad(CharSequence,int,char,Padding,Clipping) pad( input, length, ' ', PADDING_LEFT, CLIPPING_ABBREVIATE ) }.</p>
      *
-     *  @param  s   The string to format.
+     *  @param  input   The string to format.
      *  @param  length  The desired length; the minimum value is 4.
      *  @return The re-formatted string.
      *
@@ -2029,16 +2043,16 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String padLeft( final CharSequence s, final int length ) { return pad( s, length, ' ', PADDING_LEFT, CLIPPING_ABBREVIATE ); }
+    public static final String padLeft( final CharSequence input, final int length ) { return pad( input, length, ' ', PADDING_LEFT, CLIPPING_ABBREVIATE ); }
 
     /**
-     *  Fills up the given string to the given length by adding blanks on the
-     *  right side;   will abbreviate the string if it is longer than the given
-     *  length. The minimum length is 4.<br>
-     *  <br>This is a shortcut to a call to
-     *  {@link #pad(CharSequence,int,char,Padding,Clipping) pad( s, length, ' ', PADDING_RIGHT, CLIPPING_ABBREVIATE ) }.
+     *  <p>{@summary Fills up the given string to the given length by adding
+     *  blanks on the right side; will abbreviate the string if it is longer
+     *  than the given length.} The minimum length is 4.</p>
+     *  <p>This is a shortcut to a call to
+     *  {@link #pad(CharSequence,int,char,Padding,Clipping) pad( input, length, ' ', PADDING_RIGHT, CLIPPING_ABBREVIATE ) }.</p>
      *
-     *  @param  s   The string to format.
+     *  @param  input   The string to format.
      *  @param  length  The desired length; the minimum value is 4.
      *  @return The re-formatted string.
      *
@@ -2048,7 +2062,7 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String padRight( final CharSequence s, final int length ) { return pad( s, length, ' ', PADDING_RIGHT, CLIPPING_ABBREVIATE ); }
+    public static final String padRight( final CharSequence input, final int length ) { return pad( input, length, ' ', PADDING_RIGHT, CLIPPING_ABBREVIATE ); }
 
     /**
      *  <p>{@summary Surrounds the given String with double-quotes
@@ -2059,13 +2073,13 @@ public final class StringUtils
      *  <p>Sometimes, this is just ugly, and there this method comes into
      *  play.</p>
      *
-     *  @param  s   The String to surround; can be {@code null}.
+     *  @param  input   The String to surround; can be {@code null}.
      *  @return The quoted String; will be {@code null} if the argument was
      *      {@code null} already.
      */
-    public static final String quote( final CharSequence s )
+    public static final String quote( final CharSequence input )
     {
-        final var retValue = isNull( s ) ? null : format( "\"%s\"u\"", s );
+        final var retValue = isNull( input ) ? null : format( "\"%s\"", input );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -2082,15 +2096,15 @@ public final class StringUtils
      *  @note   The scandinavian letters 'ø' and 'Ø' are not diacritical
      *      letters, meaning they will not be replaced.
      *
-     *  @param  s   The input string.
+     *  @param  input   The input string.
      *  @return The normalised String, not containing any diacritical
      *      characters.
      *
      *  TODO Check the implementation and the results!! 2022-12-10
      */
-    public static final String removeDiacriticalMarks( final CharSequence s )
+    public static final String removeDiacriticalMarks( final CharSequence input )
     {
-        final var retValue = normalize( requireNonNullArgument( s, "s" ), NFD )
+        final var retValue = normalize( requireNonNullArgument( input, "input" ), NFD )
             .replaceAll("\\p{InCombiningDiacriticalMarks}+", EMPTY_STRING );
 
         //---* Done *----------------------------------------------------------
@@ -2175,7 +2189,7 @@ public final class StringUtils
      *  StringUtils.repeat(&nbsp;"a",&nbsp;-2&nbsp;)&nbsp;&rArr;&nbsp;""<br>
      *  </code>
      *
-     *  @param  s The String to repeat, may be {@code null}.
+     *  @param  input The String to repeat, may be {@code null}.
      *  @param  count   The number of times to repeat {@code str}; a negative
      *      value will be treated as zero.
      *  @return A new String consisting of the original String repeated,
@@ -2188,12 +2202,12 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String repeat( final CharSequence s, final int count )
+    public static final String repeat( final CharSequence input, final int count )
     {
         final var retValue =
-            nonNull( s )
-                ? (count > 0) && !s.isEmpty()
-                    ? s.toString().repeat( count )
+            nonNull( input )
+                ? (count > 0) && !input.isEmpty()
+                    ? input.toString().repeat( count )
                     : EMPTY_STRING
                 : null;
 
@@ -2296,16 +2310,16 @@ public final class StringUtils
      *  <p>In case the String is empty, the return value will be an array
      *  containing just the empty String. It will not be empty.</p>
      *
-     *  @param  s  The String to split.
+     *  @param  input  The String to split.
      *  @param  separator   The separator character.
      *  @return The parts of the String.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String [] splitString( final CharSequence s, final char separator )
+    public static final String [] splitString( final CharSequence input, final char separator )
     {
-        return splitString( s, (int) separator );
+        return splitString( input, (int) separator );
     }   //  splitString()
 
     /**
@@ -2321,16 +2335,16 @@ public final class StringUtils
      *  <p>In case the String is empty, the return value will be an array
      *  containing just the empty String. It will not be empty.</p>
      *
-     *  @param  s  The String to split.
+     *  @param  input  The String to split.
      *  @param  separator   The code point for the separator character.
      *  @return The parts of the String.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String [] splitString( final CharSequence s, final int separator )
+    public static final String [] splitString( final CharSequence input, final int separator )
     {
-        final var retValue = stream( s, separator ).toArray( String []::new );
+        final var retValue = stream( input, separator ).toArray( String []::new );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -2348,16 +2362,16 @@ public final class StringUtils
      *  <p>In case the String is empty, the return value will be an array
      *  containing just the empty String. It will not be empty.</p>
      *
-     *  @param  s  The String to split.
+     *  @param  input  The String to split.
      *  @param  separator   The separator sequence.
      *  @return The parts of the String.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String [] splitString( final CharSequence s, final CharSequence separator )
+    public static final String [] splitString( final CharSequence input, final CharSequence separator )
     {
-        final var retValue = stream( s, separator).toArray( String []::new );
+        final var retValue = stream( input, separator).toArray( String []::new );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -2378,16 +2392,16 @@ public final class StringUtils
      *  {@code Stream} containing just the empty String. It will not be
      *  empty.</p>
      *
-     *  @param  s  The String to split.
+     *  @param  input  The String to split.
      *  @param  separator   The separator character.
      *  @return A {@code Stream} instance with the parts of the String.
      *
      *  @since 0.0.7
      */
     @API( status = STABLE, since = "0.0.7" )
-    public static final Stream<String> stream( final CharSequence s, final char separator )
+    public static final Stream<String> stream( final CharSequence input, final char separator )
     {
-        return stream( s, (int) separator );
+        return stream( input, (int) separator );
     }   //  stream()
 
     /**
@@ -2405,17 +2419,17 @@ public final class StringUtils
      *  {@code Stream} containing just the empty String. It will not be
      *  empty.</p>
      *
-     *  @param  s  The String to split.
+     *  @param  input  The String to split.
      *  @param  separator   The code point for the separator character.
      *  @return A {@code Stream} instance with the parts of the String.
      *
      *  @since 0.0.7
      */
     @API( status = STABLE, since = "0.0.7" )
-    public static final Stream<String> stream( final CharSequence s, final int separator )
+    public static final Stream<String> stream( final CharSequence input, final int separator )
     {
         //---* Process the string *--------------------------------------------
-        final var codepoints = requireNonNullArgument( s, "s" ).codePoints().toArray();
+        final var codepoints = requireNonNullArgument( input, "input" ).codePoints().toArray();
         final var builder = Stream.<String>builder();
         var begin = -1;
         for( var i = 0 ; i < codepoints.length; ++i )
@@ -2463,19 +2477,18 @@ public final class StringUtils
      *  {@code Stream} containing just the empty String. It will not be
      *  empty.</p>
      *
-     *  @param  string  The String to split.
+     *  @param  input   The String to split.
      *  @param  separator   The separator sequence.
      *  @return The parts of the String.
      *
      *  @since 0.0.7
      */
-    @SuppressWarnings( "QuestionableName" )
     @API( status = STABLE, since = "0.0.7" )
-    public static final Stream<String> stream( final CharSequence string, final CharSequence separator )
+    public static final Stream<String> stream( final CharSequence input, final CharSequence separator )
     {
         //---* Process the string *--------------------------------------------
         @SuppressWarnings( "LocalVariableNamingConvention" )
-        var s = requireNonNullArgument( string, "s" ).toString();
+        var s = requireNonNullArgument( input, "input" ).toString();
         @SuppressWarnings( "LocalVariableNamingConvention" )
         final var t = requireNotEmptyArgument( separator, "separator" ).toString();
 
@@ -2529,7 +2542,7 @@ public final class StringUtils
      *      {@link String#split(String)}
      *      as it will return trailing empty Strings.
      *
-     *  @param  s  The String to split.
+     *  @param  input  The String to split.
      *  @param  pattern The separator sequence.
      *  @return The parts of the String.
      *
@@ -2539,24 +2552,24 @@ public final class StringUtils
      *  @since 0.0.7
      */
     @API( status = STABLE, since = "0.0.7" )
-    public static final Stream<String> stream( final CharSequence s, final Pattern pattern )
+    public static final Stream<String> stream( final CharSequence input, final Pattern pattern )
     {
         requireNonNullArgument( pattern, "pattern" );
 
         //---* Process the string *--------------------------------------------
         final var builder = Stream.<String>builder();
-        if( isEmpty( requireNonNullArgument( s, "s" ) ) )
+        if( isEmpty( requireNonNullArgument( input, "s" ) ) )
         {
             builder.add( EMPTY_STRING );
         }
         else
         {
-            final var parts = pattern.split( s );
+            final var parts = pattern.split( input );
             for( final var part : parts )
             {
                 builder.add( part );
             }
-            final var matcher = pattern.matcher( s );
+            final var matcher = pattern.matcher( input );
             var count = 0;
             while( matcher.find() ) ++count;
             //noinspection ForLoopWithMissingComponent
@@ -2593,23 +2606,23 @@ public final class StringUtils
      *  interpreted, with the consequence that any formatting with whitespace
      *  gets lost. {@code CDATA} elements are stripped, too.
      *
-     *  @param  s   The HTML/XML string.
+     *  @param  input   The HTML/XML string.
      *  @return The string without the tags.
      *
      *  @since 0.0.7
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String stripTags( final CharSequence s )
+    public static final String stripTags( final CharSequence input )
     {
         final var retValue = new StringBuilder();
-        if( isNotEmptyOrBlank( requireNonNullArgument( s, "s" ) ) )
+        if( isNotEmptyOrBlank( requireNonNullArgument( input, "input" ) ) )
         {
-            final var matcher = m_TagRemovalPattern.matcher( s );
+            final var matcher = m_TagRemovalPattern.matcher( input );
             final var buffer = matcher.replaceAll( " " ).trim().codePoints().toArray();
             int lastChar = NULL_CHAR;
-            ScanLoop: for( final var c : buffer )
+            ScanLoop: for( final var codePoint : buffer )
             {
-                if( isWhitespace( c ) )
+                if( isWhitespace( codePoint ) )
                 {
                     //---* Consecutive whitespace detected *-------------------
                     if( isWhitespace( lastChar ) ) continue ScanLoop;
@@ -2620,9 +2633,9 @@ public final class StringUtils
                 else
                 {
                     //---* Write the character *-------------------------------
-                    retValue.append( toChars( c ) );
+                    retValue.append( toChars( codePoint ) );
                 }
-                lastChar = c;
+                lastChar = codePoint;
             }   //  ScanLoop:
         }
 
@@ -2688,7 +2701,7 @@ public final class StringUtils
      *      String; this means the result to a call to this method may still be
      *      invalid as a file or folder name because it is too long.
      *
-     *  @param  s   The input String, denoting a file or folder name -
+     *  @param  input   The input String, denoting a file or folder name -
      *      <i>not</i> a full path.
      *  @return The String without the characters that are invalid for a file
      *      name. This value will never be {@code null} or empty.
@@ -2701,13 +2714,13 @@ public final class StringUtils
      */
     @SuppressWarnings( "SwitchStatementWithTooManyBranches" )
     @API( status = STABLE, since = "0.0.5" )
-    public static final String stripToFilename( final CharSequence s ) throws ValidationException
+    public static final String stripToFilename( final CharSequence input ) throws ValidationException
     {
-        final var len = requireNotEmptyArgument( s, "s" ).length();
+        final var len = requireNotEmptyArgument( input, "input" ).length();
         final var buffer = new StringBuilder( len );
         ScanLoop: for( var i = 0; i < len; ++i )
         {
-            final var currentCharacter = s.charAt( i );
+            final var currentCharacter = input.charAt( i );
             Selector:
             //noinspection SwitchStatementWithTooManyBranches,EnhancedSwitchMigration
             switch( currentCharacter )
@@ -2738,9 +2751,9 @@ public final class StringUtils
         }   //  ScanLoop:
 
         final var retValue = buffer.toString().trim();
-        if( retValue.length() < 1 )
+        if( retValue.isEmpty() )
         {
-            throw new ValidationException( format( "After stripping the invalid characters from '%1$s' there do not remain enough characters for a valid file name", s.toString() ) );
+            throw new ValidationException( "After stripping the invalid characters from '%1$s' there do not remain enough characters for a valid file name".formatted(  input.toString() ) );
         }
 
         //---* Done *----------------------------------------------------------
@@ -2750,15 +2763,15 @@ public final class StringUtils
     /**
      *  Strips HTML or XML comments from the given String.
      *
-     *  @param  s   The HTML/XML string.
+     *  @param  input   The HTML/XML string.
      *  @return The string without the comments.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String stripXMLComments( final CharSequence s )
+    public static final String stripXMLComments( final CharSequence input )
     {
-        final var matcher = m_CommentRemovalPattern.matcher( requireNonNullArgument( s, "s" ) );
+        final var matcher = m_CommentRemovalPattern.matcher( requireNonNullArgument( input, "input" ) );
         final var retValue = matcher.replaceAll( EMPTY_STRING );
 
         //---* Done *----------------------------------------------------------
@@ -2770,7 +2783,7 @@ public final class StringUtils
      *  printable ASCII characters; all other characters will be 'escaped' to
      *  the format &quot;&#92;uXXXX&quot;.
      *
-     *  @param  s   The input string; may be {@code null}.
+     *  @param  input   The input string; may be {@code null}.
      *  @return The output string; {@code null} if the input string was
      *      already {@code null}.
      *
@@ -2783,9 +2796,9 @@ public final class StringUtils
      */
     @Deprecated( since = "0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String toUnicode( final CharSequence s )
+    public static final String toUnicode( final CharSequence input )
     {
-        return CharSetUtils.convertUnicodeToASCII( NFKC, s );
+        return CharSetUtils.convertUnicodeToASCII( NFKC, input );
     }   //  toUnicode()
 
     /**
@@ -2801,7 +2814,7 @@ public final class StringUtils
      *  {@link #capitalize(CharSequence)}.
      *  Use this method to normalise the name of bean attributes.
      *
-     *  @param  s   The String to <i>uncapitalise</i>, may be {@code null}.
+     *  @param  input   The String to <i>uncapitalise</i>, may be {@code null}.
      *  @return The <i>uncapitalised</i> String, {@code null} if the argument
      *      was {@code null}.
      *  @see #capitalize(CharSequence)
@@ -2814,7 +2827,7 @@ public final class StringUtils
     @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.1.0" )
     @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String uncapitalize( final CharSequence s ) { return decapitalize( s ); }
+    public static final String uncapitalize( final CharSequence input ) { return decapitalize( input ); }
 
     /**
      *  Unescapes a string containing entity escapes to a string containing the
@@ -2827,7 +2840,7 @@ public final class StringUtils
      *  verbatim into the result string. e.g. &quot;&amp;gt;&amp;zzzz;x&quot;
      *  will become &quot;&gt;&amp;zzzz;x&quot;.
      *
-     *  @param  str The {@code String} to unescape, may be {@code null}.
+     *  @param  input   The {@code String} to unescape, may be {@code null}.
      *  @return A new unescaped {@code String}, {@code null} if the given
      *      string was already {@code null}.
      *
@@ -2837,9 +2850,9 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String unescapeHTML( final CharSequence str )
+    public static final String unescapeHTML( final CharSequence input )
     {
-        final var retValue = nonNull( str ) ? HTML50.unescape( str ) : null;
+        final var retValue = nonNull( input ) ? HTML50.unescape( input ) : null;
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -2859,7 +2872,7 @@ public final class StringUtils
      *  will become &quot;&gt;&amp;zzzz;x&quot;.
      *
      *  @param  appendable  The appendable receiving the unescaped string.
-     *  @param  str The {@code String} to unescape, may be {@code null}.
+     *  @param  input   The {@code String} to unescape, may be {@code null}.
      *  @throws NullArgumentException   The appendable is {@code null}.
      *  @throws IOException An IOException occurred.
      *
@@ -2868,11 +2881,11 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final void unescapeHTML( final Appendable appendable, final CharSequence str ) throws IOException
+    public static final void unescapeHTML( final Appendable appendable, final CharSequence input ) throws IOException
     {
         requireNonNullArgument( appendable, "appendable" );
 
-        if( nonNull( str ) ) HTML50.unescape( appendable, str );
+        if( nonNull( input ) ) HTML50.unescape( appendable, input );
     }   //  unescapeHTML()
 
     /**
@@ -2885,7 +2898,7 @@ public final class StringUtils
      *  Strings, in Java {@code .properties} files, in C/C++ source code, in
      *  JavaScript source, &hellip;
      *
-     *  @param  s   The input String with the Unicode escape sequence.
+     *  @param  input   The input String with the Unicode escape sequence.
      *  @return The Unicode character.
      *  @throws ValidationException The input is {@code null}, empty, or cannot
      *      be parsed as a unicode escape sequence.
@@ -2898,9 +2911,9 @@ public final class StringUtils
     @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since ="0.1.0", forRemoval = true )
     @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String unescapeUnicode( final CharSequence s )
+    public static final String unescapeUnicode( final CharSequence input )
     {
-        return CharSetUtils.unescapeUnicode( s );
+        return CharSetUtils.unescapeUnicode( input );
     }   //  unescapeUnicode()
 
     /**
@@ -2911,7 +2924,7 @@ public final class StringUtils
      *  verbatim into the result string. e.g. &quot;&amp;gt;&amp;zzzz;x&quot;
      *  will become &quot;&gt;&amp;zzzz;x&quot;.</p>
      *
-     *  @param  str The {@code String} to unescape, may be {@code null}.
+     *  @param  input   The {@code String} to unescape, may be {@code null}.
      *  @return A new unescaped {@code String}, {@code null} if the given
      *      string was already {@code null}.
      *
@@ -2921,9 +2934,9 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String unescapeXML( final CharSequence str )
+    public static final String unescapeXML( final CharSequence input )
     {
-        final var retValue = nonNull( str ) ? XML.unescape( str ) : null;
+        final var retValue = nonNull( input ) ? XML.unescape( input ) : null;
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -2939,7 +2952,7 @@ public final class StringUtils
      *  will become &quot;&gt;&amp;zzzz;x&quot;.</p>
      *
      *  @param  appendable  The appendable receiving the unescaped string.
-     *  @param  str The {@code String} to unescape, may be {@code null}.
+     *  @param  input   The {@code String} to unescape, may be {@code null}.
      *  @throws NullArgumentException   The writer is {@code null}.
      *  @throws IOException An IOException occurred.
      *
@@ -2948,11 +2961,11 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final void unescapeXML( final Appendable appendable, final CharSequence str ) throws IOException
+    public static final void unescapeXML( final Appendable appendable, final CharSequence input ) throws IOException
     {
         requireNonNullArgument( appendable, "appendable" );
 
-        if( nonNull( str ) ) XML.unescape( appendable, str );
+        if( nonNull( input ) ) XML.unescape( appendable, input );
     }   //  unescapeXML()
 
     /**
@@ -3008,7 +3021,7 @@ public final class StringUtils
      *  {@link UnsupportedEncodingException} - although this should never occur
      *  when UTF-8 encoding is used.
      *
-     *  @param  s   The input String.
+     *  @param  input   The input String.
      *  @return The decoded result.
      *
      *  @see java.net.URLDecoder#decode(String, String)
@@ -3016,9 +3029,9 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String urlDecode( final CharSequence s )
+    public static final String urlDecode( final CharSequence input )
     {
-        final var retValue = decode( requireNonNullArgument( s, "s" ).toString(), UTF8 );
+        final var retValue = decode( requireNonNullArgument( input, "input" ).toString(), UTF8 );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -3028,7 +3041,7 @@ public final class StringUtils
      *  Returns the given String in its URL encoded form, using the
      *  UTF-8 character encoding.
      *
-     *  @param  s   The input String.
+     *  @param  input   The input String.
      *  @return The URL encoded result.
      *
      *  @see java.net.URLEncoder#encode(String, String)
@@ -3037,9 +3050,9 @@ public final class StringUtils
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String urlEncode( final CharSequence s )
+    public static final String urlEncode( final CharSequence input )
     {
-        final var retValue = encode( requireNonNullArgument( s, "s" ).toString(), UTF8 );
+        final var retValue = encode( requireNonNullArgument( input, "input" ).toString(), UTF8 );
 
         //---* Done *----------------------------------------------------------
         return retValue;

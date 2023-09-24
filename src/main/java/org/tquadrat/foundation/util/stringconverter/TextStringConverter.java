@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2021 by Thomas Thrien.
+ *  Copyright © 2002-2023 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -119,7 +119,7 @@ public final class TextStringConverter implements StringConverter<String>
      *  @param  c   The character.
      *  @return  The escape sequence.
      */
-    private final IntStream escape( final int c )
+    private final IntStream escape( @SuppressWarnings( "StandardVariableNames" ) final int c )
     {
         final var retValue = switch( c )
         {

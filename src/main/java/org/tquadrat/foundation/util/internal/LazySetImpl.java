@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -161,7 +161,7 @@ public final class LazySetImpl<E> implements LazySet<E>
     public final boolean equals( final Object o )
     {
         var retValue = o == this;
-        if( !retValue && (o instanceof Set other) )
+        if( !retValue && (o instanceof final Set<?> other) )
         {
             /*
              * Collections are equal if their contents is equal. Refer to the
@@ -189,7 +189,7 @@ public final class LazySetImpl<E> implements LazySet<E>
     {
         if( m_SupplierPopulates ) init();
         java.util.Objects.requireNonNull( action );
-        m_Holder.ifPresent(s -> s.forEach( action ) );
+        m_Holder.ifPresent( set -> set.forEach( action ) );
     }   //  forEach()
 
     /**
@@ -297,7 +297,7 @@ public final class LazySetImpl<E> implements LazySet<E>
     public final Spliterator<E> spliterator()
     {
         if( m_SupplierPopulates ) init();
-        final var retValue = m_Holder.map( s -> Spliterators.spliterator( s, Spliterator.DISTINCT ) ).orElse( Spliterators.emptySpliterator() );
+        final var retValue = m_Holder.map( set -> Spliterators.spliterator( set, Spliterator.DISTINCT ) ).orElse( Spliterators.emptySpliterator() );
 
         //---* Done *----------------------------------------------------------
         return retValue;

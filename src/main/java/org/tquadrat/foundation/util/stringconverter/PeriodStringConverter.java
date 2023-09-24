@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -18,9 +18,9 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
+import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.io.Serial;
 import java.time.Period;
@@ -31,12 +31,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
- *  An implementation of
+ *  <p>{@summary An implementation of
  *  {@link StringConverter}
  *  for
  *  {@link Period}
- *  values.<br>
- *  <br>While the method
+ *  values.}</p>
+ *  <p>While the method
  *  {@link StringConverter#toString(Object) toString(Period)}
  *  simply uses
  *  {@link Period#toString()},
@@ -46,19 +46,19 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  {@link Period#parse(CharSequence)}
  *  to create the {@code Period} instance for the given value. The formats
  *  accepted are based on the ISO-8601 period formats {@code PnYnMnD} and
- *  {@code PnW}.<br>
- *  <br>The string starts with an optional sign, denoted by the ASCII negative
+ *  {@code PnW}.</p>
+ *  <p>The string starts with an optional sign, denoted by the ASCII negative
  *  ('-') or positive ('+') symbol. If negative, the whole period is
- *  negated.<br>
- *  <br>The ASCII letter &quot;P&quot; is next in upper or lower case.<br>
- *  <br>There are then four sections, each consisting of a number and a suffix.
- *  At least one of the four sections must be present.<br>
- *  <br>The sections have suffixes in ASCII of &quot;Y&quot;, &quot;M&quot;,
+ *  negated.</p>
+ *  <p>The ASCII letter &quot;P&quot; is next in upper or lower case.</p>
+ *  <p>There are then four sections, each consisting of a number and a suffix.
+ *  At least one of the four sections must be present.</p>
+ *  <p>The sections have suffixes in ASCII of &quot;Y&quot;, &quot;M&quot;,
  *  &quot;W&quot; and &quot;D&quot; for years, months, weeks and days, accepted
- *  in upper or lower case.<br>
- *  <br>The suffixes must occur in order. The number part of each section must
+ *  in upper or lower case.</p>
+ *  <p>The suffixes must occur in order. The number part of each section must
  *  consist of ASCII digits. The number may be prefixed by the ASCII negative
- *  or positive symbol. The number must parse to an {@code int}.
+ *  or positive symbol. The number must parse to an {@code int}.</p>
  *
  *  @note The leading plus/minus sign, and negative values for other units are
  *      not originally part of the ISO-8601 standard.
@@ -145,7 +145,6 @@ public final class PeriodStringConverter implements StringConverter<Period>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final PeriodStringConverter provider() { return INSTANCE; }
 }
 //  class PeriodStringConverter

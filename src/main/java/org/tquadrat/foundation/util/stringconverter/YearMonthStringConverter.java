@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -93,7 +93,7 @@ public class YearMonthStringConverter extends TimeDateStringConverter<YearMonth>
     @Override
     protected final YearMonth parseDateTime( final CharSequence source, final Optional<DateTimeFormatter> formatter ) throws DateTimeParseException
     {
-        final var retValue = formatter.map( f -> YearMonth.parse( source, f ) ).orElse( YearMonth.parse( source ) );
+        final var retValue = formatter.map( dateTimeFormatter -> YearMonth.parse( source, dateTimeFormatter ) ).orElse( YearMonth.parse( source ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -108,7 +108,6 @@ public class YearMonthStringConverter extends TimeDateStringConverter<YearMonth>
      *
      *  @return The instance for this {@code StringConverter} implementation.
      */
-    @SuppressWarnings( "UseOfConcreteClass" )
     public static final YearMonthStringConverter provider() { return INSTANCE; }
 }
 //  class YearMonthStringConverter

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2021 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -18,6 +18,7 @@
 package org.tquadrat.foundation.util;
 
 import static java.lang.Math.max;
+import static java.lang.String.format;
 import static java.lang.System.arraycopy;
 import static java.lang.System.currentTimeMillis;
 import static java.lang.System.getProperties;
@@ -42,7 +43,6 @@ import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.splitString;
 
 import java.io.File;
@@ -427,23 +427,23 @@ public final class SystemUtils
         Optional<InetAddress> retValue = Optional.empty();
 
         List<InetAddress> addresses;
-        ScanLoop: for( final var i : getNetworkInterfaces() )
+        ScanLoop: for( final var networkInterface : getNetworkInterfaces() )
         {
             /*
              * Due to the nature of the scan logic, the returned address will
              * always be that of the last NIC in sequence that is not the
              * {@code loopback} interface.
              */
-            if( i.isUp() )
+            if( networkInterface.isUp() )
             {
-                addresses = list( i.getInetAddresses() );
+                addresses = list( networkInterface.getInetAddresses() );
                 AddressLoop: for( final var address : addresses )
                 {
                     /*
                      * The AddressLoop terminates early, when the first IPv4
                      * address for the NIC was found.
                      */
-                    if( i.isLoopback() )
+                    if( networkInterface.isLoopback() )
                     {
                         /*
                          * We take loopback if we do not get something
@@ -483,7 +483,7 @@ public final class SystemUtils
     public static final InetAddress [] determineIPAddresses()
     {
         final var retValue = getNetworkInterfaces().stream()
-            .flatMap( i -> list( i.getInetAddresses() ).stream() )
+            .flatMap( networkInterface -> list( networkInterface.getInetAddresses() ).stream() )
             .toArray( InetAddress []::new );
 
         //---* Done *----------------------------------------------------------
@@ -543,18 +543,18 @@ public final class SystemUtils
     public static final InetAddress [] determineOutboundIPAddresses()
     {
         final var retValue = getNetworkInterfaces().stream()
-            .filter( i ->
+            .filter( networkInterface ->
             {
                 try
                 {
-                    return i.isUp() && !i.isLoopback();
+                    return networkInterface.isUp() && !networkInterface.isLoopback();
                 }
                 catch( final SocketException ignored )
                 {
                     return false;
                 }
             } )
-            .flatMap( i -> list( i.getInetAddresses() ).stream() )
+            .flatMap( networkInterface -> list( networkInterface.getInetAddresses() ).stream() )
             .toArray( InetAddress []::new );
 
         //---* Done *----------------------------------------------------------
@@ -591,7 +591,7 @@ public final class SystemUtils
     {
         if( nodeId != (nodeId & m_NodeIdBits) )
         {
-            throw new ValidationException( format( "Node id is invalid: %1$d", nodeId ) );
+            throw new ValidationException( "Node id is invalid: %1$d".formatted( nodeId ) );
         }
 
         final var hexFormat = HexFormat.of();
@@ -970,7 +970,7 @@ public final class SystemUtils
         final var locale = name.isBlank()
             ? ROOT
             : stream( Locale.getAvailableLocales() )
-                  .filter( l -> l.toString().equals( name ) )
+                  .filter( currentLocale -> currentLocale.toString().equals( name ) )
                   .findFirst()
                   .orElseGet( () ->
                   {
@@ -1120,7 +1120,7 @@ public final class SystemUtils
         final var bytes = HexFormat.ofDelimiter( "-" ).withUpperCase().parseHex( requireNotEmptyArgument( macAddress, "macAddress" ) );
         if( bytes.length != 6 )
         {
-            throw new ValidationException( format( "MAC address is invalid: %1$s", macAddress ) );
+            throw new ValidationException( "MAC address is invalid: %1$s".formatted( macAddress ) );
         }
         final var bytes2 = new byte [7];
         arraycopy( bytes, 0, bytes2, 1, 6 );

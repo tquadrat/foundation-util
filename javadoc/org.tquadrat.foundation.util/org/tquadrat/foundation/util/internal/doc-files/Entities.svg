@@ -169,15 +169,15 @@
                     <text x='5.000'
                           y='157.000'>- Entities(resourceNames:java.lang.String&#x2026;)</text>
                     <text x='5.000'
-                          y='168.000'>- doUnescape(buffer:java.lang.Appendable,s:java.lang.CharSequence,firstAmp:int):void</text>
+                          y='168.000'>- doUnescape(buffer:java.lang.Appendable,source:java.lang.CharSequence,firstAmp:int):void</text>
                     <text x='5.000'
                           y='179.000'>+ entityName(value:int):java.util.Optional&lt;java.lang.String&gt;</text>
                     <text x='5.000'
                           y='190.000'>+ entityValue(name:java.lang.String):java.util.Optional&lt;java.lang.Integer&gt;</text>
                     <text x='5.000'
-                          y='201.000'>+ escape(str:java.lang.CharSequence):java.lang.String</text>
+                          y='201.000'>+ escape(source:java.lang.CharSequence):java.lang.String</text>
                     <text x='5.000'
-                          y='212.000'>+ escape(appendable:java.lang.Appendable,str:java.lang.CharSequence):void</text>
+                          y='212.000'>+ escape(appendable:java.lang.Appendable,input:java.lang.CharSequence):void</text>
                     <text x='5.000'
                           y='223.000'
                           class='static'>- formatCodePoint(codePoint:int):java.lang.String</text>
@@ -190,9 +190,9 @@
                           y='256.000'
                           class='static'>- parseAndAdd(entityMap:org.tquadrat.foundation.util.internal.Entities.EntityMap,inputLine:java.lang.String):void</text>
                     <text x='5.000'
-                          y='267.000'>+ unescape(str:java.lang.CharSequence):java.lang.String</text>
+                          y='267.000'>+ unescape(input:java.lang.CharSequence):java.lang.String</text>
                     <text x='5.000'
-                          y='278.000'>+ unescape(appendable:java.lang.Appendable,str:java.lang.CharSequence):void</text>
+                          y='278.000'>+ unescape(appendable:java.lang.Appendable,input:java.lang.CharSequence):void</text>
                 </g>
             </g>
         </symbol>

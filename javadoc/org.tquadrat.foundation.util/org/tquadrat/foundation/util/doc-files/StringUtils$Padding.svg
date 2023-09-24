@@ -159,7 +159,7 @@
                           class='static'>+ valueOf(name:java.lang.String):org.tquadrat.foundation.util.StringUtils.Padding</text>
                     <text x='5.000'
                           y='91.000'
-                          class='abstract'># pad(s:java.lang.CharSequence,padSize:int,c:char):java.lang.String</text>
+                          class='abstract'># pad(input:java.lang.CharSequence,padSize:int,c:char):java.lang.String</text>
                     <text x='5.000'
                           y='102.000'
                           class='static'>- padding(repeat:int,padChar:char):java.lang.String</text>

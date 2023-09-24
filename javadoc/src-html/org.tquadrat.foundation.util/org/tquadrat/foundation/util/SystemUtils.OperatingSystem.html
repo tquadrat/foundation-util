@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2021 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> * Licensed to the public under the agreements of the GNU Lesser General Public</span>
@@ -31,31 +31,31 @@
 <span class="source-line-no">018</span><span id="line-18">package org.tquadrat.foundation.util;</span>
 <span class="source-line-no">019</span><span id="line-19"></span>
 <span class="source-line-no">020</span><span id="line-20">import static java.lang.Math.max;</span>
-<span class="source-line-no">021</span><span id="line-21">import static java.lang.System.arraycopy;</span>
-<span class="source-line-no">022</span><span id="line-22">import static java.lang.System.currentTimeMillis;</span>
-<span class="source-line-no">023</span><span id="line-23">import static java.lang.System.getProperties;</span>
-<span class="source-line-no">024</span><span id="line-24">import static java.lang.System.getProperty;</span>
-<span class="source-line-no">025</span><span id="line-25">import static java.lang.System.nanoTime;</span>
-<span class="source-line-no">026</span><span id="line-26">import static java.lang.Thread.currentThread;</span>
-<span class="source-line-no">027</span><span id="line-27">import static java.net.InetAddress.getByName;</span>
-<span class="source-line-no">028</span><span id="line-28">import static java.util.Arrays.stream;</span>
-<span class="source-line-no">029</span><span id="line-29">import static java.util.Collections.list;</span>
-<span class="source-line-no">030</span><span id="line-30">import static java.util.Locale.ROOT;</span>
-<span class="source-line-no">031</span><span id="line-31">import static java.util.function.Function.identity;</span>
-<span class="source-line-no">032</span><span id="line-32">import static java.util.stream.Collectors.toMap;</span>
-<span class="source-line-no">033</span><span id="line-33">import static org.apiguardian.api.API.Status.DEPRECATED;</span>
-<span class="source-line-no">034</span><span id="line-34">import static org.apiguardian.api.API.Status.EXPERIMENTAL;</span>
-<span class="source-line-no">035</span><span id="line-35">import static org.apiguardian.api.API.Status.INTERNAL;</span>
-<span class="source-line-no">036</span><span id="line-36">import static org.apiguardian.api.API.Status.STABLE;</span>
-<span class="source-line-no">037</span><span id="line-37">import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_CPUARCHITECTURE;</span>
-<span class="source-line-no">038</span><span id="line-38">import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSNAME;</span>
-<span class="source-line-no">039</span><span id="line-39">import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSVERSION;</span>
-<span class="source-line-no">040</span><span id="line-40">import static org.tquadrat.foundation.lang.CommonConstants.TIME_DELTA_BEGINGREGORIAN2BEGINEPOCH;</span>
-<span class="source-line-no">041</span><span id="line-41">import static org.tquadrat.foundation.lang.Objects.isNull;</span>
-<span class="source-line-no">042</span><span id="line-42">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
-<span class="source-line-no">043</span><span id="line-43">import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;</span>
-<span class="source-line-no">044</span><span id="line-44">import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;</span>
-<span class="source-line-no">045</span><span id="line-45">import static org.tquadrat.foundation.util.StringUtils.format;</span>
+<span class="source-line-no">021</span><span id="line-21">import static java.lang.String.format;</span>
+<span class="source-line-no">022</span><span id="line-22">import static java.lang.System.arraycopy;</span>
+<span class="source-line-no">023</span><span id="line-23">import static java.lang.System.currentTimeMillis;</span>
+<span class="source-line-no">024</span><span id="line-24">import static java.lang.System.getProperties;</span>
+<span class="source-line-no">025</span><span id="line-25">import static java.lang.System.getProperty;</span>
+<span class="source-line-no">026</span><span id="line-26">import static java.lang.System.nanoTime;</span>
+<span class="source-line-no">027</span><span id="line-27">import static java.lang.Thread.currentThread;</span>
+<span class="source-line-no">028</span><span id="line-28">import static java.net.InetAddress.getByName;</span>
+<span class="source-line-no">029</span><span id="line-29">import static java.util.Arrays.stream;</span>
+<span class="source-line-no">030</span><span id="line-30">import static java.util.Collections.list;</span>
+<span class="source-line-no">031</span><span id="line-31">import static java.util.Locale.ROOT;</span>
+<span class="source-line-no">032</span><span id="line-32">import static java.util.function.Function.identity;</span>
+<span class="source-line-no">033</span><span id="line-33">import static java.util.stream.Collectors.toMap;</span>
+<span class="source-line-no">034</span><span id="line-34">import static org.apiguardian.api.API.Status.DEPRECATED;</span>
+<span class="source-line-no">035</span><span id="line-35">import static org.apiguardian.api.API.Status.EXPERIMENTAL;</span>
+<span class="source-line-no">036</span><span id="line-36">import static org.apiguardian.api.API.Status.INTERNAL;</span>
+<span class="source-line-no">037</span><span id="line-37">import static org.apiguardian.api.API.Status.STABLE;</span>
+<span class="source-line-no">038</span><span id="line-38">import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_CPUARCHITECTURE;</span>
+<span class="source-line-no">039</span><span id="line-39">import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSNAME;</span>
+<span class="source-line-no">040</span><span id="line-40">import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSVERSION;</span>
+<span class="source-line-no">041</span><span id="line-41">import static org.tquadrat.foundation.lang.CommonConstants.TIME_DELTA_BEGINGREGORIAN2BEGINEPOCH;</span>
+<span class="source-line-no">042</span><span id="line-42">import static org.tquadrat.foundation.lang.Objects.isNull;</span>
+<span class="source-line-no">043</span><span id="line-43">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
+<span class="source-line-no">044</span><span id="line-44">import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;</span>
+<span class="source-line-no">045</span><span id="line-45">import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;</span>
 <span class="source-line-no">046</span><span id="line-46">import static org.tquadrat.foundation.util.StringUtils.splitString;</span>
 <span class="source-line-no">047</span><span id="line-47"></span>
 <span class="source-line-no">048</span><span id="line-48">import java.io.File;</span>
@@ -440,23 +440,23 @@
 <span class="source-line-no">427</span><span id="line-427">        Optional&lt;InetAddress&gt; retValue = Optional.empty();</span>
 <span class="source-line-no">428</span><span id="line-428"></span>
 <span class="source-line-no">429</span><span id="line-429">        List&lt;InetAddress&gt; addresses;</span>
-<span class="source-line-no">430</span><span id="line-430">        ScanLoop: for( final var i : getNetworkInterfaces() )</span>
+<span class="source-line-no">430</span><span id="line-430">        ScanLoop: for( final var networkInterface : getNetworkInterfaces() )</span>
 <span class="source-line-no">431</span><span id="line-431">        {</span>
 <span class="source-line-no">432</span><span id="line-432">            /*</span>
 <span class="source-line-no">433</span><span id="line-433">             * Due to the nature of the scan logic, the returned address will</span>
 <span class="source-line-no">434</span><span id="line-434">             * always be that of the last NIC in sequence that is not the</span>
 <span class="source-line-no">435</span><span id="line-435">             * {@code loopback} interface.</span>
 <span class="source-line-no">436</span><span id="line-436">             */</span>
-<span class="source-line-no">437</span><span id="line-437">            if( i.isUp() )</span>
+<span class="source-line-no">437</span><span id="line-437">            if( networkInterface.isUp() )</span>
 <span class="source-line-no">438</span><span id="line-438">            {</span>
-<span class="source-line-no">439</span><span id="line-439">                addresses = list( i.getInetAddresses() );</span>
+<span class="source-line-no">439</span><span id="line-439">                addresses = list( networkInterface.getInetAddresses() );</span>
 <span class="source-line-no">440</span><span id="line-440">                AddressLoop: for( final var address : addresses )</span>
 <span class="source-line-no">441</span><span id="line-441">                {</span>
 <span class="source-line-no">442</span><span id="line-442">                    /*</span>
 <span class="source-line-no">443</span><span id="line-443">                     * The AddressLoop terminates early, when the first IPv4</span>
 <span class="source-line-no">444</span><span id="line-444">                     * address for the NIC was found.</span>
 <span class="source-line-no">445</span><span id="line-445">                     */</span>
-<span class="source-line-no">446</span><span id="line-446">                    if( i.isLoopback() )</span>
+<span class="source-line-no">446</span><span id="line-446">                    if( networkInterface.isLoopback() )</span>
 <span class="source-line-no">447</span><span id="line-447">                    {</span>
 <span class="source-line-no">448</span><span id="line-448">                        /*</span>
 <span class="source-line-no">449</span><span id="line-449">                         * We take loopback if we do not get something</span>
@@ -496,7 +496,7 @@
 <span class="source-line-no">483</span><span id="line-483">    public static final InetAddress [] determineIPAddresses()</span>
 <span class="source-line-no">484</span><span id="line-484">    {</span>
 <span class="source-line-no">485</span><span id="line-485">        final var retValue = getNetworkInterfaces().stream()</span>
-<span class="source-line-no">486</span><span id="line-486">            .flatMap( i -&gt; list( i.getInetAddresses() ).stream() )</span>
+<span class="source-line-no">486</span><span id="line-486">            .flatMap( networkInterface -&gt; list( networkInterface.getInetAddresses() ).stream() )</span>
 <span class="source-line-no">487</span><span id="line-487">            .toArray( InetAddress []::new );</span>
 <span class="source-line-no">488</span><span id="line-488"></span>
 <span class="source-line-no">489</span><span id="line-489">        //---* Done *----------------------------------------------------------</span>
@@ -556,18 +556,18 @@
 <span class="source-line-no">543</span><span id="line-543">    public static final InetAddress [] determineOutboundIPAddresses()</span>
 <span class="source-line-no">544</span><span id="line-544">    {</span>
 <span class="source-line-no">545</span><span id="line-545">        final var retValue = getNetworkInterfaces().stream()</span>
-<span class="source-line-no">546</span><span id="line-546">            .filter( i -&gt;</span>
+<span class="source-line-no">546</span><span id="line-546">            .filter( networkInterface -&gt;</span>
 <span class="source-line-no">547</span><span id="line-547">            {</span>
 <span class="source-line-no">548</span><span id="line-548">                try</span>
 <span class="source-line-no">549</span><span id="line-549">                {</span>
-<span class="source-line-no">550</span><span id="line-550">                    return i.isUp() &amp;&amp; !i.isLoopback();</span>
+<span class="source-line-no">550</span><span id="line-550">                    return networkInterface.isUp() &amp;&amp; !networkInterface.isLoopback();</span>
 <span class="source-line-no">551</span><span id="line-551">                }</span>
 <span class="source-line-no">552</span><span id="line-552">                catch( final SocketException ignored )</span>
 <span class="source-line-no">553</span><span id="line-553">                {</span>
 <span class="source-line-no">554</span><span id="line-554">                    return false;</span>
 <span class="source-line-no">555</span><span id="line-555">                }</span>
 <span class="source-line-no">556</span><span id="line-556">            } )</span>
-<span class="source-line-no">557</span><span id="line-557">            .flatMap( i -&gt; list( i.getInetAddresses() ).stream() )</span>
+<span class="source-line-no">557</span><span id="line-557">            .flatMap( networkInterface -&gt; list( networkInterface.getInetAddresses() ).stream() )</span>
 <span class="source-line-no">558</span><span id="line-558">            .toArray( InetAddress []::new );</span>
 <span class="source-line-no">559</span><span id="line-559"></span>
 <span class="source-line-no">560</span><span id="line-560">        //---* Done *----------------------------------------------------------</span>
@@ -604,7 +604,7 @@
 <span class="source-line-no">591</span><span id="line-591">    {</span>
 <span class="source-line-no">592</span><span id="line-592">        if( nodeId != (nodeId &amp; m_NodeIdBits) )</span>
 <span class="source-line-no">593</span><span id="line-593">        {</span>
-<span class="source-line-no">594</span><span id="line-594">            throw new ValidationException( format( "Node id is invalid: %1$d", nodeId ) );</span>
+<span class="source-line-no">594</span><span id="line-594">            throw new ValidationException( "Node id is invalid: %1$d".formatted( nodeId ) );</span>
 <span class="source-line-no">595</span><span id="line-595">        }</span>
 <span class="source-line-no">596</span><span id="line-596"></span>
 <span class="source-line-no">597</span><span id="line-597">        final var hexFormat = HexFormat.of();</span>
@@ -983,7 +983,7 @@
 <span class="source-line-no">970</span><span id="line-970">        final var locale = name.isBlank()</span>
 <span class="source-line-no">971</span><span id="line-971">            ? ROOT</span>
 <span class="source-line-no">972</span><span id="line-972">            : stream( Locale.getAvailableLocales() )</span>
-<span class="source-line-no">973</span><span id="line-973">                  .filter( l -&gt; l.toString().equals( name ) )</span>
+<span class="source-line-no">973</span><span id="line-973">                  .filter( currentLocale -&gt; currentLocale.toString().equals( name ) )</span>
 <span class="source-line-no">974</span><span id="line-974">                  .findFirst()</span>
 <span class="source-line-no">975</span><span id="line-975">                  .orElseGet( () -&gt;</span>
 <span class="source-line-no">976</span><span id="line-976">                  {</span>
@@ -1133,7 +1133,7 @@
 <span class="source-line-no">1120</span><span id="line-1120">        final var bytes = HexFormat.ofDelimiter( "-" ).withUpperCase().parseHex( requireNotEmptyArgument( macAddress, "macAddress" ) );</span>
 <span class="source-line-no">1121</span><span id="line-1121">        if( bytes.length != 6 )</span>
 <span class="source-line-no">1122</span><span id="line-1122">        {</span>
-<span class="source-line-no">1123</span><span id="line-1123">            throw new ValidationException( format( "MAC address is invalid: %1$s", macAddress ) );</span>
+<span class="source-line-no">1123</span><span id="line-1123">            throw new ValidationException( "MAC address is invalid: %1$s".formatted( macAddress ) );</span>
 <span class="source-line-no">1124</span><span id="line-1124">        }</span>
 <span class="source-line-no">1125</span><span id="line-1125">        final var bytes2 = new byte [7];</span>
 <span class="source-line-no">1126</span><span id="line-1126">        arraycopy( bytes, 0, bytes2, 1, 6 );</span>

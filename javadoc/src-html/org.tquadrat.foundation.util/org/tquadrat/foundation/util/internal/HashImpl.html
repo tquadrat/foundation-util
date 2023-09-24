@@ -222,7 +222,7 @@
 <span class="source-line-no">209</span><span id="line-209">    public final boolean equals( final Object o )</span>
 <span class="source-line-no">210</span><span id="line-210">    {</span>
 <span class="source-line-no">211</span><span id="line-211">        var retValue = this == o;</span>
-<span class="source-line-no">212</span><span id="line-212">        if( !retValue &amp;&amp; o instanceof HashImpl other )</span>
+<span class="source-line-no">212</span><span id="line-212">        if( !retValue &amp;&amp; o instanceof final HashImpl other )</span>
 <span class="source-line-no">213</span><span id="line-213">        {</span>
 <span class="source-line-no">214</span><span id="line-214">            retValue = Arrays.equals( m_HashValue, other.m_HashValue );</span>
 <span class="source-line-no">215</span><span id="line-215">        }</span>

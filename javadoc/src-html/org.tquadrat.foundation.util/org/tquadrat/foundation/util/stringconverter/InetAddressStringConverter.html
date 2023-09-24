@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2021 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> *</span>
@@ -31,10 +31,10 @@
 <span class="source-line-no">018</span><span id="line-18"></span>
 <span class="source-line-no">019</span><span id="line-19">package org.tquadrat.foundation.util.stringconverter;</span>
 <span class="source-line-no">020</span><span id="line-20"></span>
-<span class="source-line-no">021</span><span id="line-21">import static java.net.InetAddress.getByName;</span>
-<span class="source-line-no">022</span><span id="line-22">import static org.apiguardian.api.API.Status.STABLE;</span>
-<span class="source-line-no">023</span><span id="line-23">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
-<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.util.StringUtils.format;</span>
+<span class="source-line-no">021</span><span id="line-21">import static java.lang.String.format;</span>
+<span class="source-line-no">022</span><span id="line-22">import static java.net.InetAddress.getByName;</span>
+<span class="source-line-no">023</span><span id="line-23">import static org.apiguardian.api.API.Status.STABLE;</span>
+<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
 <span class="source-line-no">025</span><span id="line-25">import static org.tquadrat.foundation.util.StringUtils.isEmpty;</span>
 <span class="source-line-no">026</span><span id="line-26"></span>
 <span class="source-line-no">027</span><span id="line-27">import java.io.Serial;</span>
@@ -148,26 +148,25 @@
 <span class="source-line-no">135</span><span id="line-135">     *</span>
 <span class="source-line-no">136</span><span id="line-136">     *  @return The instance for this {@code StringConverter} implementation.</span>
 <span class="source-line-no">137</span><span id="line-137">     */</span>
-<span class="source-line-no">138</span><span id="line-138">    @SuppressWarnings( "UseOfConcreteClass" )</span>
-<span class="source-line-no">139</span><span id="line-139">    public static final InetAddressStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">140</span><span id="line-140"></span>
-<span class="source-line-no">141</span><span id="line-141">    /**</span>
-<span class="source-line-no">142</span><span id="line-142">     *  {@inheritDoc}</span>
-<span class="source-line-no">143</span><span id="line-143">     */</span>
-<span class="source-line-no">144</span><span id="line-144">    @Override</span>
-<span class="source-line-no">145</span><span id="line-145">    public final String toString( final InetAddress source )</span>
-<span class="source-line-no">146</span><span id="line-146">    {</span>
-<span class="source-line-no">147</span><span id="line-147">        final var retValue = nonNull( source ) ? source.getHostAddress() : null;</span>
-<span class="source-line-no">148</span><span id="line-148"></span>
-<span class="source-line-no">149</span><span id="line-149">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">150</span><span id="line-150">        return retValue;</span>
-<span class="source-line-no">151</span><span id="line-151">    }   //  toString()</span>
-<span class="source-line-no">152</span><span id="line-152">}</span>
-<span class="source-line-no">153</span><span id="line-153">//  class InetAddressStringConverter</span>
-<span class="source-line-no">154</span><span id="line-154"></span>
-<span class="source-line-no">155</span><span id="line-155">/*</span>
-<span class="source-line-no">156</span><span id="line-156"> *  End of File</span>
-<span class="source-line-no">157</span><span id="line-157"> */</span>
+<span class="source-line-no">138</span><span id="line-138">    public static final InetAddressStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">139</span><span id="line-139"></span>
+<span class="source-line-no">140</span><span id="line-140">    /**</span>
+<span class="source-line-no">141</span><span id="line-141">     *  {@inheritDoc}</span>
+<span class="source-line-no">142</span><span id="line-142">     */</span>
+<span class="source-line-no">143</span><span id="line-143">    @Override</span>
+<span class="source-line-no">144</span><span id="line-144">    public final String toString( final InetAddress source )</span>
+<span class="source-line-no">145</span><span id="line-145">    {</span>
+<span class="source-line-no">146</span><span id="line-146">        final var retValue = nonNull( source ) ? source.getHostAddress() : null;</span>
+<span class="source-line-no">147</span><span id="line-147"></span>
+<span class="source-line-no">148</span><span id="line-148">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">149</span><span id="line-149">        return retValue;</span>
+<span class="source-line-no">150</span><span id="line-150">    }   //  toString()</span>
+<span class="source-line-no">151</span><span id="line-151">}</span>
+<span class="source-line-no">152</span><span id="line-152">//  class InetAddressStringConverter</span>
+<span class="source-line-no">153</span><span id="line-153"></span>
+<span class="source-line-no">154</span><span id="line-154">/*</span>
+<span class="source-line-no">155</span><span id="line-155"> *  End of File</span>
+<span class="source-line-no">156</span><span id="line-156"> */</span>
 
 
 

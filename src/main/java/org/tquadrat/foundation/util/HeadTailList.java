@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2023 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -121,7 +121,7 @@ public sealed interface HeadTailList<T> extends Iterable<T>
         var retValue = false;
         if( nonNull( element ) )
         {
-            for( final var i = iterator(); i.hasNext() && !retValue; ) retValue = i.next().equals( element );
+            for( final var iterator = iterator(); iterator.hasNext() && !retValue; ) retValue = iterator.next().equals( element );
         }
 
         //---* Done *----------------------------------------------------------
@@ -257,19 +257,24 @@ public sealed interface HeadTailList<T> extends Iterable<T>
      *  @param  list    The list to merge into this one.
      *  @return The new list.
      */
-    @SuppressWarnings( "LocalVariableNamingConvention" )
     public default HeadTailList<T> merge( final HeadTailList<? extends T> list )
     {
         @SuppressWarnings( "unchecked" )
         var retValue = (HeadTailList<T>) empty();
-        final var j = requireNonNullArgument( list, "list" ).revert().iterator();
-        final var i = revert().iterator();
-        while( i.hasNext() && j.hasNext() )
+        final var otherIterator = requireNonNullArgument( list, "list" )
+            .revert()
+            .iterator();
+        final var thisIterator = revert()
+            .iterator();
+        while( thisIterator.hasNext() && otherIterator.hasNext() )
         {
-            retValue = retValue.add( i.next() ).add( j.next() );
+            retValue = retValue.add( thisIterator.next() )
+                .add( otherIterator.next() );
         }
-        while( i.hasNext() ) retValue = retValue.add( i.next() );
-        while( j.hasNext() ) retValue = retValue.add( j.next() );
+
+        //---* Add the remainders *--------------------------------------------
+        while( thisIterator.hasNext() ) retValue = retValue.add( thisIterator.next() );
+        while( otherIterator.hasNext() ) retValue = retValue.add( otherIterator.next() );
 
         //---* Done *----------------------------------------------------------
         return retValue;
