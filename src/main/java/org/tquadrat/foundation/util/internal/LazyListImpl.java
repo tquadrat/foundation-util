@@ -47,7 +47,7 @@ import org.tquadrat.foundation.util.LazyList;
  *  {@link LazyList}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazyListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: LazyListImpl.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this list.
@@ -55,7 +55,7 @@ import org.tquadrat.foundation.util.LazyList;
  *  @UMLGraph.link
  */
 @SuppressWarnings( "OverlyComplexClass" )
-@ClassVersion( sourceVersion = "$Id: LazyListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazyListImpl.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class LazyListImpl<E> implements LazyList<E>
 {

@@ -41,14 +41,14 @@ import org.tquadrat.foundation.util.LazySet;
  *  {@link LazySet}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazySetImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: LazySetImpl.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this set.
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: LazySetImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazySetImpl.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class LazySetImpl<E> implements LazySet<E>
 {

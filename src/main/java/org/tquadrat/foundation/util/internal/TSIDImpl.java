@@ -39,12 +39,12 @@ import org.tquadrat.foundation.util.TSID;
  *  {@link TSID}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TSIDImpl.java 1037 2022-12-15 00:35:17Z tquadrat $
+ *  @version $Id: TSIDImpl.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: TSIDImpl.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TSIDImpl.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public final class TSIDImpl implements TSID
 {

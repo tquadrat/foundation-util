@@ -50,12 +50,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  this purpose.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: CharSequenceStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: CharSequenceStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: CharSequenceStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharSequenceStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class CharSequenceStringConverter implements StringConverter<CharSequence>
 {

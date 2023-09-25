@@ -39,12 +39,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  for {@code java.time.Year}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: YearStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: YearStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: YearStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: YearStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public class YearStringConverter extends TimeDateStringConverter<Year>
 {

@@ -47,12 +47,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  instance.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: CurrencyStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: CurrencyStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: CurrencyStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CurrencyStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public final class CurrencyStringConverter implements StringConverter<Currency>
 {

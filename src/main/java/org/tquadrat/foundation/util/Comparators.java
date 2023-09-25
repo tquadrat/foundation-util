@@ -40,13 +40,13 @@ import org.tquadrat.foundation.util.internal.StringBasedComparator;
  *  {@link Comparator}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Comparators.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: Comparators.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: Comparators.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Comparators.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Comparators
 {
@@ -71,7 +71,7 @@ public final class Comparators
      *  provide always the same key.</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Comparators.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: Comparators.java 1060 2023-09-24 19:21:40Z tquadrat $
      *  @since 0.0.5
      *
      *  @param  <T> The type to order.
@@ -81,7 +81,7 @@ public final class Comparators
      *  @UMLGraph.link
      */
     @API( status = STABLE, since = "0.0.5" )
-    @ClassVersion( sourceVersion = "$Id: Comparators.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Comparators.java 1060 2023-09-24 19:21:40Z tquadrat $" )
     @FunctionalInterface
     public interface KeyProvider<T,K>
     {

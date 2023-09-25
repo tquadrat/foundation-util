@@ -44,12 +44,12 @@ import org.tquadrat.foundation.util.TSID;
  *  to create a {@code TSID} instance based on the given value.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TSIDStringConverter.java 1037 2022-12-15 00:35:17Z tquadrat $
+ *  @version $Id: TSIDStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: TSIDStringConverter.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TSIDStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public final class TSIDStringConverter implements StringConverter<TSID>
 {

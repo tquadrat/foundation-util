@@ -47,12 +47,12 @@ import org.tquadrat.foundation.util.HeadTailList;
  *  @param  <T> The element type of the list.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: HeadTailListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: HeadTailListImpl.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.4
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HeadTailListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HeadTailListImpl.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.4" )
 public final class HeadTailListImpl<T> implements HeadTailList<T>
 {
@@ -68,12 +68,12 @@ public final class HeadTailListImpl<T> implements HeadTailList<T>
      *  @param  <T> The element type of the list.
      *
      *  @author Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: HeadTailListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: HeadTailListImpl.java 1060 2023-09-24 19:21:40Z tquadrat $
      *  @since 0.0.4
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: HeadTailListImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: HeadTailListImpl.java 1060 2023-09-24 19:21:40Z tquadrat $" )
     @API( status = INTERNAL, since = "0.0.4" )
     private static class IteratorImpl<T> implements Iterator<T>
     {

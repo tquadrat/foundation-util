@@ -73,12 +73,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see Duration
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: DurationStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: DurationStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.7
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: DurationStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: DurationStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public final class DurationStringConverter implements StringConverter<Duration>
 {

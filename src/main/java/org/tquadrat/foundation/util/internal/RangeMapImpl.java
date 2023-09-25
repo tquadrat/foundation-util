@@ -37,14 +37,14 @@ import org.tquadrat.foundation.util.RangeMap;
  *  {@link RangeMap}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: RangeMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: RangeMapImpl.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.7
  *
  *  @param <T>  The type of the mapped value.
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: RangeMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeMapImpl.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public sealed class RangeMapImpl<T> implements RangeMap<T>
     permits FinalRangeMap

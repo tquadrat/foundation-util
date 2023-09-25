@@ -50,12 +50,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  uses multiple threads to calculate the hashes for a bunch of files.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SecurityUtils.java 1021 2022-03-01 22:53:02Z tquadrat $
+ *  @version $Id: SecurityUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @UtilityClass
 public final class SecurityUtils
 {

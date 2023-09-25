@@ -34,9 +34,9 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestPad.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestQuote.java 1060 2023-09-24 19:21:40Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestPad.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestQuote.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestQuote" )
 public class TestQuote extends TestBaseClass
 {

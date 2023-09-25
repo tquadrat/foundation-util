@@ -37,7 +37,7 @@ import org.tquadrat.foundation.util.LazyMap;
  *  {@link LazyMap}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazyMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: LazyMapImpl.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.5
  *
  *  @param <K> The type of keys maintained by this map
@@ -45,7 +45,7 @@ import org.tquadrat.foundation.util.LazyMap;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: LazyMapImpl.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazyMapImpl.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public sealed class LazyMapImpl<K,V> implements LazyMap<K,V>
     permits LazySortedMapImpl

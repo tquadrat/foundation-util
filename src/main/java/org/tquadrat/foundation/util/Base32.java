@@ -48,13 +48,13 @@ import org.tquadrat.foundation.exception.ValidationException;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Douglas Crockford - douglas@crockford.com
- *  @version $Id: Base32.java 1037 2022-12-15 00:35:17Z tquadrat $
+ *  @version $Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"JavadocLinkAsPlainText", "MagicNumber"} )
-@ClassVersion( sourceVersion = "$Id: Base32.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 @UtilityClass
 public final class Base32
@@ -69,12 +69,12 @@ public final class Base32
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      *  @thanks Douglas Crockford - douglas@crockford.com
-     *  @version $Id: Base32.java 1037 2022-12-15 00:35:17Z tquadrat $
+     *  @version $Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $
      *  @since 0.1.0
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Base32.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static final class Decoder
     {
@@ -243,12 +243,12 @@ public final class Base32
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      *  @thanks Douglas Crockford - douglas@crockford.com
-     *  @version $Id: Base32.java 1037 2022-12-15 00:35:17Z tquadrat $
+     *  @version $Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $
      *  @since 0.1.0
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Base32.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static final class Encoder
     {

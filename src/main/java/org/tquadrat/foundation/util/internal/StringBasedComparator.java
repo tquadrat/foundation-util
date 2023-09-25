@@ -33,12 +33,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *
  *  @param  <T> The type of the objects to compare.
  *
- *  @version $Id: StringBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $
+ *  @version $Id: StringBasedComparator.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: StringBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringBasedComparator.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class StringBasedComparator<T> implements Comparator<T>
 {

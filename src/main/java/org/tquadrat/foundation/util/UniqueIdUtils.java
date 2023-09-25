@@ -160,7 +160,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *  <p>It's textual representation is also suitable for XML ids.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1044 2023-02-04 09:58:19Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -171,7 +171,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1044 2023-02-04 09:58:19Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils

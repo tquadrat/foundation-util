@@ -22,7 +22,6 @@ import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.lang.reflect.Array;
 import java.util.Optional;
@@ -303,7 +302,7 @@ public final class Stack<T>
     {
         for( var i = 0; i < requireNonNullArgument( entries, "entries" ).length; ++i )
         {
-            if( isNull( entries [i] ) ) throw new ValidationException( format( "The entry %1$d of the arguments list is null", i ) );
+            if( isNull( entries [i] ) ) throw new ValidationException( "The entry %1$d of the arguments list is null".formatted( i ) );
         }
 
         m_WriteLock.execute( () ->

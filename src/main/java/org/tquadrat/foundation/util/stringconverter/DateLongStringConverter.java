@@ -48,13 +48,13 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see Date#getTime()
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: DateLongStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: DateLongStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.1
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "UseOfObsoleteDateTimeApi" ) // Obviously unavoidable …
-@ClassVersion( sourceVersion = "$Id: DateLongStringConverter.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: DateLongStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = Status.STABLE, since = "0.1.0" )
 public class DateLongStringConverter implements StringConverter<Date>
 {

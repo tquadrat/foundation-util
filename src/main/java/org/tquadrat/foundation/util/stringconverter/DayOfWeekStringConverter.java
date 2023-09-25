@@ -34,12 +34,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  values.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: DayOfWeekStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: DayOfWeekStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: DayOfWeekStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: DayOfWeekStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class DayOfWeekStringConverter extends EnumStringConverter<DayOfWeek>
 {

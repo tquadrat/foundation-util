@@ -53,12 +53,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see org.tquadrat.foundation.util.JavaUtils#getCallersClassLoader()
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ClassStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: ClassStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ClassStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ClassStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class ClassStringConverter implements StringConverter<Class<?>>
 {

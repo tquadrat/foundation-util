@@ -35,12 +35,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  for {@code java.time.YearMonth}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: YearMonthStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $
+ *  @version $Id: YearMonthStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: YearMonthStringConverter.java 966 2022-01-04 22:28:49Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: YearMonthStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public class YearMonthStringConverter extends TimeDateStringConverter<YearMonth>
 {

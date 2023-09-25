@@ -55,7 +55,7 @@ import org.tquadrat.foundation.util.StringUtils;
  *  @thanks Gary Gregory - ggregory@seagullsw.com
  *  @inspired Some code I found somewhere long time ago, originally written by
  *      Alexander Day Chaffee and Gary Gregory
- *  @version $Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: Entities.java 1060 2023-09-24 19:21:40Z tquadrat $
  *  @since 0.0.5
  *
  *  @see <a href="http://hotwired.lycos.com/webmonkey/reference/special_characters/">ISO Entities</a>
@@ -67,7 +67,7 @@ import org.tquadrat.foundation.util.StringUtils;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Entities.java 1060 2023-09-24 19:21:40Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public final class Entities
 {
@@ -81,12 +81,12 @@ public final class Entities
      *  @extauthor Alexander Day Chaffee - alex@purpletech.com
      *  @extauthor Gary Gregory - ggregory@seagullsw.com
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: Entities.java 1060 2023-09-24 19:21:40Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Entities.java 1060 2023-09-24 19:21:40Z tquadrat $" )
     private static interface EntityMap
     {
             /*---------*\
@@ -139,12 +139,12 @@ public final class Entities
      *  @extauthor Alexander Day Chaffee - alex@purpletech.com
      *  @extauthor Gary Gregory - ggregory@seagullsw.com
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: Entities.java 1060 2023-09-24 19:21:40Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Entities.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Entities.java 1060 2023-09-24 19:21:40Z tquadrat $" )
     private static class PrimitiveEntityMap implements EntityMap
     {
             /*------------*\
