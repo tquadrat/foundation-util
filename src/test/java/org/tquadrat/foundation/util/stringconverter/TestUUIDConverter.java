@@ -17,6 +17,21 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
+import static java.lang.String.format;
+import static java.lang.System.out;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
+import static org.tquadrat.foundation.util.UniqueIdUtils.getNamespaceUUID;
+import static org.tquadrat.foundation.util.UniqueIdUtils.randomUUID;
+import static org.tquadrat.foundation.util.UniqueIdUtils.timebasedUUID;
+
+import java.util.UUID;
+import java.util.stream.Stream;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -25,29 +40,14 @@ import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.lang.StringConverter;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 
-import java.util.UUID;
-import java.util.stream.Stream;
-
-import static java.lang.System.out;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
-import static org.tquadrat.foundation.util.StringUtils.format;
-import static org.tquadrat.foundation.util.UniqueIdUtils.getNamespaceUUID;
-import static org.tquadrat.foundation.util.UniqueIdUtils.randomUUID;
-import static org.tquadrat.foundation.util.UniqueIdUtils.timebasedUUID;
-
 /**
  *  Tests for the class
  *  {@link org.tquadrat.foundation.util.stringconverter.UUIDStringConverter}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestUUIDConverter.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestUUIDConverter.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestUUIDConverter.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestUUIDConverter.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringconverter.TestUUIDConverter" )
 public class TestUUIDConverter extends TestBaseClass
 {

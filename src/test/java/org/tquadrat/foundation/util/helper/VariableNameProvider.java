@@ -17,8 +17,8 @@
 
 package org.tquadrat.foundation.util.helper;
 
+import static java.lang.String.format;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.util.stream.Stream;
 
@@ -34,7 +34,7 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *
  *  @see org.tquadrat.foundation.util.Template
  */
-@ClassVersion( sourceVersion = "$Id: VariableNameProvider.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: VariableNameProvider.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @UtilityClass
 public final class VariableNameProvider
 {
@@ -51,7 +51,7 @@ public final class VariableNameProvider
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      */
     @SuppressWarnings( {"PublicInnerClass", "hiding", "javadoc", "preview"} )
-    @ClassVersion( sourceVersion = "$Id: VariableNameProvider.java 820 2020-12-29 20:34:22Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: VariableNameProvider.java 1076 2023-10-03 18:36:07Z tquadrat $" )
     public static record Result( boolean valid, String variableName ) { /* Empty */ }
 
         /*--------------*\

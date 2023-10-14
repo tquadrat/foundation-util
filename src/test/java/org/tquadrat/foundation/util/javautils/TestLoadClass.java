@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util.javautils;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -25,7 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
 import static org.tquadrat.foundation.util.JavaUtils.loadClass;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.io.Serializable;
 import java.util.Optional;
@@ -49,7 +49,7 @@ import org.tquadrat.foundation.util.JavaUtils;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestLoadClass.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestLoadClass.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.javautils.TestLoadClass" )
 public class TestLoadClass extends TestBaseClass
 {

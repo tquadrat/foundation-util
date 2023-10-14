@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static java.util.Arrays.stream;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,7 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.time.Month;
 import java.util.stream.Stream;
@@ -43,9 +43,9 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link GenericStringConverter}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestGenericStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $
+ *  @version $Id: TestGenericStringConverter.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestGenericStringConverter.java 897 2021-04-06 21:34:01Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestGenericStringConverter.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringconverter.TestGenericConverter" )
 public class TestGenericStringConverter extends TestBaseClass
 {

@@ -17,13 +17,13 @@
 
 package org.tquadrat.foundation.util.arrayutils;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertNotSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.util.ArrayUtils.revertCopy;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,10 +37,10 @@ import org.tquadrat.foundation.util.ArrayUtils;
  *  {@link ArrayUtils}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestRevertCopy.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestRevertCopy.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( "StringOperationCanBeSimplified" )
-@ClassVersion( sourceVersion = "$Id: TestRevertCopy.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestRevertCopy.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.arrayutils.TestRevertCopy" )
 public class TestRevertCopy extends TestBaseClass
 {

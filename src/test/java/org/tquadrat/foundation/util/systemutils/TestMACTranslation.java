@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util.systemutils;
 
+import static java.lang.String.format;
 import static java.util.Locale.ROOT;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -24,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.SystemUtils.formatNodeIdAsMAC;
 import static org.tquadrat.foundation.util.SystemUtils.getMACAddress;
 import static org.tquadrat.foundation.util.SystemUtils.getNodeId;
@@ -50,9 +50,9 @@ import org.tquadrat.foundation.util.SystemUtils;
  *  {@link SystemUtils}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestMACTranslation.java 1021 2022-03-01 22:53:02Z tquadrat $
+ *  @version $Id: TestMACTranslation.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestMACTranslation.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestMACTranslation.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.systemutils.TestMACTranslation" )
 public class TestMACTranslation extends TestBaseClass
 {

@@ -41,6 +41,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -60,10 +61,10 @@ import org.tquadrat.foundation.util.stringconverter.TSIDStringConverter;
  *  instances.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestTSIDCreation.java 1037 2022-12-15 00:35:17Z tquadrat $
+ *  @version $Id: TestTSIDCreation.java 1076 2023-10-03 18:36:07Z tquadrat $
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: TestTSIDCreation.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestTSIDCreation.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.uniqueidutils.TestTSIDCreation" )
 public class TestTSIDCreation extends TestBaseClass
 {
@@ -93,7 +94,11 @@ public class TestTSIDCreation extends TestBaseClass
      *  Extended test for collisions.
      *
      *  @throws Exception    Something unexpected went wrong.
+     *
+     *  @deprecated Do not use TSID any longer!
      */
+    @Deprecated( since = "0.3.0", forRemoval = true )
+    @Disabled( "TSID is deprecated" )
     @Test
     final void testCollision() throws Exception
     {
@@ -149,7 +154,11 @@ public class TestTSIDCreation extends TestBaseClass
      *  Tests the conversion.
      *
      *  @throws Exception    Something unexpected went wrong.
+     *
+     *  @deprecated Do not use TSID any longer!
      */
+    @Deprecated( since = "0.3.0", forRemoval = true )
+    @Disabled( "TSID is deprecated" )
     @ParameterizedTest
     @MethodSource( "org.tquadrat.foundation.util.uniqueidutils.TestTSIDCreation#randomValueProvider" )
     final void testConversion( final Long id ) throws Exception
@@ -169,7 +178,11 @@ public class TestTSIDCreation extends TestBaseClass
      *  Tests whether TSIDs will be created in an increasing sequence.
      *
      *  @throws Exception   Something unexpected went wrong.
+     *
+     *  @deprecated Do not use TSID any longer!
      */
+    @Deprecated( since = "0.3.0", forRemoval = true )
+    @Disabled( "TSID is deprecated" )
     @Test
     final void testSequence() throws Exception
     {
@@ -191,7 +204,11 @@ public class TestTSIDCreation extends TestBaseClass
      *  Tests for the validation.
      *
      * @throws Exception    Something unexpected went wrong.
+     *
+     *  @deprecated Do not use TSID any longer!
      */
+    @Deprecated( since = "0.3.0", forRemoval = true )
+    @Disabled( "TSID is deprecated" )
     @Test
     final void testValidation() throws Exception
     {

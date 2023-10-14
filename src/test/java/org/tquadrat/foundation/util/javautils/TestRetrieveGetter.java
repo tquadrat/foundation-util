@@ -17,18 +17,7 @@
 
 package org.tquadrat.foundation.util.javautils;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.EmptyArgumentException;
-import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.testutil.TestBaseClass;
-import org.tquadrat.foundation.util.JavaUtils;
-import org.tquadrat.foundation.util.helper.Candidate;
-
-import java.lang.reflect.Method;
-import java.util.Optional;
-
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -40,7 +29,18 @@ import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
 import static org.tquadrat.foundation.util.JavaUtils.composeGetterName;
 import static org.tquadrat.foundation.util.JavaUtils.isGetter;
 import static org.tquadrat.foundation.util.JavaUtils.retrieveGetter;
-import static org.tquadrat.foundation.util.StringUtils.format;
+
+import java.lang.reflect.Method;
+import java.util.Optional;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.exception.EmptyArgumentException;
+import org.tquadrat.foundation.exception.NullArgumentException;
+import org.tquadrat.foundation.testutil.TestBaseClass;
+import org.tquadrat.foundation.util.JavaUtils;
+import org.tquadrat.foundation.util.helper.Candidate;
 
 /**
  *  Test for the methods
@@ -51,7 +51,7 @@ import static org.tquadrat.foundation.util.StringUtils.format;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestRetrieveGetter.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestRetrieveGetter.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.javautils.TestRetrieveGetter" )
 public class TestRetrieveGetter extends TestBaseClass
 {

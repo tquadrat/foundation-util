@@ -20,7 +20,7 @@ package org.tquadrat.foundation.util.internal;
 import static java.lang.Integer.signum;
 import static java.lang.Long.compare;
 import static java.lang.String.format;
-import static org.apiguardian.api.API.Status.STABLE;
+import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.tquadrat.foundation.util.Base32.getEncoder;
 import static org.tquadrat.foundation.util.StringUtils.repeat;
 import static org.tquadrat.foundation.util.SystemUtils.getRandom;
@@ -39,23 +39,18 @@ import org.tquadrat.foundation.util.TSID;
  *  {@link TSID}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TSIDImpl.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: TSIDImpl.java 1076 2023-10-03 18:36:07Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
+ *
+ *  @deprecated Do not use any longer! This is not tested!
  */
-@ClassVersion( sourceVersion = "$Id: TSIDImpl.java 1060 2023-09-24 19:21:40Z tquadrat $" )
-@API( status = STABLE, since = "0.1.0" )
+@ClassVersion( sourceVersion = "$Id: TSIDImpl.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@API( status = DEPRECATED, since = "0.1.0" )
+@Deprecated( since = "0.3.0", forRemoval = true )
 public final class TSIDImpl implements TSID
 {
-        /*---------------*\
-    ====** Inner Classes **====================================================
-        \*---------------*/
-
-        /*-----------*\
-    ====** Constants **========================================================
-        \*-----------*/
-
         /*------------*\
     ====** Attributes **=======================================================
         \*------------*/

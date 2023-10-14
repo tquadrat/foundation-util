@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -24,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.io.File;
 import java.net.URL;
@@ -44,9 +44,9 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link org.tquadrat.foundation.util.stringconverter.URLStringConverter}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestURLConverter.java 1003 2022-02-02 11:07:25Z tquadrat $
+ *  @version $Id: TestURLConverter.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestURLConverter.java 1003 2022-02-02 11:07:25Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestURLConverter.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringconverter.TestURLConverter" )
 public class TestURLConverter extends TestBaseClass
 {

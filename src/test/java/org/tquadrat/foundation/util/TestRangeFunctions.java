@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static java.util.Comparator.naturalOrder;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -25,7 +26,6 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.util.RangeFunctions.isAbove;
 import static org.tquadrat.foundation.util.RangeFunctions.isBelow;
 import static org.tquadrat.foundation.util.RangeFunctions.isBetween;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.util.Comparator;
 
@@ -42,7 +42,7 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  */
 @SuppressWarnings( "OverlyComplexClass" )
-@ClassVersion( sourceVersion = "$Id: TestRangeFunctions.java 995 2022-01-23 01:09:35Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestRangeFunctions.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestRangeFunctions" )
 public class TestRangeFunctions extends TestBaseClass
 {

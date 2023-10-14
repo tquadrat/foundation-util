@@ -17,12 +17,12 @@
 
 package org.tquadrat.foundation.util.stringutils;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static java.util.Arrays.asList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.maxContentLength;
 
 import java.util.Collection;
@@ -46,10 +46,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestMaxContentLength.java 883 2021-03-02 18:39:20Z tquadrat $
+ *  @version $Id: TestMaxContentLength.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( {"MisorderedAssertEqualsArguments", "removal"} )
-@ClassVersion( sourceVersion = "$Id: TestMaxContentLength.java 883 2021-03-02 18:39:20Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestMaxContentLength.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestMaxContentLength" )
 public class TestMaxContentLength extends TestBaseClass
 {

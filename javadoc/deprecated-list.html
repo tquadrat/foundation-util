@@ -54,6 +54,8 @@ loadScripts(document, 'script');</script>
 <h2 title="Contents">Contents</h2>
 <ul>
 <li><a href="#for-removal">Terminally Deprecated</a></li>
+<li><a href="#interface">Interfaces</a></li>
+<li><a href="#class">Classes</a></li>
 <li><a href="#field">Fields</a></li>
 <li><a href="#method">Methods</a></li>
 </ul>
@@ -78,98 +80,102 @@ loadScripts(document, 'script');</script>
       instead, like this:
       <pre><code>String s = HexFormat.of().withUpperCase().formatHex( bytes );</code></pre></div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#SHAHASH_Length">org.tquadrat.foundation.util.SecurityUtils.SHAHASH_Length</a></div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TSIDImpl.html" title="class in org.tquadrat.foundation.util.internal">org.tquadrat.foundation.util.internal.TSIDImpl</a></div>
 <div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#SHAHASH_Length">org.tquadrat.foundation.util.SecurityUtils.SHAHASH_Length</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use
   <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SecurityUtils.html#SHA1HASH_Length"><code>SecurityUtils.SHA1HASH_Length</code></a>
   instead.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#checkText(java.lang.String,java.lang.CharSequence,int)">org.tquadrat.foundation.util.StringUtils.checkText<wbr>(String, CharSequence, int)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#checkText(java.lang.String,java.lang.CharSequence,int)">org.tquadrat.foundation.util.StringUtils.checkText<wbr>(String, CharSequence, int)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Replaced by
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#checkTextLen(java.lang.String,java.lang.CharSequence,int)"><code>StringUtils.checkTextLen(String, CharSequence, int)</code></a></div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#checkTextNull(java.lang.String,java.lang.CharSequence,int)">org.tquadrat.foundation.util.StringUtils.checkTextNull<wbr>(String, CharSequence, int)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#checkTextNull(java.lang.String,java.lang.CharSequence,int)">org.tquadrat.foundation.util.StringUtils.checkTextNull<wbr>(String, CharSequence, int)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Replaced by
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#checkTextLenNull(java.lang.String,java.lang.CharSequence,int)"><code>StringUtils.checkTextLenNull(String, CharSequence, int)</code></a>.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#escapeUnicode(char)">org.tquadrat.foundation.util.StringUtils.escapeUnicode<wbr>(char)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#escapeUnicode(char)">org.tquadrat.foundation.util.StringUtils.escapeUnicode<wbr>(char)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#escapeCharacter(int)"><code>CharSetUtils.escapeCharacter(char)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#escapeUnicode(int)">org.tquadrat.foundation.util.StringUtils.escapeUnicode<wbr>(int)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#escapeUnicode(int)">org.tquadrat.foundation.util.StringUtils.escapeUnicode<wbr>(int)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#escapeCharacter(int)"><code>CharSetUtils.escapeCharacter(int)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#findVariables(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.findVariables<wbr>(CharSequence)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#findVariables(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.findVariables<wbr>(CharSequence)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#findVariables(java.lang.CharSequence)"><code>Template.findVariables(CharSequence)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#format(java.lang.String,java.lang.Object...)">org.tquadrat.foundation.util.StringUtils.format<wbr>(String, Object...)</a></div>
-<div class="col-last even-row-color">
-<div class="deprecation-comment"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/internal/SharedFormatter.html" title="class or interface in org.tquadrat.foundation.lang.internal" class="external-link"><code>SharedFormatter</code></a>
-      got obsolete. See there.</div>
-</div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#format(java.util.Locale,java.lang.String,java.lang.Object...)">org.tquadrat.foundation.util.StringUtils.format<wbr>(Locale, String, Object...)</a></div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#format(java.lang.String,java.lang.Object...)">org.tquadrat.foundation.util.StringUtils.format<wbr>(String, Object...)</a></div>
 <div class="col-last odd-row-color">
 <div class="deprecation-comment"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/internal/SharedFormatter.html" title="class or interface in org.tquadrat.foundation.lang.internal" class="external-link"><code>SharedFormatter</code></a>
       got obsolete. See there.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#FORMAT_INITIAL_BUFFERSIZE">org.tquadrat.foundation.util.StringUtils.FORMAT_INITIAL_BUFFERSIZE</a></div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#format(java.util.Locale,java.lang.String,java.lang.Object...)">org.tquadrat.foundation.util.StringUtils.format<wbr>(Locale, String, Object...)</a></div>
 <div class="col-last even-row-color">
+<div class="deprecation-comment"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/internal/SharedFormatter.html" title="class or interface in org.tquadrat.foundation.lang.internal" class="external-link"><code>SharedFormatter</code></a>
+      got obsolete. See there.</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#FORMAT_INITIAL_BUFFERSIZE">org.tquadrat.foundation.util.StringUtils.FORMAT_INITIAL_BUFFERSIZE</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">No longer used!</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#hasVariable(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.hasVariable<wbr>(CharSequence)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#hasVariable(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.hasVariable<wbr>(CharSequence)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#hasVariables(java.lang.CharSequence)"><code>Template.hasVariables(CharSequence)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#isValidVariableName(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.isValidVariableName<wbr>(CharSequence)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#isValidVariableName(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.isValidVariableName<wbr>(CharSequence)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#isValidVariableName(java.lang.CharSequence)"><code>Template.isValidVariableName(CharSequence)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#isVariable(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.isVariable<wbr>(CharSequence)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#isVariable(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.isVariable<wbr>(CharSequence)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#isVariable(java.lang.CharSequence)"><code>Template.isVariable(CharSequence)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.lang.CharSequence%5B%5D,char)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(CharSequence[], char)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.lang.CharSequence%5B%5D,char)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(CharSequence[], char)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">This method is obsolete; the same effect can be achieved
       easily by calling
       <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...)" title="class or interface in java.lang" class="external-link"><code>String.join(CharSequence, CharSequence...)</code></a>.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.lang.CharSequence%5B%5D,java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(CharSequence[], CharSequence)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.lang.CharSequence%5B%5D,java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(CharSequence[], CharSequence)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.CharSequence...)" title="class or interface in java.lang" class="external-link"><code>String.join(CharSequence, CharSequence...)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.lang.Iterable,char)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(Iterable&lt;? extends CharSequence&gt;, char)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.lang.Iterable,char)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(Iterable&lt;? extends CharSequence&gt;, char)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">This method is obsolete; the same effect can be achieved
       easily by calling
       <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable)" title="class or interface in java.lang" class="external-link"><code>String.join(CharSequence, Iterable)</code></a></div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.util.Collection,java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(Collection&lt;? extends CharSequence&gt;, CharSequence)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.util.Collection,java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(Collection&lt;? extends CharSequence&gt;, CharSequence)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html#join(java.lang.CharSequence,java.lang.Iterable)" title="class or interface in java.lang" class="external-link"><code>String.join(CharSequence,Iterable)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.util.stream.Stream,java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(Stream&lt;? extends CharSequence&gt;, CharSequence)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#joinString(java.util.stream.Stream,java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.joinString<wbr>(Stream&lt;? extends CharSequence&gt;, CharSequence)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">This method is obsolete; the same effect can be achieved
       easily by calling
       <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Stream.html#collect(java.util.stream.Collector)" title="class or interface in java.util.stream" class="external-link"><code>Stream.collect(java.util.stream.Collector)</code></a>
@@ -177,8 +183,8 @@ loadScripts(document, 'script');</script>
       <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/stream/Collectors.html#joining(java.lang.CharSequence)" title="class or interface in java.util.stream" class="external-link"><code>joining()</code></a>
       as its argument.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#maxContentLength(java.lang.Iterable)">org.tquadrat.foundation.util.StringUtils.maxContentLength<wbr>(Iterable&lt;? extends CharSequence&gt;)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#maxContentLength(java.lang.Iterable)">org.tquadrat.foundation.util.StringUtils.maxContentLength<wbr>(Iterable&lt;? extends CharSequence&gt;)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#maxContentLength(java.lang.CharSequence...)"><code>StringUtils.maxContentLength(CharSequence[])</code></a>,
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#maxContentLength(java.util.Collection)"><code>StringUtils.maxContentLength(Collection)</code></a>,
@@ -186,73 +192,139 @@ loadScripts(document, 'script');</script>
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#maxContentLength(java.util.stream.Stream)"><code>StringUtils.maxContentLength(Stream)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#replaceVariable(java.lang.CharSequence,java.util.function.Function)">org.tquadrat.foundation.util.StringUtils.replaceVariable<wbr>(CharSequence, Function&lt;? super String, Optional&lt;String&gt;&gt;)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#replaceVariable(java.lang.CharSequence,java.util.function.Function)">org.tquadrat.foundation.util.StringUtils.replaceVariable<wbr>(CharSequence, Function&lt;? super String, Optional&lt;String&gt;&gt;)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.lang.CharSequence,java.util.function.Function)"><code>Template.replaceVariable(CharSequence, Function)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#replaceVariable(java.lang.CharSequence,java.util.Map...)">org.tquadrat.foundation.util.StringUtils.replaceVariable<wbr>(CharSequence, Map&lt;String, ? extends Object&gt;...)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#replaceVariable(java.lang.CharSequence,java.util.Map...)">org.tquadrat.foundation.util.StringUtils.replaceVariable<wbr>(CharSequence, Map&lt;String, ? extends Object&gt;...)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.lang.CharSequence,java.util.Map...)"><code>Template.replaceVariable(CharSequence, Map[])</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#toUnicode(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.toUnicode<wbr>(CharSequence)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#toUnicode(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.toUnicode<wbr>(CharSequence)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use instead
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#convertUnicodeToASCII(java.text.Normalizer.Form,java.lang.CharSequence)"><code>CharSetUtils.convertUnicodeToASCII(java.text.Normalizer.Form, CharSequence)</code></a>
       with
       <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/text/Normalizer.Form.html#NFKC" title="class or interface in java.text" class="external-link"><code>Normalizer.Form.NFKC</code></a>
       as the first argument.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#unescapeUnicode(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.unescapeUnicode<wbr>(CharSequence)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#unescapeUnicode(java.lang.CharSequence)">org.tquadrat.foundation.util.StringUtils.unescapeUnicode<wbr>(CharSequence)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#unescapeUnicode(java.lang.CharSequence)"><code>CharSetUtils.unescapeUnicode(CharSequence)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#unicodeEscape(char)">org.tquadrat.foundation.util.StringUtils.unicodeEscape<wbr>(char)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#unicodeEscape(char)">org.tquadrat.foundation.util.StringUtils.unicodeEscape<wbr>(char)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#escapeCharacter(int)"><code>CharSetUtils.escapeCharacter(char)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#unicodeEscape(int)">org.tquadrat.foundation.util.StringUtils.unicodeEscape<wbr>(int)</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#unicodeEscape(int)">org.tquadrat.foundation.util.StringUtils.unicodeEscape<wbr>(int)</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#escapeUnicode(int)"><code>StringUtils.escapeUnicode(int)</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#VARIABLE_PATTERN">org.tquadrat.foundation.util.StringUtils.VARIABLE_PATTERN</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#VARIABLE_PATTERN">org.tquadrat.foundation.util.StringUtils.VARIABLE_PATTERN</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#VARIABLE_PATTERN"><code>Template.VARIABLE_PATTERN</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#VARIABLE_TEMPLATE">org.tquadrat.foundation.util.StringUtils.VARIABLE_TEMPLATE</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/StringUtils.html#VARIABLE_TEMPLATE">org.tquadrat.foundation.util.StringUtils.VARIABLE_TEMPLATE</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#VARIABLE_TEMPLATE"><code>Template.VARIABLE_TEMPLATE</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#determineOutsideIPAddresses()">org.tquadrat.foundation.util.SystemUtils.determineOutsideIPAddresses()</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#determineOutsideIPAddresses()">org.tquadrat.foundation.util.SystemUtils.determineOutsideIPAddresses()</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#determineOutboundIPAddresses()"><code>SystemUtils.determineOutboundIPAddresses()</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#getPseudoNodeId()">org.tquadrat.foundation.util.SystemUtils.getPseudoNodeId()</a></div>
-<div class="col-last odd-row-color">
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#getPseudoNodeId()">org.tquadrat.foundation.util.SystemUtils.getPseudoNodeId()</a></div>
+<div class="col-last even-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#createPseudoNodeId()"><code>SystemUtils.createPseudoNodeId()</code></a>
       instead.</div>
 </div>
-<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#replaceSystemVariable(java.lang.CharSequence,java.util.Map...)">org.tquadrat.foundation.util.SystemUtils.replaceSystemVariable<wbr>(CharSequence, Map&lt;String, ? extends Object&gt;...)</a></div>
-<div class="col-last even-row-color">
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#replaceSystemVariable(java.lang.CharSequence,java.util.Map...)">org.tquadrat.foundation.util.SystemUtils.replaceSystemVariable<wbr>(CharSequence, Map&lt;String, ? extends Object&gt;...)</a></div>
+<div class="col-last odd-row-color">
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariableFromSystemData(java.lang.CharSequence,java.util.Map...)"><code>Template.replaceVariableFromSystemData(CharSequence, Map[])</code></a>
       instead.</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html" title="interface in org.tquadrat.foundation.util">org.tquadrat.foundation.util.TSID</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#m_LastTSIDCreationTime">org.tquadrat.foundation.util.UniqueIdUtils.m_LastTSIDCreationTime</a></div>
+<div class="col-last odd-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#m_TSIDCounter">org.tquadrat.foundation.util.UniqueIdUtils.m_TSIDCounter</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#m_TSIDGuard">org.tquadrat.foundation.util.UniqueIdUtils.m_TSIDGuard</a></div>
+<div class="col-last odd-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#newTSID()">org.tquadrat.foundation.util.UniqueIdUtils.newTSID()</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#newTSID(int)">org.tquadrat.foundation.util.UniqueIdUtils.newTSID<wbr>(int)</a></div>
+<div class="col-last odd-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#newTSIDInternal(long)">org.tquadrat.foundation.util.UniqueIdUtils.newTSIDInternal<wbr>(long)</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#tsidFromNumber(long)">org.tquadrat.foundation.util.UniqueIdUtils.tsidFromNumber<wbr>(long)</a></div>
+<div class="col-last odd-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#tsidFromString(java.lang.CharSequence)">org.tquadrat.foundation.util.UniqueIdUtils.tsidFromString<wbr>(CharSequence)</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+<ul class="block-list">
+<li>
+<div id="interface">
+<div class="caption"><span>Deprecated Interfaces</span></div>
+<div class="summary-table two-column-summary">
+<div class="table-header col-first">Interface</div>
+<div class="table-header col-last">Description</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/TSID.html" title="interface in org.tquadrat.foundation.util">org.tquadrat.foundation.util.TSID</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+</div>
+</div>
+</li>
+</ul>
+<ul class="block-list">
+<li>
+<div id="class">
+<div class="caption"><span>Deprecated Classes</span></div>
+<div class="summary-table two-column-summary">
+<div class="table-header col-first">Class</div>
+<div class="table-header col-last">Description</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TSIDImpl.html" title="class in org.tquadrat.foundation.util.internal">org.tquadrat.foundation.util.internal.TSIDImpl</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
 </div>
 </div>
 </div>
@@ -286,6 +358,18 @@ loadScripts(document, 'script');</script>
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#VARIABLE_TEMPLATE"><code>Template.VARIABLE_TEMPLATE</code></a>
       instead.</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#m_LastTSIDCreationTime">org.tquadrat.foundation.util.UniqueIdUtils.m_LastTSIDCreationTime</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#m_TSIDCounter">org.tquadrat.foundation.util.UniqueIdUtils.m_TSIDCounter</a></div>
+<div class="col-last odd-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#m_TSIDGuard">org.tquadrat.foundation.util.UniqueIdUtils.m_TSIDGuard</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
 </div>
 </div>
 </div>
@@ -470,6 +554,26 @@ loadScripts(document, 'script');</script>
 <div class="deprecation-comment">Use
       <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariableFromSystemData(java.lang.CharSequence,java.util.Map...)"><code>Template.replaceVariableFromSystemData(CharSequence, Map[])</code></a>
       instead.</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#newTSID()">org.tquadrat.foundation.util.UniqueIdUtils.newTSID()</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#newTSID(int)">org.tquadrat.foundation.util.UniqueIdUtils.newTSID<wbr>(int)</a></div>
+<div class="col-last odd-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#newTSIDInternal(long)">org.tquadrat.foundation.util.UniqueIdUtils.newTSIDInternal<wbr>(long)</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name odd-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#tsidFromNumber(long)">org.tquadrat.foundation.util.UniqueIdUtils.tsidFromNumber<wbr>(long)</a></div>
+<div class="col-last odd-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
+</div>
+<div class="col-summary-item-name even-row-color"><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#tsidFromString(java.lang.CharSequence)">org.tquadrat.foundation.util.UniqueIdUtils.tsidFromString<wbr>(CharSequence)</a></div>
+<div class="col-last even-row-color">
+<div class="deprecation-comment">Do not use any longer! This is not tested!</div>
 </div>
 </div>
 </div>

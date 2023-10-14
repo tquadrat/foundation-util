@@ -24,6 +24,7 @@ import static java.lang.Character.MIN_LOW_SURROGATE;
 import static java.lang.Character.MIN_SUPPLEMENTARY_CODE_POINT;
 import static java.lang.Character.codePointAt;
 import static java.lang.Character.isBmpCodePoint;
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -31,7 +32,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_CHARSEQUENCE;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.util.stream.IntStream;
 
@@ -54,10 +54,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestUnescapeUnicode.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestUnescapeUnicode.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( {"MisorderedAssertEqualsArguments", "removal"} )
-@ClassVersion( sourceVersion = "$Id: TestUnescapeUnicode.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestUnescapeUnicode.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestUnescapeUnicode" )
 public class TestUnescapeUnicode extends TestBaseClass
 {

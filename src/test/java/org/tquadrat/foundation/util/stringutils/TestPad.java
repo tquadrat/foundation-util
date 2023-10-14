@@ -17,20 +17,20 @@
 
 package org.tquadrat.foundation.util.stringutils;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.tquadrat.foundation.util.StringUtils.format;
+import static org.tquadrat.foundation.util.StringUtils.Clipping.CLIPPING_ABBREVIATE;
+import static org.tquadrat.foundation.util.StringUtils.Clipping.CLIPPING_ABBREVIATE_MIDDLE;
+import static org.tquadrat.foundation.util.StringUtils.Clipping.CLIPPING_NONE;
+import static org.tquadrat.foundation.util.StringUtils.Padding.PADDING_CENTER;
 import static org.tquadrat.foundation.util.StringUtils.pad;
 import static org.tquadrat.foundation.util.StringUtils.padCenter;
 import static org.tquadrat.foundation.util.StringUtils.padLeft;
 import static org.tquadrat.foundation.util.StringUtils.padRight;
 import static org.tquadrat.foundation.util.StringUtils.repeat;
-import static org.tquadrat.foundation.util.StringUtils.Clipping.CLIPPING_ABBREVIATE;
-import static org.tquadrat.foundation.util.StringUtils.Clipping.CLIPPING_ABBREVIATE_MIDDLE;
-import static org.tquadrat.foundation.util.StringUtils.Clipping.CLIPPING_NONE;
-import static org.tquadrat.foundation.util.StringUtils.Padding.PADDING_CENTER;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.stream.Stream;
@@ -61,10 +61,10 @@ import org.tquadrat.foundation.util.StringUtils.Padding;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestPad.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestPad.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestPad.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestPad.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestPad" )
 public class TestPad extends TestBaseClass
 {

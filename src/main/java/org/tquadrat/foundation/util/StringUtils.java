@@ -97,13 +97,13 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -115,13 +115,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+     *  @version $Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -213,13 +213,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+     *  @version $Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {
@@ -311,7 +311,7 @@ public final class StringUtils
          */
         private static String padding( final int repeat, final char padChar ) throws IndexOutOfBoundsException
         {
-            if( repeat < 0 ) throw new IndexOutOfBoundsException( format( MSG_PadNegative, repeat ) );
+            if( repeat < 0 ) throw new IndexOutOfBoundsException( MSG_PadNegative.formatted( repeat ) );
 
             final var retValue = Character.toString( padChar ).repeat( repeat ).intern();
 
@@ -338,9 +338,9 @@ public final class StringUtils
 
     /**
      *  The initial buffer size that is used by
-     *  {@link #format(String, Object...)}
+     *  {@code format(String, Object...)}
      *  and
-     *  {@link #format(Locale, String, Object...)}
+     *  {@code format(Locale, String, Object...)}
      *  (per thread): {@value}.
      *
      *  @since 0.0.5
@@ -572,7 +572,7 @@ public final class StringUtils
         String retValue = null;
         if( nonNull( text ) )
         {
-            if( maxWidth < 4 ) throw new ValidationException( format( MSG_AbbrTooShort, 4 ) );
+            if( maxWidth < 4 ) throw new ValidationException( String.format( MSG_AbbrTooShort, 4 ) );
 
             final var len = text.length();
             if( len > maxWidth )
@@ -645,7 +645,7 @@ public final class StringUtils
         String retValue = null;
         if( nonNull( input ) )
         {
-            if( maxWidth < 5 ) throw new ValidationException( format( MSG_AbbrTooShort, 5 ) );
+            if( maxWidth < 5 ) throw new ValidationException( String.format( MSG_AbbrTooShort, 5 ) );
 
             final var len = input.length();
             if( len > maxWidth )
@@ -2079,7 +2079,7 @@ public final class StringUtils
      */
     public static final String quote( final CharSequence input )
     {
-        final var retValue = isNull( input ) ? null : format( "\"%s\"", input );
+        final var retValue = isNull( input ) ? null : String.format( "\"%s\"", input );
 
         //---* Done *----------------------------------------------------------
         return retValue;

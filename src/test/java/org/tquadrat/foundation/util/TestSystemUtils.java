@@ -17,8 +17,8 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.lang.String.format;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.lang.reflect.Field;
 
@@ -32,9 +32,9 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link org.tquadrat.foundation.util.SystemUtils}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestSystemUtils.java 1039 2022-12-15 00:57:02Z tquadrat $
+ *  @version $Id: TestSystemUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestSystemUtils.java 1039 2022-12-15 00:57:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestSystemUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.SystemUtils" )
 public class TestSystemUtils extends TestBaseClass
 {

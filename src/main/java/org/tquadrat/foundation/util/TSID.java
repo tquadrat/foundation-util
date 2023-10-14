@@ -17,7 +17,7 @@
 
 package org.tquadrat.foundation.util;
 
-import static org.apiguardian.api.API.Status.STABLE;
+import static org.apiguardian.api.API.Status.DEPRECATED;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
@@ -43,17 +43,20 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *  determined at program start.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TSID.java 1037 2022-12-15 00:35:17Z tquadrat $
+ *  @version $Id: TSID.java 1076 2023-10-03 18:36:07Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  *
  *  @see UniqueIdUtils#newTSID()
  *  @see UniqueIdUtils#newTSID(int)
+ *
+ *  @deprecated Do not use any longer! This is not tested!
  */
-@SuppressWarnings( "NewClassNamingConvention" )
-@ClassVersion( sourceVersion = "$Id: TSID.java 1037 2022-12-15 00:35:17Z tquadrat $" )
-@API( status = STABLE, since = "0.1.0" )
+@SuppressWarnings( {"NewClassNamingConvention", "DeprecatedIsStillUsed"} )
+@ClassVersion( sourceVersion = "$Id: TSID.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@API( status = DEPRECATED, since = "0.1.0" )
+@Deprecated( since = "0.3.0", forRemoval = true)
 public sealed interface TSID extends Comparable<TSID>
     permits TSIDImpl
 {

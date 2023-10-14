@@ -153,8 +153,9 @@ public class TestVersion7UUID extends TestBaseClass
         for( var i = 0; i < 1000; ++i )
         {
             final var current = version7UUID();
-            assertTrue( current.compareTo( previous ) > 0 );
-            assertTrue( set.add( current ), "Collision!" );
+            final var message = " Current: %s - Previous: %s".formatted( current.toString(), previous.toString() );
+            assertTrue( current.compareTo( previous ) > 0, "Sequence!" + message );
+            assertTrue( set.add( current ), "Collision!" + message );
             previous = current;
         }
     }   //  testVersion7UUIDSequence()

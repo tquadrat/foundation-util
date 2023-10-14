@@ -17,12 +17,12 @@
 
 package org.tquadrat.foundation.util;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.testutil.TestBaseClass;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  *  This class tests the methods from
@@ -30,7 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestUniqueIdUtils.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestUniqueIdUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestUniqueIdUtils" )
 public class TestUniqueIdUtils extends TestBaseClass
 {

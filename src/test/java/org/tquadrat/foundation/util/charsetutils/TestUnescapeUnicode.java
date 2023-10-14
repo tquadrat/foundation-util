@@ -37,6 +37,7 @@ import static java.lang.Character.isUpperCase;
 import static java.lang.Character.isValidCodePoint;
 import static java.lang.Character.isWhitespace;
 import static java.lang.Integer.max;
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static java.util.stream.Collectors.joining;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -49,7 +50,6 @@ import static org.tquadrat.foundation.util.CharSetUtils.convertEscapedStringToUn
 import static org.tquadrat.foundation.util.CharSetUtils.convertUnicodeToASCII;
 import static org.tquadrat.foundation.util.CharSetUtils.escapeCharacter;
 import static org.tquadrat.foundation.util.CharSetUtils.unescapeUnicode;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.util.stream.IntStream;
 
@@ -72,10 +72,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestUnescapeUnicode.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestUnescapeUnicode.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( {"MisorderedAssertEqualsArguments", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: TestUnescapeUnicode.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestUnescapeUnicode.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.charsetutils.TestUnescapeUnicode" )
 public class TestUnescapeUnicode extends TestBaseClass
 {
@@ -200,7 +200,7 @@ public class TestUnescapeUnicode extends TestBaseClass
 
         if( sum > 0 )
         {
-            final var msg = format( """
+            final var msg = """
                 alphabeticCount     = %d
                 notAlphabeticCount  = %d
                 bmpCount            = %d
@@ -214,7 +214,7 @@ public class TestUnescapeUnicode extends TestBaseClass
                 supplementaryCount  = %d
                 titleCaseCount      = %d
                 upperCaseCount      = %d
-                whitespaceCount     = %d""", alphabeticCount,
+                whitespaceCount     = %d""".formatted( alphabeticCount,
                 notAlphabeticCount, bmpCount, notBmpCount, digitCount,
                 ideographicCount, notIdeographicCount, isoControlCount,
                 letterCount, lowerCaseCount, supplementaryCount,

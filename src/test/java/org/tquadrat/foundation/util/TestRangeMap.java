@@ -17,13 +17,13 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import org.junit.jupiter.api.Test;
 import org.tquadrat.foundation.annotation.ClassVersion;
@@ -36,7 +36,7 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *
  *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestRangeMap.java 995 2022-01-23 01:09:35Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestRangeMap.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 public class TestRangeMap extends TestBaseClass
 {
         /*---------*\

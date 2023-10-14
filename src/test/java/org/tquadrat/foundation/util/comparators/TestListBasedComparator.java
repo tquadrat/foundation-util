@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util.comparators;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static java.util.Arrays.sort;
 import static java.util.Comparator.naturalOrder;
@@ -26,7 +27,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_String_ARRAY;
 import static org.tquadrat.foundation.util.Comparators.listBasedComparator;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.helper.RandomStringGenerator.generateTestData;
 
 import java.util.Comparator;
@@ -45,9 +45,9 @@ import org.tquadrat.foundation.util.Comparators.KeyProvider;
  *  {@link Comparators}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $
+ *  @version $Id: TestListBasedComparator.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestListBasedComparator.java 1007 2022-02-05 01:03:43Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestListBasedComparator.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.comparators.TestListBasedComparator" )
 public class TestListBasedComparator extends TestBaseClass
 {

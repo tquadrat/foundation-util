@@ -17,12 +17,12 @@
 
 package org.tquadrat.foundation.util.template;
 
+import static java.lang.String.format;
 import static java.lang.System.getProperties;
 import static java.lang.System.getenv;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.Template.VARIABLE_TEMPLATE;
 import static org.tquadrat.foundation.util.Template.isValidVariableName;
 import static org.tquadrat.foundation.util.Template.replaceVariableFromSystemData;
@@ -45,9 +45,9 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link org.tquadrat.foundation.util.Template}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestReplaceVariableFromSystemData.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestReplaceVariableFromSystemData.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestReplaceVariableFromSystemData.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestReplaceVariableFromSystemData.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.template.TestReplaceVariableFromSystemData" )
 public class TestReplaceVariableFromSystemData extends TestBaseClass
 {

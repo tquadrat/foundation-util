@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.lang.String.format;
 import static java.util.Collections.emptyMap;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -26,7 +27,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.util.Comparators.caseInsensitiveComparator;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
@@ -46,10 +46,10 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link org.tquadrat.foundation.util.internal.LazySortedMapImpl}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestLazySortedMap.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestLazySortedMap.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestLazySortedMap.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestLazySortedMap.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestLazySortedMap" )
 public class TestLazySortedMap extends TestBaseClass
 {

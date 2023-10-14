@@ -68,10 +68,6 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *  ids as defined through RFC&nbsp;4122. It extends the
  *  capabilities of the Java Runtime class
  *  {@link UUID}.</p>
- *  <p>Second, it provides the factory methods for a shorter unique id that can
- *  work better with database indexes, implemented through
- *  {@link TSID}. For details, refer to the description
- *  {@href #TSID below}.</p>
  *
  *  <h2>RFC&nbsp;4122 UUID</h2>
  *  <p>The methods
@@ -152,15 +148,8 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *       0x80, 0xb4, 0x00, 0xc0, 0x4f, 0xd4, 0x30, 0xc8
  *   };</code></pre>
  *
- *  <h2>{@anchor #TSID Time-sorted ID (TSID)}</h2>
- *  <p>The class
- *  {@link TSID}
- *  provides a unique id with 64-bit length (versus the 128-bit of UUID) that
- *  is sortable based on the creation time.</p>
- *  <p>It's textual representation is also suitable for XML ids.</p>
- *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -171,7 +160,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils
@@ -259,12 +248,18 @@ public final class UniqueIdUtils
 
     /**
      *  The millisecond when the last TSID was created.
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
+    @Deprecated( since = "0.3.0", forRemoval = true )
     private static volatile long m_LastTSIDCreationTime = -1;
 
     /**
      *  The counter TSIDs that were created in the current millisecond.
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
+    @Deprecated( since = "0.3.0", forRemoval = true )
     private static volatile int m_TSIDCounter = 0;
 
     /**
@@ -321,7 +316,11 @@ public final class UniqueIdUtils
      *      <li>{@link #m_LastTSIDCreationTime}</li>
      *      <li>{@link #m_TSIDCounter}</li>
      *  </ul>
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
+    @Deprecated( since = "0.3.0", forRemoval = true )
     private static final AutoLock m_TSIDGuard;
 
     /**
@@ -555,7 +554,11 @@ public final class UniqueIdUtils
      *  instance.}</p>
      *
      *  @return The {@code TSID} instance.
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
+    @Deprecated( since = "0.3.0", forRemoval = true )
     public static final TSID newTSID()
     {
         final var retValue = newTSIDInternal( TSID_Node );
@@ -572,7 +575,10 @@ public final class UniqueIdUtils
      *  @param  nodeId  The node id; a number between 0 (included) and 1024
      *      (excluded).
      *  @return The {@code TSID} instance.
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
+    @Deprecated( since = "0.3.0", forRemoval = true )
     public static final TSID newTSID( final int nodeId )
     {
         if( 0 > nodeId ) throw new ValidationException( "nodeId '%d' is less than zero".formatted( nodeId ) );
@@ -599,7 +605,10 @@ public final class UniqueIdUtils
      *  @param  nodeId  The node id; a number between 0 (included) and 1024
      *      (excluded).
      *  @return The {@code TSID} instance.
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
+    @Deprecated( since = "0.3.0", forRemoval = true )
     private static final TSID newTSIDInternal( final long nodeId )
     {
         final long counter;
@@ -785,7 +794,11 @@ public final class UniqueIdUtils
      *
      *  @param  number  The TSID numerical value.
      *  @return The id.
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
+    @Deprecated( since = "0.3.0", forRemoval = true )
     public static final TSID tsidFromNumber( final long number )
     {
         final var retValue = new TSIDImpl( number );
@@ -806,7 +819,11 @@ public final class UniqueIdUtils
      *  @throws ValidationException The provided String is not a valid TSID
      *      representation; it is either too short, does not start with 'X',
      *      or the suffix is not a valid Base&nbsp;32 String.
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
+    @SuppressWarnings( "DeprecatedIsStillUsed" )
+    @Deprecated( since = "0.3.0", forRemoval = true )
     public static final TSID tsidFromString( final CharSequence input )
     {
         if( requireNotBlankArgument( input, "input" ).length() != TSID_Size ) throw new ValidationException( "TSID String '%s' too short".formatted( input ) );

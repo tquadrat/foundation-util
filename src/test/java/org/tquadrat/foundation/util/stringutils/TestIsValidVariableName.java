@@ -17,6 +17,12 @@
 
 package org.tquadrat.foundation.util.stringutils;
 
+import static java.lang.String.format;
+import static java.lang.System.out;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,12 +33,6 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.StringUtils;
 import org.tquadrat.foundation.util.helper.VariableNameProvider;
 
-import static java.lang.System.out;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
-import static org.tquadrat.foundation.util.StringUtils.format;
-
 /**
  *  Some tests for the method
  *  {@link StringUtils#isValidVariableName(CharSequence)}
@@ -40,10 +40,10 @@ import static org.tquadrat.foundation.util.StringUtils.format;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestIsValidVariableName.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestIsValidVariableName.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( {"MisorderedAssertEqualsArguments", "removal"} )
-@ClassVersion( sourceVersion = "$Id: TestIsValidVariableName.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestIsValidVariableName.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestIsValidVariableName" )
 public class TestIsValidVariableName extends TestBaseClass
 {

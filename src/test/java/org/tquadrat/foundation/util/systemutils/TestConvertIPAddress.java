@@ -17,12 +17,12 @@
 
 package org.tquadrat.foundation.util.systemutils;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.SystemUtils.convertIPAddress;
 
 import java.net.Inet4Address;
@@ -46,9 +46,9 @@ import org.tquadrat.foundation.util.SystemUtils;
  *  {@link SystemUtils}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestConvertIPAddress.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestConvertIPAddress.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestConvertIPAddress.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestConvertIPAddress.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.systemutils.TestConvertIPAddress" )
 public class TestConvertIPAddress extends TestBaseClass
 {

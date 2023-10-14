@@ -17,13 +17,7 @@
 
 package org.tquadrat.foundation.util.securityutils;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.testutil.TestBaseClass;
-import org.tquadrat.foundation.util.SecurityUtils;
-
+import static java.lang.String.format;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
@@ -32,7 +26,13 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
 import static org.tquadrat.foundation.util.SecurityUtils.SHA1HASH_Length;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateSHA1Hash;
-import static org.tquadrat.foundation.util.StringUtils.format;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.exception.NullArgumentException;
+import org.tquadrat.foundation.testutil.TestBaseClass;
+import org.tquadrat.foundation.util.SecurityUtils;
 
 /**
  *  This test class provides some tests for the usage of the methods
@@ -45,7 +45,7 @@ import static org.tquadrat.foundation.util.StringUtils.format;
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestSHA1HashCreation.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestSHA1HashCreation.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestSHA1HashCreation" )
 public class TestSHA1HashCreation extends TestBaseClass
 {

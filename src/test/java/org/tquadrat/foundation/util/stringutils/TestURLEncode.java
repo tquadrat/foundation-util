@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util.stringutils;
 
+import static java.lang.String.format;
 import static java.lang.System.out;
 import static java.net.URLDecoder.decode;
 import static java.net.URLEncoder.encode;
@@ -25,7 +26,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
-import static org.tquadrat.foundation.util.StringUtils.format;
 import static org.tquadrat.foundation.util.StringUtils.urlDecode;
 import static org.tquadrat.foundation.util.StringUtils.urlEncode;
 
@@ -47,10 +47,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestURLEncode.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestURLEncode.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestURLEncode.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestURLEncode.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestURLEncode" )
 public class TestURLEncode extends TestBaseClass
 {

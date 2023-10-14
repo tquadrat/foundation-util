@@ -17,6 +17,7 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.lang.String.format;
 import static java.util.Arrays.fill;
 import static java.util.Collections.emptyList;
 import static java.util.Collections.emptySet;
@@ -28,7 +29,6 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_String_ARRAY;
-import static org.tquadrat.foundation.util.StringUtils.format;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -49,10 +49,10 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link org.tquadrat.foundation.util.internal.LazySetImpl}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestLazySet.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestLazySet.java 1076 2023-10-03 18:36:07Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestLazySet.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestLazySet.java 1076 2023-10-03 18:36:07Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestLazySet" )
 public class TestLazySet extends TestBaseClass
 {
