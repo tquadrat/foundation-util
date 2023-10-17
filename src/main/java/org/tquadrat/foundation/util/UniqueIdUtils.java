@@ -34,6 +34,7 @@ import static org.tquadrat.foundation.util.SystemUtils.createPseudoNodeId;
 import static org.tquadrat.foundation.util.SystemUtils.currentTimeNanos;
 import static org.tquadrat.foundation.util.SystemUtils.getNodeId;
 import static org.tquadrat.foundation.util.SystemUtils.getRandom;
+import static org.tquadrat.foundation.util.SystemUtils.repose;
 import static org.tquadrat.foundation.util.TSID.MAX_IDS_PER_MILLISECOND;
 import static org.tquadrat.foundation.util.TSID.MAX_NODES;
 import static org.tquadrat.foundation.util.internal.TSIDImpl.SHIFT;
@@ -932,14 +933,16 @@ public final class UniqueIdUtils
     {
         final var random = getRandom();
 
-        //---* Calculate the most significant bits *---------------------------
-        final var currentTime = currentTimeMillis() << 16;
+        //---* Calculate the most significant bits *--------------------------
+        final long randA;
+        final long currentTime;
+        synchronized( m_UUID7Counter )
+        {
+            randA = (long) m_UUID7Counter.getAndIncrement() & 0x0000000000000FFFL;
+            if( randA == 0 ) repose( 1 );
+            currentTime = currentTimeMillis() << 16;
+        }
         final var version = 28672L; //(0x07L << 12) & 0x000000000000F000L;
-        /*
-         * An overflow is expected and accepted, but it does not matter if it
-         * occurs or not.
-         */
-        final var randA = (long) m_UUID7Counter.getAndIncrement() & 0x0000000000000FFFL;
         final var mostSigBits = currentTime | version | randA;
 
         //---* Calculate the least significant bits *--------------------------

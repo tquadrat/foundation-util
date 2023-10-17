@@ -7,7 +7,7 @@
      version='1.1'
      baseProfile='full'
      width='877.000'
-     height='2102.000'>
+     height='2415.000'>
     <defs>
         <style><![CDATA[
             line
@@ -370,7 +370,7 @@
         </symbol>
         <clipPath id='ID000004'>
             <rect class='externalClass'
-                  height='502.000'
+                  height='579.000'
                   width='568.000'
                   x='0.000'
                   y='8.000'/>
@@ -381,7 +381,7 @@
                     <rect x='0.000'
                           y='8.000'
                           width='568.000'
-                          height='502.000'
+                          height='579.000'
                           class='externalClass'/>
                     <line x1='0.000'
                           y1='36.000'
@@ -483,43 +483,57 @@
                     <text x='5.000'
                           y='363.000'>&#x2A22; spliterator():java.util.Spliterator&lt;E&gt;</text>
                     <text x='5.000'
-                          y='374.000'
-                          class='abstract static'>+ of():java.util.List&lt;E&gt;</text>
+                          y='374.000'>&#x2A22; addFirst(arg0:E):void</text>
                     <text x='5.000'
-                          y='385.000'
-                          class='abstract static'>+ of(arg0:E):java.util.List&lt;E&gt;</text>
+                          y='385.000'>&#x2A22; addLast(arg0:E):void</text>
                     <text x='5.000'
-                          y='396.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E):java.util.List&lt;E&gt;</text>
+                          y='396.000'>&#x2A22; getFirst():E</text>
                     <text x='5.000'
-                          y='407.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E):java.util.List&lt;E&gt;</text>
+                          y='407.000'>&#x2A22; getLast():E</text>
                     <text x='5.000'
-                          y='418.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E):java.util.List&lt;E&gt;</text>
+                          y='418.000'>&#x2A22; removeFirst():E</text>
                     <text x='5.000'
-                          y='429.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E):java.util.List&lt;E&gt;</text>
+                          y='429.000'>&#x2A22; removeLast():E</text>
                     <text x='5.000'
-                          y='440.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E):java.util.List&lt;E&gt;</text>
+                          y='440.000'>&#x2A22; reversed():java.util.List&lt;E&gt;</text>
                     <text x='5.000'
                           y='451.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E):java.util.List&lt;E&gt;</text>
+                          class='abstract static'>+ of():java.util.List&lt;E&gt;</text>
                     <text x='5.000'
                           y='462.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E):java.util.List&lt;E&gt;</text>
+                          class='abstract static'>+ of(arg0:E):java.util.List&lt;E&gt;</text>
                     <text x='5.000'
                           y='473.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E,arg8:E):java.util.List&lt;E&gt;</text>
+                          class='abstract static'>+ of(arg0:E,arg1:E):java.util.List&lt;E&gt;</text>
                     <text x='5.000'
                           y='484.000'
-                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E,arg8:E,arg9:E):java.util.List&lt;E&gt;</text>
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E):java.util.List&lt;E&gt;</text>
                     <text x='5.000'
                           y='495.000'
-                          class='abstract static'>+ of(arg0:E&#x2026;):java.util.List&lt;E&gt;</text>
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E):java.util.List&lt;E&gt;</text>
                     <text x='5.000'
                           y='506.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E):java.util.List&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='517.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E):java.util.List&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='528.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E):java.util.List&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='539.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E):java.util.List&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='550.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E,arg8:E):java.util.List&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='561.000'
+                          class='abstract static'>+ of(arg0:E,arg1:E,arg2:E,arg3:E,arg4:E,arg5:E,arg6:E,arg7:E,arg8:E,arg9:E):java.util.List&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='572.000'
+                          class='abstract static'>+ of(arg0:E&#x2026;):java.util.List&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='583.000'
                           class='abstract static'>+ copyOf(arg0:java.util.Collection&lt;? extends E&gt;):java.util.List&lt;E&gt;</text>
                 </g>
                 <g transform='translate(543.000 0.000)'>
@@ -542,6 +556,73 @@
         </symbol>
         <clipPath id='ID000005'>
             <rect class='externalClass'
+                  height='128.000'
+                  width='280.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='java.util.SequencedCollection'>
+            <g>
+                <g clip-path='url(#ID000005)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='280.000'
+                          height='128.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='280.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='113.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='83.000'
+                          y='32.000'
+                          class='abstract'>SequencedCollection</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='280.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ reversed():java.util.SequencedCollection&lt;E&gt;</text>
+                    <text x='5.000'
+                          y='77.000'>&#x2A22; addFirst(arg0:E):void</text>
+                    <text x='5.000'
+                          y='88.000'>&#x2A22; addLast(arg0:E):void</text>
+                    <text x='5.000'
+                          y='99.000'>&#x2A22; getFirst():E</text>
+                    <text x='5.000'
+                          y='110.000'>&#x2A22; getLast():E</text>
+                    <text x='5.000'
+                          y='121.000'>&#x2A22; removeFirst():E</text>
+                    <text x='5.000'
+                          y='132.000'>&#x2A22; removeLast():E</text>
+                </g>
+                <g transform='translate(255.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='externalClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>E</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000006'>
+            <rect class='externalClass'
                   height='271.000'
                   width='394.000'
                   x='0.000'
@@ -549,7 +630,7 @@
         </clipPath>
         <symbol id='java.util.Collection'>
             <g>
-                <g clip-path='url(#ID000005)'>
+                <g clip-path='url(#ID000006)'>
                     <rect x='0.000'
                           y='8.000'
                           width='394.000'
@@ -647,7 +728,7 @@
                 </g>
             </g>
         </symbol>
-        <clipPath id='ID000006'>
+        <clipPath id='ID000007'>
             <rect class='externalClass'
                   height='84.000'
                   width='364.000'
@@ -656,7 +737,7 @@
         </clipPath>
         <symbol id='java.lang.Iterable'>
             <g>
-                <g clip-path='url(#ID000006)'>
+                <g clip-path='url(#ID000007)'>
                     <rect x='0.000'
                           y='8.000'
                           width='364.000'
@@ -708,13 +789,16 @@
         </symbol>
     </defs>
     <path class='inheritance'
-          d='M451.000,1530.000 c0.000,-1318.000,-231.750,0.000,-231.750,-1318.000 v-15'
+          d='M451.000,1843.000 c0.000,-1631.000,-231.750,0.000,-231.750,-1631.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='implementation'
-          d='M401.000,1530.000 c0.000,-93.000,25.000,0.000,25.000,-93.000 v-15'
+          d='M401.000,1843.000 c0.000,-93.000,25.000,0.000,25.000,-93.000 v-15'
           marker-end='url(#implementation)'/>
     <path class='inheritance'
-          d='M426.000,1294.000 L426.000,1186.000'
+          d='M426.000,1607.000 L426.000,1499.000'
+          marker-end='url(#inheritance)'/>
+    <path class='inheritance'
+          d='M426.000,920.000 L426.000,812.000'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
           d='M426.000,684.000 L426.000,576.000'
@@ -731,13 +815,16 @@
     <use x='229.000'
          y='297.000'
          xlink:href='#java.util.Collection'/>
-    <use x='142.000'
+    <use x='286.000'
          y='676.000'
+         xlink:href='#java.util.SequencedCollection'/>
+    <use x='142.000'
+         y='912.000'
          xlink:href='#java.util.List'/>
     <use x='25.000'
-         y='1286.000'
+         y='1599.000'
          xlink:href='#org.tquadrat.foundation.util.LazyList'/>
     <use x='121.000'
-         y='1522.000'
+         y='1835.000'
          xlink:href='#org.tquadrat.foundation.util.internal.LazyListImpl'/>
 </svg>

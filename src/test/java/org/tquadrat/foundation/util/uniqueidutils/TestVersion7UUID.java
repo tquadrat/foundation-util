@@ -44,10 +44,10 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  Some tests for version 7 UUIDs.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestVersion7UUID.java 1042 2022-12-26 14:05:06Z tquadrat $
+ *  @version $Id: TestVersion7UUID.java 1077 2023-10-14 23:00:23Z tquadrat $
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: TestVersion7UUID.java 1042 2022-12-26 14:05:06Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestVersion7UUID.java 1077 2023-10-14 23:00:23Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.uniqueidutils.TestVersion7UUID" )
 public class TestVersion7UUID extends TestBaseClass
 {
@@ -150,7 +150,7 @@ public class TestVersion7UUID extends TestBaseClass
         final Collection<UUID> set = new HashSet<>();
         var previous = version7UUID();
         set.add( previous );
-        for( var i = 0; i < 1000; ++i )
+        for( var i = 0; i < 1_000_000; ++i )
         {
             final var current = version7UUID();
             final var message = " Current: %s - Previous: %s".formatted( current.toString(), previous.toString() );

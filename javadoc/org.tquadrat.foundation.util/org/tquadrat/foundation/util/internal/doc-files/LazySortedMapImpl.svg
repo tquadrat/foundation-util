@@ -7,7 +7,7 @@
      version='1.1'
      baseProfile='full'
      width='1646.000'
-     height='1533.000'>
+     height='1835.000'>
     <defs>
         <style><![CDATA[
             line
@@ -471,7 +471,7 @@
         </clipPath>
         <clipPath id='ID000007'>
             <rect class='externalClass'
-                  height='150.000'
+                  height='183.000'
                   width='322.000'
                   x='0.000'
                   y='8.000'/>
@@ -482,7 +482,7 @@
                     <rect x='0.000'
                           y='8.000'
                           width='322.000'
-                          height='150.000'
+                          height='183.000'
                           class='externalClass'/>
                     <line x1='0.000'
                           y1='36.000'
@@ -529,6 +529,12 @@
                     <text x='5.000'
                           y='154.000'
                           class='abstract'>+ entrySet():java.util.Set&lt;java.util.Map.Entry&lt;K,V&gt;&gt;</text>
+                    <text x='5.000'
+                          y='165.000'>&#x2A22; putFirst(arg0:K,arg1:V):V</text>
+                    <text x='5.000'
+                          y='176.000'>&#x2A22; putLast(arg0:K,arg1:V):V</text>
+                    <text x='5.000'
+                          y='187.000'>&#x2A22; reversed():java.util.SortedMap&lt;K,V&gt;</text>
                 </g>
                 <g transform='translate(297.000 0.000)'>
                     <rect x='0.000'
@@ -708,6 +714,79 @@
         </symbol>
         <clipPath id='ID000009'>
             <rect class='externalClass'
+                  height='161.000'
+                  width='430.000'
+                  x='0.000'
+                  y='8.000'/>
+        </clipPath>
+        <symbol id='java.util.SequencedMap'>
+            <g>
+                <g clip-path='url(#ID000009)'>
+                    <rect x='0.000'
+                          y='8.000'
+                          width='430.000'
+                          height='161.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='36.000'
+                          x2='430.000'
+                          y2='36.000'
+                          class='separator'/>
+                    <text x='188.600'
+                          y='21.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='179.000'
+                          y='32.000'
+                          class='abstract'>SequencedMap</text>
+                    <line x1='0.000'
+                          y1='53.000'
+                          x2='430.000'
+                          y2='53.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='49.000'/>
+                    <text x='5.000'
+                          y='66.000'
+                          class='abstract'>+ reversed():java.util.SequencedMap&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='77.000'>&#x2A22; firstEntry():java.util.Map.Entry&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='88.000'>&#x2A22; lastEntry():java.util.Map.Entry&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='99.000'>&#x2A22; pollFirstEntry():java.util.Map.Entry&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='110.000'>&#x2A22; pollLastEntry():java.util.Map.Entry&lt;K,V&gt;</text>
+                    <text x='5.000'
+                          y='121.000'>&#x2A22; putFirst(arg0:K,arg1:V):V</text>
+                    <text x='5.000'
+                          y='132.000'>&#x2A22; putLast(arg0:K,arg1:V):V</text>
+                    <text x='5.000'
+                          y='143.000'>&#x2A22; sequencedKeySet():java.util.SequencedSet&lt;K&gt;</text>
+                    <text x='5.000'
+                          y='154.000'>&#x2A22; sequencedValues():java.util.SequencedCollection&lt;V&gt;</text>
+                    <text x='5.000'
+                          y='165.000'>&#x2A22; sequencedEntrySet():java.util.SequencedSet&lt;java.util.Map.Entry&lt;K,V&gt;&gt;</text>
+                </g>
+                <g transform='translate(405.000 0.000)'>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='template'/>
+                    <rect x='0.000'
+                          y='1.000'
+                          width='50.000'
+                          height='17.000'
+                          class='externalClass'
+                          stroke='none'
+                          stroke-opacity='0.0'/>
+                    <text x='5.000'
+                          y='14.000'>K,V</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000010'>
+            <rect class='externalClass'
                   height='480.000'
                   width='1054.000'
                   x='0.000'
@@ -715,28 +794,31 @@
         </clipPath>
     </defs>
     <path class='inheritance'
-          d='M785.500,1269.000 c0.000,-93.000,-455.500,0.000,-455.500,-93.000 v-15'
+          d='M785.500,1571.000 c0.000,-93.000,-455.500,0.000,-455.500,-93.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='implementation'
-          d='M835.500,1269.000 c0.000,-291.000,317.500,0.000,317.500,-291.000 v-15'
+          d='M835.500,1571.000 c0.000,-291.000,317.500,0.000,317.500,-291.000 v-15'
           marker-end='url(#implementation)'/>
     <path class='inheritance'
-          d='M305.000,879.000 c0.000,-667.000,-158.000,0.000,-158.000,-667.000 v-15'
+          d='M305.000,1181.000 c0.000,-969.000,-158.000,0.000,-158.000,-969.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='implementation'
-          d='M355.000,879.000 c0.000,-126.000,62.000,0.000,62.000,-126.000 v-15'
+          d='M355.000,1181.000 c0.000,-159.000,62.000,0.000,62.000,-159.000 v-15'
           marker-end='url(#implementation)'/>
     <path class='inheritance'
-          d='M1128.000,879.000 c0.000,-126.000,-681.000,0.000,-681.000,-126.000 v-15'
+          d='M1128.000,1181.000 c0.000,-159.000,-681.000,0.000,-681.000,-159.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M1178.000,879.000 c0.000,-93.000,-103.000,0.000,-103.000,-93.000 v-15'
+          d='M1178.000,1181.000 c0.000,-93.000,-103.000,0.000,-103.000,-93.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M432.000,621.000 c0.000,-93.000,399.000,0.000,399.000,-93.000 v-15'
+          d='M432.000,890.000 c0.000,-362.000,399.000,0.000,399.000,-362.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M1075.000,621.000 c0.000,-93.000,-214.000,0.000,-214.000,-93.000 v-15'
+          d='M1075.000,890.000 c0.000,-93.000,-264.500,0.000,-264.500,-93.000 v-15'
+          marker-end='url(#inheritance)'/>
+    <path class='inheritance'
+          d='M810.500,621.000 c0.000,-93.000,50.500,0.000,50.500,-93.000 v-15'
           marker-end='url(#inheritance)'/>
     <use x='25.000'
          y='25.000'
@@ -744,19 +826,22 @@
     <use x='319.000'
          y='25.000'
          xlink:href='#java.util.Map'/>
-    <use x='25.000'
+    <use x='595.500'
          y='613.000'
+         xlink:href='#java.util.SequencedMap'/>
+    <use x='25.000'
+         y='882.000'
          xlink:href='#org.tquadrat.foundation.util.LazyMap'/>
     <use x='914.000'
-         y='613.000'
+         y='882.000'
          xlink:href='#java.util.SortedMap'/>
     <use x='25.000'
-         y='871.000'
+         y='1173.000'
          xlink:href='#org.tquadrat.foundation.util.internal.LazyMapImpl'/>
     <use x='710.000'
-         y='871.000'
+         y='1173.000'
          xlink:href='#org.tquadrat.foundation.util.LazySortedMap'/>
     <use x='469.500'
-         y='1261.000'
+         y='1563.000'
          xlink:href='#org.tquadrat.foundation.util.internal.LazySortedMapImpl'/>
 </svg>
