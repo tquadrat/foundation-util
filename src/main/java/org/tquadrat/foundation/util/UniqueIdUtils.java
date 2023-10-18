@@ -20,16 +20,21 @@ import static java.lang.Math.abs;
 import static java.lang.System.currentTimeMillis;
 import static java.util.Locale.ROOT;
 import static java.util.UUID.fromString;
+import static org.apiguardian.api.API.Status.DEPRECATED;
+import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_String_ARRAY;
 import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotBlankArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
+import static org.tquadrat.foundation.lang.Objects.requireValidIntegerArgument;
 import static org.tquadrat.foundation.util.Base32.getDecoder;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateMD5Hash;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateSHA1Hash;
+import static org.tquadrat.foundation.util.StringUtils.isNotEmpty;
 import static org.tquadrat.foundation.util.StringUtils.repeat;
+import static org.tquadrat.foundation.util.StringUtils.splitString;
 import static org.tquadrat.foundation.util.SystemUtils.createPseudoNodeId;
 import static org.tquadrat.foundation.util.SystemUtils.currentTimeNanos;
 import static org.tquadrat.foundation.util.SystemUtils.getNodeId;
@@ -45,6 +50,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
@@ -224,8 +230,11 @@ public final class UniqueIdUtils
 
     /**
      *  The character count for a {@link TSID}: {@value}.
+     *
+     *  @deprecated Do not use any longer! This is not tested!
      */
-    @API( status = STABLE, since = "0.1.0" )
+    @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     public static final int TSID_Size = TSID.TSID_Size;
 
     /**
@@ -253,6 +262,7 @@ public final class UniqueIdUtils
      *  @deprecated Do not use any longer! This is not tested!
      */
     @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     private static volatile long m_LastTSIDCreationTime = -1;
 
     /**
@@ -261,12 +271,35 @@ public final class UniqueIdUtils
      *  @deprecated Do not use any longer! This is not tested!
      */
     @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     private static volatile int m_TSIDCounter = 0;
 
     /**
      *  The counter for version 7 UUIDs.
      */
     private static final AtomicInteger m_UUID7Counter = new AtomicInteger( getRandom().nextInt() );
+
+        /*------------------------*\
+    ====** Static Initialisations **===========================================
+        \*------------------------*/
+    /**
+     *  <p>{@summary The digits that are used for an XML safe UUID.} The first
+     *  array holds the original digits, the second array those for the XML
+     *  id.</p>
+     */
+    @API( status = INTERNAL, since = "0.3.0" )
+    private static final char [][] m_UUIDXMLDigits;
+
+    static
+    {
+        @SuppressWarnings( "SpellCheckingInspection" )
+        final var fromXML = "-0123456789ABCDEFGHIJKL".toCharArray();
+        @SuppressWarnings( "SpellCheckingInspection" )
+        final var toXML = "XABCDEFGHJKLMNPRSTUVWYZ".toCharArray();
+        m_UUIDXMLDigits = new char[2][fromXML.length];
+        m_UUIDXMLDigits [0] = fromXML;
+        m_UUIDXMLDigits [1] = toXML;
+    }
 
         /*--------------*\
     ====** Constructors **=====================================================
@@ -322,6 +355,7 @@ public final class UniqueIdUtils
      */
     @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     private static final AutoLock m_TSIDGuard;
 
     /**
@@ -387,6 +421,44 @@ public final class UniqueIdUtils
         /*---------*\
     ====** Methods **==========================================================
         \*---------*/
+    /**
+     *  Converts an XML safe id that was created through
+     *  {@link #toXMLId(UUID)}
+     *  back to a UUID.
+     *
+     *  @param  input   The XML safe id.
+     *  @return The UUID.
+     *  @throws IllegalArgumentException    The given XML safe id cannot be
+     *      converted to a UUID.
+     */
+    @API( status = STABLE, since = "0.3.0" )
+    public static final UUID fromXMLId( final CharSequence input )
+    {
+        final var radix = m_UUIDXMLDigits [0].length - 1;
+        final var numbers = new long [2];
+
+        final var parts = splitString( requireNotBlankArgument( input, "input" ).toString().toUpperCase( ROOT ), "-" );
+        final var message = "Cannot convert '%s' to a UUID!".formatted( input );
+        requireValidIntegerArgument( parts.length, "input", length -> length == 2, $ -> message );
+        for( var i = 0; i < parts.length; ++i )
+        {
+            final var buffer = new StringBuilder();
+            for( final var c : parts [i].toUpperCase( ROOT ).toCharArray() )
+            {
+                IntStream.range( 0, m_UUIDXMLDigits[1].length )
+                    .filter( index -> m_UUIDXMLDigits[1][index] == c )
+                    .findFirst()
+                    .ifPresentOrElse( index -> buffer.append( m_UUIDXMLDigits[0][index] ), () -> {throw new IllegalArgumentException( message );} );
+            }
+            numbers [i] = Long.parseLong( buffer.toString().toLowerCase( ROOT ), radix );
+        }
+
+        final var retValue = new UUID( numbers [0], numbers [1] );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  fromXMLId()
+
     /**
      *  <p>{@summary Returns the clock sequence.} It will be initialised with a
      *  random number on each time the program starts, and it remains unchanged
@@ -558,8 +630,8 @@ public final class UniqueIdUtils
      *
      *  @deprecated Do not use any longer! This is not tested!
      */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     public static final TSID newTSID()
     {
         final var retValue = newTSIDInternal( TSID_Node );
@@ -580,6 +652,7 @@ public final class UniqueIdUtils
      *  @deprecated Do not use any longer! This is not tested!
      */
     @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     public static final TSID newTSID( final int nodeId )
     {
         if( 0 > nodeId ) throw new ValidationException( "nodeId '%d' is less than zero".formatted( nodeId ) );
@@ -610,6 +683,7 @@ public final class UniqueIdUtils
      *  @deprecated Do not use any longer! This is not tested!
      */
     @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     private static final TSID newTSIDInternal( final long nodeId )
     {
         final long counter;
@@ -789,6 +863,36 @@ public final class UniqueIdUtils
     }   // timebasedUUIDFromNodeName()
 
     /**
+     *  Converts a UUID to a String that can be used as an XML id.
+     *
+     *  @param  input   The UUID.
+     *  @return The XML safe id.
+     */
+    @API( status = STABLE, since = "0.3.0" )
+    public static final String toXMLId( final UUID input )
+    {
+        final var radix = m_UUIDXMLDigits [0].length - 1;
+        final var numbers = new long [] {requireNonNullArgument( input, "input" ).getMostSignificantBits(), input.getLeastSignificantBits()};
+        final var buffer = new StringBuilder();
+        for( final var number : numbers )
+        {
+            if( isNotEmpty( buffer ) ) buffer.append( '-' );
+            for( final var c : Long.toString( number, radix ).toUpperCase( ROOT ).toCharArray() )
+            {
+                IntStream.range( 0, m_UUIDXMLDigits[0].length )
+                    .filter( index -> m_UUIDXMLDigits[0][index] == c )
+                    .findFirst()
+                    .ifPresent( index -> buffer.append( m_UUIDXMLDigits[1][index] ) );
+            }
+        }
+
+        final var retValue = buffer.toString();
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  toXMLId()
+
+    /**
      *  <p>{@summary Creates a
      *  {@link TSID}
      *  from the given number.}</p>
@@ -798,8 +902,8 @@ public final class UniqueIdUtils
      *
      *  @deprecated Do not use any longer! This is not tested!
      */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     public static final TSID tsidFromNumber( final long number )
     {
         final var retValue = new TSIDImpl( number );
@@ -825,6 +929,7 @@ public final class UniqueIdUtils
      */
     @SuppressWarnings( "DeprecatedIsStillUsed" )
     @Deprecated( since = "0.3.0", forRemoval = true )
+    @API( status = DEPRECATED, since = "0.1.0" )
     public static final TSID tsidFromString( final CharSequence input )
     {
         if( requireNotBlankArgument( input, "input" ).length() != TSID_Size ) throw new ValidationException( "TSID String '%s' too short".formatted( input ) );
