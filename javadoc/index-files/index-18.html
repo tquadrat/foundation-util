@@ -153,6 +153,12 @@ loadScripts(document, 'script');</script>
 <div class="block">Repeats the given String <code>repeat</code> times to form a new String.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html#replaceAll(java.util.function.UnaryOperator)" class="member-name-link">replaceAll(UnaryOperator&lt;E&gt;)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyListImpl</a></dt>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html#replaceByCachedZoneId(java.time.ZoneId)" class="member-name-link">replaceByCachedZoneId(ZoneId)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html" title="class in org.tquadrat.foundation.util">DateTimeUtils</a></dt>
+<dd>
+<div class="block">Replaces the given instance of
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZoneId.html" title="class or interface in java.time" class="external-link"><code>ZoneId</code></a>
+  by one from the cache.</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html#replaceHead(T)" class="member-name-link">replaceHead(T)</a> - Method in interface org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html" title="interface in org.tquadrat.foundation.util">HeadTailList</a></dt>
 <dd>
 <div class="block">Returns a new copy of this list where the head element is replaced by
@@ -249,6 +255,29 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html#retainAll(java.util.Collection)" class="member-name-link">retainAll(Collection&lt;?&gt;)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyListImpl</a></dt>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySetImpl.html#retainAll(java.util.Collection)" class="member-name-link">retainAll(Collection&lt;?&gt;)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySetImpl.html" title="class in org.tquadrat.foundation.util.internal">LazySetImpl</a></dt>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html#retrieveCachedZoneId(java.lang.String)" class="member-name-link">retrieveCachedZoneId(String)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html" title="class in org.tquadrat.foundation.util">DateTimeUtils</a></dt>
+<dd>
+<div class="block">Retrieves a cached instance of
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZoneId.html" title="class or interface in java.time" class="external-link"><code>ZoneId</code></a>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html#retrieveCachedZoneId(java.lang.String,java.time.ZoneOffset)" class="member-name-link">retrieveCachedZoneId(String, ZoneOffset)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html" title="class in org.tquadrat.foundation.util">DateTimeUtils</a></dt>
+<dd>
+<div class="block">Retrieves a cached instance of
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZoneId.html" title="class or interface in java.time" class="external-link"><code>ZoneId</code></a>
+  for the given offset.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html#retrieveCachedZoneId(java.lang.String,java.util.Map)" class="member-name-link">retrieveCachedZoneId(String, Map&lt;String, String&gt;)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html" title="class in org.tquadrat.foundation.util">DateTimeUtils</a></dt>
+<dd>
+<div class="block">Retrieves a cached instance of
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZoneId.html" title="class or interface in java.time" class="external-link"><code>ZoneId</code></a>
+  using a map of aliases.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html#retrieveCachedZoneId(java.time.temporal.TemporalAccessor)" class="member-name-link">retrieveCachedZoneId(TemporalAccessor)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/DateTimeUtils.html" title="class in org.tquadrat.foundation.util">DateTimeUtils</a></dt>
+<dd>
+<div class="block">Retrieves a cached instance of
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/ZoneId.html" title="class or interface in java.time" class="external-link"><code>ZoneId</code></a>
+  from the given <code>temporal</code>.</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/JavaUtils.html#retrieveGetter(java.lang.Class,java.lang.String)" class="member-name-link">retrieveGetter(Class&lt;?&gt;, String)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/JavaUtils.html" title="class in org.tquadrat.foundation.util">JavaUtils</a></dt>
 <dd>
 <div class="block">Retrieves the public getter for the property with the given name.</div>

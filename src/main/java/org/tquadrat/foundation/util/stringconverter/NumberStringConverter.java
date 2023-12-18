@@ -71,6 +71,8 @@ public abstract sealed class NumberStringConverter<T extends Number> implements 
         \*------------*/
     /**
      *  The subject classes for this converter.
+     *
+     *  @serial
      */
     private final Collection<Class<?>> m_SubjectClasses;
 

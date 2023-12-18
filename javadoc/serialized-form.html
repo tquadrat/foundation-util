@@ -399,6 +399,34 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
+<section class="serialized-class-details" id="org.tquadrat.foundation.util.stringconverter.ListStringConverter">
+<h3>Class&nbsp;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ListStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">org.tquadrat.foundation.util.stringconverter.ListStringConverter</a></h3>
+<div class="type-signature">class ListStringConverter extends <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a> implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a></div>
+<ul class="block-list">
+<li>
+<section class="detail">
+<h4>Serialized Fields</h4>
+<ul class="block-list">
+<li class="block-list">
+<h5>m_ElementStringConverter</h5>
+<pre><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">StringConverter</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ListStringConverter.html" title="type parameter in ListStringConverter">E</a>&gt; m_ElementStringConverter</pre>
+<div class="block">The instance of
+  <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
+  that is used for the elements of the list.</div>
+</li>
+<li class="block-list">
+<h5>m_Factory</h5>
+<pre><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ListStringConverter.html" title="type parameter in ListStringConverter">E</a>&gt;&gt; m_Factory</pre>
+<div class="block">The factory for the list that is used by
+  <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/ListStringConverter.html#fromString(java.lang.CharSequence)"><code>ListStringConverter.fromString(CharSequence)</code></a>.</div>
+</li>
+</ul>
+</section>
+</li>
+</ul>
+</section>
+</li>
+<li>
 <section class="serialized-class-details" id="org.tquadrat.foundation.util.stringconverter.LocalDateStringConverter">
 <h3>Class&nbsp;<a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/LocalDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">org.tquadrat.foundation.util.stringconverter.LocalDateStringConverter</a></h3>
 <div class="type-signature">class LocalDateStringConverter extends <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter">TimeDateStringConverter</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/LocalDate.html" title="class or interface in java.time" class="external-link">LocalDate</a>&gt; implements <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a></div>
@@ -557,7 +585,7 @@ loadScripts(document, 'script');</script>
 <ul class="block-list">
 <li>
 <h5>readObject</h5>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-202">readObject</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/ObjectInputStream.html" title="class or interface in java.io" class="external-link">ObjectInputStream</a>&nbsp;in)</span>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-204">readObject</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/ObjectInputStream.html" title="class or interface in java.io" class="external-link">ObjectInputStream</a>&nbsp;in)</span>
                        throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a>,
 <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ClassNotFoundException.html" title="class or interface in java.lang" class="external-link">ClassNotFoundException</a></span></div>
 <div class="block">Loads a previously serialised instance of this class from the given
@@ -572,7 +600,7 @@ loadScripts(document, 'script');</script>
 </li>
 <li>
 <h5>writeObject</h5>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-231">writeObject</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/ObjectOutputStream.html" title="class or interface in java.io" class="external-link">ObjectOutputStream</a>&nbsp;out)</span>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeDateStringConverter.html#line-233">writeObject</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/ObjectOutputStream.html" title="class or interface in java.io" class="external-link">ObjectOutputStream</a>&nbsp;out)</span>
                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Writes a serialised instance of this class to the given output stream.
   This fails if a

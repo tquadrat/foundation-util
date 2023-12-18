@@ -196,6 +196,8 @@ public class Template implements Serializable
         \*------------*/
     /**
      *  The template text.
+     *
+     *  @serial
      */
     private final String m_TemplateText;
 

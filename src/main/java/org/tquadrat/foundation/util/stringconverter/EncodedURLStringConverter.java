@@ -78,6 +78,8 @@ public final class EncodedURLStringConverter extends URLStringConverter
         \*------------*/
     /**
      *  The character encoding that is used at default.
+     *
+     *  @serial
      */
     private final Charset m_Encoding;
 

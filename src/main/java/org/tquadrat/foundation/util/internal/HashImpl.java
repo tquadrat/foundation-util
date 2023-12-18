@@ -57,6 +57,8 @@ public final class HashImpl implements Hash
         \*------------*/
     /**
      *  The hash value.
+     *
+     *  @serial
      */
     private final byte [] m_HashValue;
 

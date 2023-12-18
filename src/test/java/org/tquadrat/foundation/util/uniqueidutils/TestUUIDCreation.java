@@ -56,7 +56,7 @@ import org.tquadrat.foundation.util.UniqueIdUtils.HashType;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestUUIDCreation.java 1037 2022-12-15 00:35:17Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestUUIDCreation.java 1078 2023-10-19 14:39:47Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.uniqueidutils.TestUUIDCreation" )
 public class TestUUIDCreation extends TestBaseClass
 {

@@ -145,7 +145,6 @@ public final class IOUtils
      *
      *  @UMLGraph.link
      */
-    @SuppressWarnings( {"UtilityClassCanBeEnum", "ClassWithoutConstructor"} )
     @ClassVersion( sourceVersion = "$Id: IOUtils.java 1045 2023-02-07 23:09:17Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
@@ -174,6 +173,14 @@ public final class IOUtils
             tempFilePermissions = PosixFilePermissions.asFileAttribute( EnumSet.of( OWNER_READ, OWNER_WRITE ) );
             tempDirPermissions = PosixFilePermissions.asFileAttribute( EnumSet.of( OWNER_READ, OWNER_WRITE, OWNER_EXECUTE ) );
         }
+
+            /*--------------*\
+        ====** Constructors **=================================================
+            \*--------------*/
+        /**
+         *  No instance allowed for this class!
+         */
+        private PosixPermissions() { throw new PrivateConstructorForStaticClassCalledError( PosixPermissions.class ); }
     }
     //  class PosixPermissions
 

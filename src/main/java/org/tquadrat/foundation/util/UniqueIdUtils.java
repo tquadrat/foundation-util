@@ -156,7 +156,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *   };</code></pre>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1078 2023-10-19 14:39:47Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -167,7 +167,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1078 2023-10-19 14:39:47Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils

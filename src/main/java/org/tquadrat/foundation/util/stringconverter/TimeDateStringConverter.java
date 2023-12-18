@@ -87,6 +87,8 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
 
     /**
      *  The subject class for this converter.
+     *
+     *  @serial
      */
     private final Class<T> m_SubjectClass;
 

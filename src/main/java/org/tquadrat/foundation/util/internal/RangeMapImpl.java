@@ -54,11 +54,15 @@ public sealed class RangeMapImpl<T> implements RangeMap<T>
         \*------------*/
     /**
      *  This flag determines if the limit belongs to the range or not.
+     *
+     *  @serial
      */
     private boolean m_Includes = false;
 
     /**
      *  The Ranges.
+     *
+     *  @serial
      */
     private final Set<Pair<Double, ? extends T>> m_Ranges = new TreeSet<>( Comparator.comparing( Pair::left ) );
 
