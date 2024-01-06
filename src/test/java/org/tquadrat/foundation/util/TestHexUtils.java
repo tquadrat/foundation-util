@@ -40,7 +40,7 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
 @SuppressWarnings( "removal" )
-@ClassVersion( sourceVersion = "$Id: TestHexUtils.java 1021 2022-03-01 22:53:02Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestHexUtils.java 1087 2024-01-06 09:51:27Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.TestHexUtils" )
 public class TestHexUtils extends TestBaseClass
 {
