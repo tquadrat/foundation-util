@@ -47,14 +47,14 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  for human readers.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ListStringConverter.java 1079 2023-10-22 17:44:34Z tquadrat $
+ *  @version $Id: ListStringConverter.java 1080 2024-01-03 11:05:21Z tquadrat $
  *  @since 0.3.0
  *
  *  @UMLGraph.link
  *
  *  @param  <E> The element type of the list to convert to a String.
  */
-@ClassVersion( sourceVersion = "$Id: ListStringConverter.java 1079 2023-10-22 17:44:34Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ListStringConverter.java 1080 2024-01-03 11:05:21Z tquadrat $" )
 @API( status = STABLE, since = "0.3.0" )
 public class ListStringConverter<E> implements StringConverter<List<E>>
 {

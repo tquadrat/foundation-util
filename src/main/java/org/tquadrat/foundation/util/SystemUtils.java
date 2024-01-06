@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -31,7 +31,6 @@ import static java.util.Collections.list;
 import static java.util.Locale.ROOT;
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toMap;
-import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.apiguardian.api.API.Status.EXPERIMENTAL;
 import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
@@ -81,13 +80,13 @@ import org.tquadrat.foundation.lang.SoftLazy;
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SystemUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: SystemUtils.java 1084 2024-01-03 15:31:20Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@SuppressWarnings( "ClassWithTooManyMethods" )
+@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1084 2024-01-03 15:31:20Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class SystemUtils
@@ -101,14 +100,14 @@ public final class SystemUtils
      *  UNIX/Linux and MacOX/OS-X.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: SystemUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+     *  @version $Id: SystemUtils.java 1084 2024-01-03 15:31:20Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      *
      *  @see SystemUtils#determineOperatingSystem()
      */
-    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1084 2024-01-03 15:31:20Z tquadrat $" )
     @API( status = STABLE, since = "0.0.6" )
     public static enum OperatingSystem
     {
@@ -562,25 +561,6 @@ public final class SystemUtils
     }   //  determineOutboundIPAddresses()
 
     /**
-     *  Determines those IP addresses of the machine this program is running
-     *  on that are used to communicate with the outside world. This means that
-     *  only those <i>active</i> network interfaces are considered that are
-     *  <i>not</i> a {@code loopback} interface.
-     *
-     *  @return The IP addresses.
-     *
-     *  @deprecated Use
-     *      {@link #determineOutboundIPAddresses()}
-     *      instead.
-     */
-    @API( status = DEPRECATED )
-    @Deprecated( forRemoval = true )
-    public static InetAddress [] determineOutsideIPAddresses()
-    {
-        return determineOutboundIPAddresses();
-    }   //  determineOutsideIPAddresses()
-
-    /**
      *  Formats the given node id as a MAC address string.
      *
      *  @param  nodeId  The node id.
@@ -747,21 +727,6 @@ public final class SystemUtils
     }   //  getPID()
 
     /**
-     *  Returns a pseudo node id; this is useful in cases a machine does not
-     *  have a network card (NIC) so that a MAC address could not be obtained,
-     *  or if the real node id should not be used.
-     *
-     *  @return The node id.
-     *
-     *  @deprecated Use
-     *      {@link #createPseudoNodeId()}
-     *      instead.
-     */
-    @API( status = DEPRECATED )
-    @Deprecated( forRemoval = true )
-    public static long getPseudoNodeId() { return createPseudoNodeId(); }
-
-    /**
      *  Returns the system random number generator.
      *
      *  @return The random number generator.
@@ -798,60 +763,6 @@ public final class SystemUtils
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  hasNetworkInterface()
-
-    /**
-     *  Replaces the variables of the form <code>${<i>&lt;name&gt;</i>}</code>
-     *  in the given String with values from the
-     *  {@linkplain System#getProperties() system properties},
-     *  the
-     *  {@linkplain System#getenv() system environment}
-     *  and the given maps. The method will try the maps in the given
-     *  sequence.<br>
-     *  <br>In addition, five more variables are recognised:
-     *  <dl>
-     *  <dt><b><code>tq.ip</code></b></dt>
-     *  <dd>The first IP address for the machine that executes this Java
-     *  virtual machine.</dd>
-     *
-     *  <dt><b><code>tq.mac</code></b></dt>
-     *  <dd>The MAC address of the first NIC in this machine.</dd>
-     *
-     *  <dt><b><code>tq.nodeId</code></b></dt>
-     *  <dd>The node id from the first NIC in this machine.</dd>
-     *
-     *  <dt><b><code>tq.now</code></b></dt>
-     *  <dd>The current date and time as returned by
-     *  {@link Instant#now}.</dd>
-     *
-     *  <dt><b><code>tq.pid</code></b></dt>
-     *  <dd>The process id of this Java virtual machine.</dd>
-     *  </dl>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all; no exception will be thrown.<br>
-     *  <br>If a value from one of the maps contains a variable itself, this
-     *  will not be replaced.<br>
-     *  <br>The variables names are case-sensitive.
-     *
-     *  @param  text    The text with the variables; can be {@code null}.
-     *  @param  additionalSources The maps with additional replacement values.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
-     *
-     *  @see Template#VARIABLE_PATTERN
-     *  @see Template#replaceVariable(CharSequence, Map...)
-     *
-     *  @deprecated Use
-     *      {@link Template#replaceVariableFromSystemData(CharSequence, Map[])}
-     *      instead.
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @SafeVarargs
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String replaceSystemVariable( final CharSequence text, final Map<String,? extends Object>... additionalSources )
-    {
-        return Template.replaceVariableFromSystemData( text, additionalSources );
-    }   //  replaceSystemVariable()
 
     /**
      *  An implementation of

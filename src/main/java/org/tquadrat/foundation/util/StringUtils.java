@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 20002-2023 by Thomas Thrien.
+ * Copyright © 20002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -24,16 +24,12 @@ import static java.lang.Character.toChars;
 import static java.lang.Character.toLowerCase;
 import static java.lang.Character.toUpperCase;
 import static java.lang.Integer.min;
-import static java.lang.String.join;
 import static java.net.URLDecoder.decode;
 import static java.net.URLEncoder.encode;
 import static java.text.Normalizer.Form.NFD;
-import static java.text.Normalizer.Form.NFKC;
 import static java.text.Normalizer.normalize;
 import static java.util.regex.Pattern.DOTALL;
 import static java.util.regex.Pattern.compile;
-import static java.util.stream.Collectors.joining;
-import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.CHAR_ELLIPSIS;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
@@ -58,13 +54,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Formatter;
-import java.util.IllegalFormatException;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Stream;
@@ -92,18 +82,17 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  <li>{@link #isEmpty(CharSequence) isEmpty()}</li>
  *  <li>{@link #isNotEmpty(CharSequence) isNotEmpty()}</li>
  *  <li>{@link #repeat(CharSequence, int) repeat()}</li>
- *  <li>{@link #uncapitalize(CharSequence) uncapitalize()}</li>
  *  <li>{@link #unescapeHTML(CharSequence) unescapeHTML()} in both versions</li>
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
+ *  @version $Id: StringUtils.java 1084 2024-01-03 15:31:20Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1084 2024-01-03 15:31:20Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -115,13 +104,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
+     *  @version $Id: StringUtils.java 1084 2024-01-03 15:31:20Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1084 2024-01-03 15:31:20Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -213,13 +202,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $
+     *  @version $Id: StringUtils.java 1084 2024-01-03 15:31:20Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1084 2024-01-03 15:31:20Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {
@@ -337,21 +326,6 @@ public final class StringUtils
     public static final String COMMENTREMOVAL_PATTERN = "<!--.+?-->";
 
     /**
-     *  The initial buffer size that is used by
-     *  {@code format(String, Object...)}
-     *  and
-     *  {@code format(Locale, String, Object...)}
-     *  (per thread): {@value}.
-     *
-     *  @since 0.0.5
-     *
-     *  @deprecated No longer used!
-     */
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.3.0" )
-    public static final int FORMAT_INITIAL_BUFFERSIZE = 2048;
-
-    /**
      *  The message text indicating that the given value for the abbreviation
      *  target length is too short.
      */
@@ -391,48 +365,6 @@ public final class StringUtils
     @SuppressWarnings( "RegExpUnnecessaryNonCapturingGroup" )
     @API( status = STABLE, since = "0.0.5" )
     public static final String TAGREMOVAL_PATTERN = "(?:<!--.+?-->)|(?:<[^>]+?>)";
-
-    /**
-     *  The regular expression to identify a variable in a char sequence:
-     *  {@value}.
-     *
-     *  @see #findVariables(CharSequence)
-     *  @see #isValidVariableName(CharSequence)
-     *  @see #replaceVariable(CharSequence,Map...)
-     *  @see #replaceVariable(CharSequence, Function)
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link Template#VARIABLE_PATTERN}
-     *      instead.
-     */
-    @API( status = DEPRECATED, since = "0.0.5" )
-    @Deprecated( since ="0.1.0", forRemoval = true )
-    public static final String VARIABLE_PATTERN = Template.VARIABLE_PATTERN;
-
-    /**
-     *  The template for variables: {@value}. The argument is the name of the
-     *  variable itself; after an optional prefix character, it may not contain
-     *  other characters than the letters from 'a' to 'z' (upper case and lower
-     *  case), the digits from '0' to '9' and the special characters underscore
-     *  ('_') and dot ('.').<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
-     *
-     *  @see #VARIABLE_PATTERN
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link Template#VARIABLE_TEMPLATE}
-     *      instead.
-     */
-    @API( status = DEPRECATED, since = "0.0.5" )
-    @Deprecated( since ="0.1.0", forRemoval = true )
-    public static final String VARIABLE_TEMPLATE = Template.VARIABLE_TEMPLATE;
 
         /*------------------------*\
     ====** Static Initialisations **===========================================
@@ -833,34 +765,6 @@ public final class StringUtils
 
     /**
      *  Tests if the given text is not {@code null}, not empty and not
-     *  longer than the given maximum length.
-     *
-     *  @param  name    The name that should appear in the exception if one
-     *      will be thrown.
-     *  @param  text    The text to check.
-     *  @param  maxLength   The maximum length.
-     *  @return Always the contents of <code>text</code> as a String; if the
-     *      argument fails any of the tests, an
-     *      {@link IllegalArgumentException}
-     *      or an exception derived from that will be thrown.
-     *  @throws CharSequenceTooLongException    {@code text} is longer than
-     *      {@code maxLength}.
-     *  @throws EmptyArgumentException {@code text} is the empty String.
-     *  @throws NullArgumentException   Either {@code name} or {@code text} is
-     *      {@code null}.
-     *
-     *  @deprecated Replaced by
-     *      {@link #checkTextLen(String, CharSequence, int)}
-     */
-    @API( status = DEPRECATED )
-    @Deprecated( forRemoval = true )
-    public static final String checkText( final String name, final CharSequence text, final int maxLength ) throws CharSequenceTooLongException, EmptyArgumentException, NullArgumentException
-    {
-        return checkTextLen( name, text, maxLength );
-    }   //  checkText()
-
-    /**
-     *  Tests if the given text is not {@code null}, not empty and not
      *  longer than the given maximum length. Use this to check whether a
      *  String that is provided as an argument to a method is longer than
      *  expected.
@@ -935,33 +839,6 @@ public final class StringUtils
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  checkTextLenNull()
-
-    /**
-     *  Tests if the given text is not longer than the given maximum length;
-     *  it may be {@code null}.
-     *
-     *  @param  name    The name that should appear in the exception if one
-     *      will be thrown.
-     *  @param  text    The text to check; may be {@code null}.
-     *  @param  maxLength   The maximum length.
-     *  @return Always the contents of {@code text} as a String,
-     *      {@code null} if {@code text} was {@code null}; if the
-     *      argument fails any of the tests, an
-     *      {@link IllegalArgumentException}
-     *      or an exception derived from that will be thrown.
-     *  @throws CharSequenceTooLongException    {@code text} is longer than
-     *      {@code maxLength}.
-     *  @throws NullArgumentException   {@code name} is {@code null}.
-     *
-     *  @deprecated Replaced by
-     *      {@link #checkTextLenNull(String, CharSequence, int)}.
-     */
-    @API( status = DEPRECATED )
-    @Deprecated( forRemoval = true )
-    public static final String checkTextNull( final String name, final CharSequence text, final int maxLength )
-    {
-        return checkTextLenNull( name, text, maxLength );
-    }   //  checkTextNull()
 
     /**
      *  Changes the first letter of the given String tolower case as per
@@ -1289,64 +1166,6 @@ public final class StringUtils
     }   //  escapeRegex()
 
     /**
-     *  Returns the Unicode escape sequence for the given character. This will
-     *  return &quot;&#92;u0075&quot; for the letter 'u', and
-     *  &quot;&#92;u003c&quot; for the smaller-than sign '&lt;'.<br>
-     *  <br>This method should be used only for characters that are not
-     *  surrogates; for general use, the implementation that takes a code point
-     *  is preferred.
-     *
-     *  @param  c   The character.
-     *  @return The escape sequence.
-     *
-     *  @see #escapeUnicode(int)
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link CharSetUtils#escapeCharacter(char)}
-     *      instead.
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String escapeUnicode( final char c ) { return escapeCharacter( c ); }
-
-    /**
-     *  Returns the Unicode escape sequence for the given code point. This will
-     *  return &quot;&#92;u0075&quot; for the letter 'u', and
-     *  &quot;&#92;u003c&quot; for the smaller-than sign '&lt;'.<br>
-     *  <br>This method takes only a single code point; to translate a whole
-     *  String, this code sequence can be used:<pre><code>  &hellip;
-     *  String result = input.codePoints()
-     *      .mapToObj( codePoint -&gt; escapeUnicode( codePoint ) )
-     *      .collect( Collectors.joining() );
-     *  &hellip;</code></pre>
-     *  This will escape <i>all</i> characters in the String. If only a subset
-     *  needs to be escaped, the mapping function in
-     *  {@link java.util.stream.IntStream#mapToObj(java.util.function.IntFunction) mapToObj()}
-     *  can be adjusted accordingly. Something like that is implemented with
-     *  the method
-     *  {@link #toUnicode(CharSequence)}.
-     *
-     *  @param  codePoint   The character.
-     *  @return The escape sequence.
-     *
-     *  @see String#codePoints()
-     *  @see java.util.stream.IntStream#mapToObj(java.util.function.IntFunction)
-     *  @see java.util.stream.Stream#collect(java.util.stream.Collector)
-     *  @see java.util.stream.Collectors#joining()
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link CharSetUtils#escapeCharacter(int)}
-     *      instead.
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String escapeUnicode( final int codePoint ) { return escapeCharacter( codePoint ); }
-
-    /**
      *  <p>{@summary Escapes the characters in a {@code String} using XML
      *  entities.}</p>
      *  <p>For example:</p>
@@ -1400,171 +1219,6 @@ public final class StringUtils
 
         if( nonNull( input ) ) XML.escape( appendable, input );
     }   //  escapeXML()
-
-    /**
-     *  Collects all the variables of the form
-     *  <code>${<i>&lt;name&gt;</i>}</code> in the given String.<br>
-     *  <br>If there are not any variables in the given String, an empty
-     *  {@link Collection}
-     *  will be returned.<br>
-     *  <br>A valid variable name may not contain any other characters than the
-     *  letters from 'a' to 'z' (upper case and lower case), the digits from
-     *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
-     *
-     *  @param  text    The text with the variables; may be {@code null}.
-     *  @return A {@code Collection} with the variable (names).
-     *
-     *  @see #VARIABLE_PATTERN
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link Template#findVariables(CharSequence)}
-     *      instead.
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final Collection<String> findVariables( final CharSequence text )
-    {
-        return Template.findVariables( text );
-    }   //  findVariables()
-
-    /**
-     *  Returns a formatted String using the specified format String and
-     *  arguments.<br>
-     *  <br>The implementation uses internally the
-     *  {@link Locale}
-     *  that is returned by
-     *  {@link java.util.Locale#getDefault() Locale.getDefault()}.<br>
-     *  <br>This method is meant as a replacement for the method
-     *  {@link java.lang.String#format(String, Object...)};
-     *  that implementation always uses a new instance of
-     *  {@link Formatter}
-     *  for each invocation. The implementation here uses a cached instance
-     *  instead, and as {@code Formatter} is not inherently thread-safe, this
-     *  cached instance is created and stored per thread, therefore no
-     *  synchronisation is needed.<br>
-     *  <br>This implementation is about as twice as fast as
-     *  {@code java.lang.String.format()}.
-     *
-     *  @param  format  A format String with the syntax as described for the
-     *      {@link Formatter}
-     *      class.
-     *  @param  args    The arguments referenced by the format specifiers in
-     *      the {@code format} String. If there are more arguments than format
-     *      specifiers, the extra arguments are ignored. The number of
-     *      arguments is variable and may be zero. The maximum number of
-     *      arguments is limited by the maximum dimension of a Java array as
-     *      defined by <cite>The Java&trade; Virtual Machine
-     *      Specification</cite>. The behaviour on a {@code null} argument
-     *      depends on the conversion.
-     *  @throws IllegalFormatException A format string contains an illegal
-     *      syntax, a format specifier that is incompatible with the given
-     *      arguments, insufficient arguments given the format string, or other
-     *      illegal conditions occurred. For specification of all possible
-     *      formatting errors, see the &quot;Details&quot; section of the
-     *      {@code Formatter} class specification.
-     *  @return A formatted String.
-     *
-     *  @see  java.util.Formatter
-     *
-     *  @since 0.0.5
-     *  @deprecated
-     *      {@link org.tquadrat.foundation.lang.internal.SharedFormatter}
-     *      got obsolete. See there.
-     */
-    @SuppressWarnings( "removal" )
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.3.0" )
-    public static final String format( final String format, final Object... args ) throws IllegalFormatException
-    {
-        return String.format( format, args );
-    }   //  format()
-
-    /**
-     *  Returns a formatted String using the specified
-     *  {@link Locale},
-     *  format String, and arguments.<br>
-     *  <br>This method is meant as a replacement for the method
-     *  {@link java.lang.String#format(String, Object...)};
-     *  that implementation always uses a new instance of
-     *  {@link Formatter}
-     *  for each invocation. The implementation here uses a cached instance
-     *  instead, and as {@code Formatter} is not inherently thread-safe, this
-     *  cached instance is created and stored per thread, therefore no
-     *  synchronisation is needed.<br>
-     *  <br>The performance gain for this implementation is not that impressive
-     *  when compared with that of
-     *  {@link #format(String, Object...)},
-     *  but still in the 10% range.
-     *  {@code java.lang.String.format()}.
-     *
-     *  @param  locale  The
-     *      {@link Locale}
-     *      that will be applied during formatting. If {@code locale} is
-     *      {@code null} then no localisation is applied.
-     *  @param  format  A format String with the syntax as described for the
-     *      {@link Formatter}
-     *      class.
-     *  @param  args    The arguments referenced by the format specifiers in
-     *      the {@code format} String. If there are more arguments than format
-     *      specifiers, the extra arguments are ignored. The number of
-     *      arguments is variable and may be zero. The maximum number of
-     *      arguments is limited by the maximum dimension of a Java array as
-     *      defined by <cite>The Java&trade; Virtual Machine
-     *      Specification</cite>. The behaviour on a {@code null} argument
-     *      depends on the conversion.
-     *  @throws IllegalFormatException A format string contains an illegal
-     *      syntax, a format specifier that is incompatible with the given
-     *      arguments, insufficient arguments given the format string, or other
-     *      illegal conditions occurred. For specification of all possible
-     *      formatting errors, see the &quot;Details&quot; section of the
-     *      {@code Formatter} class specification.
-     *  @return A formatted String.
-     *
-     *  @see  java.util.Formatter
-     *
-     *  @since 0.0.5
-     *  @deprecated
-     *      {@link org.tquadrat.foundation.lang.internal.SharedFormatter}
-     *      got obsolete. See there.
-     */
-    @SuppressWarnings( "removal" )
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.3.0" )
-    public static final String format( final Locale locale, final String format, final Object... args ) throws IllegalFormatException
-    {
-        return String.format( locale, format, args );
-    }   //  format()
-
-    /**
-     *  Checks whether the given String contains at least one variable of the
-     *  form <code>${<i>&lt;name&gt;</i>}</code> (matching the pattern given in
-     *  {@link #VARIABLE_PATTERN}).
-     *
-     *  @param  input   The String to test; can be {@code null}.
-     *  @return {@code true} if the String contains at least one variable,
-     *      {@code false} otherwise.
-     *
-     *  @see #VARIABLE_PATTERN
-     *
-     *  @since 0.0.4
-     *  @deprecated Use
-     *      {@link Template#hasVariables(CharSequence)}
-     *      instead.
-     */
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = STABLE, since = "0.0.4" )
-    public static final boolean hasVariable( final CharSequence input )
-    {
-        return Template.hasVariables( input );
-    }   //  hasVariable()
 
     /**
      *  Tests if the given String is {@code null} or the empty String.
@@ -1633,210 +1287,6 @@ public final class StringUtils
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  isNotEmptyOrBlank()
-
-    /**
-     *  Test whether the given String is a valid variable name.
-     *
-     *  @param  name    The bare variable name, without the surrounding
-     *      &quot;${&hellip;}&quot;.
-     *  @return {@code true} if the given name is valid for a variable name,
-     *      {@code false} otherwise.
-     *
-     *  @see #VARIABLE_PATTERN
-     *  @see #findVariables(CharSequence)
-     *  @see #replaceVariable(CharSequence, Map...)
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link Template#isValidVariableName(CharSequence)}
-     *      instead.
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final boolean isValidVariableName( final CharSequence name )
-    {
-        return Template.isValidVariableName( name );
-    }   //  isValidVariableName()
-
-    /**
-     *  Checks whether the given String is a variable in the form
-     *  <code>${<i>&lt;name&gt;</i>}</code>, according to the pattern provided
-     *  in
-     *  {@link #VARIABLE_PATTERN}.
-     *
-     *  @param  input   The String to test; can be {@code null}.
-     *  @return {@code true} if the given String is not {@code null}, not the
-     *      empty String, and it matches the given pattern, {@code false}
-     *      otherwise.
-     *
-     *  @since 0.0.4
-     *  @deprecated Use
-     *      {@link Template#isVariable(CharSequence)}
-     *      instead.
-     */
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.4" )
-    public static final boolean isVariable( final CharSequence input )
-    {
-        return Template.isVariable( input );
-    }   //  isVariable()
-
-    /**
-     *  Combines the given String array to a single string, with the given
-     *  separator.
-     *
-     *  @param  input   The input sequence.
-     *  @param  separator   The separator; may be empty, but not {@code null}.
-     *  @return The combined String. If the input sequence array is empty, the
-     *      empty String will be returned.
-     *
-     *  @deprecated Use
-     *      {@link java.lang.String#join(CharSequence, CharSequence...)}
-     *      instead.
-     */
-    @API( status = DEPRECATED, since = "0.0.4" )
-    @Deprecated( since = "Java 9", forRemoval = true )
-    public static final String joinString( final CharSequence [] input, final CharSequence separator )
-    {
-        final var retValue = join( requireNonNullArgument( separator, "separator" ), requireNonNullArgument( input, "input" ) );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  joinString()
-
-    /**
-     *  Combines the given
-     *  {@link Collection}
-     *  of String to a single string, with the given separator.
-     *
-     *  @param  input   The input sequence.
-     *  @param  separator   The separator; may be empty, but not {@code null}.
-     *  @return The combined String. If the input sequence collection is empty,
-     *      the empty String will be returned.
-     *
-     *  @deprecated Use
-     *      {@link java.lang.String#join(CharSequence,Iterable)}
-     *      instead.
-     */
-    @API( status = DEPRECATED, since = "0.0.4" )
-    @Deprecated( since = "Java 9", forRemoval = true )
-    public static final String joinString( final Collection<? extends CharSequence> input, final CharSequence separator )
-    {
-        final var retValue = join( requireNonNullArgument( separator, "separator" ), requireNonNullArgument( input, "input" ) );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  joinString()
-
-    /**
-     *  Combines the given
-     *  {@link Stream}
-     *  of Strings to a single string, with the given separator.
-     *
-     *  @param  input   The input sequence.
-     *  @param  separator   The separator; may be empty, but not {@code null}.
-     *  @return The combined String. If the input sequence stream is empty,
-     *      the empty String will be returned.
-     *
-     *  @deprecated This method is obsolete; the same effect can be achieved
-     *      easily by calling
-     *      {@link Stream#collect(java.util.stream.Collector)}
-     *      on the stream, with the collector
-     *      {@link java.util.stream.Collectors#joining(CharSequence) joining()}
-     *      as its argument.
-     */
-    @API( status = DEPRECATED, since = "0.0.4" )
-    @Deprecated( forRemoval = true, since = "Java 8" )
-    public static final String joinString( final Stream<? extends CharSequence> input, final CharSequence separator )
-    {
-        final var retValue = requireNonNullArgument( input, "input" ).collect( joining( separator ) );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  joinString()
-
-    /**
-     *  Combines the given String array to a single string, with the given
-     *  separator.
-     *
-     *  @param  input   The input sequence.
-     *  @param  separator   The separator.
-     *  @return The combined String. If the input sequence array is empty, the
-     *      empty String will be returned.
-     *
-     *  @deprecated This method is obsolete; the same effect can be achieved
-     *      easily by calling
-     *      {@link String#join(CharSequence, CharSequence...)}.
-     */
-    @Deprecated( forRemoval = true, since = "Java 8" )
-    @API( status = DEPRECATED, since = "0.0.4" )
-    public static final String joinString( final CharSequence [] input, final char separator )
-    {
-        final var retValue = join( Character.toString( separator), requireNonNullArgument( input, "input" ) );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  joinString()
-
-    /**
-     *  Combines the given String array to a single string, with the given
-     *  separator.
-     *
-     *  @param  input   The input sequence.
-     *  @param  separator   The separator.
-     *  @return The combined String. If the input sequence collection is empty, the
-     *      empty String will be returned.
-     *
-     *  @deprecated This method is obsolete; the same effect can be achieved
-     *      easily by calling
-     *      {@link String#join(CharSequence, Iterable)}
-     */
-    @Deprecated( forRemoval = true, since = "Java 8" )
-    @API( status = DEPRECATED, since = "0.0.4" )
-    public static final String joinString( final Iterable<? extends CharSequence> input, final char separator )
-    {
-        final var retValue = join( Character.toString( separator), requireNonNullArgument( input, "input" ) );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  joinString()
-
-    /**
-     *  Determines the maximum length over all strings provided in the given
-     *  collection.<br>
-     *  <br>For an array, this method can be called like this:<pre><code>  String [] a = {"1", "2", "3"};
-     *  maxContentLength( Arrays.asList( a ) );</code></pre>
-     *
-     *  @param  list    The strings.
-     *  @return The length of the longest string in the list; -1 if all values
-     *      in the list are {@code null}.
-     *
-     *  @deprecated Use
-     *      {@link #maxContentLength(CharSequence[])},
-     *      {@link #maxContentLength(Collection)},
-     *      or
-     *      {@link #maxContentLength(Stream)}
-     *      instead.
-     */
-    @Deprecated( forRemoval = true )
-    @API( status = DEPRECATED )
-    public static final int maxContentLength( final Iterable<? extends CharSequence> list )
-    {
-        var retValue = Integer.MIN_VALUE;
-        int len;
-        for( final var cs : requireNonNullArgument( list, "list" ) )
-        {
-            len = nonNull( cs ) ? cs.length() : -1;
-            if( len > retValue )
-            {
-                retValue = len;
-            }
-        }
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  maxContentLength()
 
     /**
      *  Determines the maximum length over all Strings provided in the given
@@ -2216,89 +1666,6 @@ public final class StringUtils
     }   //  repeat()
 
     /**
-     *  Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-     *  in the given String with values from the given maps. The method will
-     *  try the maps in the given sequence.<br>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all.<br>
-     *  <br>If a value from one of the maps contains a variable itself, this
-     *  will not be replaced.<br>
-     *  <br>The variables names are case-sensitive.<br>
-     *  <br>Valid variable name may not contain other characters than the
-     *  letters from 'a' to 'z' (upper case and lower case), the digits from
-     *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
-     *
-     *  @param  text    The text with the variables; may be {@code null}.
-     *  @param  sources The maps with the replacement values.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
-     *
-     *  @see #VARIABLE_PATTERN
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link Template#replaceVariable(CharSequence, Map[])}
-     *      instead.
-     */
-    @SafeVarargs
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String replaceVariable( final CharSequence text, final Map<String,? extends Object>... sources )
-    {
-        return Template.replaceVariable( text, sources );
-    }   //  replaceVariable()
-
-    /**
-     *  Replaces the variables of the form <code>${&lt;<i>name</i>&gt;}</code>
-     *  in the given String with values returned by the given retriever
-     *  function for the variable name.<br>
-     *  <br>If no replacement value could be found, the variable will not be
-     *  replaced at all.<br>
-     *  <br>If the retriever function returns a value that contains a variable
-     *  itself, this will not be replaced.<br>
-     *  <br>The retriever function will be called only once for each variable
-     *  name; if the text contains the same variable multiple times, it will
-     *  always be replaced with the same value.<br>
-     *  <br>The variables names are case-sensitive.<br>
-     *  <br>Valid variable name may not contain other characters than the
-     *  letters from 'a' to 'z' (upper case and lower case), the digits from
-     *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
-     *  after an optional prefix character.<br>
-     *  <br>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
-     *  ('&amp;').<br>
-     *  <br>The prefix character is part of the name.<br>
-     *  <br>Finally, there is the single underscore that is allowed as a
-     *  special variable.
-     *
-     *  @param  text    The text with the variables; may be {@code null}.
-     *  @param  retriever   The function that will retrieve the replacement
-     *      values for the given variable names.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
-     *
-     *  @see #VARIABLE_PATTERN
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link Template#replaceVariable(CharSequence, Function)}
-     *      instead.
-     */
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String replaceVariable( final CharSequence text, final Function<? super String, Optional<String>> retriever )
-    {
-        return Template.replaceVariable( text, retriever );
-    }   //  replaceVariable()
-
-    /**
      *  <p>{@summary Splits a String by the given separator character and
      *  returns an array of all parts.} In case a separator character is
      *  immediately followed by another separator character, an empty String
@@ -2438,7 +1805,7 @@ public final class StringUtils
             {
                 begin = i;
             }
-            if( codepoints [ i ] == separator )
+            if( codepoints [i] == separator )
             {
                 builder.add( new String( codepoints, begin, i - begin ).intern() );
                 begin = -1;
@@ -2446,7 +1813,7 @@ public final class StringUtils
         }
 
         //---* Add the rest *--------------------------------------------------
-        if( (begin >= 0) && (begin < codepoints.length) )
+        if( begin >= 0 )
         {
             builder.add( new String( codepoints, begin, codepoints.length - begin ).intern() );
         }
@@ -2779,57 +2146,6 @@ public final class StringUtils
     }   //  stripXMLComments()
 
     /**
-     *  Translates the given String to a String that will only contain
-     *  printable ASCII characters; all other characters will be 'escaped' to
-     *  the format &quot;&#92;uXXXX&quot;.
-     *
-     *  @param  input   The input string; may be {@code null}.
-     *  @return The output string; {@code null} if the input string was
-     *      already {@code null}.
-     *
-     *  @since 0.0.5
-     *  @deprecated Use instead
-     *      {@link CharSetUtils#convertUnicodeToASCII(java.text.Normalizer.Form, CharSequence)}
-     *      with
-     *      {@link java.text.Normalizer.Form#NFKC}
-     *      as the first argument.
-     */
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String toUnicode( final CharSequence input )
-    {
-        return CharSetUtils.convertUnicodeToASCII( NFKC, input );
-    }   //  toUnicode()
-
-    /**
-     *  Changes the first letter of the given String tolower case as per
-     *  {@link Character#toLowerCase(char)}.
-     *  No other letters are changed. A {@code null} input String returns
-     *  {@code null}.<br>
-     *  <br>Samples:<pre><code>  StringUtils.uncapitalize( null ) = null;
-     *  StringUtils.uncapitalize(&quot;&quot;)     = &quot;&quot;;
-     *  StringUtils.uncapitalize(&quot;Cat&quot;)  = &quot;cat&quot;;
-     *  StringUtils.uncapitalize(&quot;CAT&quot;)  = &quot;cAT&quot;;</code></pre>
-     *  <br>Basically, this is the complementary method to
-     *  {@link #capitalize(CharSequence)}.
-     *  Use this method to normalise the name of bean attributes.
-     *
-     *  @param  input   The String to <i>uncapitalise</i>, may be {@code null}.
-     *  @return The <i>uncapitalised</i> String, {@code null} if the argument
-     *      was {@code null}.
-     *  @see #capitalize(CharSequence)
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link #decapitalize(CharSequence)}
-     *      instead.
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since = "0.1.0" )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String uncapitalize( final CharSequence input ) { return decapitalize( input ); }
-
-    /**
      *  Unescapes a string containing entity escapes to a string containing the
      *  actual Unicode characters corresponding to the escapes. Supports HTML
      *  5.0 entities.<br>
@@ -2889,34 +2205,6 @@ public final class StringUtils
     }   //  unescapeHTML()
 
     /**
-     *  Parses Strings in the format &quot;<code>&#92;uXXXX</code>&quot;,
-     *  containing the textual representation of a single Unicode character, to
-     *  the respective Unicode character. Some Unicode characters will be
-     *  represented as <i>surrogate pairs</i> in Java, so the String that is
-     *  returned by this method may contain more than one {@code char}.<br>
-     *  <br>The input format for this method is used in Java source code
-     *  Strings, in Java {@code .properties} files, in C/C++ source code, in
-     *  JavaScript source, &hellip;
-     *
-     *  @param  input   The input String with the Unicode escape sequence.
-     *  @return The Unicode character.
-     *  @throws ValidationException The input is {@code null}, empty, or cannot
-     *      be parsed as a unicode escape sequence.
-     *
-     *  @since 0.0.5
-     *  @deprecated Use
-     *      {@link CharSetUtils#unescapeUnicode(CharSequence)}
-     *      instead.
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since ="0.1.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.5" )
-    public static final String unescapeUnicode( final CharSequence input )
-    {
-        return CharSetUtils.unescapeUnicode( input );
-    }   //  unescapeUnicode()
-
-    /**
      *  <p>{@summary Unescapes an XML string containing XML entity escapes to a
      *  string containing the actual Unicode characters corresponding to the
      *  escapes.}</p>
@@ -2967,42 +2255,6 @@ public final class StringUtils
 
         if( nonNull( input ) ) XML.unescape( appendable, input );
     }   //  unescapeXML()
-
-    /**
-     *  Returns the Unicode escape sequence for the given character. This will
-     *  return &quot;&#92;u0075&quot; for the letter 'u', and
-     *  &quot;&#92;u003c&quot; for the smaller-than sign '&lt;'.
-     *
-     *  @param  c   The character.
-     *  @return The escape sequence.
-     *
-     *  @deprecated Use
-     *      {@link CharSetUtils#escapeCharacter(char)}
-     *      instead.
-     *
-     *  @since 0.0.5
-     */
-    @API( status = DEPRECATED, since = "0.0.5" )
-    @Deprecated( forRemoval = true )
-    public static final String unicodeEscape( final char c ) { return escapeCharacter( c ); }
-
-    /**
-     *  Returns the Unicode escape sequence for the given code point. This will
-     *  return &quot;&#92;u0075&quot; for the letter 'u', and
-     *  &quot;&#92;u003c&quot; for the smaller-than sign '&lt;'.
-     *
-     *  @param  codePoint   The character.
-     *  @return The escape sequence.
-     *
-     *  @deprecated Use
-     *      {@link #escapeUnicode(int)}
-     *      instead.
-     *
-     *  @since 0.0.5
-     */
-    @API( status = DEPRECATED, since = "0.0.5" )
-    @Deprecated( forRemoval = true )
-    public static final String unicodeEscape( final int codePoint ) { return escapeUnicode( codePoint ); }
 
     /**
      *  Returns the given URL encoded String in its decoded form, using the

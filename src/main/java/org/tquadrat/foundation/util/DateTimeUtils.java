@@ -38,13 +38,13 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  Additional helpers for the work with date/time values.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $
+ *  @version $Id: DateTimeUtils.java 1080 2024-01-03 11:05:21Z tquadrat $
  *  @since 0.3.0
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: DateTimeUtils.java 1080 2024-01-03 11:05:21Z tquadrat $" )
 @API( status = STABLE, since = "0.3.0" )
 public final class DateTimeUtils
 {

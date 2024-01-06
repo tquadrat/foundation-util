@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -41,10 +41,9 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestCapitalize.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestCapitalize.java 1084 2024-01-03 15:31:20Z tquadrat $
  */
-@SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestCapitalize.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestCapitalize.java 1084 2024-01-03 15:31:20Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestCapitalize" )
 public class TestCapitalize extends TestBaseClass
 {
@@ -89,7 +88,6 @@ public class TestCapitalize extends TestBaseClass
      *  @param  input   The input String.
      *  @param  expected    The expected output.
      */
-    @SuppressWarnings( "deprecation" )
     @ParameterizedTest
     @CsvFileSource( resources = "Decapitalize.csv", delimiter = ';', numLinesToSkip = 1 )
     final void testDecapitalize( final String input, final String expected )
@@ -98,13 +96,9 @@ public class TestCapitalize extends TestBaseClass
 
         final var candidate = translateEscapes( input );
         final var result = translateEscapes( expected );
-        String actual;
+        final String actual;
 
         actual = decapitalize( candidate );
-        if( nonNull( candidate ) ) assertNotNull( actual );
-        assertEquals( result, actual );
-
-        actual = StringUtils.uncapitalize( candidate );
         if( nonNull( candidate ) ) assertNotNull( actual );
         assertEquals( result, actual );
     }   //  testDecapitalize()
@@ -113,15 +107,12 @@ public class TestCapitalize extends TestBaseClass
      *  Tests for
      *  {@link StringUtils#decapitalize(CharSequence)}.
      */
-    @SuppressWarnings( "deprecation" )
     @Test
     final void testDecapitalizeWithNullArgument()
     {
         skipThreadTest();
 
         assertNull( decapitalize( null ) );
-
-        assertNull( StringUtils.uncapitalize( null ) );
     }   //  testDecapitalizeWithNullArgument()
 }
 //  class TestCapitalize

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -41,12 +41,12 @@ import org.tquadrat.foundation.exception.ValidationException;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Craig R. McClanahan
- *  @version $Id: HexUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: HexUtils.java 1086 2024-01-05 23:18:33Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HexUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HexUtils.java 1086 2024-01-05 23:18:33Z tquadrat $" )
 @UtilityClass
 public final class HexUtils
 {
@@ -132,31 +132,6 @@ public final class HexUtils
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  convertToHexDigit()
-
-    /**
-     *  Converts an array of bytes to a hex string where the digits from
-     *  {@code 0xA} to {@code 0xF} are all uppercase.
-     *
-     *  @param  bytes   The byte array.
-     *  @return The converted string.
-     *  @throws IllegalArgumentException    The given byte array is
-     *      {@code null} or empty.
-     *
-     *  @deprecated Use
-     *      {@link java.util.HexFormat#formatHex(byte[])}
-     *      instead, like this:
-     *      <pre><code>String s = HexFormat.of().withUpperCase().formatHex( bytes );</code></pre>
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    @API( status = STABLE, since = "0.0.5" )
-    public static final String convertToHexString( final byte[] bytes ) throws IllegalArgumentException
-    {
-        final var retValue = HexFormat.of().withUpperCase().formatHex( requireNotEmptyArgument( bytes, "bytes" ) );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  convertToHexString()
 }
 //  class HexUtils
 

@@ -7,7 +7,7 @@
      version='1.1'
      baseProfile='full'
      width='1086.000'
-     height='572.000'>
+     height='561.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,7 +118,7 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='150.000'
+                  height='139.000'
                   width='1036.000'
                   x='0.000'
                   y='0.000'/>
@@ -130,7 +130,7 @@
                     <rect x='0.000'
                           y='0.000'
                           width='1036.000'
-                          height='150.000'
+                          height='139.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='17.000'
@@ -153,27 +153,24 @@
                           class='static'>+ caseInsensitiveComparator():java.util.Comparator&lt;java.lang.String&gt;</text>
                     <text x='5.000'
                           y='69.000'
-                          class='static'>+ comparableComparator():java.util.Comparator&lt;T&gt;</text>
-                    <text x='5.000'
-                          y='80.000'
                           class='static'>+ keyBasedComparator(keyProvider:org.tquadrat.foundation.util.Comparators.KeyProvider&lt;? super T,K&gt;):java.util.Comparator&lt;T&gt;</text>
                     <text x='5.000'
-                          y='91.000'
+                          y='80.000'
                           class='static'>+ keyBasedComparator(keyProvider:org.tquadrat.foundation.util.Comparators.KeyProvider&lt;T,K&gt;,keyComparator:java.util.Comparator&lt;K&gt;,cacheKeys:boolean):java.util.Comparator&lt;T&gt;</text>
                     <text x='5.000'
-                          y='102.000'
+                          y='91.000'
                           class='static'>+ listBasedComparator(values:T&#x2026;):java.util.Comparator&lt;T&gt;</text>
                     <text x='5.000'
-                          y='113.000'
+                          y='102.000'
                           class='static'>+ listBasedComparator(keyProvider:org.tquadrat.foundation.util.Comparators.KeyProvider&lt;T,K&gt;,keys:K&#x2026;):java.util.Comparator&lt;T&gt;</text>
                     <text x='5.000'
-                          y='124.000'
+                          y='113.000'
                           class='static'>+ listBasedComparator(keyProvider:org.tquadrat.foundation.util.Comparators.KeyProvider&lt;T,K&gt;,comparator:java.util.Comparator&lt;? super K&gt;,keys:K&#x2026;):java.util.Comparator&lt;T&gt;</text>
                     <text x='5.000'
-                          y='135.000'
+                          y='124.000'
                           class='static'>+ numberComparator():java.util.Comparator&lt;T&gt;</text>
                     <text x='5.000'
-                          y='146.000'
+                          y='135.000'
                           class='static'>+ stringBasedComparator(stringConverter:org.tquadrat.foundation.lang.StringConverter&lt;T&gt;):java.util.Comparator&lt;T&gt;</text>
                 </g>
             </g>

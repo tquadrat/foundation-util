@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -18,7 +18,6 @@
 package org.tquadrat.foundation.util;
 
 import static java.lang.String.format;
-import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.UTF8;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
@@ -50,12 +49,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  uses multiple threads to calculate the hashes for a bunch of files.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SecurityUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: SecurityUtils.java 1086 2024-01-05 23:18:33Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1086 2024-01-05 23:18:33Z tquadrat $" )
 @UtilityClass
 public final class SecurityUtils
 {
@@ -103,17 +102,6 @@ public final class SecurityUtils
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final int MD5HASH_Length = 32;
-
-    /**
-     *  The length for an SHA1 hash: {@value}.
-     *
-     *  @deprecated Use
-     *  {@link #SHA1HASH_Length}
-     *  instead.
-     */
-    @Deprecated( since = "0.0.8", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.0.8" )
-    public static final int SHAHASH_Length = 40;
 
     /**
      *  The length for an SHA1 hash: {@value}.

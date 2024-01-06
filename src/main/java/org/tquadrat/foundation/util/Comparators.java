@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -40,13 +40,13 @@ import org.tquadrat.foundation.util.internal.StringBasedComparator;
  *  {@link Comparator}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Comparators.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: Comparators.java 1084 2024-01-03 15:31:20Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: Comparators.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Comparators.java 1084 2024-01-03 15:31:20Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Comparators
 {
@@ -71,7 +71,7 @@ public final class Comparators
      *  provide always the same key.</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Comparators.java 1060 2023-09-24 19:21:40Z tquadrat $
+     *  @version $Id: Comparators.java 1084 2024-01-03 15:31:20Z tquadrat $
      *  @since 0.0.5
      *
      *  @param  <T> The type to order.
@@ -81,7 +81,7 @@ public final class Comparators
      *  @UMLGraph.link
      */
     @API( status = STABLE, since = "0.0.5" )
-    @ClassVersion( sourceVersion = "$Id: Comparators.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Comparators.java 1084 2024-01-03 15:31:20Z tquadrat $" )
     @FunctionalInterface
     public interface KeyProvider<T,K>
     {
@@ -120,43 +120,6 @@ public final class Comparators
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final Comparator<String> caseInsensitiveComparator() { return CASE_INSENSITIVE_ORDER; }
-
-    /**
-     *  Returns a dummy comparator for elements that implements
-     *  {@link Comparable}.
-     *  Use this comparator if a
-     *  {@link Comparator}
-     *  is required for some reason, but your objects can be compared already
-     *  directly by their inherent
-     *  {@link Comparable#compareTo(Object)}
-     *  method.<br>
-     *  <br>A
-     *  {@link NullPointerException}
-     *  (and not a
-     *  {@link org.tquadrat.foundation.exception.NullArgumentException})
-     *  is thrown, if the first argument is {@code null}. Whether an exception
-     *  is thrown when the second argument is {@code null} depends on the
-     *  implementation of
-     *  {@link Comparable#compareTo(Object) T.compareTo(Object)}.
-     *
-     *  @param  <T> The type to compare.
-     *  @return The comparator.
-     *
-     *  @see Comparator#naturalOrder()
-     *
-     *  @deprecated Use
-     *      {@link Comparator#naturalOrder()}
-     *      instead.
-     */
-    @API( status = STABLE, since = "0.0.5" )
-    @Deprecated( since = "0.1.0", forRemoval = true )
-    public static final <T extends Comparable<? super T>> Comparator<T> comparableComparator()
-    {
-        final Comparator<T> retValue = naturalOrder();
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  comparableComparator()
 
     /**
      *  Returns a comparator that generates a sort key from the elements before

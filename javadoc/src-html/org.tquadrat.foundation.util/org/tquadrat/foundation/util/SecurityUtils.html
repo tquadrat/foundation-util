@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2024 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> * Licensed to the public under the agreements of the GNU Lesser General Public</span>
@@ -31,502 +31,490 @@
 <span class="source-line-no">018</span><span id="line-18">package org.tquadrat.foundation.util;</span>
 <span class="source-line-no">019</span><span id="line-19"></span>
 <span class="source-line-no">020</span><span id="line-20">import static java.lang.String.format;</span>
-<span class="source-line-no">021</span><span id="line-21">import static org.apiguardian.api.API.Status.DEPRECATED;</span>
-<span class="source-line-no">022</span><span id="line-22">import static org.apiguardian.api.API.Status.STABLE;</span>
-<span class="source-line-no">023</span><span id="line-23">import static org.tquadrat.foundation.lang.CommonConstants.UTF8;</span>
-<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
-<span class="source-line-no">025</span><span id="line-25">import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;</span>
-<span class="source-line-no">026</span><span id="line-26">import static org.tquadrat.foundation.util.IOUtils.determineCheckSum;</span>
-<span class="source-line-no">027</span><span id="line-27"></span>
-<span class="source-line-no">028</span><span id="line-28">import java.io.File;</span>
-<span class="source-line-no">029</span><span id="line-29">import java.io.IOException;</span>
-<span class="source-line-no">030</span><span id="line-30">import java.math.BigInteger;</span>
-<span class="source-line-no">031</span><span id="line-31">import java.security.MessageDigest;</span>
-<span class="source-line-no">032</span><span id="line-32">import java.security.NoSuchAlgorithmException;</span>
-<span class="source-line-no">033</span><span id="line-33">import java.util.HexFormat;</span>
-<span class="source-line-no">034</span><span id="line-34">import java.util.Locale;</span>
-<span class="source-line-no">035</span><span id="line-35"></span>
-<span class="source-line-no">036</span><span id="line-36">import org.apiguardian.api.API;</span>
-<span class="source-line-no">037</span><span id="line-37">import org.tquadrat.foundation.annotation.ClassVersion;</span>
-<span class="source-line-no">038</span><span id="line-38">import org.tquadrat.foundation.annotation.UtilityClass;</span>
-<span class="source-line-no">039</span><span id="line-39">import org.tquadrat.foundation.exception.ImpossibleExceptionError;</span>
-<span class="source-line-no">040</span><span id="line-40">import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;</span>
-<span class="source-line-no">041</span><span id="line-41"></span>
-<span class="source-line-no">042</span><span id="line-42">/**</span>
-<span class="source-line-no">043</span><span id="line-43"> *  This class provides some utility functions that are helpful in the</span>
-<span class="source-line-no">044</span><span id="line-44"> *  security arena. &lt;br&gt;</span>
-<span class="source-line-no">045</span><span id="line-45"> *  &lt;br&gt;The methods are thread safe, but they use a global message digest. As</span>
-<span class="source-line-no">046</span><span id="line-46"> *  a consequence, multiple threads that are calculating hashes will serialise</span>
-<span class="source-line-no">047</span><span id="line-47"> *  on the use of those digest. That is acceptable for an application where</span>
-<span class="source-line-no">048</span><span id="line-48"> *  this calculation does not occur that often (for example a web application</span>
-<span class="source-line-no">049</span><span id="line-49"> *  that needs to check a password at login) but not for an application that</span>
-<span class="source-line-no">050</span><span id="line-50"> *  uses multiple threads to calculate the hashes for a bunch of files.</span>
-<span class="source-line-no">051</span><span id="line-51"> *</span>
-<span class="source-line-no">052</span><span id="line-52"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">053</span><span id="line-53"> *  @version $Id: SecurityUtils.java 1060 2023-09-24 19:21:40Z tquadrat $</span>
-<span class="source-line-no">054</span><span id="line-54"> *  @since 0.0.5</span>
-<span class="source-line-no">055</span><span id="line-55"> *</span>
-<span class="source-line-no">056</span><span id="line-56"> *  @UMLGraph.link</span>
-<span class="source-line-no">057</span><span id="line-57"> */</span>
-<span class="source-line-no">058</span><span id="line-58">@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )</span>
-<span class="source-line-no">059</span><span id="line-59">@UtilityClass</span>
-<span class="source-line-no">060</span><span id="line-60">public final class SecurityUtils</span>
-<span class="source-line-no">061</span><span id="line-61">{</span>
-<span class="source-line-no">062</span><span id="line-62">        /*-----------*\</span>
-<span class="source-line-no">063</span><span id="line-63">    ====** Constants **========================================================</span>
-<span class="source-line-no">064</span><span id="line-64">        \*-----------*/</span>
-<span class="source-line-no">065</span><span id="line-65">    /**</span>
-<span class="source-line-no">066</span><span id="line-66">     *  A recommended prime for the Diffie-Hellman-Merkle key exchange scheme.</span>
-<span class="source-line-no">067</span><span id="line-67">     *</span>
-<span class="source-line-no">068</span><span id="line-68">     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</span>
-<span class="source-line-no">069</span><span id="line-69">     *  @see #calculateDiffieHellmanPublicValue(BigInteger,BigInteger,BigInteger)</span>
-<span class="source-line-no">070</span><span id="line-70">     *  @see &lt;a href="http://tools.ietf.org/html/rfc2412#page-45"&gt;http://tools.ietf.org/html/rfc2412#page-45&lt;/a&gt;</span>
-<span class="source-line-no">071</span><span id="line-71">     */</span>
-<span class="source-line-no">072</span><span id="line-72">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">073</span><span id="line-73">    public static final BigInteger DHM_PRIME = new BigInteger</span>
-<span class="source-line-no">074</span><span id="line-74">    (</span>
-<span class="source-line-no">075</span><span id="line-75">        """</span>
-<span class="source-line-no">076</span><span id="line-76">        2410312426921032588552076022197566074856950548502459942654116941958\</span>
-<span class="source-line-no">077</span><span id="line-77">        1088316826122288900938582613416146732271414779040121965036489570505\</span>
-<span class="source-line-no">078</span><span id="line-78">        8263194273070680500922306273474534107340669624601458936165977404102\</span>
-<span class="source-line-no">079</span><span id="line-79">        7169249453200378729434170325843778659198143763193776859869524088940\</span>
-<span class="source-line-no">080</span><span id="line-80">        1955773461198435453015470437472077499697637500843089263392955599688\</span>
-<span class="source-line-no">081</span><span id="line-81">        8245787241299381012913029459299994792636526405928464720973038494721\</span>
-<span class="source-line-no">082</span><span id="line-82">        1681434464714438488520940127459844288859336526896320919633919""" );</span>
-<span class="source-line-no">083</span><span id="line-83"></span>
-<span class="source-line-no">084</span><span id="line-84">    /**</span>
-<span class="source-line-no">085</span><span id="line-85">     *  A recommended prime modulus (primitive root) for the</span>
-<span class="source-line-no">086</span><span id="line-86">     *  Diffie-Hellman-Merkle key exchange scheme.</span>
-<span class="source-line-no">087</span><span id="line-87">     *</span>
-<span class="source-line-no">088</span><span id="line-88">     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</span>
-<span class="source-line-no">089</span><span id="line-89">     *  @see #calculateDiffieHellmanPublicValue(BigInteger,BigInteger,BigInteger)</span>
-<span class="source-line-no">090</span><span id="line-90">     *  @see &lt;a href="http://tools.ietf.org/html/rfc2412#page-45"&gt;http://tools.ietf.org/html/rfc2412#page-45&lt;/a&gt;</span>
-<span class="source-line-no">091</span><span id="line-91">     */</span>
-<span class="source-line-no">092</span><span id="line-92">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">093</span><span id="line-93">    public static final BigInteger DHM_PRIME_MOD = BigInteger.valueOf( 21 );</span>
-<span class="source-line-no">094</span><span id="line-94"></span>
-<span class="source-line-no">095</span><span id="line-95">    /**</span>
-<span class="source-line-no">096</span><span id="line-96">     *  The message that indicates that the named algorithm is not supported:</span>
-<span class="source-line-no">097</span><span id="line-97">     *  {@value}.</span>
-<span class="source-line-no">098</span><span id="line-98">     */</span>
-<span class="source-line-no">099</span><span id="line-99">    private static final String MSG_AlgorithmNotSupported = "MessageDigest does not support '%1$s' Algorithm";</span>
-<span class="source-line-no">100</span><span id="line-100"></span>
-<span class="source-line-no">101</span><span id="line-101">    /**</span>
-<span class="source-line-no">102</span><span id="line-102">     *  The length for an MD5 hash: {@value}.</span>
-<span class="source-line-no">103</span><span id="line-103">     */</span>
-<span class="source-line-no">104</span><span id="line-104">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">105</span><span id="line-105">    public static final int MD5HASH_Length = 32;</span>
-<span class="source-line-no">106</span><span id="line-106"></span>
-<span class="source-line-no">107</span><span id="line-107">    /**</span>
-<span class="source-line-no">108</span><span id="line-108">     *  The length for an SHA1 hash: {@value}.</span>
-<span class="source-line-no">109</span><span id="line-109">     *</span>
-<span class="source-line-no">110</span><span id="line-110">     *  @deprecated Use</span>
-<span class="source-line-no">111</span><span id="line-111">     *  {@link #SHA1HASH_Length}</span>
-<span class="source-line-no">112</span><span id="line-112">     *  instead.</span>
-<span class="source-line-no">113</span><span id="line-113">     */</span>
-<span class="source-line-no">114</span><span id="line-114">    @Deprecated( since = "0.0.8", forRemoval = true )</span>
-<span class="source-line-no">115</span><span id="line-115">    @API( status = DEPRECATED, since = "0.0.8" )</span>
-<span class="source-line-no">116</span><span id="line-116">    public static final int SHAHASH_Length = 40;</span>
+<span class="source-line-no">021</span><span id="line-21">import static org.apiguardian.api.API.Status.STABLE;</span>
+<span class="source-line-no">022</span><span id="line-22">import static org.tquadrat.foundation.lang.CommonConstants.UTF8;</span>
+<span class="source-line-no">023</span><span id="line-23">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
+<span class="source-line-no">024</span><span id="line-24">import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;</span>
+<span class="source-line-no">025</span><span id="line-25">import static org.tquadrat.foundation.util.IOUtils.determineCheckSum;</span>
+<span class="source-line-no">026</span><span id="line-26"></span>
+<span class="source-line-no">027</span><span id="line-27">import java.io.File;</span>
+<span class="source-line-no">028</span><span id="line-28">import java.io.IOException;</span>
+<span class="source-line-no">029</span><span id="line-29">import java.math.BigInteger;</span>
+<span class="source-line-no">030</span><span id="line-30">import java.security.MessageDigest;</span>
+<span class="source-line-no">031</span><span id="line-31">import java.security.NoSuchAlgorithmException;</span>
+<span class="source-line-no">032</span><span id="line-32">import java.util.HexFormat;</span>
+<span class="source-line-no">033</span><span id="line-33">import java.util.Locale;</span>
+<span class="source-line-no">034</span><span id="line-34"></span>
+<span class="source-line-no">035</span><span id="line-35">import org.apiguardian.api.API;</span>
+<span class="source-line-no">036</span><span id="line-36">import org.tquadrat.foundation.annotation.ClassVersion;</span>
+<span class="source-line-no">037</span><span id="line-37">import org.tquadrat.foundation.annotation.UtilityClass;</span>
+<span class="source-line-no">038</span><span id="line-38">import org.tquadrat.foundation.exception.ImpossibleExceptionError;</span>
+<span class="source-line-no">039</span><span id="line-39">import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;</span>
+<span class="source-line-no">040</span><span id="line-40"></span>
+<span class="source-line-no">041</span><span id="line-41">/**</span>
+<span class="source-line-no">042</span><span id="line-42"> *  This class provides some utility functions that are helpful in the</span>
+<span class="source-line-no">043</span><span id="line-43"> *  security arena. &lt;br&gt;</span>
+<span class="source-line-no">044</span><span id="line-44"> *  &lt;br&gt;The methods are thread safe, but they use a global message digest. As</span>
+<span class="source-line-no">045</span><span id="line-45"> *  a consequence, multiple threads that are calculating hashes will serialise</span>
+<span class="source-line-no">046</span><span id="line-46"> *  on the use of those digest. That is acceptable for an application where</span>
+<span class="source-line-no">047</span><span id="line-47"> *  this calculation does not occur that often (for example a web application</span>
+<span class="source-line-no">048</span><span id="line-48"> *  that needs to check a password at login) but not for an application that</span>
+<span class="source-line-no">049</span><span id="line-49"> *  uses multiple threads to calculate the hashes for a bunch of files.</span>
+<span class="source-line-no">050</span><span id="line-50"> *</span>
+<span class="source-line-no">051</span><span id="line-51"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
+<span class="source-line-no">052</span><span id="line-52"> *  @version $Id: SecurityUtils.java 1086 2024-01-05 23:18:33Z tquadrat $</span>
+<span class="source-line-no">053</span><span id="line-53"> *  @since 0.0.5</span>
+<span class="source-line-no">054</span><span id="line-54"> *</span>
+<span class="source-line-no">055</span><span id="line-55"> *  @UMLGraph.link</span>
+<span class="source-line-no">056</span><span id="line-56"> */</span>
+<span class="source-line-no">057</span><span id="line-57">@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1086 2024-01-05 23:18:33Z tquadrat $" )</span>
+<span class="source-line-no">058</span><span id="line-58">@UtilityClass</span>
+<span class="source-line-no">059</span><span id="line-59">public final class SecurityUtils</span>
+<span class="source-line-no">060</span><span id="line-60">{</span>
+<span class="source-line-no">061</span><span id="line-61">        /*-----------*\</span>
+<span class="source-line-no">062</span><span id="line-62">    ====** Constants **========================================================</span>
+<span class="source-line-no">063</span><span id="line-63">        \*-----------*/</span>
+<span class="source-line-no">064</span><span id="line-64">    /**</span>
+<span class="source-line-no">065</span><span id="line-65">     *  A recommended prime for the Diffie-Hellman-Merkle key exchange scheme.</span>
+<span class="source-line-no">066</span><span id="line-66">     *</span>
+<span class="source-line-no">067</span><span id="line-67">     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</span>
+<span class="source-line-no">068</span><span id="line-68">     *  @see #calculateDiffieHellmanPublicValue(BigInteger,BigInteger,BigInteger)</span>
+<span class="source-line-no">069</span><span id="line-69">     *  @see &lt;a href="http://tools.ietf.org/html/rfc2412#page-45"&gt;http://tools.ietf.org/html/rfc2412#page-45&lt;/a&gt;</span>
+<span class="source-line-no">070</span><span id="line-70">     */</span>
+<span class="source-line-no">071</span><span id="line-71">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">072</span><span id="line-72">    public static final BigInteger DHM_PRIME = new BigInteger</span>
+<span class="source-line-no">073</span><span id="line-73">    (</span>
+<span class="source-line-no">074</span><span id="line-74">        """</span>
+<span class="source-line-no">075</span><span id="line-75">        2410312426921032588552076022197566074856950548502459942654116941958\</span>
+<span class="source-line-no">076</span><span id="line-76">        1088316826122288900938582613416146732271414779040121965036489570505\</span>
+<span class="source-line-no">077</span><span id="line-77">        8263194273070680500922306273474534107340669624601458936165977404102\</span>
+<span class="source-line-no">078</span><span id="line-78">        7169249453200378729434170325843778659198143763193776859869524088940\</span>
+<span class="source-line-no">079</span><span id="line-79">        1955773461198435453015470437472077499697637500843089263392955599688\</span>
+<span class="source-line-no">080</span><span id="line-80">        8245787241299381012913029459299994792636526405928464720973038494721\</span>
+<span class="source-line-no">081</span><span id="line-81">        1681434464714438488520940127459844288859336526896320919633919""" );</span>
+<span class="source-line-no">082</span><span id="line-82"></span>
+<span class="source-line-no">083</span><span id="line-83">    /**</span>
+<span class="source-line-no">084</span><span id="line-84">     *  A recommended prime modulus (primitive root) for the</span>
+<span class="source-line-no">085</span><span id="line-85">     *  Diffie-Hellman-Merkle key exchange scheme.</span>
+<span class="source-line-no">086</span><span id="line-86">     *</span>
+<span class="source-line-no">087</span><span id="line-87">     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</span>
+<span class="source-line-no">088</span><span id="line-88">     *  @see #calculateDiffieHellmanPublicValue(BigInteger,BigInteger,BigInteger)</span>
+<span class="source-line-no">089</span><span id="line-89">     *  @see &lt;a href="http://tools.ietf.org/html/rfc2412#page-45"&gt;http://tools.ietf.org/html/rfc2412#page-45&lt;/a&gt;</span>
+<span class="source-line-no">090</span><span id="line-90">     */</span>
+<span class="source-line-no">091</span><span id="line-91">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">092</span><span id="line-92">    public static final BigInteger DHM_PRIME_MOD = BigInteger.valueOf( 21 );</span>
+<span class="source-line-no">093</span><span id="line-93"></span>
+<span class="source-line-no">094</span><span id="line-94">    /**</span>
+<span class="source-line-no">095</span><span id="line-95">     *  The message that indicates that the named algorithm is not supported:</span>
+<span class="source-line-no">096</span><span id="line-96">     *  {@value}.</span>
+<span class="source-line-no">097</span><span id="line-97">     */</span>
+<span class="source-line-no">098</span><span id="line-98">    private static final String MSG_AlgorithmNotSupported = "MessageDigest does not support '%1$s' Algorithm";</span>
+<span class="source-line-no">099</span><span id="line-99"></span>
+<span class="source-line-no">100</span><span id="line-100">    /**</span>
+<span class="source-line-no">101</span><span id="line-101">     *  The length for an MD5 hash: {@value}.</span>
+<span class="source-line-no">102</span><span id="line-102">     */</span>
+<span class="source-line-no">103</span><span id="line-103">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">104</span><span id="line-104">    public static final int MD5HASH_Length = 32;</span>
+<span class="source-line-no">105</span><span id="line-105"></span>
+<span class="source-line-no">106</span><span id="line-106">    /**</span>
+<span class="source-line-no">107</span><span id="line-107">     *  The length for an SHA1 hash: {@value}.</span>
+<span class="source-line-no">108</span><span id="line-108">     */</span>
+<span class="source-line-no">109</span><span id="line-109">    @API( status = STABLE, since = "0.0.8" )</span>
+<span class="source-line-no">110</span><span id="line-110">    public static final int SHA1HASH_Length = 40;</span>
+<span class="source-line-no">111</span><span id="line-111"></span>
+<span class="source-line-no">112</span><span id="line-112">    /**</span>
+<span class="source-line-no">113</span><span id="line-113">     *  The length for an SHA256 hash: {@value}.</span>
+<span class="source-line-no">114</span><span id="line-114">     */</span>
+<span class="source-line-no">115</span><span id="line-115">    @API( status = STABLE, since = "0.0.8" )</span>
+<span class="source-line-no">116</span><span id="line-116">    public static final int SHA256HASH_Length = 64;</span>
 <span class="source-line-no">117</span><span id="line-117"></span>
-<span class="source-line-no">118</span><span id="line-118">    /**</span>
-<span class="source-line-no">119</span><span id="line-119">     *  The length for an SHA1 hash: {@value}.</span>
-<span class="source-line-no">120</span><span id="line-120">     */</span>
-<span class="source-line-no">121</span><span id="line-121">    @API( status = STABLE, since = "0.0.8" )</span>
-<span class="source-line-no">122</span><span id="line-122">    public static final int SHA1HASH_Length = 40;</span>
-<span class="source-line-no">123</span><span id="line-123"></span>
-<span class="source-line-no">124</span><span id="line-124">    /**</span>
-<span class="source-line-no">125</span><span id="line-125">     *  The length for an SHA256 hash: {@value}.</span>
-<span class="source-line-no">126</span><span id="line-126">     */</span>
-<span class="source-line-no">127</span><span id="line-127">    @API( status = STABLE, since = "0.0.8" )</span>
-<span class="source-line-no">128</span><span id="line-128">    public static final int SHA256HASH_Length = 64;</span>
-<span class="source-line-no">129</span><span id="line-129"></span>
-<span class="source-line-no">130</span><span id="line-130">        /*------------------------*\</span>
-<span class="source-line-no">131</span><span id="line-131">    ====** Static Initialisations **===========================================</span>
-<span class="source-line-no">132</span><span id="line-132">        \*------------------------*/</span>
+<span class="source-line-no">118</span><span id="line-118">        /*------------------------*\</span>
+<span class="source-line-no">119</span><span id="line-119">    ====** Static Initialisations **===========================================</span>
+<span class="source-line-no">120</span><span id="line-120">        \*------------------------*/</span>
+<span class="source-line-no">121</span><span id="line-121">    /**</span>
+<span class="source-line-no">122</span><span id="line-122">     *  The message digest that is used to encrypt the passwords with the MD5</span>
+<span class="source-line-no">123</span><span id="line-123">     *  hash algorithm.</span>
+<span class="source-line-no">124</span><span id="line-124">     */</span>
+<span class="source-line-no">125</span><span id="line-125">    private static final MessageDigest m_MD5MessageDigest;</span>
+<span class="source-line-no">126</span><span id="line-126"></span>
+<span class="source-line-no">127</span><span id="line-127">    /**</span>
+<span class="source-line-no">128</span><span id="line-128">     *  The message digest that is used to encrypt the passwords with the SHA-1</span>
+<span class="source-line-no">129</span><span id="line-129">     *  hash algorithm.</span>
+<span class="source-line-no">130</span><span id="line-130">     */</span>
+<span class="source-line-no">131</span><span id="line-131">    private static final MessageDigest m_SHA1MessageDigest;</span>
+<span class="source-line-no">132</span><span id="line-132"></span>
 <span class="source-line-no">133</span><span id="line-133">    /**</span>
-<span class="source-line-no">134</span><span id="line-134">     *  The message digest that is used to encrypt the passwords with the MD5</span>
+<span class="source-line-no">134</span><span id="line-134">     *  The message digest that is used to encrypt the passwords with the SHA-1</span>
 <span class="source-line-no">135</span><span id="line-135">     *  hash algorithm.</span>
 <span class="source-line-no">136</span><span id="line-136">     */</span>
-<span class="source-line-no">137</span><span id="line-137">    private static final MessageDigest m_MD5MessageDigest;</span>
+<span class="source-line-no">137</span><span id="line-137">    private static final MessageDigest m_SHA256MessageDigest;</span>
 <span class="source-line-no">138</span><span id="line-138"></span>
-<span class="source-line-no">139</span><span id="line-139">    /**</span>
-<span class="source-line-no">140</span><span id="line-140">     *  The message digest that is used to encrypt the passwords with the SHA-1</span>
-<span class="source-line-no">141</span><span id="line-141">     *  hash algorithm.</span>
-<span class="source-line-no">142</span><span id="line-142">     */</span>
-<span class="source-line-no">143</span><span id="line-143">    private static final MessageDigest m_SHA1MessageDigest;</span>
-<span class="source-line-no">144</span><span id="line-144"></span>
-<span class="source-line-no">145</span><span id="line-145">    /**</span>
-<span class="source-line-no">146</span><span id="line-146">     *  The message digest that is used to encrypt the passwords with the SHA-1</span>
-<span class="source-line-no">147</span><span id="line-147">     *  hash algorithm.</span>
-<span class="source-line-no">148</span><span id="line-148">     */</span>
-<span class="source-line-no">149</span><span id="line-149">    private static final MessageDigest m_SHA256MessageDigest;</span>
-<span class="source-line-no">150</span><span id="line-150"></span>
-<span class="source-line-no">151</span><span id="line-151">    static</span>
-<span class="source-line-no">152</span><span id="line-152">    {</span>
-<span class="source-line-no">153</span><span id="line-153">        //---* Create the MD5 digest *-----------------------------------------</span>
-<span class="source-line-no">154</span><span id="line-154">        var algorithm = "MD5";</span>
-<span class="source-line-no">155</span><span id="line-155">        try</span>
-<span class="source-line-no">156</span><span id="line-156">        {</span>
-<span class="source-line-no">157</span><span id="line-157">            m_MD5MessageDigest = MessageDigest.getInstance( algorithm );</span>
-<span class="source-line-no">158</span><span id="line-158">        }</span>
-<span class="source-line-no">159</span><span id="line-159">        catch( final NoSuchAlgorithmException e )</span>
-<span class="source-line-no">160</span><span id="line-160">        {</span>
-<span class="source-line-no">161</span><span id="line-161">            throw new ImpossibleExceptionError( format( MSG_AlgorithmNotSupported, algorithm ), e );</span>
-<span class="source-line-no">162</span><span id="line-162">        }</span>
-<span class="source-line-no">163</span><span id="line-163"></span>
-<span class="source-line-no">164</span><span id="line-164">        //---* Create the SHA digest *-----------------------------------------</span>
-<span class="source-line-no">165</span><span id="line-165">        algorithm = "SHA";</span>
-<span class="source-line-no">166</span><span id="line-166">        try</span>
-<span class="source-line-no">167</span><span id="line-167">        {</span>
-<span class="source-line-no">168</span><span id="line-168">            m_SHA1MessageDigest = MessageDigest.getInstance( algorithm );</span>
-<span class="source-line-no">169</span><span id="line-169">        }</span>
-<span class="source-line-no">170</span><span id="line-170">        catch( final NoSuchAlgorithmException e )</span>
-<span class="source-line-no">171</span><span id="line-171">        {</span>
-<span class="source-line-no">172</span><span id="line-172">            throw new ImpossibleExceptionError( format( MSG_AlgorithmNotSupported, algorithm ), e );</span>
-<span class="source-line-no">173</span><span id="line-173">        }</span>
+<span class="source-line-no">139</span><span id="line-139">    static</span>
+<span class="source-line-no">140</span><span id="line-140">    {</span>
+<span class="source-line-no">141</span><span id="line-141">        //---* Create the MD5 digest *-----------------------------------------</span>
+<span class="source-line-no">142</span><span id="line-142">        var algorithm = "MD5";</span>
+<span class="source-line-no">143</span><span id="line-143">        try</span>
+<span class="source-line-no">144</span><span id="line-144">        {</span>
+<span class="source-line-no">145</span><span id="line-145">            m_MD5MessageDigest = MessageDigest.getInstance( algorithm );</span>
+<span class="source-line-no">146</span><span id="line-146">        }</span>
+<span class="source-line-no">147</span><span id="line-147">        catch( final NoSuchAlgorithmException e )</span>
+<span class="source-line-no">148</span><span id="line-148">        {</span>
+<span class="source-line-no">149</span><span id="line-149">            throw new ImpossibleExceptionError( format( MSG_AlgorithmNotSupported, algorithm ), e );</span>
+<span class="source-line-no">150</span><span id="line-150">        }</span>
+<span class="source-line-no">151</span><span id="line-151"></span>
+<span class="source-line-no">152</span><span id="line-152">        //---* Create the SHA digest *-----------------------------------------</span>
+<span class="source-line-no">153</span><span id="line-153">        algorithm = "SHA";</span>
+<span class="source-line-no">154</span><span id="line-154">        try</span>
+<span class="source-line-no">155</span><span id="line-155">        {</span>
+<span class="source-line-no">156</span><span id="line-156">            m_SHA1MessageDigest = MessageDigest.getInstance( algorithm );</span>
+<span class="source-line-no">157</span><span id="line-157">        }</span>
+<span class="source-line-no">158</span><span id="line-158">        catch( final NoSuchAlgorithmException e )</span>
+<span class="source-line-no">159</span><span id="line-159">        {</span>
+<span class="source-line-no">160</span><span id="line-160">            throw new ImpossibleExceptionError( format( MSG_AlgorithmNotSupported, algorithm ), e );</span>
+<span class="source-line-no">161</span><span id="line-161">        }</span>
+<span class="source-line-no">162</span><span id="line-162"></span>
+<span class="source-line-no">163</span><span id="line-163">        //---* Create the SHA-256 digest *-------------------------------------</span>
+<span class="source-line-no">164</span><span id="line-164">        algorithm = "SHA-256";</span>
+<span class="source-line-no">165</span><span id="line-165">        try</span>
+<span class="source-line-no">166</span><span id="line-166">        {</span>
+<span class="source-line-no">167</span><span id="line-167">            m_SHA256MessageDigest = MessageDigest.getInstance( algorithm );</span>
+<span class="source-line-no">168</span><span id="line-168">        }</span>
+<span class="source-line-no">169</span><span id="line-169">        catch( final NoSuchAlgorithmException e )</span>
+<span class="source-line-no">170</span><span id="line-170">        {</span>
+<span class="source-line-no">171</span><span id="line-171">            throw new ImpossibleExceptionError( format( MSG_AlgorithmNotSupported, algorithm ), e );</span>
+<span class="source-line-no">172</span><span id="line-172">        }</span>
+<span class="source-line-no">173</span><span id="line-173">    }</span>
 <span class="source-line-no">174</span><span id="line-174"></span>
-<span class="source-line-no">175</span><span id="line-175">        //---* Create the SHA-256 digest *-------------------------------------</span>
-<span class="source-line-no">176</span><span id="line-176">        algorithm = "SHA-256";</span>
-<span class="source-line-no">177</span><span id="line-177">        try</span>
-<span class="source-line-no">178</span><span id="line-178">        {</span>
-<span class="source-line-no">179</span><span id="line-179">            m_SHA256MessageDigest = MessageDigest.getInstance( algorithm );</span>
-<span class="source-line-no">180</span><span id="line-180">        }</span>
-<span class="source-line-no">181</span><span id="line-181">        catch( final NoSuchAlgorithmException e )</span>
-<span class="source-line-no">182</span><span id="line-182">        {</span>
-<span class="source-line-no">183</span><span id="line-183">            throw new ImpossibleExceptionError( format( MSG_AlgorithmNotSupported, algorithm ), e );</span>
-<span class="source-line-no">184</span><span id="line-184">        }</span>
-<span class="source-line-no">185</span><span id="line-185">    }</span>
-<span class="source-line-no">186</span><span id="line-186"></span>
-<span class="source-line-no">187</span><span id="line-187">        /*--------------*\</span>
-<span class="source-line-no">188</span><span id="line-188">    ====** Constructors **=====================================================</span>
-<span class="source-line-no">189</span><span id="line-189">        \*--------------*/</span>
-<span class="source-line-no">190</span><span id="line-190">    /**</span>
-<span class="source-line-no">191</span><span id="line-191">     *  No instances are allowed for this class.</span>
-<span class="source-line-no">192</span><span id="line-192">     */</span>
-<span class="source-line-no">193</span><span id="line-193">    private SecurityUtils() { throw new PrivateConstructorForStaticClassCalledError( SecurityUtils.class ); }</span>
-<span class="source-line-no">194</span><span id="line-194"></span>
-<span class="source-line-no">195</span><span id="line-195">        /*---------*\</span>
-<span class="source-line-no">196</span><span id="line-196">    ====** Methods **==========================================================</span>
-<span class="source-line-no">197</span><span id="line-197">        \*---------*/</span>
-<span class="source-line-no">198</span><span id="line-198">    /**</span>
-<span class="source-line-no">199</span><span id="line-199">     *  &lt;p&gt;{@summary Performs the calculation for the Diffie-Hellmann-Merkle</span>
-<span class="source-line-no">200</span><span id="line-200">     *  key exchange procedure.}&lt;/p&gt;</span>
-<span class="source-line-no">201</span><span id="line-201">     *  &lt;p&gt;From Wikipedia:&lt;/p&gt; &lt;blockquote&gt;&lt;p&gt;Diffie–Hellman establishes a shared</span>
-<span class="source-line-no">202</span><span id="line-202">     *  secret that can be used for secret communications while exchanging data</span>
-<span class="source-line-no">203</span><span id="line-203">     *  over a public network. Diffie–Hellman key exchange (D-H) is a specific</span>
-<span class="source-line-no">204</span><span id="line-204">     *  method of exchanging cryptographic keys. It is one of the earliest</span>
-<span class="source-line-no">205</span><span id="line-205">     *  practical examples of key exchange implemented within the field of</span>
-<span class="source-line-no">206</span><span id="line-206">     *  cryptography. The Diffie–Hellman key exchange method allows two parties</span>
-<span class="source-line-no">207</span><span id="line-207">     *  that have no prior knowledge of each other to jointly establish a</span>
-<span class="source-line-no">208</span><span id="line-208">     *  shared secret key over an insecure communications channel. This key can</span>
-<span class="source-line-no">209</span><span id="line-209">     *  then be used to encrypt subsequent communications using a symmetric key</span>
-<span class="source-line-no">210</span><span id="line-210">     *  cipher.&lt;/p&gt;</span>
-<span class="source-line-no">211</span><span id="line-211">     *  &lt;p&gt;The scheme was first published by Whitfield Diffie and Martin</span>
-<span class="source-line-no">212</span><span id="line-212">     *  Hellman in 1976, although it had been separately invented a few years</span>
-<span class="source-line-no">213</span><span id="line-213">     *  earlier within GCHQ, the British signals intelligence agency, by James</span>
-<span class="source-line-no">214</span><span id="line-214">     *  H. Ellis, Clifford Cocks and Malcolm J. Williamson but was kept</span>
-<span class="source-line-no">215</span><span id="line-215">     *  classified. In 2002, Hellman suggested the algorithm be called</span>
-<span class="source-line-no">216</span><span id="line-216">     *  Diffie–Hellman–Merkle key exchange in recognition of Ralph Merkle's</span>
-<span class="source-line-no">217</span><span id="line-217">     *  contribution to the invention of public-key cryptography (Hellman,</span>
-<span class="source-line-no">218</span><span id="line-218">     *  2002).&lt;/p&gt;</span>
-<span class="source-line-no">219</span><span id="line-219">     *  &lt;p&gt;Although Diffie–Hellman key agreement itself is an anonymous</span>
-<span class="source-line-no">220</span><span id="line-220">     *  (non-authenticated) key-agreement protocol, it provides the basis for a</span>
-<span class="source-line-no">221</span><span id="line-221">     *  variety of authenticated protocols, and is used to provide &lt;i&gt;perfect</span>
-<span class="source-line-no">222</span><span id="line-222">     *  forward secrecy&lt;/i&gt; in Transport Layer Security's ephemeral modes</span>
-<span class="source-line-no">223</span><span id="line-223">     *  (referred to as EDH or DHE depending on the cipher</span>
-<span class="source-line-no">224</span><span id="line-224">     *  suite).&lt;/p&gt;&lt;/blockquote&gt;</span>
-<span class="source-line-no">225</span><span id="line-225">     *  &lt;p&gt;This method performs the following calculation:&lt;/p&gt;</span>
-<span class="source-line-no">226</span><span id="line-226">     *  &lt;pre&gt;&lt;code&gt;K = remoteSecret&lt;sup&gt;localSecret&lt;/sup&gt; mod prime&lt;/code&gt;&lt;/pre&gt;</span>
-<span class="source-line-no">227</span><span id="line-227">     *</span>
-<span class="source-line-no">228</span><span id="line-228">     *  @param  prime   A large prime that is known to both communication</span>
-<span class="source-line-no">229</span><span id="line-229">     *      partners.</span>
-<span class="source-line-no">230</span><span id="line-230">     *  @param  localSecret The secret number that was used to create the</span>
-<span class="source-line-no">231</span><span id="line-231">     *      public value sent to the other party.</span>
-<span class="source-line-no">232</span><span id="line-232">     *  @param  remoteSecret    The public value that the other party created.</span>
-<span class="source-line-no">233</span><span id="line-233">     *  @return The encryption key &lt;i&gt;K&lt;/i&gt;.</span>
-<span class="source-line-no">234</span><span id="line-234">     *</span>
-<span class="source-line-no">235</span><span id="line-235">     *  @see &lt;a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange"&gt;Wikipedia: Diffie–Hellman key exchange&lt;/a&gt;</span>
-<span class="source-line-no">236</span><span id="line-236">     */</span>
-<span class="source-line-no">237</span><span id="line-237">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">238</span><span id="line-238">    public static final BigInteger calculateDiffieHellmanEncryptionKey( final BigInteger prime, final BigInteger localSecret, final BigInteger remoteSecret )</span>
-<span class="source-line-no">239</span><span id="line-239">    {</span>
-<span class="source-line-no">240</span><span id="line-240">        final var retValue = requireNonNullArgument( remoteSecret, "remoteSecret" )</span>
-<span class="source-line-no">241</span><span id="line-241">            .modPow( requireNonNullArgument( localSecret, "localSecret" ), requireNonNullArgument( prime, "prime" ) );</span>
-<span class="source-line-no">242</span><span id="line-242"></span>
-<span class="source-line-no">243</span><span id="line-243">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">244</span><span id="line-244">        return retValue;</span>
-<span class="source-line-no">245</span><span id="line-245">    }   //  calculateDiffieHellmanEncryptionKey()</span>
-<span class="source-line-no">246</span><span id="line-246"></span>
-<span class="source-line-no">247</span><span id="line-247">    /**</span>
-<span class="source-line-no">248</span><span id="line-248">     *  &lt;p&gt;{@summary Calculates the value that will be transmitted to the other</span>
-<span class="source-line-no">249</span><span id="line-249">     *  party on the exchange of an encryption key using the</span>
-<span class="source-line-no">250</span><span id="line-250">     *  Diffie-Hellman-Merkle key exchange scheme.}&lt;/p&gt;&gt;</span>
-<span class="source-line-no">251</span><span id="line-251">     *  &lt;p&gt;This method performs the following calculation:&lt;/p&gt;</span>
-<span class="source-line-no">252</span><span id="line-252">     *  &lt;pre&gt;&lt;code&gt;A = root&lt;sup&gt;random&lt;/sup&gt; mod prime&lt;/code&gt;&lt;/pre&gt;.</span>
-<span class="source-line-no">253</span><span id="line-253">     *</span>
-<span class="source-line-no">254</span><span id="line-254">     *  @param  prime   A large prime that is known to both communication partners.</span>
-<span class="source-line-no">255</span><span id="line-255">     *  @param  root    A primitive root &lt;i&gt;mod {@code prime}&lt;/i&gt;.</span>
-<span class="source-line-no">256</span><span id="line-256">     *  @param  localSecret The secret random number.</span>
-<span class="source-line-no">257</span><span id="line-257">     *  @return The value &lt;i&gt;A&lt;/i&gt; to transmit to the other party.</span>
-<span class="source-line-no">258</span><span id="line-258">     *</span>
-<span class="source-line-no">259</span><span id="line-259">     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</span>
-<span class="source-line-no">260</span><span id="line-260">     */</span>
-<span class="source-line-no">261</span><span id="line-261">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">262</span><span id="line-262">    public static final BigInteger calculateDiffieHellmanPublicValue( final BigInteger prime, final BigInteger root, final BigInteger localSecret )</span>
-<span class="source-line-no">263</span><span id="line-263">    {</span>
-<span class="source-line-no">264</span><span id="line-264">        final var retValue = requireNonNullArgument( root, "root" )</span>
-<span class="source-line-no">265</span><span id="line-265">            .modPow( requireNonNullArgument( localSecret, "localSecret" ), requireNonNullArgument( prime, "prime" ) );</span>
-<span class="source-line-no">266</span><span id="line-266"></span>
-<span class="source-line-no">267</span><span id="line-267">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">268</span><span id="line-268">        return retValue;</span>
-<span class="source-line-no">269</span><span id="line-269">    }   //  calculateDiffieHellmanPublicValue()</span>
+<span class="source-line-no">175</span><span id="line-175">        /*--------------*\</span>
+<span class="source-line-no">176</span><span id="line-176">    ====** Constructors **=====================================================</span>
+<span class="source-line-no">177</span><span id="line-177">        \*--------------*/</span>
+<span class="source-line-no">178</span><span id="line-178">    /**</span>
+<span class="source-line-no">179</span><span id="line-179">     *  No instances are allowed for this class.</span>
+<span class="source-line-no">180</span><span id="line-180">     */</span>
+<span class="source-line-no">181</span><span id="line-181">    private SecurityUtils() { throw new PrivateConstructorForStaticClassCalledError( SecurityUtils.class ); }</span>
+<span class="source-line-no">182</span><span id="line-182"></span>
+<span class="source-line-no">183</span><span id="line-183">        /*---------*\</span>
+<span class="source-line-no">184</span><span id="line-184">    ====** Methods **==========================================================</span>
+<span class="source-line-no">185</span><span id="line-185">        \*---------*/</span>
+<span class="source-line-no">186</span><span id="line-186">    /**</span>
+<span class="source-line-no">187</span><span id="line-187">     *  &lt;p&gt;{@summary Performs the calculation for the Diffie-Hellmann-Merkle</span>
+<span class="source-line-no">188</span><span id="line-188">     *  key exchange procedure.}&lt;/p&gt;</span>
+<span class="source-line-no">189</span><span id="line-189">     *  &lt;p&gt;From Wikipedia:&lt;/p&gt; &lt;blockquote&gt;&lt;p&gt;Diffie–Hellman establishes a shared</span>
+<span class="source-line-no">190</span><span id="line-190">     *  secret that can be used for secret communications while exchanging data</span>
+<span class="source-line-no">191</span><span id="line-191">     *  over a public network. Diffie–Hellman key exchange (D-H) is a specific</span>
+<span class="source-line-no">192</span><span id="line-192">     *  method of exchanging cryptographic keys. It is one of the earliest</span>
+<span class="source-line-no">193</span><span id="line-193">     *  practical examples of key exchange implemented within the field of</span>
+<span class="source-line-no">194</span><span id="line-194">     *  cryptography. The Diffie–Hellman key exchange method allows two parties</span>
+<span class="source-line-no">195</span><span id="line-195">     *  that have no prior knowledge of each other to jointly establish a</span>
+<span class="source-line-no">196</span><span id="line-196">     *  shared secret key over an insecure communications channel. This key can</span>
+<span class="source-line-no">197</span><span id="line-197">     *  then be used to encrypt subsequent communications using a symmetric key</span>
+<span class="source-line-no">198</span><span id="line-198">     *  cipher.&lt;/p&gt;</span>
+<span class="source-line-no">199</span><span id="line-199">     *  &lt;p&gt;The scheme was first published by Whitfield Diffie and Martin</span>
+<span class="source-line-no">200</span><span id="line-200">     *  Hellman in 1976, although it had been separately invented a few years</span>
+<span class="source-line-no">201</span><span id="line-201">     *  earlier within GCHQ, the British signals intelligence agency, by James</span>
+<span class="source-line-no">202</span><span id="line-202">     *  H. Ellis, Clifford Cocks and Malcolm J. Williamson but was kept</span>
+<span class="source-line-no">203</span><span id="line-203">     *  classified. In 2002, Hellman suggested the algorithm be called</span>
+<span class="source-line-no">204</span><span id="line-204">     *  Diffie–Hellman–Merkle key exchange in recognition of Ralph Merkle's</span>
+<span class="source-line-no">205</span><span id="line-205">     *  contribution to the invention of public-key cryptography (Hellman,</span>
+<span class="source-line-no">206</span><span id="line-206">     *  2002).&lt;/p&gt;</span>
+<span class="source-line-no">207</span><span id="line-207">     *  &lt;p&gt;Although Diffie–Hellman key agreement itself is an anonymous</span>
+<span class="source-line-no">208</span><span id="line-208">     *  (non-authenticated) key-agreement protocol, it provides the basis for a</span>
+<span class="source-line-no">209</span><span id="line-209">     *  variety of authenticated protocols, and is used to provide &lt;i&gt;perfect</span>
+<span class="source-line-no">210</span><span id="line-210">     *  forward secrecy&lt;/i&gt; in Transport Layer Security's ephemeral modes</span>
+<span class="source-line-no">211</span><span id="line-211">     *  (referred to as EDH or DHE depending on the cipher</span>
+<span class="source-line-no">212</span><span id="line-212">     *  suite).&lt;/p&gt;&lt;/blockquote&gt;</span>
+<span class="source-line-no">213</span><span id="line-213">     *  &lt;p&gt;This method performs the following calculation:&lt;/p&gt;</span>
+<span class="source-line-no">214</span><span id="line-214">     *  &lt;pre&gt;&lt;code&gt;K = remoteSecret&lt;sup&gt;localSecret&lt;/sup&gt; mod prime&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="source-line-no">215</span><span id="line-215">     *</span>
+<span class="source-line-no">216</span><span id="line-216">     *  @param  prime   A large prime that is known to both communication</span>
+<span class="source-line-no">217</span><span id="line-217">     *      partners.</span>
+<span class="source-line-no">218</span><span id="line-218">     *  @param  localSecret The secret number that was used to create the</span>
+<span class="source-line-no">219</span><span id="line-219">     *      public value sent to the other party.</span>
+<span class="source-line-no">220</span><span id="line-220">     *  @param  remoteSecret    The public value that the other party created.</span>
+<span class="source-line-no">221</span><span id="line-221">     *  @return The encryption key &lt;i&gt;K&lt;/i&gt;.</span>
+<span class="source-line-no">222</span><span id="line-222">     *</span>
+<span class="source-line-no">223</span><span id="line-223">     *  @see &lt;a href="https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange"&gt;Wikipedia: Diffie–Hellman key exchange&lt;/a&gt;</span>
+<span class="source-line-no">224</span><span id="line-224">     */</span>
+<span class="source-line-no">225</span><span id="line-225">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">226</span><span id="line-226">    public static final BigInteger calculateDiffieHellmanEncryptionKey( final BigInteger prime, final BigInteger localSecret, final BigInteger remoteSecret )</span>
+<span class="source-line-no">227</span><span id="line-227">    {</span>
+<span class="source-line-no">228</span><span id="line-228">        final var retValue = requireNonNullArgument( remoteSecret, "remoteSecret" )</span>
+<span class="source-line-no">229</span><span id="line-229">            .modPow( requireNonNullArgument( localSecret, "localSecret" ), requireNonNullArgument( prime, "prime" ) );</span>
+<span class="source-line-no">230</span><span id="line-230"></span>
+<span class="source-line-no">231</span><span id="line-231">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">232</span><span id="line-232">        return retValue;</span>
+<span class="source-line-no">233</span><span id="line-233">    }   //  calculateDiffieHellmanEncryptionKey()</span>
+<span class="source-line-no">234</span><span id="line-234"></span>
+<span class="source-line-no">235</span><span id="line-235">    /**</span>
+<span class="source-line-no">236</span><span id="line-236">     *  &lt;p&gt;{@summary Calculates the value that will be transmitted to the other</span>
+<span class="source-line-no">237</span><span id="line-237">     *  party on the exchange of an encryption key using the</span>
+<span class="source-line-no">238</span><span id="line-238">     *  Diffie-Hellman-Merkle key exchange scheme.}&lt;/p&gt;&gt;</span>
+<span class="source-line-no">239</span><span id="line-239">     *  &lt;p&gt;This method performs the following calculation:&lt;/p&gt;</span>
+<span class="source-line-no">240</span><span id="line-240">     *  &lt;pre&gt;&lt;code&gt;A = root&lt;sup&gt;random&lt;/sup&gt; mod prime&lt;/code&gt;&lt;/pre&gt;.</span>
+<span class="source-line-no">241</span><span id="line-241">     *</span>
+<span class="source-line-no">242</span><span id="line-242">     *  @param  prime   A large prime that is known to both communication partners.</span>
+<span class="source-line-no">243</span><span id="line-243">     *  @param  root    A primitive root &lt;i&gt;mod {@code prime}&lt;/i&gt;.</span>
+<span class="source-line-no">244</span><span id="line-244">     *  @param  localSecret The secret random number.</span>
+<span class="source-line-no">245</span><span id="line-245">     *  @return The value &lt;i&gt;A&lt;/i&gt; to transmit to the other party.</span>
+<span class="source-line-no">246</span><span id="line-246">     *</span>
+<span class="source-line-no">247</span><span id="line-247">     *  @see #calculateDiffieHellmanEncryptionKey(BigInteger,BigInteger,BigInteger)</span>
+<span class="source-line-no">248</span><span id="line-248">     */</span>
+<span class="source-line-no">249</span><span id="line-249">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">250</span><span id="line-250">    public static final BigInteger calculateDiffieHellmanPublicValue( final BigInteger prime, final BigInteger root, final BigInteger localSecret )</span>
+<span class="source-line-no">251</span><span id="line-251">    {</span>
+<span class="source-line-no">252</span><span id="line-252">        final var retValue = requireNonNullArgument( root, "root" )</span>
+<span class="source-line-no">253</span><span id="line-253">            .modPow( requireNonNullArgument( localSecret, "localSecret" ), requireNonNullArgument( prime, "prime" ) );</span>
+<span class="source-line-no">254</span><span id="line-254"></span>
+<span class="source-line-no">255</span><span id="line-255">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">256</span><span id="line-256">        return retValue;</span>
+<span class="source-line-no">257</span><span id="line-257">    }   //  calculateDiffieHellmanPublicValue()</span>
+<span class="source-line-no">258</span><span id="line-258"></span>
+<span class="source-line-no">259</span><span id="line-259">    /**</span>
+<span class="source-line-no">260</span><span id="line-260">     *  Calculates a checksum for the given file, based on the MD5 algorithm.</span>
+<span class="source-line-no">261</span><span id="line-261">     *</span>
+<span class="source-line-no">262</span><span id="line-262">     *  @param  file    The file.</span>
+<span class="source-line-no">263</span><span id="line-263">     *  @return The check sum.</span>
+<span class="source-line-no">264</span><span id="line-264">     *  @throws IOException Something went wrong on reading the file.</span>
+<span class="source-line-no">265</span><span id="line-265">     */</span>
+<span class="source-line-no">266</span><span id="line-266">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">267</span><span id="line-267">    public static final String calculateMD5CheckSum( final File file ) throws IOException</span>
+<span class="source-line-no">268</span><span id="line-268">    {</span>
+<span class="source-line-no">269</span><span id="line-269">        requireNonNullArgument( file, "file" );</span>
 <span class="source-line-no">270</span><span id="line-270"></span>
-<span class="source-line-no">271</span><span id="line-271">    /**</span>
-<span class="source-line-no">272</span><span id="line-272">     *  Calculates a checksum for the given file, based on the MD5 algorithm.</span>
-<span class="source-line-no">273</span><span id="line-273">     *</span>
-<span class="source-line-no">274</span><span id="line-274">     *  @param  file    The file.</span>
-<span class="source-line-no">275</span><span id="line-275">     *  @return The check sum.</span>
-<span class="source-line-no">276</span><span id="line-276">     *  @throws IOException Something went wrong on reading the file.</span>
-<span class="source-line-no">277</span><span id="line-277">     */</span>
-<span class="source-line-no">278</span><span id="line-278">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">279</span><span id="line-279">    public static final String calculateMD5CheckSum( final File file ) throws IOException</span>
-<span class="source-line-no">280</span><span id="line-280">    {</span>
-<span class="source-line-no">281</span><span id="line-281">        requireNonNullArgument( file, "file" );</span>
-<span class="source-line-no">282</span><span id="line-282"></span>
-<span class="source-line-no">283</span><span id="line-283">        String retValue = null;</span>
-<span class="source-line-no">284</span><span id="line-284">        synchronized( m_MD5MessageDigest )</span>
-<span class="source-line-no">285</span><span id="line-285">        {</span>
-<span class="source-line-no">286</span><span id="line-286">            final var hash = determineCheckSum( file, m_MD5MessageDigest );</span>
-<span class="source-line-no">287</span><span id="line-287">            retValue = HexFormat.of().withUpperCase().formatHex( hash );</span>
-<span class="source-line-no">288</span><span id="line-288">        }</span>
-<span class="source-line-no">289</span><span id="line-289"></span>
-<span class="source-line-no">290</span><span id="line-290">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">291</span><span id="line-291">        return retValue;</span>
-<span class="source-line-no">292</span><span id="line-292">    }   //  calculateMD5CheckSum()</span>
+<span class="source-line-no">271</span><span id="line-271">        String retValue = null;</span>
+<span class="source-line-no">272</span><span id="line-272">        synchronized( m_MD5MessageDigest )</span>
+<span class="source-line-no">273</span><span id="line-273">        {</span>
+<span class="source-line-no">274</span><span id="line-274">            final var hash = determineCheckSum( file, m_MD5MessageDigest );</span>
+<span class="source-line-no">275</span><span id="line-275">            retValue = HexFormat.of().withUpperCase().formatHex( hash );</span>
+<span class="source-line-no">276</span><span id="line-276">        }</span>
+<span class="source-line-no">277</span><span id="line-277"></span>
+<span class="source-line-no">278</span><span id="line-278">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">279</span><span id="line-279">        return retValue;</span>
+<span class="source-line-no">280</span><span id="line-280">    }   //  calculateMD5CheckSum()</span>
+<span class="source-line-no">281</span><span id="line-281"></span>
+<span class="source-line-no">282</span><span id="line-282">    /**</span>
+<span class="source-line-no">283</span><span id="line-283">     *  Calculates a checksum for the given file, based on the SHA-1 algorithm.</span>
+<span class="source-line-no">284</span><span id="line-284">     *</span>
+<span class="source-line-no">285</span><span id="line-285">     *  @param  file    The file.</span>
+<span class="source-line-no">286</span><span id="line-286">     *  @return The check sum.</span>
+<span class="source-line-no">287</span><span id="line-287">     *  @throws IOException Something went wrong on reading the file.</span>
+<span class="source-line-no">288</span><span id="line-288">     */</span>
+<span class="source-line-no">289</span><span id="line-289">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">290</span><span id="line-290">    public static final String calculateSHACheckSum( final File file ) throws IOException</span>
+<span class="source-line-no">291</span><span id="line-291">    {</span>
+<span class="source-line-no">292</span><span id="line-292">        requireNonNullArgument( file, "file" );</span>
 <span class="source-line-no">293</span><span id="line-293"></span>
-<span class="source-line-no">294</span><span id="line-294">    /**</span>
-<span class="source-line-no">295</span><span id="line-295">     *  Calculates a checksum for the given file, based on the SHA-1 algorithm.</span>
-<span class="source-line-no">296</span><span id="line-296">     *</span>
-<span class="source-line-no">297</span><span id="line-297">     *  @param  file    The file.</span>
-<span class="source-line-no">298</span><span id="line-298">     *  @return The check sum.</span>
-<span class="source-line-no">299</span><span id="line-299">     *  @throws IOException Something went wrong on reading the file.</span>
-<span class="source-line-no">300</span><span id="line-300">     */</span>
-<span class="source-line-no">301</span><span id="line-301">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">302</span><span id="line-302">    public static final String calculateSHACheckSum( final File file ) throws IOException</span>
-<span class="source-line-no">303</span><span id="line-303">    {</span>
-<span class="source-line-no">304</span><span id="line-304">        requireNonNullArgument( file, "file" );</span>
-<span class="source-line-no">305</span><span id="line-305"></span>
-<span class="source-line-no">306</span><span id="line-306">        String retValue = null;</span>
-<span class="source-line-no">307</span><span id="line-307">        synchronized( m_SHA1MessageDigest )</span>
-<span class="source-line-no">308</span><span id="line-308">        {</span>
-<span class="source-line-no">309</span><span id="line-309">            final var hash = determineCheckSum( file, m_SHA1MessageDigest );</span>
-<span class="source-line-no">310</span><span id="line-310">            retValue = HexFormat.of().withUpperCase().formatHex( hash );</span>
-<span class="source-line-no">311</span><span id="line-311">        }</span>
-<span class="source-line-no">312</span><span id="line-312"></span>
-<span class="source-line-no">313</span><span id="line-313">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">314</span><span id="line-314">        return retValue;</span>
-<span class="source-line-no">315</span><span id="line-315">    }   //  calculateSHACheckSum()</span>
-<span class="source-line-no">316</span><span id="line-316"></span>
-<span class="source-line-no">317</span><span id="line-317">    /**</span>
-<span class="source-line-no">318</span><span id="line-318">     *  Calculates a checksum for the given file, based on the SHA-256</span>
-<span class="source-line-no">319</span><span id="line-319">     *  algorithm.</span>
-<span class="source-line-no">320</span><span id="line-320">     *</span>
-<span class="source-line-no">321</span><span id="line-321">     *  @param  file    The file.</span>
-<span class="source-line-no">322</span><span id="line-322">     *  @return The check sum.</span>
-<span class="source-line-no">323</span><span id="line-323">     *  @throws IOException Something went wrong on reading the file.</span>
-<span class="source-line-no">324</span><span id="line-324">     */</span>
-<span class="source-line-no">325</span><span id="line-325">    @API( status = STABLE, since = "0.0.8" )</span>
-<span class="source-line-no">326</span><span id="line-326">    public static final String calculateSHA256CheckSum( final File file ) throws IOException</span>
-<span class="source-line-no">327</span><span id="line-327">    {</span>
-<span class="source-line-no">328</span><span id="line-328">        requireNonNullArgument( file, "file" );</span>
-<span class="source-line-no">329</span><span id="line-329"></span>
-<span class="source-line-no">330</span><span id="line-330">        String retValue = null;</span>
-<span class="source-line-no">331</span><span id="line-331">        synchronized( m_SHA256MessageDigest )</span>
-<span class="source-line-no">332</span><span id="line-332">        {</span>
-<span class="source-line-no">333</span><span id="line-333">            final var hash = determineCheckSum( file, m_SHA256MessageDigest );</span>
-<span class="source-line-no">334</span><span id="line-334">            retValue = HexFormat.of().withUpperCase().formatHex( hash );</span>
-<span class="source-line-no">335</span><span id="line-335">        }</span>
-<span class="source-line-no">336</span><span id="line-336"></span>
-<span class="source-line-no">337</span><span id="line-337">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">338</span><span id="line-338">        return retValue;</span>
-<span class="source-line-no">339</span><span id="line-339">    }   //  calculateSHA256CheckSum()</span>
-<span class="source-line-no">340</span><span id="line-340"></span>
-<span class="source-line-no">341</span><span id="line-341">    /**</span>
-<span class="source-line-no">342</span><span id="line-342">     *  Creates a MD5 hash from the given string.&lt;br&gt;</span>
-<span class="source-line-no">343</span><span id="line-343">     *  &lt;br&gt;The output string will contain the digits from {@code 0xA} to</span>
-<span class="source-line-no">344</span><span id="line-344">     *  {@code 0xF} all as lower</span>
-<span class="source-line-no">345</span><span id="line-345">     *  case.&lt;br&gt;</span>
-<span class="source-line-no">346</span><span id="line-346">     *  &lt;br&gt;Use this method to create the values for password fields; it is</span>
-<span class="source-line-no">347</span><span id="line-347">     *  not very efficient for calculating the hash value for (large) files as</span>
-<span class="source-line-no">348</span><span id="line-348">     *  it would require to load the whole file into memory.</span>
-<span class="source-line-no">349</span><span id="line-349">     *</span>
-<span class="source-line-no">350</span><span id="line-350">     *  @param  input   The source String; may be {@code null}.</span>
-<span class="source-line-no">351</span><span id="line-351">     *  @return The String with the hash value or {@code null} if the</span>
-<span class="source-line-no">352</span><span id="line-352">     *      input parameter was already {@code null}.</span>
-<span class="source-line-no">353</span><span id="line-353">     *</span>
-<span class="source-line-no">354</span><span id="line-354">     *  @see #calculateMD5CheckSum(File)</span>
-<span class="source-line-no">355</span><span id="line-355">     */</span>
-<span class="source-line-no">356</span><span id="line-356">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">357</span><span id="line-357">    public static final String calculateMD5Hash( final CharSequence input )</span>
-<span class="source-line-no">358</span><span id="line-358">    {</span>
-<span class="source-line-no">359</span><span id="line-359">        String retValue = null;</span>
-<span class="source-line-no">360</span><span id="line-360">        if( nonNull( input ) )</span>
-<span class="source-line-no">361</span><span id="line-361">        {</span>
-<span class="source-line-no">362</span><span id="line-362">            final var inputBytes = input.toString().getBytes( UTF8 );</span>
-<span class="source-line-no">363</span><span id="line-363">            retValue = HexFormat.of().withUpperCase().formatHex( calculateMD5Hash( inputBytes ) ).toLowerCase( Locale.ROOT );</span>
-<span class="source-line-no">364</span><span id="line-364">        }</span>
-<span class="source-line-no">365</span><span id="line-365"></span>
-<span class="source-line-no">366</span><span id="line-366">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">367</span><span id="line-367">        return retValue;</span>
-<span class="source-line-no">368</span><span id="line-368">    }   //  calculateMD5Hash()</span>
-<span class="source-line-no">369</span><span id="line-369"></span>
-<span class="source-line-no">370</span><span id="line-370">    /**</span>
-<span class="source-line-no">371</span><span id="line-371">     *  Creates a MD5 hash from the given byte sequence.&lt;br&gt;</span>
-<span class="source-line-no">372</span><span id="line-372">     *  &lt;br&gt; This method is not very efficient for calculating the hash value</span>
-<span class="source-line-no">373</span><span id="line-373">     *  for (large) files as it would require to load the whole file into</span>
-<span class="source-line-no">374</span><span id="line-374">     *  memory.</span>
-<span class="source-line-no">375</span><span id="line-375">     *</span>
-<span class="source-line-no">376</span><span id="line-376">     *  @param  input   The byte array to hash.</span>
-<span class="source-line-no">377</span><span id="line-377">     *  @return The byte array with the hash.</span>
-<span class="source-line-no">378</span><span id="line-378">     *</span>
-<span class="source-line-no">379</span><span id="line-379">     *  @see #calculateMD5CheckSum(File)</span>
-<span class="source-line-no">380</span><span id="line-380">     */</span>
-<span class="source-line-no">381</span><span id="line-381">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">382</span><span id="line-382">    public static final byte [] calculateMD5Hash( final byte [] input )</span>
-<span class="source-line-no">383</span><span id="line-383">    {</span>
-<span class="source-line-no">384</span><span id="line-384">        requireNonNullArgument( input, "input" );</span>
+<span class="source-line-no">294</span><span id="line-294">        String retValue = null;</span>
+<span class="source-line-no">295</span><span id="line-295">        synchronized( m_SHA1MessageDigest )</span>
+<span class="source-line-no">296</span><span id="line-296">        {</span>
+<span class="source-line-no">297</span><span id="line-297">            final var hash = determineCheckSum( file, m_SHA1MessageDigest );</span>
+<span class="source-line-no">298</span><span id="line-298">            retValue = HexFormat.of().withUpperCase().formatHex( hash );</span>
+<span class="source-line-no">299</span><span id="line-299">        }</span>
+<span class="source-line-no">300</span><span id="line-300"></span>
+<span class="source-line-no">301</span><span id="line-301">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">302</span><span id="line-302">        return retValue;</span>
+<span class="source-line-no">303</span><span id="line-303">    }   //  calculateSHACheckSum()</span>
+<span class="source-line-no">304</span><span id="line-304"></span>
+<span class="source-line-no">305</span><span id="line-305">    /**</span>
+<span class="source-line-no">306</span><span id="line-306">     *  Calculates a checksum for the given file, based on the SHA-256</span>
+<span class="source-line-no">307</span><span id="line-307">     *  algorithm.</span>
+<span class="source-line-no">308</span><span id="line-308">     *</span>
+<span class="source-line-no">309</span><span id="line-309">     *  @param  file    The file.</span>
+<span class="source-line-no">310</span><span id="line-310">     *  @return The check sum.</span>
+<span class="source-line-no">311</span><span id="line-311">     *  @throws IOException Something went wrong on reading the file.</span>
+<span class="source-line-no">312</span><span id="line-312">     */</span>
+<span class="source-line-no">313</span><span id="line-313">    @API( status = STABLE, since = "0.0.8" )</span>
+<span class="source-line-no">314</span><span id="line-314">    public static final String calculateSHA256CheckSum( final File file ) throws IOException</span>
+<span class="source-line-no">315</span><span id="line-315">    {</span>
+<span class="source-line-no">316</span><span id="line-316">        requireNonNullArgument( file, "file" );</span>
+<span class="source-line-no">317</span><span id="line-317"></span>
+<span class="source-line-no">318</span><span id="line-318">        String retValue = null;</span>
+<span class="source-line-no">319</span><span id="line-319">        synchronized( m_SHA256MessageDigest )</span>
+<span class="source-line-no">320</span><span id="line-320">        {</span>
+<span class="source-line-no">321</span><span id="line-321">            final var hash = determineCheckSum( file, m_SHA256MessageDigest );</span>
+<span class="source-line-no">322</span><span id="line-322">            retValue = HexFormat.of().withUpperCase().formatHex( hash );</span>
+<span class="source-line-no">323</span><span id="line-323">        }</span>
+<span class="source-line-no">324</span><span id="line-324"></span>
+<span class="source-line-no">325</span><span id="line-325">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">326</span><span id="line-326">        return retValue;</span>
+<span class="source-line-no">327</span><span id="line-327">    }   //  calculateSHA256CheckSum()</span>
+<span class="source-line-no">328</span><span id="line-328"></span>
+<span class="source-line-no">329</span><span id="line-329">    /**</span>
+<span class="source-line-no">330</span><span id="line-330">     *  Creates a MD5 hash from the given string.&lt;br&gt;</span>
+<span class="source-line-no">331</span><span id="line-331">     *  &lt;br&gt;The output string will contain the digits from {@code 0xA} to</span>
+<span class="source-line-no">332</span><span id="line-332">     *  {@code 0xF} all as lower</span>
+<span class="source-line-no">333</span><span id="line-333">     *  case.&lt;br&gt;</span>
+<span class="source-line-no">334</span><span id="line-334">     *  &lt;br&gt;Use this method to create the values for password fields; it is</span>
+<span class="source-line-no">335</span><span id="line-335">     *  not very efficient for calculating the hash value for (large) files as</span>
+<span class="source-line-no">336</span><span id="line-336">     *  it would require to load the whole file into memory.</span>
+<span class="source-line-no">337</span><span id="line-337">     *</span>
+<span class="source-line-no">338</span><span id="line-338">     *  @param  input   The source String; may be {@code null}.</span>
+<span class="source-line-no">339</span><span id="line-339">     *  @return The String with the hash value or {@code null} if the</span>
+<span class="source-line-no">340</span><span id="line-340">     *      input parameter was already {@code null}.</span>
+<span class="source-line-no">341</span><span id="line-341">     *</span>
+<span class="source-line-no">342</span><span id="line-342">     *  @see #calculateMD5CheckSum(File)</span>
+<span class="source-line-no">343</span><span id="line-343">     */</span>
+<span class="source-line-no">344</span><span id="line-344">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">345</span><span id="line-345">    public static final String calculateMD5Hash( final CharSequence input )</span>
+<span class="source-line-no">346</span><span id="line-346">    {</span>
+<span class="source-line-no">347</span><span id="line-347">        String retValue = null;</span>
+<span class="source-line-no">348</span><span id="line-348">        if( nonNull( input ) )</span>
+<span class="source-line-no">349</span><span id="line-349">        {</span>
+<span class="source-line-no">350</span><span id="line-350">            final var inputBytes = input.toString().getBytes( UTF8 );</span>
+<span class="source-line-no">351</span><span id="line-351">            retValue = HexFormat.of().withUpperCase().formatHex( calculateMD5Hash( inputBytes ) ).toLowerCase( Locale.ROOT );</span>
+<span class="source-line-no">352</span><span id="line-352">        }</span>
+<span class="source-line-no">353</span><span id="line-353"></span>
+<span class="source-line-no">354</span><span id="line-354">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">355</span><span id="line-355">        return retValue;</span>
+<span class="source-line-no">356</span><span id="line-356">    }   //  calculateMD5Hash()</span>
+<span class="source-line-no">357</span><span id="line-357"></span>
+<span class="source-line-no">358</span><span id="line-358">    /**</span>
+<span class="source-line-no">359</span><span id="line-359">     *  Creates a MD5 hash from the given byte sequence.&lt;br&gt;</span>
+<span class="source-line-no">360</span><span id="line-360">     *  &lt;br&gt; This method is not very efficient for calculating the hash value</span>
+<span class="source-line-no">361</span><span id="line-361">     *  for (large) files as it would require to load the whole file into</span>
+<span class="source-line-no">362</span><span id="line-362">     *  memory.</span>
+<span class="source-line-no">363</span><span id="line-363">     *</span>
+<span class="source-line-no">364</span><span id="line-364">     *  @param  input   The byte array to hash.</span>
+<span class="source-line-no">365</span><span id="line-365">     *  @return The byte array with the hash.</span>
+<span class="source-line-no">366</span><span id="line-366">     *</span>
+<span class="source-line-no">367</span><span id="line-367">     *  @see #calculateMD5CheckSum(File)</span>
+<span class="source-line-no">368</span><span id="line-368">     */</span>
+<span class="source-line-no">369</span><span id="line-369">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">370</span><span id="line-370">    public static final byte [] calculateMD5Hash( final byte [] input )</span>
+<span class="source-line-no">371</span><span id="line-371">    {</span>
+<span class="source-line-no">372</span><span id="line-372">        requireNonNullArgument( input, "input" );</span>
+<span class="source-line-no">373</span><span id="line-373"></span>
+<span class="source-line-no">374</span><span id="line-374">        byte [] retValue = null;</span>
+<span class="source-line-no">375</span><span id="line-375">        synchronized( m_MD5MessageDigest )</span>
+<span class="source-line-no">376</span><span id="line-376">        {</span>
+<span class="source-line-no">377</span><span id="line-377">            m_MD5MessageDigest.reset();</span>
+<span class="source-line-no">378</span><span id="line-378">            m_MD5MessageDigest.update( input );</span>
+<span class="source-line-no">379</span><span id="line-379">            retValue = m_MD5MessageDigest.digest();</span>
+<span class="source-line-no">380</span><span id="line-380">        }</span>
+<span class="source-line-no">381</span><span id="line-381"></span>
+<span class="source-line-no">382</span><span id="line-382">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">383</span><span id="line-383">        return retValue;</span>
+<span class="source-line-no">384</span><span id="line-384">    }   //  calculateMD5Hash()</span>
 <span class="source-line-no">385</span><span id="line-385"></span>
-<span class="source-line-no">386</span><span id="line-386">        byte [] retValue = null;</span>
-<span class="source-line-no">387</span><span id="line-387">        synchronized( m_MD5MessageDigest )</span>
-<span class="source-line-no">388</span><span id="line-388">        {</span>
-<span class="source-line-no">389</span><span id="line-389">            m_MD5MessageDigest.reset();</span>
-<span class="source-line-no">390</span><span id="line-390">            m_MD5MessageDigest.update( input );</span>
-<span class="source-line-no">391</span><span id="line-391">            retValue = m_MD5MessageDigest.digest();</span>
-<span class="source-line-no">392</span><span id="line-392">        }</span>
-<span class="source-line-no">393</span><span id="line-393"></span>
-<span class="source-line-no">394</span><span id="line-394">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">395</span><span id="line-395">        return retValue;</span>
-<span class="source-line-no">396</span><span id="line-396">    }   //  calculateMD5Hash()</span>
-<span class="source-line-no">397</span><span id="line-397"></span>
-<span class="source-line-no">398</span><span id="line-398">    /**</span>
-<span class="source-line-no">399</span><span id="line-399">     *  Creates an SHA-1 hash from the given string.&lt;br&gt;</span>
-<span class="source-line-no">400</span><span id="line-400">     *  &lt;br&gt;The output string will contain the digits from {@code 0xA} to</span>
-<span class="source-line-no">401</span><span id="line-401">     *  {@code 0xF} all as lower</span>
-<span class="source-line-no">402</span><span id="line-402">     *  case.&lt;br&gt;</span>
-<span class="source-line-no">403</span><span id="line-403">     *  &lt;br&gt;Use this method to create the values for password fields; it is</span>
-<span class="source-line-no">404</span><span id="line-404">     *  not very efficient for calculating the hash value for (large) files as</span>
-<span class="source-line-no">405</span><span id="line-405">     *  it would require to load the whole file into memory.</span>
-<span class="source-line-no">406</span><span id="line-406">     *</span>
-<span class="source-line-no">407</span><span id="line-407">     *  @param  input   The source String; may be {@code null}.</span>
-<span class="source-line-no">408</span><span id="line-408">     *  @return The String with the hash value or {@code null} if the</span>
-<span class="source-line-no">409</span><span id="line-409">     *      input parameter was already {@code null}.</span>
-<span class="source-line-no">410</span><span id="line-410">     *</span>
-<span class="source-line-no">411</span><span id="line-411">     *  @see #calculateSHACheckSum(File)</span>
-<span class="source-line-no">412</span><span id="line-412">     */</span>
-<span class="source-line-no">413</span><span id="line-413">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">414</span><span id="line-414">    public static final String calculateSHA1Hash( final CharSequence input )</span>
-<span class="source-line-no">415</span><span id="line-415">    {</span>
-<span class="source-line-no">416</span><span id="line-416">        String retValue = null;</span>
-<span class="source-line-no">417</span><span id="line-417">        if( nonNull( input ) )</span>
-<span class="source-line-no">418</span><span id="line-418">        {</span>
-<span class="source-line-no">419</span><span id="line-419">            final var inputBytes = input.toString().getBytes( UTF8 );</span>
-<span class="source-line-no">420</span><span id="line-420">            retValue = HexFormat.of().withLowerCase().formatHex( calculateSHA1Hash( inputBytes ) );</span>
-<span class="source-line-no">421</span><span id="line-421">        }</span>
-<span class="source-line-no">422</span><span id="line-422"></span>
-<span class="source-line-no">423</span><span id="line-423">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">424</span><span id="line-424">        return retValue;</span>
-<span class="source-line-no">425</span><span id="line-425">    }   //  calculateSHA1Hash()</span>
-<span class="source-line-no">426</span><span id="line-426"></span>
-<span class="source-line-no">427</span><span id="line-427">    /**</span>
-<span class="source-line-no">428</span><span id="line-428">     *  Creates an SHA-1 hash from the given byte sequence.&lt;br&gt;</span>
-<span class="source-line-no">429</span><span id="line-429">     *  &lt;br&gt; This method is not very efficient for calculating the hash value</span>
-<span class="source-line-no">430</span><span id="line-430">     *  for (large) files as it would require to load the whole file into</span>
-<span class="source-line-no">431</span><span id="line-431">     *  memory.</span>
-<span class="source-line-no">432</span><span id="line-432">     *</span>
-<span class="source-line-no">433</span><span id="line-433">     *  @param  input   The byte array to hash.</span>
-<span class="source-line-no">434</span><span id="line-434">     *  @return The byte array with the hash.</span>
-<span class="source-line-no">435</span><span id="line-435">     *</span>
-<span class="source-line-no">436</span><span id="line-436">     *  @see #calculateSHACheckSum(File)</span>
-<span class="source-line-no">437</span><span id="line-437">     */</span>
-<span class="source-line-no">438</span><span id="line-438">    @API( status = STABLE, since = "0.0.5" )</span>
-<span class="source-line-no">439</span><span id="line-439">    public static final byte [] calculateSHA1Hash( final byte [] input )</span>
-<span class="source-line-no">440</span><span id="line-440">    {</span>
-<span class="source-line-no">441</span><span id="line-441">        requireNonNullArgument( input, "input" );</span>
+<span class="source-line-no">386</span><span id="line-386">    /**</span>
+<span class="source-line-no">387</span><span id="line-387">     *  Creates an SHA-1 hash from the given string.&lt;br&gt;</span>
+<span class="source-line-no">388</span><span id="line-388">     *  &lt;br&gt;The output string will contain the digits from {@code 0xA} to</span>
+<span class="source-line-no">389</span><span id="line-389">     *  {@code 0xF} all as lower</span>
+<span class="source-line-no">390</span><span id="line-390">     *  case.&lt;br&gt;</span>
+<span class="source-line-no">391</span><span id="line-391">     *  &lt;br&gt;Use this method to create the values for password fields; it is</span>
+<span class="source-line-no">392</span><span id="line-392">     *  not very efficient for calculating the hash value for (large) files as</span>
+<span class="source-line-no">393</span><span id="line-393">     *  it would require to load the whole file into memory.</span>
+<span class="source-line-no">394</span><span id="line-394">     *</span>
+<span class="source-line-no">395</span><span id="line-395">     *  @param  input   The source String; may be {@code null}.</span>
+<span class="source-line-no">396</span><span id="line-396">     *  @return The String with the hash value or {@code null} if the</span>
+<span class="source-line-no">397</span><span id="line-397">     *      input parameter was already {@code null}.</span>
+<span class="source-line-no">398</span><span id="line-398">     *</span>
+<span class="source-line-no">399</span><span id="line-399">     *  @see #calculateSHACheckSum(File)</span>
+<span class="source-line-no">400</span><span id="line-400">     */</span>
+<span class="source-line-no">401</span><span id="line-401">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">402</span><span id="line-402">    public static final String calculateSHA1Hash( final CharSequence input )</span>
+<span class="source-line-no">403</span><span id="line-403">    {</span>
+<span class="source-line-no">404</span><span id="line-404">        String retValue = null;</span>
+<span class="source-line-no">405</span><span id="line-405">        if( nonNull( input ) )</span>
+<span class="source-line-no">406</span><span id="line-406">        {</span>
+<span class="source-line-no">407</span><span id="line-407">            final var inputBytes = input.toString().getBytes( UTF8 );</span>
+<span class="source-line-no">408</span><span id="line-408">            retValue = HexFormat.of().withLowerCase().formatHex( calculateSHA1Hash( inputBytes ) );</span>
+<span class="source-line-no">409</span><span id="line-409">        }</span>
+<span class="source-line-no">410</span><span id="line-410"></span>
+<span class="source-line-no">411</span><span id="line-411">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">412</span><span id="line-412">        return retValue;</span>
+<span class="source-line-no">413</span><span id="line-413">    }   //  calculateSHA1Hash()</span>
+<span class="source-line-no">414</span><span id="line-414"></span>
+<span class="source-line-no">415</span><span id="line-415">    /**</span>
+<span class="source-line-no">416</span><span id="line-416">     *  Creates an SHA-1 hash from the given byte sequence.&lt;br&gt;</span>
+<span class="source-line-no">417</span><span id="line-417">     *  &lt;br&gt; This method is not very efficient for calculating the hash value</span>
+<span class="source-line-no">418</span><span id="line-418">     *  for (large) files as it would require to load the whole file into</span>
+<span class="source-line-no">419</span><span id="line-419">     *  memory.</span>
+<span class="source-line-no">420</span><span id="line-420">     *</span>
+<span class="source-line-no">421</span><span id="line-421">     *  @param  input   The byte array to hash.</span>
+<span class="source-line-no">422</span><span id="line-422">     *  @return The byte array with the hash.</span>
+<span class="source-line-no">423</span><span id="line-423">     *</span>
+<span class="source-line-no">424</span><span id="line-424">     *  @see #calculateSHACheckSum(File)</span>
+<span class="source-line-no">425</span><span id="line-425">     */</span>
+<span class="source-line-no">426</span><span id="line-426">    @API( status = STABLE, since = "0.0.5" )</span>
+<span class="source-line-no">427</span><span id="line-427">    public static final byte [] calculateSHA1Hash( final byte [] input )</span>
+<span class="source-line-no">428</span><span id="line-428">    {</span>
+<span class="source-line-no">429</span><span id="line-429">        requireNonNullArgument( input, "input" );</span>
+<span class="source-line-no">430</span><span id="line-430"></span>
+<span class="source-line-no">431</span><span id="line-431">        byte [] retValue = null;</span>
+<span class="source-line-no">432</span><span id="line-432">        synchronized( m_SHA1MessageDigest )</span>
+<span class="source-line-no">433</span><span id="line-433">        {</span>
+<span class="source-line-no">434</span><span id="line-434">            m_SHA1MessageDigest.reset();</span>
+<span class="source-line-no">435</span><span id="line-435">            m_SHA1MessageDigest.update( input );</span>
+<span class="source-line-no">436</span><span id="line-436">            retValue = m_SHA1MessageDigest.digest();</span>
+<span class="source-line-no">437</span><span id="line-437">        }</span>
+<span class="source-line-no">438</span><span id="line-438"></span>
+<span class="source-line-no">439</span><span id="line-439">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">440</span><span id="line-440">        return retValue;</span>
+<span class="source-line-no">441</span><span id="line-441">    }   //  calculateSHA1Hash()</span>
 <span class="source-line-no">442</span><span id="line-442"></span>
-<span class="source-line-no">443</span><span id="line-443">        byte [] retValue = null;</span>
-<span class="source-line-no">444</span><span id="line-444">        synchronized( m_SHA1MessageDigest )</span>
-<span class="source-line-no">445</span><span id="line-445">        {</span>
-<span class="source-line-no">446</span><span id="line-446">            m_SHA1MessageDigest.reset();</span>
-<span class="source-line-no">447</span><span id="line-447">            m_SHA1MessageDigest.update( input );</span>
-<span class="source-line-no">448</span><span id="line-448">            retValue = m_SHA1MessageDigest.digest();</span>
-<span class="source-line-no">449</span><span id="line-449">        }</span>
-<span class="source-line-no">450</span><span id="line-450"></span>
-<span class="source-line-no">451</span><span id="line-451">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">452</span><span id="line-452">        return retValue;</span>
-<span class="source-line-no">453</span><span id="line-453">    }   //  calculateSHA1Hash()</span>
-<span class="source-line-no">454</span><span id="line-454"></span>
-<span class="source-line-no">455</span><span id="line-455">    /**</span>
-<span class="source-line-no">456</span><span id="line-456">     *  Creates an SHA-256 hash from the given string.&lt;br&gt;</span>
-<span class="source-line-no">457</span><span id="line-457">     *  &lt;br&gt;The output string will contain the digits from {@code 0xA} to</span>
-<span class="source-line-no">458</span><span id="line-458">     *  {@code 0xF} all as lower</span>
-<span class="source-line-no">459</span><span id="line-459">     *  case.&lt;br&gt;</span>
-<span class="source-line-no">460</span><span id="line-460">     *  &lt;br&gt;Use this method to create the values for password fields; it is</span>
-<span class="source-line-no">461</span><span id="line-461">     *  not very efficient for calculating the hash value for (large) files as</span>
-<span class="source-line-no">462</span><span id="line-462">     *  it would require to load the whole file into memory.</span>
-<span class="source-line-no">463</span><span id="line-463">     *</span>
-<span class="source-line-no">464</span><span id="line-464">     *  @param  input   The source String; may be {@code null}.</span>
-<span class="source-line-no">465</span><span id="line-465">     *  @return The String with the hash value or {@code null} if the</span>
-<span class="source-line-no">466</span><span id="line-466">     *      input parameter was already {@code null}.</span>
-<span class="source-line-no">467</span><span id="line-467">     *</span>
-<span class="source-line-no">468</span><span id="line-468">     *  @see #calculateSHA256CheckSum(File)</span>
-<span class="source-line-no">469</span><span id="line-469">     */</span>
-<span class="source-line-no">470</span><span id="line-470">    @API( status = STABLE, since = "0.0.8" )</span>
-<span class="source-line-no">471</span><span id="line-471">    public static final String calculateSHA256Hash( final CharSequence input )</span>
-<span class="source-line-no">472</span><span id="line-472">    {</span>
-<span class="source-line-no">473</span><span id="line-473">        String retValue = null;</span>
-<span class="source-line-no">474</span><span id="line-474">        if( nonNull( input ) )</span>
-<span class="source-line-no">475</span><span id="line-475">        {</span>
-<span class="source-line-no">476</span><span id="line-476">            final var inputBytes = input.toString().getBytes( UTF8 );</span>
-<span class="source-line-no">477</span><span id="line-477">            retValue = HexFormat.of().withLowerCase().formatHex( calculateSHA256Hash( inputBytes ) );</span>
-<span class="source-line-no">478</span><span id="line-478">        }</span>
-<span class="source-line-no">479</span><span id="line-479"></span>
-<span class="source-line-no">480</span><span id="line-480">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">481</span><span id="line-481">        return retValue;</span>
-<span class="source-line-no">482</span><span id="line-482">    }   //  calculateSHA256Hash()</span>
-<span class="source-line-no">483</span><span id="line-483"></span>
-<span class="source-line-no">484</span><span id="line-484">    /**</span>
-<span class="source-line-no">485</span><span id="line-485">     *  Creates an SHA-256 hash from the given byte sequence.&lt;br&gt;</span>
-<span class="source-line-no">486</span><span id="line-486">     *  &lt;br&gt; This method is not very efficient for calculating the hash value</span>
-<span class="source-line-no">487</span><span id="line-487">     *  for (large) files as it would require to load the whole file into</span>
-<span class="source-line-no">488</span><span id="line-488">     *  memory.</span>
-<span class="source-line-no">489</span><span id="line-489">     *</span>
-<span class="source-line-no">490</span><span id="line-490">     *  @param  input   The byte array to hash.</span>
-<span class="source-line-no">491</span><span id="line-491">     *  @return The byte array with the hash.</span>
-<span class="source-line-no">492</span><span id="line-492">     *</span>
-<span class="source-line-no">493</span><span id="line-493">     *  @see #calculateSHA256CheckSum(File)</span>
-<span class="source-line-no">494</span><span id="line-494">     */</span>
-<span class="source-line-no">495</span><span id="line-495">    @API( status = STABLE, since = "0.0.8" )</span>
-<span class="source-line-no">496</span><span id="line-496">    public static final byte [] calculateSHA256Hash( final byte [] input )</span>
-<span class="source-line-no">497</span><span id="line-497">    {</span>
-<span class="source-line-no">498</span><span id="line-498">        requireNonNullArgument( input, "input" );</span>
-<span class="source-line-no">499</span><span id="line-499"></span>
-<span class="source-line-no">500</span><span id="line-500">        byte [] retValue = null;</span>
-<span class="source-line-no">501</span><span id="line-501">        synchronized( m_SHA256MessageDigest )</span>
-<span class="source-line-no">502</span><span id="line-502">        {</span>
-<span class="source-line-no">503</span><span id="line-503">            m_SHA256MessageDigest.reset();</span>
-<span class="source-line-no">504</span><span id="line-504">            m_SHA256MessageDigest.update( input );</span>
-<span class="source-line-no">505</span><span id="line-505">            retValue = m_SHA256MessageDigest.digest();</span>
-<span class="source-line-no">506</span><span id="line-506">        }</span>
-<span class="source-line-no">507</span><span id="line-507"></span>
-<span class="source-line-no">508</span><span id="line-508">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">509</span><span id="line-509">        return retValue;</span>
-<span class="source-line-no">510</span><span id="line-510">    }   //  calculateSHA256Hash()</span>
-<span class="source-line-no">511</span><span id="line-511">}</span>
-<span class="source-line-no">512</span><span id="line-512">//  class SecurityUtils()</span>
-<span class="source-line-no">513</span><span id="line-513"></span>
-<span class="source-line-no">514</span><span id="line-514">/*</span>
-<span class="source-line-no">515</span><span id="line-515"> *  End of File</span>
-<span class="source-line-no">516</span><span id="line-516"> */</span>
+<span class="source-line-no">443</span><span id="line-443">    /**</span>
+<span class="source-line-no">444</span><span id="line-444">     *  Creates an SHA-256 hash from the given string.&lt;br&gt;</span>
+<span class="source-line-no">445</span><span id="line-445">     *  &lt;br&gt;The output string will contain the digits from {@code 0xA} to</span>
+<span class="source-line-no">446</span><span id="line-446">     *  {@code 0xF} all as lower</span>
+<span class="source-line-no">447</span><span id="line-447">     *  case.&lt;br&gt;</span>
+<span class="source-line-no">448</span><span id="line-448">     *  &lt;br&gt;Use this method to create the values for password fields; it is</span>
+<span class="source-line-no">449</span><span id="line-449">     *  not very efficient for calculating the hash value for (large) files as</span>
+<span class="source-line-no">450</span><span id="line-450">     *  it would require to load the whole file into memory.</span>
+<span class="source-line-no">451</span><span id="line-451">     *</span>
+<span class="source-line-no">452</span><span id="line-452">     *  @param  input   The source String; may be {@code null}.</span>
+<span class="source-line-no">453</span><span id="line-453">     *  @return The String with the hash value or {@code null} if the</span>
+<span class="source-line-no">454</span><span id="line-454">     *      input parameter was already {@code null}.</span>
+<span class="source-line-no">455</span><span id="line-455">     *</span>
+<span class="source-line-no">456</span><span id="line-456">     *  @see #calculateSHA256CheckSum(File)</span>
+<span class="source-line-no">457</span><span id="line-457">     */</span>
+<span class="source-line-no">458</span><span id="line-458">    @API( status = STABLE, since = "0.0.8" )</span>
+<span class="source-line-no">459</span><span id="line-459">    public static final String calculateSHA256Hash( final CharSequence input )</span>
+<span class="source-line-no">460</span><span id="line-460">    {</span>
+<span class="source-line-no">461</span><span id="line-461">        String retValue = null;</span>
+<span class="source-line-no">462</span><span id="line-462">        if( nonNull( input ) )</span>
+<span class="source-line-no">463</span><span id="line-463">        {</span>
+<span class="source-line-no">464</span><span id="line-464">            final var inputBytes = input.toString().getBytes( UTF8 );</span>
+<span class="source-line-no">465</span><span id="line-465">            retValue = HexFormat.of().withLowerCase().formatHex( calculateSHA256Hash( inputBytes ) );</span>
+<span class="source-line-no">466</span><span id="line-466">        }</span>
+<span class="source-line-no">467</span><span id="line-467"></span>
+<span class="source-line-no">468</span><span id="line-468">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">469</span><span id="line-469">        return retValue;</span>
+<span class="source-line-no">470</span><span id="line-470">    }   //  calculateSHA256Hash()</span>
+<span class="source-line-no">471</span><span id="line-471"></span>
+<span class="source-line-no">472</span><span id="line-472">    /**</span>
+<span class="source-line-no">473</span><span id="line-473">     *  Creates an SHA-256 hash from the given byte sequence.&lt;br&gt;</span>
+<span class="source-line-no">474</span><span id="line-474">     *  &lt;br&gt; This method is not very efficient for calculating the hash value</span>
+<span class="source-line-no">475</span><span id="line-475">     *  for (large) files as it would require to load the whole file into</span>
+<span class="source-line-no">476</span><span id="line-476">     *  memory.</span>
+<span class="source-line-no">477</span><span id="line-477">     *</span>
+<span class="source-line-no">478</span><span id="line-478">     *  @param  input   The byte array to hash.</span>
+<span class="source-line-no">479</span><span id="line-479">     *  @return The byte array with the hash.</span>
+<span class="source-line-no">480</span><span id="line-480">     *</span>
+<span class="source-line-no">481</span><span id="line-481">     *  @see #calculateSHA256CheckSum(File)</span>
+<span class="source-line-no">482</span><span id="line-482">     */</span>
+<span class="source-line-no">483</span><span id="line-483">    @API( status = STABLE, since = "0.0.8" )</span>
+<span class="source-line-no">484</span><span id="line-484">    public static final byte [] calculateSHA256Hash( final byte [] input )</span>
+<span class="source-line-no">485</span><span id="line-485">    {</span>
+<span class="source-line-no">486</span><span id="line-486">        requireNonNullArgument( input, "input" );</span>
+<span class="source-line-no">487</span><span id="line-487"></span>
+<span class="source-line-no">488</span><span id="line-488">        byte [] retValue = null;</span>
+<span class="source-line-no">489</span><span id="line-489">        synchronized( m_SHA256MessageDigest )</span>
+<span class="source-line-no">490</span><span id="line-490">        {</span>
+<span class="source-line-no">491</span><span id="line-491">            m_SHA256MessageDigest.reset();</span>
+<span class="source-line-no">492</span><span id="line-492">            m_SHA256MessageDigest.update( input );</span>
+<span class="source-line-no">493</span><span id="line-493">            retValue = m_SHA256MessageDigest.digest();</span>
+<span class="source-line-no">494</span><span id="line-494">        }</span>
+<span class="source-line-no">495</span><span id="line-495"></span>
+<span class="source-line-no">496</span><span id="line-496">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">497</span><span id="line-497">        return retValue;</span>
+<span class="source-line-no">498</span><span id="line-498">    }   //  calculateSHA256Hash()</span>
+<span class="source-line-no">499</span><span id="line-499">}</span>
+<span class="source-line-no">500</span><span id="line-500">//  class SecurityUtils()</span>
+<span class="source-line-no">501</span><span id="line-501"></span>
+<span class="source-line-no">502</span><span id="line-502">/*</span>
+<span class="source-line-no">503</span><span id="line-503"> *  End of File</span>
+<span class="source-line-no">504</span><span id="line-504"> */</span>
 
 
 

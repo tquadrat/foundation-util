@@ -64,12 +64,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  {@linkplain Charset <code>charset</code> argument}.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: EncodedURLStringConverter.java 1004 2022-02-02 11:23:44Z tquadrat $
+ *  @version $Id: EncodedURLStringConverter.java 1080 2024-01-03 11:05:21Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: EncodedURLStringConverter.java 1004 2022-02-02 11:23:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: EncodedURLStringConverter.java 1080 2024-01-03 11:05:21Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public final class EncodedURLStringConverter extends URLStringConverter
 {

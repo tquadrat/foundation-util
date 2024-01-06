@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -20,7 +20,6 @@ import static java.lang.Math.abs;
 import static java.lang.System.currentTimeMillis;
 import static java.util.Locale.ROOT;
 import static java.util.UUID.fromString;
-import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_String_ARRAY;
@@ -29,7 +28,6 @@ import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotBlankArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.lang.Objects.requireValidIntegerArgument;
-import static org.tquadrat.foundation.util.Base32.getDecoder;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateMD5Hash;
 import static org.tquadrat.foundation.util.SecurityUtils.calculateSHA1Hash;
 import static org.tquadrat.foundation.util.StringUtils.isNotEmpty;
@@ -40,10 +38,6 @@ import static org.tquadrat.foundation.util.SystemUtils.currentTimeNanos;
 import static org.tquadrat.foundation.util.SystemUtils.getNodeId;
 import static org.tquadrat.foundation.util.SystemUtils.getRandom;
 import static org.tquadrat.foundation.util.SystemUtils.repose;
-import static org.tquadrat.foundation.util.TSID.MAX_IDS_PER_MILLISECOND;
-import static org.tquadrat.foundation.util.TSID.MAX_NODES;
-import static org.tquadrat.foundation.util.internal.TSIDImpl.SHIFT;
-import static org.tquadrat.foundation.util.internal.TSIDImpl.TSID_Node;
 
 import java.math.BigInteger;
 import java.util.Map;
@@ -59,10 +53,7 @@ import org.tquadrat.foundation.exception.EmptyArgumentException;
 import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
 import org.tquadrat.foundation.exception.UnsupportedEnumError;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.AutoLock;
-import org.tquadrat.foundation.util.Base32.Decoder;
-import org.tquadrat.foundation.util.internal.TSIDImpl;
 
 /**
  *  <p>{@summary This static class provides some utility methods that are helpful when
@@ -156,7 +147,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *   };</code></pre>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1078 2023-10-19 14:39:47Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1084 2024-01-03 15:31:20Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -166,8 +157,7 @@ import org.tquadrat.foundation.util.internal.TSIDImpl;
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1078 2023-10-19 14:39:47Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1084 2024-01-03 15:31:20Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils
@@ -208,11 +198,6 @@ public final class UniqueIdUtils
     private static final BigInteger ONE_HUNDRED = BigInteger.valueOf( 100 );
 
     /**
-     *  Factor for the conversion of milliseconds to nanoseconds.
-     */
-    private static final BigInteger ONE_MILLION = BigInteger.valueOf( 1_000_000 );
-
-    /**
      *  <p>{@summary The name for the internal system property for the flag
      *  controlling that only pseudo node ids should be used to generate
      *  {@link UUID UUID}
@@ -227,15 +212,6 @@ public final class UniqueIdUtils
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final String PROPERTY_USE_PSEUDO_NODE_ID = "org.tquadrat.foundation.util.UniqueIdUtils.UsePseudoNodeId";
-
-    /**
-     *  The character count for a {@link TSID}: {@value}.
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    public static final int TSID_Size = TSID.TSID_Size;
 
     /**
      *  The character count for a {@link UUID}: {@value}.
@@ -257,24 +233,6 @@ public final class UniqueIdUtils
     private static volatile long m_LastClockSeqRequest = 0L;
 
     /**
-     *  The millisecond when the last TSID was created.
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    private static volatile long m_LastTSIDCreationTime = -1;
-
-    /**
-     *  The counter TSIDs that were created in the current millisecond.
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    private static volatile int m_TSIDCounter = 0;
-
-    /**
      *  The counter for version 7 UUIDs.
      */
     private static final AtomicInteger m_UUID7Counter = new AtomicInteger( getRandom().nextInt() );
@@ -292,7 +250,6 @@ public final class UniqueIdUtils
 
     static
     {
-        @SuppressWarnings( "SpellCheckingInspection" )
         final var fromXML = "-0123456789ABCDEFGHIJKL".toCharArray();
         @SuppressWarnings( "SpellCheckingInspection" )
         final var toXML = "XABCDEFGHJKLMNPRSTUVWYZ".toCharArray();
@@ -312,13 +269,6 @@ public final class UniqueIdUtils
         /*------------------------*\
     ====** Static Initialisations **===========================================
         \*------------------------*/
-    /**
-     *  The Base&nbsp;32 decoder for the TSIDs.
-     *
-     *  @see #tsidFromString(CharSequence)
-     */
-    private static final Decoder m_Base32Decoder;
-
     /**
      *  The guard for the clock sequence.
      */
@@ -341,22 +291,6 @@ public final class UniqueIdUtils
      *  address of one of the NICs in the current system, or a random value.
      */
     private static final long m_NodeId;
-
-    /**
-     *  <p>{@summary The guard for the field that are used for the creation of a
-     *  {@link TSID}.}</p>
-     *  <p>These are:</p>
-     *  <ul>
-     *      <li>{@link #m_LastTSIDCreationTime}</li>
-     *      <li>{@link #m_TSIDCounter}</li>
-     *  </ul>
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    private static final AutoLock m_TSIDGuard;
 
     /**
      *  This flag controls if
@@ -382,12 +316,8 @@ public final class UniqueIdUtils
 
     static
     {
-        //---* Create the Base 32 decoder *------------------------------------
-        m_Base32Decoder = getDecoder();
-
         //---* Create the locks *----------------------------------------------
         m_ClockSeqGuard = AutoLock.of();
-        m_TSIDGuard = AutoLock.of();
 
         //---* Create the dummy node id *--------------------------------------
         m_DummyNodeId = createPseudoNodeId();
@@ -439,7 +369,7 @@ public final class UniqueIdUtils
 
         final var parts = splitString( requireNotBlankArgument( input, "input" ).toString().toUpperCase( ROOT ), "-" );
         final var message = "Cannot convert '%s' to a UUID!".formatted( input );
-        requireValidIntegerArgument( parts.length, "input", length -> length == 2, $ -> message );
+        requireValidIntegerArgument( parts.length, "input", length -> length == 2, _ -> message );
         for( var i = 0; i < parts.length; ++i )
         {
             final var buffer = new StringBuilder();
@@ -622,109 +552,6 @@ public final class UniqueIdUtils
     }   // nameUUIDFromString()
 
     /**
-     *  <p>{@summary Creates a new
-     *  {@link TSID}
-     *  instance.}</p>
-     *
-     *  @return The {@code TSID} instance.
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    public static final TSID newTSID()
-    {
-        final var retValue = newTSIDInternal( TSID_Node );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  newTSID()
-
-    /**
-     *  <p>{@summary Creates a new
-     *  {@link TSID}
-     *  instance.}</p>
-     *
-     *  @param  nodeId  The node id; a number between 0 (included) and 1024
-     *      (excluded).
-     *  @return The {@code TSID} instance.
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    public static final TSID newTSID( final int nodeId )
-    {
-        if( 0 > nodeId ) throw new ValidationException( "nodeId '%d' is less than zero".formatted( nodeId ) );
-        if( nodeId >= MAX_NODES )
-        {
-            //noinspection ConstantExpression
-            throw new ValidationException( "nodeId '%d' is greater than %d".formatted( nodeId, MAX_NODES - 1 ) );
-        }
-
-        final var retValue = newTSIDInternal( (long) nodeId );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  newTSID()
-
-    /**
-     *  <p>{@summary Creates a new
-     *  {@link TSID}
-     *  instance without checking the {@code nodeId} argument.} Called only by
-     *  {@link #newTSID()}
-     *  and
-     *  {@link #newTSID(int)}.</p>
-     *
-     *  @param  nodeId  The node id; a number between 0 (included) and 1024
-     *      (excluded).
-     *  @return The {@code TSID} instance.
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    private static final TSID newTSIDInternal( final long nodeId )
-    {
-        final long counter;
-        long currentTime;
-
-        try( final var ignored = m_TSIDGuard.lock() )
-        {
-            currentTime = currentTimeNanos().divide( ONE_MILLION ).longValue() - SHIFT;
-
-            //---* Wait for a valid time and counter *-------------------------
-            while( (m_TSIDCounter >= MAX_IDS_PER_MILLISECOND) && (currentTime <= m_LastTSIDCreationTime) )
-            {
-                currentTime = currentTimeNanos().divide( ONE_MILLION ).longValue() - SHIFT;
-            }
-
-            //---* Update the counter *----------------------------------------
-            if( currentTime > m_LastTSIDCreationTime )
-            {
-                m_TSIDCounter = 0;
-            }
-            else
-            {
-                //noinspection NonAtomicOperationOnVolatileField
-                ++m_TSIDCounter;
-            }
-
-            //---* Keep the time *---------------------------------------------
-            m_LastTSIDCreationTime = currentTime;
-
-            //---* Keep the counter *------------------------------------------
-            counter = (long) m_TSIDCounter;
-        }
-
-        final var id = (currentTime << 22) | (counter << 10) | nodeId;
-        final var retValue = new TSIDImpl( id );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  newTSIDInternal()
-
-    /**
      *  Static factory to retrieve a type 4 (pseudo randomly generated) UUID.
      *  The UUID is generated using a cryptographically strong pseudo random
      *  number generator.<br>
@@ -891,58 +718,6 @@ public final class UniqueIdUtils
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  toXMLId()
-
-    /**
-     *  <p>{@summary Creates a
-     *  {@link TSID}
-     *  from the given number.}</p>
-     *
-     *  @param  number  The TSID numerical value.
-     *  @return The id.
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    public static final TSID tsidFromNumber( final long number )
-    {
-        final var retValue = new TSIDImpl( number );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  tsidFromString()
-
-    /**
-     *  <p>{@summary Creates a
-     *  {@link TSID}
-     *  from the given String.} The TSID String is the
-     *  {@href https://www.crockford.com/base32.html Crockfords's Base&nbsp;32}
-     *  representation of the numerical id, prefixed by the letter 'X'.</p>
-     *
-     *  @param  input   The TSID String.
-     *  @return The id.
-     *  @throws ValidationException The provided String is not a valid TSID
-     *      representation; it is either too short, does not start with 'X',
-     *      or the suffix is not a valid Base&nbsp;32 String.
-     *
-     *  @deprecated Do not use any longer! This is not tested!
-     */
-    @SuppressWarnings( "DeprecatedIsStillUsed" )
-    @Deprecated( since = "0.3.0", forRemoval = true )
-    @API( status = DEPRECATED, since = "0.1.0" )
-    public static final TSID tsidFromString( final CharSequence input )
-    {
-        if( requireNotBlankArgument( input, "input" ).length() != TSID_Size ) throw new ValidationException( "TSID String '%s' too short".formatted( input ) );
-        if( !input.toString().toUpperCase( ROOT ).startsWith( "X" ) ) throw new ValidationException( "TSID String '%s' does not start with 'X'".formatted( input ) );
-
-        final var number = m_Base32Decoder.decodeToNumber( input.toString().substring( 1 ) )
-            .longValue();
-
-        final var retValue = new TSIDImpl( number );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
-    }   //  tsidFromString()
 
     /**
      *  <p>{@summary Creates a

@@ -18,12 +18,15 @@
 package org.tquadrat.foundation.util;
 
 import static java.lang.System.arraycopy;
+import static java.util.Locale.ROOT;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.tquadrat.foundation.util.HexUtils.convertFromHexString;
-import static org.tquadrat.foundation.util.HexUtils.convertToHexString;
+
+import java.util.HexFormat;
+import java.util.function.Function;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -47,17 +50,16 @@ public class TestHexUtils extends TestBaseClass
     /**
      *  Test if
      *  {@link HexUtils#convertFromHexString(CharSequence) convertFromHexString()}
-     *  and
-     *  {@link HexUtils#convertToHexString(byte[]) convertToHexString()}
-     *  are invers to each other.<br>
-     *  <br>The conversion {@code convertFromHexString()} is only reversible
-     *  by {@code convertToHexString()} if the converted String contains an
-     *  even number of digits.
+     *  and the conversion through
+     *  <pre><code>String s = HexFormat.of().withUpperCase().formatHex( bytes );</code></pre>
+     *  are invers to each other.
      */
     @Test
     public final void testInversConversion()
     {
         skipThreadTest();
+
+        final Function<byte[],String> convertToHexString = bytes -> HexFormat.of().withUpperCase().formatHex( bytes );
 
         byte [] inputBytes;
         byte [] actuals;
@@ -71,55 +73,58 @@ public class TestHexUtils extends TestBaseClass
         inputBytes = new byte [] {0, 0, 0, 0};
         expecteds = new byte [inputBytes.length];
         arraycopy( inputBytes, 0, expecteds, 0, inputBytes.length );
-        actuals = convertFromHexString( convertToHexString( inputBytes ) );
+        actuals = convertFromHexString( convertToHexString.apply( inputBytes ) );
         assertArrayEquals( expecteds, actuals );
 
         inputString = "00000000";
         expected = inputString;
-        actual = convertToHexString( convertFromHexString( inputString ) );
+        actual = convertToHexString.apply( convertFromHexString( inputString ) );
         assertEquals( expected, actual );
 
         //---* Only FFs *------------------------------------------------------
+        //noinspection NumericCastThatLosesPrecision
         inputBytes = new byte [] {(byte)0xFF, (byte)0xFF, (byte)0xFF, (byte)0xFF};
         expecteds = new byte [inputBytes.length];
         arraycopy( inputBytes, 0, expecteds, 0, inputBytes.length );
-        actuals = convertFromHexString( convertToHexString( inputBytes ) );
+        actuals = convertFromHexString( convertToHexString.apply( inputBytes ) );
         assertArrayEquals( expecteds, actuals );
 
         inputString = "FFFFFFFF";
         expected = inputString;
-        actual = convertToHexString( convertFromHexString( inputString ) );
+        actual = convertToHexString.apply( convertFromHexString( inputString ) );
         assertEquals( expected, actual );
 
         inputString = "ffffffff";
         expected = inputString;
-        actual = convertToHexString( convertFromHexString( inputString ) );
+        actual = convertToHexString.apply( convertFromHexString( inputString ) );
         assertNotEquals( actual, expected );
-        assertEquals( expected, actual.toLowerCase() );
+        assertEquals( expected, actual.toLowerCase( ROOT ) );
 
         //---* Any values *----------------------------------------------------
+        //noinspection NumericCastThatLosesPrecision
         inputBytes = new byte [] {(byte)0x12, (byte)0x34, (byte)0x56, (byte)0x78, (byte)0x9A, (byte)0xBC, (byte)0xDE, (byte)0xF0 };
         expecteds = new byte [inputBytes.length];
         arraycopy( inputBytes, 0, expecteds, 0, inputBytes.length );
-        actuals = convertFromHexString( convertToHexString( inputBytes ) );
+        actuals = convertFromHexString( convertToHexString.apply( inputBytes ) );
         assertArrayEquals( expecteds, actuals );
 
+        //noinspection NumericCastThatLosesPrecision
         inputBytes = new byte [] {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, (byte)128, (byte)129, (byte)130, (byte)255};
         expecteds = new byte [inputBytes.length];
         arraycopy( inputBytes, 0, expecteds, 0, inputBytes.length );
-        actuals = convertFromHexString( convertToHexString( inputBytes ) );
+        actuals = convertFromHexString( convertToHexString.apply( inputBytes ) );
         assertArrayEquals( expecteds, actuals );
 
         inputString = "123456789ABCDEF0";
         expected = inputString;
-        actual = convertToHexString( convertFromHexString( inputString ) );
+        actual = convertToHexString.apply( convertFromHexString( inputString ) );
         assertEquals( expected, actual );
 
         inputString = "123456789abcdef0";
         expected = inputString;
-        actual = convertToHexString( convertFromHexString( inputString ) );
+        actual = convertToHexString.apply( convertFromHexString( inputString ) );
         assertNotEquals( actual, expected );
-        assertEquals( expected, actual.toLowerCase() );
+        assertEquals( expected, actual.toLowerCase( ROOT ) );
     }   //  testInversConversion()
 
     /**

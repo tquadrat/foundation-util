@@ -6,8 +6,8 @@
      xmlns:xlink="http://www.w3.org/1999/xlink"
      version='1.1'
      baseProfile='full'
-     width='942.000'
-     height='913.000'>
+     width='726.000'
+     height='880.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,8 +118,8 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='491.000'
-                  width='892.000'
+                  height='458.000'
+                  width='676.000'
                   x='0.000'
                   y='0.000'/>
         </clipPath>
@@ -129,19 +129,19 @@
                    clip-path='url(#ID000001)'>
                     <rect x='0.000'
                           y='0.000'
-                          width='892.000'
-                          height='491.000'
+                          width='676.000'
+                          height='458.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='17.000'
-                          x2='892.000'
+                          x2='676.000'
                           y2='17.000'
                           class='separator'/>
-                    <text x='413.000'
+                    <text x='305.000'
                           y='13.000'>SystemUtils</text>
                     <line x1='0.000'
                           y1='166.000'
-                          x2='892.000'
+                          x2='676.000'
                           y2='166.000'
                           class='separator'/>
                     <text y='30.000'
@@ -198,63 +198,54 @@
                           class='static'>+ determineOutboundIPAddresses():java.net.InetAddress[]</text>
                     <text x='5.000'
                           y='278.000'
-                          class='static'>+ determineOutsideIPAddresses():java.net.InetAddress[]</text>
-                    <text x='5.000'
-                          y='289.000'
                           class='static'>+ formatNodeIdAsMAC(nodeId:long):java.lang.String</text>
                     <text x='5.000'
-                          y='300.000'
+                          y='289.000'
                           class='static'>+ getMACAddress():java.lang.String</text>
                     <text x='5.000'
-                          y='311.000'
+                          y='300.000'
                           class='static'>+ getNetworkInterfaces():java.util.Collection&lt;java.net.NetworkInterface&gt;</text>
                     <text x='5.000'
-                          y='322.000'
+                          y='311.000'
                           class='static'>+ getNodeId():long</text>
                     <text x='5.000'
-                          y='333.000'
+                          y='322.000'
                           class='static'>+ getOperatingSystem():org.tquadrat.foundation.util.SystemUtils.OperatingSystem</text>
                     <text x='5.000'
-                          y='344.000'
+                          y='333.000'
                           class='static'>+ getPID():long</text>
                     <text x='5.000'
-                          y='355.000'
-                          class='static'>+ getPseudoNodeId():long</text>
-                    <text x='5.000'
-                          y='366.000'
+                          y='344.000'
                           class='static'>+ getRandom():java.util.Random</text>
                     <text x='5.000'
-                          y='377.000'
+                          y='355.000'
                           class='static'>+ getZoneIdAliasMap():java.util.Map&lt;java.lang.String,java.lang.String&gt;</text>
                     <text x='5.000'
-                          y='388.000'
+                          y='366.000'
                           class='static'>+ hasNetworkInterface():boolean</text>
                     <text x='5.000'
-                          y='399.000'
-                          class='static'>+ replaceSystemVariable(text:java.lang.CharSequence,additionalSources:java.util.Map&lt;java.lang.String,? extends java.lang.Object&gt;&#x2026;):java.lang.String</text>
-                    <text x='5.000'
-                          y='410.000'
+                          y='377.000'
                           class='static'>+ repose(millis:long):boolean</text>
                     <text x='5.000'
-                          y='421.000'
+                          y='388.000'
                           class='static'>+ repose(duration:java.time.Duration):boolean</text>
                     <text x='5.000'
-                          y='432.000'
+                          y='399.000'
                           class='static'>+ reposeUntil(until:java.time.Instant):boolean</text>
                     <text x='5.000'
-                          y='443.000'
+                          y='410.000'
                           class='static'>+ retrieveLocale(localeName:java.lang.CharSequence):java.util.Optional&lt;java.util.Locale&gt;</text>
                     <text x='5.000'
-                          y='454.000'
+                          y='421.000'
                           class='static'>+ sleep(duration:java.time.Duration):void</text>
                     <text x='5.000'
-                          y='465.000'
+                          y='432.000'
                           class='static'>+ sleepUntil(until:java.time.Instant):void</text>
                     <text x='5.000'
-                          y='476.000'
+                          y='443.000'
                           class='static'>+ systemPropertiesAsStringMap():java.util.Map&lt;java.lang.String,java.lang.String&gt;</text>
                     <text x='5.000'
-                          y='487.000'
+                          y='454.000'
                           class='static'>+ translateMACToNodeId(macAddress:java.lang.String):long</text>
                 </g>
             </g>
@@ -317,9 +308,9 @@
         </symbol>
     </defs>
     <path class='inheritance'
-          d='M471.000,297.000 L471.000,197.000'
+          d='M363.000,297.000 L363.000,197.000'
           marker-end='url(#inheritance)'/>
-    <use x='349.000'
+    <use x='241.000'
          y='25.000'
          xlink:href='#java.lang.Object'/>
     <use x='25.000'

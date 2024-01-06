@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -46,7 +46,6 @@ import org.tquadrat.foundation.util.stringconverter.PatternStringConverter;
 import org.tquadrat.foundation.util.stringconverter.PeriodStringConverter;
 import org.tquadrat.foundation.util.stringconverter.ShortStringConverter;
 import org.tquadrat.foundation.util.stringconverter.StringStringConverter;
-import org.tquadrat.foundation.util.stringconverter.TSIDStringConverter;
 import org.tquadrat.foundation.util.stringconverter.TimeUnitStringConverter;
 import org.tquadrat.foundation.util.stringconverter.TimeZoneStringConverter;
 import org.tquadrat.foundation.util.stringconverter.URIStringConverter;
@@ -63,7 +62,7 @@ import org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter
  *  @provides   org.tquadrat.foundation.lang.StringConverter    Implementations
  *      of String converters.
  *
- *  @version $Id: module-info.java 1045 2023-02-07 23:09:17Z tquadrat $
+ *  @version $Id: module-info.java 1084 2024-01-03 15:31:20Z tquadrat $
  *
  *  @todo task.list
  */
@@ -110,7 +109,6 @@ module org.tquadrat.foundation.util
         StringStringConverter,
         TimeUnitStringConverter,
         TimeZoneStringConverter,
-        TSIDStringConverter,
         URIStringConverter,
         URLStringConverter,
         UUIDStringConverter,
