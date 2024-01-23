@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2024 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> *</span>
@@ -46,118 +46,120 @@
 <span class="source-line-no">033</span><span id="line-33">import org.tquadrat.foundation.lang.StringConverter;</span>
 <span class="source-line-no">034</span><span id="line-34"></span>
 <span class="source-line-no">035</span><span id="line-35">/**</span>
-<span class="source-line-no">036</span><span id="line-36"> *  An implementation of</span>
+<span class="source-line-no">036</span><span id="line-36"> *  &lt;p&gt;{@summary An implementation of</span>
 <span class="source-line-no">037</span><span id="line-37"> *  {@link StringConverter}</span>
 <span class="source-line-no">038</span><span id="line-38"> *  for</span>
 <span class="source-line-no">039</span><span id="line-39"> *  {@link TimeZone}</span>
-<span class="source-line-no">040</span><span id="line-40"> *  values.&lt;br&gt;</span>
-<span class="source-line-no">041</span><span id="line-41"> *  &lt;br&gt;The method</span>
+<span class="source-line-no">040</span><span id="line-40"> *  values.}&lt;/p&gt;</span>
+<span class="source-line-no">041</span><span id="line-41"> *  &lt;p&gt;The method</span>
 <span class="source-line-no">042</span><span id="line-42"> *  {@link #fromString(CharSequence)}</span>
 <span class="source-line-no">043</span><span id="line-43"> *  will use</span>
 <span class="source-line-no">044</span><span id="line-44"> *  {@link TimeZone#getTimeZone(String)}</span>
-<span class="source-line-no">045</span><span id="line-45"> *  to retrieve a {@code TimeZone} based on the given value.&lt;br&gt;</span>
-<span class="source-line-no">046</span><span id="line-46"> *  &lt;br&gt;The method</span>
+<span class="source-line-no">045</span><span id="line-45"> *  to retrieve a {@code TimeZone} based on the given value.&lt;/p&gt;</span>
+<span class="source-line-no">046</span><span id="line-46"> *  &lt;p&gt;The method</span>
 <span class="source-line-no">047</span><span id="line-47"> *  {@link #toString(TimeZone)}</span>
 <span class="source-line-no">048</span><span id="line-48"> *  will use</span>
 <span class="source-line-no">049</span><span id="line-49"> *  {@link TimeZone#getID()}</span>
-<span class="source-line-no">050</span><span id="line-50"> *  to do the conversion to a String.</span>
+<span class="source-line-no">050</span><span id="line-50"> *  to do the conversion to a String.&lt;/p&gt;</span>
 <span class="source-line-no">051</span><span id="line-51"> *</span>
-<span class="source-line-no">052</span><span id="line-52"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">053</span><span id="line-53"> *  @version $Id: TimeZoneStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $</span>
-<span class="source-line-no">054</span><span id="line-54"> *  @since 0.0.6</span>
-<span class="source-line-no">055</span><span id="line-55"> *</span>
-<span class="source-line-no">056</span><span id="line-56"> *  @UMLGraph.link</span>
-<span class="source-line-no">057</span><span id="line-57"> */</span>
-<span class="source-line-no">058</span><span id="line-58">@SuppressWarnings( "UseOfObsoleteDateTimeApi" )</span>
-<span class="source-line-no">059</span><span id="line-59">@ClassVersion( sourceVersion = "$Id: TimeZoneStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )</span>
-<span class="source-line-no">060</span><span id="line-60">@API( status = STABLE, since = "0.0.6" )</span>
-<span class="source-line-no">061</span><span id="line-61">public final class TimeZoneStringConverter implements StringConverter&lt;TimeZone&gt;</span>
-<span class="source-line-no">062</span><span id="line-62">{</span>
-<span class="source-line-no">063</span><span id="line-63">        /*-----------*\</span>
-<span class="source-line-no">064</span><span id="line-64">    ====** Constants **========================================================</span>
-<span class="source-line-no">065</span><span id="line-65">        \*-----------*/</span>
-<span class="source-line-no">066</span><span id="line-66">    /**</span>
-<span class="source-line-no">067</span><span id="line-67">     *  The error message for an invalid or unknown time zone id on the command</span>
-<span class="source-line-no">068</span><span id="line-68">     *  line: {@value}.</span>
-<span class="source-line-no">069</span><span id="line-69">     */</span>
-<span class="source-line-no">070</span><span id="line-70">    public static final String MSG_UnknownTimeZone = "Unknown TimeZone: %1$s";</span>
-<span class="source-line-no">071</span><span id="line-71"></span>
-<span class="source-line-no">072</span><span id="line-72">        /*------------------------*\</span>
-<span class="source-line-no">073</span><span id="line-73">    ====** Static Initialisations **===========================================</span>
-<span class="source-line-no">074</span><span id="line-74">        \*------------------------*/</span>
-<span class="source-line-no">075</span><span id="line-75">    /**</span>
-<span class="source-line-no">076</span><span id="line-76">     *  The serial version UID for objects of this class: {@value}.</span>
-<span class="source-line-no">077</span><span id="line-77">     *</span>
-<span class="source-line-no">078</span><span id="line-78">     *  @hidden</span>
-<span class="source-line-no">079</span><span id="line-79">     */</span>
-<span class="source-line-no">080</span><span id="line-80">    @Serial</span>
-<span class="source-line-no">081</span><span id="line-81">    private static final long serialVersionUID = 1L;</span>
-<span class="source-line-no">082</span><span id="line-82"></span>
-<span class="source-line-no">083</span><span id="line-83">    /**</span>
-<span class="source-line-no">084</span><span id="line-84">     *  An instance of this class.</span>
-<span class="source-line-no">085</span><span id="line-85">     */</span>
-<span class="source-line-no">086</span><span id="line-86">    public static final TimeZoneStringConverter INSTANCE = new TimeZoneStringConverter();</span>
-<span class="source-line-no">087</span><span id="line-87"></span>
-<span class="source-line-no">088</span><span id="line-88">        /*--------------*\</span>
-<span class="source-line-no">089</span><span id="line-89">    ====** Constructors **=====================================================</span>
-<span class="source-line-no">090</span><span id="line-90">        \*--------------*/</span>
-<span class="source-line-no">091</span><span id="line-91">    /**</span>
-<span class="source-line-no">092</span><span id="line-92">     *  Creates a new instance of {@code TimeZoneStringConverter}.</span>
-<span class="source-line-no">093</span><span id="line-93">     */</span>
-<span class="source-line-no">094</span><span id="line-94">    public TimeZoneStringConverter() {}</span>
-<span class="source-line-no">095</span><span id="line-95"></span>
-<span class="source-line-no">096</span><span id="line-96">        /*---------*\</span>
-<span class="source-line-no">097</span><span id="line-97">    ====** Methods **==========================================================</span>
-<span class="source-line-no">098</span><span id="line-98">        \*---------*/</span>
-<span class="source-line-no">099</span><span id="line-99">    /**</span>
-<span class="source-line-no">100</span><span id="line-100">     *  {@inheritDoc}</span>
-<span class="source-line-no">101</span><span id="line-101">     */</span>
-<span class="source-line-no">102</span><span id="line-102">    @Override</span>
-<span class="source-line-no">103</span><span id="line-103">    public final TimeZone fromString( final CharSequence source ) throws IllegalArgumentException</span>
-<span class="source-line-no">104</span><span id="line-104">    {</span>
-<span class="source-line-no">105</span><span id="line-105">        TimeZone retValue = null;</span>
-<span class="source-line-no">106</span><span id="line-106">        if( nonNull( source ) )</span>
-<span class="source-line-no">107</span><span id="line-107">        {</span>
-<span class="source-line-no">108</span><span id="line-108">            final var timezone = source.toString();</span>
-<span class="source-line-no">109</span><span id="line-109">            retValue = getTimeZone( timezone );</span>
-<span class="source-line-no">110</span><span id="line-110">            if( retValue.equals( getTimeZone( "GMT") ) &amp;&amp; !Set.of( TimeZone.getAvailableIDs() ).contains( timezone ) )</span>
-<span class="source-line-no">111</span><span id="line-111">            {</span>
-<span class="source-line-no">112</span><span id="line-112">                throw new IllegalArgumentException( format( MSG_UnknownTimeZone, timezone ) );</span>
-<span class="source-line-no">113</span><span id="line-113">            }</span>
-<span class="source-line-no">114</span><span id="line-114">        }</span>
-<span class="source-line-no">115</span><span id="line-115"></span>
-<span class="source-line-no">116</span><span id="line-116">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">117</span><span id="line-117">        return retValue;</span>
-<span class="source-line-no">118</span><span id="line-118">    }   //  fromString()</span>
-<span class="source-line-no">119</span><span id="line-119"></span>
-<span class="source-line-no">120</span><span id="line-120">    /**</span>
-<span class="source-line-no">121</span><span id="line-121">     *  This method is used by the</span>
-<span class="source-line-no">122</span><span id="line-122">     *  {@link java.util.ServiceLoader}</span>
-<span class="source-line-no">123</span><span id="line-123">     *  to obtain the instance for this</span>
-<span class="source-line-no">124</span><span id="line-124">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
-<span class="source-line-no">125</span><span id="line-125">     *  implementation.</span>
-<span class="source-line-no">126</span><span id="line-126">     *</span>
-<span class="source-line-no">127</span><span id="line-127">     *  @return The instance for this {@code StringConverter} implementation.</span>
-<span class="source-line-no">128</span><span id="line-128">     */</span>
-<span class="source-line-no">129</span><span id="line-129">    public static final TimeZoneStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">130</span><span id="line-130"></span>
-<span class="source-line-no">131</span><span id="line-131">    /**</span>
-<span class="source-line-no">132</span><span id="line-132">     *  {@inheritDoc}</span>
-<span class="source-line-no">133</span><span id="line-133">     */</span>
-<span class="source-line-no">134</span><span id="line-134">    @Override</span>
-<span class="source-line-no">135</span><span id="line-135">    public final String toString( final TimeZone source )</span>
-<span class="source-line-no">136</span><span id="line-136">    {</span>
-<span class="source-line-no">137</span><span id="line-137">        final var retValue = isNull( source ) ? null : source.getID();</span>
-<span class="source-line-no">138</span><span id="line-138"></span>
-<span class="source-line-no">139</span><span id="line-139">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">140</span><span id="line-140">        return retValue;</span>
-<span class="source-line-no">141</span><span id="line-141">    }   //  toString()</span>
-<span class="source-line-no">142</span><span id="line-142">}</span>
-<span class="source-line-no">143</span><span id="line-143">//  class TimeZoneStringConverter</span>
-<span class="source-line-no">144</span><span id="line-144"></span>
-<span class="source-line-no">145</span><span id="line-145">/*</span>
-<span class="source-line-no">146</span><span id="line-146"> *  End of File</span>
-<span class="source-line-no">147</span><span id="line-147"> */</span>
+<span class="source-line-no">052</span><span id="line-52"> *  @note The class {@code TimeZone} is considered outdated.</span>
+<span class="source-line-no">053</span><span id="line-53"> *</span>
+<span class="source-line-no">054</span><span id="line-54"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
+<span class="source-line-no">055</span><span id="line-55"> *  @version $Id: TimeZoneStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $</span>
+<span class="source-line-no">056</span><span id="line-56"> *  @since 0.0.6</span>
+<span class="source-line-no">057</span><span id="line-57"> *</span>
+<span class="source-line-no">058</span><span id="line-58"> *  @UMLGraph.link</span>
+<span class="source-line-no">059</span><span id="line-59"> */</span>
+<span class="source-line-no">060</span><span id="line-60">@SuppressWarnings( "UseOfObsoleteDateTimeApi" )</span>
+<span class="source-line-no">061</span><span id="line-61">@ClassVersion( sourceVersion = "$Id: TimeZoneStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )</span>
+<span class="source-line-no">062</span><span id="line-62">@API( status = STABLE, since = "0.0.6" )</span>
+<span class="source-line-no">063</span><span id="line-63">public final class TimeZoneStringConverter implements StringConverter&lt;TimeZone&gt;</span>
+<span class="source-line-no">064</span><span id="line-64">{</span>
+<span class="source-line-no">065</span><span id="line-65">        /*-----------*\</span>
+<span class="source-line-no">066</span><span id="line-66">    ====** Constants **========================================================</span>
+<span class="source-line-no">067</span><span id="line-67">        \*-----------*/</span>
+<span class="source-line-no">068</span><span id="line-68">    /**</span>
+<span class="source-line-no">069</span><span id="line-69">     *  The error message for an invalid or unknown time zone id on the command</span>
+<span class="source-line-no">070</span><span id="line-70">     *  line: {@value}.</span>
+<span class="source-line-no">071</span><span id="line-71">     */</span>
+<span class="source-line-no">072</span><span id="line-72">    public static final String MSG_UnknownTimeZone = "Unknown TimeZone: %1$s";</span>
+<span class="source-line-no">073</span><span id="line-73"></span>
+<span class="source-line-no">074</span><span id="line-74">        /*------------------------*\</span>
+<span class="source-line-no">075</span><span id="line-75">    ====** Static Initialisations **===========================================</span>
+<span class="source-line-no">076</span><span id="line-76">        \*------------------------*/</span>
+<span class="source-line-no">077</span><span id="line-77">    /**</span>
+<span class="source-line-no">078</span><span id="line-78">     *  The serial version UID for objects of this class: {@value}.</span>
+<span class="source-line-no">079</span><span id="line-79">     *</span>
+<span class="source-line-no">080</span><span id="line-80">     *  @hidden</span>
+<span class="source-line-no">081</span><span id="line-81">     */</span>
+<span class="source-line-no">082</span><span id="line-82">    @Serial</span>
+<span class="source-line-no">083</span><span id="line-83">    private static final long serialVersionUID = 1L;</span>
+<span class="source-line-no">084</span><span id="line-84"></span>
+<span class="source-line-no">085</span><span id="line-85">    /**</span>
+<span class="source-line-no">086</span><span id="line-86">     *  An instance of this class.</span>
+<span class="source-line-no">087</span><span id="line-87">     */</span>
+<span class="source-line-no">088</span><span id="line-88">    public static final TimeZoneStringConverter INSTANCE = new TimeZoneStringConverter();</span>
+<span class="source-line-no">089</span><span id="line-89"></span>
+<span class="source-line-no">090</span><span id="line-90">        /*--------------*\</span>
+<span class="source-line-no">091</span><span id="line-91">    ====** Constructors **=====================================================</span>
+<span class="source-line-no">092</span><span id="line-92">        \*--------------*/</span>
+<span class="source-line-no">093</span><span id="line-93">    /**</span>
+<span class="source-line-no">094</span><span id="line-94">     *  Creates a new instance of {@code TimeZoneStringConverter}.</span>
+<span class="source-line-no">095</span><span id="line-95">     */</span>
+<span class="source-line-no">096</span><span id="line-96">    public TimeZoneStringConverter() {}</span>
+<span class="source-line-no">097</span><span id="line-97"></span>
+<span class="source-line-no">098</span><span id="line-98">        /*---------*\</span>
+<span class="source-line-no">099</span><span id="line-99">    ====** Methods **==========================================================</span>
+<span class="source-line-no">100</span><span id="line-100">        \*---------*/</span>
+<span class="source-line-no">101</span><span id="line-101">    /**</span>
+<span class="source-line-no">102</span><span id="line-102">     *  {@inheritDoc}</span>
+<span class="source-line-no">103</span><span id="line-103">     */</span>
+<span class="source-line-no">104</span><span id="line-104">    @Override</span>
+<span class="source-line-no">105</span><span id="line-105">    public final TimeZone fromString( final CharSequence source ) throws IllegalArgumentException</span>
+<span class="source-line-no">106</span><span id="line-106">    {</span>
+<span class="source-line-no">107</span><span id="line-107">        TimeZone retValue = null;</span>
+<span class="source-line-no">108</span><span id="line-108">        if( nonNull( source ) )</span>
+<span class="source-line-no">109</span><span id="line-109">        {</span>
+<span class="source-line-no">110</span><span id="line-110">            final var timezone = source.toString();</span>
+<span class="source-line-no">111</span><span id="line-111">            retValue = getTimeZone( timezone );</span>
+<span class="source-line-no">112</span><span id="line-112">            if( retValue.equals( getTimeZone( "GMT") ) &amp;&amp; !Set.of( TimeZone.getAvailableIDs() ).contains( timezone ) )</span>
+<span class="source-line-no">113</span><span id="line-113">            {</span>
+<span class="source-line-no">114</span><span id="line-114">                throw new IllegalArgumentException( format( MSG_UnknownTimeZone, timezone ) );</span>
+<span class="source-line-no">115</span><span id="line-115">            }</span>
+<span class="source-line-no">116</span><span id="line-116">        }</span>
+<span class="source-line-no">117</span><span id="line-117"></span>
+<span class="source-line-no">118</span><span id="line-118">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">119</span><span id="line-119">        return retValue;</span>
+<span class="source-line-no">120</span><span id="line-120">    }   //  fromString()</span>
+<span class="source-line-no">121</span><span id="line-121"></span>
+<span class="source-line-no">122</span><span id="line-122">    /**</span>
+<span class="source-line-no">123</span><span id="line-123">     *  This method is used by the</span>
+<span class="source-line-no">124</span><span id="line-124">     *  {@link java.util.ServiceLoader}</span>
+<span class="source-line-no">125</span><span id="line-125">     *  to obtain the instance for this</span>
+<span class="source-line-no">126</span><span id="line-126">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
+<span class="source-line-no">127</span><span id="line-127">     *  implementation.</span>
+<span class="source-line-no">128</span><span id="line-128">     *</span>
+<span class="source-line-no">129</span><span id="line-129">     *  @return The instance for this {@code StringConverter} implementation.</span>
+<span class="source-line-no">130</span><span id="line-130">     */</span>
+<span class="source-line-no">131</span><span id="line-131">    public static final TimeZoneStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">132</span><span id="line-132"></span>
+<span class="source-line-no">133</span><span id="line-133">    /**</span>
+<span class="source-line-no">134</span><span id="line-134">     *  {@inheritDoc}</span>
+<span class="source-line-no">135</span><span id="line-135">     */</span>
+<span class="source-line-no">136</span><span id="line-136">    @Override</span>
+<span class="source-line-no">137</span><span id="line-137">    public final String toString( final TimeZone source )</span>
+<span class="source-line-no">138</span><span id="line-138">    {</span>
+<span class="source-line-no">139</span><span id="line-139">        final var retValue = isNull( source ) ? null : source.getID();</span>
+<span class="source-line-no">140</span><span id="line-140"></span>
+<span class="source-line-no">141</span><span id="line-141">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">142</span><span id="line-142">        return retValue;</span>
+<span class="source-line-no">143</span><span id="line-143">    }   //  toString()</span>
+<span class="source-line-no">144</span><span id="line-144">}</span>
+<span class="source-line-no">145</span><span id="line-145">//  class TimeZoneStringConverter</span>
+<span class="source-line-no">146</span><span id="line-146"></span>
+<span class="source-line-no">147</span><span id="line-147">/*</span>
+<span class="source-line-no">148</span><span id="line-148"> *  End of File</span>
+<span class="source-line-no">149</span><span id="line-149"> */</span>
 
 
 

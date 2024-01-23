@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -21,7 +21,8 @@ package org.tquadrat.foundation.util.stringconverter;
 import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
-import static org.tquadrat.foundation.util.SystemUtils.getZoneIdAliasMap;
+import static org.tquadrat.foundation.util.DateTimeUtils.retrieveCachedZoneId;
+import static org.tquadrat.foundation.util.DateTimeUtils.getZoneIdAliasMap;
 
 import java.io.Serial;
 import java.time.DateTimeException;
@@ -40,10 +41,10 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  <p>The method
  *  {@link #fromString(CharSequence)}
  *  will use
- *  {@link ZoneId#of(String, java.util.Map)}
+ *  {@link org.tquadrat.foundation.util.DateTimeUtils#retrieveCachedZoneId(String,java.util.Map)}
  *  to retrieve a {@code ZoneId} based on the given value. The second parameter
  *  will be retrieved by a call to
- *  {@link org.tquadrat.foundation.util.SystemUtils#getZoneIdAliasMap()}.</p>
+ *  {@link org.tquadrat.foundation.util.DateTimeUtils#getZoneIdAliasMap()}.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: ZoneIdStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
@@ -101,9 +102,10 @@ public final class ZoneIdStringConverter implements StringConverter<ZoneId>
         ZoneId retValue = null;
         if( nonNull( source ) )
         {
+            //noinspection OverlyBroadCatchBlock
             try
             {
-                retValue = ZoneId.of( source.toString(), getZoneIdAliasMap() );
+                retValue = retrieveCachedZoneId( source.toString(), getZoneIdAliasMap() );
             }
             catch( final DateTimeException e )
             {

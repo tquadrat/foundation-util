@@ -29,8 +29,7 @@ import static java.net.InetAddress.getByName;
 import static java.util.Arrays.stream;
 import static java.util.Collections.list;
 import static java.util.Locale.ROOT;
-import static java.util.function.Function.identity;
-import static java.util.stream.Collectors.toMap;
+import static org.apiguardian.api.API.Status.DEPRECATED;
 import static org.apiguardian.api.API.Status.EXPERIMENTAL;
 import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
@@ -63,7 +62,6 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Random;
-import java.util.TimeZone;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -73,7 +71,6 @@ import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
 import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.Lazy;
-import org.tquadrat.foundation.lang.SoftLazy;
 
 /**
  *  This class provides some system related helper and convenience
@@ -257,13 +254,6 @@ public final class SystemUtils
      */
     private static final Lazy<Random> m_Random;
 
-    /**
-     *  The alias map.
-     *
-     *  @see #createZoneIdAliasMap()
-     */
-    private static final SoftLazy<Map<String,String>> m_ZoneIdAliasMap;
-
     static
     {
         //---* The node id *---------------------------------------------------
@@ -297,9 +287,6 @@ public final class SystemUtils
         final var nanoNow = BigInteger.valueOf( nanoTime() );
         final var milliNow = BigInteger.valueOf( currentTimeMillis() ).multiply( ONE_MILLION );
         m_NanoAdjust = milliNow.subtract( nanoNow ).add( timeDelta );
-
-        //---* Initialise the ZoneId Alias Map *-------------------------------
-        m_ZoneIdAliasMap = SoftLazy.use( SystemUtils::createZoneIdAliasMap );
     }
 
         /*--------------*\
@@ -380,16 +367,16 @@ public final class SystemUtils
      *  @return The alias map.
      *
      *  @since 0.0.6
+     *
+     *  @deprecated Use
+     *      {@link DateTimeUtils#createZoneIdAliasMap()}
+     *      instead.
      */
-    @API( status = STABLE, since = "0.0.6" )
+    @API( status = DEPRECATED, since = "0.0.6" )
+    @Deprecated( since = "0.4.0", forRemoval = true )
     public static final Map<String,String> createZoneIdAliasMap()
     {
-        final var retValue = stream( TimeZone.getAvailableIDs() )
-            .filter( id -> !ZoneId.getAvailableZoneIds().contains( id ) )
-            .collect( toMap( identity(), id -> TimeZone.getTimeZone( id ).toZoneId().normalized().toString() ) );
-
-        //---* Done *----------------------------------------------------------
-        return retValue;
+        return DateTimeUtils.createZoneIdAliasMap();
     }   //  createZoneIdAliasMap()
 
     /**
@@ -745,9 +732,14 @@ public final class SystemUtils
      *  @see #createZoneIdAliasMap()
      *
      *  @since 0.0.6
+     *
+     *  @deprecated Use
+     *      {@link DateTimeUtils#getZoneIdAliasMap()}
+     *      instead.
      */
-    @API( status = STABLE, since = "0.0.5" )
-    public static final Map<String,String> getZoneIdAliasMap() { return m_ZoneIdAliasMap.get(); }
+    @API( status = DEPRECATED, since = "0.0.5" )
+    @Deprecated( since = "0.4.0", forRemoval = true )
+    public static final Map<String,String> getZoneIdAliasMap() { return DateTimeUtils.getZoneIdAliasMap(); }
 
     /**
      *  Checks whether the current system has a network interface installed.

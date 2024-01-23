@@ -7,7 +7,7 @@
      version='1.1'
      baseProfile='full'
      width='762.000'
-     height='528.000'>
+     height='561.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,7 +118,7 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='106.000'
+                  height='139.000'
                   width='712.000'
                   x='0.000'
                   y='0.000'/>
@@ -130,7 +130,7 @@
                     <rect x='0.000'
                           y='0.000'
                           width='712.000'
-                          height='106.000'
+                          height='139.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='17.000'
@@ -140,28 +140,36 @@
                     <text x='317.000'
                           y='13.000'>DateTimeUtils</text>
                     <line x1='0.000'
-                          y1='34.000'
+                          y1='45.000'
                           x2='712.000'
-                          y2='34.000'
+                          y2='45.000'
                           class='separator'/>
                     <text y='30.000'
+                          class='static final'>- m_ZoneIdAliasMap:org.tquadrat.foundation.lang.SoftLazy&lt;java.util.Map&lt;java.lang.String,java.lang.String&gt;&gt;</text>
+                    <text y='41.000'
                           class='static final'>- m_ZoneIdCache:java.util.Map&lt;java.lang.String,java.time.ZoneId&gt;</text>
                     <text x='5.000'
-                          y='47.000'>- DateTimeUtils()</text>
-                    <text x='5.000'
-                          y='58.000'
-                          class='static'>+ replaceByCachedZoneId(zoneId:java.time.ZoneId):java.time.ZoneId</text>
+                          y='58.000'>- DateTimeUtils()</text>
                     <text x='5.000'
                           y='69.000'
-                          class='static'>+ retrieveCachedZoneId(id:java.lang.String):java.time.ZoneId</text>
+                          class='static'>+ createZoneIdAliasMap():java.util.Map&lt;java.lang.String,java.lang.String&gt;</text>
                     <text x='5.000'
                           y='80.000'
-                          class='static'>+ retrieveCachedZoneId(id:java.lang.String,aliases:java.util.Map&lt;java.lang.String,java.lang.String&gt;):java.time.ZoneId</text>
+                          class='static'>+ getZoneIdAliasMap():java.util.Map&lt;java.lang.String,java.lang.String&gt;</text>
                     <text x='5.000'
                           y='91.000'
-                          class='static'>+ retrieveCachedZoneId(temporal:java.time.temporal.TemporalAccessor):java.time.ZoneId</text>
+                          class='static'>+ replaceByCachedZoneId(zoneId:java.time.ZoneId):java.time.ZoneId</text>
                     <text x='5.000'
                           y='102.000'
+                          class='static'>+ retrieveCachedZoneId(id:java.lang.String):java.time.ZoneId</text>
+                    <text x='5.000'
+                          y='113.000'
+                          class='static'>+ retrieveCachedZoneId(id:java.lang.String,aliases:java.util.Map&lt;java.lang.String,java.lang.String&gt;):java.time.ZoneId</text>
+                    <text x='5.000'
+                          y='124.000'
+                          class='static'>+ retrieveCachedZoneId(temporal:java.time.temporal.TemporalAccessor):java.time.ZoneId</text>
+                    <text x='5.000'
+                          y='135.000'
                           class='static'>+ retrieveCachedZoneId(prefix:java.lang.String,offset:java.time.ZoneOffset):java.time.ZoneId</text>
                 </g>
             </g>

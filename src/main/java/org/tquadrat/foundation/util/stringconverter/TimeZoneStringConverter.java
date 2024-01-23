@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -33,21 +33,23 @@ import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
- *  An implementation of
+ *  <p>{@summary An implementation of
  *  {@link StringConverter}
  *  for
  *  {@link TimeZone}
- *  values.<br>
- *  <br>The method
+ *  values.}</p>
+ *  <p>The method
  *  {@link #fromString(CharSequence)}
  *  will use
  *  {@link TimeZone#getTimeZone(String)}
- *  to retrieve a {@code TimeZone} based on the given value.<br>
- *  <br>The method
+ *  to retrieve a {@code TimeZone} based on the given value.</p>
+ *  <p>The method
  *  {@link #toString(TimeZone)}
  *  will use
  *  {@link TimeZone#getID()}
- *  to do the conversion to a String.
+ *  to do the conversion to a String.</p>
+ *
+ *  @note The class {@code TimeZone} is considered outdated.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: TimeZoneStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $

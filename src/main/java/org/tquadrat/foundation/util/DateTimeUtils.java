@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2023 by Thomas Thrien.
+ *  Copyright © 2002-2024 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -17,6 +17,10 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.util.Arrays.stream;
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toMap;
+import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotBlankArgument;
@@ -28,11 +32,13 @@ import java.time.temporal.TemporalAccessor;
 import java.time.zone.ZoneRulesException;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.lang.SoftLazy;
 
 /**
  *  Additional helpers for the work with date/time values.
@@ -52,10 +58,25 @@ public final class DateTimeUtils
     ====** Static Initialisations **===========================================
         \*------------------------*/
     /**
+     *  The alias map.
+     *
+     *  @since 0.3.0
+     *  @see #createZoneIdAliasMap()
+     */
+    @API( status = INTERNAL, since = "0.4.0" )
+    private static final SoftLazy<Map<String,String>> m_ZoneIdAliasMap;
+
+    /**
      *  The cached zone ids.
      */
     @SuppressWarnings( "StaticCollection" )
     private static final Map<String,ZoneId> m_ZoneIdCache = new HashMap<>();
+
+    static
+    {
+        //---* Initialise the ZoneId Alias Map *-------------------------------
+        m_ZoneIdAliasMap = SoftLazy.use( DateTimeUtils::createZoneIdAliasMap );
+    }
 
         /*--------------*\
     ====** Constructors **=====================================================
@@ -68,6 +89,45 @@ public final class DateTimeUtils
         /*---------*\
     ====** Methods **==========================================================
         \*---------*/
+    /**
+     *  Creates the alias map for the old (deprecated) zone ids that are used
+     *  for the call to
+     *  {@link ZoneId#of(String, java.util.Map)}
+     *  to retrieve a
+     *  {@link ZoneId}
+     *  instance for the given zone id.
+     *
+     *  @return The alias map.
+     *
+     *  @since 0.4.0
+     */
+    @API( status = STABLE, since = "0.4.0" )
+    public static final Map<String,String> createZoneIdAliasMap()
+    {
+        final var retValue = stream( TimeZone.getAvailableIDs() )
+            .filter( id -> !ZoneId.getAvailableZoneIds().contains( id ) )
+            .collect( toMap( identity(), id -> TimeZone.getTimeZone( id ).toZoneId().normalized().toString() ) );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  createZoneIdAliasMap()
+
+    /**
+     *  <p>{@summary Returns the alias map for the zone id, holding the
+     *  deprecated ids.} If not yet created, the alias map will be
+     *  created by a call to
+     *  {@link #createZoneIdAliasMap()}
+     *  and the result to that call will be cached for future calls.</p>
+     *
+     *  @return The alias map.
+     *
+     *  @see #createZoneIdAliasMap()
+     *
+     *  @since 0.4.0
+     */
+    @API( status = STABLE, since = "0.4.0" )
+    public static final Map<String,String> getZoneIdAliasMap() { return m_ZoneIdAliasMap.get(); }
+
     /**
      *  <p>{@summary Replaces the given instance of
      *  {@link ZoneId}
@@ -85,7 +145,7 @@ public final class DateTimeUtils
         final ZoneId retValue;
         synchronized( m_ZoneIdCache )
         {
-            retValue = m_ZoneIdCache.computeIfAbsent( requireNonNullArgument( zoneId, "zoneId" ).getId(), $ -> zoneId );
+            retValue = m_ZoneIdCache.computeIfAbsent( requireNonNullArgument( zoneId, "zoneId" ).getId(), _ -> zoneId );
         }
 
         //---* Done *----------------------------------------------------------
