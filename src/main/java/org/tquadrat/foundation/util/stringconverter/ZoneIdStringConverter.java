@@ -21,8 +21,8 @@ package org.tquadrat.foundation.util.stringconverter;
 import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
-import static org.tquadrat.foundation.util.DateTimeUtils.retrieveCachedZoneId;
 import static org.tquadrat.foundation.util.DateTimeUtils.getZoneIdAliasMap;
+import static org.tquadrat.foundation.util.DateTimeUtils.retrieveCachedZoneId;
 
 import java.io.Serial;
 import java.time.DateTimeException;
@@ -47,14 +47,14 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  {@link org.tquadrat.foundation.util.DateTimeUtils#getZoneIdAliasMap()}.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ZoneIdStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: ZoneIdStringConverter.java 1091 2024-01-25 23:10:08Z tquadrat $
  *  @since 0.0.6
  *
  *  @see org.tquadrat.foundation.util.SystemUtils#createZoneIdAliasMap()
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ZoneIdStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ZoneIdStringConverter.java 1091 2024-01-25 23:10:08Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class ZoneIdStringConverter implements StringConverter<ZoneId>
 {

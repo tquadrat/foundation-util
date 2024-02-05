@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -59,18 +59,19 @@ import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.lang.CommonConstants;
 
 /**
  *  Some I/O, file, file system and network related helper and convenience
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1080 2024-01-03 11:05:21Z tquadrat $
+ *  @version $Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1080 2024-01-03 11:05:21Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -86,13 +87,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1080 2024-01-03 11:05:21Z tquadrat $
+     *  @version $Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1080 2024-01-03 11:05:21Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -140,12 +141,12 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1080 2024-01-03 11:05:21Z tquadrat $
+     *  @version $Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1080 2024-01-03 11:05:21Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -238,20 +239,20 @@ public final class IOUtils
     }   //  closeQuietly()
 
     /**
-     *  Creates a directory by creating all nonexistent parent directories
-     *  first. Unlike the
+     *  <p>{@summary Creates a new directory by creating all nonexistent parent
+     *  directories first.} Unlike the
      *  {@link #createDirectory(File,FileAttribute...)}
      *  method, an exception is not thrown if the directory could not be
-     *  created because it already exists.<br>
-     *  <br>The {@code attributes} parameter is optional to set
+     *  created because it already exists.</p>
+     *  <p>The {@code attributes} parameter is optional to set
      *  {@linkplain FileAttribute file-attributes}
      *  atomically when creating the non-existent directories. Each file
      *  attribute is identified by its
      *  {@linkplain FileAttribute#name name}.
      *  If more than one attribute of the same name is included in the array
-     *  then all but the last occurrence is ignored.<br>
-     *  <br>If this method fails, then it may do so after creating some, but
-     *  not all, of the parent directories.
+     *  then all but the last occurrence is ignored.</p>
+     *  <p>If this method fails, then it may do so after creating some, but
+     *  not all, of the parent directories.</p>
      *
      *  @param  dir The directory to create.
      *  @param  attributes  An optional list of file attributes to set
@@ -281,7 +282,6 @@ public final class IOUtils
      *
      *  @since 0.0.6
      */
-    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.6" )
     public static final File createDirectories( final File dir, final FileAttribute<?>... attributes ) throws IOException
     {
@@ -293,20 +293,20 @@ public final class IOUtils
     }   //  createDirectories()
 
     /**
-     *  Creates a new directory. The check for the existence of the file and
+     *  <p>{@summary Creates a new directory.} The check for the existence of the file and
      *  the creation of the directory if it does not exist are a single
      *  operation that is atomic with respect to all other filesystem
      *  activities that might affect the directory. The
      *  {@link #createDirectories(File, FileAttribute...) createDirectories()}
      *  method should be used where it is required to create all nonexistent
-     *  parent directories first.<br>
-     *  <br>The {@code attributes} parameter is optional to set
+     *  parent directories first.</p>
+     *  <p>The {@code attributes} parameter is optional to set
      *  {@linkplain FileAttribute file-attributes}
      *  atomically when creating the directory. Each attribute is identified by
      *  its
      *  {@linkplain FileAttribute#name name}.
      *  If more than one attribute of the same name is included in the array
-     *  then all but the last occurrence is ignored.
+     *  then all but the last occurrence is ignored.</p>
      *
      *  @param  dir The directory to create.
      *  @param  attributes  An optional list of file attributes to set
@@ -327,7 +327,6 @@ public final class IOUtils
      *
      *  @since 0.0.6
      */
-    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.6" )
     public static File createDirectory( final File dir, final FileAttribute<?>... attributes ) throws IOException
     {
@@ -339,14 +338,16 @@ public final class IOUtils
     }   //  createDirectory()
 
     /**
-     *  Creates a directory named after the account name of the current user in
-     *  the default {@code temp} folder, determined by the system property
-     *  {@value org.tquadrat.foundation.lang.CommonConstants#PROPERTY_TEMPFOLDER}.<br>
-     *  <br>The access rights are set for the current user only (for UNIX, it
-     *  would be 700).<br>
-     *  <br>The new directory will <i>not</i> be removed automatically after
-     *  program termination.<br>
-     *  <br>The class
+     *  <p>{@summary Creates a directory named after the account name of the
+     *  current user (determined by the system property
+     *  {@value CommonConstants#PROPERTY_USER_NAME})
+     *  in the default {@code temp} folder, determined by the system property
+     *  {@value CommonConstants#PROPERTY_TEMPFOLDER}.}</p>
+     *  <p>The access rights are set for the current user only (for UNIX, it
+     *  would be 700).</p>
+     *  <p>The new directory will <i>not</i> be removed automatically after
+     *  program termination.</p>
+     *  <p>The class
      *  {@link File}
      *  provides a static method
      *  {@link File#createTempFile(String, String) createTempFile()}
@@ -355,10 +356,10 @@ public final class IOUtils
      *  configuration, it will cause security problems on UNIX-like systems.
      *  Therefore, it is recommended, to use
      *  {@link File#createTempFile(String, String, File)}
-     *  instead, like this:
+     *  instead, like this:</p>
      *  <pre><code>File tempFile = File.createTempFile( "PREFIX", "EXT", createTempDirectory() );</code></pre>
-     *  This will guarantee that the temporary files cannot be read by
-     *  other users.
+     *  <p>This will guarantee that the temporary files cannot be read by
+     *  other users.</p>
      *
      *  @return The new temporary directory; it is guaranteed that the
      *      directory exists after the call to this method returned.
@@ -367,36 +368,36 @@ public final class IOUtils
      *  @since 0.0.6
      */
     @API( status = STABLE, since = "0.0.6" )
-    public static File createTempDirectory() throws IOException
+    public static final File createTempDirectory() throws IOException
     {
         //---* Create the file object for the temp directory *-----------------
-        final var tempDir = new File( getProperty( PROPERTY_TEMPFOLDER ) );
-        final var userTempDir = new File( tempDir, getProperty( PROPERTY_USER_NAME ) );
+        final var tempDir = getSystemTempFolder();
+        final var userTempDir = tempDir.resolve( getProperty( PROPERTY_USER_NAME ) );
 
         //---* Get the file attributes *---------------------------------------
         @SuppressWarnings( "ZeroLengthArrayAllocation" )
         final FileAttribute<?> [] attributes = DEFAULT_FILESYSTEM_IS_POSIX_COMPLIANT ? new FileAttribute [] {PosixPermissions.tempDirPermissions} : new FileAttribute [0];
 
         //---* Create the directory *------------------------------------------
-        final var retValue = createDirectories( userTempDir, attributes );
+        final var retValue = Files.createDirectories( userTempDir, attributes ).toFile();
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  createTempDirectory()
 
     /**
-     *  Creates a new directory in the specified directory, using the given
-     *  prefix to generate its name.<br>
-     *  <br>The details as to how the name of the directory is constructed is
+     *  <p>{@summary Creates a new temporary directory in the specified
+     *  directory, using the given prefix to generate its name.}</p>
+     *  <p>The details as to how the name of the directory is constructed is
      *  implementation dependent and therefore not specified. Where possible
-     *  the {@code prefix} is used to construct candidate names.<br>
-     *  <br>The {@code attributes} parameter is optional to set
+     *  the {@code prefix} is used to construct candidate names.</p>
+     *  <p>The {@code attributes} parameter is optional to set
      *  {@linkplain FileAttribute file-attributes}
      *  atomically when creating the directory. Each attribute is identified by
      *  its
      *  {@linkplain FileAttribute#name() name}.
      *  If more than one attribute of the same name is included in the array
-     *  then all but the last occurrence is ignored.
+     *  then all but the last occurrence is ignored.</p>
      *
      *  @param  dir The directory in which to create the temporary directory.
      *  @param  prefix  The prefix string to be used in generating the
@@ -417,11 +418,10 @@ public final class IOUtils
      *      method is invoked to check write access when creating the
      *      directory.
      *
-     *  @see Files#createTempDirectory(Path, String, FileAttribute...)
+     *  @see Files#createTempDirectory(Path,String,FileAttribute...)
      *
      *  @since 0.0.6
      */
-    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.6" )
     public static Path createTempDirectory( final File dir, final String prefix, final FileAttribute<?>... attributes ) throws IOException
     {
@@ -429,12 +429,12 @@ public final class IOUtils
     }   //  createTempDirectory()
 
     /**
-     *  Creates a new directory in the default temporary-file directory, using
-     *  the given prefix to generate its name.<br>
-     *  <br>This method works in exactly the manner specified by
+     *  <p>{@summary Creates a new directory in the default temporary-file
+     *  directory, using the given prefix to generate its name.}</p>
+     *  <p>This method works in exactly the manner specified by
      *  {@link #createTempDirectory(File,String,FileAttribute[])}
      *  method for the case that the {@code dir} parameter is the
-     *  temporary-file directory.
+     *  temporary-file directory.</p>
      *
      *  @param  prefix  The prefix string to be used in generating the
      *      directory's name; may be {@code null}.
@@ -461,7 +461,6 @@ public final class IOUtils
      *
      *  @since 0.0.6
      */
-    @SuppressWarnings( "removal" )
     @API( status = STABLE, since = "0.0.6" )
     public static File createTempDirectory( final String prefix, final FileAttribute<?>... attributes ) throws IOException
     {
@@ -718,6 +717,20 @@ public final class IOUtils
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final Appendable getNullAppendable() { return new NullAppendable(); }
+
+    /**
+     *  Returns the
+     *  {@link Path}
+     *  object that represents the system's default temporary folder as
+     *  specified in
+     *  {@value CommonConstants#PROPERTY_TEMPFOLDER}.
+     *
+     *  @return The system temp folder.
+     *
+     *  @since 0.4.0
+     */
+    @API( status = STABLE, since = "0.4.0" )
+    public static final Path getSystemTempFolder() { return Path.of( getProperty( PROPERTY_TEMPFOLDER ) ); }
 
     /**
      *  <p>{@summary Returns

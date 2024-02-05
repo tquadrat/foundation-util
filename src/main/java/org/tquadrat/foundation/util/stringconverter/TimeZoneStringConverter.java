@@ -52,13 +52,13 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @note The class {@code TimeZone} is considered outdated.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TimeZoneStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: TimeZoneStringConverter.java 1091 2024-01-25 23:10:08Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "UseOfObsoleteDateTimeApi" )
-@ClassVersion( sourceVersion = "$Id: TimeZoneStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TimeZoneStringConverter.java 1091 2024-01-25 23:10:08Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class TimeZoneStringConverter implements StringConverter<TimeZone>
 {

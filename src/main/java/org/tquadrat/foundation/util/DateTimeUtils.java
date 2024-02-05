@@ -44,13 +44,13 @@ import org.tquadrat.foundation.lang.SoftLazy;
  *  Additional helpers for the work with date/time values.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: DateTimeUtils.java 1080 2024-01-03 11:05:21Z tquadrat $
+ *  @version $Id: DateTimeUtils.java 1091 2024-01-25 23:10:08Z tquadrat $
  *  @since 0.3.0
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: DateTimeUtils.java 1080 2024-01-03 11:05:21Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: DateTimeUtils.java 1091 2024-01-25 23:10:08Z tquadrat $" )
 @API( status = STABLE, since = "0.3.0" )
 public final class DateTimeUtils
 {
