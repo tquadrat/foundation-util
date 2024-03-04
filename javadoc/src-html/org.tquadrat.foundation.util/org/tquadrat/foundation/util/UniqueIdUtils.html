@@ -382,7 +382,7 @@
 <span class="source-line-no">369</span><span id="line-369"></span>
 <span class="source-line-no">370</span><span id="line-370">        final var parts = splitString( requireNotBlankArgument( input, "input" ).toString().toUpperCase( ROOT ), "-" );</span>
 <span class="source-line-no">371</span><span id="line-371">        final var message = "Cannot convert '%s' to a UUID!".formatted( input );</span>
-<span class="source-line-no">372</span><span id="line-372">        requireValidIntegerArgument( parts.length, "input", length -&gt; length == 2, _ -&gt; message );</span>
+<span class="source-line-no">372</span><span id="line-372">        requireValidIntegerArgument( parts.length, "input", length -&gt; length == 2, $ -&gt; message );</span>
 <span class="source-line-no">373</span><span id="line-373">        for( var i = 0; i &lt; parts.length; ++i )</span>
 <span class="source-line-no">374</span><span id="line-374">        {</span>
 <span class="source-line-no">375</span><span id="line-375">            final var buffer = new StringBuilder();</span>

@@ -369,7 +369,7 @@ public final class UniqueIdUtils
 
         final var parts = splitString( requireNotBlankArgument( input, "input" ).toString().toUpperCase( ROOT ), "-" );
         final var message = "Cannot convert '%s' to a UUID!".formatted( input );
-        requireValidIntegerArgument( parts.length, "input", length -> length == 2, _ -> message );
+        requireValidIntegerArgument( parts.length, "input", length -> length == 2, $ -> message );
         for( var i = 0; i < parts.length; ++i )
         {
             final var buffer = new StringBuilder();
