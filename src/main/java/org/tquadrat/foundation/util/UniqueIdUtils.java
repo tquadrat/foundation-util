@@ -147,7 +147,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *   };</code></pre>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1084 2024-01-03 15:31:20Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1111 2024-03-04 21:54:29Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -157,7 +157,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1084 2024-01-03 15:31:20Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1111 2024-03-04 21:54:29Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils
