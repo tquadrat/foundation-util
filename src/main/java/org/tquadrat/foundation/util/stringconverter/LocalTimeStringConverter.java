@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -72,11 +72,9 @@ public class LocalTimeStringConverter extends TimeDateStringConverter<LocalTime>
     /**
      *  Creates a new {@code LocalTimeStringConverter} instance.
      *
-     *  @note The formatter may not drop any part of the time,
-     *      otherwise
-     *      {@link #fromString(CharSequence)}
-     *      may fail. This means that the formatter is only allowed to re-order
-     *      the temporal fields.
+     *  @note The formatter may not drop any part of the Zoned date time,
+     *      otherwise {@code fromString()} may fail. This means that the
+     *      formatter is only allowed to re-order the temporal fields.
      *
      *  @param  formatter   The formatter for the date/time data.
      */

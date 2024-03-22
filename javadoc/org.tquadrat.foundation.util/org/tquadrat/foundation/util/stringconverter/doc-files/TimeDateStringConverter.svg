@@ -6,7 +6,7 @@
      xmlns:xlink="http://www.w3.org/1999/xlink"
      version='1.1'
      baseProfile='full'
-     width='5928.000'
+     width='7656.000'
      height='1033.000'>
     <defs>
         <style><![CDATA[
@@ -326,13 +326,56 @@
         <clipPath id='ID000005'>
             <rect class='otherClass'
                   height='95.000'
+                  width='826.000'
+                  x='0.000'
+                  y='0.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.stringconverter.OffsetDateTimeStringConverter'>
+            <g>
+                <g clip-path='url(#ID000005)'>
+                    <rect x='0.000'
+                          y='0.000'
+                          width='826.000'
+                          height='95.000'
+                          class='otherClass'/>
+                    <line x1='0.000'
+                          y1='17.000'
+                          x2='826.000'
+                          y2='17.000'
+                          class='separator'/>
+                    <text x='326.000'
+                          y='13.000'>OffsetDateTimeStringConverter</text>
+                    <line x1='0.000'
+                          y1='45.000'
+                          x2='826.000'
+                          y2='45.000'
+                          class='separator'/>
+                    <text y='30.000'
+                          class='static final'>- serialVersionUID:long</text>
+                    <text y='41.000'
+                          class='static final'>+ INSTANCE:org.tquadrat.foundation.util.stringconverter.OffsetDateTimeStringConverter</text>
+                    <text x='5.000'
+                          y='58.000'>+ OffsetDateTimeStringConverter()</text>
+                    <text x='5.000'
+                          y='69.000'>+ OffsetDateTimeStringConverter(formatter:java.time.format.DateTimeFormatter)</text>
+                    <text x='5.000'
+                          y='80.000'># parseDateTime(source:java.lang.CharSequence,formatter:java.util.Optional&lt;java.time.format.DateTimeFormatter&gt;):java.time.OffsetDateTime</text>
+                    <text x='5.000'
+                          y='91.000'
+                          class='static'>+ provider():org.tquadrat.foundation.util.stringconverter.OffsetDateTimeStringConverter</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000006'>
+            <rect class='otherClass'
+                  height='95.000'
                   width='796.000'
                   x='0.000'
                   y='0.000'/>
         </clipPath>
         <symbol id='org.tquadrat.foundation.util.stringconverter.YearMonthStringConverter'>
             <g>
-                <g clip-path='url(#ID000005)'>
+                <g clip-path='url(#ID000006)'>
                     <rect x='0.000'
                           y='0.000'
                           width='796.000'
@@ -366,7 +409,7 @@
                 </g>
             </g>
         </symbol>
-        <clipPath id='ID000006'>
+        <clipPath id='ID000007'>
             <rect class='otherClass'
                   height='95.000'
                   width='784.000'
@@ -375,7 +418,7 @@
         </clipPath>
         <symbol id='org.tquadrat.foundation.util.stringconverter.InstantStringConverter'>
             <g>
-                <g clip-path='url(#ID000006)'>
+                <g clip-path='url(#ID000007)'>
                     <rect x='0.000'
                           y='0.000'
                           width='784.000'
@@ -409,7 +452,7 @@
                 </g>
             </g>
         </symbol>
-        <clipPath id='ID000007'>
+        <clipPath id='ID000008'>
             <rect class='otherClass'
                   height='95.000'
                   width='766.000'
@@ -418,7 +461,7 @@
         </clipPath>
         <symbol id='org.tquadrat.foundation.util.stringconverter.YearStringConverter'>
             <g>
-                <g clip-path='url(#ID000007)'>
+                <g clip-path='url(#ID000008)'>
                     <rect x='0.000'
                           y='0.000'
                           width='766.000'
@@ -452,7 +495,50 @@
                 </g>
             </g>
         </symbol>
-        <clipPath id='ID000008'>
+        <clipPath id='ID000009'>
+            <rect class='otherClass'
+                  height='95.000'
+                  width='802.000'
+                  x='0.000'
+                  y='0.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.stringconverter.OffsetTimeStringConverter'>
+            <g>
+                <g clip-path='url(#ID000009)'>
+                    <rect x='0.000'
+                          y='0.000'
+                          width='802.000'
+                          height='95.000'
+                          class='otherClass'/>
+                    <line x1='0.000'
+                          y1='17.000'
+                          x2='802.000'
+                          y2='17.000'
+                          class='separator'/>
+                    <text x='326.000'
+                          y='13.000'>OffsetTimeStringConverter</text>
+                    <line x1='0.000'
+                          y1='45.000'
+                          x2='802.000'
+                          y2='45.000'
+                          class='separator'/>
+                    <text y='30.000'
+                          class='static final'>- serialVersionUID:long</text>
+                    <text y='41.000'
+                          class='static final'>+ INSTANCE:org.tquadrat.foundation.util.stringconverter.OffsetTimeStringConverter</text>
+                    <text x='5.000'
+                          y='58.000'>+ OffsetTimeStringConverter()</text>
+                    <text x='5.000'
+                          y='69.000'>+ OffsetTimeStringConverter(formatter:java.time.format.DateTimeFormatter)</text>
+                    <text x='5.000'
+                          y='80.000'># parseDateTime(source:java.lang.CharSequence,formatter:java.util.Optional&lt;java.time.format.DateTimeFormatter&gt;):java.time.OffsetTime</text>
+                    <text x='5.000'
+                          y='91.000'
+                          class='static'>+ provider():org.tquadrat.foundation.util.stringconverter.OffsetTimeStringConverter</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000010'>
             <rect class='otherClass'
                   height='95.000'
                   width='820.000'
@@ -461,7 +547,7 @@
         </clipPath>
         <symbol id='org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter'>
             <g>
-                <g clip-path='url(#ID000008)'>
+                <g clip-path='url(#ID000010)'>
                     <rect x='0.000'
                           y='0.000'
                           width='820.000'
@@ -495,7 +581,7 @@
                 </g>
             </g>
         </symbol>
-        <clipPath id='ID000009'>
+        <clipPath id='ID000011'>
             <rect class='externalClass'
                   height='172.000'
                   width='244.000'
@@ -504,7 +590,7 @@
         </clipPath>
         <symbol id='java.lang.Object'>
             <g>
-                <g clip-path='url(#ID000009)'>
+                <g clip-path='url(#ID000011)'>
                     <rect x='0.000'
                           y='0.000'
                           width='244.000'
@@ -551,7 +637,7 @@
                 </g>
             </g>
         </symbol>
-        <clipPath id='ID000010'>
+        <clipPath id='ID000012'>
             <rect class='externalClass'
                   height='117.000'
                   width='628.000'
@@ -560,7 +646,7 @@
         </clipPath>
         <symbol id='org.tquadrat.foundation.lang.StringConverter'>
             <g>
-                <g clip-path='url(#ID000010)'>
+                <g clip-path='url(#ID000012)'>
                     <rect x='0.000'
                           y='8.000'
                           width='628.000'
@@ -619,7 +705,7 @@
                 </g>
             </g>
         </symbol>
-        <clipPath id='ID000011'>
+        <clipPath id='ID000013'>
             <rect class='externalClass'
                   height='62.000'
                   width='82.000'
@@ -628,7 +714,7 @@
         </clipPath>
         <symbol id='java.io.Serializable'>
             <g>
-                <g clip-path='url(#ID000011)'>
+                <g clip-path='url(#ID000013)'>
                     <rect x='0.000'
                           y='0.000'
                           width='82.000'
@@ -659,66 +745,78 @@
         </symbol>
     </defs>
     <path class='inheritance'
-          d='M423.429,813.000 c0.000,-85.000,2438.071,0.000,2438.071,-85.000 v-15'
+          d='M425.333,813.000 c0.000,-85.000,3270.167,0.000,3270.167,-85.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M1270.286,813.000 c0.000,-85.000,1621.214,0.000,1621.214,-85.000 v-15'
+          d='M1276.000,813.000 c0.000,-85.000,2449.500,0.000,2449.500,-85.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M2117.143,813.000 c0.000,-85.000,804.357,0.000,804.357,-85.000 v-15'
+          d='M2126.667,813.000 c0.000,-85.000,1628.833,0.000,1628.833,-85.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M2964.000,813.000 c0.000,-85.000,-12.500,0.000,-12.500,-85.000 v-15'
+          d='M2977.333,813.000 c0.000,-85.000,808.167,0.000,808.167,-85.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M3810.857,813.000 c0.000,-85.000,-829.357,0.000,-829.357,-85.000 v-15'
+          d='M3828.000,813.000 c0.000,-85.000,-12.500,0.000,-12.500,-85.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M4657.714,813.000 c0.000,-85.000,-1646.214,0.000,-1646.214,-85.000 v-15'
+          d='M4678.667,813.000 c0.000,-85.000,-833.167,0.000,-833.167,-85.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M5504.571,813.000 c0.000,-85.000,-2463.071,0.000,-2463.071,-85.000 v-15'
+          d='M5529.333,813.000 c0.000,-85.000,-1653.833,0.000,-1653.833,-85.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='inheritance'
-          d='M2926.500,530.000 c0.000,-318.000,-1444.500,0.000,-1444.500,-318.000 v-15'
+          d='M6380.000,813.000 c0.000,-85.000,-2474.500,0.000,-2474.500,-85.000 v-15'
+          marker-end='url(#inheritance)'/>
+    <path class='inheritance'
+          d='M7230.667,813.000 c0.000,-85.000,-3295.167,0.000,-3295.167,-85.000 v-15'
+          marker-end='url(#inheritance)'/>
+    <path class='inheritance'
+          d='M3790.500,530.000 c0.000,-318.000,-1876.500,0.000,-1876.500,-318.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='implementation'
-          d='M2976.500,530.000 c0.000,-93.000,-25.000,0.000,-25.000,-93.000 v-15'
+          d='M3840.500,530.000 c0.000,-93.000,-25.000,0.000,-25.000,-93.000 v-15'
           marker-end='url(#implementation)'/>
     <path class='inheritance'
-          d='M2951.500,305.000 c0.000,-203.000,1494.500,0.000,1494.500,-203.000 v-15'
+          d='M3815.500,305.000 c0.000,-203.000,1926.500,0.000,1926.500,-203.000 v-15'
           marker-end='url(#inheritance)'/>
-    <use x='1360.000'
+    <use x='1792.000'
          y='25.000'
          xlink:href='#java.lang.Object'/>
-    <use x='4405.000'
+    <use x='5701.000'
          y='25.000'
          xlink:href='#java.io.Serializable'/>
-    <use x='2637.500'
+    <use x='3501.500'
          y='297.000'
          xlink:href='#org.tquadrat.foundation.lang.StringConverter'/>
-    <use x='2577.500'
+    <use x='3441.500'
          y='522.000'
          xlink:href='#org.tquadrat.foundation.util.stringconverter.TimeDateStringConverter'/>
-    <use x='25.429'
+    <use x='27.333'
          y='813.000'
          xlink:href='#org.tquadrat.foundation.util.stringconverter.LocalDateStringConverter'/>
-    <use x='872.286'
+    <use x='878.000'
          y='813.000'
          xlink:href='#org.tquadrat.foundation.util.stringconverter.LocalTimeStringConverter'/>
-    <use x='1707.143'
+    <use x='1716.667'
          y='813.000'
          xlink:href='#org.tquadrat.foundation.util.stringconverter.LocalDateTimeStringConverter'/>
-    <use x='2566.000'
+    <use x='2564.333'
+         y='813.000'
+         xlink:href='#org.tquadrat.foundation.util.stringconverter.OffsetDateTimeStringConverter'/>
+    <use x='3430.000'
          y='813.000'
          xlink:href='#org.tquadrat.foundation.util.stringconverter.YearMonthStringConverter'/>
-    <use x='3418.857'
+    <use x='4286.667'
          y='813.000'
          xlink:href='#org.tquadrat.foundation.util.stringconverter.InstantStringConverter'/>
-    <use x='4274.714'
+    <use x='5146.333'
          y='813.000'
          xlink:href='#org.tquadrat.foundation.util.stringconverter.YearStringConverter'/>
-    <use x='5094.571'
+    <use x='5979.000'
+         y='813.000'
+         xlink:href='#org.tquadrat.foundation.util.stringconverter.OffsetTimeStringConverter'/>
+    <use x='6820.667'
          y='813.000'
          xlink:href='#org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter'/>
 </svg>

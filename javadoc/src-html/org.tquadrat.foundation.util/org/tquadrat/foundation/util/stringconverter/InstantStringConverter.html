@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2023 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2024 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> *</span>
@@ -86,50 +86,48 @@
 <span class="source-line-no">073</span><span id="line-73">     *  Creates a new {@code InstantStringConverter} instance that uses the</span>
 <span class="source-line-no">074</span><span id="line-74">     *  given formatter for the conversion back and forth.</span>
 <span class="source-line-no">075</span><span id="line-75">     *</span>
-<span class="source-line-no">076</span><span id="line-76">     *  @note The formatter may not drop any part of the instant,</span>
-<span class="source-line-no">077</span><span id="line-77">     *      otherwise</span>
-<span class="source-line-no">078</span><span id="line-78">     *      {@link #fromString(CharSequence)}</span>
-<span class="source-line-no">079</span><span id="line-79">     *      may fail. This means that the formatter is only allowed to re-order</span>
-<span class="source-line-no">080</span><span id="line-80">     *      the temporal fields.</span>
-<span class="source-line-no">081</span><span id="line-81">     *</span>
-<span class="source-line-no">082</span><span id="line-82">     *  @param  formatter   The formatter for the date/time data.</span>
-<span class="source-line-no">083</span><span id="line-83">     */</span>
-<span class="source-line-no">084</span><span id="line-84">    public InstantStringConverter( final DateTimeFormatter formatter )</span>
-<span class="source-line-no">085</span><span id="line-85">    {</span>
-<span class="source-line-no">086</span><span id="line-86">        super( Instant.class, formatter );</span>
-<span class="source-line-no">087</span><span id="line-87">    }   //  InstantStringConverter()</span>
-<span class="source-line-no">088</span><span id="line-88"></span>
-<span class="source-line-no">089</span><span id="line-89">        /*---------*\</span>
-<span class="source-line-no">090</span><span id="line-90">    ====** Methods **==========================================================</span>
-<span class="source-line-no">091</span><span id="line-91">        \*---------*/</span>
-<span class="source-line-no">092</span><span id="line-92">    /**</span>
-<span class="source-line-no">093</span><span id="line-93">     *  {@inheritDoc}</span>
-<span class="source-line-no">094</span><span id="line-94">     */</span>
-<span class="source-line-no">095</span><span id="line-95">    @Override</span>
-<span class="source-line-no">096</span><span id="line-96">    protected final Instant parseDateTime( final CharSequence source, final Optional&lt;DateTimeFormatter&gt; formatter ) throws DateTimeParseException</span>
-<span class="source-line-no">097</span><span id="line-97">    {</span>
-<span class="source-line-no">098</span><span id="line-98">        final var retValue = formatter.map( dateTimeFormatter -&gt; Instant.from( dateTimeFormatter.parse( source ) ) ).orElse( Instant.parse( source ) );</span>
-<span class="source-line-no">099</span><span id="line-99"></span>
-<span class="source-line-no">100</span><span id="line-100">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">101</span><span id="line-101">        return retValue;</span>
-<span class="source-line-no">102</span><span id="line-102">    }   //  parseDateTime()</span>
-<span class="source-line-no">103</span><span id="line-103"></span>
-<span class="source-line-no">104</span><span id="line-104">    /**</span>
-<span class="source-line-no">105</span><span id="line-105">     *  This method is used by the</span>
-<span class="source-line-no">106</span><span id="line-106">     *  {@link java.util.ServiceLoader}</span>
-<span class="source-line-no">107</span><span id="line-107">     *  to obtain the instance for this</span>
-<span class="source-line-no">108</span><span id="line-108">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
-<span class="source-line-no">109</span><span id="line-109">     *  implementation.</span>
-<span class="source-line-no">110</span><span id="line-110">     *</span>
-<span class="source-line-no">111</span><span id="line-111">     *  @return The instance for this {@code StringConverter} implementation.</span>
-<span class="source-line-no">112</span><span id="line-112">     */</span>
-<span class="source-line-no">113</span><span id="line-113">    public static final InstantStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">114</span><span id="line-114">}</span>
-<span class="source-line-no">115</span><span id="line-115">//  class InstantStringConverter</span>
-<span class="source-line-no">116</span><span id="line-116"></span>
-<span class="source-line-no">117</span><span id="line-117">/*</span>
-<span class="source-line-no">118</span><span id="line-118"> *  End of File</span>
-<span class="source-line-no">119</span><span id="line-119"> */</span>
+<span class="source-line-no">076</span><span id="line-76">     *  @note The formatter may not drop any part of the Zoned date time,</span>
+<span class="source-line-no">077</span><span id="line-77">     *      otherwise {@code fromString()} may fail. This means that the</span>
+<span class="source-line-no">078</span><span id="line-78">     *      formatter is only allowed to re-order the temporal fields.</span>
+<span class="source-line-no">079</span><span id="line-79">     *</span>
+<span class="source-line-no">080</span><span id="line-80">     *  @param  formatter   The formatter for the date/time data.</span>
+<span class="source-line-no">081</span><span id="line-81">     */</span>
+<span class="source-line-no">082</span><span id="line-82">    public InstantStringConverter( final DateTimeFormatter formatter )</span>
+<span class="source-line-no">083</span><span id="line-83">    {</span>
+<span class="source-line-no">084</span><span id="line-84">        super( Instant.class, formatter );</span>
+<span class="source-line-no">085</span><span id="line-85">    }   //  InstantStringConverter()</span>
+<span class="source-line-no">086</span><span id="line-86"></span>
+<span class="source-line-no">087</span><span id="line-87">        /*---------*\</span>
+<span class="source-line-no">088</span><span id="line-88">    ====** Methods **==========================================================</span>
+<span class="source-line-no">089</span><span id="line-89">        \*---------*/</span>
+<span class="source-line-no">090</span><span id="line-90">    /**</span>
+<span class="source-line-no">091</span><span id="line-91">     *  {@inheritDoc}</span>
+<span class="source-line-no">092</span><span id="line-92">     */</span>
+<span class="source-line-no">093</span><span id="line-93">    @Override</span>
+<span class="source-line-no">094</span><span id="line-94">    protected final Instant parseDateTime( final CharSequence source, final Optional&lt;DateTimeFormatter&gt; formatter ) throws DateTimeParseException</span>
+<span class="source-line-no">095</span><span id="line-95">    {</span>
+<span class="source-line-no">096</span><span id="line-96">        final var retValue = formatter.map( dateTimeFormatter -&gt; Instant.from( dateTimeFormatter.parse( source ) ) ).orElse( Instant.parse( source ) );</span>
+<span class="source-line-no">097</span><span id="line-97"></span>
+<span class="source-line-no">098</span><span id="line-98">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">099</span><span id="line-99">        return retValue;</span>
+<span class="source-line-no">100</span><span id="line-100">    }   //  parseDateTime()</span>
+<span class="source-line-no">101</span><span id="line-101"></span>
+<span class="source-line-no">102</span><span id="line-102">    /**</span>
+<span class="source-line-no">103</span><span id="line-103">     *  This method is used by the</span>
+<span class="source-line-no">104</span><span id="line-104">     *  {@link java.util.ServiceLoader}</span>
+<span class="source-line-no">105</span><span id="line-105">     *  to obtain the instance for this</span>
+<span class="source-line-no">106</span><span id="line-106">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
+<span class="source-line-no">107</span><span id="line-107">     *  implementation.</span>
+<span class="source-line-no">108</span><span id="line-108">     *</span>
+<span class="source-line-no">109</span><span id="line-109">     *  @return The instance for this {@code StringConverter} implementation.</span>
+<span class="source-line-no">110</span><span id="line-110">     */</span>
+<span class="source-line-no">111</span><span id="line-111">    public static final InstantStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">112</span><span id="line-112">}</span>
+<span class="source-line-no">113</span><span id="line-113">//  class InstantStringConverter</span>
+<span class="source-line-no">114</span><span id="line-114"></span>
+<span class="source-line-no">115</span><span id="line-115">/*</span>
+<span class="source-line-no">116</span><span id="line-116"> *  End of File</span>
+<span class="source-line-no">117</span><span id="line-117"> */</span>
 
 
 

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -65,7 +65,9 @@ public class ZonedDateTimeStringConverter extends TimeDateStringConverter<ZonedD
     ====** Constructors **=====================================================
         \*--------------*/
     /**
-     *  Creates a new {@code ZonedDateTimeStringConverter} instance.
+     *  Creates a new {@code ZonedDateTimeStringConverter} instance that uses
+     *  {@link DateTimeFormatter#ISO_ZONED_DATE_TIME}
+     *  to format/parse the date.
      */
     public ZonedDateTimeStringConverter() { super(ZonedDateTime.class ); }
 
@@ -73,10 +75,8 @@ public class ZonedDateTimeStringConverter extends TimeDateStringConverter<ZonedD
      *  Creates a new {@code ZonedDateTimeStringConverter} instance.
      *
      *  @note The formatter may not drop any part of the Zoned date time,
-     *      otherwise
-     *      {@link #fromString(CharSequence)}
-     *      may fail. This means that the formatter is only allowed to re-order
-     *      the temporal fields.
+     *      otherwise {@code fromString()} may fail. This means that the
+     *      formatter is only allowed to re-order the temporal fields.
      *
      *  @param  formatter   The formatter for the date/time data.
      */

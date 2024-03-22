@@ -23,6 +23,8 @@ org.tquadrat.foundation.util.stringconverter.LocaleStringConverter
 org.tquadrat.foundation.util.stringconverter.LocalTimeStringConverter
 org.tquadrat.foundation.util.stringconverter.LongStringConverter
 org.tquadrat.foundation.util.stringconverter.MonthStringConverter
+org.tquadrat.foundation.util.stringconverter.OffsetDateTimeStringConverter
+org.tquadrat.foundation.util.stringconverter.OffsetTimeStringConverter
 org.tquadrat.foundation.util.stringconverter.PathStringConverter
 org.tquadrat.foundation.util.stringconverter.PatternStringConverter
 org.tquadrat.foundation.util.stringconverter.PeriodStringConverter

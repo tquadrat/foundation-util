@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2024 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -71,11 +71,9 @@ public class YearMonthStringConverter extends TimeDateStringConverter<YearMonth>
     /**
      *  Creates a new {@code YearMonthStringConverter} instance.
      *
-     *  @note The formatter may not drop any part of the temporal value,
-     *      otherwise
-     *      {@link #fromString(CharSequence)}
-     *      may fail. This means that the formatter is only allowed to re-order
-     *      the temporal fields.
+     *  @note The formatter may not drop any part of the Zoned date time,
+     *      otherwise {@code fromString()} may fail. This means that the
+     *      formatter is only allowed to re-order the temporal fields.
      *
      *  @param  formatter   The formatter for the date/time data.
      */
