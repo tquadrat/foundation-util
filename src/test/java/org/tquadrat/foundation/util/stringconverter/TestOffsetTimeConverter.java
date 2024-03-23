@@ -43,9 +43,9 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link OffsetTimeStringConverter}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestZonedDateTimeConverter.java 1076 2023-10-03 18:36:07Z tquadrat $
+ *  @version $Id: TestOffsetTimeConverter.java 1125 2024-03-22 15:34:01Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestZonedDateTimeConverter.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestOffsetTimeConverter.java 1125 2024-03-22 15:34:01Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringconverter.TestOffsetTimeConverter" )
 public class TestOffsetTimeConverter extends TestBaseClass
 {

@@ -36,12 +36,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  for {@code java.time.LocalDateTime}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LocalDateTimeStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: LocalDateTimeStringConverter.java 1125 2024-03-22 15:34:01Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: LocalDateTimeStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LocalDateTimeStringConverter.java 1125 2024-03-22 15:34:01Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public class LocalDateTimeStringConverter extends TimeDateStringConverter<LocalDateTime>
 {

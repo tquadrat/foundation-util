@@ -36,12 +36,12 @@ import org.tquadrat.foundation.annotation.ClassVersion;
  *  for {@code java.time.OffsetTime}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ZonedDateTimeStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: OffsetTimeStringConverter.java 1125 2024-03-22 15:34:01Z tquadrat $
  *  @since 0.4.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ZonedDateTimeStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: OffsetTimeStringConverter.java 1125 2024-03-22 15:34:01Z tquadrat $" )
 @API( status = STABLE, since = "0.4.5" )
 public class OffsetTimeStringConverter extends TimeDateStringConverter<OffsetTime>
 {
