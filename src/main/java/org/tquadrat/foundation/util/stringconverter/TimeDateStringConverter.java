@@ -32,6 +32,7 @@ import java.io.Serial;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAccessor;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -45,7 +46,7 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  <p>{@summary The abstract base class for implementations of
  *  {@link StringConverter}
  *  for types that extend
- *  {@link Temporal}.}</p>
+ *  {@link TemporalAccessor}.}</p>
  *  <p>The format for the date/time data can be modified by applying an
  *  instance of
  *  {@link java.time.format.DateTimeFormatter}
@@ -64,10 +65,9 @@ import org.tquadrat.foundation.lang.StringConverter;
  *
  *  @see DateTimeFormatter
  */
-@SuppressWarnings( "OptionalUsedAsFieldOrParameterType" )
 @ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 1125 2024-03-22 15:34:01Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
-public abstract class TimeDateStringConverter<T extends Temporal> implements StringConverter<T>
+public abstract class TimeDateStringConverter<T extends TemporalAccessor> implements StringConverter<T>
 {
         /*-----------*\
     ====** Constants **========================================================
@@ -83,6 +83,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
     /**
      *  The formatter that is used to format the date/time data.
      */
+    @SuppressWarnings( "OptionalUsedAsFieldOrParameterType" )
     private final transient Optional<DateTimeFormatter> m_Formatter;
 
     /**
@@ -135,7 +136,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
      *  @param  subjectClass    The subject class.
      *  @param  formatter   The formatter for the date/time data.
      */
-    private TimeDateStringConverter( final Class<T> subjectClass, final Optional<DateTimeFormatter> formatter )
+    private TimeDateStringConverter( final Class<T> subjectClass, @SuppressWarnings( "OptionalUsedAsFieldOrParameterType" ) final Optional<DateTimeFormatter> formatter )
     {
         m_SubjectClass = subjectClass;
         m_Formatter = formatter;
@@ -189,7 +190,7 @@ public abstract class TimeDateStringConverter<T extends Temporal> implements Str
      *      {@code Temporal}.
      */
     @MountPoint
-    protected abstract T parseDateTime( CharSequence source, Optional<DateTimeFormatter> formatter ) throws DateTimeParseException;
+    protected abstract T parseDateTime( CharSequence source, @SuppressWarnings( "OptionalUsedAsFieldOrParameterType" ) Optional<DateTimeFormatter> formatter ) throws DateTimeParseException;
 
     /**
      *  Loads a previously serialised instance of this class from the given

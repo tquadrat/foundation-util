@@ -85,11 +85,11 @@
 <span class="source-line-no">072</span><span id="line-72">    /**</span>
 <span class="source-line-no">073</span><span id="line-73">     *  Creates a new {@code LocalTimeStringConverter} instance.</span>
 <span class="source-line-no">074</span><span id="line-74">     *</span>
-<span class="source-line-no">075</span><span id="line-75">     *  @note The formatter may not drop any part of the Zoned date time,</span>
-<span class="source-line-no">076</span><span id="line-76">     *      otherwise {@code fromString()} may fail. This means that the</span>
-<span class="source-line-no">077</span><span id="line-77">     *      formatter is only allowed to re-order the temporal fields.</span>
+<span class="source-line-no">075</span><span id="line-75">     *  @note The formatter may not drop any part of the local time, otherwise</span>
+<span class="source-line-no">076</span><span id="line-76">     *      {@code fromString()} may fail. This means that the formatter is</span>
+<span class="source-line-no">077</span><span id="line-77">     *      only allowed to re-order the temporal fields.</span>
 <span class="source-line-no">078</span><span id="line-78">     *</span>
-<span class="source-line-no">079</span><span id="line-79">     *  @param  formatter   The formatter for the date/time data.</span>
+<span class="source-line-no">079</span><span id="line-79">     *  @param  formatter   The formatter for the temporal accessor.</span>
 <span class="source-line-no">080</span><span id="line-80">     */</span>
 <span class="source-line-no">081</span><span id="line-81">    public LocalTimeStringConverter( final DateTimeFormatter formatter )</span>
 <span class="source-line-no">082</span><span id="line-82">    {</span>

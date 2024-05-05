@@ -75,11 +75,7 @@ public class YearStringConverter extends TimeDateStringConverter<Year>
     /**
      *  Creates a new {@code YearStringConverter} instance.
      *
-     *  @note The formatter may not drop any part of the Zoned date time,
-     *      otherwise {@code fromString()} may fail. This means that the
-     *      formatter is only allowed to re-order the temporal fields.
-     *
-     *  @param  formatter   The formatter for the date/time data.
+     *  @param  formatter   The formatter for the temporal accessor.
      */
     public YearStringConverter( final DateTimeFormatter formatter )
     {

@@ -40,6 +40,7 @@ import org.tquadrat.foundation.util.stringconverter.LocalDateTimeStringConverter
 import org.tquadrat.foundation.util.stringconverter.LocalTimeStringConverter;
 import org.tquadrat.foundation.util.stringconverter.LocaleStringConverter;
 import org.tquadrat.foundation.util.stringconverter.LongStringConverter;
+import org.tquadrat.foundation.util.stringconverter.MonthDayStringConverter;
 import org.tquadrat.foundation.util.stringconverter.MonthStringConverter;
 import org.tquadrat.foundation.util.stringconverter.PathStringConverter;
 import org.tquadrat.foundation.util.stringconverter.PatternStringConverter;
@@ -101,6 +102,7 @@ module org.tquadrat.foundation.util
         LocaleStringConverter,
         LocalTimeStringConverter,
         LongStringConverter,
+        MonthDayStringConverter,
         MonthStringConverter,
         PathStringConverter,
         PatternStringConverter,

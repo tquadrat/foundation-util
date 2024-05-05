@@ -78,7 +78,7 @@ public class OffsetDateTimeStringConverter extends TimeDateStringConverter<Offse
      *      otherwise {@code fromString()} may fail. This means that the
      *      formatter is only allowed to re-order the temporal fields.
      *
-     *  @param  formatter   The formatter for the date/time data.
+     *  @param  formatter   The formatter for the temporal accessor.
      */
     public OffsetDateTimeStringConverter( final DateTimeFormatter formatter )
     {

@@ -72,11 +72,11 @@ public class LocalDateTimeStringConverter extends TimeDateStringConverter<LocalD
     /**
      *  Creates a new {@code LocalDateTimeStringConverter} instance.
      *
-     *  @note The formatter may not drop any part of the Zoned date time,
+     *  @note The formatter may not drop any part of the local date time,
      *      otherwise {@code fromString()} may fail. This means that the
      *      formatter is only allowed to re-order the temporal fields.
      *
-     *  @param  formatter   The formatter for the date/time data.
+     *  @param  formatter   The formatter for the temporal accessor.
      */
     public LocalDateTimeStringConverter( final DateTimeFormatter formatter )
     {

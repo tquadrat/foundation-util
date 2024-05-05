@@ -74,11 +74,11 @@ public class OffsetTimeStringConverter extends TimeDateStringConverter<OffsetTim
     /**
      *  Creates a new {@code OffsetTimeStringConverter} instance.
      *
-     *  @note The formatter may not drop any part of the offset date time,
-     *      otherwise {@code fromString()} may fail. This means that the
-     *      formatter is only allowed to re-order the temporal fields.
+     *  @note The formatter may not drop any part of the offset time, otherwise
+     *      {@code fromString()} may fail. This means that the formatter is
+     *      only allowed to re-order the temporal fields.
      *
-     *  @param  formatter   The formatter for the date/time data.
+     *  @param  formatter   The formatter for the temporal accessor.
      */
     public OffsetTimeStringConverter( final DateTimeFormatter formatter )
     {

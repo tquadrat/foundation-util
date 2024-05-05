@@ -88,82 +88,78 @@
 <span class="source-line-no">075</span><span id="line-75">    /**</span>
 <span class="source-line-no">076</span><span id="line-76">     *  Creates a new {@code YearStringConverter} instance.</span>
 <span class="source-line-no">077</span><span id="line-77">     *</span>
-<span class="source-line-no">078</span><span id="line-78">     *  @note The formatter may not drop any part of the Zoned date time,</span>
-<span class="source-line-no">079</span><span id="line-79">     *      otherwise {@code fromString()} may fail. This means that the</span>
-<span class="source-line-no">080</span><span id="line-80">     *      formatter is only allowed to re-order the temporal fields.</span>
-<span class="source-line-no">081</span><span id="line-81">     *</span>
-<span class="source-line-no">082</span><span id="line-82">     *  @param  formatter   The formatter for the date/time data.</span>
-<span class="source-line-no">083</span><span id="line-83">     */</span>
-<span class="source-line-no">084</span><span id="line-84">    public YearStringConverter( final DateTimeFormatter formatter )</span>
-<span class="source-line-no">085</span><span id="line-85">    {</span>
-<span class="source-line-no">086</span><span id="line-86">        super( Year.class, formatter );</span>
-<span class="source-line-no">087</span><span id="line-87">    }   //  YearStringConverter()</span>
-<span class="source-line-no">088</span><span id="line-88"></span>
-<span class="source-line-no">089</span><span id="line-89">        /*---------*\</span>
-<span class="source-line-no">090</span><span id="line-90">    ====** Methods **==========================================================</span>
-<span class="source-line-no">091</span><span id="line-91">        \*---------*/</span>
-<span class="source-line-no">092</span><span id="line-92">    /**</span>
-<span class="source-line-no">093</span><span id="line-93">     *  {@inheritDoc}</span>
-<span class="source-line-no">094</span><span id="line-94">     */</span>
-<span class="source-line-no">095</span><span id="line-95">    @Override</span>
-<span class="source-line-no">096</span><span id="line-96">    protected final Year parseDateTime( final CharSequence source, final Optional&lt;DateTimeFormatter&gt; formatter ) throws DateTimeParseException</span>
-<span class="source-line-no">097</span><span id="line-97">    {</span>
-<span class="source-line-no">098</span><span id="line-98">        Year retValue = null;</span>
-<span class="source-line-no">099</span><span id="line-99">        if( nonNull( source ) )</span>
-<span class="source-line-no">100</span><span id="line-100">        {</span>
-<span class="source-line-no">101</span><span id="line-101">            /*</span>
-<span class="source-line-no">102</span><span id="line-102">             * We use Year.toString() when converting a Year to a String; this</span>
-<span class="source-line-no">103</span><span id="line-103">             * results in the String "-333" for the year of the Battle at</span>
-<span class="source-line-no">104</span><span id="line-104">             * Knossos.</span>
-<span class="source-line-no">105</span><span id="line-105">             * Unfortunately, the method Year.parse(CharSequence) will call</span>
-<span class="source-line-no">106</span><span id="line-106">             * internally the method Year.parse(CharSequence,DateTimeFormatter)</span>
-<span class="source-line-no">107</span><span id="line-107">             * with the internally defined instance PARSER as its second</span>
-<span class="source-line-no">108</span><span id="line-108">             * argument.</span>
-<span class="source-line-no">109</span><span id="line-109">             *</span>
-<span class="source-line-no">110</span><span id="line-110">             * PARSER is defined as below:</span>
-<span class="source-line-no">111</span><span id="line-111">             *    private static final DateTimeFormatter PARSER = new DateTimeFormatterBuilder()</span>
-<span class="source-line-no">112</span><span id="line-112">             *         .appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD)</span>
-<span class="source-line-no">113</span><span id="line-113">             *         .toFormatter();</span>
+<span class="source-line-no">078</span><span id="line-78">     *  @param  formatter   The formatter for the temporal accessor.</span>
+<span class="source-line-no">079</span><span id="line-79">     */</span>
+<span class="source-line-no">080</span><span id="line-80">    public YearStringConverter( final DateTimeFormatter formatter )</span>
+<span class="source-line-no">081</span><span id="line-81">    {</span>
+<span class="source-line-no">082</span><span id="line-82">        super( Year.class, formatter );</span>
+<span class="source-line-no">083</span><span id="line-83">    }   //  YearStringConverter()</span>
+<span class="source-line-no">084</span><span id="line-84"></span>
+<span class="source-line-no">085</span><span id="line-85">        /*---------*\</span>
+<span class="source-line-no">086</span><span id="line-86">    ====** Methods **==========================================================</span>
+<span class="source-line-no">087</span><span id="line-87">        \*---------*/</span>
+<span class="source-line-no">088</span><span id="line-88">    /**</span>
+<span class="source-line-no">089</span><span id="line-89">     *  {@inheritDoc}</span>
+<span class="source-line-no">090</span><span id="line-90">     */</span>
+<span class="source-line-no">091</span><span id="line-91">    @Override</span>
+<span class="source-line-no">092</span><span id="line-92">    protected final Year parseDateTime( final CharSequence source, final Optional&lt;DateTimeFormatter&gt; formatter ) throws DateTimeParseException</span>
+<span class="source-line-no">093</span><span id="line-93">    {</span>
+<span class="source-line-no">094</span><span id="line-94">        Year retValue = null;</span>
+<span class="source-line-no">095</span><span id="line-95">        if( nonNull( source ) )</span>
+<span class="source-line-no">096</span><span id="line-96">        {</span>
+<span class="source-line-no">097</span><span id="line-97">            /*</span>
+<span class="source-line-no">098</span><span id="line-98">             * We use Year.toString() when converting a Year to a String; this</span>
+<span class="source-line-no">099</span><span id="line-99">             * results in the String "-333" for the year of the Battle at</span>
+<span class="source-line-no">100</span><span id="line-100">             * Knossos.</span>
+<span class="source-line-no">101</span><span id="line-101">             * Unfortunately, the method Year.parse(CharSequence) will call</span>
+<span class="source-line-no">102</span><span id="line-102">             * internally the method Year.parse(CharSequence,DateTimeFormatter)</span>
+<span class="source-line-no">103</span><span id="line-103">             * with the internally defined instance PARSER as its second</span>
+<span class="source-line-no">104</span><span id="line-104">             * argument.</span>
+<span class="source-line-no">105</span><span id="line-105">             *</span>
+<span class="source-line-no">106</span><span id="line-106">             * PARSER is defined as below:</span>
+<span class="source-line-no">107</span><span id="line-107">             *    private static final DateTimeFormatter PARSER = new DateTimeFormatterBuilder()</span>
+<span class="source-line-no">108</span><span id="line-108">             *         .appendValue(YEAR, 4, 10, SignStyle.EXCEEDS_PAD)</span>
+<span class="source-line-no">109</span><span id="line-109">             *         .toFormatter();</span>
+<span class="source-line-no">110</span><span id="line-110">             *</span>
+<span class="source-line-no">111</span><span id="line-111">             * This will cause a DateTimeParseException for all years with less</span>
+<span class="source-line-no">112</span><span id="line-112">             * than four digits. Consequently, we have to define our own</span>
+<span class="source-line-no">113</span><span id="line-113">             * DateTimeFormatter when none was provided to the StringConverter.</span>
 <span class="source-line-no">114</span><span id="line-114">             *</span>
-<span class="source-line-no">115</span><span id="line-115">             * This will cause a DateTimeParseException for all years with less</span>
-<span class="source-line-no">116</span><span id="line-116">             * than four digits. Consequently, we have to define our own</span>
-<span class="source-line-no">117</span><span id="line-117">             * DateTimeFormatter when none was provided to the StringConverter.</span>
-<span class="source-line-no">118</span><span id="line-118">             *</span>
-<span class="source-line-no">119</span><span id="line-119">             * When constructing the DateTimeFormatter, a call to</span>
-<span class="source-line-no">120</span><span id="line-120">             * DateTimeFormatterBuilder.parseLenient() is required if we keep</span>
-<span class="source-line-no">121</span><span id="line-121">             * the SignStyle EXCEEDS_PAD, because no sign is printed for years</span>
-<span class="source-line-no">122</span><span id="line-122">             * after 0. We decided to use NORMAL instead, staying with strict</span>
-<span class="source-line-no">123</span><span id="line-123">             * parsing.</span>
-<span class="source-line-no">124</span><span id="line-124">             */</span>
-<span class="source-line-no">125</span><span id="line-125">            final var parser = formatter.orElseGet( () -&gt;</span>
-<span class="source-line-no">126</span><span id="line-126">                new DateTimeFormatterBuilder()</span>
-<span class="source-line-no">127</span><span id="line-127">//                    .parseLenient()</span>
-<span class="source-line-no">128</span><span id="line-128">//                    .appendValue( YEAR, 1, 10, EXCEEDS_PAD )</span>
-<span class="source-line-no">129</span><span id="line-129">                    .appendValue( YEAR, 1, 10, NORMAL )</span>
-<span class="source-line-no">130</span><span id="line-130">                    .toFormatter() );</span>
-<span class="source-line-no">131</span><span id="line-131">            retValue = Year.parse( source, parser );</span>
-<span class="source-line-no">132</span><span id="line-132">        }</span>
+<span class="source-line-no">115</span><span id="line-115">             * When constructing the DateTimeFormatter, a call to</span>
+<span class="source-line-no">116</span><span id="line-116">             * DateTimeFormatterBuilder.parseLenient() is required if we keep</span>
+<span class="source-line-no">117</span><span id="line-117">             * the SignStyle EXCEEDS_PAD, because no sign is printed for years</span>
+<span class="source-line-no">118</span><span id="line-118">             * after 0. We decided to use NORMAL instead, staying with strict</span>
+<span class="source-line-no">119</span><span id="line-119">             * parsing.</span>
+<span class="source-line-no">120</span><span id="line-120">             */</span>
+<span class="source-line-no">121</span><span id="line-121">            final var parser = formatter.orElseGet( () -&gt;</span>
+<span class="source-line-no">122</span><span id="line-122">                new DateTimeFormatterBuilder()</span>
+<span class="source-line-no">123</span><span id="line-123">//                    .parseLenient()</span>
+<span class="source-line-no">124</span><span id="line-124">//                    .appendValue( YEAR, 1, 10, EXCEEDS_PAD )</span>
+<span class="source-line-no">125</span><span id="line-125">                    .appendValue( YEAR, 1, 10, NORMAL )</span>
+<span class="source-line-no">126</span><span id="line-126">                    .toFormatter() );</span>
+<span class="source-line-no">127</span><span id="line-127">            retValue = Year.parse( source, parser );</span>
+<span class="source-line-no">128</span><span id="line-128">        }</span>
+<span class="source-line-no">129</span><span id="line-129"></span>
+<span class="source-line-no">130</span><span id="line-130">        //---* Done *----------------------------------------------------------</span>
+<span class="source-line-no">131</span><span id="line-131">        return retValue;</span>
+<span class="source-line-no">132</span><span id="line-132">    }   //  parseDateTime()</span>
 <span class="source-line-no">133</span><span id="line-133"></span>
-<span class="source-line-no">134</span><span id="line-134">        //---* Done *----------------------------------------------------------</span>
-<span class="source-line-no">135</span><span id="line-135">        return retValue;</span>
-<span class="source-line-no">136</span><span id="line-136">    }   //  parseDateTime()</span>
-<span class="source-line-no">137</span><span id="line-137"></span>
-<span class="source-line-no">138</span><span id="line-138">    /**</span>
-<span class="source-line-no">139</span><span id="line-139">     *  This method is used by the</span>
-<span class="source-line-no">140</span><span id="line-140">     *  {@link java.util.ServiceLoader}</span>
-<span class="source-line-no">141</span><span id="line-141">     *  to obtain the instance for this</span>
-<span class="source-line-no">142</span><span id="line-142">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
-<span class="source-line-no">143</span><span id="line-143">     *  implementation.</span>
-<span class="source-line-no">144</span><span id="line-144">     *</span>
-<span class="source-line-no">145</span><span id="line-145">     *  @return The instance for this {@code StringConverter} implementation.</span>
-<span class="source-line-no">146</span><span id="line-146">     */</span>
-<span class="source-line-no">147</span><span id="line-147">    public static final YearStringConverter provider() { return INSTANCE; }</span>
-<span class="source-line-no">148</span><span id="line-148">}</span>
-<span class="source-line-no">149</span><span id="line-149">//  class YearStringConverter</span>
-<span class="source-line-no">150</span><span id="line-150"></span>
-<span class="source-line-no">151</span><span id="line-151">/*</span>
-<span class="source-line-no">152</span><span id="line-152"> *  End of File</span>
-<span class="source-line-no">153</span><span id="line-153"> */</span>
+<span class="source-line-no">134</span><span id="line-134">    /**</span>
+<span class="source-line-no">135</span><span id="line-135">     *  This method is used by the</span>
+<span class="source-line-no">136</span><span id="line-136">     *  {@link java.util.ServiceLoader}</span>
+<span class="source-line-no">137</span><span id="line-137">     *  to obtain the instance for this</span>
+<span class="source-line-no">138</span><span id="line-138">     *  {@link org.tquadrat.foundation.lang.StringConverter}</span>
+<span class="source-line-no">139</span><span id="line-139">     *  implementation.</span>
+<span class="source-line-no">140</span><span id="line-140">     *</span>
+<span class="source-line-no">141</span><span id="line-141">     *  @return The instance for this {@code StringConverter} implementation.</span>
+<span class="source-line-no">142</span><span id="line-142">     */</span>
+<span class="source-line-no">143</span><span id="line-143">    public static final YearStringConverter provider() { return INSTANCE; }</span>
+<span class="source-line-no">144</span><span id="line-144">}</span>
+<span class="source-line-no">145</span><span id="line-145">//  class YearStringConverter</span>
+<span class="source-line-no">146</span><span id="line-146"></span>
+<span class="source-line-no">147</span><span id="line-147">/*</span>
+<span class="source-line-no">148</span><span id="line-148"> *  End of File</span>
+<span class="source-line-no">149</span><span id="line-149"> */</span>
 
 
 
