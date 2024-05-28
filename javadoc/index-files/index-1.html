@@ -70,6 +70,48 @@ loadScripts(document, 'script');</script>
 <div class="block">Abbreviates a String using ellipses (Unicode HORIZONTAL ELLIPSIS,
   0x2026) in the middle of the returned text.</div>
 </dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#acquireToken()" class="member-name-link">acquireToken()</a> - Method in interface org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></dt>
+<dd>
+<div class="block">Acquires a permit from this semaphore, blocking until one
+  is available, or the thread is
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#interrupt()" title="class or interface in java.lang" class="external-link">interrupted</a>,
+  and returns a token object that is used for
+  <code>try-with-resources</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#acquireToken(int)" class="member-name-link">acquireToken(int)</a> - Method in interface org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></dt>
+<dd>
+<div class="block">Acquires the given number of permits from this semaphore,
+  blocking until all are available, or the thread is
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#interrupt()" title="class or interface in java.lang" class="external-link">interrupted</a>,
+  and returns a token object that is used for
+  <code>try-with-resources</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html#acquireToken(int)" class="member-name-link">acquireToken(int)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Acquires the given number of permits from this semaphore,
+  blocking until all are available, or the thread is
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#interrupt()" title="class or interface in java.lang" class="external-link">interrupted</a>,
+  and returns a token object that is used for
+  <code>try-with-resources</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#acquireTokenUninterruptibly()" class="member-name-link">acquireTokenUninterruptibly()</a> - Method in interface org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></dt>
+<dd>
+<div class="block">Acquires a permit from this semaphore, blocking until one
+  is available, and returns a token object that is used for
+  <code>try-with-resources</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#acquireTokenUninterruptibly(int)" class="member-name-link">acquireTokenUninterruptibly(int)</a> - Method in interface org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></dt>
+<dd>
+<div class="block">Acquires the given number of permits from this semaphore,
+  blocking until all are available, and returns a token object that is
+  used for <code>try-with-resources</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html#acquireTokenUninterruptibly(int)" class="member-name-link">acquireTokenUninterruptibly(int)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Acquires the given number of permits from this semaphore,
+  blocking until all are available, and returns a token object that is
+  used for <code>try-with-resources</code>.</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html#add(int,E)" class="member-name-link">add(int, E)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyListImpl</a></dt>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html#add(E)" class="member-name-link">add(E)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyListImpl</a></dt>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySetImpl.html#add(E)" class="member-name-link">add(E)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazySetImpl.html" title="class in org.tquadrat.foundation.util.internal">LazySetImpl</a></dt>
@@ -166,6 +208,32 @@ loadScripts(document, 'script');</script>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/ArrayUtils.html#%3Cinit%3E()" class="member-name-link">ArrayUtils()</a> - Constructor for class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/ArrayUtils.html" title="class in org.tquadrat.foundation.util">ArrayUtils</a></dt>
 <dd>
 <div class="block">Prevent the creation of any object of this class.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html" class="type-name-link" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a> - Interface in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/package-summary.html">org.tquadrat.foundation.util</a></dt>
+<dd>
+<div class="block">An implementation of
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Semaphore.html" title="class or interface in java.util.concurrent" class="external-link"><code>Semaphore</code></a>
+  that allows to be used with <code>try-with-resources</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/package-summary.html">org.tquadrat.foundation.util.internal</a></dt>
+<dd>
+<div class="block">The implementation of
+  <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html" title="interface in org.tquadrat.foundation.util"><code>AutoSemaphore</code></a>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html#%3Cinit%3E(int)" class="member-name-link">AutoSemaphoreImpl(int)</a> - Constructor for class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Creates an <code>AutoSemaphoreImpl</code> instance with the given number of
+  permits and non-fair fairness setting.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html#%3Cinit%3E(int,boolean)" class="member-name-link">AutoSemaphoreImpl(int, boolean)</a> - Constructor for class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Creates an <code>AutoSemaphoreImpl</code> instance with the given number of
+  permits and the given fairness setting.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.Token.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl.Token</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/package-summary.html">org.tquadrat.foundation.util.internal</a></dt>
+<dd>
+<div class="block">The token that holds the permits to be released when a
+  <code>try-with-resources</code> block is left.</div>
 </dd>
 </dl>
 <a href="index-1.html">A</a>&nbsp;<a href="index-2.html">B</a>&nbsp;<a href="index-3.html">C</a>&nbsp;<a href="index-4.html">D</a>&nbsp;<a href="index-5.html">E</a>&nbsp;<a href="index-6.html">F</a>&nbsp;<a href="index-7.html">G</a>&nbsp;<a href="index-8.html">H</a>&nbsp;<a href="index-9.html">I</a>&nbsp;<a href="index-10.html">J</a>&nbsp;<a href="index-11.html">K</a>&nbsp;<a href="index-12.html">L</a>&nbsp;<a href="index-13.html">M</a>&nbsp;<a href="index-14.html">N</a>&nbsp;<a href="index-15.html">O</a>&nbsp;<a href="index-16.html">P</a>&nbsp;<a href="index-17.html">Q</a>&nbsp;<a href="index-18.html">R</a>&nbsp;<a href="index-19.html">S</a>&nbsp;<a href="index-20.html">T</a>&nbsp;<a href="index-21.html">U</a>&nbsp;<a href="index-22.html">V</a>&nbsp;<a href="index-23.html">W</a>&nbsp;<a href="index-24.html">X</a>&nbsp;<a href="index-25.html">Y</a>&nbsp;<a href="index-26.html">Z</a>&nbsp;<br><a href="../allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="../allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="../constant-values.html">Constant&nbsp;Field&nbsp;Values</a><span class="vertical-separator">|</span><a href="../serialized-form.html">Serialized&nbsp;Form</a></main>
