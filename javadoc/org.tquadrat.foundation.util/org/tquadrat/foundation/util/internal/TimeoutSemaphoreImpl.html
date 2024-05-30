@@ -199,7 +199,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>private <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link">Cleaner.Cleanable</a></code></div>
+<div class="col-first even-row-color"><code>private final <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link">Cleaner.Cleanable</a></code></div>
 <div class="col-second even-row-color"><code><a href="#m_Cleanable" class="member-name-link">m_Cleanable</a></code></div>
 <div class="col-last even-row-color">
 <div class="block">The
@@ -306,7 +306,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns a reference to the raw semaphore.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private final void</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>private final <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link">Cleaner.Cleanable</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#registerJanitor(java.lang.Runnable)" class="member-name-link">registerJanitor</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;janitor)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Registers the janitor that is doing the housekeeping on garbage
@@ -359,7 +359,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="m_Cleanable">
 <h3>m_Cleanable</h3>
-<div class="member-signature"><span class="modifiers">private</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link">Cleaner.Cleanable</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-267">m_Cleanable</a></span></div>
+<div class="member-signature"><span class="modifiers">private final transient</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link">Cleaner.Cleanable</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-267">m_Cleanable</a></span></div>
 <div class="block"><p>The
   <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link"><code>Cleaner.Cleanable</code></a>
   for this instance. As instances of this class does not support
@@ -371,14 +371,14 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="m_Janitor">
 <h3>m_Janitor</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="TimeoutSemaphoreImpl.Janitor.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Janitor</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-273">m_Janitor</a></span></div>
+<div class="member-signature"><span class="modifiers">private final transient</span>&nbsp;<span class="return-type"><a href="TimeoutSemaphoreImpl.Janitor.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Janitor</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-273">m_Janitor</a></span></div>
 <div class="block">The janitor for instances of this class.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_Lock">
 <h3>m_Lock</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-280">m_Lock</a></span></div>
+<div class="member-signature"><span class="modifiers">private final transient</span>&nbsp;<span class="return-type"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-280">m_Lock</a></span></div>
 <div class="block">The lock that guards the access to
   <a href="#m_Registry"><code>m_Registry</code></a>.</div>
 </section>
@@ -386,28 +386,28 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="m_Timeout">
 <h3>m_Timeout</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-285">m_Timeout</a></span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-287">m_Timeout</a></span></div>
 <div class="block">The timeout duration.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_ReaperExecutor">
 <h3>m_ReaperExecutor</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ScheduledExecutorService.html" title="class or interface in java.util.concurrent" class="external-link">ScheduledExecutorService</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-290">m_ReaperExecutor</a></span></div>
+<div class="member-signature"><span class="modifiers">private final transient</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ScheduledExecutorService.html" title="class or interface in java.util.concurrent" class="external-link">ScheduledExecutorService</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-292">m_ReaperExecutor</a></span></div>
 <div class="block">The executor for the reaper.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_Registry">
 <h3>m_Registry</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>,<wbr><a href="TimeoutSemaphoreImpl.Token.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Token</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-295">m_Registry</a></span></div>
+<div class="member-signature"><span class="modifiers">private final transient</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>,<wbr><a href="TimeoutSemaphoreImpl.Token.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Token</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-297">m_Registry</a></span></div>
 <div class="block">The permit registry.</div>
 </section>
 </li>
 <li>
 <section class="detail" id="m_Cleaner">
 <h3>m_Cleaner</h3>
-<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.html" title="class or interface in java.lang.ref" class="external-link">Cleaner</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-311">m_Cleaner</a></span></div>
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.html" title="class or interface in java.lang.ref" class="external-link">Cleaner</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-313">m_Cleaner</a></span></div>
 <div class="block">The cleaner that is used for the instances of this class.</div>
 </section>
 </li>
@@ -422,7 +422,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="&lt;init&gt;(int,java.time.Duration)">
 <h3>TimeoutSemaphoreImpl</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-330">TimeoutSemaphoreImpl</a></span><wbr><span class="parameters">(int&nbsp;permits,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-332">TimeoutSemaphoreImpl</a></span><wbr><span class="parameters">(int&nbsp;permits,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;timeout)</span></div>
 <div class="block">Creates an <code>TimeoutSemaphoreImpl</code> instance with the given number
   of permits, the given timeout duration and non-fair fairness setting.</div>
@@ -438,7 +438,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="&lt;init&gt;(int,boolean,java.time.Duration)">
 <h3>TimeoutSemaphoreImpl</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-346">TimeoutSemaphoreImpl</a></span><wbr><span class="parameters">(int&nbsp;permits,
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-348">TimeoutSemaphoreImpl</a></span><wbr><span class="parameters">(int&nbsp;permits,
  boolean&nbsp;fair,
  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;timeout)</span></div>
 <div class="block">Creates an <code>TimeoutSemaphoreImpl</code> instance with the given number
@@ -465,7 +465,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="acquireToken(int)">
 <h3>acquireToken</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-365">acquireToken</a></span><wbr><span class="parameters">(int&nbsp;permits)</span>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-367">acquireToken</a></span><wbr><span class="parameters">(int&nbsp;permits)</span>
                            throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a>,
 <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
 <div class="block"><p>Acquires the given number of permits from this semaphore,
@@ -521,7 +521,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="acquireTokenUninterruptibly(int)">
 <h3>acquireTokenUninterruptibly</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-379">acquireTokenUninterruptibly</a></span><wbr><span class="parameters">(int&nbsp;permits)</span>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-381">acquireTokenUninterruptibly</a></span><wbr><span class="parameters">(int&nbsp;permits)</span>
                                           throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
 <div class="block"><p>Acquires the given number of permits from this semaphore,
   blocking until all are available, and returns a token object that is
@@ -558,7 +558,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="createToken(int)">
 <h3>createToken</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="TimeoutSemaphoreImpl.Token.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Token</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-396">createToken</a></span><wbr><span class="parameters">(int&nbsp;permits)</span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="TimeoutSemaphoreImpl.Token.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Token</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-398">createToken</a></span><wbr><span class="parameters">(int&nbsp;permits)</span></div>
 <div class="block">Creates a token and adds to the registry.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -571,7 +571,7 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="getSemaphore()">
 <h3>getSemaphore</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Semaphore.html" title="class or interface in java.util.concurrent" class="external-link">Semaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-409">getSemaphore</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Semaphore.html" title="class or interface in java.util.concurrent" class="external-link">Semaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-411">getSemaphore</a></span>()</div>
 <div class="block">Returns a reference to the raw semaphore.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
@@ -584,19 +584,23 @@ implements <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foun
 <li>
 <section class="detail" id="registerJanitor(java.lang.Runnable)">
 <h3>registerJanitor</h3>
-<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-418">registerJanitor</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;janitor)</span></div>
+<div class="member-signature"><span class="modifiers">private final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link">Cleaner.Cleanable</a></span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-423">registerJanitor</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;janitor)</span></div>
 <div class="block">Registers the janitor that is doing the housekeeping on garbage
   collection.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>janitor</code> - The janitor.</dd>
+<dt>Returns:</dt>
+<dd>The
+      <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link"><code>Cleaner.Cleanable</code></a>
+      for this instance.</dd>
 </dl>
 </section>
 </li>
 <li>
 <section class="detail" id="release(java.util.UUID)">
 <h3>release</h3>
-<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-432">release</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
+<div class="member-signature"><span class="modifiers">public final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#line-440">release</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>&nbsp;id)</span></div>
 <div class="block"><p>Releases the number of permits associated with the token
   with the given id, returning them to the semaphore.</p>
   <p>Releases that number of permits, increasing the number of available

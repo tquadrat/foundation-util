@@ -249,7 +249,8 @@
                           class='separator'/>
                     <text y='30.000'
                           class='static final'>+ REAPER_CYCLE:long</text>
-                    <text y='41.000'>- m_Cleanable:java.lang.ref.Cleaner.Cleanable</text>
+                    <text y='41.000'
+                          class='final'>- m_Cleanable:java.lang.ref.Cleaner.Cleanable</text>
                     <text y='52.000'
                           class='final'>- m_Janitor:org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl.Janitor</text>
                     <text y='63.000'
@@ -277,7 +278,7 @@
                     <text x='5.000'
                           y='190.000'>+ getSemaphore():java.util.concurrent.Semaphore</text>
                     <text x='5.000'
-                          y='201.000'>- registerJanitor(janitor:java.lang.Runnable):void</text>
+                          y='201.000'>- registerJanitor(janitor:java.lang.Runnable):java.lang.ref.Cleaner.Cleanable</text>
                     <text x='5.000'
                           y='212.000'>+ release(id:java.util.UUID):void</text>
                 </g>

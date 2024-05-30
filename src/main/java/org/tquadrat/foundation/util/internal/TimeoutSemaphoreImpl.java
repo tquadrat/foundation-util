@@ -265,34 +265,36 @@ public final class TimeoutSemaphoreImpl extends Semaphore implements AutoSemapho
      *  case this changes.</p>
      */
     @SuppressWarnings( {"unused", "FieldCanBeLocal"} )
-    private Cleanable m_Cleanable;
+    private final transient Cleanable m_Cleanable;
 
     /**
      *  The janitor for instances of this class.
      */
     @SuppressWarnings( {"UseOfConcreteClass", "FieldCanBeLocal"} )
-    private final Janitor m_Janitor;
+    private final transient Janitor m_Janitor;
 
     /**
      *  The lock that guards the access to
      *  {@link #m_Registry}.
      */
-    private final AutoLock m_Lock;
+    private final transient AutoLock m_Lock;
 
     /**
      *  The timeout duration.
+     *
+     *  @serial
      */
     private final Duration m_Timeout;
 
     /**
      *  The executor for the reaper.
      */
-    private final ScheduledExecutorService m_ReaperExecutor;
+    private final transient ScheduledExecutorService m_ReaperExecutor;
 
     /**
      *  The permit registry.
      */
-    private final Map<UUID,Token> m_Registry = new LinkedHashMap<>();
+    private final transient Map<UUID,Token> m_Registry = new LinkedHashMap<>();
 
         /*------------------------*\
     ====** Static Initialisations **===========================================
@@ -353,7 +355,7 @@ public final class TimeoutSemaphoreImpl extends Semaphore implements AutoSemapho
         m_ReaperExecutor.scheduleWithFixedDelay( new Reaper(), REAPER_CYCLE, REAPER_CYCLE, MILLISECONDS );
 
         m_Janitor = new Janitor( m_ReaperExecutor );
-        registerJanitor( m_Janitor );
+        m_Cleanable = registerJanitor( m_Janitor );
     }   //  TimeoutSemaphoreImpl()
 
         /*---------*\
@@ -414,10 +416,16 @@ public final class TimeoutSemaphoreImpl extends Semaphore implements AutoSemapho
      *  collection.
      *
      *  @param  janitor The janitor.
+     *  @return The
+     *      {@link Cleanable}
+     *      for this instance.
      */
-    private final void registerJanitor( final Runnable janitor )
+    private final Cleanable registerJanitor( final Runnable janitor )
     {
-        m_Cleanable = m_Cleaner.register( this, requireNonNullArgument( janitor, "janitor" ) );
+        final var retValue = m_Cleaner.register( this, requireNonNullArgument( janitor, "janitor" ) );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
     }   //  registerJanitor()
 
     /**

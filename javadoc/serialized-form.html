@@ -175,37 +175,6 @@ loadScripts(document, 'script');</script>
 <h4>Serialized Fields</h4>
 <ul class="block-list">
 <li class="block-list">
-<h5>m_Cleanable</h5>
-<pre><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link">Cleaner.Cleanable</a> m_Cleanable</pre>
-<div class="block"><p>The
-  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/ref/Cleaner.Cleanable.html" title="class or interface in java.lang.ref" class="external-link"><code>Cleaner.Cleanable</code></a>
-  for this instance. As instances of this class does not support
-  <code>close()</code> or something similar, keeping the reference to the
-  <code>Cleanable</code> is considered obsolete. But we keep it anyway, in
-  case this changes.</p></div>
-</li>
-<li class="block-list">
-<h5>m_Janitor</h5>
-<pre><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Janitor.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Janitor</a> m_Janitor</pre>
-<div class="block">The janitor for instances of this class.</div>
-</li>
-<li class="block-list">
-<h5>m_Lock</h5>
-<pre><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/AutoLock.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link">AutoLock</a> m_Lock</pre>
-<div class="block">The lock that guards the access to
-  <a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#m_Registry"><code>TimeoutSemaphoreImpl.m_Registry</code></a>.</div>
-</li>
-<li class="block-list">
-<h5>m_ReaperExecutor</h5>
-<pre><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/ScheduledExecutorService.html" title="class or interface in java.util.concurrent" class="external-link">ScheduledExecutorService</a> m_ReaperExecutor</pre>
-<div class="block">The executor for the reaper.</div>
-</li>
-<li class="block-list">
-<h5>m_Registry</h5>
-<pre><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/UUID.html" title="class or interface in java.util" class="external-link">UUID</a>,<wbr><a href="org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Token.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Token</a>&gt; m_Registry</pre>
-<div class="block">The permit registry.</div>
-</li>
-<li class="block-list">
 <h5>m_Timeout</h5>
 <pre><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a> m_Timeout</pre>
 <div class="block">The timeout duration.</div>
