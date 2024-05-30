@@ -32,215 +32,254 @@
 <span class="source-line-no">019</span><span id="line-19"></span>
 <span class="source-line-no">020</span><span id="line-20">import static org.apiguardian.api.API.Status.STABLE;</span>
 <span class="source-line-no">021</span><span id="line-21"></span>
-<span class="source-line-no">022</span><span id="line-22">import java.util.concurrent.Semaphore;</span>
-<span class="source-line-no">023</span><span id="line-23"></span>
-<span class="source-line-no">024</span><span id="line-24">import org.apiguardian.api.API;</span>
-<span class="source-line-no">025</span><span id="line-25">import org.tquadrat.foundation.annotation.ClassVersion;</span>
-<span class="source-line-no">026</span><span id="line-26">import org.tquadrat.foundation.util.internal.AutoSemaphoreImpl;</span>
-<span class="source-line-no">027</span><span id="line-27"></span>
-<span class="source-line-no">028</span><span id="line-28">/**</span>
-<span class="source-line-no">029</span><span id="line-29"> *  &lt;p&gt;{@summary An implementation of</span>
-<span class="source-line-no">030</span><span id="line-30"> *  {@link Semaphore}</span>
-<span class="source-line-no">031</span><span id="line-31"> *  that allows to be used with {@code try-with-resources}.}&lt;/p&gt;</span>
-<span class="source-line-no">032</span><span id="line-32"> *  &lt;p&gt;Use this class like this:&lt;/p&gt;</span>
-<span class="source-line-no">033</span><span id="line-33"> *  &lt;pre&gt;&lt;code&gt;</span>
-<span class="source-line-no">034</span><span id="line-34"> *  final static final int MAX_AVAILABLE = …</span>
-<span class="source-line-no">035</span><span id="line-35"> *  final AutoSemaphore semaphore = AutoSemaphore.of( MAX_AVAILABLE );</span>
-<span class="source-line-no">036</span><span id="line-36"> *  …</span>
-<span class="source-line-no">037</span><span id="line-37"> *  try( final var token = semaphore.acquireToken() )</span>
-<span class="source-line-no">038</span><span id="line-38"> *  {</span>
-<span class="source-line-no">039</span><span id="line-39"> *      // Do something …</span>
-<span class="source-line-no">040</span><span id="line-40"> *  }</span>
-<span class="source-line-no">041</span><span id="line-41"> *  catch( final InterruptedException e )</span>
-<span class="source-line-no">042</span><span id="line-42"> *  {</span>
-<span class="source-line-no">043</span><span id="line-43"> *      // Handle the exception …</span>
-<span class="source-line-no">044</span><span id="line-44"> *  }</span>
-<span class="source-line-no">045</span><span id="line-45"> *  &lt;/code&gt;&lt;/pre&gt;</span>
-<span class="source-line-no">046</span><span id="line-46"> *</span>
-<span class="source-line-no">047</span><span id="line-47"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">048</span><span id="line-48"> *  @version $Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $</span>
-<span class="source-line-no">049</span><span id="line-49"> *  @since 0.4.8</span>
-<span class="source-line-no">050</span><span id="line-50"> *</span>
-<span class="source-line-no">051</span><span id="line-51"> *  @UMLGraph.link</span>
-<span class="source-line-no">052</span><span id="line-52"> */</span>
-<span class="source-line-no">053</span><span id="line-53">@ClassVersion( sourceVersion = "$Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $" )</span>
-<span class="source-line-no">054</span><span id="line-54">@API( status = STABLE, since = "0.4.8" )</span>
-<span class="source-line-no">055</span><span id="line-55">public sealed interface AutoSemaphore</span>
-<span class="source-line-no">056</span><span id="line-56">    permits AutoSemaphoreImpl</span>
-<span class="source-line-no">057</span><span id="line-57">{</span>
-<span class="source-line-no">058</span><span id="line-58">        /*---------*\</span>
-<span class="source-line-no">059</span><span id="line-59">    ====** Methods **==========================================================</span>
-<span class="source-line-no">060</span><span id="line-60">        \*---------*/</span>
-<span class="source-line-no">061</span><span id="line-61">    /**</span>
-<span class="source-line-no">062</span><span id="line-62">     *  &lt;p&gt;{@summary Acquires a permit from this semaphore, blocking until one</span>
-<span class="source-line-no">063</span><span id="line-63">     *  is available, or the thread is</span>
-<span class="source-line-no">064</span><span id="line-64">     *  {@linkplain Thread#interrupt interrupted},</span>
-<span class="source-line-no">065</span><span id="line-65">     *  and returns a token object that is used for</span>
-<span class="source-line-no">066</span><span id="line-66">     *  {@code try-with-resources}.}&lt;/p&gt;</span>
-<span class="source-line-no">067</span><span id="line-67">     *  &lt;p&gt;Acquires a permit, if one is available and returns immediately,</span>
-<span class="source-line-no">068</span><span id="line-68">     *  reducing the number of available permits by one.&lt;/p&gt;</span>
-<span class="source-line-no">069</span><span id="line-69">     *  &lt;p&gt;If no permit is available then the current thread becomes disabled</span>
-<span class="source-line-no">070</span><span id="line-70">     *  for thread scheduling purposes and lies dormant until one of two things</span>
-<span class="source-line-no">071</span><span id="line-71">     *  happens:&lt;/p&gt;</span>
-<span class="source-line-no">072</span><span id="line-72">     *  &lt;ul&gt;</span>
-<span class="source-line-no">073</span><span id="line-73">     *    &lt;li&gt;Some other thread invokes the</span>
-<span class="source-line-no">074</span><span id="line-74">     *    {@link Semaphore#release() release()}</span>
-<span class="source-line-no">075</span><span id="line-75">     *    method for this semaphore and the current thread is next to be</span>
-<span class="source-line-no">076</span><span id="line-76">     *    assigned a permit; or&lt;/li&gt;</span>
-<span class="source-line-no">077</span><span id="line-77">     *    &lt;li&gt;Some other thread</span>
-<span class="source-line-no">078</span><span id="line-78">     *    {@linkplain Thread#interrupt interrupts}</span>
-<span class="source-line-no">079</span><span id="line-79">     *    the current thread.&lt;/li&gt;</span>
-<span class="source-line-no">080</span><span id="line-80">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">081</span><span id="line-81">     *  &lt;p&gt;If the current thread:</span>
-<span class="source-line-no">082</span><span id="line-82">     *  &lt;ul&gt;</span>
-<span class="source-line-no">083</span><span id="line-83">     *    &lt;li&gt;has its interrupted status set on entry to this method; or&lt;/li&gt;</span>
-<span class="source-line-no">084</span><span id="line-84">     *    &lt;li&gt;is</span>
-<span class="source-line-no">085</span><span id="line-85">     *    {@linkplain Thread#interrupt interrupted}</span>
-<span class="source-line-no">086</span><span id="line-86">     *    while waiting for a permit,</span>
-<span class="source-line-no">087</span><span id="line-87">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">088</span><span id="line-88">     *  then</span>
-<span class="source-line-no">089</span><span id="line-89">     *  {@link InterruptedException}</span>
-<span class="source-line-no">090</span><span id="line-90">     *  is thrown and the current thread's interrupted status is cleared.</span>
-<span class="source-line-no">091</span><span id="line-91">     *</span>
-<span class="source-line-no">092</span><span id="line-92">     *  @return The token.</span>
-<span class="source-line-no">093</span><span id="line-93">     *  @throws InterruptedException    The current thread was interrupted.</span>
-<span class="source-line-no">094</span><span id="line-94">     */</span>
-<span class="source-line-no">095</span><span id="line-95">    public default AutoCloseable acquireToken() throws InterruptedException { return acquireToken( 1 ); }</span>
-<span class="source-line-no">096</span><span id="line-96"></span>
-<span class="source-line-no">097</span><span id="line-97">    /**</span>
-<span class="source-line-no">098</span><span id="line-98">     *  &lt;p&gt;{@summary Acquires the given number of permits from this semaphore,</span>
-<span class="source-line-no">099</span><span id="line-99">     *  blocking until all are available, or the thread is</span>
-<span class="source-line-no">100</span><span id="line-100">     *  {@linkplain Thread#interrupt interrupted},</span>
-<span class="source-line-no">101</span><span id="line-101">     *  and returns a token object that is used for</span>
-<span class="source-line-no">102</span><span id="line-102">     *  {@code try-with-resources}.}&lt;/p&gt;</span>
-<span class="source-line-no">103</span><span id="line-103">     *   &lt;p&gt;Acquires the given number of permits, if they are available, and</span>
-<span class="source-line-no">104</span><span id="line-104">     *   returns immediately, reducing the number of available permits by the</span>
-<span class="source-line-no">105</span><span id="line-105">     *   given amount. This method atomically acquires the permits all at</span>
-<span class="source-line-no">106</span><span id="line-106">     *   once.&lt;/p&gt;</span>
-<span class="source-line-no">107</span><span id="line-107">     *   &lt;p&gt;If insufficient permits are available then the current thread</span>
-<span class="source-line-no">108</span><span id="line-108">     *   becomes disabled for thread scheduling purposes and lies dormant until</span>
-<span class="source-line-no">109</span><span id="line-109">     *   one of two things happens:&lt;/p&gt;</span>
-<span class="source-line-no">110</span><span id="line-110">     *   &lt;ul&gt;</span>
-<span class="source-line-no">111</span><span id="line-111">     *       &lt;li&gt;Some other thread invokes one of the</span>
-<span class="source-line-no">112</span><span id="line-112">     *       {@link Semaphore#release() release()}</span>
-<span class="source-line-no">113</span><span id="line-113">     *       methods for this semaphore and the current thread is next to be</span>
-<span class="source-line-no">114</span><span id="line-114">     *       assigned permits and the number of available permits satisfies</span>
-<span class="source-line-no">115</span><span id="line-115">     *       this request; or&lt;/li&gt;</span>
-<span class="source-line-no">116</span><span id="line-116">     *       &lt;li&gt;Some other thread</span>
-<span class="source-line-no">117</span><span id="line-117">     *       {@linkplain Thread#interrupt interrupts}</span>
-<span class="source-line-no">118</span><span id="line-118">     *       the current thread.&lt;/li&gt;</span>
-<span class="source-line-no">119</span><span id="line-119">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">120</span><span id="line-120">     *  &lt;p&gt;If the current thread:</span>
-<span class="source-line-no">121</span><span id="line-121">     *  &lt;ul&gt;</span>
-<span class="source-line-no">122</span><span id="line-122">     *      &lt;li&gt;has its interrupted status set on entry to this method; or&lt;/li&gt;</span>
-<span class="source-line-no">123</span><span id="line-123">     *      &lt;li&gt;is</span>
-<span class="source-line-no">124</span><span id="line-124">     *      {@linkplain Thread#interrupt interrupted}</span>
-<span class="source-line-no">125</span><span id="line-125">     *      while waiting for a permit,</span>
-<span class="source-line-no">126</span><span id="line-126">     *  &lt;/ul&gt;</span>
-<span class="source-line-no">127</span><span id="line-127">     *  &lt;p&gt;then an</span>
-<span class="source-line-no">128</span><span id="line-128">     *  {@link InterruptedException}</span>
-<span class="source-line-no">129</span><span id="line-129">     *  is thrown and the current thread's interrupted status is cleared. Any</span>
-<span class="source-line-no">130</span><span id="line-130">     *  permits that were to be assigned to this thread are instead assigned to</span>
-<span class="source-line-no">131</span><span id="line-131">     *  other threads trying to acquire permits, as if permits had been made</span>
-<span class="source-line-no">132</span><span id="line-132">     *  available by a call to</span>
-<span class="source-line-no">133</span><span id="line-133">     *  {@link Semaphore#release() release()}.&lt;/p&gt;</span>
-<span class="source-line-no">134</span><span id="line-134">     *</span>
-<span class="source-line-no">135</span><span id="line-135">     *  @param  permits The number of permits to acquire.</span>
-<span class="source-line-no">136</span><span id="line-136">     *  @return The token.</span>
-<span class="source-line-no">137</span><span id="line-137">     *  @throws InterruptedException    The current thread is interrupted.</span>
-<span class="source-line-no">138</span><span id="line-138">     *  @throws IllegalArgumentException    The given number of permits to</span>
-<span class="source-line-no">139</span><span id="line-139">     *      acquire is negative.</span>
-<span class="source-line-no">140</span><span id="line-140">     */</span>
-<span class="source-line-no">141</span><span id="line-141">    public AutoCloseable acquireToken( final int permits ) throws InterruptedException, IllegalArgumentException;</span>
-<span class="source-line-no">142</span><span id="line-142"></span>
-<span class="source-line-no">143</span><span id="line-143">    /**</span>
-<span class="source-line-no">144</span><span id="line-144">     *  &lt;p&gt;{@summary Acquires a permit from this semaphore, blocking until one</span>
-<span class="source-line-no">145</span><span id="line-145">     *  is available, and returns a token object that is used for</span>
-<span class="source-line-no">146</span><span id="line-146">     *  {@code try-with-resources}.}&lt;/p&gt;</span>
-<span class="source-line-no">147</span><span id="line-147">     *  &lt;p&gt;Acquires a permit, if one is available and returns immediately,</span>
-<span class="source-line-no">148</span><span id="line-148">     *  reducing the number of available permits by one.&lt;/p&gt;</span>
-<span class="source-line-no">149</span><span id="line-149">     *  &lt;p&gt;If no permit is available then the current thread becomes disabled</span>
-<span class="source-line-no">150</span><span id="line-150">     *  for thread scheduling purposes and lies dormant until some other thread</span>
-<span class="source-line-no">151</span><span id="line-151">     *  invokes the</span>
-<span class="source-line-no">152</span><span id="line-152">     *  {@link Semaphore#release() release()}</span>
-<span class="source-line-no">153</span><span id="line-153">     *  method for this semaphore and the current thread is next to be assigned</span>
-<span class="source-line-no">154</span><span id="line-154">     *  a permit.&lt;/p&gt;</span>
-<span class="source-line-no">155</span><span id="line-155">     *  &lt;p&gt;If the current thread is</span>
-<span class="source-line-no">156</span><span id="line-156">     *  {@linkplain Thread#interrupt interrupted}</span>
-<span class="source-line-no">157</span><span id="line-157">     *  while waiting for a permit then it will continue to wait, but the time</span>
-<span class="source-line-no">158</span><span id="line-158">     *  at which the thread is assigned a permit may change compared to the</span>
-<span class="source-line-no">159</span><span id="line-159">     *  time it would have received the permit had no interruption occurred.</span>
-<span class="source-line-no">160</span><span id="line-160">     *  When the thread does return from this method its interrupt status will</span>
-<span class="source-line-no">161</span><span id="line-161">     *  be set.&lt;/p&gt;</span>
-<span class="source-line-no">162</span><span id="line-162">     *</span>
-<span class="source-line-no">163</span><span id="line-163">     *  @return The token.</span>
-<span class="source-line-no">164</span><span id="line-164">     */</span>
-<span class="source-line-no">165</span><span id="line-165">    public default AutoCloseable acquireTokenUninterruptibly() { return acquireTokenUninterruptibly( 1 ); }</span>
-<span class="source-line-no">166</span><span id="line-166"></span>
-<span class="source-line-no">167</span><span id="line-167">    /**</span>
-<span class="source-line-no">168</span><span id="line-168">     *  &lt;p&gt;{@summary Acquires the given number of permits from this semaphore,</span>
-<span class="source-line-no">169</span><span id="line-169">     *  blocking until all are available, and returns a token object that is</span>
-<span class="source-line-no">170</span><span id="line-170">     *  used for {@code try-with-resources}.}&lt;/p&gt;</span>
-<span class="source-line-no">171</span><span id="line-171">     *  &lt;p&gt;Acquires the given number of permits, if they are available, and</span>
-<span class="source-line-no">172</span><span id="line-172">     *  returns immediately, reducing the number of available permits by the</span>
-<span class="source-line-no">173</span><span id="line-173">     *  given amount. This method atomically acquires the permits all at</span>
-<span class="source-line-no">174</span><span id="line-174">     *  once.&lt;/p&gt;</span>
-<span class="source-line-no">175</span><span id="line-175">     *  &lt;p&gt;If insufficient permits are available then the current thread</span>
-<span class="source-line-no">176</span><span id="line-176">     *  becomes disabled for thread scheduling purposes and lies dormant until</span>
-<span class="source-line-no">177</span><span id="line-177">     *  some other thread invokes one of the</span>
-<span class="source-line-no">178</span><span id="line-178">     *  {@link Semaphore#release() release()}</span>
-<span class="source-line-no">179</span><span id="line-179">     *  methods for this semaphore and the current thread is next to be</span>
-<span class="source-line-no">180</span><span id="line-180">     *  assigned permits and the number of available permits satisfies this</span>
-<span class="source-line-no">181</span><span id="line-181">     *  request.&lt;/p&gt;</span>
-<span class="source-line-no">182</span><span id="line-182">     *  &lt;p&gt;If the current thread is</span>
-<span class="source-line-no">183</span><span id="line-183">     *  {@linkplain Thread#interrupt interrupted}</span>
-<span class="source-line-no">184</span><span id="line-184">     *  while waiting for permits then it will continue to wait and its</span>
-<span class="source-line-no">185</span><span id="line-185">     *  position in the queue is not affected.  When the thread does return</span>
-<span class="source-line-no">186</span><span id="line-186">     *  from this method its interrupt status will be set.</span>
-<span class="source-line-no">187</span><span id="line-187">     *</span>
-<span class="source-line-no">188</span><span id="line-188">     *  @param  permits The number of permits to acquire.</span>
-<span class="source-line-no">189</span><span id="line-189">     *  @return The token.</span>
-<span class="source-line-no">190</span><span id="line-190">     *  @throws IllegalArgumentException    The given number of permits to</span>
-<span class="source-line-no">191</span><span id="line-191">     *      acquire is negative.</span>
-<span class="source-line-no">192</span><span id="line-192">     */</span>
-<span class="source-line-no">193</span><span id="line-193">    public AutoCloseable acquireTokenUninterruptibly( final int permits ) throws IllegalArgumentException;</span>
-<span class="source-line-no">194</span><span id="line-194"></span>
-<span class="source-line-no">195</span><span id="line-195">    /**</span>
-<span class="source-line-no">196</span><span id="line-196">     *  Returns a reference to the raw semaphore.</span>
-<span class="source-line-no">197</span><span id="line-197">     *</span>
-<span class="source-line-no">198</span><span id="line-198">     *  @return The semaphore.</span>
-<span class="source-line-no">199</span><span id="line-199">     */</span>
-<span class="source-line-no">200</span><span id="line-200">    public Semaphore getSemaphore();</span>
-<span class="source-line-no">201</span><span id="line-201"></span>
-<span class="source-line-no">202</span><span id="line-202">    /**</span>
-<span class="source-line-no">203</span><span id="line-203">     *  Creates an {@code AutoSemaphore} instance with the given number of</span>
-<span class="source-line-no">204</span><span id="line-204">     *  permits and non-fair fairness setting.</span>
-<span class="source-line-no">205</span><span id="line-205">     *</span>
-<span class="source-line-no">206</span><span id="line-206">     *  @param  permits The initial number of permits available. This value may</span>
-<span class="source-line-no">207</span><span id="line-207">     *      be negative, in which case releases must occur before any acquires</span>
-<span class="source-line-no">208</span><span id="line-208">     *      will be granted.</span>
-<span class="source-line-no">209</span><span id="line-209">     *  @return The new {@code AutoSemaphore} instance.</span>
+<span class="source-line-no">022</span><span id="line-22">import java.time.Duration;</span>
+<span class="source-line-no">023</span><span id="line-23">import java.util.concurrent.Semaphore;</span>
+<span class="source-line-no">024</span><span id="line-24"></span>
+<span class="source-line-no">025</span><span id="line-25">import org.apiguardian.api.API;</span>
+<span class="source-line-no">026</span><span id="line-26">import org.tquadrat.foundation.annotation.ClassVersion;</span>
+<span class="source-line-no">027</span><span id="line-27">import org.tquadrat.foundation.util.internal.AutoSemaphoreImpl;</span>
+<span class="source-line-no">028</span><span id="line-28">import org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl;</span>
+<span class="source-line-no">029</span><span id="line-29"></span>
+<span class="source-line-no">030</span><span id="line-30">/**</span>
+<span class="source-line-no">031</span><span id="line-31"> *  &lt;p&gt;{@summary An implementation of</span>
+<span class="source-line-no">032</span><span id="line-32"> *  {@link Semaphore}</span>
+<span class="source-line-no">033</span><span id="line-33"> *  that allows to be used with {@code try-with-resources}.}&lt;/p&gt;</span>
+<span class="source-line-no">034</span><span id="line-34"> *  &lt;p&gt;Use this class like this:&lt;/p&gt;</span>
+<span class="source-line-no">035</span><span id="line-35"> *  &lt;pre&gt;&lt;code&gt;</span>
+<span class="source-line-no">036</span><span id="line-36"> *  final static final int MAX_AVAILABLE = …</span>
+<span class="source-line-no">037</span><span id="line-37"> *  final AutoSemaphore semaphore = AutoSemaphore.of( MAX_AVAILABLE );</span>
+<span class="source-line-no">038</span><span id="line-38"> *  …</span>
+<span class="source-line-no">039</span><span id="line-39"> *  try( final var token = semaphore.acquireToken() )</span>
+<span class="source-line-no">040</span><span id="line-40"> *  {</span>
+<span class="source-line-no">041</span><span id="line-41"> *      // Do something …</span>
+<span class="source-line-no">042</span><span id="line-42"> *  }</span>
+<span class="source-line-no">043</span><span id="line-43"> *  catch( final InterruptedException e )</span>
+<span class="source-line-no">044</span><span id="line-44"> *  {</span>
+<span class="source-line-no">045</span><span id="line-45"> *      // Handle the exception …</span>
+<span class="source-line-no">046</span><span id="line-46"> *  }</span>
+<span class="source-line-no">047</span><span id="line-47"> *  &lt;/code&gt;&lt;/pre&gt;</span>
+<span class="source-line-no">048</span><span id="line-48"> *  &lt;p&gt;A call to</span>
+<span class="source-line-no">049</span><span id="line-49"> *  {@link #of(int,Duration)}</span>
+<span class="source-line-no">050</span><span id="line-50"> *  or</span>
+<span class="source-line-no">051</span><span id="line-51"> *  {@link #of(int,boolean,Duration)}</span>
+<span class="source-line-no">052</span><span id="line-52"> *  creates a {@code AutoSemaphore} instance whose permits will be released</span>
+<span class="source-line-no">053</span><span id="line-53"> *  automatically after the given period of time. Do not acquire permits from</span>
+<span class="source-line-no">054</span><span id="line-54"> *  the instance returned by a call to</span>
+<span class="source-line-no">055</span><span id="line-55"> *  {@link #getSemaphore()}</span>
+<span class="source-line-no">056</span><span id="line-56"> *  on such an instance, as it may behave unexpectedly.&lt;/p&gt;</span>
+<span class="source-line-no">057</span><span id="line-57"> *</span>
+<span class="source-line-no">058</span><span id="line-58"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
+<span class="source-line-no">059</span><span id="line-59"> *  @version $Id: AutoSemaphore.java 1135 2024-05-28 21:32:48Z tquadrat $</span>
+<span class="source-line-no">060</span><span id="line-60"> *  @since 0.4.8</span>
+<span class="source-line-no">061</span><span id="line-61"> *</span>
+<span class="source-line-no">062</span><span id="line-62"> *  @UMLGraph.link</span>
+<span class="source-line-no">063</span><span id="line-63"> */</span>
+<span class="source-line-no">064</span><span id="line-64">@ClassVersion( sourceVersion = "$Id: AutoSemaphore.java 1135 2024-05-28 21:32:48Z tquadrat $" )</span>
+<span class="source-line-no">065</span><span id="line-65">@API( status = STABLE, since = "0.4.8" )</span>
+<span class="source-line-no">066</span><span id="line-66">public sealed interface AutoSemaphore</span>
+<span class="source-line-no">067</span><span id="line-67">    permits AutoSemaphoreImpl, TimeoutSemaphoreImpl</span>
+<span class="source-line-no">068</span><span id="line-68">{</span>
+<span class="source-line-no">069</span><span id="line-69">        /*---------*\</span>
+<span class="source-line-no">070</span><span id="line-70">    ====** Methods **==========================================================</span>
+<span class="source-line-no">071</span><span id="line-71">        \*---------*/</span>
+<span class="source-line-no">072</span><span id="line-72">    /**</span>
+<span class="source-line-no">073</span><span id="line-73">     *  &lt;p&gt;{@summary Acquires a permit from this semaphore, blocking until one</span>
+<span class="source-line-no">074</span><span id="line-74">     *  is available, or the thread is</span>
+<span class="source-line-no">075</span><span id="line-75">     *  {@linkplain Thread#interrupt interrupted},</span>
+<span class="source-line-no">076</span><span id="line-76">     *  and returns a token object that is used for</span>
+<span class="source-line-no">077</span><span id="line-77">     *  {@code try-with-resources}.}&lt;/p&gt;</span>
+<span class="source-line-no">078</span><span id="line-78">     *  &lt;p&gt;Acquires a permit, if one is available and returns immediately,</span>
+<span class="source-line-no">079</span><span id="line-79">     *  reducing the number of available permits by one.&lt;/p&gt;</span>
+<span class="source-line-no">080</span><span id="line-80">     *  &lt;p&gt;If no permit is available then the current thread becomes disabled</span>
+<span class="source-line-no">081</span><span id="line-81">     *  for thread scheduling purposes and lies dormant until one of two things</span>
+<span class="source-line-no">082</span><span id="line-82">     *  happens:&lt;/p&gt;</span>
+<span class="source-line-no">083</span><span id="line-83">     *  &lt;ul&gt;</span>
+<span class="source-line-no">084</span><span id="line-84">     *    &lt;li&gt;Some other thread invokes the</span>
+<span class="source-line-no">085</span><span id="line-85">     *    {@link Semaphore#release() release()}</span>
+<span class="source-line-no">086</span><span id="line-86">     *    method for this semaphore and the current thread is next to be</span>
+<span class="source-line-no">087</span><span id="line-87">     *    assigned a permit; or&lt;/li&gt;</span>
+<span class="source-line-no">088</span><span id="line-88">     *    &lt;li&gt;Some other thread</span>
+<span class="source-line-no">089</span><span id="line-89">     *    {@linkplain Thread#interrupt interrupts}</span>
+<span class="source-line-no">090</span><span id="line-90">     *    the current thread.&lt;/li&gt;</span>
+<span class="source-line-no">091</span><span id="line-91">     *  &lt;/ul&gt;</span>
+<span class="source-line-no">092</span><span id="line-92">     *  &lt;p&gt;If the current thread:</span>
+<span class="source-line-no">093</span><span id="line-93">     *  &lt;ul&gt;</span>
+<span class="source-line-no">094</span><span id="line-94">     *    &lt;li&gt;has its interrupted status set on entry to this method; or&lt;/li&gt;</span>
+<span class="source-line-no">095</span><span id="line-95">     *    &lt;li&gt;is</span>
+<span class="source-line-no">096</span><span id="line-96">     *    {@linkplain Thread#interrupt interrupted}</span>
+<span class="source-line-no">097</span><span id="line-97">     *    while waiting for a permit,</span>
+<span class="source-line-no">098</span><span id="line-98">     *  &lt;/ul&gt;</span>
+<span class="source-line-no">099</span><span id="line-99">     *  then</span>
+<span class="source-line-no">100</span><span id="line-100">     *  {@link InterruptedException}</span>
+<span class="source-line-no">101</span><span id="line-101">     *  is thrown and the current thread's interrupted status is cleared.</span>
+<span class="source-line-no">102</span><span id="line-102">     *</span>
+<span class="source-line-no">103</span><span id="line-103">     *  @return The token.</span>
+<span class="source-line-no">104</span><span id="line-104">     *  @throws InterruptedException    The current thread was interrupted.</span>
+<span class="source-line-no">105</span><span id="line-105">     */</span>
+<span class="source-line-no">106</span><span id="line-106">    public default AutoCloseable acquireToken() throws InterruptedException { return acquireToken( 1 ); }</span>
+<span class="source-line-no">107</span><span id="line-107"></span>
+<span class="source-line-no">108</span><span id="line-108">    /**</span>
+<span class="source-line-no">109</span><span id="line-109">     *  &lt;p&gt;{@summary Acquires the given number of permits from this semaphore,</span>
+<span class="source-line-no">110</span><span id="line-110">     *  blocking until all are available, or the thread is</span>
+<span class="source-line-no">111</span><span id="line-111">     *  {@linkplain Thread#interrupt interrupted},</span>
+<span class="source-line-no">112</span><span id="line-112">     *  and returns a token object that is used for</span>
+<span class="source-line-no">113</span><span id="line-113">     *  {@code try-with-resources}.}&lt;/p&gt;</span>
+<span class="source-line-no">114</span><span id="line-114">     *   &lt;p&gt;Acquires the given number of permits, if they are available, and</span>
+<span class="source-line-no">115</span><span id="line-115">     *   returns immediately, reducing the number of available permits by the</span>
+<span class="source-line-no">116</span><span id="line-116">     *   given amount. This method atomically acquires the permits all at</span>
+<span class="source-line-no">117</span><span id="line-117">     *   once.&lt;/p&gt;</span>
+<span class="source-line-no">118</span><span id="line-118">     *   &lt;p&gt;If insufficient permits are available then the current thread</span>
+<span class="source-line-no">119</span><span id="line-119">     *   becomes disabled for thread scheduling purposes and lies dormant until</span>
+<span class="source-line-no">120</span><span id="line-120">     *   one of two things happens:&lt;/p&gt;</span>
+<span class="source-line-no">121</span><span id="line-121">     *   &lt;ul&gt;</span>
+<span class="source-line-no">122</span><span id="line-122">     *       &lt;li&gt;Some other thread invokes one of the</span>
+<span class="source-line-no">123</span><span id="line-123">     *       {@link Semaphore#release() release()}</span>
+<span class="source-line-no">124</span><span id="line-124">     *       methods for this semaphore and the current thread is next to be</span>
+<span class="source-line-no">125</span><span id="line-125">     *       assigned permits and the number of available permits satisfies</span>
+<span class="source-line-no">126</span><span id="line-126">     *       this request; or&lt;/li&gt;</span>
+<span class="source-line-no">127</span><span id="line-127">     *       &lt;li&gt;Some other thread</span>
+<span class="source-line-no">128</span><span id="line-128">     *       {@linkplain Thread#interrupt interrupts}</span>
+<span class="source-line-no">129</span><span id="line-129">     *       the current thread.&lt;/li&gt;</span>
+<span class="source-line-no">130</span><span id="line-130">     *  &lt;/ul&gt;</span>
+<span class="source-line-no">131</span><span id="line-131">     *  &lt;p&gt;If the current thread:</span>
+<span class="source-line-no">132</span><span id="line-132">     *  &lt;ul&gt;</span>
+<span class="source-line-no">133</span><span id="line-133">     *      &lt;li&gt;has its interrupted status set on entry to this method; or&lt;/li&gt;</span>
+<span class="source-line-no">134</span><span id="line-134">     *      &lt;li&gt;is</span>
+<span class="source-line-no">135</span><span id="line-135">     *      {@linkplain Thread#interrupt interrupted}</span>
+<span class="source-line-no">136</span><span id="line-136">     *      while waiting for a permit,</span>
+<span class="source-line-no">137</span><span id="line-137">     *  &lt;/ul&gt;</span>
+<span class="source-line-no">138</span><span id="line-138">     *  &lt;p&gt;then an</span>
+<span class="source-line-no">139</span><span id="line-139">     *  {@link InterruptedException}</span>
+<span class="source-line-no">140</span><span id="line-140">     *  is thrown and the current thread's interrupted status is cleared. Any</span>
+<span class="source-line-no">141</span><span id="line-141">     *  permits that were to be assigned to this thread are instead assigned to</span>
+<span class="source-line-no">142</span><span id="line-142">     *  other threads trying to acquire permits, as if permits had been made</span>
+<span class="source-line-no">143</span><span id="line-143">     *  available by a call to</span>
+<span class="source-line-no">144</span><span id="line-144">     *  {@link Semaphore#release() release()}.&lt;/p&gt;</span>
+<span class="source-line-no">145</span><span id="line-145">     *</span>
+<span class="source-line-no">146</span><span id="line-146">     *  @param  permits The number of permits to acquire.</span>
+<span class="source-line-no">147</span><span id="line-147">     *  @return The token.</span>
+<span class="source-line-no">148</span><span id="line-148">     *  @throws InterruptedException    The current thread is interrupted.</span>
+<span class="source-line-no">149</span><span id="line-149">     *  @throws IllegalArgumentException    The given number of permits to</span>
+<span class="source-line-no">150</span><span id="line-150">     *      acquire is negative.</span>
+<span class="source-line-no">151</span><span id="line-151">     */</span>
+<span class="source-line-no">152</span><span id="line-152">    public AutoCloseable acquireToken( final int permits ) throws InterruptedException, IllegalArgumentException;</span>
+<span class="source-line-no">153</span><span id="line-153"></span>
+<span class="source-line-no">154</span><span id="line-154">    /**</span>
+<span class="source-line-no">155</span><span id="line-155">     *  &lt;p&gt;{@summary Acquires a permit from this semaphore, blocking until one</span>
+<span class="source-line-no">156</span><span id="line-156">     *  is available, and returns a token object that is used for</span>
+<span class="source-line-no">157</span><span id="line-157">     *  {@code try-with-resources}.}&lt;/p&gt;</span>
+<span class="source-line-no">158</span><span id="line-158">     *  &lt;p&gt;Acquires a permit, if one is available and returns immediately,</span>
+<span class="source-line-no">159</span><span id="line-159">     *  reducing the number of available permits by one.&lt;/p&gt;</span>
+<span class="source-line-no">160</span><span id="line-160">     *  &lt;p&gt;If no permit is available then the current thread becomes disabled</span>
+<span class="source-line-no">161</span><span id="line-161">     *  for thread scheduling purposes and lies dormant until some other thread</span>
+<span class="source-line-no">162</span><span id="line-162">     *  invokes the</span>
+<span class="source-line-no">163</span><span id="line-163">     *  {@link Semaphore#release() release()}</span>
+<span class="source-line-no">164</span><span id="line-164">     *  method for this semaphore and the current thread is next to be assigned</span>
+<span class="source-line-no">165</span><span id="line-165">     *  a permit.&lt;/p&gt;</span>
+<span class="source-line-no">166</span><span id="line-166">     *  &lt;p&gt;If the current thread is</span>
+<span class="source-line-no">167</span><span id="line-167">     *  {@linkplain Thread#interrupt interrupted}</span>
+<span class="source-line-no">168</span><span id="line-168">     *  while waiting for a permit then it will continue to wait, but the time</span>
+<span class="source-line-no">169</span><span id="line-169">     *  at which the thread is assigned a permit may change compared to the</span>
+<span class="source-line-no">170</span><span id="line-170">     *  time it would have received the permit had no interruption occurred.</span>
+<span class="source-line-no">171</span><span id="line-171">     *  When the thread does return from this method its interrupt status will</span>
+<span class="source-line-no">172</span><span id="line-172">     *  be set.&lt;/p&gt;</span>
+<span class="source-line-no">173</span><span id="line-173">     *</span>
+<span class="source-line-no">174</span><span id="line-174">     *  @return The token.</span>
+<span class="source-line-no">175</span><span id="line-175">     */</span>
+<span class="source-line-no">176</span><span id="line-176">    public default AutoCloseable acquireTokenUninterruptibly() { return acquireTokenUninterruptibly( 1 ); }</span>
+<span class="source-line-no">177</span><span id="line-177"></span>
+<span class="source-line-no">178</span><span id="line-178">    /**</span>
+<span class="source-line-no">179</span><span id="line-179">     *  &lt;p&gt;{@summary Acquires the given number of permits from this semaphore,</span>
+<span class="source-line-no">180</span><span id="line-180">     *  blocking until all are available, and returns a token object that is</span>
+<span class="source-line-no">181</span><span id="line-181">     *  used for {@code try-with-resources}.}&lt;/p&gt;</span>
+<span class="source-line-no">182</span><span id="line-182">     *  &lt;p&gt;Acquires the given number of permits, if they are available, and</span>
+<span class="source-line-no">183</span><span id="line-183">     *  returns immediately, reducing the number of available permits by the</span>
+<span class="source-line-no">184</span><span id="line-184">     *  given amount. This method atomically acquires the permits all at</span>
+<span class="source-line-no">185</span><span id="line-185">     *  once.&lt;/p&gt;</span>
+<span class="source-line-no">186</span><span id="line-186">     *  &lt;p&gt;If insufficient permits are available then the current thread</span>
+<span class="source-line-no">187</span><span id="line-187">     *  becomes disabled for thread scheduling purposes and lies dormant until</span>
+<span class="source-line-no">188</span><span id="line-188">     *  some other thread invokes one of the</span>
+<span class="source-line-no">189</span><span id="line-189">     *  {@link Semaphore#release() release()}</span>
+<span class="source-line-no">190</span><span id="line-190">     *  methods for this semaphore and the current thread is next to be</span>
+<span class="source-line-no">191</span><span id="line-191">     *  assigned permits and the number of available permits satisfies this</span>
+<span class="source-line-no">192</span><span id="line-192">     *  request.&lt;/p&gt;</span>
+<span class="source-line-no">193</span><span id="line-193">     *  &lt;p&gt;If the current thread is</span>
+<span class="source-line-no">194</span><span id="line-194">     *  {@linkplain Thread#interrupt interrupted}</span>
+<span class="source-line-no">195</span><span id="line-195">     *  while waiting for permits then it will continue to wait and its</span>
+<span class="source-line-no">196</span><span id="line-196">     *  position in the queue is not affected.  When the thread does return</span>
+<span class="source-line-no">197</span><span id="line-197">     *  from this method its interrupt status will be set.</span>
+<span class="source-line-no">198</span><span id="line-198">     *</span>
+<span class="source-line-no">199</span><span id="line-199">     *  @param  permits The number of permits to acquire.</span>
+<span class="source-line-no">200</span><span id="line-200">     *  @return The token.</span>
+<span class="source-line-no">201</span><span id="line-201">     *  @throws IllegalArgumentException    The given number of permits to</span>
+<span class="source-line-no">202</span><span id="line-202">     *      acquire is negative.</span>
+<span class="source-line-no">203</span><span id="line-203">     */</span>
+<span class="source-line-no">204</span><span id="line-204">    public AutoCloseable acquireTokenUninterruptibly( final int permits ) throws IllegalArgumentException;</span>
+<span class="source-line-no">205</span><span id="line-205"></span>
+<span class="source-line-no">206</span><span id="line-206">    /**</span>
+<span class="source-line-no">207</span><span id="line-207">     *  Returns a reference to the raw semaphore.</span>
+<span class="source-line-no">208</span><span id="line-208">     *</span>
+<span class="source-line-no">209</span><span id="line-209">     *  @return The semaphore.</span>
 <span class="source-line-no">210</span><span id="line-210">     */</span>
-<span class="source-line-no">211</span><span id="line-211">    public static AutoSemaphore of( final int permits ) { return new AutoSemaphoreImpl( permits ); }</span>
+<span class="source-line-no">211</span><span id="line-211">    public Semaphore getSemaphore();</span>
 <span class="source-line-no">212</span><span id="line-212"></span>
 <span class="source-line-no">213</span><span id="line-213">    /**</span>
 <span class="source-line-no">214</span><span id="line-214">     *  Creates an {@code AutoSemaphore} instance with the given number of</span>
-<span class="source-line-no">215</span><span id="line-215">     *  permits and the given fairness setting.</span>
+<span class="source-line-no">215</span><span id="line-215">     *  permits and non-fair fairness setting.</span>
 <span class="source-line-no">216</span><span id="line-216">     *</span>
 <span class="source-line-no">217</span><span id="line-217">     *  @param  permits The initial number of permits available. This value may</span>
 <span class="source-line-no">218</span><span id="line-218">     *      be negative, in which case releases must occur before any acquires</span>
 <span class="source-line-no">219</span><span id="line-219">     *      will be granted.</span>
-<span class="source-line-no">220</span><span id="line-220">     *  @param  fair    {@code true} if this semaphore will guarantee first-in</span>
-<span class="source-line-no">221</span><span id="line-221">     *      first-out granting of permits under contention, else {@code false}.</span>
-<span class="source-line-no">222</span><span id="line-222">     *  @return The new {@code AutoSemaphore} instance.</span>
-<span class="source-line-no">223</span><span id="line-223">     */</span>
-<span class="source-line-no">224</span><span id="line-224">    public static AutoSemaphore of( final int permits, final boolean fair ) { return new AutoSemaphoreImpl( permits, fair ); }</span>
-<span class="source-line-no">225</span><span id="line-225">}</span>
-<span class="source-line-no">226</span><span id="line-226">//  class AutoSemaphore</span>
-<span class="source-line-no">227</span><span id="line-227"></span>
-<span class="source-line-no">228</span><span id="line-228">/*</span>
-<span class="source-line-no">229</span><span id="line-229"> *  End of File</span>
-<span class="source-line-no">230</span><span id="line-230"> */</span>
+<span class="source-line-no">220</span><span id="line-220">     *  @return The new {@code AutoSemaphore} instance.</span>
+<span class="source-line-no">221</span><span id="line-221">     */</span>
+<span class="source-line-no">222</span><span id="line-222">    public static AutoSemaphore of( final int permits ) { return new AutoSemaphoreImpl( permits ); }</span>
+<span class="source-line-no">223</span><span id="line-223"></span>
+<span class="source-line-no">224</span><span id="line-224">    /**</span>
+<span class="source-line-no">225</span><span id="line-225">     *  Creates an {@code AutoSemaphore} instance with the given number of</span>
+<span class="source-line-no">226</span><span id="line-226">     *  permits and the given fairness setting.</span>
+<span class="source-line-no">227</span><span id="line-227">     *</span>
+<span class="source-line-no">228</span><span id="line-228">     *  @param  permits The initial number of permits available. This value may</span>
+<span class="source-line-no">229</span><span id="line-229">     *      be negative, in which case releases must occur before any acquires</span>
+<span class="source-line-no">230</span><span id="line-230">     *      will be granted.</span>
+<span class="source-line-no">231</span><span id="line-231">     *  @param  fair    {@code true} if this semaphore will guarantee first-in</span>
+<span class="source-line-no">232</span><span id="line-232">     *      first-out granting of permits under contention, else {@code false}.</span>
+<span class="source-line-no">233</span><span id="line-233">     *  @return The new {@code AutoSemaphore} instance.</span>
+<span class="source-line-no">234</span><span id="line-234">     */</span>
+<span class="source-line-no">235</span><span id="line-235">    public static AutoSemaphore of( final int permits, final boolean fair ) { return new AutoSemaphoreImpl( permits, fair ); }</span>
+<span class="source-line-no">236</span><span id="line-236"></span>
+<span class="source-line-no">237</span><span id="line-237">    /**</span>
+<span class="source-line-no">238</span><span id="line-238">     *  Creates an {@code AutoSemaphore} instance with the given number of</span>
+<span class="source-line-no">239</span><span id="line-239">     *  permits and non-fair fairness setting.</span>
+<span class="source-line-no">240</span><span id="line-240">     *</span>
+<span class="source-line-no">241</span><span id="line-241">     *  @param  permits The initial number of permits available. This value may</span>
+<span class="source-line-no">242</span><span id="line-242">     *      be negative, in which case releases must occur before any acquires</span>
+<span class="source-line-no">243</span><span id="line-243">     *      will be granted.</span>
+<span class="source-line-no">244</span><span id="line-244">     *  @param  duration    The timeout for a permit; after the given period of</span>
+<span class="source-line-no">245</span><span id="line-245">     *      time, an acquired permit will be released automatically.</span>
+<span class="source-line-no">246</span><span id="line-246">     *  @return The new {@code AutoSemaphore} instance.</span>
+<span class="source-line-no">247</span><span id="line-247">     */</span>
+<span class="source-line-no">248</span><span id="line-248">    public static AutoSemaphore of( final int permits, final Duration duration ) { return new TimeoutSemaphoreImpl( permits, duration ); }</span>
+<span class="source-line-no">249</span><span id="line-249"></span>
+<span class="source-line-no">250</span><span id="line-250">    /**</span>
+<span class="source-line-no">251</span><span id="line-251">     *  Creates an {@code AutoSemaphore} instance with the given number of</span>
+<span class="source-line-no">252</span><span id="line-252">     *  permits and the given fairness setting.</span>
+<span class="source-line-no">253</span><span id="line-253">     *</span>
+<span class="source-line-no">254</span><span id="line-254">     *  @param  permits The initial number of permits available. This value may</span>
+<span class="source-line-no">255</span><span id="line-255">     *      be negative, in which case releases must occur before any acquires</span>
+<span class="source-line-no">256</span><span id="line-256">     *      will be granted.</span>
+<span class="source-line-no">257</span><span id="line-257">     *  @param  fair    {@code true} if this semaphore will guarantee first-in</span>
+<span class="source-line-no">258</span><span id="line-258">     *      first-out granting of permits under contention, else {@code false}.</span>
+<span class="source-line-no">259</span><span id="line-259">     *  @param  duration    The timeout for a permit; after the given period of</span>
+<span class="source-line-no">260</span><span id="line-260">     *      time, an acquired permit will be released automatically.</span>
+<span class="source-line-no">261</span><span id="line-261">     *  @return The new {@code AutoSemaphore} instance.</span>
+<span class="source-line-no">262</span><span id="line-262">     */</span>
+<span class="source-line-no">263</span><span id="line-263">    public static AutoSemaphore of( final int permits, final boolean fair, final Duration duration ) { return new TimeoutSemaphoreImpl( permits, fair, duration ); }</span>
+<span class="source-line-no">264</span><span id="line-264">}</span>
+<span class="source-line-no">265</span><span id="line-265">//  class AutoSemaphore</span>
+<span class="source-line-no">266</span><span id="line-266"></span>
+<span class="source-line-no">267</span><span id="line-267">/*</span>
+<span class="source-line-no">268</span><span id="line-268"> *  End of File</span>
+<span class="source-line-no">269</span><span id="line-269"> */</span>
 
 
 

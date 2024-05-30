@@ -82,7 +82,7 @@ import org.tquadrat.foundation.lang.Lazy;
  *
  *  @UMLGraph.link
  */
-@SuppressWarnings( "ClassWithTooManyMethods" )
+@SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
 @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1091 2024-01-25 23:10:08Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
@@ -758,14 +758,17 @@ public final class SystemUtils
 
     /**
      *  An implementation of
-     *  {@link Thread#sleep}
+     *  {@link Thread#sleep(long)}
      *  that does not throw an exception in case it will be interrupted.
+     *
+     *  @note   While sleeping, the thread does not lose ownership of any
+     *      monitors.
      *
      *  @param  millis  The time to sleep in milliseconds.
      *  @return  {@code true} if the sleep was interrupted, {@code false} if it
      *      terminated as planned.
      */
-    @SuppressWarnings( {"BusyWait", "BooleanMethodNameMustStartWithQuestion"} )
+    @SuppressWarnings( {"BooleanMethodNameMustStartWithQuestion", "BusyWait"} )
     @API( status = STABLE, since = "0.0.7" )
     public static final boolean repose( final long millis )
     {
@@ -790,10 +793,11 @@ public final class SystemUtils
 
     /**
      *  An implementation of
-     *  {@link #repose(long)}
-     *  that takes an instance of
-     *  {@link Duration}
-     *  to determine the time to sleep.
+     *  {@link Thread#sleep(Duration)}
+     *  that does not throw an exception in case it will be interrupted.
+     *
+     *  @note   While sleeping, the thread does not lose ownership of any
+     *      monitors.
      *
      *  @param  duration    The time to sleep.
      *  @return  {@code true} if the sleep was interrupted, {@code false} if it
@@ -803,8 +807,24 @@ public final class SystemUtils
     @API( status = STABLE, since = "0.0.7" )
     public static final boolean repose( final Duration duration )
     {
-        final var milliseconds = requireNonNullArgument( duration, "duration" ).toMillis();
-        final var retValue = repose( milliseconds );
+        var retValue = true;
+        var remainingDuration = requireNonNullArgument( duration, "duration" );
+        var now = Instant.now();
+        final var endTime = now.plus( duration );
+        SleepLoop: while( now.isBefore( endTime ) )
+        {
+            try
+            {
+                Thread.sleep( remainingDuration );
+                retValue = false;
+            }
+            catch( final InterruptedException ignored )
+            {
+                if( currentThread().isInterrupted() ) break SleepLoop;
+                now = Instant.now();
+                remainingDuration = Duration.between( now, endTime );
+            }
+        }   //  SleepLoop:
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -814,6 +834,9 @@ public final class SystemUtils
      *  An implementation of
      *  {@link #sleepUntil(Instant)}
      *  that does not throw an exception when interrupted.
+     *
+     *  @note   While sleeping, the thread does not lose ownership of any
+     *      monitors.
      *
      *  @param  until   The end time for the sleep period.
      *  @return  {@code true} if the sleep was interrupted, {@code false} if it
@@ -826,9 +849,15 @@ public final class SystemUtils
         var retValue = true;
         SleepLoop: while( Instant.now().isBefore( requireNonNullArgument( until, "until" ) ) )
         {
+            /*
+             * It is intended that Instant::now will be called twice, returning
+             * different results. This will increase accuracy (ok, just
+             * marginally), without causing much harm – we want to wast time
+             * anyways.
+             */
             try
             {
-                sleep( Duration.between( Instant.now(), until ) );
+                Thread.sleep( Duration.between( Instant.now(), until ) );
                 retValue = false;
             }
             catch( final InterruptedException ignored )
@@ -940,13 +969,21 @@ public final class SystemUtils
      *  {@link Duration}
      *  to determine the time to sleep.
      *
+     *  @note   While sleeping, the thread does not lose ownership of any
+     *      monitors.
+     *
      *  @param  duration    The time to sleep.
      *  @throws InterruptedException    Another thread has interrupted the
      *      current thread (that one executing {@code sleep()}. The
      *      <i>interrupted status</i> of the current thread is cleared when
      *      this exception is thrown.
+     *
+     *  @deprecated Use
+     *      {@link Thread#sleep(Duration)}
+     *      instead.
      */
-    @API( status = STABLE, since = "0.0.7" )
+    @API( status = DEPRECATED, since = "0.0.7" )
+    @Deprecated( since = "0.4.8", forRemoval = true )
     public static final void sleep( final Duration duration ) throws InterruptedException
     {
         final var milliseconds = requireNonNullArgument( duration, "duration" ).toMillis();
@@ -958,6 +995,9 @@ public final class SystemUtils
      *  execution) until the specified time, subject to the precision and
      *  accuracy of system timers and schedulers. The thread does not lose
      *  ownership of any monitors.
+     *
+     *  @note   While sleeping, the thread does not lose ownership of any
+     *      monitors.
      *
      *  @param  until   The end time for the sleep.
      *  @throws InterruptedException    Another thread has interrupted the

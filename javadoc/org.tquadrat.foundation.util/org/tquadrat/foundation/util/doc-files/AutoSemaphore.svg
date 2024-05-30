@@ -6,8 +6,8 @@
      xmlns:xlink="http://www.w3.org/1999/xlink"
      version='1.1'
      baseProfile='full'
-     width='498.000'
-     height='473.000'>
+     width='1158.000'
+     height='616.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,8 +118,8 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='128.000'
-                  width='448.000'
+                  height='150.000'
+                  width='616.000'
                   x='0.000'
                   y='0.000'/>
         </clipPath>
@@ -129,23 +129,23 @@
                    clip-path='url(#ID000001)'>
                     <rect x='0.000'
                           y='0.000'
-                          width='448.000'
-                          height='128.000'
+                          width='616.000'
+                          height='150.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='28.000'
-                          x2='448.000'
+                          x2='616.000'
                           y2='28.000'
                           class='separator'/>
-                    <text x='197.600'
+                    <text x='281.600'
                           y='13.000'
                           class='stereotype'>&#xAB;Interface&#xBB;</text>
-                    <text x='185.000'
+                    <text x='269.000'
                           y='24.000'
                           class='abstract'>AutoSemaphore</text>
                     <line x1='0.000'
                           y1='45.000'
-                          x2='448.000'
+                          x2='616.000'
                           y2='45.000'
                           class='separator'/>
                     <text x='5.000'
@@ -169,6 +169,12 @@
                     <text x='5.000'
                           y='124.000'
                           class='abstract static'>+ of(permits:int,fair:boolean):org.tquadrat.foundation.util.AutoSemaphore</text>
+                    <text x='5.000'
+                          y='135.000'
+                          class='abstract static'>+ of(permits:int,duration:java.time.Duration):org.tquadrat.foundation.util.AutoSemaphore</text>
+                    <text x='5.000'
+                          y='146.000'
+                          class='abstract static'>+ of(permits:int,fair:boolean,duration:java.time.Duration):org.tquadrat.foundation.util.AutoSemaphore</text>
                 </g>
             </g>
         </symbol>
@@ -214,14 +220,83 @@
                 </g>
             </g>
         </symbol>
+        <clipPath id='ID000003'>
+            <rect class='otherClass'
+                  height='216.000'
+                  width='652.000'
+                  x='0.000'
+                  y='0.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl'>
+            <g>
+                <g clip-path='url(#ID000003)'>
+                    <rect x='0.000'
+                          y='0.000'
+                          width='652.000'
+                          height='216.000'
+                          class='otherClass'/>
+                    <line x1='0.000'
+                          y1='17.000'
+                          x2='652.000'
+                          y2='17.000'
+                          class='separator'/>
+                    <text x='266.000'
+                          y='13.000'>TimeoutSemaphoreImpl</text>
+                    <line x1='0.000'
+                          y1='122.000'
+                          x2='652.000'
+                          y2='122.000'
+                          class='separator'/>
+                    <text y='30.000'
+                          class='static final'>+ REAPER_CYCLE:long</text>
+                    <text y='41.000'>- m_Cleanable:java.lang.ref.Cleaner.Cleanable</text>
+                    <text y='52.000'
+                          class='final'>- m_Janitor:org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl.Janitor</text>
+                    <text y='63.000'
+                          class='final'>- m_Lock:org.tquadrat.foundation.lang.AutoLock</text>
+                    <text y='74.000'
+                          class='final'>- m_Timeout:java.time.Duration</text>
+                    <text y='85.000'
+                          class='final'>- m_ReaperExecutor:java.util.concurrent.ScheduledExecutorService</text>
+                    <text y='96.000'
+                          class='final'>- m_Registry:java.util.Map&lt;java.util.UUID,org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl.Token&gt;</text>
+                    <text y='107.000'
+                          class='static final'>- serialVersionUID:long</text>
+                    <text y='118.000'
+                          class='static final'>- m_Cleaner:java.lang.ref.Cleaner</text>
+                    <text x='5.000'
+                          y='135.000'>+ TimeoutSemaphoreImpl(permits:int,timeout:java.time.Duration)</text>
+                    <text x='5.000'
+                          y='146.000'>+ TimeoutSemaphoreImpl(permits:int,fair:boolean,timeout:java.time.Duration)</text>
+                    <text x='5.000'
+                          y='157.000'>+ acquireToken(permits:int):java.lang.AutoCloseable</text>
+                    <text x='5.000'
+                          y='168.000'>+ acquireTokenUninterruptibly(permits:int):java.lang.AutoCloseable</text>
+                    <text x='5.000'
+                          y='179.000'>- createToken(permits:int):org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl.Token</text>
+                    <text x='5.000'
+                          y='190.000'>+ getSemaphore():java.util.concurrent.Semaphore</text>
+                    <text x='5.000'
+                          y='201.000'>- registerJanitor(janitor:java.lang.Runnable):void</text>
+                    <text x='5.000'
+                          y='212.000'>+ release(id:java.util.UUID):void</text>
+                </g>
+            </g>
+        </symbol>
     </defs>
     <path class='implementation'
-          d='M249.000,253.000 L249.000,153.000'
+          d='M228.000,275.000 c0.000,-85.000,336.000,0.000,336.000,-85.000 v-15'
           marker-end='url(#implementation)'/>
-    <use x='25.000'
+    <path class='implementation'
+          d='M807.000,275.000 c0.000,-85.000,-213.000,0.000,-213.000,-85.000 v-15'
+          marker-end='url(#implementation)'/>
+    <use x='271.000'
          y='25.000'
          xlink:href='#org.tquadrat.foundation.util.AutoSemaphore'/>
-    <use x='46.000'
-         y='253.000'
+    <use x='25.000'
+         y='275.000'
          xlink:href='#org.tquadrat.foundation.util.internal.AutoSemaphoreImpl'/>
+    <use x='481.000'
+         y='275.000'
+         xlink:href='#org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl'/>
 </svg>

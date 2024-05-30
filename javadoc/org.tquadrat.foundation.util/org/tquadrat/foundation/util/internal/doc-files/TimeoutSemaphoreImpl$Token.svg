@@ -1,0 +1,277 @@
+
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:cc="http://creativecommons.org/ns#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:svg="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version='1.1'
+     baseProfile='full'
+     width='438.000'
+     height='539.000'>
+    <defs>
+        <style><![CDATA[
+            line
+            {
+              stroke: black;
+            }
+            line.separator
+            {
+              stroke:       black;
+              stroke-width: 1;
+            }
+            marker
+            {
+              fill: white;
+            }
+            path
+            {
+              fill:   white;
+              stroke: black;
+            }
+            path.implementation
+            {
+              fill:             none;
+              stroke-dasharray: 5,5;
+              stroke-width:     3;
+            }
+            path.inheritance
+            {
+              fill:         none;
+              stroke-width: 3;
+            }
+            rect
+            {
+              fill:         none;
+              stroke:       black;
+              stroke-width: 2;
+            }
+            rect.externalClass
+            {
+              fill:         #D0D0D0;
+              fill-opacity: 0.8;
+            }
+            rect.focusClass
+            {
+              fill:         #FFFFF9;
+              fill-opacity: 0.8;
+            }
+            rect.otherClass
+            {
+              fill:         #F0E68C;
+              fill-opacity: 0.8;
+            }
+            rect.template
+            {
+              fill:             #FFFFFF;
+              fill-opacity:     1.0;
+              stroke-dasharray: 3,3;
+            }
+            text
+            {
+              font-family: monospace;
+              font-size:   10px;
+              font-weight: bold;
+            }
+            text.abstract
+            {
+              font-style: italic;
+            }
+            text.final
+            {
+              text-decoration: underline;
+            }
+            text.static
+            {
+              font-weight: normal;
+            }
+            text.stereotype
+            {
+              font-size:   8px;
+              font-weight: normal;
+            }
+            ]]></style>
+        <marker id='inheritance'
+                viewBox='0,0,40,40'
+                markerUnits='strokeWidth'
+                refX='40'
+                refY='20'
+                markerWidth='6'
+                markerHeight='6'
+                orient='auto'>
+            <path d='M40,20 l-40,-20 v40 Z'
+                  fill='#ffffff'
+                  stroke='#000000'
+                  stroke-width='3'/>
+        </marker>
+        <marker id='implementation'
+                viewBox='0,0,40,40'
+                markerUnits='strokeWidth'
+                refX='40'
+                refY='20'
+                markerWidth='6'
+                markerHeight='6'
+                orient='auto'>
+            <path d='M40,20 l-40,-20 v40 Z'
+                  fill='#ffffff'
+                  stroke='#000000'
+                  stroke-width='3'/>
+        </marker>
+        <clipPath id='ID000001'>
+            <rect class='focusClass'
+                  height='117.000'
+                  width='298.000'
+                  x='0.000'
+                  y='0.000'/>
+        </clipPath>
+        <symbol id='org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl.Token'>
+            <g>
+                <g class='focusClass'
+                   clip-path='url(#ID000001)'>
+                    <rect x='0.000'
+                          y='0.000'
+                          width='298.000'
+                          height='117.000'
+                          class='focusClass'/>
+                    <line x1='0.000'
+                          y1='17.000'
+                          x2='298.000'
+                          y2='17.000'
+                          class='separator'/>
+                    <text x='134.000'
+                          y='13.000'>Token</text>
+                    <line x1='0.000'
+                          y1='56.000'
+                          x2='298.000'
+                          y2='56.000'
+                          class='separator'/>
+                    <text y='30.000'
+                          class='final'>- m_EndOfLife:java.time.Instant</text>
+                    <text y='41.000'
+                          class='final'>- m_Id:java.util.UUID</text>
+                    <text y='52.000'
+                          class='final'>- m_Permits:int</text>
+                    <text x='5.000'
+                          y='69.000'>+ Token(permits:int,endOfLife:java.time.Instant)</text>
+                    <text x='5.000'
+                          y='80.000'>+ close():void</text>
+                    <text x='5.000'
+                          y='91.000'>+ getEndOfLife():java.time.Instant</text>
+                    <text x='5.000'
+                          y='102.000'>+ getId():java.util.UUID</text>
+                    <text x='5.000'
+                          y='113.000'>+ getPermits():int</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000002'>
+            <rect class='externalClass'
+                  height='172.000'
+                  width='244.000'
+                  x='0.000'
+                  y='0.000'/>
+        </clipPath>
+        <symbol id='java.lang.Object'>
+            <g>
+                <g clip-path='url(#ID000002)'>
+                    <rect x='0.000'
+                          y='0.000'
+                          width='244.000'
+                          height='172.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='17.000'
+                          x2='244.000'
+                          y2='17.000'
+                          class='separator'/>
+                    <text x='104.000'
+                          y='13.000'>Object</text>
+                    <line x1='0.000'
+                          y1='34.000'
+                          x2='244.000'
+                          y2='34.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='30.000'/>
+                    <text x='5.000'
+                          y='47.000'>+ Object()</text>
+                    <text x='5.000'
+                          y='58.000'>+ getClass():java.lang.Class&lt;?&gt;</text>
+                    <text x='5.000'
+                          y='69.000'>+ hashCode():int</text>
+                    <text x='5.000'
+                          y='80.000'>+ equals(arg0:java.lang.Object):boolean</text>
+                    <text x='5.000'
+                          y='91.000'># clone():java.lang.Object</text>
+                    <text x='5.000'
+                          y='102.000'>+ toString():java.lang.String</text>
+                    <text x='5.000'
+                          y='113.000'>+ notify():void</text>
+                    <text x='5.000'
+                          y='124.000'>+ notifyAll():void</text>
+                    <text x='5.000'
+                          y='135.000'>+ wait():void</text>
+                    <text x='5.000'
+                          y='146.000'>+ wait(arg0:long):void</text>
+                    <text x='5.000'
+                          y='157.000'>+ wait(arg0:long,arg1:int):void</text>
+                    <text x='5.000'
+                          y='168.000'># finalize():void</text>
+                </g>
+            </g>
+        </symbol>
+        <clipPath id='ID000003'>
+            <rect class='externalClass'
+                  height='62.000'
+                  width='94.000'
+                  x='0.000'
+                  y='0.000'/>
+        </clipPath>
+        <symbol id='java.lang.AutoCloseable'>
+            <g>
+                <g clip-path='url(#ID000003)'>
+                    <rect x='0.000'
+                          y='0.000'
+                          width='94.000'
+                          height='62.000'
+                          class='externalClass'/>
+                    <line x1='0.000'
+                          y1='28.000'
+                          x2='94.000'
+                          y2='28.000'
+                          class='separator'/>
+                    <text x='20.600'
+                          y='13.000'
+                          class='stereotype'>&#xAB;Interface&#xBB;</text>
+                    <text x='8.000'
+                          y='24.000'
+                          class='abstract'>AutoCloseable</text>
+                    <line x1='0.000'
+                          y1='45.000'
+                          x2='94.000'
+                          y2='45.000'
+                          class='separator'/>
+                    <text x='5.000'
+                          y='41.000'/>
+                    <text x='5.000'
+                          y='58.000'
+                          class='abstract'>+ close():void</text>
+                </g>
+            </g>
+        </symbol>
+    </defs>
+    <path class='inheritance'
+          d='M194.000,297.000 c0.000,-85.000,-47.000,0.000,-47.000,-85.000 v-15'
+          marker-end='url(#inheritance)'/>
+    <path class='implementation'
+          d='M244.000,297.000 c0.000,-195.000,122.000,0.000,122.000,-195.000 v-15'
+          marker-end='url(#implementation)'/>
+    <use x='25.000'
+         y='25.000'
+         xlink:href='#java.lang.Object'/>
+    <use x='319.000'
+         y='25.000'
+         xlink:href='#java.lang.AutoCloseable'/>
+    <use x='70.000'
+         y='297.000'
+         xlink:href='#org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl.Token'/>
+</svg>

@@ -6,8 +6,8 @@
      xmlns:xlink="http://www.w3.org/1999/xlink"
      version='1.1'
      baseProfile='full'
-     width='1092.000'
-     height='877.000'>
+     width='426.000'
+     height='679.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,181 +118,87 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='95.000'
-                  width='406.000'
+                  height='62.000'
+                  width='82.000'
                   x='0.000'
                   y='0.000'/>
         </clipPath>
-        <symbol id='org.tquadrat.foundation.util.internal.AutoSemaphoreImpl'>
+        <symbol id='org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl.Reaper'>
             <g>
                 <g class='focusClass'
                    clip-path='url(#ID000001)'>
                     <rect x='0.000'
                           y='0.000'
-                          width='406.000'
-                          height='95.000'
+                          width='82.000'
+                          height='62.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='17.000'
-                          x2='406.000'
+                          x2='82.000'
                           y2='17.000'
                           class='separator'/>
-                    <text x='152.000'
-                          y='13.000'>AutoSemaphoreImpl</text>
+                    <text x='23.000'
+                          y='13.000'>Reaper</text>
                     <line x1='0.000'
                           y1='34.000'
-                          x2='406.000'
+                          x2='82.000'
                           y2='34.000'
                           class='separator'/>
-                    <text y='30.000'
-                          class='static final'>- serialVersionUID:long</text>
                     <text x='5.000'
-                          y='47.000'>+ AutoSemaphoreImpl(permits:int)</text>
+                          y='30.000'/>
                     <text x='5.000'
-                          y='58.000'>+ AutoSemaphoreImpl(permits:int,fair:boolean)</text>
+                          y='47.000'>+ Reaper()</text>
                     <text x='5.000'
-                          y='69.000'>+ acquireToken(permits:int):java.lang.AutoCloseable</text>
-                    <text x='5.000'
-                          y='80.000'>+ acquireTokenUninterruptibly(permits:int):java.lang.AutoCloseable</text>
-                    <text x='5.000'
-                          y='91.000'>+ getSemaphore():java.util.concurrent.Semaphore</text>
+                          y='58.000'>+ run():void</text>
                 </g>
             </g>
         </symbol>
         <clipPath id='ID000002'>
             <rect class='externalClass'
-                  height='260.000'
-                  width='460.000'
+                  height='95.000'
+                  width='196.000'
                   x='0.000'
                   y='0.000'/>
         </clipPath>
-        <symbol id='java.util.concurrent.Semaphore'>
+        <symbol id='java.util.TimerTask'>
             <g>
                 <g clip-path='url(#ID000002)'>
                     <rect x='0.000'
                           y='0.000'
-                          width='460.000'
-                          height='260.000'
+                          width='196.000'
+                          height='95.000'
                           class='externalClass'/>
                     <line x1='0.000'
-                          y1='17.000'
-                          x2='460.000'
-                          y2='17.000'
+                          y1='28.000'
+                          x2='196.000'
+                          y2='28.000'
                           class='separator'/>
-                    <text x='203.000'
-                          y='13.000'>Semaphore</text>
+                    <text x='83.600'
+                          y='13.000'
+                          class='stereotype'>&#xAB;Type&#xBB;</text>
+                    <text x='71.000'
+                          y='24.000'
+                          class='abstract'>TimerTask</text>
                     <line x1='0.000'
-                          y1='34.000'
-                          x2='460.000'
-                          y2='34.000'
+                          y1='45.000'
+                          x2='196.000'
+                          y2='45.000'
                           class='separator'/>
                     <text x='5.000'
-                          y='30.000'>&#x2026;</text>
+                          y='41.000'>&#x2026;</text>
                     <text x='5.000'
-                          y='47.000'>+ Semaphore(arg0:int)</text>
+                          y='58.000'># TimerTask()</text>
                     <text x='5.000'
-                          y='58.000'>+ Semaphore(arg0:int,arg1:boolean)</text>
+                          y='69.000'
+                          class='abstract'>+ run():void</text>
                     <text x='5.000'
-                          y='69.000'>+ acquire():void</text>
+                          y='80.000'>+ cancel():boolean</text>
                     <text x='5.000'
-                          y='80.000'>+ acquireUninterruptibly():void</text>
-                    <text x='5.000'
-                          y='91.000'>+ tryAcquire():boolean</text>
-                    <text x='5.000'
-                          y='102.000'>+ tryAcquire(arg0:long,arg1:java.util.concurrent.TimeUnit):boolean</text>
-                    <text x='5.000'
-                          y='113.000'>+ release():void</text>
-                    <text x='5.000'
-                          y='124.000'>+ acquire(arg0:int):void</text>
-                    <text x='5.000'
-                          y='135.000'>+ acquireUninterruptibly(arg0:int):void</text>
-                    <text x='5.000'
-                          y='146.000'>+ tryAcquire(arg0:int):boolean</text>
-                    <text x='5.000'
-                          y='157.000'>+ tryAcquire(arg0:int,arg1:long,arg2:java.util.concurrent.TimeUnit):boolean</text>
-                    <text x='5.000'
-                          y='168.000'>+ release(arg0:int):void</text>
-                    <text x='5.000'
-                          y='179.000'>+ availablePermits():int</text>
-                    <text x='5.000'
-                          y='190.000'>+ drainPermits():int</text>
-                    <text x='5.000'
-                          y='201.000'># reducePermits(arg0:int):void</text>
-                    <text x='5.000'
-                          y='212.000'>+ isFair():boolean</text>
-                    <text x='5.000'
-                          y='223.000'>+ hasQueuedThreads():boolean</text>
-                    <text x='5.000'
-                          y='234.000'>+ getQueueLength():int</text>
-                    <text x='5.000'
-                          y='245.000'># getQueuedThreads():java.util.Collection&lt;java.lang.Thread&gt;</text>
-                    <text x='5.000'
-                          y='256.000'>+ toString():java.lang.String</text>
+                          y='91.000'>+ scheduledExecutionTime():long</text>
                 </g>
             </g>
         </symbol>
         <clipPath id='ID000003'>
-            <rect class='otherClass'
-                  height='150.000'
-                  width='616.000'
-                  x='0.000'
-                  y='0.000'/>
-        </clipPath>
-        <symbol id='org.tquadrat.foundation.util.AutoSemaphore'>
-            <g>
-                <g clip-path='url(#ID000003)'>
-                    <rect x='0.000'
-                          y='0.000'
-                          width='616.000'
-                          height='150.000'
-                          class='otherClass'/>
-                    <line x1='0.000'
-                          y1='28.000'
-                          x2='616.000'
-                          y2='28.000'
-                          class='separator'/>
-                    <text x='281.600'
-                          y='13.000'
-                          class='stereotype'>&#xAB;Interface&#xBB;</text>
-                    <text x='269.000'
-                          y='24.000'
-                          class='abstract'>AutoSemaphore</text>
-                    <line x1='0.000'
-                          y1='45.000'
-                          x2='616.000'
-                          y2='45.000'
-                          class='separator'/>
-                    <text x='5.000'
-                          y='41.000'/>
-                    <text x='5.000'
-                          y='58.000'>&#x2A22; acquireToken():java.lang.AutoCloseable</text>
-                    <text x='5.000'
-                          y='69.000'
-                          class='abstract'>+ acquireToken(permits:int):java.lang.AutoCloseable</text>
-                    <text x='5.000'
-                          y='80.000'>&#x2A22; acquireTokenUninterruptibly():java.lang.AutoCloseable</text>
-                    <text x='5.000'
-                          y='91.000'
-                          class='abstract'>+ acquireTokenUninterruptibly(permits:int):java.lang.AutoCloseable</text>
-                    <text x='5.000'
-                          y='102.000'
-                          class='abstract'>+ getSemaphore():java.util.concurrent.Semaphore</text>
-                    <text x='5.000'
-                          y='113.000'
-                          class='abstract static'>+ of(permits:int):org.tquadrat.foundation.util.AutoSemaphore</text>
-                    <text x='5.000'
-                          y='124.000'
-                          class='abstract static'>+ of(permits:int,fair:boolean):org.tquadrat.foundation.util.AutoSemaphore</text>
-                    <text x='5.000'
-                          y='135.000'
-                          class='abstract static'>+ of(permits:int,duration:java.time.Duration):org.tquadrat.foundation.util.AutoSemaphore</text>
-                    <text x='5.000'
-                          y='146.000'
-                          class='abstract static'>+ of(permits:int,fair:boolean,duration:java.time.Duration):org.tquadrat.foundation.util.AutoSemaphore</text>
-                </g>
-            </g>
-        </symbol>
-        <clipPath id='ID000004'>
             <rect class='externalClass'
                   height='172.000'
                   width='244.000'
@@ -301,7 +207,7 @@
         </clipPath>
         <symbol id='java.lang.Object'>
             <g>
-                <g clip-path='url(#ID000004)'>
+                <g clip-path='url(#ID000003)'>
                     <rect x='0.000'
                           y='0.000'
                           width='244.000'
@@ -348,16 +254,16 @@
                 </g>
             </g>
         </symbol>
-        <clipPath id='ID000005'>
+        <clipPath id='ID000004'>
             <rect class='externalClass'
                   height='62.000'
                   width='82.000'
                   x='0.000'
                   y='0.000'/>
         </clipPath>
-        <symbol id='java.io.Serializable'>
+        <symbol id='java.lang.Runnable'>
             <g>
-                <g clip-path='url(#ID000005)'>
+                <g clip-path='url(#ID000004)'>
                     <rect x='0.000'
                           y='0.000'
                           width='82.000'
@@ -371,9 +277,9 @@
                     <text x='14.600'
                           y='13.000'
                           class='stereotype'>&#xAB;Interface&#xBB;</text>
-                    <text x='5.000'
+                    <text x='17.000'
                           y='24.000'
-                          class='abstract'>Serializable</text>
+                          class='abstract'>Runnable</text>
                     <line x1='0.000'
                           y1='45.000'
                           x2='82.000'
@@ -382,36 +288,31 @@
                     <text x='5.000'
                           y='41.000'/>
                     <text x='5.000'
-                          y='58.000'/>
+                          y='58.000'
+                          class='abstract'>+ run():void</text>
                 </g>
             </g>
         </symbol>
     </defs>
     <path class='inheritance'
-          d='M571.000,657.000 c0.000,-85.000,-25.000,0.000,-25.000,-85.000 v-15'
+          d='M213.000,492.000 L213.000,392.000'
           marker-end='url(#inheritance)'/>
-    <path class='implementation'
-          d='M521.000,657.000 c0.000,-467.000,-188.000,0.000,-188.000,-467.000 v-15'
-          marker-end='url(#implementation)'/>
     <path class='inheritance'
-          d='M521.000,297.000 c0.000,-85.000,292.000,0.000,292.000,-85.000 v-15'
+          d='M188.000,297.000 c0.000,-85.000,-41.000,0.000,-41.000,-85.000 v-15'
           marker-end='url(#inheritance)'/>
     <path class='implementation'
-          d='M571.000,297.000 c0.000,-195.000,455.000,0.000,455.000,-195.000 v-15'
+          d='M238.000,297.000 c0.000,-195.000,122.000,0.000,122.000,-195.000 v-15'
           marker-end='url(#implementation)'/>
     <use x='25.000'
          y='25.000'
-         xlink:href='#org.tquadrat.foundation.util.AutoSemaphore'/>
-    <use x='691.000'
-         y='25.000'
          xlink:href='#java.lang.Object'/>
-    <use x='985.000'
+    <use x='319.000'
          y='25.000'
-         xlink:href='#java.io.Serializable'/>
-    <use x='316.000'
+         xlink:href='#java.lang.Runnable'/>
+    <use x='115.000'
          y='297.000'
-         xlink:href='#java.util.concurrent.Semaphore'/>
-    <use x='343.000'
-         y='657.000'
-         xlink:href='#org.tquadrat.foundation.util.internal.AutoSemaphoreImpl'/>
+         xlink:href='#java.util.TimerTask'/>
+    <use x='172.000'
+         y='492.000'
+         xlink:href='#org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl.Reaper'/>
 </svg>

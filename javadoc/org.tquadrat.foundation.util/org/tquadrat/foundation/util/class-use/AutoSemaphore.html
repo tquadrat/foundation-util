@@ -90,6 +90,21 @@ loadScripts(document, 'script');</script>
 <div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
   permits and the given fairness setting.</div>
 </div>
+<div class="col-first even-row-color"><code>static <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></code></div>
+<div class="col-second even-row-color"><span class="type-name-label">AutoSemaphore.</span><code><a href="../AutoSemaphore.html#of(int,boolean,java.time.Duration)" class="member-name-link">of</a><wbr>(int&nbsp;permits,
+ boolean&nbsp;fair,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</code></div>
+<div class="col-last even-row-color">
+<div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
+  permits and the given fairness setting.</div>
+</div>
+<div class="col-first odd-row-color"><code>static <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></code></div>
+<div class="col-second odd-row-color"><span class="type-name-label">AutoSemaphore.</span><code><a href="../AutoSemaphore.html#of(int,java.time.Duration)" class="member-name-link">of</a><wbr>(int&nbsp;permits,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</code></div>
+<div class="col-last odd-row-color">
+<div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
+  permits and non-fair fairness setting.</div>
+</div>
 </div>
 </section>
 </li>
@@ -106,6 +121,13 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color">
 <div class="block">The implementation of
   <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foundation.util"><code>AutoSemaphore</code></a>.</div>
+</div>
+<div class="col-first odd-row-color"><code>final class&nbsp;</code></div>
+<div class="col-second odd-row-color"><code><a href="../internal/TimeoutSemaphoreImpl.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></code></div>
+<div class="col-last odd-row-color">
+<div class="block">An implementation for
+  <a href="../AutoSemaphore.html" title="interface in org.tquadrat.foundation.util"><code>AutoSemaphore</code></a>
+  that allows a timeout for the permits.</div>
 </div>
 </div>
 </section>

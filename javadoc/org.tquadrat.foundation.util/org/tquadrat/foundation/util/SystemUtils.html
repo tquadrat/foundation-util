@@ -402,10 +402,8 @@ loadScripts(document, 'script');</script>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#repose(java.time.Duration)" class="member-name-link">repose</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">An implementation of
-  <a href="#repose(long)"><code>repose(long)</code></a>
-  that takes an instance of
-  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link"><code>Duration</code></a>
-  to determine the time to sleep.</div>
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(java.time.Duration)" title="class or interface in java.lang" class="external-link"><code>Thread.sleep(Duration)</code></a>
+  that does not throw an exception in case it will be interrupted.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final boolean</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#reposeUntil(java.time.Instant)" class="member-name-link">reposeUntil</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a>&nbsp;until)</code></div>
@@ -421,14 +419,14 @@ loadScripts(document, 'script');</script>
   <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Locale.html" title="class or interface in java.util" class="external-link"><code>Locale</code></a>
   for the given locale name.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sleep(java.time.Duration)" class="member-name-link">sleep</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</code></div>
-<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">An implementation of
-  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(long)" title="class or interface in java.lang" class="external-link"><code>Thread.sleep(long)</code></a>
-  that takes an instance of
-  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link"><code>Duration</code></a>
-  to determine the time to sleep.</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code>static final void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6"><code><a href="#sleep(java.time.Duration)" class="member-name-link">sleep</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4 method-summary-table-tab6">
+<div class="block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
+<div class="deprecation-comment">Use
+      <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(java.time.Duration)" title="class or interface in java.lang" class="external-link"><code>Thread.sleep(Duration)</code></a>
+      instead.</div>
+</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#sleepUntil(java.time.Instant)" class="member-name-link">sleepUntil</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a>&nbsp;until)</code></div>
@@ -955,11 +953,18 @@ loadScripts(document, 'script');</script>
 <h3>repose</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-768">repose</a></span><wbr><span class="parameters">(long&nbsp;millis)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-771">repose</a></span><wbr><span class="parameters">(long&nbsp;millis)</span></div>
 <div class="block">An implementation of
   <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(long)" title="class or interface in java.lang" class="external-link"><code>Thread.sleep(long)</code></a>
   that does not throw an exception in case it will be interrupted.</div>
 <dl class="notes">
+<dt><span class="simpleTagLabel">Note:</span></dt>
+<dd>
+<ul>
+<li>While sleeping, the thread does not lose ownership of any
+      monitors.</li>
+</ul>
+</dd>
 <dt>Parameters:</dt>
 <dd><code>millis</code> - The time to sleep in milliseconds.</dd>
 <dt>Returns:</dt>
@@ -973,13 +978,18 @@ loadScripts(document, 'script');</script>
 <h3>repose</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-802">repose</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-806">repose</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</span></div>
 <div class="block">An implementation of
-  <a href="#repose(long)"><code>repose(long)</code></a>
-  that takes an instance of
-  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link"><code>Duration</code></a>
-  to determine the time to sleep.</div>
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(java.time.Duration)" title="class or interface in java.lang" class="external-link"><code>Thread.sleep(Duration)</code></a>
+  that does not throw an exception in case it will be interrupted.</div>
 <dl class="notes">
+<dt><span class="simpleTagLabel">Note:</span></dt>
+<dd>
+<ul>
+<li>While sleeping, the thread does not lose ownership of any
+      monitors.</li>
+</ul>
+</dd>
 <dt>Parameters:</dt>
 <dd><code>duration</code> - The time to sleep.</dd>
 <dt>Returns:</dt>
@@ -993,11 +1003,18 @@ loadScripts(document, 'script');</script>
 <h3>reposeUntil</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-822">reposeUntil</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a>&nbsp;until)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-845">reposeUntil</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a>&nbsp;until)</span></div>
 <div class="block">An implementation of
   <a href="#sleepUntil(java.time.Instant)"><code>sleepUntil(Instant)</code></a>
   that does not throw an exception when interrupted.</div>
 <dl class="notes">
+<dt><span class="simpleTagLabel">Note:</span></dt>
+<dd>
+<ul>
+<li>While sleeping, the thread does not lose ownership of any
+      monitors.</li>
+</ul>
+</dd>
 <dt>Parameters:</dt>
 <dd><code>until</code> - The end time for the sleep period.</dd>
 <dt>Returns:</dt>
@@ -1011,7 +1028,7 @@ loadScripts(document, 'script');</script>
 <h3>retrieveLocale</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.6")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Locale.html" title="class or interface in java.util" class="external-link">Locale</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-867">retrieveLocale</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;localeName)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Locale.html" title="class or interface in java.util" class="external-link">Locale</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-896">retrieveLocale</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;localeName)</span></div>
 <div class="block">Retrieves an instance of
   <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Locale.html" title="class or interface in java.util" class="external-link"><code>Locale</code></a>
   for the given locale name. This method will look up the requested
@@ -1042,16 +1059,30 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="sleep(java.time.Duration)">
 <h3>sleep</h3>
-<div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
+<div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#DEPRECATED" title="class or interface in org.apiguardian.api" class="external-link">DEPRECATED</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-949">sleep</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</span>
+<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Deprecated.html" title="class or interface in java.lang" class="external-link">@Deprecated</a>(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Deprecated.html#since()" title="class or interface in java.lang" class="external-link">since</a>="0.4.8",
+            <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Deprecated.html#forRemoval()" title="class or interface in java.lang" class="external-link">forRemoval</a>=true)
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-985">sleep</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</span>
                         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
+<div class="deprecation-block"><span class="deprecated-label">Deprecated, for removal: This API element is subject to removal in a future version.</span>
+<div class="deprecation-comment">Use
+      <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(java.time.Duration)" title="class or interface in java.lang" class="external-link"><code>Thread.sleep(Duration)</code></a>
+      instead.</div>
+</div>
 <div class="block">An implementation of
   <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(long)" title="class or interface in java.lang" class="external-link"><code>Thread.sleep(long)</code></a>
   that takes an instance of
   <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link"><code>Duration</code></a>
   to determine the time to sleep.</div>
 <dl class="notes">
+<dt><span class="simpleTagLabel">Note:</span></dt>
+<dd>
+<ul>
+<li>While sleeping, the thread does not lose ownership of any
+      monitors.</li>
+</ul>
+</dd>
 <dt>Parameters:</dt>
 <dd><code>duration</code> - The time to sleep.</dd>
 <dt>Throws:</dt>
@@ -1067,13 +1098,20 @@ loadScripts(document, 'script');</script>
 <h3>sleepUntil</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.7")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-972">sleepUntil</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a>&nbsp;until)</span>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-1012">sleepUntil</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Instant.html" title="class or interface in java.time" class="external-link">Instant</a>&nbsp;until)</span>
                              throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
 <div class="block">Causes the currently executing thread to sleep (temporarily cease
   execution) until the specified time, subject to the precision and
   accuracy of system timers and schedulers. The thread does not lose
   ownership of any monitors.</div>
 <dl class="notes">
+<dt><span class="simpleTagLabel">Note:</span></dt>
+<dd>
+<ul>
+<li>While sleeping, the thread does not lose ownership of any
+      monitors.</li>
+</ul>
+</dd>
 <dt>Parameters:</dt>
 <dd><code>until</code> - The end time for the sleep.</dd>
 <dt>Throws:</dt>
@@ -1095,7 +1133,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="systemPropertiesAsStringMap()">
 <h3>systemPropertiesAsStringMap</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-996">systemPropertiesAsStringMap</a></span>()</div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/Map.html" title="class or interface in java.util" class="external-link">Map</a>&lt;<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>,<wbr><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&gt;</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-1036">systemPropertiesAsStringMap</a></span>()</div>
 <div class="block"><p>Returns the
   <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/System.html#getProperties()" title="class or interface in java.lang" class="external-link">system properties</a>
   as a
@@ -1124,7 +1162,7 @@ loadScripts(document, 'script');</script>
 <h3>translateMACToNodeId</h3>
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.0.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-1020">translateMACToNodeId</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;macAddress)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#line-1060">translateMACToNodeId</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;macAddress)</span></div>
 <div class="block"><p>Translates a given MAC address into a numerical node
   id.</p>
   <p>A MAC address is a string consisting of 12 hex digits, grouped by

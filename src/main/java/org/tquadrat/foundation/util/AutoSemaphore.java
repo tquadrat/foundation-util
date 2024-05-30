@@ -19,11 +19,13 @@ package org.tquadrat.foundation.util;
 
 import static org.apiguardian.api.API.Status.STABLE;
 
+import java.time.Duration;
 import java.util.concurrent.Semaphore;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.util.internal.AutoSemaphoreImpl;
+import org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl;
 
 /**
  *  <p>{@summary An implementation of
@@ -43,17 +45,26 @@ import org.tquadrat.foundation.util.internal.AutoSemaphoreImpl;
  *      // Handle the exception …
  *  }
  *  </code></pre>
+ *  <p>A call to
+ *  {@link #of(int,Duration)}
+ *  or
+ *  {@link #of(int,boolean,Duration)}
+ *  creates a {@code AutoSemaphore} instance whose permits will be released
+ *  automatically after the given period of time. Do not acquire permits from
+ *  the instance returned by a call to
+ *  {@link #getSemaphore()}
+ *  on such an instance, as it may behave unexpectedly.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $
+ *  @version $Id: AutoSemaphore.java 1135 2024-05-28 21:32:48Z tquadrat $
  *  @since 0.4.8
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: AutoSemaphore.java 1135 2024-05-28 21:32:48Z tquadrat $" )
 @API( status = STABLE, since = "0.4.8" )
 public sealed interface AutoSemaphore
-    permits AutoSemaphoreImpl
+    permits AutoSemaphoreImpl, TimeoutSemaphoreImpl
 {
         /*---------*\
     ====** Methods **==========================================================
@@ -222,6 +233,34 @@ public sealed interface AutoSemaphore
      *  @return The new {@code AutoSemaphore} instance.
      */
     public static AutoSemaphore of( final int permits, final boolean fair ) { return new AutoSemaphoreImpl( permits, fair ); }
+
+    /**
+     *  Creates an {@code AutoSemaphore} instance with the given number of
+     *  permits and non-fair fairness setting.
+     *
+     *  @param  permits The initial number of permits available. This value may
+     *      be negative, in which case releases must occur before any acquires
+     *      will be granted.
+     *  @param  duration    The timeout for a permit; after the given period of
+     *      time, an acquired permit will be released automatically.
+     *  @return The new {@code AutoSemaphore} instance.
+     */
+    public static AutoSemaphore of( final int permits, final Duration duration ) { return new TimeoutSemaphoreImpl( permits, duration ); }
+
+    /**
+     *  Creates an {@code AutoSemaphore} instance with the given number of
+     *  permits and the given fairness setting.
+     *
+     *  @param  permits The initial number of permits available. This value may
+     *      be negative, in which case releases must occur before any acquires
+     *      will be granted.
+     *  @param  fair    {@code true} if this semaphore will guarantee first-in
+     *      first-out granting of permits under contention, else {@code false}.
+     *  @param  duration    The timeout for a permit; after the given period of
+     *      time, an acquired permit will be released automatically.
+     *  @return The new {@code AutoSemaphore} instance.
+     */
+    public static AutoSemaphore of( final int permits, final boolean fair, final Duration duration ) { return new TimeoutSemaphoreImpl( permits, fair, duration ); }
 }
 //  class AutoSemaphore
 

@@ -94,6 +94,14 @@ loadScripts(document, 'script');</script>
   and returns a token object that is used for
   <code>try-with-resources</code>.</div>
 </dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#acquireToken(int)" class="member-name-link">acquireToken(int)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Acquires the given number of permits from this semaphore,
+  blocking until all are available, or the thread is
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#interrupt()" title="class or interface in java.lang" class="external-link">interrupted</a>,
+  and returns a token object that is used for
+  <code>try-with-resources</code>.</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#acquireTokenUninterruptibly()" class="member-name-link">acquireTokenUninterruptibly()</a> - Method in interface org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></dt>
 <dd>
 <div class="block">Acquires a permit from this semaphore, blocking until one
@@ -107,6 +115,12 @@ loadScripts(document, 'script');</script>
   used for <code>try-with-resources</code>.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html#acquireTokenUninterruptibly(int)" class="member-name-link">acquireTokenUninterruptibly(int)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Acquires the given number of permits from this semaphore,
+  blocking until all are available, and returns a token object that is
+  used for <code>try-with-resources</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#acquireTokenUninterruptibly(int)" class="member-name-link">acquireTokenUninterruptibly(int)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></dt>
 <dd>
 <div class="block">Acquires the given number of permits from this semaphore,
   blocking until all are available, and returns a token object that is

@@ -109,6 +109,24 @@ loadScripts(document, 'script');</script>
 <div class="block">Loads a previously serialised instance of this class from the given
   input stream.</div>
 </dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Reaper.html#%3Cinit%3E()" class="member-name-link">Reaper()</a> - Constructor for class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Reaper.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Reaper</a></dt>
+<dd>
+<div class="block">Creates a new instance of <code>Reaper</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#REAPER_CYCLE" class="member-name-link">REAPER_CYCLE</a> - Static variable in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></dt>
+<dd>
+<div class="block">The cycle time for the reaper thread in milliseconds: 1000L ms.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#registerJanitor(java.lang.Runnable)" class="member-name-link">registerJanitor(Runnable)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Registers the janitor that is doing the housekeeping on garbage
+  collection.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#release(java.util.UUID)" class="member-name-link">release(UUID)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Releases the number of permits associated with the token
+  with the given id, returning them to the semaphore.</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html#remove(int)" class="member-name-link">remove(int)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyListImpl</a></dt>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html#remove(java.lang.Object)" class="member-name-link">remove(Object)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyListImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyListImpl</a></dt>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html#remove(java.lang.Object)" class="member-name-link">remove(Object)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/LazyMapImpl.html" title="class in org.tquadrat.foundation.util.internal">LazyMapImpl</a></dt>
@@ -218,10 +236,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#repose(java.time.Duration)" class="member-name-link">repose(Duration)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html" title="class in org.tquadrat.foundation.util">SystemUtils</a></dt>
 <dd>
 <div class="block">An implementation of
-  <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#repose(long)"><code>SystemUtils.repose(long)</code></a>
-  that takes an instance of
-  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link"><code>Duration</code></a>
-  to determine the time to sleep.</div>
+  <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Thread.html#sleep(java.time.Duration)" title="class or interface in java.lang" class="external-link"><code>Thread.sleep(Duration)</code></a>
+  that does not throw an exception in case it will be interrupted.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html#reposeUntil(java.time.Instant)" class="member-name-link">reposeUntil(Instant)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/SystemUtils.html" title="class in org.tquadrat.foundation.util">SystemUtils</a></dt>
 <dd>
@@ -325,6 +341,11 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/UniqueIdUtils.html#rfc4122-uuid-heading" class="search-tag-link">RFC4122 UUID</a> - Search tag in class org.tquadrat.foundation.util.UniqueIdUtils</dt>
 <dd>Section</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Janitor.html#run()" class="member-name-link">run()</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Janitor.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Janitor</a></dt>
+<dd>
+<div class="block">Performs the housekeeping.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Reaper.html#run()" class="member-name-link">run()</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Reaper.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Reaper</a></dt>
 </dl>
 <a href="index-1.html">A</a>&nbsp;<a href="index-2.html">B</a>&nbsp;<a href="index-3.html">C</a>&nbsp;<a href="index-4.html">D</a>&nbsp;<a href="index-5.html">E</a>&nbsp;<a href="index-6.html">F</a>&nbsp;<a href="index-7.html">G</a>&nbsp;<a href="index-8.html">H</a>&nbsp;<a href="index-9.html">I</a>&nbsp;<a href="index-10.html">J</a>&nbsp;<a href="index-11.html">K</a>&nbsp;<a href="index-12.html">L</a>&nbsp;<a href="index-13.html">M</a>&nbsp;<a href="index-14.html">N</a>&nbsp;<a href="index-15.html">O</a>&nbsp;<a href="index-16.html">P</a>&nbsp;<a href="index-17.html">Q</a>&nbsp;<a href="index-18.html">R</a>&nbsp;<a href="index-19.html">S</a>&nbsp;<a href="index-20.html">T</a>&nbsp;<a href="index-21.html">U</a>&nbsp;<a href="index-22.html">V</a>&nbsp;<a href="index-23.html">W</a>&nbsp;<a href="index-24.html">X</a>&nbsp;<a href="index-25.html">Y</a>&nbsp;<a href="index-26.html">Z</a>&nbsp;<br><a href="../allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="../allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="../constant-values.html">Constant&nbsp;Field&nbsp;Values</a><span class="vertical-separator">|</span><a href="../serialized-form.html">Serialized&nbsp;Form</a></main>
 <footer role="contentinfo">

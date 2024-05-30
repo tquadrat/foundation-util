@@ -96,14 +96,14 @@ loadScripts(document, 'script');</script>
 <section class="class-description" id="class-description">
 <dl class="notes">
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a></code></dd>
+<dd><code><a href="internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a></code>, <code><a href="internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></code></dd>
 </dl>
 <hr>
-<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $")
+<div class="type-signature"><span class="annotations"><a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">@ClassVersion</a>(<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/annotation/ClassVersion.html#sourceVersion()" title="class or interface in org.tquadrat.foundation.annotation" class="external-link">sourceVersion</a>="$Id: AutoSemaphore.java 1135 2024-05-28 21:32:48Z tquadrat $")
 <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.4.8")
-</span><span class="modifiers">public sealed interface </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-53">AutoSemaphore</a></span>
-<span class="permits">permits <a href="internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a></span></div>
+</span><span class="modifiers">public sealed interface </span><span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-64">AutoSemaphore</a></span>
+<span class="permits">permits <a href="internal/AutoSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl</a>, <a href="internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></span></div>
 <div class="block"><p>An implementation of
   <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Semaphore.html" title="class or interface in java.util.concurrent" class="external-link"><code>Semaphore</code></a>
   that allows to be used with <code>try-with-resources</code>.</p>
@@ -120,12 +120,21 @@ loadScripts(document, 'script');</script>
   {
       // Handle the exception …
   }
-  </code></pre></div>
+  </code></pre>
+  <p>A call to
+  <a href="#of(int,java.time.Duration)"><code>of(int,Duration)</code></a>
+  or
+  <a href="#of(int,boolean,java.time.Duration)"><code>of(int,boolean,Duration)</code></a>
+  creates a <code>AutoSemaphore</code> instance whose permits will be released
+  automatically after the given period of time. Do not acquire permits from
+  the instance returned by a call to
+  <a href="#getSemaphore()"><code>getSemaphore()</code></a>
+  on such an instance, as it may behave unexpectedly.</p></div>
 <dl class="notes">
 <dt><span class="simpleTagLabel">Author:</span></dt>
   <dd>Thomas Thrien (<a href="mailto:thomas.thrien@tquadrat.org">thomas.thrien@tquadrat.org</a>)</dd>
 <dt>Version:</dt>
-<dd>$Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $</dd>
+<dd>$Id: AutoSemaphore.java 1135 2024-05-28 21:32:48Z tquadrat $</dd>
 <dt>Since:</dt>
 <dd>0.4.8</dd>
 
@@ -211,6 +220,21 @@ loadScripts(document, 'script');</script>
 <div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
   permits and the given fairness setting.</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab1"><code>static <a href="AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1"><code><a href="#of(int,boolean,java.time.Duration)" class="member-name-link">of</a><wbr>(int&nbsp;permits,
+ boolean&nbsp;fair,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab1">
+<div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
+  permits and the given fairness setting.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab1"><code>static <a href="AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1"><code><a href="#of(int,java.time.Duration)" class="member-name-link">of</a><wbr>(int&nbsp;permits,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab1">
+<div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
+  permits and non-fair fairness setting.</div>
+</div>
 </div>
 </div>
 </div>
@@ -228,7 +252,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="acquireToken()">
 <h3>acquireToken</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-95">acquireToken</a></span>()
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-106">acquireToken</a></span>()
                             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
 <div class="block"><p>Acquires a permit from this semaphore, blocking until one
   is available, or the thread is
@@ -270,7 +294,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="acquireToken(int)">
 <h3>acquireToken</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-141">acquireToken</a></span><wbr><span class="parameters">(int&nbsp;permits)</span>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-152">acquireToken</a></span><wbr><span class="parameters">(int&nbsp;permits)</span>
                     throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a>,
 <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
 <div class="block"><p>Acquires the given number of permits from this semaphore,
@@ -324,7 +348,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="acquireTokenUninterruptibly()">
 <h3>acquireTokenUninterruptibly</h3>
-<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-165">acquireTokenUninterruptibly</a></span>()</div>
+<div class="member-signature"><span class="modifiers">default</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-176">acquireTokenUninterruptibly</a></span>()</div>
 <div class="block"><p>Acquires a permit from this semaphore, blocking until one
   is available, and returns a token object that is used for
   <code>try-with-resources</code>.</p>
@@ -352,7 +376,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="acquireTokenUninterruptibly(int)">
 <h3>acquireTokenUninterruptibly</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-193">acquireTokenUninterruptibly</a></span><wbr><span class="parameters">(int&nbsp;permits)</span>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/AutoCloseable.html" title="class or interface in java.lang" class="external-link">AutoCloseable</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-204">acquireTokenUninterruptibly</a></span><wbr><span class="parameters">(int&nbsp;permits)</span>
                                    throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
 <div class="block"><p>Acquires the given number of permits from this semaphore,
   blocking until all are available, and returns a token object that is
@@ -387,7 +411,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="getSemaphore()">
 <h3>getSemaphore</h3>
-<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Semaphore.html" title="class or interface in java.util.concurrent" class="external-link">Semaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-200">getSemaphore</a></span>()</div>
+<div class="member-signature"><span class="return-type"><a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/util/concurrent/Semaphore.html" title="class or interface in java.util.concurrent" class="external-link">Semaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-211">getSemaphore</a></span>()</div>
 <div class="block">Returns a reference to the raw semaphore.</div>
 <dl class="notes">
 <dt>Returns:</dt>
@@ -398,7 +422,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="of(int)">
 <h3>of</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-211">of</a></span><wbr><span class="parameters">(int&nbsp;permits)</span></div>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-222">of</a></span><wbr><span class="parameters">(int&nbsp;permits)</span></div>
 <div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
   permits and non-fair fairness setting.</div>
 <dl class="notes">
@@ -414,7 +438,7 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="of(int,boolean)">
 <h3>of</h3>
-<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-224">of</a></span><wbr><span class="parameters">(int&nbsp;permits,
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-235">of</a></span><wbr><span class="parameters">(int&nbsp;permits,
  boolean&nbsp;fair)</span></div>
 <div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
   permits and the given fairness setting.</div>
@@ -425,6 +449,47 @@ loadScripts(document, 'script');</script>
       will be granted.</dd>
 <dd><code>fair</code> - <code>true</code> if this semaphore will guarantee first-in
       first-out granting of permits under contention, else <code>false</code>.</dd>
+<dt>Returns:</dt>
+<dd>The new <code>AutoSemaphore</code> instance.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="of(int,java.time.Duration)">
+<h3>of</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-248">of</a></span><wbr><span class="parameters">(int&nbsp;permits,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</span></div>
+<div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
+  permits and non-fair fairness setting.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>permits</code> - The initial number of permits available. This value may
+      be negative, in which case releases must occur before any acquires
+      will be granted.</dd>
+<dd><code>duration</code> - The timeout for a permit; after the given period of
+      time, an acquired permit will be released automatically.</dd>
+<dt>Returns:</dt>
+<dd>The new <code>AutoSemaphore</code> instance.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="of(int,boolean,java.time.Duration)">
+<h3>of</h3>
+<div class="member-signature"><span class="modifiers">static</span>&nbsp;<span class="return-type"><a href="AutoSemaphore.html" title="interface in org.tquadrat.foundation.util">AutoSemaphore</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html#line-263">of</a></span><wbr><span class="parameters">(int&nbsp;permits,
+ boolean&nbsp;fair,
+ <a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/time/Duration.html" title="class or interface in java.time" class="external-link">Duration</a>&nbsp;duration)</span></div>
+<div class="block">Creates an <code>AutoSemaphore</code> instance with the given number of
+  permits and the given fairness setting.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>permits</code> - The initial number of permits available. This value may
+      be negative, in which case releases must occur before any acquires
+      will be granted.</dd>
+<dd><code>fair</code> - <code>true</code> if this semaphore will guarantee first-in
+      first-out granting of permits under contention, else <code>false</code>.</dd>
+<dd><code>duration</code> - The timeout for a permit; after the given period of
+      time, an acquired permit will be released automatically.</dd>
 <dt>Returns:</dt>
 <dd>The new <code>AutoSemaphore</code> instance.</dd>
 </dl>

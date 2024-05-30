@@ -155,6 +155,38 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Creates a new <code>TimeStringConverter</code> instance.</div>
 </dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/package-summary.html">org.tquadrat.foundation.util.internal</a></dt>
+<dd>
+<div class="block">An implementation for
+  <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/AutoSemaphore.html" title="interface in org.tquadrat.foundation.util"><code>AutoSemaphore</code></a>
+  that allows a timeout for the permits.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#%3Cinit%3E(int,boolean,java.time.Duration)" class="member-name-link">TimeoutSemaphoreImpl(int, boolean, Duration)</a> - Constructor for class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Creates an <code>TimeoutSemaphoreImpl</code> instance with the given number
+  of permits, the given timeout duration and the given fairness setting.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#%3Cinit%3E(int,java.time.Duration)" class="member-name-link">TimeoutSemaphoreImpl(int, Duration)</a> - Constructor for class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></dt>
+<dd>
+<div class="block">Creates an <code>TimeoutSemaphoreImpl</code> instance with the given number
+  of permits, the given timeout duration and non-fair fairness setting.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Janitor.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Janitor</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/package-summary.html">org.tquadrat.foundation.util.internal</a></dt>
+<dd>
+<div class="block">The <code>Janitor</code> for the owning
+  <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal"><code>TimeoutSemaphoreImpl</code></a>
+  instance.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Reaper.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Reaper</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/package-summary.html">org.tquadrat.foundation.util.internal</a></dt>
+<dd>
+<div class="block">The reaper thread.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Token.html" class="type-name-link" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Token</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/package-summary.html">org.tquadrat.foundation.util.internal</a></dt>
+<dd>
+<div class="block">The token that holds the permits to be released when a
+  <code>try-with-resources</code> block is left or the timeout has
+  expired.</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/TimeUnitStringConverter.html" class="type-name-link" title="class in org.tquadrat.foundation.util.stringconverter">TimeUnitStringConverter</a> - Class in <a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/stringconverter/package-summary.html">org.tquadrat.foundation.util.stringconverter</a></dt>
 <dd>
 <div class="block">The implementation of
@@ -217,6 +249,10 @@ loadScripts(document, 'script');</script>
   array without removing them, with the top most entry as the first.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.Token.html#%3Cinit%3E(int)" class="member-name-link">Token(int)</a> - Constructor for class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/AutoSemaphoreImpl.Token.html" title="class in org.tquadrat.foundation.util.internal">AutoSemaphoreImpl.Token</a></dt>
+<dd>
+<div class="block">Creates a new instance of <code>Token</code>.</div>
+</dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Token.html#%3Cinit%3E(int,java.time.Instant)" class="member-name-link">Token(int, Instant)</a> - Constructor for class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.Token.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl.Token</a></dt>
 <dd>
 <div class="block">Creates a new instance of <code>Token</code>.</div>
 </dd>
