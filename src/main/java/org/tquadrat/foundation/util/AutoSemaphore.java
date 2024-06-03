@@ -56,12 +56,12 @@ import org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl;
  *  on such an instance, as it may behave unexpectedly.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: AutoSemaphore.java 1135 2024-05-28 21:32:48Z tquadrat $
+ *  @version $Id: AutoSemaphore.java 1136 2024-05-30 18:25:38Z tquadrat $
  *  @since 0.4.8
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: AutoSemaphore.java 1135 2024-05-28 21:32:48Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: AutoSemaphore.java 1136 2024-05-30 18:25:38Z tquadrat $" )
 @API( status = STABLE, since = "0.4.8" )
 public sealed interface AutoSemaphore
     permits AutoSemaphoreImpl, TimeoutSemaphoreImpl

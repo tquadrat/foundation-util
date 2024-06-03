@@ -17,11 +17,13 @@
 
 package org.tquadrat.foundation.util;
 
+import static java.lang.Character.charCount;
 import static java.lang.Character.isISOControl;
 import static java.lang.Character.isValidCodePoint;
 import static java.lang.Character.isWhitespace;
 import static java.lang.Character.toChars;
 import static java.lang.Character.toLowerCase;
+import static java.lang.Character.toTitleCase;
 import static java.lang.Character.toUpperCase;
 import static java.lang.Integer.min;
 import static java.net.URLDecoder.decode;
@@ -52,9 +54,12 @@ import static org.tquadrat.foundation.util.internal.Entities.XML;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
+import java.util.SequencedCollection;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.stream.Stream;
@@ -69,6 +74,7 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
 import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
 import org.tquadrat.foundation.exception.ValidationException;
+import org.tquadrat.foundation.lang.Objects;
 
 /**
  *  Library of utility methods that are useful when dealing with Strings. <br>
@@ -745,23 +751,104 @@ public final class StringUtils
     public static final String capitalize( final CharSequence input )
     {
         String retValue = null;
-        if( nonNull( input ) )
+        if( isNotEmpty( input ) )
         {
-            @SuppressWarnings( "LocalVariableNamingConvention" )
-            final var s = input.toString();
-            if( s.isEmpty() )
+            final var str = input.toString();
+            final var firstCodePoint = str.codePointAt( 0 );
+            final var newCodePoint = toUpperCase( firstCodePoint );
+            if( firstCodePoint == newCodePoint )
             {
-                retValue = s;
+                retValue = str;
             }
             else
             {
-                retValue = (toUpperCase( s.charAt( 0 ) ) + s.substring( 1 )).intern();
+                final var strLen = str.length();
+                final var newCodePoints = new int [strLen];
+                var outOffset = 0;
+                newCodePoints [outOffset++] = newCodePoint;
+                //noinspection ForLoopWithMissingComponent
+                for( var inOffset = charCount( firstCodePoint ); inOffset < strLen; )
+                {
+                    final var codePoint = str.codePointAt( inOffset );
+                    newCodePoints [outOffset++] = codePoint;
+                    inOffset += charCount( codePoint );
+                }
+                retValue = new String( newCodePoints, 0, outOffset );
             }
+        }
+        else if( nonNull( input ) )
+        {
+            retValue = EMPTY_STRING;
         }
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  capitalize()
+
+    /**
+     *  <p>{@summary <i>Capitalises</i> a String, meaning changing the first
+     *  letter to upper case as per
+     *  {@link Character#toTitleCase(char)}.} No other letters are changed.</p>
+     *  <p>A {@code null} input String returns {@code null}.</p>
+     *  <p>Samples:</p>
+     *  <pre><code>  StringUtils.capitalize( null )  == null;
+     *  StringUtils.capitalize( &quot;&quot; )    == &quot;&quot;;
+     *  StringUtils.capitalize( &quot;cat&quot; ) == &quot;Cat&quot;;
+     *  StringUtils.capitalize( &quot;cAt&quot; ) == &quot;CAt&quot;;</code></pre>
+     *  <p>Use this function to create a getter or setter name from the name of
+     *  the attribute.</p>
+     *  <p>This method does not recognise the
+     *  {@linkplain java.util.Locale#getDefault() default locale}.
+     *  This means that &quot;istanbul&quot; will become &quot;Istanbul&quot;
+     *  even for the locale {@code tr_TR} (although &quot;&#x130;stanbul&quot;
+     *  would be correct).</p>
+     *
+     *  @param input    The String to capitalise, can be {@code null}.
+     *  @return The capitalised String, or {@code null} if the argument
+     *      was already {@code null}.
+     *
+     *  @see #capitalize(CharSequence)
+     *  @see #decapitalize(CharSequence)
+     *
+     *  @since 0.4.8
+     */
+    @API( status = STABLE, since = "0.4.8" )
+    public static final String capitalizeToTitle( final CharSequence input )
+    {
+        String retValue = null;
+        if( isNotEmpty( input ) )
+        {
+            final var str = input.toString();
+            final var firstCodePoint = str.codePointAt( 0 );
+            final var newCodePoint = toTitleCase( firstCodePoint );
+            if( firstCodePoint == newCodePoint )
+            {
+                retValue = str;
+            }
+            else
+            {
+                final var strLen = str.length();
+                final var newCodePoints = new int [strLen];
+                var outOffset = 0;
+                newCodePoints [outOffset++] = newCodePoint;
+                //noinspection ForLoopWithMissingComponent
+                for( var inOffset = charCount( firstCodePoint ); inOffset < strLen; )
+                {
+                    final var codePoint = str.codePointAt( inOffset );
+                    newCodePoints [outOffset++] = codePoint;
+                    inOffset += charCount( codePoint );
+                }
+                retValue = new String( newCodePoints, 0, outOffset );
+            }
+        }
+        else if( nonNull( input ) )
+        {
+            retValue = EMPTY_STRING;
+        }
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  capitalizeToTitle()
 
     /**
      *  Tests if the given text is not {@code null}, not empty and not
@@ -864,15 +951,34 @@ public final class StringUtils
     public static final String decapitalize( final CharSequence input )
     {
         String retValue = null;
-
-        if( nonNull( input ) )
+        if( isNotEmpty( input ) )
+        {
+            final var str = input.toString();
+            final var firstCodePoint = str.codePointAt( 0 );
+            final var newCodePoint = toLowerCase( firstCodePoint );
+            if( firstCodePoint == newCodePoint )
+            {
+                retValue = str;
+            }
+            else
+            {
+                final var strLen = str.length();
+                final var newCodePoints = new int [strLen];
+                var outOffset = 0;
+                newCodePoints [outOffset++] = newCodePoint;
+                //noinspection ForLoopWithMissingComponent
+                for( var inOffset = charCount( firstCodePoint ); inOffset < strLen; )
+                {
+                    final var codePoint = str.codePointAt( inOffset );
+                    newCodePoints [outOffset++] = codePoint;
+                    inOffset += charCount( codePoint );
+                }
+                retValue = new String( newCodePoints, 0, outOffset );
+            }
+        }
+        else if( nonNull( input ) )
         {
             retValue = EMPTY_STRING;
-            if( isNotEmpty( input ) )
-            {
-                final var str = input.toString();
-                retValue = (toLowerCase( str.charAt( 0 ) ) + str.substring( 1 )).intern();
-            }
         }
 
         //---* Done *----------------------------------------------------------
@@ -986,7 +1092,6 @@ public final class StringUtils
         if( len > 0 )
         {
             final var buffer = new StringBuilder( len * 2 ).append( '"' );
-            @SuppressWarnings( "LocalVariableNamingConvention" )
             char c;
             for( var i = 0; i < len; ++i )
             {
@@ -1854,9 +1959,7 @@ public final class StringUtils
     public static final Stream<String> stream( final CharSequence input, final CharSequence separator )
     {
         //---* Process the string *--------------------------------------------
-        @SuppressWarnings( "LocalVariableNamingConvention" )
         var s = requireNonNullArgument( input, "input" ).toString();
-        @SuppressWarnings( "LocalVariableNamingConvention" )
         final var t = requireNotEmptyArgument( separator, "separator" ).toString();
 
         final var builder = Stream.<String>builder();
@@ -2144,6 +2247,123 @@ public final class StringUtils
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  stripXMLComments()
+
+    /**
+     *  <p>{@summary Gets the String that is nested in between two Strings.}
+     *  Only the first match is returned.</p>
+     *  <p>A {@code null} input String returns {@code null}. A {@code null}
+     *  open/close returns {@code null} (no match). An empty (&quot;&quot;)
+     *  open and close returns an empty string.</p>
+     *  <pre><code>
+     *  substringBetween( "wx[b]yz", "[", "]" )    = "b"
+     *  substringBetween( null, *, * )             = Optional.empty()
+     *  substringBetween( *, null, * )             = Optional.empty()
+     *  substringBetween( *, *, null )             = Optional.empty()
+     *  substringBetween( "", "", "" )             = ""
+     *  substringBetween( "", "", "]" )            = Optional.empty()
+     *  substringBetween( "", "[", "]" )           = Optional.empty()
+     *  substringBetween( "yabcz", "", "" )        = ""
+     *  substringBetween( "yabcz", "y", "z" )      = "abc"
+     *  substringBetween( "yabczyabcz", "y", "z" ) = "abc"
+     *  </code></pre>
+     *
+     *  @inspired Apache Commons Lang
+     *
+     *  @param  input   The String containing the substring, may be
+     *      {@code null}.
+     *  @param  open    The String before the substring, may be {@code null}.
+     *  @param  close   The String after the substring, may be {@code null}.
+     *  @return An instance of
+     *      {@link Optional}
+     *      that holds the found substring; will be
+     *      {@linkplain Optional#empty() empty} if no match
+     *
+     *  @since 0.4.8
+     */
+    @API( status = STABLE, since = "0.4.8" )
+    public static final Optional<String> substringBetween( final String input, final String open, final String close )
+    {
+        String found = null;
+
+        if( Stream.of( input, open, close ).allMatch( Objects::nonNull ) )
+        {
+            if( open.isEmpty() && close.isEmpty() )
+            {
+                found = EMPTY_STRING;
+            }
+            else
+            {
+                final var start = input.indexOf(open);
+                if( start >= 0 )
+                {
+                    final var end = input.indexOf( close, start + open.length() );
+                    if( end > 0 )
+                    {
+                        found = input.substring( start + open.length(), end );
+                    }
+                }
+            }
+        }
+        final var retValue = Optional.ofNullable( found );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  substringBetween()
+
+    /**
+     *  <p>{@summary Searches a String for substrings delimited by a start and
+     *  end tag, returning all matching substrings in a
+     *  {@link java.util.SequencedCollection Collection}.} That collection is
+     *  empty if no match was found.</p>
+     *  <p>No match can be found in a {@code null} input String; same for a
+     *  {@code null} or an empty (&quot;&quot;) open or close.</p>
+     *  <pre><code>
+     *  substringsBetween( "[a][b][c]", "[", "]" ) = ["a","b","c"]
+     *  substringsBetween( null, *, * )            = []
+     *  substringsBetween( *, null, * )            = []
+     *  substringsBetween( *, *, null )            = []
+     *  substringsBetween( "", "[", "]" )          = []
+     *  </code></pre>
+     *
+     *  @param  input   The String containing the substrings, may be
+     *      {@code null}.
+     *  @param  open    The String identifying the start of the substring, may
+     *      be {@code null}.
+     *  @param  close   The String identifying the end of the substring, may be
+     *      {@code null}.
+     *  @return A
+     *      {@link SequencedCollection Collection}
+     *      with the found substrings, in the sequence they have in the input
+     *      String. The collection is mutable.
+     *
+     *  @since 0.4.8
+     */
+    @API( status = STABLE, since = "0.4.8" )
+    public static final SequencedCollection<String> substringsBetween( final String input, final String open, final String close)
+    {
+        final SequencedCollection<String> retValue = new ArrayList<>();
+
+        if( Stream.of( input, open, close ).allMatch( StringUtils::isNotEmpty ) )
+        {
+            final var strLen = input.length();
+            final var closeLen = close.length();
+            final var openLen = open.length();
+            var pos = 0;
+            ScanLoop: while( pos < strLen - closeLen )
+            {
+                var start = input.indexOf( open, pos );
+                if( start < 0 ) break ScanLoop;
+                start += openLen;
+                final var end = input.indexOf( close, start );
+                if (end < 0) break ScanLoop;
+                retValue.add( input.substring( start, end ) );
+                pos = end + closeLen;
+            }   //  ScanLoop:
+        }
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  substringsBetween()
 
     /**
      *  Unescapes a string containing entity escapes to a string containing the

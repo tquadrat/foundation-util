@@ -77,13 +77,13 @@ import org.tquadrat.foundation.lang.Lazy;
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SystemUtils.java 1091 2024-01-25 23:10:08Z tquadrat $
+ *  @version $Id: SystemUtils.java 1136 2024-05-30 18:25:38Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1091 2024-01-25 23:10:08Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1136 2024-05-30 18:25:38Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class SystemUtils
@@ -97,14 +97,14 @@ public final class SystemUtils
      *  UNIX/Linux and MacOX/OS-X.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: SystemUtils.java 1091 2024-01-25 23:10:08Z tquadrat $
+     *  @version $Id: SystemUtils.java 1136 2024-05-30 18:25:38Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      *
      *  @see SystemUtils#determineOperatingSystem()
      */
-    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1091 2024-01-25 23:10:08Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1136 2024-05-30 18:25:38Z tquadrat $" )
     @API( status = STABLE, since = "0.0.6" )
     public static enum OperatingSystem
     {

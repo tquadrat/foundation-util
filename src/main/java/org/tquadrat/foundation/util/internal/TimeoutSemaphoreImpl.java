@@ -48,12 +48,12 @@ import org.tquadrat.foundation.util.AutoSemaphore;
  *  that allows a timeout for the permits.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $
+ *  @version $Id: TimeoutSemaphoreImpl.java 1136 2024-05-30 18:25:38Z tquadrat $
  *  @since 0.4.8
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TimeoutSemaphoreImpl.java 1136 2024-05-30 18:25:38Z tquadrat $" )
 @API( status = STABLE, since = "0.4.8" )
 public final class TimeoutSemaphoreImpl extends Semaphore implements AutoSemaphore
 {
@@ -66,12 +66,12 @@ public final class TimeoutSemaphoreImpl extends Semaphore implements AutoSemapho
      *  instance.}</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: AutoSemaphoreImpl.java 1135 2024-05-28 21:32:48Z tquadrat $
+     *  @version $Id: TimeoutSemaphoreImpl.java 1136 2024-05-30 18:25:38Z tquadrat $
      *  @since 0.4.8
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: AutoSemaphoreImpl.java 1135 2024-05-28 21:32:48Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: TimeoutSemaphoreImpl.java 1136 2024-05-30 18:25:38Z tquadrat $" )
     @API( status = INTERNAL, since = "0.4.8" )
     private static final class Janitor implements Runnable
     {
@@ -117,13 +117,13 @@ public final class TimeoutSemaphoreImpl extends Semaphore implements AutoSemapho
      *  <p>{@summary The reaper thread.}</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: AutoSemaphoreImpl.java 1135 2024-05-28 21:32:48Z tquadrat $
+     *  @version $Id: TimeoutSemaphoreImpl.java 1136 2024-05-30 18:25:38Z tquadrat $
      *  @since 0.4.8
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "resource" )
-    @ClassVersion( sourceVersion = "$Id: AutoSemaphoreImpl.java 1135 2024-05-28 21:32:48Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: TimeoutSemaphoreImpl.java 1136 2024-05-30 18:25:38Z tquadrat $" )
     @API( status = INTERNAL, since = "0.4.8" )
     private final class Reaper extends TimerTask
     {
@@ -166,13 +166,13 @@ public final class TimeoutSemaphoreImpl extends Semaphore implements AutoSemapho
      *  expired.}</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: AutoSemaphoreImpl.java 1135 2024-05-28 21:32:48Z tquadrat $
+     *  @version $Id: TimeoutSemaphoreImpl.java 1136 2024-05-30 18:25:38Z tquadrat $
      *  @since 0.4.8
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "NewClassNamingConvention" )
-    @ClassVersion( sourceVersion = "$Id: AutoSemaphoreImpl.java 1135 2024-05-28 21:32:48Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: TimeoutSemaphoreImpl.java 1136 2024-05-30 18:25:38Z tquadrat $" )
     @API( status = INTERNAL, since = "0.4.8" )
     private final class Token implements AutoCloseable
     {
