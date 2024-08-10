@@ -36,6 +36,7 @@ import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_CPUARCHITECTURE;
 import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSNAME;
 import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_OSVERSION;
+import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_USER_NAME;
 import static org.tquadrat.foundation.lang.CommonConstants.TIME_DELTA_BEGINGREGORIAN2BEGINEPOCH;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
@@ -70,6 +71,7 @@ import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
 import org.tquadrat.foundation.exception.ValidationException;
+import org.tquadrat.foundation.lang.CommonConstants;
 import org.tquadrat.foundation.lang.Lazy;
 
 /**
@@ -720,6 +722,17 @@ public final class SystemUtils
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final Random getRandom() { return m_Random.get(); }
+
+    /**
+     *  Returns the current username from the system property
+     *  {@value CommonConstants#PROPERTY_USER_NAME}.
+     *
+     *  @return The username.
+     *
+     *  @since 0.4.8
+     */
+    @API( status = STABLE, since = "0.4.8" )
+    public static final String getUserName() { return getProperty( PROPERTY_USER_NAME ); }
 
     /**
      *  Returns the alias map; if not yet created, the alias map will be
