@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2023 by Thomas Thrien.
+ *  Copyright © 2002-2025 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -24,6 +24,7 @@ import java.util.Comparator;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.NotRecord;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
@@ -33,13 +34,14 @@ import org.tquadrat.foundation.lang.StringConverter;
  *
  *  @param  <T> The type of the objects to compare.
  *
- *  @version $Id: StringBasedComparator.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: StringBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: StringBasedComparator.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
+@NotRecord
 public class StringBasedComparator<T> implements Comparator<T>
 {
         /*------------*\

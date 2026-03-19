@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 20002-2024 by Thomas Thrien.
+ * Copyright © 20002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -16,6 +16,31 @@
  */
 
 package org.tquadrat.foundation.util;
+
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.CharSequenceTooLongException;
+import org.tquadrat.foundation.exception.EmptyArgumentException;
+import org.tquadrat.foundation.exception.ImpossibleExceptionError;
+import org.tquadrat.foundation.exception.NullArgumentException;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.exception.ValidationException;
+import org.tquadrat.foundation.lang.Objects;
+
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.SequencedCollection;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
 
 import static java.lang.Character.charCount;
 import static java.lang.Character.isISOControl;
@@ -52,30 +77,6 @@ import static org.tquadrat.foundation.util.StringUtils.Padding.PADDING_RIGHT;
 import static org.tquadrat.foundation.util.internal.Entities.HTML50;
 import static org.tquadrat.foundation.util.internal.Entities.XML;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.SequencedCollection;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
-
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.CharSequenceTooLongException;
-import org.tquadrat.foundation.exception.EmptyArgumentException;
-import org.tquadrat.foundation.exception.ImpossibleExceptionError;
-import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
-import org.tquadrat.foundation.lang.Objects;
-
 /**
  *  Library of utility methods that are useful when dealing with Strings. <br>
  *  <br>Parts of the code were adopted from the class
@@ -92,13 +93,13 @@ import org.tquadrat.foundation.lang.Objects;
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1138 2024-06-03 22:46:54Z tquadrat $
+ *  @version $Id: StringUtils.java 1158 2026-03-14 16:23:29Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1138 2024-06-03 22:46:54Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1158 2026-03-14 16:23:29Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -110,13 +111,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1138 2024-06-03 22:46:54Z tquadrat $
+     *  @version $Id: StringUtils.java 1158 2026-03-14 16:23:29Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1138 2024-06-03 22:46:54Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1158 2026-03-14 16:23:29Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -208,13 +209,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1138 2024-06-03 22:46:54Z tquadrat $
+     *  @version $Id: StringUtils.java 1158 2026-03-14 16:23:29Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1138 2024-06-03 22:46:54Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1158 2026-03-14 16:23:29Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {
@@ -547,15 +548,15 @@ public final class StringUtils
     }   //  abbreviate()
 
     /**
-     *  Abbreviates a String using ellipses (Unicode HORIZONTAL ELLIPSIS,
-     *  0x2026) in the middle of the returned text. This will turn &quot;<i>Now
-     *  is the time for all good men</i>&quot; into &quot;<i>Now is &hellip;
-     *  good men</i>&quot;<br>
-     *  <br>Works like
-     *  {@link #abbreviate(CharSequence, int)}.<br>
-     *  <br>In no case will it return a String of length greater than
-     *  {@code maxWidth}.<br>
-     *  <br>Some samples:<br>
+     *  <p>{@summary Abbreviates a String using ellipses (Unicode HORIZONTAL
+     *  ELLIPSIS, 0x2026) in the middle of the returned text.} This will turn
+     *  &quot;<i>Now is the time for all good men</i>&quot; into &quot;<i>Now
+     *  is &hellip; good men</i>&quot;.</p>
+     *  <p>Works like
+     *  {@link #abbreviate(CharSequence, int)}.</p>
+     *  <p>In no case will it return a String of length greater than
+     *  {@code maxWidth}.</p>
+     *  <p>Some samples:</p>
      *  <pre>
      *  StringUtils.abbreviateMiddle(null, *)      = null
      *  StringUtils.abbreviateMiddle("", 5)        = ""
@@ -1021,7 +1022,7 @@ public final class StringUtils
      *  @since 0.0.5
      */
     /*
-     *  For some unknown reasons, JavaDoc will not accept the entities &#x7403;
+     *  For some unknown reasons, Javadoc will not accept the entities &#x7403;
      *  and &#x4F53; (for '球' and '体'), therefore it was required to add the
      *  Chinese characters directly into the comment above.
      */
@@ -1394,6 +1395,54 @@ public final class StringUtils
     }   //  isNotEmptyOrBlank()
 
     /**
+     *  <p>{@summary Returns the given replacement value if the given String is
+     *  {@code null} or empty.} Otherwise the original String is returned.</p>
+     *
+     *  @param  input   The String to test.
+     *  @param  replacement The replacement; can be {@code null}.
+     *  @return Either the {@code input} or the {@code replacment} in case the
+     *      input is {@code null} or empty.
+     *
+     *  @see #isEmpty(CharSequence)
+     *  @see Objects#mapFromNull(Object,Object)
+     *
+     *  @since 0.25.2
+     */
+    @API( status = STABLE, since = "0.25.2" )
+    public static final CharSequence mapFromEmpty( final CharSequence input, final CharSequence replacement )
+    {
+        final var retValue = isNull( input ) || input.isEmpty() ? replacement : input;
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  mapFromEmpty()
+
+    /**
+     *  <p>{@summary Returns the replacement provided by the given supplier if
+     *  the given String is {@code null} or empty.} Otherwise the original
+     *  String is returned.</p>
+     *
+     *  @param  input   The String to test.
+     *  @param  replacementSupplier Provides a replacement for the empty input.
+     *  @return Either the {@code input} or the replacement value in case the
+     *      input is {@code null} or empty.
+     *
+     *  @see #isEmpty(CharSequence)
+     *  @see Objects#mapFromNull(Object, Supplier)
+     *
+     *  @since 0.25.2
+     */
+    @API( status = STABLE, since = "0.25.2" )
+    public static final CharSequence mapFromEmpty( final CharSequence input, final Supplier<? extends CharSequence> replacementSupplier )
+    {
+        requireNonNullArgument( replacementSupplier, "replacementSupplier" );
+        final var retValue = isNull( input ) || input.isEmpty() ? replacementSupplier.get() : input;
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  mapFromEmpty()
+
+    /**
      *  Determines the maximum length over all Strings provided in the given
      *  {@link Stream}.
      *
@@ -1462,12 +1511,12 @@ public final class StringUtils
     /**
      *  <p>{@summary Normalizes the given String to a pure ASCII String.} This
      *  replaces 'ß' by 'ss' and replaces all diacritical characters by their
-     *  base form (that mean that 'ü' gets 'u' and so on). For the normalizing
+     *  base form (that mean that 'ü' gets 'u' and so on). For the normalising
      *  of a search criteria, this should be sufficient, although it may cause
      *  issues for non-latin scripts, as for these the input can be mapped to
      *  the empty String.
      *
-     *  @note   The scandinavian letters 'ø' and 'Ø' are not diacritical
+     *  @note   The Scandinavian letters 'ø' and 'Ø' are not diacritical
      *      letters, nevertheless they will be replaced.
      *
      *  @param  input   The input string.
@@ -1643,12 +1692,12 @@ public final class StringUtils
     /**
      *  <p>{@summary This method replaces all diacritical characters in the
      *  input String by their base form.} That means that 'ü' gets 'u', `È'
-     *  gets 'E' and so on).</p>
+     *  gets 'E' and so on.</p>
      *  <p>This differs from
      *  {@link #normalizeToASCII(CharSequence)}
      *  as this method still allows non-ASCII characters in the output.</p>
      *
-     *  @note   The scandinavian letters 'ø' and 'Ø' are not diacritical
+     *  @note   The Scandinavian letters 'ø' and 'Ø' are not diacritical
      *      letters, meaning they will not be replaced.
      *
      *  @param  input   The input string.
@@ -1775,7 +1824,7 @@ public final class StringUtils
      *  returns an array of all parts.} In case a separator character is
      *  immediately followed by another separator character, an empty String
      *  will be placed to the array.</p>
-     *  <p>Beginning and end of the String are treated as separators, so if the
+     *  <p>Beginning and end of the String are treated as separators. If the
      *  first character of the String is a separator, the returned array will
      *  start with an empty String, as it will end with an empty String if the
      *  last character is a separator.</p>

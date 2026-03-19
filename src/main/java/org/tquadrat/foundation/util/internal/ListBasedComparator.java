@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2025 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -28,12 +28,13 @@ import java.util.Comparator;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.NotRecord;
 import org.tquadrat.foundation.util.Comparators.KeyProvider;
 
 /**
  *  <p>{@summary A comparator that works on a list of sort keys.}</p>
  *  <p>Sometimes, a special sort order is required that cannot be defined as a
- *  rule based on the values themselves. Instead an ordered list of value
+ *  rule based on the values themselves. Instead, an ordered list of value
  *  defines their sequence.</p>
  *  <p>The implementation first determines the key for a given value, then it
  *  looks up that key in the key list to determine the sort order. Values whose
@@ -45,13 +46,14 @@ import org.tquadrat.foundation.util.Comparators.KeyProvider;
  *      the same as the type itself.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ListBasedComparator.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: ListBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
+@NotRecord
 public class ListBasedComparator<T,K> implements Comparator<T>
 {
         /*---------------*\
@@ -63,7 +65,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *  that returns the instance itself as the sort order key.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: ListBasedComparator.java 1032 2022-04-10 17:27:44Z tquadrat $
+     *  @version $Id: ListBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $
      *
      *  @param  <T> The type to order.
      *  @param  <K> The key type that is used to determine the order; this may
@@ -72,7 +74,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $" )
     public static class SimpleKeyProvider<T,K extends T> implements KeyProvider<T,K>
     {
             /*--------------*\

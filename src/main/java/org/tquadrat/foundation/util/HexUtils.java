@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2024 by Thomas Thrien.
+ * Copyright © 2002-2025 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -41,12 +41,12 @@ import org.tquadrat.foundation.exception.ValidationException;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Craig R. McClanahan
- *  @version $Id: HexUtils.java 1086 2024-01-05 23:18:33Z tquadrat $
+ *  @version $Id: HexUtils.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HexUtils.java 1086 2024-01-05 23:18:33Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HexUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @UtilityClass
 public final class HexUtils
 {
@@ -94,7 +94,7 @@ public final class HexUtils
      *  will not distinguish between upper or lower case for the digit from
      *  {@code 0xA} to {@code 0xF}.<br>
      *  <br>If the number of digits in the array is odd, an additional 0 will
-     *  <i>prepended</i> to it.
+     *  be <i>prepended</i> to it.
      *
      *  @param  digits  Hexadecimal digits representation.
      *  @return The resulting byte array.

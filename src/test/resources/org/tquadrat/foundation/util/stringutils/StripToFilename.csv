@@ -5,4 +5,7 @@ false;"@";
 false;"  ";
 false;"/";
 true;"Valid\nFile\nName";"ValidFileName"
-false;":\\/;*\"'@|?<>";
+false;":\\/;*'@|?<>";
+false;'"';
+false;"'";
+false; ;

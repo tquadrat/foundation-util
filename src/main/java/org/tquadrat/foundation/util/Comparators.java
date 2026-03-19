@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2024 by Thomas Thrien.
+ * Copyright © 2002-2025 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -40,13 +40,13 @@ import org.tquadrat.foundation.util.internal.StringBasedComparator;
  *  {@link Comparator}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Comparators.java 1084 2024-01-03 15:31:20Z tquadrat $
+ *  @version $Id: Comparators.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: Comparators.java 1084 2024-01-03 15:31:20Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Comparators.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Comparators
 {
@@ -71,7 +71,7 @@ public final class Comparators
      *  provide always the same key.</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Comparators.java 1084 2024-01-03 15:31:20Z tquadrat $
+     *  @version $Id: Comparators.java 1151 2025-10-01 21:32:15Z tquadrat $
      *  @since 0.0.5
      *
      *  @param  <T> The type to order.
@@ -81,7 +81,7 @@ public final class Comparators
      *  @UMLGraph.link
      */
     @API( status = STABLE, since = "0.0.5" )
-    @ClassVersion( sourceVersion = "$Id: Comparators.java 1084 2024-01-03 15:31:20Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Comparators.java 1151 2025-10-01 21:32:15Z tquadrat $" )
     @FunctionalInterface
     public interface KeyProvider<T,K>
     {
@@ -193,7 +193,7 @@ public final class Comparators
      *  <p>{@summary Returns a comparator that works on a list of sort
      *  keys.}</p>
      *  <p>Sometimes, a special sort order is required that cannot be defined
-     *  as a rule based on the values themselves. Instead an ordered list of
+     *  as a rule based on the values themselves. Instead, an ordered list of
      *  values defines their sequence.</p>
      *  <p>This method creates a new
      *  {@link Comparator}
@@ -218,7 +218,7 @@ public final class Comparators
     /**
      *  <p>{@summary A comparator that works on a list of sort keys.}</p>
      *  <p>Sometimes, a special sort order is required that cannot be defined
-     *  as a rule based on the values themselves. Instead an ordered list of
+     *  as a rule based on the values themselves. Instead, an ordered list of
      *  keys defines their sequence.</p>
      *  <p>The implementation first determines the key for a given value, then
      *  it looks up that key in the key list to determine the sort order.
@@ -247,7 +247,7 @@ public final class Comparators
     /**
      *  <p>{@summary A comparator that works on a list of sort keys.}</p>
      *  <p>Sometimes, a special sort order is required that cannot be defined
-     *  as a rule based on the values themselves. Instead an ordered list of
+     *  as a rule based on the values themselves. Instead, an ordered list of
      *  keys defines their sequence.</p>
      *  <p>The implementation first determines the key for a given value, then
      *  it looks up that key in the key list to determine the sort order.

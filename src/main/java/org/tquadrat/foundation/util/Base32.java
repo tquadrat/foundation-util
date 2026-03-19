@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2023 by Thomas Thrien.
+ *  Copyright © 2002-2025 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -35,12 +35,12 @@ import org.tquadrat.foundation.exception.ValidationException;
 
 /**
  *  <p>{@summary This class provides an Encoder and a Decoder for
- *  {@href https://www.crockford.com/base32.html Crockfords's Base&nbsp;32}
+ *  {@href https://www.crockford.com/base32.html Crockford's Base&nbsp;32}
  *  format.}</p>
- *  <p>Base&nbsp;32 allows to represent large numbers as strings with less
+ *  <p>Base&nbsp;32 allows to represent large numbers as strings with fewer
  *  characters than Base&nbsp;10 (the regular decimal system) or Base&nbsp;16
  *  (the hexadecimal system). It has the advantage over Base&nbsp;64 that it
- *  uses less symbols, and no special characters.</p>
+ *  uses fewer symbols, and no special characters.</p>
  *  <p>While Base&nbsp; is mainly for (large) numbers, it can be used for
  *  strings, to, in the same way as Base&nbsp;64. But different from that,
  *  Base&nbsp;32 is not really standardized; this version, introduced by
@@ -48,13 +48,13 @@ import org.tquadrat.foundation.exception.ValidationException;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Douglas Crockford - douglas@crockford.com
- *  @version $Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"JavadocLinkAsPlainText", "MagicNumber"} )
-@ClassVersion( sourceVersion = "$Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 @UtilityClass
 public final class Base32
@@ -64,17 +64,17 @@ public final class Base32
         \*---------------*/
     /**
      *  <p>{@summary The Decoder for
-     *  {@href https://www.crockford.com/base32.html Crockfords's Base&nbsp;32}
+     *  {@href https://www.crockford.com/base32.html Crockford's Base&nbsp;32}
      *  format.}</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      *  @thanks Douglas Crockford - douglas@crockford.com
-     *  @version $Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $
+     *  @version $Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $
      *  @since 0.1.0
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static final class Decoder
     {
@@ -238,17 +238,17 @@ public final class Base32
 
     /**
      *  <p>{@summary The Encoder for
-     *  {@href https://www.crockford.com/base32.html Crockfords's Base&nbsp;32}
+     *  {@href https://www.crockford.com/base32.html Crockford's Base&nbsp;32}
      *  format.}</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      *  @thanks Douglas Crockford - douglas@crockford.com
-     *  @version $Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $
+     *  @version $Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $
      *  @since 0.1.0
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Base32.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static final class Encoder
     {
@@ -558,7 +558,7 @@ public final class Base32
         \*---------*/
     /**
      *  Returns a decoder for
-     *  {@href https://www.crockford.com/base32.html Crockfords's Base&nbsp;32}
+     *  {@href https://www.crockford.com/base32.html Crockford's Base&nbsp;32}
      *  format.
      *
      *  @return The decoder.
@@ -567,7 +567,7 @@ public final class Base32
 
     /**
      *  Returns an encoder for
-     *  {@href https://www.crockford.com/base32.html Crockfords's Base&nbsp;32}
+     *  {@href https://www.crockford.com/base32.html Crockford's Base&nbsp;32}
      *  format.
      *
      *  @return The encoder.

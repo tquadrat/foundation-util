@@ -22,15 +22,19 @@ import static java.lang.String.format;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
+import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;
 
 import java.io.Serial;
 import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Collection;
 import java.util.List;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
@@ -42,16 +46,21 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  <p>The method
  *  {@link #fromString(CharSequence)}
  *  will use the constructor
- *  {@link URL#URL(String)}
- *  to create a {@code URL} instance from the given value.</p>
+ *  {@link URI#URI(String)}
+ *  and then
+ *  {@link URI#toURL()}
+ *  to create a {@code URL} instance from the given value. It requires that the
+ *  URL is absolute.</p>
+ *  <p>Generally, when dealing with relative URLs, URIs should be used
+ *  instead.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: URLStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: URLStringConverter.java 1157 2025-12-31 14:05:44Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: URLStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: URLStringConverter.java 1157 2025-12-31 14:05:44Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public sealed class URLStringConverter implements StringConverter<URL>
     permits EncodedURLStringConverter
@@ -102,9 +111,11 @@ public sealed class URLStringConverter implements StringConverter<URL>
         {
             try
             {
-                retValue = new URL( source.toString() );
+                if( isEmptyOrBlank( source ) ) throw new ValidationException( "URL is blank or empty" );
+                final var uri = new URI( source.toString() );
+                retValue = uri.toURL();
             }
-            catch( final MalformedURLException e )
+            catch( final MalformedURLException | URISyntaxException | ValidationException e )
             {
                 throw new IllegalArgumentException( format( MSG_InvalidURL, source ), e );
             }

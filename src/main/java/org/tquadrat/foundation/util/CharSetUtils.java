@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2023 by Thomas Thrien.
+ *  Copyright © 2002-2025 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -56,7 +56,7 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  @since 0.1.0
  */
 @SuppressWarnings( "MagicNumber" )
-@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 @UtilityClass
 public final class CharSetUtils
@@ -420,7 +420,7 @@ public final class CharSetUtils
      *  @param  input   The input String with the Unicode escape sequence.
      *  @return The Unicode character.
      *  @throws ValidationException The input is {@code null}, empty, or cannot
-     *      be parsed as a unicode escape sequence.
+     *      be parsed as a Unicode escape sequence.
      *
      *  @since 0.1.5
      */

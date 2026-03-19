@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2024 by Thomas Thrien.
+ * Copyright © 2002-2025 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -147,7 +147,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *   };</code></pre>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1111 2024-03-04 21:54:29Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -157,7 +157,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1111 2024-03-04 21:54:29Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils
@@ -369,7 +369,7 @@ public final class UniqueIdUtils
 
         final var parts = splitString( requireNotBlankArgument( input, "input" ).toString().toUpperCase( ROOT ), "-" );
         final var message = "Cannot convert '%s' to a UUID!".formatted( input );
-        requireValidIntegerArgument( parts.length, "input", length -> length == 2, $ -> message );
+        requireValidIntegerArgument( parts.length, "input", length -> length == 2, _ -> message );
         for( var i = 0; i < parts.length; ++i )
         {
             final var buffer = new StringBuilder();

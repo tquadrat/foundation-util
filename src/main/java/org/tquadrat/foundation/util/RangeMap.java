@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2019 by Thomas Thrien.
+ * Copyright © 2002-2025 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -32,7 +32,7 @@ import org.tquadrat.foundation.util.internal.RangeMapImpl;
  *  {@link Double#MAX_VALUE -Double.MAX_VALUE}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: RangeMap.java 1017 2022-02-10 19:39:09Z tquadrat $
+ *  @version $Id: RangeMap.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.0.7
  *
  *  @param <T>  The type of the mapped value.
@@ -41,7 +41,7 @@ import org.tquadrat.foundation.util.internal.RangeMapImpl;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: RangeMap.java 1017 2022-02-10 19:39:09Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeMap.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public sealed interface RangeMap<T> extends Serializable
     permits RangeMapImpl
@@ -51,7 +51,7 @@ public sealed interface RangeMap<T> extends Serializable
         \*---------*/
     /**
      *  <p>{@summary Adds a range.} If there is already a range with the given
-     *  {@code key}, it will <i>not</i> replaced by the new one!</p>
+     *  {@code key}, it will <i>not</i> be replaced by the new one!</p>
      *  <p>The method will return a reference to the map itself; this allows
      *  to chain it with other
      *  {@code #addRange(double, Object)}

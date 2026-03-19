@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2025 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -45,14 +45,14 @@ import org.tquadrat.foundation.lang.Objects;
  *  allowed.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ArrayUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: ArrayUtils.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: ArrayUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ArrayUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 public final class ArrayUtils
 {
         /*-----------*\
@@ -746,7 +746,6 @@ public final class ArrayUtils
         var retValue = EMPTY_STRING;
         if( array.length > 0 )
         {
-            @SuppressWarnings( "LocalVariableNamingConvention" )
             final var s = array.length > 1
                 ? nonNull( separator )
                     ? separator.toString()

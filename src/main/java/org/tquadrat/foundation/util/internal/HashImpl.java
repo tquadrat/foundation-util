@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2023 by Thomas Thrien.
+ *  Copyright © 2002-2025 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -36,6 +36,7 @@ import java.util.zip.Checksum;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.NotRecord;
 import org.tquadrat.foundation.exception.UnexpectedExceptionError;
 import org.tquadrat.foundation.util.Hash;
 
@@ -43,13 +44,14 @@ import org.tquadrat.foundation.util.Hash;
  *  The implementation for the interface
  *  {@link Hash}.
  *
- *  @version $Id: HashImpl.java 1080 2024-01-03 11:05:21Z tquadrat $
+ *  @version $Id: HashImpl.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @UMLGraph.link
  *  @since 0.1.1
  */
-@ClassVersion( sourceVersion = "$Id: HashImpl.java 1080 2024-01-03 11:05:21Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HashImpl.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = INTERNAL, since = "0.1.1" )
+@NotRecord
 public final class HashImpl implements Hash
 {
         /*------------*\
