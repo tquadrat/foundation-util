@@ -361,7 +361,7 @@ public final class StringUtils
      *  ('&gt;' or '&amp;gt;'), it is necessary to treat comments
      *  separately.<br>
      *  <br>Just as a reminder: several sources recommend using the following
-     *  idiom for embedded JavaScript:<pre><code>  &lt;script&gt;
+     *  idiom for embedded JavaScript:<pre><code>&lt;script&gt;
      *  &lt;!--
      *  <i>JavaScript code </i>
      *  --&gt;
@@ -418,10 +418,10 @@ public final class StringUtils
     ====** Methods **==========================================================
         \*---------*/
     /**
-     *  Abbreviates a String using ellipses (Unicode HORIZONTAL ELLIPSIS,
-     *  0x2026). This will turn &quot;<i>Now is the time for all good
-     *  men</i>&quot; into &quot;<i>Now is the time for&hellip;</i>&quot;.<br>
-     *  <br>Specifically:
+     *  <p>{@summary Abbreviates a String using ellipses (Unicode HORIZONTAL
+     *  ELLIPSIS, 0x2026).} This will turn &quot;<i>Now is the time for all
+     *  good men</i>&quot; into &quot;<i>Now is the time for&hellip;</i>&quot;.</p>
+     *  <p>Specifically:</p>
      *  <ul>
      *  <li>If {@code text} is less than {@code maxWidth} characters long,
      *  return it unchanged.</li>
@@ -432,12 +432,12 @@ public final class StringUtils
      *  <li>In no case it will return a String of length greater than
      *  {@code maxWidth}.</li>
      *  </ul>
-     *  Some samples:<br>
+     *  <p>Some samples:</p>
      *  <pre><code>
      *  StringUtils.abbreviate( null, * )      = null
      *  StringUtils.abbreviate( "", 4 )        = ""
-     *  StringUtils.abbreviate( "abc", 4 ) = "abc"
-     *  StringUtils.abbreviate( "abcd", 4 ) = "abcd;"
+     *  StringUtils.abbreviate( "abc", 4 )     = "abc"
+     *  StringUtils.abbreviate( "abcd", 4 )    = "abcd;"
      *  StringUtils.abbreviate( "abcdefg", 4 ) = "abc&hellip;"
      *  StringUtils.abbreviate( "abcdefg", 7 ) = "abcdefg"
      *  StringUtils.abbreviate( "abcdefg", 8 ) = "abcdefg"
@@ -610,10 +610,10 @@ public final class StringUtils
      *  {@link Stream} that can be easily converted into an array or a
      *  collection.</p>
      *  <p>To array:</p>
-     *  <pre><code>breakString( &lt;<i>string</i>&gt;, &lt;<i>chunk</i>&gt; ).toArray( String []::new )</code></pre>
+     *  <div class="source-container"><pre>breakString( &lt;<i>string</i>&gt;, &lt;<i>chunk</i>&gt; ).toArray( String []::new )</pre></div>
      *  <p>To collection (here: a
      *  {@link List}):</p>
-     *  <pre><code>breakString( &lt;<i>string</i>&gt;, &lt;<i>chunk</i>&gt; ).collect( Collectors.toList() )</code></pre>
+     *  <div class="source-container"><pre>breakString( &lt;<i>string</i>&gt;, &lt;<i>chunk</i>&gt; ).collect( Collectors.toList() )</pre></div>
      *
      *  @param  input   The string.
      *  @param  chunk   The chunk size.
@@ -656,12 +656,12 @@ public final class StringUtils
      *  {@link Stream} that can be easily converted into an array, a String, or
      *  a collection.</p>
      *  <p>To array:</p>
-     *  <pre><code>breakText( &lt;<i>text</i>&gt;, &lt;<i>len</i>&gt; ).toArray( String []::new )</code></pre>
+     *  <div class="source-container"><pre>breakText( &lt;<i>text</i>&gt;, &lt;<i>len</i>&gt; ).toArray( String []::new )</pre></div>
      *  <p>To String:</p>
-     *  <pre><code>breakText( &lt;<i>text</i>&gt;, &lt;<i>len</i>&gt; ).collect( Collectors.joining() )</code></pre>
+     *  <div class="source-container"><pre>breakText( &lt;<i>text</i>&gt;, &lt;<i>len</i>&gt; ).collect( Collectors.joining() )</pre></div>
      *  <p>To collection (here: a
      *  {@link List}):</p>
-     *  <pre><code>breakText( &lt;<i>text</i>&gt;, &lt;<i>len</i>&gt; ).collect( Collectors.toList() )</code></pre>
+     *  <div class="source-container"><pre>breakText( &lt;<i>text</i>&gt;, &lt;<i>len</i>&gt; ).collect( Collectors.toList() )</pre></div>
      *
      *  @param  text    The text.
      *  @param  lineLength  The length of a line.
@@ -728,7 +728,8 @@ public final class StringUtils
      *  {@link Character#toUpperCase(char)}.} No other letters are changed.</p>
      *  <p>A {@code null} input String returns {@code null}.</p>
      *  <p>Samples:</p>
-     *  <pre><code>  StringUtils.capitalize( null )  == null;
+     *  <pre><code>
+     *  StringUtils.capitalize( null )            == null;
      *  StringUtils.capitalize( &quot;&quot; )    == &quot;&quot;;
      *  StringUtils.capitalize( &quot;cat&quot; ) == &quot;Cat&quot;;
      *  StringUtils.capitalize( &quot;cAt&quot; ) == &quot;CAt&quot;;</code></pre>
@@ -792,7 +793,8 @@ public final class StringUtils
      *  {@link Character#toTitleCase(char)}.} No other letters are changed.</p>
      *  <p>A {@code null} input String returns {@code null}.</p>
      *  <p>Samples:</p>
-     *  <pre><code>  StringUtils.capitalize( null )  == null;
+     *  <pre><code>
+     *  StringUtils.capitalize( null )            == null;
      *  StringUtils.capitalize( &quot;&quot; )    == &quot;&quot;;
      *  StringUtils.capitalize( &quot;cat&quot; ) == &quot;Cat&quot;;
      *  StringUtils.capitalize( &quot;cAt&quot; ) == &quot;CAt&quot;;</code></pre>
@@ -929,17 +931,20 @@ public final class StringUtils
     }   //  checkTextLenNull()
 
     /**
-     *  Changes the first letter of the given String tolower case as per
-     *  {@link Character#toLowerCase(char)}.
+     *  <p>{@summary Changes the first letter of the given String to lower case
+     *  as per
+     *  {@link Character#toLowerCase(char)}.}
      *  No other letters are changed. A {@code null} input String returns
-     *  {@code null}.<br>
-     *  <br>Samples:<pre><code>  StringUtils.decapitalize( null ) = null;
+     *  {@code null}.</p>
+     *  <p>Samples:</p>
+     *  <pre><code>
+     *  StringUtils.decapitalize( null )           = null;
      *  StringUtils.decapitalize(&quot;&quot;)     = &quot;&quot;;
      *  StringUtils.decapitalize(&quot;Cat&quot;)  = &quot;cat&quot;;
      *  StringUtils.decapitalize(&quot;CAT&quot;)  = &quot;cAT&quot;;</code></pre>
-     *  <br>Basically, this is the complementary method to
-     *  {@link #capitalize(CharSequence)}.
-     *  Use this method to normalise the name of bean attributes.
+     *  <p>Basically, this is the complementary method to
+     *  {@link #capitalize(CharSequence)}.</p>
+     *  <p>Use this method to normalise the name of bean attributes.</p>
      *
      *  @param  input   The String to <i>decapitalise</i>, may be {@code null}.
      *  @return The <i>decapitalised</i> String, {@code null} if the argument
@@ -2106,12 +2111,13 @@ public final class StringUtils
     }   //  stream()
 
     /**
-     *  Strips HTML or XML tags from the given String, without touching other
-     *  entities (like {@code &amp;} or {@code &nbsp;}). The result would be
-     *  the effective text, stripped from all other whitespace (except single
-     *  blanks).<br>
-     *  <br>This means that the result for
-     *  <pre><code>stripTags( &quot;&lt;html&gt;
+     *  <p>{@summary Strips HTML or XML tags from the given String, without
+     *  touching other entities (like {@code &amp;} or {@code &nbsp;}).} The
+     *  result would be the effective text, stripped from all other whitespace
+     *  (except single blanks).</p>
+     *  <p>This means that the result for</p>
+     *  <div class="source-container"><pre>stripTags( &quot;&quot;&quot;
+     *    &lt;html&gt;
      *      &lt;head&gt;
      *        &hellip;
      *      &lt;/head&gt;
@@ -2119,11 +2125,11 @@ public final class StringUtils
      *        &lt;a href='&hellip;'&gt;       Simple          &lt;br&gt;
      *          &lt;br&gt;           Text       &lt;/a&gt;
      *      &lt;/body&gt;
-     *  &lt;/html&gt;&quot; )</code></pre> would be just
-     *  &quot;{@code Simple Text}&quot;.<br>
-     *  <br>Comments will be stripped as well, and {@code <pre>} tags are not
+     *    &lt;/html&gt;&quot;&quot;&quot; )</pre></div> would be just
+     *  <p>&quot;{@code Simple Text}&quot;.</p>
+     *  <p>Comments will be stripped as well, and {@code <pre>} tags are not
      *  interpreted, with the consequence that any formatting with whitespace
-     *  gets lost. {@code CDATA} elements are stripped, too.
+     *  gets lost. {@code CDATA} elements are stripped, too.</p>
      *
      *  @param  input   The HTML/XML string.
      *  @return The string without the tags.

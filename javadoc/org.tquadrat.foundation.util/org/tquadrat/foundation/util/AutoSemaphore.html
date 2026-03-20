@@ -24,7 +24,7 @@ loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
 </noscript>
-<header role="banner"><div style="overflow:auto;"><img src="../../../../../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.2 API</p></div>      <p>Build: 2026-03-19T20:52:00.030216598Z[UTC]</p>      </div>
+<header role="banner"><div style="overflow:auto;"><img src="../../../../../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.2 API</p></div>      <p>Build: 2026-03-20T14:58:12.093747324Z[UTC]</p>      </div>
 <nav role="navigation">
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="top-nav" id="navbar-top">
@@ -98,7 +98,8 @@ loadScripts(document, 'script');</script>
 <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/concurrent/Semaphore.html" title="class or interface in java.util.concurrent" class="external-link"><code>Semaphore</code></a>
 that allows to be used with <code>try-with-resources</code>.</p>
 <p>Use this class like this:</p>
-<pre><code>final static final int MAX_AVAILABLE = …
+<div class="source-container"><pre>
+final static final int MAX_AVAILABLE = …
 final AutoSemaphore semaphore = AutoSemaphore.of( MAX_AVAILABLE );
 …
 try( final var token = semaphore.acquireToken() )
@@ -109,7 +110,7 @@ catch( final InterruptedException e )
 {
     // Handle the exception …
 }
-</code></pre>
+</pre></div>
 <p>A call to
 <a href="#of(int,java.time.Duration)"><code>of(int,Duration)</code></a>
 or

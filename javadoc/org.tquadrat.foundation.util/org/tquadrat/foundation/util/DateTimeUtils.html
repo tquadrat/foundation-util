@@ -26,7 +26,7 @@ loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
 </noscript>
-<header role="banner"><div style="overflow:auto;"><img src="../../../../../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.2 API</p></div>      <p>Build: 2026-03-19T20:52:00.030216598Z[UTC]</p>      </div>
+<header role="banner"><div style="overflow:auto;"><img src="../../../../../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.2 API</p></div>      <p>Build: 2026-03-20T14:58:12.093747324Z[UTC]</p>      </div>
 <nav role="navigation">
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="top-nav" id="navbar-top">
@@ -400,7 +400,7 @@ by one from the cache.</p></div>
 <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/time/ZoneId.html#of(java.lang.String)" title="class or interface in java.time" class="external-link"><code>ZoneId.of(String)</code></a>
 returns a new instance, even if the argument remains the same. This
 means that it cannot be assumed that</p>
-<pre><code>ZoneId.of( "UTC" ) == ZoneId.of( "UTC" )</code></pre>
+<div class="source-container"><pre>ZoneId.of( "UTC" ) == ZoneId.of( "UTC" )</pre></div>
 <p>returns <code>true</code> (although it cannot be excluded either).</p>
 <p>If an application uses <code>ZoneId</code>s a lot, this could cause
 significant memory pressure, so it would make sense to cache them.</p>

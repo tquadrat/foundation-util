@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2024 by Thomas Thrien.
+ *  Copyright © 2002-2026 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -160,7 +160,7 @@ public final class DateTimeUtils
      *  {@link ZoneId#of(String)}
      *  returns a new instance, even if the argument remains the same. This
      *  means that it cannot be assumed that</p>
-     *  <pre><code>ZoneId.of( "UTC" ) == ZoneId.of( "UTC" )</code></pre>
+     *  <div class="source-container"><pre>ZoneId.of( "UTC" ) == ZoneId.of( "UTC" )</pre></div>
      *  <p>returns {@code true} (although it cannot be excluded either).</p>
      *  <p>If an application uses {@code ZoneId}s a lot, this could cause
      *  significant memory pressure, so it would make sense to cache them.</p>

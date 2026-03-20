@@ -13,7 +13,7 @@
 <div class="source-container">
 <pre><span class="source-line-no">001</span><span id="line-1">/*</span>
 <span class="source-line-no">002</span><span id="line-2"> * ============================================================================</span>
-<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2024 by Thomas Thrien.</span>
+<span class="source-line-no">003</span><span id="line-3"> * Copyright © 2002-2026 by Thomas Thrien.</span>
 <span class="source-line-no">004</span><span id="line-4"> * All Rights Reserved.</span>
 <span class="source-line-no">005</span><span id="line-5"> * ============================================================================</span>
 <span class="source-line-no">006</span><span id="line-6"> * Licensed to the public under the agreements of the GNU Lesser General Public</span>
@@ -370,7 +370,7 @@
 <span class="source-line-no">357</span><span id="line-357">     *  Therefore, it is recommended, to use</span>
 <span class="source-line-no">358</span><span id="line-358">     *  {@link File#createTempFile(String, String, File)}</span>
 <span class="source-line-no">359</span><span id="line-359">     *  instead, like this:&lt;/p&gt;</span>
-<span class="source-line-no">360</span><span id="line-360">     *  &lt;pre&gt;&lt;code&gt;File tempFile = File.createTempFile( "PREFIX", "EXT", createTempDirectory() );&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="source-line-no">360</span><span id="line-360">     *  &lt;div class="source-container"&gt;&lt;pre&gt;final var tempFile = File.createTempFile( "PREFIX", "EXT", createTempDirectory() );&lt;/pre&gt;&lt;/div&gt;</span>
 <span class="source-line-no">361</span><span id="line-361">     *  &lt;p&gt;This will guarantee that the temporary files cannot be read by</span>
 <span class="source-line-no">362</span><span id="line-362">     *  other users.&lt;/p&gt;</span>
 <span class="source-line-no">363</span><span id="line-363">     *</span>
@@ -752,7 +752,7 @@
 <span class="source-line-no">739</span><span id="line-739">     *  {@link OutputStream#close()}</span>
 <span class="source-line-no">740</span><span id="line-740">     *  method.}&lt;/p&gt;</span>
 <span class="source-line-no">741</span><span id="line-741">     *  &lt;p&gt;Assume the following scenario:&lt;/p&gt;</span>
-<span class="source-line-no">742</span><span id="line-742">     *  &lt;pre&gt;&lt;code&gt;  &amp;hellip;</span>
+<span class="source-line-no">742</span><span id="line-742">     *  &lt;div class="source-container"&gt;&lt;pre&gt;&amp;hellip;</span>
 <span class="source-line-no">743</span><span id="line-743">     *  Optional&amp;lt;File&amp;gt; outputFile = &amp;hellip;</span>
 <span class="source-line-no">744</span><span id="line-744">     *  &amp;hellip;</span>
 <span class="source-line-no">745</span><span id="line-745">     *  PrintStream outputStream = outputFile.isPresent() ? new PrintStream( new FileOutputStream( outputFile.get() ) ) : IOUtils.getUncloseableOut();</span>
@@ -763,7 +763,7 @@
 <span class="source-line-no">750</span><span id="line-750">     *       *&amp;#47;</span>
 <span class="source-line-no">751</span><span id="line-751">     *       &amp;hellip;</span>
 <span class="source-line-no">752</span><span id="line-752">     *  }</span>
-<span class="source-line-no">753</span><span id="line-753">     *  &amp;hellip;&lt;/code&gt;&lt;/pre&gt;</span>
+<span class="source-line-no">753</span><span id="line-753">     *  &amp;hellip;&lt;/pre&gt;&lt;/div&gt;</span>
 <span class="source-line-no">754</span><span id="line-754">     *  &lt;p&gt;The output stream will be close at the end of the {@code try} block;</span>
 <span class="source-line-no">755</span><span id="line-755">     *  this is desired in case of a</span>
 <span class="source-line-no">756</span><span id="line-756">     *  {@link java.io.FileOutputStream FileOutputStream},</span>

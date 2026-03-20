@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -133,16 +133,16 @@ public class BooleanStringConverter implements StringConverter<Boolean>
     }   //  toString()
 
     /**
-     *  Translates the given String to either &quot;true&quot; or
-     *  &quot;false&quot;. The default implementation just returns the
-     *  argument.<br>
-     *  <br>If this method will be implemented differently, it is no longer
-     *  guaranteed that
-     *  <pre><code>toString( fromString( s ) ) == s</code></pre>
-     *  yields {@code true} for all {@code s}.
+     *  <p>{@summary Translates the given String to either &quot;true&quot; or
+     *  &quot;false&quot;.} The default implementation just returns the
+     *  argument.</p>
+     *  <p>If this method will be implemented differently, it is no longer
+     *  guaranteed that</p>
+     *  <div class="source-container"><pre>toString( fromString( s ) ) == s</pre></div>
+     *  <p>yields {@code true} for all {@code s}.</p>
      *
      *  @param  source  The original text; can be {@code null}.
-     *  @return The translated source; can be {@code null} if {@code source}
+     *  @return The translated source; will be {@code null} if {@code source}
      *      was already {@code null}.
      */
     @SuppressWarnings( "static-method" )

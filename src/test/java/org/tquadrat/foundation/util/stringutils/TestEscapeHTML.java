@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -91,9 +91,10 @@ public class TestEscapeHTML extends TestBaseClass
      *  {@link StringUtils#unescapeHTML(CharSequence)}.<br>
      *  <br>Because HTML&nbsp;5 maps some Unicode characters to multiple
      *  entities, the following should be always {@code true}:
-     *  <pre><code>unescape( escape( text ) ) == text</code></pre> while the
-     *  opposite<pre><code>escape( unescape( text ) ) == text</code></pre> may
-     *  fail, depending on the contents of {@code text}.
+     *  <div class="source-container"><pre>unescape( escape( text ) ) == text</pre></div>
+     *  while the opposite
+     *  <div class="source-container"><pre>escape( unescape( text ) ) == text</pre></div>
+     *  may fail, depending on the contents of {@code text}.
      *
      *  @param  input1  The plain text.
      *  @param  input2  The same text with the HTML&nbsp;5 entities.
@@ -136,9 +137,10 @@ public class TestEscapeHTML extends TestBaseClass
      *  {@link StringUtils#unescapeHTML(Appendable,CharSequence)}.<br>
      *  <br>Because HTML&nbsp;5 maps some Unicode characters to multiple
      *  entities, the following should be always {@code true}:
-     *  <pre><code>unescape( escape( text ) ) == text</code></pre> while the
-     *  opposite<pre><code>escape( unescape( text ) ) == text</code></pre> may
-     *  fail, depending on the contents of {@code text}.
+     *  <div class="source-container"><pre>unescape( escape( text ) ) == text</pre></div>
+     *  while the opposite
+     *  <div class="source-container"><pre>escape( unescape( text ) ) == text</pre></div>
+     *  may fail, depending on the contents of {@code text}.
      *
      *  @param  input1  The plain text.
      *  @param  input2  The same text with the HTML&nbsp;5 entities.

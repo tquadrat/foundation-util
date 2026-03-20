@@ -28,7 +28,7 @@ loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
 </noscript>
-<header role="banner"><div style="overflow:auto;"><img src="../../../../../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.2 API</p></div>      <p>Build: 2026-03-19T20:52:00.030216598Z[UTC]</p>      </div>
+<header role="banner"><div style="overflow:auto;"><img src="../../../../../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.2 API</p></div>      <p>Build: 2026-03-20T14:58:12.093747324Z[UTC]</p>      </div>
 <nav role="navigation">
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="top-nav" id="navbar-top">
@@ -208,7 +208,8 @@ characters; all other characters will be 'escaped' to the format
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static final <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#escapeCharacter(int)" class="member-name-link">escapeCharacter</a><wbr>(int&nbsp;codePoint)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Returns the Unicode escape sequence for the given code point.</div>
+<div class="block">Returns the Unicode escape sequence for the given code
+point.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>private static final int</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#extractEscapeSequence(java.lang.StringBuilder,java.util.regex.Pattern,java.lang.CharSequence)" class="member-name-link">extractEscapeSequence</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/StringBuilder.html" title="class or interface in java.lang" class="external-link">StringBuilder</a>&nbsp;buffer,
@@ -427,23 +428,24 @@ is preferred.</div>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.0")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-296">escapeCharacter</a></span><wbr><span class="parameters">(int&nbsp;codePoint)</span>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-297">escapeCharacter</a></span><wbr><span class="parameters">(int&nbsp;codePoint)</span>
                                     throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
-<div class="block">Returns the Unicode escape sequence for the given code point. This will
-return &quot;<code>&amp;#92;u0075</code>&quot; for the letter 'u', and
-&quot;<code>&amp;#92;u003c</code>&quot; for the smaller-than sign '&lt;'.<br>
-<br>This method takes only a single code point; to translate a whole
-String, this code sequence can be used:<pre><code>  &hellip;
+<div class="block"><p>Returns the Unicode escape sequence for the given code
+point. This will return &quot;<code>&amp;#92;u0075</code>&quot; for the letter 'u', and
+&quot;<code>&amp;#92;u003c</code>&quot; for the smaller-than sign '&lt;'.</p>
+<p>This method takes only a single code point; to translate a whole
+String, this code sequence can be used:</p>
+<div class="source-container"><pre>&hellip;
 String result = input.codePoints()
     .mapToObj( codePoint -&gt; escapeUnicode( codePoint ) )
     .collect( Collectors.joining() );
-&hellip;</code></pre>
-This will escape <i>all</i> characters in the String. If only a subset
+&hellip;</pre></div>
+<p>This will escape <i>all</i> characters in the String. If only a subset
 needs to be escaped, the mapping function in
 <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/stream/IntStream.html#mapToObj(java.util.function.IntFunction)" title="class or interface in java.util.stream" class="external-link"><code>mapToObj()</code></a>
 can be adjusted accordingly. Something like that is implemented with
 the method
-<a href="#convertUnicodeToASCII(java.lang.CharSequence)"><code>convertUnicodeToASCII(CharSequence)</code></a>.</div>
+<a href="#convertUnicodeToASCII(java.lang.CharSequence)"><code>convertUnicodeToASCII(CharSequence)</code></a>.</p></div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>codePoint</code> - The character.</dd>
@@ -470,7 +472,7 @@ the method
 <section class="detail" id="isASCIICharacter(char)">
 <h3>isASCIICharacter</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-313">isASCIICharacter</a></span><wbr><span class="parameters">(char&nbsp;c)</span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-314">isASCIICharacter</a></span><wbr><span class="parameters">(char&nbsp;c)</span></div>
 <div class="block">Returns <code>true</code> if the given character is an ASCII character.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
@@ -486,7 +488,7 @@ the method
 <section class="detail" id="isASCIICharacter(int)">
 <h3>isASCIICharacter</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-326">isASCIICharacter</a></span><wbr><span class="parameters">(int&nbsp;codePoint)</span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-327">isASCIICharacter</a></span><wbr><span class="parameters">(int&nbsp;codePoint)</span></div>
 <div class="block">Returns <code>true</code> if the given code point represents an ASCII
 character.</div>
 <dl class="notes">
@@ -503,7 +505,7 @@ character.</div>
 <section class="detail" id="isPrintableASCIICharacter(char)">
 <h3>isPrintableASCIICharacter</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-343">isPrintableASCIICharacter</a></span><wbr><span class="parameters">(char&nbsp;c)</span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-344">isPrintableASCIICharacter</a></span><wbr><span class="parameters">(char&nbsp;c)</span></div>
 <div class="block">Returns <code>true</code> if the given character is a printable ASCII
 character. That means, it is an ASCII character, but not a control
 character.</div>
@@ -521,7 +523,7 @@ character.</div>
 <section class="detail" id="isPrintableASCIICharacter(int)">
 <h3>isPrintableASCIICharacter</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-357">isPrintableASCIICharacter</a></span><wbr><span class="parameters">(int&nbsp;codePoint)</span></div>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-358">isPrintableASCIICharacter</a></span><wbr><span class="parameters">(int&nbsp;codePoint)</span></div>
 <div class="block">Returns <code>true</code> if the given code point represents a printable
 ASCII character. That means, it is an ASCII character, but not a
 control character.</div>
@@ -539,7 +541,7 @@ control character.</div>
 <section class="detail" id="extractEscapeSequence(java.lang.StringBuilder,java.util.regex.Pattern,java.lang.CharSequence)">
 <h3>extractEscapeSequence</h3>
 <div class="horizontal-scroll">
-<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-374">extractEscapeSequence</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/StringBuilder.html" title="class or interface in java.lang" class="external-link">StringBuilder</a>&nbsp;buffer,
+<div class="member-signature"><span class="modifiers">private static final</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-375">extractEscapeSequence</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/StringBuilder.html" title="class or interface in java.lang" class="external-link">StringBuilder</a>&nbsp;buffer,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/util/regex/Pattern.html" title="class or interface in java.util.regex" class="external-link">Pattern</a>&nbsp;pattern,
  <a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;chunk)</span></div>
 <div class="block">Extracts the escape sequence from the given chunk, write the result to
@@ -561,7 +563,7 @@ the buffer and returns the offset.</div>
 <div class="horizontal-scroll">
 <div class="member-signature"><span class="annotations"><a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html" title="class or interface in org.apiguardian.api" class="external-link">@API</a>(<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#status()" title="class or interface in org.apiguardian.api" class="external-link">status</a>=<a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.Status.html#STABLE" title="class or interface in org.apiguardian.api" class="external-link">STABLE</a>,
      <a href="https://apiguardian-team.github.io/apiguardian/docs/current/api/org/apiguardian/api/API.html#since()" title="class or interface in org.apiguardian.api" class="external-link">since</a>="0.1.5")
-</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-427">unescapeUnicode</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
+</span><span class="modifiers">public static final</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a></span>&nbsp;<span class="element-name"><a href="../../../../../src-html/org.tquadrat.foundation.util/org/tquadrat/foundation/util/CharSetUtils.html#line-428">unescapeUnicode</a></span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/lang/CharSequence.html" title="class or interface in java.lang" class="external-link">CharSequence</a>&nbsp;input)</span></div>
 <div class="block">Parses Strings in the format &quot;<code>&#92;uXXXX</code>&quot;,
 containing the textual representation of a single Unicode character, to
 the respective Unicode character. Some Unicode characters will be

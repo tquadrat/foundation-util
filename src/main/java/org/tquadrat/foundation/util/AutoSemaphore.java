@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2024 by Thomas Thrien.
+ *  Copyright © 2002-2026 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -32,7 +32,7 @@ import org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl;
  *  {@link Semaphore}
  *  that allows to be used with {@code try-with-resources}.}</p>
  *  <p>Use this class like this:</p>
- *  <pre><code>
+ *  <div class="source-container"><pre>
  *  final static final int MAX_AVAILABLE = …
  *  final AutoSemaphore semaphore = AutoSemaphore.of( MAX_AVAILABLE );
  *  …
@@ -44,7 +44,7 @@ import org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl;
  *  {
  *      // Handle the exception …
  *  }
- *  </code></pre>
+ *  </pre></div>
  *  <p>A call to
  *  {@link #of(int,Duration)}
  *  or

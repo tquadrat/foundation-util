@@ -20,7 +20,7 @@ loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
 </noscript>
-<header role="banner"><div style="overflow:auto;"><img src="../../../../../../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.2 API</p></div>      <p>Build: 2026-03-19T20:52:00.030216598Z[UTC]</p>      </div>
+<header role="banner"><div style="overflow:auto;"><img src="../../../../../../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.2 API</p></div>      <p>Build: 2026-03-20T14:58:12.093747324Z[UTC]</p>      </div>
 <nav role="navigation">
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="top-nav" id="navbar-top">
@@ -91,9 +91,9 @@ explicitly.</p>
 date/time value, because the class does not provide a proper parser
 for dates, and because the method <code>java.util.Date#toString()</code> does
 not emit the milliseconds so that the condition</p>
-<pre><code>  StringConverter&lt;java.util.Date&gt; c = &hellip;
+<div class="source-container"><pre>StringConverter&lt;java.util.Date&gt; c = &hellip;
 java.util.Date v = &hellip;
-true == ( v.equals( c.fromString( c.toString( v ) );</code></pre>
+true == ( v.equals( c.fromString( c.toString( v ) );</pre></div>
 <p>cannot be easily satisfied for all possible values of <code>v</code> (and not
 to mention that the class <code>java.util.Date</code> is seen as obsolete).</p>
 <p>But I provide the class
@@ -112,9 +112,9 @@ additional String converters can be implemented easily by using
 <a href="EnumStringConverter.html" title="class in org.tquadrat.foundation.util.stringconverter"><code>EnumStringConverter</code></a>
 as base class (like it was done for the already existing ones), or by using
 that class directly, like here:</p>
-<pre><code>  &hellip;
+<div class="source-container"><pre>&hellip;
 StringConverter&lt;java.nio.file.attribute.PosixFilePermission&gt; pfpStringConverter = new EnumStringConverter&lt;&gt;( java.nio.file.attribute.PosixFilePermission.class );
-&hellip;</code></pre>
+&hellip;</pre></div>
 <p>Alternatively, the method
 <a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html#forEnum(java.lang.Class)" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter.forEnum()</code></a>
 can be used; basically, it does the same as the code snippet above.</p></div>

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2022 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -35,9 +35,9 @@
  *  date/time value, because the class does not provide a proper parser
  *  for dates, and because the method {@code java.util.Date#toString()} does
  *  not emit the milliseconds so that the condition</p>
- *  <pre><code>  StringConverter&lt;java.util.Date&gt; c = &hellip;
+ *  <div class="source-container"><pre>StringConverter&lt;java.util.Date&gt; c = &hellip;
  *  java.util.Date v = &hellip;
- *  true == ( v.equals( c.fromString( c.toString( v ) );</code></pre>
+ *  true == ( v.equals( c.fromString( c.toString( v ) );</pre></div>
  *  <p>cannot be easily satisfied for all possible values of {@code v} (and not
  *  to mention that the class {@code java.util.Date} is seen as obsolete).</p>
  *  <p>But I provide the class
@@ -56,9 +56,9 @@
  *  {@link org.tquadrat.foundation.util.stringconverter.EnumStringConverter}
  *  as base class (like it was done for the already existing ones), or by using
  *  that class directly, like here:</p>
- *  <pre><code>  &hellip;
+ *  <div class="source-container"><pre>&hellip;
  *  StringConverter&lt;java.nio.file.attribute.PosixFilePermission&gt; pfpStringConverter = new EnumStringConverter&lt;&gt;( java.nio.file.attribute.PosixFilePermission.class );
- *  &hellip;</code></pre>
+ *  &hellip;</pre></div>
  *  <p>Alternatively, the method
  *  {@link org.tquadrat.foundation.lang.StringConverter#forEnum(Class) StringConverter.forEnum()}
  *  can be used; basically, it does the same as the code snippet above.</p>

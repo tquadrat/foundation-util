@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2025 by Thomas Thrien.
+ *  Copyright © 2002-2026 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -266,21 +266,22 @@ public final class CharSetUtils
     }   //  escapeCharacter()
 
     /**
-     *  Returns the Unicode escape sequence for the given code point. This will
-     *  return &quot;{@code &#92;u0075}&quot; for the letter 'u', and
-     *  &quot;{@code &#92;u003c}&quot; for the smaller-than sign '&lt;'.<br>
-     *  <br>This method takes only a single code point; to translate a whole
-     *  String, this code sequence can be used:<pre><code>  &hellip;
+     *  <p>{@summary Returns the Unicode escape sequence for the given code
+     *  point.} This will return &quot;{@code &#92;u0075}&quot; for the letter 'u', and
+     *  &quot;{@code &#92;u003c}&quot; for the smaller-than sign '&lt;'.</p>
+     *  <p>This method takes only a single code point; to translate a whole
+     *  String, this code sequence can be used:</p>
+     *  <div class="source-container"><pre>&hellip;
      *  String result = input.codePoints()
      *      .mapToObj( codePoint -&gt; escapeUnicode( codePoint ) )
      *      .collect( Collectors.joining() );
-     *  &hellip;</code></pre>
-     *  This will escape <i>all</i> characters in the String. If only a subset
+     *  &hellip;</pre></div>
+     *  <p>This will escape <i>all</i> characters in the String. If only a subset
      *  needs to be escaped, the mapping function in
      *  {@link java.util.stream.IntStream#mapToObj(java.util.function.IntFunction) mapToObj()}
      *  can be adjusted accordingly. Something like that is implemented with
      *  the method
-     *  {@link #convertUnicodeToASCII(CharSequence)}.
+     *  {@link #convertUnicodeToASCII(CharSequence)}.</p>
      *
      *  @param  codePoint   The character.
      *  @return The escape sequence.

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2024 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -357,7 +357,7 @@ public final class IOUtils
      *  Therefore, it is recommended, to use
      *  {@link File#createTempFile(String, String, File)}
      *  instead, like this:</p>
-     *  <pre><code>File tempFile = File.createTempFile( "PREFIX", "EXT", createTempDirectory() );</code></pre>
+     *  <div class="source-container"><pre>final var tempFile = File.createTempFile( "PREFIX", "EXT", createTempDirectory() );</pre></div>
      *  <p>This will guarantee that the temporary files cannot be read by
      *  other users.</p>
      *
@@ -739,7 +739,7 @@ public final class IOUtils
      *  {@link OutputStream#close()}
      *  method.}</p>
      *  <p>Assume the following scenario:</p>
-     *  <pre><code>  &hellip;
+     *  <div class="source-container"><pre>&hellip;
      *  Optional&lt;File&gt; outputFile = &hellip;
      *  &hellip;
      *  PrintStream outputStream = outputFile.isPresent() ? new PrintStream( new FileOutputStream( outputFile.get() ) ) : IOUtils.getUncloseableOut();
@@ -750,7 +750,7 @@ public final class IOUtils
      *       *&#47;
      *       &hellip;
      *  }
-     *  &hellip;</code></pre>
+     *  &hellip;</pre></div>
      *  <p>The output stream will be close at the end of the {@code try} block;
      *  this is desired in case of a
      *  {@link java.io.FileOutputStream FileOutputStream},
