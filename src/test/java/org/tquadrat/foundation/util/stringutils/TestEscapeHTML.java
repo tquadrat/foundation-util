@@ -17,16 +17,6 @@
 
 package org.tquadrat.foundation.util.stringutils;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.tquadrat.foundation.lang.Objects.nonNull;
-import static org.tquadrat.foundation.util.StringUtils.escapeHTML;
-import static org.tquadrat.foundation.util.StringUtils.unescapeHTML;
-
-import java.io.IOException;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -34,6 +24,16 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.StringUtils;
+
+import java.io.IOException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.tquadrat.foundation.lang.Objects.nonNull;
+import static org.tquadrat.foundation.util.StringUtils.escapeHTML;
+import static org.tquadrat.foundation.util.StringUtils.unescapeHTML;
 
 /**
  *  Some tests for the methods
@@ -46,10 +46,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestEscapeHTML.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestEscapeHTML.java 1163 2026-03-20 15:28:33Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestEscapeHTML.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestEscapeHTML.java 1163 2026-03-20 15:28:33Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestEscapeHTML" )
 public class TestEscapeHTML extends TestBaseClass
 {

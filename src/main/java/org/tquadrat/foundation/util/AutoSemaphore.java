@@ -17,15 +17,15 @@
 
 package org.tquadrat.foundation.util;
 
-import static org.apiguardian.api.API.Status.STABLE;
-
-import java.time.Duration;
-import java.util.concurrent.Semaphore;
-
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.util.internal.AutoSemaphoreImpl;
 import org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl;
+
+import java.time.Duration;
+import java.util.concurrent.Semaphore;
+
+import static org.apiguardian.api.API.Status.STABLE;
 
 /**
  *  <p>{@summary An implementation of
@@ -56,12 +56,12 @@ import org.tquadrat.foundation.util.internal.TimeoutSemaphoreImpl;
  *  on such an instance, as it may behave unexpectedly.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: AutoSemaphore.java 1136 2024-05-30 18:25:38Z tquadrat $
+ *  @version $Id: AutoSemaphore.java 1163 2026-03-20 15:28:33Z tquadrat $
  *  @since 0.4.8
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: AutoSemaphore.java 1136 2024-05-30 18:25:38Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: AutoSemaphore.java 1163 2026-03-20 15:28:33Z tquadrat $" )
 @API( status = STABLE, since = "0.4.8" )
 public sealed interface AutoSemaphore
     permits AutoSemaphoreImpl, TimeoutSemaphoreImpl

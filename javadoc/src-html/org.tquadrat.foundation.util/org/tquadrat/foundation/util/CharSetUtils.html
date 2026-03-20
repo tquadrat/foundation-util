@@ -30,33 +30,33 @@
 <span class="source-line-no">017</span><span id="line-17"></span>
 <span class="source-line-no">018</span><span id="line-18">package org.tquadrat.foundation.util;</span>
 <span class="source-line-no">019</span><span id="line-19"></span>
-<span class="source-line-no">020</span><span id="line-20">import static java.lang.Character.MIN_CODE_POINT;</span>
-<span class="source-line-no">021</span><span id="line-21">import static java.lang.Character.isISOControl;</span>
-<span class="source-line-no">022</span><span id="line-22">import static java.lang.Character.isSurrogatePair;</span>
-<span class="source-line-no">023</span><span id="line-23">import static java.lang.Character.toChars;</span>
-<span class="source-line-no">024</span><span id="line-24">import static java.lang.Character.toCodePoint;</span>
-<span class="source-line-no">025</span><span id="line-25">import static java.lang.Integer.min;</span>
-<span class="source-line-no">026</span><span id="line-26">import static java.lang.String.format;</span>
-<span class="source-line-no">027</span><span id="line-27">import static java.text.Normalizer.isNormalized;</span>
-<span class="source-line-no">028</span><span id="line-28">import static java.text.Normalizer.normalize;</span>
-<span class="source-line-no">029</span><span id="line-29">import static java.util.regex.Pattern.compile;</span>
-<span class="source-line-no">030</span><span id="line-30">import static java.util.stream.Collectors.joining;</span>
-<span class="source-line-no">031</span><span id="line-31">import static org.apiguardian.api.API.Status.STABLE;</span>
-<span class="source-line-no">032</span><span id="line-32">import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;</span>
-<span class="source-line-no">033</span><span id="line-33">import static org.tquadrat.foundation.lang.Objects.isNull;</span>
-<span class="source-line-no">034</span><span id="line-34">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
-<span class="source-line-no">035</span><span id="line-35">import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;</span>
-<span class="source-line-no">036</span><span id="line-36">import static org.tquadrat.foundation.util.StringUtils.breakString;</span>
-<span class="source-line-no">037</span><span id="line-37">import static org.tquadrat.foundation.util.StringUtils.isEmpty;</span>
-<span class="source-line-no">038</span><span id="line-38"></span>
-<span class="source-line-no">039</span><span id="line-39">import java.text.Normalizer;</span>
-<span class="source-line-no">040</span><span id="line-40">import java.util.regex.Pattern;</span>
-<span class="source-line-no">041</span><span id="line-41"></span>
-<span class="source-line-no">042</span><span id="line-42">import org.apiguardian.api.API;</span>
-<span class="source-line-no">043</span><span id="line-43">import org.tquadrat.foundation.annotation.ClassVersion;</span>
-<span class="source-line-no">044</span><span id="line-44">import org.tquadrat.foundation.annotation.UtilityClass;</span>
-<span class="source-line-no">045</span><span id="line-45">import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;</span>
-<span class="source-line-no">046</span><span id="line-46">import org.tquadrat.foundation.exception.ValidationException;</span>
+<span class="source-line-no">020</span><span id="line-20">import org.apiguardian.api.API;</span>
+<span class="source-line-no">021</span><span id="line-21">import org.tquadrat.foundation.annotation.ClassVersion;</span>
+<span class="source-line-no">022</span><span id="line-22">import org.tquadrat.foundation.annotation.UtilityClass;</span>
+<span class="source-line-no">023</span><span id="line-23">import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;</span>
+<span class="source-line-no">024</span><span id="line-24">import org.tquadrat.foundation.exception.ValidationException;</span>
+<span class="source-line-no">025</span><span id="line-25"></span>
+<span class="source-line-no">026</span><span id="line-26">import java.text.Normalizer;</span>
+<span class="source-line-no">027</span><span id="line-27">import java.util.regex.Pattern;</span>
+<span class="source-line-no">028</span><span id="line-28"></span>
+<span class="source-line-no">029</span><span id="line-29">import static java.lang.Character.MIN_CODE_POINT;</span>
+<span class="source-line-no">030</span><span id="line-30">import static java.lang.Character.isISOControl;</span>
+<span class="source-line-no">031</span><span id="line-31">import static java.lang.Character.isSurrogatePair;</span>
+<span class="source-line-no">032</span><span id="line-32">import static java.lang.Character.toChars;</span>
+<span class="source-line-no">033</span><span id="line-33">import static java.lang.Character.toCodePoint;</span>
+<span class="source-line-no">034</span><span id="line-34">import static java.lang.Integer.min;</span>
+<span class="source-line-no">035</span><span id="line-35">import static java.lang.String.format;</span>
+<span class="source-line-no">036</span><span id="line-36">import static java.text.Normalizer.isNormalized;</span>
+<span class="source-line-no">037</span><span id="line-37">import static java.text.Normalizer.normalize;</span>
+<span class="source-line-no">038</span><span id="line-38">import static java.util.regex.Pattern.compile;</span>
+<span class="source-line-no">039</span><span id="line-39">import static java.util.stream.Collectors.joining;</span>
+<span class="source-line-no">040</span><span id="line-40">import static org.apiguardian.api.API.Status.STABLE;</span>
+<span class="source-line-no">041</span><span id="line-41">import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;</span>
+<span class="source-line-no">042</span><span id="line-42">import static org.tquadrat.foundation.lang.Objects.isNull;</span>
+<span class="source-line-no">043</span><span id="line-43">import static org.tquadrat.foundation.lang.Objects.nonNull;</span>
+<span class="source-line-no">044</span><span id="line-44">import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;</span>
+<span class="source-line-no">045</span><span id="line-45">import static org.tquadrat.foundation.util.StringUtils.breakString;</span>
+<span class="source-line-no">046</span><span id="line-46">import static org.tquadrat.foundation.util.StringUtils.isEmpty;</span>
 <span class="source-line-no">047</span><span id="line-47"></span>
 <span class="source-line-no">048</span><span id="line-48">/**</span>
 <span class="source-line-no">049</span><span id="line-49"> *  This class provides several utilities dealing with Strings in different</span>
@@ -69,7 +69,7 @@
 <span class="source-line-no">056</span><span id="line-56"> *  @since 0.1.0</span>
 <span class="source-line-no">057</span><span id="line-57"> */</span>
 <span class="source-line-no">058</span><span id="line-58">@SuppressWarnings( "MagicNumber" )</span>
-<span class="source-line-no">059</span><span id="line-59">@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )</span>
+<span class="source-line-no">059</span><span id="line-59">@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )</span>
 <span class="source-line-no">060</span><span id="line-60">@API( status = STABLE, since = "0.1.0" )</span>
 <span class="source-line-no">061</span><span id="line-61">@UtilityClass</span>
 <span class="source-line-no">062</span><span id="line-62">public final class CharSetUtils</span>

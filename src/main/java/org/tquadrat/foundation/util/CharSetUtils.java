@@ -17,6 +17,15 @@
 
 package org.tquadrat.foundation.util;
 
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.exception.ValidationException;
+
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
 import static java.lang.Character.MIN_CODE_POINT;
 import static java.lang.Character.isISOControl;
 import static java.lang.Character.isSurrogatePair;
@@ -36,15 +45,6 @@ import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.StringUtils.breakString;
 import static org.tquadrat.foundation.util.StringUtils.isEmpty;
 
-import java.text.Normalizer;
-import java.util.regex.Pattern;
-
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
-
 /**
  *  This class provides several utilities dealing with Strings in different
  *  character sets/encodings.
@@ -56,7 +56,7 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  @since 0.1.0
  */
 @SuppressWarnings( "MagicNumber" )
-@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 @UtilityClass
 public final class CharSetUtils

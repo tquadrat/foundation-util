@@ -17,17 +17,17 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
-import static org.apiguardian.api.API.Status.STABLE;
-import static org.tquadrat.foundation.lang.Objects.isNull;
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.MountPoint;
+import org.tquadrat.foundation.lang.StringConverter;
 
 import java.io.Serial;
 import java.util.Collection;
 import java.util.List;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.MountPoint;
-import org.tquadrat.foundation.lang.StringConverter;
+import static org.apiguardian.api.API.Status.STABLE;
+import static org.tquadrat.foundation.lang.Objects.isNull;
 
 /**
  *  An implementation of
@@ -51,12 +51,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see Boolean#valueOf(String)
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: BooleanStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: BooleanStringConverter.java 1163 2026-03-20 15:28:33Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: BooleanStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: BooleanStringConverter.java 1163 2026-03-20 15:28:33Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public class BooleanStringConverter implements StringConverter<Boolean>
 {

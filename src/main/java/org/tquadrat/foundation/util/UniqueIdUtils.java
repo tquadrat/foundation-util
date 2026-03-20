@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2025 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -114,7 +114,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  <p>The appendix C of RFC&nbsp;4122 also lists the name space IDs for some
  *  potentially interesting name spaces, as initialized C structures and in the
  *  string representation defined by the RFC.</p>
- *  <pre><code>   &#47;* Name string is a fully-qualified domain name *&#47;
+ *  <div class="source-container"><pre>&#47;* Name string is a fully-qualified domain name *&#47;
  *   uuid_t NameSpace_DNS = { &#47;* 6ba7b810-9dad-11d1-80b4-00c04fd430c8 *&#47;
  *       0x6ba7b810,
  *       0x9dad,
@@ -144,7 +144,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *       0x9dad,
  *       0x11d1,
  *       0x80, 0xb4, 0x00, 0xc0, 0x4f, 0xd4, 0x30, 0xc8
- *   };</code></pre>
+ *   };</pre></div>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: UniqueIdUtils.java 1151 2025-10-01 21:32:15Z tquadrat $

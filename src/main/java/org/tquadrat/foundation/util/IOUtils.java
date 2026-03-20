@@ -17,21 +17,11 @@
 
 package org.tquadrat.foundation.util;
 
-import static java.lang.System.getProperty;
-import static java.lang.System.out;
-import static java.nio.file.FileVisitResult.CONTINUE;
-import static java.nio.file.Files.delete;
-import static java.nio.file.Files.walkFileTree;
-import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
-import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
-import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
-import static org.apiguardian.api.API.Status.INTERNAL;
-import static org.apiguardian.api.API.Status.STABLE;
-import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_TEMPFOLDER;
-import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_USER_NAME;
-import static org.tquadrat.foundation.lang.Objects.nonNull;
-import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
-import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.lang.CommonConstants;
 
 import java.io.File;
 import java.io.IOException;
@@ -55,23 +45,33 @@ import java.util.zip.Adler32;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.lang.CommonConstants;
+import static java.lang.System.getProperty;
+import static java.lang.System.out;
+import static java.nio.file.FileVisitResult.CONTINUE;
+import static java.nio.file.Files.delete;
+import static java.nio.file.Files.walkFileTree;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
+import static org.apiguardian.api.API.Status.INTERNAL;
+import static org.apiguardian.api.API.Status.STABLE;
+import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_TEMPFOLDER;
+import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_USER_NAME;
+import static org.tquadrat.foundation.lang.Objects.nonNull;
+import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
+import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 
 /**
  *  Some I/O, file, file system and network related helper and convenience
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $
+ *  @version $Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -87,13 +87,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $
+     *  @version $Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -141,12 +141,12 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $
+     *  @version $Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1092 2024-02-01 22:49:38Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
