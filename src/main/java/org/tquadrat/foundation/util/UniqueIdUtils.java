@@ -15,6 +15,22 @@
 
 package org.tquadrat.foundation.util;
 
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.EmptyArgumentException;
+import org.tquadrat.foundation.exception.NullArgumentException;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.exception.UnsupportedEnumError;
+import org.tquadrat.foundation.lang.AutoLock;
+
+import java.math.BigInteger;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+
 import static java.lang.Long.toBinaryString;
 import static java.lang.Math.abs;
 import static java.lang.System.currentTimeMillis;
@@ -38,22 +54,6 @@ import static org.tquadrat.foundation.util.SystemUtils.currentTimeNanos;
 import static org.tquadrat.foundation.util.SystemUtils.getNodeId;
 import static org.tquadrat.foundation.util.SystemUtils.getRandom;
 import static org.tquadrat.foundation.util.SystemUtils.repose;
-
-import java.math.BigInteger;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
-
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.EmptyArgumentException;
-import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.UnsupportedEnumError;
-import org.tquadrat.foundation.lang.AutoLock;
 
 /**
  *  <p>{@summary This static class provides some utility methods that are helpful when
@@ -147,7 +147,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *   };</pre></div>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1164 2026-03-20 17:38:18Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -157,7 +157,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1164 2026-03-20 17:38:18Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils
