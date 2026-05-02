@@ -17,20 +17,20 @@
 
 package org.tquadrat.foundation.util.stringutils;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_CHARSEQUENCE;
+import static org.tquadrat.foundation.util.StringUtils.mapFromEmpty;
+
+import java.util.function.Supplier;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.StringUtils;
-
-import java.util.function.Supplier;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_CHARSEQUENCE;
-import static org.tquadrat.foundation.util.StringUtils.mapFromEmpty;
 
 /**
  *  Some tests for the methods
@@ -41,9 +41,9 @@ import static org.tquadrat.foundation.util.StringUtils.mapFromEmpty;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestMapFromEmpty.java 1158 2026-03-14 16:23:29Z tquadrat $
+ *  @version $Id: TestMapFromEmpty.java 1186 2026-04-06 11:24:14Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestMapFromEmpty.java 1158 2026-03-14 16:23:29Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestMapFromEmpty.java 1186 2026-04-06 11:24:14Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestMapFromEmpty" )
 public class TestMapFromEmpty extends TestBaseClass
 {
@@ -64,9 +64,9 @@ public class TestMapFromEmpty extends TestBaseClass
         final var input = "input";
         final var replacement = "replacement";
 
-        assertNull( mapFromEmpty( null, (CharSequence) null ) );
-        assertNull( mapFromEmpty( EMPTY_CHARSEQUENCE, (CharSequence) null ) );
-        assertEquals( input, mapFromEmpty( input, (CharSequence) null ) );
+        assertNull( mapFromEmpty( null, (String) null ) );
+        assertNull( mapFromEmpty( EMPTY_CHARSEQUENCE, (String) null ) );
+        assertEquals( input, mapFromEmpty( input, (String) null ) );
 
         assertEquals( replacement, mapFromEmpty( null, replacement ) );
         assertEquals( replacement, mapFromEmpty( EMPTY_CHARSEQUENCE, replacement ) );

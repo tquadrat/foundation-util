@@ -39,7 +39,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  <p>This implementation is not synchronised, but thread-safe.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Stack.java 1061 2023-09-25 16:32:43Z tquadrat $
+ *  @version $Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <T> The type for the stack entries.
@@ -49,7 +49,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  @see    java.util.Stack
  */
 @SuppressWarnings( "NewClassNamingConvention" )
-@ClassVersion( sourceVersion = "$Id: Stack.java 1061 2023-09-25 16:32:43Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Stack<T>
 {
@@ -65,12 +65,12 @@ public final class Stack<T>
      *      {@code <T>} that is inherited from the surrounding class.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Stack.java 1061 2023-09-25 16:32:43Z tquadrat $
+     *  @version $Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Stack.java 1061 2023-09-25 16:32:43Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     private final class Entry
     {
@@ -179,7 +179,7 @@ public final class Stack<T>
      */
     public final void clear()
     {
-        m_WriteLock.execute( () ->
+        m_WriteLock.perform( () ->
         {
             m_Entries = null;
             m_Count = 0;
@@ -276,7 +276,7 @@ public final class Stack<T>
     public final void push( final T entry )
     {
         requireNonNullArgument( entry, "entry" );
-        m_WriteLock.execute( () ->
+        m_WriteLock.perform( () ->
         {
             m_Entries = new Entry( entry, m_Entries );
             ++m_Count;
@@ -305,7 +305,7 @@ public final class Stack<T>
             if( isNull( entries [i] ) ) throw new ValidationException( "The entry %1$d of the arguments list is null".formatted( i ) );
         }
 
-        m_WriteLock.execute( () ->
+        m_WriteLock.perform( () ->
         {
             for( final var entry : entries )
             {

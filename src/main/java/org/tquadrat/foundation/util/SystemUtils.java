@@ -17,6 +17,36 @@
 
 package org.tquadrat.foundation.util;
 
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.exception.ValidationException;
+import org.tquadrat.foundation.lang.CommonConstants;
+import org.tquadrat.foundation.lang.Lazy;
+
+import java.io.File;
+import java.math.BigInteger;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HexFormat;
+import java.util.IllformedLocaleException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Random;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
 import static java.lang.Math.max;
 import static java.lang.String.format;
 import static java.lang.System.arraycopy;
@@ -44,48 +74,18 @@ import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.StringUtils.splitString;
 
-import java.io.File;
-import java.math.BigInteger;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HexFormat;
-import java.util.IllformedLocaleException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
-import org.tquadrat.foundation.lang.CommonConstants;
-import org.tquadrat.foundation.lang.Lazy;
-
 /**
  *  This class provides some system related helper and convenience
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SystemUtils.java 1143 2024-08-10 18:53:55Z tquadrat $
+ *  @version $Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1143 2024-08-10 18:53:55Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class SystemUtils
@@ -96,17 +96,17 @@ public final class SystemUtils
     /**
      *  The operating system families that are supported (or not) by Java.<br>
      *  <br>Currently, we can distinguish only between Microsoft Windows,
-     *  UNIX/Linux and MacOX/OS-X.
+     *  UNIX/Linux and macOS/OS-X.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: SystemUtils.java 1143 2024-08-10 18:53:55Z tquadrat $
+     *  @version $Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      *
      *  @see SystemUtils#determineOperatingSystem()
      */
-    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1143 2024-08-10 18:53:55Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $" )
     @API( status = STABLE, since = "0.0.6" )
     public static enum OperatingSystem
     {
@@ -237,8 +237,12 @@ public final class SystemUtils
     ====** Static Initialisations **===========================================
         \*------------------------*/
     /**
-     *  The adjustment for the values that are returned from
-     *  {@link System#nanoTime()}.
+     *  <p>{@summary The adjustment value that is used to align the time
+     *  returned from
+     *  {@link System#nanoTime()}
+     *  with the system time.}</p>
+     *
+     *  @see #currentTimeNanos()
      */
     private static final BigInteger m_NanoAdjust;
 
@@ -824,7 +828,7 @@ public final class SystemUtils
         var remainingDuration = requireNonNullArgument( duration, "duration" );
         var now = Instant.now();
         final var endTime = now.plus( duration );
-        SleepLoop: while( now.isBefore( endTime ) )
+        SleepLoop: while( retValue && now.isBefore( endTime ) )
         {
             try
             {
@@ -864,9 +868,9 @@ public final class SystemUtils
         {
             /*
              * It is intended that Instant::now will be called twice, returning
-             * different results. This will increase accuracy (ok, just
-             * marginally), without causing much harm – we want to wast time
-             * anyways.
+             * different results. This will increase accuracy (OK, just
+             * marginally), without causing much harm – we want to waste time
+             * anyway.
              */
             try
             {
@@ -987,7 +991,7 @@ public final class SystemUtils
      *
      *  @param  duration    The time to sleep.
      *  @throws InterruptedException    Another thread has interrupted the
-     *      current thread (that one executing {@code sleep()}. The
+     *      current thread (that one executing {@code sleep()}). The
      *      <i>interrupted status</i> of the current thread is cleared when
      *      this exception is thrown.
      *
@@ -1014,7 +1018,7 @@ public final class SystemUtils
      *
      *  @param  until   The end time for the sleep.
      *  @throws InterruptedException    Another thread has interrupted the
-     *      current thread (that one executing {@code sleep()}. The
+     *      current thread (that one executing {@code sleep()}). The
      *      <i>interrupted status</i> of the current thread is cleared when
      *      this exception is thrown.
      *
@@ -1038,7 +1042,7 @@ public final class SystemUtils
      *  returns an instance of
      *  {@link java.util.Properties}, and that is implementing
      *  {@code Map<String,Object>}. Although it is unlikely that a value is
-     *  <i>not</i> a String (if not impossible &hellip;), this method allows
+     *  <i>not</i> a String (if not impossible …), this method allows
      *  to enforce it.</p>
      *
      *  @note   A mere cast to {@code Map<String,String>} does not work

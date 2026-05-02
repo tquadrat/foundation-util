@@ -231,10 +231,10 @@
                           class='static'>+ isNotEmptyOrBlank(input:java.lang.CharSequence):boolean</text>
                     <text x='5.000'
                           y='377.000'
-                          class='static'>+ mapFromEmpty(input:java.lang.CharSequence,replacement:java.lang.CharSequence):java.lang.CharSequence</text>
+                          class='static'>+ mapFromEmpty(input:java.lang.CharSequence,replacement:java.lang.String):java.lang.String</text>
                     <text x='5.000'
                           y='388.000'
-                          class='static'>+ mapFromEmpty(input:java.lang.CharSequence,replacementSupplier:java.util.function.Supplier&lt;? extends java.lang.CharSequence&gt;):java.lang.CharSequence</text>
+                          class='static'>+ mapFromEmpty(input:java.lang.CharSequence,replacementSupplier:java.util.function.Supplier&lt;? extends java.lang.CharSequence&gt;):java.lang.String</text>
                     <text x='5.000'
                           y='399.000'
                           class='static'>+ maxContentLength(stream:java.util.stream.Stream&lt;? extends java.lang.CharSequence&gt;):int</text>

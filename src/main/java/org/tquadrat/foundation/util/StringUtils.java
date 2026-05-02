@@ -17,31 +17,6 @@
 
 package org.tquadrat.foundation.util;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.CharSequenceTooLongException;
-import org.tquadrat.foundation.exception.EmptyArgumentException;
-import org.tquadrat.foundation.exception.ImpossibleExceptionError;
-import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
-import org.tquadrat.foundation.lang.Objects;
-
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
-import java.util.SequencedCollection;
-import java.util.function.Supplier;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-import java.util.stream.Stream;
-import java.util.stream.Stream.Builder;
-
 import static java.lang.Character.charCount;
 import static java.lang.Character.isISOControl;
 import static java.lang.Character.isValidCodePoint;
@@ -77,6 +52,31 @@ import static org.tquadrat.foundation.util.StringUtils.Padding.PADDING_RIGHT;
 import static org.tquadrat.foundation.util.internal.Entities.HTML50;
 import static org.tquadrat.foundation.util.internal.Entities.XML;
 
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.List;
+import java.util.Optional;
+import java.util.SequencedCollection;
+import java.util.function.Supplier;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+import java.util.stream.Stream;
+import java.util.stream.Stream.Builder;
+
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.CharSequenceTooLongException;
+import org.tquadrat.foundation.exception.EmptyArgumentException;
+import org.tquadrat.foundation.exception.ImpossibleExceptionError;
+import org.tquadrat.foundation.exception.NullArgumentException;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.exception.ValidationException;
+import org.tquadrat.foundation.lang.Objects;
+
 /**
  *  Library of utility methods that are useful when dealing with Strings. <br>
  *  <br>Parts of the code were adopted from the class
@@ -93,13 +93,13 @@ import static org.tquadrat.foundation.util.internal.Entities.XML;
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
+ *  @version $Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -111,13 +111,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
+     *  @version $Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -209,13 +209,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
+     *  @version $Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {
@@ -1414,9 +1414,9 @@ public final class StringUtils
      *  @since 0.25.2
      */
     @API( status = STABLE, since = "0.25.2" )
-    public static final CharSequence mapFromEmpty( final CharSequence input, final CharSequence replacement )
+    public static final String mapFromEmpty( final CharSequence input, final String replacement )
     {
-        final var retValue = isNull( input ) || input.isEmpty() ? replacement : input;
+        final var retValue = isNull( input ) || input.isEmpty() ? replacement : input.toString();
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -1438,10 +1438,11 @@ public final class StringUtils
      *  @since 0.25.2
      */
     @API( status = STABLE, since = "0.25.2" )
-    public static final CharSequence mapFromEmpty( final CharSequence input, final Supplier<? extends CharSequence> replacementSupplier )
+    public static final String mapFromEmpty( final CharSequence input, final Supplier<? extends CharSequence> replacementSupplier )
     {
         requireNonNullArgument( replacementSupplier, "replacementSupplier" );
-        final var retValue = isNull( input ) || input.isEmpty() ? replacementSupplier.get() : input;
+        final var charSequence = isNull( input ) || input.isEmpty() ? replacementSupplier.get() : input;
+        final var retValue = nonNull( charSequence ) ? charSequence.toString() : null;
 
         //---* Done *----------------------------------------------------------
         return retValue;

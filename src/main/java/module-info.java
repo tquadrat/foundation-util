@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2024 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -63,10 +63,11 @@ import org.tquadrat.foundation.util.stringconverter.ZonedDateTimeStringConverter
  *  @provides   org.tquadrat.foundation.lang.StringConverter    Implementations
  *      of String converters.
  *
- *  @version $Id: module-info.java 1130 2024-05-05 16:16:09Z tquadrat $
+ *  @version $Id: module-info.java 1167 2026-03-27 23:03:48Z tquadrat $
  *
  *  @todo task.list
  */
+@SuppressWarnings("JavadocDeclaration")
 module org.tquadrat.foundation.util
 {
     requires java.base;
