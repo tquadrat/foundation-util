@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2025 by Thomas Thrien.
+ *  Copyright © 2002-2026 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -49,7 +49,6 @@ import java.util.regex.PatternSyntaxException;
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.MountPoint;
-import org.tquadrat.foundation.annotation.NotRecord;
 import org.tquadrat.foundation.exception.ImpossibleExceptionError;
 
 /**
@@ -63,7 +62,7 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
  *  the special characters underscore ('_') and dot ('.'), after an optional
  *  prefix character.</p>
  *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal sign
- *  ('='), the colon (':'), the percent sign ('%'), and the ampersand
+ *  ('='), the colon (':'), the per cent sign ('%'), and the ampersand
  *  ('&amp;').</p>
  *  <p>The prefix character is part of the name.</p>
  *  <p>Finally, there is the single underscore that is allowed as a special
@@ -97,14 +96,13 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: Template.java 1220 2026-05-03 09:15:32Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: Template.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Template.java 1220 2026-05-03 09:15:32Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
-@NotRecord
 public class Template implements Serializable
 {
         /*-----------*\
@@ -180,7 +178,7 @@ public class Template implements Serializable
      *  case and lower case), the digits from '0' to '9' and the special
      *  characters underscore ('_') and dot ('.').</p>
      *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
+     *  sign ('='), the colon (':'), the per cent sign ('%'), and the ampersand
      *  ('&amp;').</p>
      *  <p>The prefix character is part of the name.</p>
      *  <p>Finally, there is the single underscore that is allowed as a
@@ -215,6 +213,7 @@ public class Template implements Serializable
      *  @see #findVariables()
      *  @see #VARIABLE_PATTERN
      */
+    @SuppressWarnings( "FieldNamingConvention" )
     private static final Pattern m_VariablePattern;
 
     /**
@@ -268,7 +267,11 @@ public class Template implements Serializable
     @MountPoint
     protected String adjustTemplate( final String templateText )
     {
-        return templateText;
+        @SuppressWarnings( "UnnecessaryLocalVariable" )
+        final var retValue = templateText;
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
     }   //  adjustTemplate()
 
     /**
@@ -285,7 +288,11 @@ public class Template implements Serializable
     private static final Map<String,Object> createAdditionalSource()
     {
         final Map<String,Object> retValue = new HashMap<>(
-            Map.of( VARNAME_MACAddress, getMACAddress(), VARNAME_pid, Long.valueOf( getPID() ), VARNAME_NodeId, Long.valueOf( getNodeId() ), VARNAME_Now, Instant.now() )
+            Map.of(
+                VARNAME_MACAddress, getMACAddress(),
+                VARNAME_pid, Long.valueOf( getPID() ),
+                VARNAME_NodeId, Long.valueOf( getNodeId() ),
+                VARNAME_Now, Instant.now() )
         );
         try
         {
@@ -314,7 +321,7 @@ public class Template implements Serializable
 
         //---* Escape the backslashes and dollar signs *-------------------
         final var len = input.length();
-        final var retValue = new StringBuilder( (len * 12) / 10 );
+        final var buffer = new StringBuilder( (len * 12) / 10 );
         char c;
         EscapeLoop: for( var i = 0; i < len; ++i )
         {
@@ -323,15 +330,17 @@ public class Template implements Serializable
             {
                 case '\\':
                 case '$':
-                    retValue.append( '\\' ); // The fall through is intended here!
+                    buffer.append( '\\' ); // The fall through is intended here!
                     //$FALL-THROUGH$
                 default: // Do nothing ...
             }
-            retValue.append( c );
+            buffer.append( c );
         }   //  EscapeLoop:
 
+        final var retValue = buffer.toString();
+
         //---* Done *----------------------------------------------------------
-        return retValue.toString();
+        return retValue;
     }   //  escapeRegexReplacement()
 
     /**
@@ -345,7 +354,7 @@ public class Template implements Serializable
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
      *  after an optional prefix character.</p>
      *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
+     *  sign ('='), the colon (':'), the per cent sign ('%'), and the ampersand
      *  ('&amp;').</p>
      *  <p>Finally, there is the single underscore that is allowed as a
      *  special variable.</p>
@@ -388,7 +397,7 @@ public class Template implements Serializable
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
      *  after an optional prefix character.</p>
      *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
+     *  sign ('='), the colon (':'), the per cent sign ('%'), and the ampersand
      *  ('&amp;').</p>
      *  <p>Finally, there is the single underscore that is allowed as a
      *  special variable.</p>
@@ -406,8 +415,8 @@ public class Template implements Serializable
     }   //  findVariables()
 
     /**
-     *  <p>{@summary Mountpoint for the formatting of the result after the variables have
-     *  been replaced.}</p>
+     *  <p>{@summary Mountpoint for the formatting of the result after the
+     *  variables have been replaced.}</p>
      *  <p>The default implementation just returns the result.</p>
      *
      *  @param  text    The result from replacing the variables in the template
@@ -418,7 +427,11 @@ public class Template implements Serializable
     @MountPoint
     protected String formatResult( final String text )
     {
-        return text;
+        @SuppressWarnings( "UnnecessaryLocalVariable" )
+        final var retValue = text;
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
     }   //  formatResult()
 
     /**
@@ -446,7 +459,8 @@ public class Template implements Serializable
      */
     public final boolean hasVariable( final String name )
     {
-        if( !isValidVariableName( name ) ) throw new IllegalArgumentException( "%s is not a valid variable name".formatted( name ) );
+        if( !isValidVariableName( name ) )
+            throw new IllegalArgumentException( "%s is not a valid variable name".formatted( name ) );
 
         final var retValue = findVariables().contains( name );
 
@@ -554,7 +568,7 @@ public class Template implements Serializable
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
      *  after an optional prefix character.</p>
      *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
+     *  sign ('='), the colon (':'), the per cent sign ('%'), and the ampersand
      *  ('&amp;').</p>
      *  <p>The prefix character is part of the name.</p>
      *  <p>Finally, there is the single underscore that is allowed as a
@@ -569,6 +583,7 @@ public class Template implements Serializable
      *
      *  @since 0.1.0
      */
+    @SuppressWarnings( "TypeParameterExplicitlyExtendsObject" )
     @SafeVarargs
     @API( status = STABLE, since = "0.1.0" )
     public static final String replaceVariable( final CharSequence text, final Map<String,? extends Object>... sources )
@@ -597,7 +612,7 @@ public class Template implements Serializable
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
      *  after an optional prefix character.</p>
      *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
+     *  sign ('='), the colon (':'), the per cent sign ('%'), and the ampersand
      *  ('&amp;').</p>
      *  <p>The prefix character is part of the name.</p>
      *  <p>Finally, there is the single underscore that is allowed as a
@@ -609,6 +624,7 @@ public class Template implements Serializable
      *
      *  @see #VARIABLE_PATTERN
      */
+    @SuppressWarnings( "TypeParameterExplicitlyExtendsObject" )
     @SafeVarargs
     public final String replaceVariable( final Map<String,? extends Object>... sources )
     {
@@ -624,7 +640,7 @@ public class Template implements Serializable
      *  <p>If {@code addSystemData} is provided as {@code true}, the
      *  {@linkplain System#getProperties() system properties}
      *  and
-     *  {@linkplain System#getenv()} system environment}
+     *  {@linkplain System#getenv() system environment}
      *  will be searched for replacement values before any other source.</p>
      *  <p>If no replacement value could be found, the variable will not be
      *  replaced at all.</p>
@@ -636,7 +652,7 @@ public class Template implements Serializable
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
      *  after an optional prefix character.</p>
      *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
+     *  sign ('='), the colon (':'), the per cent sign ('%'), and the ampersand
      *  ('&amp;').</p>
      *  <p>The prefix character is part of the name.</p>
      *  <p>Finally, there is the single underscore that is allowed as a
@@ -652,6 +668,7 @@ public class Template implements Serializable
      *  @see #VARIABLE_PATTERN
      *  @see #replaceVariableFromSystemData(CharSequence, Map[])
      */
+    @SuppressWarnings( "TypeParameterExplicitlyExtendsObject" )
     @SafeVarargs
     public final String replaceVariable( final boolean addSystemData, final Map<String,? extends Object>... sources )
     {
@@ -683,7 +700,7 @@ public class Template implements Serializable
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
      *  after an optional prefix character.</p>
      *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
+     *  sign ('='), the colon (':'), the per cent sign ('%'), and the ampersand
      *  ('&amp;').</p>
      *  <p>The prefix character is part of the name.</p>
      *  <p>Finally, there is the single underscore that is allowed as a
@@ -721,7 +738,7 @@ public class Template implements Serializable
      *  '0' to '9' and the special characters underscore ('_') and dot ('.'),
      *  after an optional prefix character.</p>
      *  <p>Allowed prefixes are the tilde ('~'), the slash ('/'), the equal
-     *  sign ('='), the colon (':'), the percent sign ('%'), and the ampersand
+     *  sign ('='), the colon (':'), the per cent sign ('%'), and the ampersand
      *  ('&amp;').</p>
      *  <p>The prefix character is part of the name.</p>
      *  <p>Finally, there is the single underscore that is allowed as a
@@ -801,6 +818,7 @@ public class Template implements Serializable
      *  @see #VARIABLE_PATTERN
      *  @see #replaceVariable(CharSequence, Map...)
      */
+    @SuppressWarnings( "TypeParameterExplicitlyExtendsObject" )
     @SafeVarargs
     @API( status = STABLE, since = "0.1.0" )
     public static final String replaceVariableFromSystemData( final CharSequence text, final Map<String,? extends Object>... additionalSources )
@@ -837,6 +855,7 @@ public class Template implements Serializable
      *      {@link Optional}
      *      that holds the value from one of the sources.
      */
+    @SuppressWarnings( "TypeParameterExplicitlyExtendsObject" )
     @SafeVarargs
     private static final Optional<String> retrieveVariableValue( final String name, final Map<String,? extends Object>... sources )
     {
@@ -856,7 +875,7 @@ public class Template implements Serializable
         if( nonNull( value ) )
         {
             //---* Escape the backslashes and dollar signs *-------------------
-            retValue = Optional.of( value.toString() );
+            retValue = Optional.of( escapeRegexReplacement( value.toString() ) );
         }
 
         //---* Done *----------------------------------------------------------
