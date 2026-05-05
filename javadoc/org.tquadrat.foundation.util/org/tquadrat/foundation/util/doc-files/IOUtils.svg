@@ -7,7 +7,7 @@
      version='1.1'
      baseProfile='full'
      width='870.000'
-     height='682.000'>
+     height='715.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,7 +118,7 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='260.000'
+                  height='293.000'
                   width='820.000'
                   x='0.000'
                   y='0.000'/>
@@ -130,7 +130,7 @@
                     <rect x='0.000'
                           y='0.000'
                           width='820.000'
-                          height='260.000'
+                          height='293.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='17.000'
@@ -200,10 +200,19 @@
                           class='static'>+ getSystemTempFolder():java.nio.file.Path</text>
                     <text x='5.000'
                           y='245.000'
-                          class='static'>+ getUncloseableOut():java.io.PrintStream</text>
+                          class='static'>+ getPathMatcher(syntaxAndPattern:java.lang.CharSequence):java.nio.file.PathMatcher</text>
                     <text x='5.000'
                           y='256.000'
+                          class='static'>+ getUncloseableOut():java.io.PrintStream</text>
+                    <text x='5.000'
+                          y='267.000'
                           class='static'>+ loadToString(reader:java.io.Reader):java.lang.String</text>
+                    <text x='5.000'
+                          y='278.000'
+                          class='static'>+ parseFilePatterns(patterns:java.lang.CharSequence&#x2026;):java.util.Collection&lt;java.nio.file.PathMatcher&gt;</text>
+                    <text x='5.000'
+                          y='289.000'
+                          class='static'>+ parseFilePatterns(patterns:java.util.Collection&lt;? extends java.lang.CharSequence&gt;):java.util.Collection&lt;java.nio.file.PathMatcher&gt;</text>
                 </g>
             </g>
         </symbol>

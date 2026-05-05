@@ -17,11 +17,24 @@
 
 package org.tquadrat.foundation.util;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.lang.CommonConstants;
+import static java.lang.System.getProperty;
+import static java.lang.System.out;
+import static java.nio.file.FileVisitResult.CONTINUE;
+import static java.nio.file.Files.delete;
+import static java.nio.file.Files.walkFileTree;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
+import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
+import static java.util.Arrays.asList;
+import static org.apiguardian.api.API.Status.INTERNAL;
+import static org.apiguardian.api.API.Status.STABLE;
+import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_TEMPFOLDER;
+import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_USER_NAME;
+import static org.tquadrat.foundation.lang.Objects.isNull;
+import static org.tquadrat.foundation.lang.Objects.nonNull;
+import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
+import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
+import static org.tquadrat.foundation.util.StringUtils.splitString;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,6 +45,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.PathMatcher;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.nio.file.attribute.FileAttribute;
@@ -39,39 +53,35 @@ import java.nio.file.attribute.PosixFilePermission;
 import java.nio.file.attribute.PosixFilePermissions;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.EnumSet;
+import java.util.List;
 import java.util.Set;
+import java.util.StringJoiner;
+import java.util.regex.PatternSyntaxException;
 import java.util.zip.Adler32;
 import java.util.zip.CRC32;
 import java.util.zip.Checksum;
 
-import static java.lang.System.getProperty;
-import static java.lang.System.out;
-import static java.nio.file.FileVisitResult.CONTINUE;
-import static java.nio.file.Files.delete;
-import static java.nio.file.Files.walkFileTree;
-import static java.nio.file.attribute.PosixFilePermission.OWNER_EXECUTE;
-import static java.nio.file.attribute.PosixFilePermission.OWNER_READ;
-import static java.nio.file.attribute.PosixFilePermission.OWNER_WRITE;
-import static org.apiguardian.api.API.Status.INTERNAL;
-import static org.apiguardian.api.API.Status.STABLE;
-import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_TEMPFOLDER;
-import static org.tquadrat.foundation.lang.CommonConstants.PROPERTY_USER_NAME;
-import static org.tquadrat.foundation.lang.Objects.nonNull;
-import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
-import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.lang.CommonConstants;
 
 /**
  *  Some I/O, file, file system and network related helper and convenience
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
+ *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+@SuppressWarnings( "ClassWithTooManyMethods" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -87,13 +97,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
+     *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -141,12 +151,12 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
+     *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -733,6 +743,168 @@ public final class IOUtils
     public static final Path getSystemTempFolder() { return Path.of( getProperty( PROPERTY_TEMPFOLDER ) ); }
 
     /**
+     *  <p>{@summary Returns a
+     *  {@link PathMatcher}
+     *  for the
+     *  {@linkplain FileSystems#getDefault() default filesystem}
+     *  that performs match operations on the String representation of
+     *  {@link Path}
+     *  objects by interpreting a given pattern.}</p>
+     *  <p>The {@code syntaxAndPattern} parameter identifies the syntax and the
+     *  pattern and takes the form:</p>
+     *  <blockquote><pre>
+     *  [<i>syntax</i><b>:</b>]<i>pattern</i>
+     *  </pre></blockquote>
+     *  <p>where <i>syntax</i> is the non-empty name of the syntax, <i>pattern</i>
+     *  is a possibly-empty pattern string, and {@code ':'} stands for
+     *  itself.</p>
+     *  <p>A
+     *  {@link java.nio.file.FileSystem FileSystem}
+     *  implementation supports the &quot;{@code glob}&quot; and
+     *  &quot;{@code regex}&quot; syntaxes, and may support others. The value
+     *  of the syntax component is compared without regard to case. If no
+     *  syntax is provided explicitly, &quot;{@code glob}&quot; is assumed.</p>
+     *  <p>When the syntax is &quot;{@code glob}&quot; then the {@code String}
+     *  representation of the path is matched using a limited pattern language
+     *  that resembles regular expressions but with a simpler syntax. For
+     *  example:</p>
+     *  <table class="striped"
+     *         style="text-align:left; margin-left:2em">
+     *      <caption style="display:none">Pattern Language</caption>
+     *      <thead>
+     *          <tr>
+     *              <th scope="col">Example</th>
+     *              <th scope="col">Description</th>
+     *          </tr>
+     *      </thead>
+     *      <tbody>
+     *          <tr>
+     *              <th scope="row">{@code *.java}</th>
+     *              <td>Matches a path that represents a file name ending in
+     *              {@code .java}</td>
+     *          </tr>
+     *          <tr>
+     *              <th scope="row">{@code *.*}</th>
+     *              <td>Matches file names containing a dot</td>
+     *          </tr>
+     *          <tr>
+     *              <th scope="row">{@code *.{java,class}}</th>
+     *              <td>Matches file names ending with {@code .java} or
+     *              {@code .class}</td>
+     *          </tr>
+     *          <tr>
+     *              <th scope="row">{@code foo.?}</th>
+     *              <td>Matches file names starting with {@code foo.} and a
+     *              single character extension</td>
+     *          </tr>
+     *          <tr>
+     *              <th scope="row"><code>&#47;home&#47;*&#47;*</code>
+     *              <td>Matches <code>&#47;home&#47;gus&#47;data</code> on
+     *              UNIX platforms</td>
+     *          </tr>
+     *          <tr>
+     *              <th scope="row"><code>&#47;home&#47;**</code>
+     *              <td>Matches <code>&#47;home&#47;gus</code> and
+     *              <code>&#47;home&#47;gus&#47;data</code> on UNIX
+     *              platforms</td>
+     *          </tr>
+     *          <tr>
+     *              <th scope="row"><code>C:&#92;&#92;*</code>
+     *              <td>Matches <code>C:&#92;foo</code> and
+     *              <code>C:&#92;bar</code> on the Windows platform (note that
+     *              the backslash is escaped; as a string literal in the Java
+     *              Language the pattern would be
+     *              <code>"C:&#92;&#92;&#92;&#92;*"</code>)</td>
+     *          </tr>
+     *      </tbody>
+     *  </table>
+     *  <p>The following rules are used to interpret glob patterns:</p>
+     *  <ul>
+     *      <li><p>The {@code *} character matches zero or more
+     *      {@link Character characters}
+     *      of a
+     *      {@link Path#getName(int) name}
+     *      component without crossing directory boundaries.</p></li>
+     *      <li><p>The {@code **} characters matches zero or more
+     *      {@link Character characters}
+     *      crossing directory boundaries.</p></li>
+     *      <li><p>The {@code ?} character matches exactly one character of a
+     *      name component.</p></li>
+     *      <li><p>The backslash character ({@code \}) is used to escape
+     *      characters that would otherwise be interpreted as special
+     *      characters. The expression &quot;{@code \\}&quot; matches a single
+     *      backslash and &quot;<code>\{</code>&quot; matches a left brace for
+     *      example.</p></li>
+     *      <li><p>The {@code [ ]} characters are a <i>bracket expression</i>
+     *      that match a single character of a name component out of a set of
+     *      characters.</p>
+     *      <p>For example, {@code [abc]} matches {@code "a"}, {@code "b"},
+     *      or {@code "c"}.</p>
+     *      <p>The hyphen ({@code -}) may be used to specify a range so
+     *      {@code [a-z]} specifies a range that matches from {@code "a"} to
+     *      {@code "z"} (inclusive).</p>
+     *      <p>These forms can be mixed so [abce-g] matches {@code "a"}, {@code "b"},
+     *      {@code "c"}, {@code "e"}, {@code "f"} or {@code "g"}. If the
+     *      character after the {@code [} is a {@code !} then it is used for
+     *      negation so {@code [!a-c]} matches any character <i>except</i>
+     *      {@code "a"}, {@code "b"}, or {@code "c"}.</p>
+     *      <p>Within a bracket expression the {@code *}, {@code ?} and
+     *      {@code \} characters match themselves. The ({@code -}) character
+     *      matches itself if it is the first character within the brackets, or
+     *      the first character after the {@code !} if negating.</p></li>
+     *      <li><p>The {@code { }} characters are a group of subpatterns, where
+     *      the group matches if any subpattern in the group matches. The
+     *      {@code ","} character is used to separate the subpatterns. Groups
+     *      cannot be nested.</p></li>
+     *      <li><p> Leading period<code>&#47;</code>dot characters in file name
+     *      are treated as regular characters in match operations. For example,
+     *      the {@code "*"} glob pattern matches file name {@code ".login"}.
+     *      The
+     *      {@link Files#isHidden}
+     *      method may be used to test whether a file is considered
+     *      hidden.</p></li>
+     *      <li><p>All other characters match themselves in an implementation
+     *      dependent manner. This includes characters representing any
+     *      {@linkplain java.nio.file.FileSystem#getSeparator name-separators}.</p></li>
+     *      <li><p>The matching of
+     *      {@link Path#getRoot root}
+     *      components is highly implementation-dependent and is not
+     *      specified.</p></li>
+     *  </ul>
+     *  <p>When the syntax is "{@code regex}" then the pattern component is a
+     *  regular expression as defined by the
+     *  {@link java.util.regex.Pattern}
+     *  class.</p>
+     *  <p>For both the {@code glob} and {@code regex} syntaxes, the matching
+     *  details, such as whether the matching is case-sensitive, are
+     *  implementation-dependent and therefore not specified.</p>
+     *
+     *  @param  syntaxAndPattern    The syntax and pattern.
+     *  @return A path matcher that may be used to match paths against the
+     *      pattern.
+     *  @throws PatternSyntaxException  The given pattern is invalid.
+     *  @throws UnsupportedOperationException   The pattern syntax is not known
+     *      to the implementation.
+     *
+     *  @see Files#newDirectoryStream(Path,String)
+     *
+     *  @since 0.25.3
+     */
+    @API( status = STABLE, since = "0.25.3" )
+    public static final PathMatcher getPathMatcher( final CharSequence syntaxAndPattern )
+    {
+        final var parts = splitString( requireNonNullArgument( syntaxAndPattern, "syntaxAndPattern" ), ':' );
+        final var fileSystem = FileSystems.getDefault();
+        final var effectiveSyntaxAndPattern = new StringJoiner( ":" );
+        if( parts.length == 1 ) effectiveSyntaxAndPattern.add( "glob" );
+        for( final var p : parts ) effectiveSyntaxAndPattern.add( p );
+        final var retValue = fileSystem.getPathMatcher( effectiveSyntaxAndPattern.toString() );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  getPathMatcher()
+
+    /**
      *  <p>{@summary Returns
      *  {@link System#out}
      *  with a non-functional
@@ -804,6 +976,61 @@ public final class IOUtils
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  loadToString()
+
+    /**
+     *  <p>{@summary Parses a list of file name patterns to a list of
+     *  {@link PathMatcher}
+     *  instances.}</p>
+     *  <p>The syntax for the patterns is described in the documentation for
+     *  {@link #getPathMatcher(CharSequence) getPathMatcher()}.</p>
+     *
+     *  @param  patterns    The list of patterns.
+     *  @return  The unmodifiable list of
+     *      {@link PathMatcher}
+     *      instances.
+     */
+    public static final Collection<PathMatcher> parseFilePatterns( final CharSequence... patterns )
+    {
+        final var retValue = parseFilePatterns( asList( requireNonNullArgument( patterns, "patterns" ) ) );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  parseFilePatterns()
+
+    /**
+     *  <p>{@summary Parses a list of file name patterns to a list of
+     *  {@link PathMatcher}
+     *  instances.}</p>
+     *  <p>The syntax for the patterns is described in the documentation for
+     *  {@link #getPathMatcher(CharSequence) getPathMatcher()}.</p>
+     *
+     *  @param  patterns    The list of patterns.
+     *  @return  The unmodifiable list of
+     *      {@link PathMatcher}
+     *      instances.
+     */
+    public static final Collection<PathMatcher> parseFilePatterns( final Collection<? extends CharSequence> patterns )
+    {
+        final Collection<PathMatcher> buffer = new ArrayList<>();
+        for( final var pattern : requireNonNullArgument( patterns, "patterns" ) )
+        {
+            if( isNull( pattern ) ) throw new IllegalArgumentException( "A pattern is null" );
+            try
+            {
+                final var matcher = getPathMatcher( pattern.toString() );
+                buffer.add( matcher );
+            }
+            catch( final PatternSyntaxException | UnsupportedOperationException e )
+            {
+                throw new IllegalArgumentException( "Invalid Pattern: %s".formatted( pattern ), e );
+            }
+        }
+
+        final var retValue = List.copyOf( buffer );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  parseFilePatterns()
 }
 //  class IOUtils
 
