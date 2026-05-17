@@ -19,7 +19,7 @@ loadScripts(document, 'script');</script>
 <noscript>
 <div>JavaScript is disabled on your browser.</div>
 </noscript>
-<header role="banner"><div style="overflow:auto;"><img src="../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.4 API</p></div>      <p>Build: 2026-05-09T08:29:13.397808288Z[UTC]</p>      </div>
+<header role="banner"><div style="overflow:auto;"><img src="../resources/tquadrat_logo.jpg" alt="tquadrat.org"style="float:right;"><div style="font-family:sans-serif;font-size:40px;font-weight:bold;padding-left:30px;"><p>tquadrat's <i>Foundation</i> Library<br>org.tquadrat.foundation.util 0.25.4 API</p></div>      <p>Build: 2026-05-17T11:08:44.271267734Z[UTC]</p>      </div>
 <nav role="navigation">
 <!-- ========= START OF TOP NAVBAR ======= -->
 <div class="top-nav" id="navbar-top">
@@ -120,6 +120,12 @@ input stream.</div>
 <div class="block">Registers the janitor that is doing the housekeeping on garbage
 collection.</div>
 </dd>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#registerStringConverter(java.lang.Class,org.tquadrat.foundation.lang.StringConverter)" class="member-name-link">registerStringConverter(Class, StringConverter)</a> - Method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
+<dd>
+<div class="block">Registers an additional
+<a href="https://tquadrat.github.io/foundation-base/javadoc/org.tquadrat.foundation.base/org/tquadrat/foundation/lang/StringConverter.html" title="class or interface in org.tquadrat.foundation.lang" class="external-link"><code>StringConverter</code></a>
+that is used to convert the replacement value to a String.</div>
+</dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html#release(java.util.UUID)" class="member-name-link">release(UUID)</a> - Method in class org.tquadrat.foundation.util.internal.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/internal/TimeoutSemaphoreImpl.html" title="class in org.tquadrat.foundation.util.internal">TimeoutSemaphoreImpl</a></dt>
 <dd>
 <div class="block">Releases the number of permits associated with the token
@@ -187,14 +193,16 @@ the given element.</div>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(boolean,java.util.Map...)" class="member-name-link">replaceVariable(boolean, Map...)</a> - Method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
 <div class="block">Replaces the variables of the form
-<code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
-values from the given maps and returns it after formatting the result.</div>
+<code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with the
+String reprensentations of the values from the given maps and returns
+the result after formatting the updated contents.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.lang.CharSequence,java.util.function.Function)" class="member-name-link">replaceVariable(CharSequence, Function)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
 <div class="block">Replaces the variables of the form
-<code>${&lt;<i>name</i>&gt;}</code> in the given String with values
-returned by the given retriever function for the variable name.</div>
+<code>${&lt;<i>name</i>&gt;}</code> in the given String with the String
+representation of the values returned by the given retriever function
+for the variable name.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.lang.CharSequence,java.util.Map...)" class="member-name-link">replaceVariable(CharSequence, Map...)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
@@ -205,15 +213,17 @@ from the given maps.</div>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.util.function.Function)" class="member-name-link">replaceVariable(Function)</a> - Method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
 <div class="block">Replaces the variables of the form
-<code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
-values returned by the given retriever function for the variable name,
-and returns it after formatting the result.</div>
+<code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with the
+String representations of the values returned by the given retriever
+function for the variable name, and returns the result after formatting
+the updated contents.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariable(java.util.Map...)" class="member-name-link">replaceVariable(Map...)</a> - Method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
 <div class="block">Replaces the variables of the form
-<code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
-values from the given maps and returns it after formatting the result.</div>
+<code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with the
+String representations of values from the given maps and returns the
+result after formatting the updated contents.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#replaceVariableFromSystemData(java.lang.CharSequence,java.util.Map...)" class="member-name-link">replaceVariableFromSystemData(CharSequence, Map...)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
@@ -319,10 +329,10 @@ method.</div>
 <code>isPublic</code> is provided as <code>false</code>, this method will also
 return those setters.</div>
 </dd>
-<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#retrieveVariableValue(java.lang.String,java.util.Map...)" class="member-name-link">retrieveVariableValue(String, Map...)</a> - Static method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
+<dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html#retrieveVariableValue(java.lang.String,java.lang.Iterable)" class="member-name-link">retrieveVariableValue(String, Iterable)</a> - Method in class org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/Template.html" title="class in org.tquadrat.foundation.util">Template</a></dt>
 <dd>
-<div class="block">Tries to obtain a value for the given key from one of the given
-sources that will be searched in the given sequence order.</div>
+<div class="block">Tries to obtain a value for the given key from one of the
+given sources that will be searched in the given sequence order.</div>
 </dd>
 <dt><a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html#revert()" class="member-name-link">revert()</a> - Method in interface org.tquadrat.foundation.util.<a href="../org.tquadrat.foundation.util/org/tquadrat/foundation/util/HeadTailList.html" title="interface in org.tquadrat.foundation.util">HeadTailList</a></dt>
 <dd>

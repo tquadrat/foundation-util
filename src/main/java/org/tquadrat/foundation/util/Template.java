@@ -18,14 +18,16 @@
 package org.tquadrat.foundation.util;
 
 import static java.lang.String.format;
-import static java.lang.System.arraycopy;
 import static java.lang.System.getProperties;
 import static java.lang.System.getenv;
+import static java.util.Arrays.asList;
 import static java.util.regex.Pattern.compile;
 import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
+import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
+import static org.tquadrat.foundation.util.StringUtils.isNotEmpty;
 import static org.tquadrat.foundation.util.StringUtils.isNotEmptyOrBlank;
 import static org.tquadrat.foundation.util.SystemUtils.determineIPAddress;
 import static org.tquadrat.foundation.util.SystemUtils.getMACAddress;
@@ -37,10 +39,14 @@ import java.io.Serializable;
 import java.net.SocketException;
 import java.time.Instant;
 import java.util.Collection;
+import java.util.Formattable;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.Optional;
+import java.util.SequencedCollection;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.regex.Pattern;
@@ -50,6 +56,7 @@ import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.MountPoint;
 import org.tquadrat.foundation.exception.ImpossibleExceptionError;
+import org.tquadrat.foundation.lang.StringConverter;
 
 /**
  *  <p>{@summary An instance of this class is basically a wrapper around a
@@ -96,12 +103,13 @@ import org.tquadrat.foundation.exception.ImpossibleExceptionError;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 1220 2026-05-03 09:15:32Z tquadrat $
+ *  @version $Id: Template.java 1239 2026-05-10 22:34:21Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
-@ClassVersion( sourceVersion = "$Id: Template.java 1220 2026-05-03 09:15:32Z tquadrat $" )
+@SuppressWarnings( "ClassWithTooManyMethods" )
+@ClassVersion( sourceVersion = "$Id: Template.java 1239 2026-05-10 22:34:21Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class Template implements Serializable
 {
@@ -201,6 +209,13 @@ public class Template implements Serializable
      */
     private final String m_TemplateText;
 
+    /**
+     *  The additional
+     *  {@link StringConverter}
+     *  implementations.
+     */
+    private final Map<Class<?>,StringConverter<?>> m_StringConverters = new HashMap<>();
+
         /*------------------------*\
     ====** Static Initialisations **===========================================
         \*------------------------*/
@@ -213,7 +228,6 @@ public class Template implements Serializable
      *  @see #findVariables()
      *  @see #VARIABLE_PATTERN
      */
-    @SuppressWarnings( "FieldNamingConvention" )
     private static final Pattern m_VariablePattern;
 
     /**
@@ -273,6 +287,30 @@ public class Template implements Serializable
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  adjustTemplate()
+
+    /**
+     *  <p>{@summary Applies the given
+     *  {@link StringConverter}
+     *  to the given value.}</p>
+     *  <p>This method is required to resolve an issue with the not so
+     *  compatible generics.</p>
+     *
+     *  @param  valueClass  The class of the value.
+     *  @param  stringConverter The {@code StringConverter} to use.
+     *  @param  value   The value to convert to a String.
+     *  @return The resulting String value.
+     *
+     *  @since 2.25.4
+     */
+    @SuppressWarnings( "rawtypes" )
+    private final String applyStringConverter( final Class valueClass, final StringConverter stringConverter, final Object value )
+    {
+        @SuppressWarnings( "unchecked" )
+        final var retValue = stringConverter.toString( valueClass.cast( value ) );
+
+        //---* Done *----------------------------------------------------------
+        return retValue;
+    }   //  applyStringConverter()
 
     /**
      *  Builds the source map with the additional data.
@@ -373,11 +411,10 @@ public class Template implements Serializable
         if( nonNull( text ) )
         {
             final var matcher = m_VariablePattern.matcher( text );
-            String found;
             while( matcher.find() )
             {
-                found = matcher.group( 1 );
-                buffer.add( found );
+                final var foundVariable = matcher.group( 1 );
+                buffer.add( foundVariable );
             }
         }
         final var retValue = Set.copyOf( buffer );
@@ -554,6 +591,27 @@ public class Template implements Serializable
     }   //  isVariable()
 
     /**
+     *  <p>{@summary Registers an additional
+     *  {@link StringConverter}
+     *  that is used to convert the replacement value to a String.}</p>
+     *  <p>The additional {@code StringConverter}s will be tried first before
+     *  the system provided implementations are applied.</p>
+     *
+     *  @param  <T> The type of the subject class.
+     *  @param  subjectClass    The class of the objects that are handled by
+     *      the given {@code StringConverter}.
+     *  @param  stringConverter The instance of {@code StringConverter} that
+     *      does the conversion.
+     *
+     *  @since 0.25.4
+     */
+    @API( status = STABLE, since = "0.25.4" )
+    public final <T> void registerStringConverter( final Class<T> subjectClass, final StringConverter<T> stringConverter )
+    {
+        m_StringConverters.put( requireNonNullArgument( subjectClass, "subjectClass" ), requireNonNullArgument( stringConverter, "stringConverter" ) );
+    }   //  registerStringConverter()
+
+    /**
      *  <p>{@summary Replaces the variables of the form
      *  <code>${&lt;<i>name</i>&gt;}</code> in the given String with values
      *  from the given maps.} The method will try the maps in the given
@@ -588,9 +646,13 @@ public class Template implements Serializable
     @API( status = STABLE, since = "0.1.0" )
     public static final String replaceVariable( final CharSequence text, final Map<String,? extends Object>... sources )
     {
-        requireNonNullArgument( sources, "sources" );
-
-        final var retValue = replaceVariable( text, variable -> retrieveVariableValue( variable, sources ) );
+        String retValue = null;
+        if( nonNull( text ) )
+        {
+            final var effectiveSources = asList( requireNonNullArgument( sources, "sources" ) );
+            final var template = new Template( text );
+            retValue = template.replaceVariable( variable -> template.retrieveVariableValue( variable, effectiveSources ) );
+        }
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -598,10 +660,19 @@ public class Template implements Serializable
 
     /**
      *  <p>{@summary Replaces the variables of the form
-     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
-     *  values from the given maps and returns it after formatting the result.}
-     *  The method will try the maps in the given sequence, it stops after the
-     *  first match.</p>
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with the
+     *  String representations of values from the given maps and returns the
+     *  result after formatting the updated contents.} The method will try the
+     *  maps in the given sequence, it stops after the first match.</p>
+     *  <p>The found values will be converted to Strings by using the
+     *  {@link StringConverter}
+     *  that was registered for the class of the value. If the class implements
+     *  {@link Formattable},
+     *  {@link Formattable#formatTo(Formatter,int,int,int) formatTo(Formatter, 0, -1, -1)}
+     *  will be called. If there is no matching {@code StringConverter}, the
+     *  value will be converted by calling
+     *  {@link org.tquadrat.foundation.lang.Objects#toString(Object)}
+     *  with the value as argument.</p>
      *  <p>If no replacement value could be found, the variable will not be
      *  replaced at all.</p>
      *  <p>If a value from one of the maps contains a variable itself, this
@@ -633,8 +704,9 @@ public class Template implements Serializable
 
     /**
      *  <p>{@summary Replaces the variables of the form
-     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
-     *  values from the given maps and returns it after formatting the result.}
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with the
+     *  String reprensentations of the values from the given maps and returns
+     *  the result after formatting the updated contents.}
      *  The method will try the maps in the given sequence, it stops after the
      *  first match.</p>
      *  <p>If {@code addSystemData} is provided as {@code true}, the
@@ -642,6 +714,30 @@ public class Template implements Serializable
      *  and
      *  {@linkplain System#getenv() system environment}
      *  will be searched for replacement values before any other source.</p>
+     *  <p>In addition, five more variables are recognised:</p>
+     *  <dl>
+     *      <dt><b><code>{@value #VARNAME_IPAddress}</code></b></dt>
+     *      <dd>The first IP address for the machine that executes this Java
+     *      virtual machine.</dd>
+     *      <dt><b><code>{@value #VARNAME_MACAddress}</code></b></dt>
+     *      <dd>The MAC address of the first NIC in this machine.</dd>
+     *      <dt><b><code>{@value #VARNAME_NodeId}</code></b></dt>
+     *      <dd>The node id from the first NIC in this machine.</dd>
+     *      <dt><b><code>{@value #VARNAME_Now}</code></b></dt>
+     *      <dd>The current date and time as returned by
+     *      {@link Instant#now}.</dd>
+     *      <dt><b><code>{@value #VARNAME_pid}</code></b></dt>
+     *      <dd>The process id of this Java virtual machine.</dd>
+     *  </dl>
+     *  <p>The found values will be converted to Strings by using the
+     *  {@link StringConverter}
+     *  that was registered for the class of the value. If the class implements
+     *  {@link Formattable},
+     *  {@link Formattable#formatTo(Formatter,int,int,int) formatTo(Formatter, 0, -1, -1)}
+     *  will be called. If there is no matching {@code StringConverter}, the
+     *  value will be converted by calling
+     *  {@link org.tquadrat.foundation.lang.Objects#toString(Object)}
+     *  with the value as argument.</p>
      *  <p>If no replacement value could be found, the variable will not be
      *  replaced at all.</p>
      *  <p>If a value from one of the maps contains a variable itself, this
@@ -672,11 +768,19 @@ public class Template implements Serializable
     @SafeVarargs
     public final String replaceVariable( final boolean addSystemData, final Map<String,? extends Object>... sources )
     {
-        final var rawTemplate = getTemplateText();
-        final var processedText = addSystemData
-            ? replaceVariableFromSystemData( rawTemplate, sources )
-            : replaceVariable( rawTemplate, sources );
-        final var retValue = formatResult( processedText );
+        final SequencedCollection<Map<String,? extends Object>> effectiveSources = new LinkedList<>( asList( requireNonNullArgument( sources, "sources" ) ) );
+
+        if( addSystemData )
+        {
+            @SuppressWarnings( {"unchecked", "rawtypes"} )
+            final Map<String,? extends Object> systemProperties = (Map) getProperties();
+
+            effectiveSources.addFirst( getenv() );
+            effectiveSources.addFirst( systemProperties );
+        }
+
+        effectiveSources.addFirst( createAdditionalSource() );
+        final var retValue = replaceVariable( variable -> retrieveVariableValue( variable, effectiveSources ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -684,9 +788,10 @@ public class Template implements Serializable
 
     /**
      *  <p>{@summary Replaces the variables of the form
-     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with
-     *  values returned by the given retriever function for the variable name,
-     *  and returns it after formatting the result.}</p>
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the adjusted template with the
+     *  String representations of the values returned by the given retriever
+     *  function for the variable name, and returns the result after formatting
+     *  the updated contents.}</p>
      *  <p>If no replacement value could be found, the variable will not be
      *  replaced at all.</p>
      *  <p>If the retriever function returns a value that contains a variable
@@ -715,7 +820,25 @@ public class Template implements Serializable
      */
     public final String replaceVariable( final Function<? super String, Optional<String>> retriever )
     {
-        final var retValue = formatResult( replaceVariable( getTemplateText(), retriever ) );
+        requireNonNullArgument( retriever, "retriever" );
+
+        final Map<String,String> cache = new HashMap<>();
+
+        final var text = getTemplateText();
+        final var buffer = new StringBuilder();
+        if( isNotEmpty( text ) )
+        {
+            final var matcher = m_VariablePattern.matcher( text );
+            while( matcher.find() )
+            {
+                final var variable = matcher.group( 0 );
+                final var replacement = cache.computeIfAbsent( variable, v -> escapeRegexReplacement( retriever.apply( matcher.group( 1 ) ).orElse( v ) ) );
+                matcher.appendReplacement( buffer, replacement );
+            }
+            matcher.appendTail( buffer );
+        }
+
+        final var retValue = formatResult( buffer.toString() );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -723,8 +846,9 @@ public class Template implements Serializable
 
     /**
      *  <p>{@summary Replaces the variables of the form
-     *  <code>${&lt;<i>name</i>&gt;}</code> in the given String with values
-     *  returned by the given retriever function for the variable name.}</p>
+     *  <code>${&lt;<i>name</i>&gt;}</code> in the given String with the String
+     *  representation of the values returned by the given retriever function
+     *  for the variable name.}</p>
      *  <p>If no replacement value could be found, the variable will not be
      *  replaced at all.</p>
      *  <p>If the retriever function returns a value that contains a variable
@@ -757,24 +881,9 @@ public class Template implements Serializable
     @API( status = STABLE, since = "0.1.0" )
     public static final String replaceVariable( final CharSequence text, final Function<? super String, Optional<String>> retriever )
     {
-        requireNonNullArgument( retriever, "retriever" );
-
-        final Map<String,String> cache = new HashMap<>();
-
-        String retValue = null;
-        if( nonNull( text ) )
-        {
-            final var matcher = m_VariablePattern.matcher( text );
-            final var buffer = new StringBuilder();
-            while( matcher.find() )
-            {
-                final var variable = matcher.group( 0 );
-                final var replacement = cache.computeIfAbsent( variable, v -> escapeRegexReplacement( retriever.apply( matcher.group( 1 ) ).orElse( v ) ) );
-                matcher.appendReplacement( buffer, replacement );
-            }
-            matcher.appendTail( buffer );
-            retValue = buffer.toString();
-        }
+        final var retValue = isNull( text )
+            ? null
+            : new Template( text ).replaceVariable( requireNonNullArgument( retriever, "retriever" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -811,7 +920,8 @@ public class Template implements Serializable
      *  <p>The variables names are case-sensitive.</p>
      *
      *  @param  text    The text with the variables; can be {@code null}.
-     *  @param  additionalSources The maps with additional replacement values.
+     *  @param  sources The maps with the replacement values, in addition to
+     *      the system variables.
      *  @return The new text, or {@code null} if the provided value for
      *      {@code text} was already {@code null}.
      *
@@ -821,33 +931,30 @@ public class Template implements Serializable
     @SuppressWarnings( "TypeParameterExplicitlyExtendsObject" )
     @SafeVarargs
     @API( status = STABLE, since = "0.1.0" )
-    public static final String replaceVariableFromSystemData( final CharSequence text, final Map<String,? extends Object>... additionalSources )
+    public static final String replaceVariableFromSystemData( final CharSequence text, final Map<String,? extends Object>... sources )
     {
-        final var currentLen = requireNonNullArgument( additionalSources, "additionalSources" ).length;
-        final var newLen = currentLen + 3;
-        @SuppressWarnings( "unchecked" )
-        final Map<String,? extends Object> [] sources =  new Map [newLen];
-        if( currentLen > 0 )
-        {
-            arraycopy( additionalSources, 0, sources, 3, currentLen );
-        }
-
-        @SuppressWarnings( {"unchecked", "rawtypes"} )
-        final Map<String,? extends Object> systemProperties = (Map) getProperties();
-
-        sources [0] = createAdditionalSource();
-        sources [1] = systemProperties;
-        sources [2] = getenv();
-
-        final var retValue = replaceVariable( text, sources );
+        final var retValue = isNull( text )
+            ? null
+            : new Template( text ).replaceVariable( true, requireNonNullArgument( sources, "sources" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  replaceVariableFromSystemData()
 
     /**
-     *  Tries to obtain a value for the given key from one of the given
-     *  sources that will be searched in the given sequence order.
+     *  <p>{@summary Tries to obtain a value for the given key from one of the
+     *  given sources that will be searched in the given sequence order.}</p>
+     *  <p>The method stops searching once an entry for {@code code} was
+     *  found.</p>
+     *  <p>The found value will be converted to a String by using the
+     *  {@link StringConverter}
+     *  that was registered for the class of the value. If the class implements
+     *  {@link Formattable},
+     *  {@link Formattable#formatTo(Formatter,int,int,int) formatTo(Formatter, 0, -1, -1)}
+     *  will be called. If there is no matching {@code StringConverter}, the
+     *  value will be converted by calling
+     *  {@link org.tquadrat.foundation.lang.Objects#toString(Object)}
+     *  with the value as argument.</p>
      *
      *  @param  name    The name of the value.
      *  @param  sources The maps with the values.
@@ -855,14 +962,11 @@ public class Template implements Serializable
      *      {@link Optional}
      *      that holds the value from one of the sources.
      */
-    @SuppressWarnings( "TypeParameterExplicitlyExtendsObject" )
-    @SafeVarargs
-    private static final Optional<String> retrieveVariableValue( final String name, final Map<String,? extends Object>... sources )
+    @SuppressWarnings( {"TypeParameterExplicitlyExtendsObject", "BoundedWildcard"} )
+    private final Optional<String> retrieveVariableValue( final String name, final Iterable<Map<String,? extends Object>> sources )
     {
         assert nonNull( name ) : "name is null";
         assert nonNull( sources ) : "sources is null";
-
-        Optional<String> retValue = Optional.empty();
 
         //---* Search the sources *--------------------------------------------
         Object value = null;
@@ -872,11 +976,26 @@ public class Template implements Serializable
             if( nonNull( value ) ) break SearchLoop;
         }   //  SearchLoop:
 
-        if( nonNull( value ) )
+        final var replacement = switch( value )
         {
-            //---* Escape the backslashes and dollar signs *-------------------
-            retValue = Optional.of( escapeRegexReplacement( value.toString() ) );
-        }
+            case null -> null;
+            case final CharSequence charSequence -> charSequence.toString();
+            case final Formattable formattable ->
+            {
+                final var formatter = new Formatter();
+                formattable.formatTo( formatter, 0, -1, -1 );
+                yield formatter.toString();
+            }
+            default ->
+            {
+                final var valueClass = value.getClass();
+                final var foundValue = valueClass.cast( value );
+                Optional<? extends StringConverter<?>> stringConverter = Optional.ofNullable( m_StringConverters.get( valueClass ) );
+                if( stringConverter.isEmpty() ) stringConverter = StringConverter.forClass( valueClass );
+                yield stringConverter.map( converter -> applyStringConverter( valueClass, converter, foundValue ) ).orElse( foundValue.toString() );
+            }
+        };
+        final Optional<String> retValue = isNull( replacement ) ? Optional.empty() : Optional.of( replacement );
 
         //---* Done *----------------------------------------------------------
         return retValue;
