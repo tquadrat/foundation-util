@@ -103,13 +103,13 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 1239 2026-05-10 22:34:21Z tquadrat $
+ *  @version $Id: Template.java 1251 2026-05-25 20:08:13Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: Template.java 1239 2026-05-10 22:34:21Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Template.java 1251 2026-05-25 20:08:13Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class Template implements Serializable
 {
@@ -213,6 +213,8 @@ public class Template implements Serializable
      *  The additional
      *  {@link StringConverter}
      *  implementations.
+     *
+     *  @serial
      */
     private final Map<Class<?>,StringConverter<?>> m_StringConverters = new HashMap<>();
 
