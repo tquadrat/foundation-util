@@ -8,8 +8,8 @@ Add this library to make the most often used features available to your project.
    <dependency>
       <groupId>org.tquadrat.library</groupId>
       <artifactId>org.tquadrat.foundation.util</artifactId>
-      <version>0.25.10</version>
+      <version>0.25.11</version>
    </dependency>
    ```
 ---  
-Last updated: 2026-05-25T23:16:45.072070239+02:00[Europe/Berlin]
+Last updated: 2026-05-27T21:15:29.539981811+02:00[Europe/Berlin]
