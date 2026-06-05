@@ -35,7 +35,7 @@ import org.tquadrat.foundation.exception.NullArgumentException;
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "RedundantNoArgConstructor"} )
-@ClassVersion( sourceVersion = "$Id: Candidate.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Candidate.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 public class Candidate implements Serializable
 {
         /*-----------*\
@@ -120,7 +120,7 @@ public class Candidate implements Serializable
     /**
      *  This is not equals.
      *
-     *  @return {@code false}.
+     *  @return {@false}.
      */
     @SuppressWarnings( "static-method" )
     public final boolean equals() { return false; }
@@ -183,7 +183,7 @@ public class Candidate implements Serializable
     /**
      *  A dummy method.
      *
-     *  @return {@code true}.
+     *  @return {@true}.
      */
     @SuppressWarnings( "static-method" )
     public final boolean is() { return true; }
@@ -191,7 +191,7 @@ public class Candidate implements Serializable
     /**
      *  A dummy method.
      *
-     *  @return {@code false}.
+     *  @return {@false}.
      */
     @SuppressWarnings( "static-method" )
     public final boolean isNot() { return false; }

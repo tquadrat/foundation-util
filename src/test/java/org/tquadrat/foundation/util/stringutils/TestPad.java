@@ -61,10 +61,10 @@ import org.tquadrat.foundation.util.StringUtils.Padding;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestPad.java 1076 2023-10-03 18:36:07Z tquadrat $
+ *  @version $Id: TestPad.java 1258 2026-06-04 18:33:06Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestPad.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestPad.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestPad" )
 public class TestPad extends TestBaseClass
 {
@@ -76,7 +76,7 @@ public class TestPad extends TestBaseClass
      *  {@link #testPad(DataPad)}.
      *
      *  @param  expected    The expected result for the test; if
-     *      {@code null} the test should fail.
+     *      {@null} the test should fail.
      *  @param  counter The test number.
      *  @param  input   The input to process.
      *  @param  length  The target length.

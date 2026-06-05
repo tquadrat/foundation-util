@@ -55,13 +55,13 @@ import org.tquadrat.foundation.util.internal.HeadTailListImpl;
  *  @param  <T> The element type of the list.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: HeadTailList.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: HeadTailList.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.4
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: HeadTailList.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HeadTailList.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.4" )
 public sealed interface HeadTailList<T> extends Iterable<T>
     permits HeadTailListImpl
@@ -113,7 +113,7 @@ public sealed interface HeadTailList<T> extends Iterable<T>
      *  one.
      *
      *  @param  element The element to look for.
-     *  @return {@code true} if the element is in the list, {@code false}
+     *  @return {@true} if the element is in the list, {@false}
      *      otherwise.
      */
     public default boolean contains( final T element )
@@ -236,7 +236,7 @@ public sealed interface HeadTailList<T> extends Iterable<T>
     /**
      *  Checks whether the list is empty.
      *
-     *  @return {@code true} if the list is empty, {@code false} otherwise.
+     *  @return {@true} if the list is empty, {@false} otherwise.
      */
     public boolean isEmpty();
 
@@ -409,7 +409,7 @@ public sealed interface HeadTailList<T> extends Iterable<T>
      *
      *  @param  target  The target array; if this array has an insufficient
      *      size, a new array will be created.
-     *  @return An array with all entries from the list; never {@code null}. If
+     *  @return An array with all entries from the list; never {@null}. If
      *      the provided array was large enough to take all elements, it will
      *      be returned, otherwise the returned array is a new one and the
      *      provided array is unchanged.
@@ -425,7 +425,7 @@ public sealed interface HeadTailList<T> extends Iterable<T>
      *  <p>If the array is too small, a new array will be created.</p>
      *
      *  @param  supplier    The supplier for the target array.
-     *  @return An array with all entries on the stack; never {@code null}. If
+     *  @return An array with all entries on the stack; never {@null}. If
      *      the provided array was large enough to take all elements, it will
      *      be returned, otherwise the returned array is a new one and the
      *      provided array is unchanged.

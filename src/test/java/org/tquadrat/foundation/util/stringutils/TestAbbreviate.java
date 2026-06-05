@@ -47,10 +47,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestAbbreviate.java 1076 2023-10-03 18:36:07Z tquadrat $
+ *  @version $Id: TestAbbreviate.java 1258 2026-06-04 18:33:06Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestAbbreviate.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestAbbreviate.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestAbbreviate" )
 public class TestAbbreviate extends TestBaseClass
 {
@@ -61,7 +61,7 @@ public class TestAbbreviate extends TestBaseClass
      *  Tests for
      *  {@link StringUtils#abbreviate(CharSequence,int)}.
      *
-     *  @param  result  {@code true} for a successful execution, {@code false}
+     *  @param  result  {@true} for a successful execution, {@false}
      *      for a failure.
      *  @param  input   The input String.
      *  @param  maxWidth    The maximum target length of the output String.
@@ -123,7 +123,7 @@ public class TestAbbreviate extends TestBaseClass
      *  Tests for
      *  {@link StringUtils#abbreviate(CharSequence,int,int)}.
      *
-     *  @param  result  {@code true} for a successful execution, {@code false}
+     *  @param  result  {@true} for a successful execution, {@false}
      *      for a failure.
      *  @param  input   The input String.
      *  @param  offset  The offset for the abbreviation.
@@ -191,7 +191,7 @@ public class TestAbbreviate extends TestBaseClass
      *  Tests for
      *  {@link StringUtils#abbreviateMiddle(CharSequence,int)}.
      *
-     *  @param  result  {@code true} for a successful execution, {@code false}
+     *  @param  result  {@true} for a successful execution, {@false}
      *      for a failure.
      *  @param  input   The input String.
      *  @param  maxWidth    The maximum target length of the output String.

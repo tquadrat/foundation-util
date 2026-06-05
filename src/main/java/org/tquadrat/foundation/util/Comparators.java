@@ -40,13 +40,13 @@ import org.tquadrat.foundation.util.internal.StringBasedComparator;
  *  {@link Comparator}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Comparators.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: Comparators.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: Comparators.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Comparators.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Comparators
 {
@@ -62,7 +62,7 @@ public final class Comparators
      *  This means for the arguments {@code a1} and {@code a2}, and the
      *  generated keys <code>k<sub>a1</sub></code> and
      *  <code>k<sub>a2</sub></code> that the following must be both
-     *  {@code true}:</p>
+     *  {@true}:</p>
      *  <ul>
      *      <li><code>a1&nbsp;=&nbsp;a2&nbsp;&#x21d4;&nbsp;k<sub>a1</sub>&nbsp;=&nbsp;k<sub>a2</sub></code></li>
      *      <li><code>a1&nbsp;&#x2260;&nbsp;a2&nbsp;&#x21d4;&nbsp;k<sub>a1</sub>&nbsp;&#x2260;&nbsp;k<sub>a2</sub></code></li>
@@ -71,7 +71,7 @@ public final class Comparators
      *  provide always the same key.</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Comparators.java 1151 2025-10-01 21:32:15Z tquadrat $
+     *  @version $Id: Comparators.java 1258 2026-06-04 18:33:06Z tquadrat $
      *  @since 0.0.5
      *
      *  @param  <T> The type to order.
@@ -81,7 +81,7 @@ public final class Comparators
      *  @UMLGraph.link
      */
     @API( status = STABLE, since = "0.0.5" )
-    @ClassVersion( sourceVersion = "$Id: Comparators.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Comparators.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     @FunctionalInterface
     public interface KeyProvider<T,K>
     {
@@ -91,9 +91,9 @@ public final class Comparators
         /**
          *  Returns the sort order key for the given instance.
          *
-         *  @param  instance    The instance; may be {@code null}.
-         *  @return The respective sort order key; will be {@code null} if
-         *      the {@code instance} was {@code null}.
+         *  @param  instance    The instance; may be {@null}.
+         *  @return The respective sort order key; will be {@null} if
+         *      the {@code instance} was {@null}.
          */
         public K getKey( T instance );
     }
@@ -135,7 +135,7 @@ public final class Comparators
      *  @param  keyProvider The method that generates the sort key.
      *  @return The comparator.
      *
-     *  @note The key provider must return {@code null} for a {@code null}
+     *  @note The key provider must return {@null} for a {@null}
      *      value, as described for
      *      {@link KeyProvider#getKey(Object)}.
      *
@@ -164,11 +164,11 @@ public final class Comparators
      *  @param  keyComparator   The comparator that determines the order for
      *      the keys.
      *  @param  cacheKeys   A flag that determines whether the keys are to be
-     *      cached internally; {@code true} means they are kept, {@code false}
+     *      cached internally; {@true} means they are kept, {@false}
      *      means that the keys are generated newly for each comparison.
      *  @return The comparator.
      *
-     *  @note The key provider must return {@code null} for a {@code null}
+     *  @note The key provider must return {@null} for a {@null}
      *      value, as described for
      *      {@link KeyProvider#getKey(Object)}.
      *  @note The internally used cache will be kept for later uses of the

@@ -41,12 +41,12 @@ import org.tquadrat.foundation.exception.ValidationException;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Craig R. McClanahan
- *  @version $Id: HexUtils.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: HexUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: HexUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HexUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @UtilityClass
 public final class HexUtils
 {
@@ -71,7 +71,7 @@ public final class HexUtils
      *
      *  @param  digits  Hexadecimal digits representation.
      *  @return The resulting byte array.
-     *  @throws IllegalArgumentException The input String is {@code null},
+     *  @throws IllegalArgumentException The input String is {@null},
      *      empty, or it contains an invalid character that cannot be
      *      interpreted as a hexadecimal digit.
      */
@@ -98,7 +98,7 @@ public final class HexUtils
      *
      *  @param  digits  Hexadecimal digits representation.
      *  @return The resulting byte array.
-     *  @throws IllegalArgumentException The input array is {@code null},
+     *  @throws IllegalArgumentException The input array is {@null},
      *      empty, or it contains an invalid character that cannot be
      *      interpreted as a hexadecimal digit.
      */

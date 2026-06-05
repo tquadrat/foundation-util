@@ -91,7 +91,7 @@
 <span class="source-line-no">078</span><span id="line-78"> *  {@link #replaceVariableFromSystemData(CharSequence, Map[]) replaceVariableFromSystemData()}</span>
 <span class="source-line-no">079</span><span id="line-79"> *  and</span>
 <span class="source-line-no">080</span><span id="line-80"> *  {@link #replaceVariable(boolean, Map[]) replaceVariable()}</span>
-<span class="source-line-no">081</span><span id="line-81"> *  with {@code addSystemData} set to {@code true}), some additional variables</span>
+<span class="source-line-no">081</span><span id="line-81"> *  with {@code addSystemData} set to {@true}), some additional variables</span>
 <span class="source-line-no">082</span><span id="line-82"> *  are available:&lt;/p&gt;</span>
 <span class="source-line-no">083</span><span id="line-83"> *  &lt;dl&gt;</span>
 <span class="source-line-no">084</span><span id="line-84"> *      &lt;dt&gt;{@value #VARNAME_IPAddress}&lt;/dt&gt;</span>
@@ -116,13 +116,13 @@
 <span class="source-line-no">103</span><span id="line-103"> *  @see #VARNAME_pid</span>
 <span class="source-line-no">104</span><span id="line-104"> *</span>
 <span class="source-line-no">105</span><span id="line-105"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">106</span><span id="line-106"> *  @version $Id: Template.java 1251 2026-05-25 20:08:13Z tquadrat $</span>
+<span class="source-line-no">106</span><span id="line-106"> *  @version $Id: Template.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">107</span><span id="line-107"> *</span>
 <span class="source-line-no">108</span><span id="line-108"> *  @UMLGraph.link</span>
 <span class="source-line-no">109</span><span id="line-109"> *  @since 0.1.0</span>
 <span class="source-line-no">110</span><span id="line-110"> */</span>
 <span class="source-line-no">111</span><span id="line-111">@SuppressWarnings( "ClassWithTooManyMethods" )</span>
-<span class="source-line-no">112</span><span id="line-112">@ClassVersion( sourceVersion = "$Id: Template.java 1251 2026-05-25 20:08:13Z tquadrat $" )</span>
+<span class="source-line-no">112</span><span id="line-112">@ClassVersion( sourceVersion = "$Id: Template.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">113</span><span id="line-113">@API( status = STABLE, since = "0.1.0" )</span>
 <span class="source-line-no">114</span><span id="line-114">public class Template implements Serializable</span>
 <span class="source-line-no">115</span><span id="line-115">{</span>
@@ -412,7 +412,7 @@
 <span class="source-line-no">399</span><span id="line-399">     *  &lt;p&gt;Finally, there is the single underscore that is allowed as a</span>
 <span class="source-line-no">400</span><span id="line-400">     *  special variable.&lt;/p&gt;</span>
 <span class="source-line-no">401</span><span id="line-401">     *</span>
-<span class="source-line-no">402</span><span id="line-402">     *  @param  text    The text with the variables; may be {@code null}.</span>
+<span class="source-line-no">402</span><span id="line-402">     *  @param  text    The text with the variables; may be {@null}.</span>
 <span class="source-line-no">403</span><span id="line-403">     *  @return A {@code Collection} with the variable (names).</span>
 <span class="source-line-no">404</span><span id="line-404">     *</span>
 <span class="source-line-no">405</span><span id="line-405">     *  @see #VARIABLE_PATTERN</span>
@@ -502,8 +502,8 @@
 <span class="source-line-no">489</span><span id="line-489">     *  with the given name.</span>
 <span class="source-line-no">490</span><span id="line-490">     *</span>
 <span class="source-line-no">491</span><span id="line-491">     *  @param  name    The name of the variable to look for.</span>
-<span class="source-line-no">492</span><span id="line-492">     *  @return {@code true} if the template contains the variable,</span>
-<span class="source-line-no">493</span><span id="line-493">     *      {@code false} otherwise.</span>
+<span class="source-line-no">492</span><span id="line-492">     *  @return {@true} if the template contains the variable,</span>
+<span class="source-line-no">493</span><span id="line-493">     *      {@false} otherwise.</span>
 <span class="source-line-no">494</span><span id="line-494">     *  @throws IllegalArgumentException    The given argument is not valid as</span>
 <span class="source-line-no">495</span><span id="line-495">     *      a variable name.</span>
 <span class="source-line-no">496</span><span id="line-496">     *</span>
@@ -525,9 +525,9 @@
 <span class="source-line-no">512</span><span id="line-512">     *  form &lt;code&gt;${&lt;i&gt;&amp;lt;name&amp;gt;&lt;/i&gt;}&lt;/code&gt; (matching the pattern given in</span>
 <span class="source-line-no">513</span><span id="line-513">     *  {@link #VARIABLE_PATTERN}).</span>
 <span class="source-line-no">514</span><span id="line-514">     *</span>
-<span class="source-line-no">515</span><span id="line-515">     *  @param  input   The String to test; can be {@code null}.</span>
-<span class="source-line-no">516</span><span id="line-516">     *  @return {@code true} if the String contains at least one variable,</span>
-<span class="source-line-no">517</span><span id="line-517">     *      {@code false} otherwise.</span>
+<span class="source-line-no">515</span><span id="line-515">     *  @param  input   The String to test; can be {@null}.</span>
+<span class="source-line-no">516</span><span id="line-516">     *  @return {@true} if the String contains at least one variable,</span>
+<span class="source-line-no">517</span><span id="line-517">     *      {@false} otherwise.</span>
 <span class="source-line-no">518</span><span id="line-518">     *</span>
 <span class="source-line-no">519</span><span id="line-519">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">520</span><span id="line-520">     *</span>
@@ -548,8 +548,8 @@
 <span class="source-line-no">535</span><span id="line-535">     *  given in</span>
 <span class="source-line-no">536</span><span id="line-536">     *  {@link #VARIABLE_PATTERN}).</span>
 <span class="source-line-no">537</span><span id="line-537">     *</span>
-<span class="source-line-no">538</span><span id="line-538">     *  @return {@code true} if the template contains at least one variable,</span>
-<span class="source-line-no">539</span><span id="line-539">     *      {@code false} otherwise.</span>
+<span class="source-line-no">538</span><span id="line-538">     *  @return {@true} if the template contains at least one variable,</span>
+<span class="source-line-no">539</span><span id="line-539">     *      {@false} otherwise.</span>
 <span class="source-line-no">540</span><span id="line-540">     *</span>
 <span class="source-line-no">541</span><span id="line-541">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">542</span><span id="line-542">     */</span>
@@ -560,8 +560,8 @@
 <span class="source-line-no">547</span><span id="line-547">     *</span>
 <span class="source-line-no">548</span><span id="line-548">     *  @param  name    The bare variable name, without the surrounding</span>
 <span class="source-line-no">549</span><span id="line-549">     *      &amp;quot;${&amp;hellip;}&amp;quot;.</span>
-<span class="source-line-no">550</span><span id="line-550">     *  @return {@code true} if the given name is valid for a variable name,</span>
-<span class="source-line-no">551</span><span id="line-551">     *      {@code false} otherwise.</span>
+<span class="source-line-no">550</span><span id="line-550">     *  @return {@true} if the given name is valid for a variable name,</span>
+<span class="source-line-no">551</span><span id="line-551">     *      {@false} otherwise.</span>
 <span class="source-line-no">552</span><span id="line-552">     *</span>
 <span class="source-line-no">553</span><span id="line-553">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">554</span><span id="line-554">     *  @see #findVariables(CharSequence)</span>
@@ -589,9 +589,9 @@
 <span class="source-line-no">576</span><span id="line-576">     *  in</span>
 <span class="source-line-no">577</span><span id="line-577">     *  {@link #VARIABLE_PATTERN}.</span>
 <span class="source-line-no">578</span><span id="line-578">     *</span>
-<span class="source-line-no">579</span><span id="line-579">     *  @param  input   The String to test; can be {@code null}.</span>
-<span class="source-line-no">580</span><span id="line-580">     *  @return {@code true} if the given String is not {@code null}, not the</span>
-<span class="source-line-no">581</span><span id="line-581">     *      empty String, and it matches the given pattern, {@code false}</span>
+<span class="source-line-no">579</span><span id="line-579">     *  @param  input   The String to test; can be {@null}.</span>
+<span class="source-line-no">580</span><span id="line-580">     *  @return {@true} if the given String is not {@null}, not the</span>
+<span class="source-line-no">581</span><span id="line-581">     *      empty String, and it matches the given pattern, {@false}</span>
 <span class="source-line-no">582</span><span id="line-582">     *      otherwise.</span>
 <span class="source-line-no">583</span><span id="line-583">     *</span>
 <span class="source-line-no">584</span><span id="line-584">     *  @since 0.1.0</span>
@@ -647,10 +647,10 @@
 <span class="source-line-no">634</span><span id="line-634">     *  &lt;p&gt;Finally, there is the single underscore that is allowed as a</span>
 <span class="source-line-no">635</span><span id="line-635">     *  special variable.&lt;/p&gt;</span>
 <span class="source-line-no">636</span><span id="line-636">     *</span>
-<span class="source-line-no">637</span><span id="line-637">     *  @param  text    The text with the variables; may be {@code null}.</span>
+<span class="source-line-no">637</span><span id="line-637">     *  @param  text    The text with the variables; may be {@null}.</span>
 <span class="source-line-no">638</span><span id="line-638">     *  @param  sources The maps with the replacement values.</span>
-<span class="source-line-no">639</span><span id="line-639">     *  @return The new text, or {@code null} if the provided value for</span>
-<span class="source-line-no">640</span><span id="line-640">     *      {@code text} was already {@code null}.</span>
+<span class="source-line-no">639</span><span id="line-639">     *  @return The new text, or {@null} if the provided value for</span>
+<span class="source-line-no">640</span><span id="line-640">     *      {@code text} was already {@null}.</span>
 <span class="source-line-no">641</span><span id="line-641">     *</span>
 <span class="source-line-no">642</span><span id="line-642">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">643</span><span id="line-643">     *</span>
@@ -705,8 +705,8 @@
 <span class="source-line-no">692</span><span id="line-692">     *  special variable.&lt;/p&gt;</span>
 <span class="source-line-no">693</span><span id="line-693">     *</span>
 <span class="source-line-no">694</span><span id="line-694">     *  @param  sources The maps with the replacement values.</span>
-<span class="source-line-no">695</span><span id="line-695">     *  @return The new text, or {@code null} if the provided value for</span>
-<span class="source-line-no">696</span><span id="line-696">     *      {@code text} was already {@code null}.</span>
+<span class="source-line-no">695</span><span id="line-695">     *  @return The new text, or {@null} if the provided value for</span>
+<span class="source-line-no">696</span><span id="line-696">     *      {@code text} was already {@null}.</span>
 <span class="source-line-no">697</span><span id="line-697">     *</span>
 <span class="source-line-no">698</span><span id="line-698">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">699</span><span id="line-699">     */</span>
@@ -724,7 +724,7 @@
 <span class="source-line-no">711</span><span id="line-711">     *  the result after formatting the updated contents.}</span>
 <span class="source-line-no">712</span><span id="line-712">     *  The method will try the maps in the given sequence, it stops after the</span>
 <span class="source-line-no">713</span><span id="line-713">     *  first match.&lt;/p&gt;</span>
-<span class="source-line-no">714</span><span id="line-714">     *  &lt;p&gt;If {@code addSystemData} is provided as {@code true}, the</span>
+<span class="source-line-no">714</span><span id="line-714">     *  &lt;p&gt;If {@code addSystemData} is provided as {@true}, the</span>
 <span class="source-line-no">715</span><span id="line-715">     *  {@linkplain System#getProperties() system properties}</span>
 <span class="source-line-no">716</span><span id="line-716">     *  and</span>
 <span class="source-line-no">717</span><span id="line-717">     *  {@linkplain System#getenv() system environment}</span>
@@ -769,12 +769,12 @@
 <span class="source-line-no">756</span><span id="line-756">     *  &lt;p&gt;Finally, there is the single underscore that is allowed as a</span>
 <span class="source-line-no">757</span><span id="line-757">     *  special variable.&lt;/p&gt;</span>
 <span class="source-line-no">758</span><span id="line-758">     *</span>
-<span class="source-line-no">759</span><span id="line-759">     *  @param  addSystemData   {@code true} if the system properties and the</span>
+<span class="source-line-no">759</span><span id="line-759">     *  @param  addSystemData   {@true} if the system properties and the</span>
 <span class="source-line-no">760</span><span id="line-760">     *      system environment should be searched for replacement values, too,</span>
-<span class="source-line-no">761</span><span id="line-761">     *      otherwise {@code false}.</span>
+<span class="source-line-no">761</span><span id="line-761">     *      otherwise {@false}.</span>
 <span class="source-line-no">762</span><span id="line-762">     *  @param  sources The maps with the replacement values.</span>
-<span class="source-line-no">763</span><span id="line-763">     *  @return The new text, or {@code null} if the provided value for</span>
-<span class="source-line-no">764</span><span id="line-764">     *      {@code text} was already {@code null}.</span>
+<span class="source-line-no">763</span><span id="line-763">     *  @return The new text, or {@null} if the provided value for</span>
+<span class="source-line-no">764</span><span id="line-764">     *      {@code text} was already {@null}.</span>
 <span class="source-line-no">765</span><span id="line-765">     *</span>
 <span class="source-line-no">766</span><span id="line-766">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">767</span><span id="line-767">     *  @see #replaceVariableFromSystemData(CharSequence, Map[])</span>
@@ -828,8 +828,8 @@
 <span class="source-line-no">815</span><span id="line-815">     *</span>
 <span class="source-line-no">816</span><span id="line-816">     *  @param  retriever   The function that will retrieve the replacement</span>
 <span class="source-line-no">817</span><span id="line-817">     *      values for the given variable names.</span>
-<span class="source-line-no">818</span><span id="line-818">     *  @return The new text, or {@code null} if the provided value for</span>
-<span class="source-line-no">819</span><span id="line-819">     *      {@code text} was already {@code null}.</span>
+<span class="source-line-no">818</span><span id="line-818">     *  @return The new text, or {@null} if the provided value for</span>
+<span class="source-line-no">819</span><span id="line-819">     *      {@code text} was already {@null}.</span>
 <span class="source-line-no">820</span><span id="line-820">     *</span>
 <span class="source-line-no">821</span><span id="line-821">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">822</span><span id="line-822">     */</span>
@@ -883,11 +883,11 @@
 <span class="source-line-no">870</span><span id="line-870">     *  &lt;p&gt;Finally, there is the single underscore that is allowed as a</span>
 <span class="source-line-no">871</span><span id="line-871">     *  special variable.&lt;/p&gt;</span>
 <span class="source-line-no">872</span><span id="line-872">     *</span>
-<span class="source-line-no">873</span><span id="line-873">     *  @param  text    The text with the variables; may be {@code null}.</span>
+<span class="source-line-no">873</span><span id="line-873">     *  @param  text    The text with the variables; may be {@null}.</span>
 <span class="source-line-no">874</span><span id="line-874">     *  @param  retriever   The function that will retrieve the replacement</span>
 <span class="source-line-no">875</span><span id="line-875">     *      values for the given variable names.</span>
-<span class="source-line-no">876</span><span id="line-876">     *  @return The new text, or {@code null} if the provided value for</span>
-<span class="source-line-no">877</span><span id="line-877">     *      {@code text} was already {@code null}.</span>
+<span class="source-line-no">876</span><span id="line-876">     *  @return The new text, or {@null} if the provided value for</span>
+<span class="source-line-no">877</span><span id="line-877">     *      {@code text} was already {@null}.</span>
 <span class="source-line-no">878</span><span id="line-878">     *</span>
 <span class="source-line-no">879</span><span id="line-879">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">880</span><span id="line-880">     *</span>
@@ -934,11 +934,11 @@
 <span class="source-line-no">921</span><span id="line-921">     *  will not be replaced.&lt;/p&gt;</span>
 <span class="source-line-no">922</span><span id="line-922">     *  &lt;p&gt;The variables names are case-sensitive.&lt;/p&gt;</span>
 <span class="source-line-no">923</span><span id="line-923">     *</span>
-<span class="source-line-no">924</span><span id="line-924">     *  @param  text    The text with the variables; can be {@code null}.</span>
+<span class="source-line-no">924</span><span id="line-924">     *  @param  text    The text with the variables; can be {@null}.</span>
 <span class="source-line-no">925</span><span id="line-925">     *  @param  sources The maps with the replacement values, in addition to</span>
 <span class="source-line-no">926</span><span id="line-926">     *      the system variables.</span>
-<span class="source-line-no">927</span><span id="line-927">     *  @return The new text, or {@code null} if the provided value for</span>
-<span class="source-line-no">928</span><span id="line-928">     *      {@code text} was already {@code null}.</span>
+<span class="source-line-no">927</span><span id="line-927">     *  @return The new text, or {@null} if the provided value for</span>
+<span class="source-line-no">928</span><span id="line-928">     *      {@code text} was already {@null}.</span>
 <span class="source-line-no">929</span><span id="line-929">     *</span>
 <span class="source-line-no">930</span><span id="line-930">     *  @see #VARIABLE_PATTERN</span>
 <span class="source-line-no">931</span><span id="line-931">     *  @see #replaceVariable(CharSequence, Map...)</span>

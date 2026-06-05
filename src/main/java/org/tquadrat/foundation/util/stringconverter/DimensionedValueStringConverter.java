@@ -18,23 +18,23 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.lang.StringConverter;
-import org.tquadrat.foundation.lang.value.Dimension;
-import org.tquadrat.foundation.lang.value.DimensionedValue;
-
-import java.io.Serial;
-import java.math.BigDecimal;
-import java.util.Collection;
-import java.util.List;
-
 import static java.lang.String.format;
 import static java.util.Locale.ROOT;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;
+
+import java.io.Serial;
+import java.math.BigDecimal;
+import java.util.Collection;
+import java.util.List;
+
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.lang.StringConverter;
+import org.tquadrat.foundation.lang.value.Dimension;
+import org.tquadrat.foundation.lang.value.DimensionedValue;
 
 /**
  *  <p>{@summary The abstract base class for implementations of
@@ -46,7 +46,7 @@ import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;
  *  <code>16.0&nbsp;t</code>.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: DimensionedValueStringConverter.java 1195 2026-04-15 21:33:40Z tquadrat $
+ *  @version $Id: DimensionedValueStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.25.3
  *
  *  @param  <D> The type for the dimension.
@@ -54,7 +54,7 @@ import static org.tquadrat.foundation.util.StringUtils.isEmptyOrBlank;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: DimensionedValueStringConverter.java 1195 2026-04-15 21:33:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: DimensionedValueStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.25.3" )
 public abstract class DimensionedValueStringConverter<D extends Dimension,V extends DimensionedValue<D>> implements StringConverter<V>
 {
@@ -167,7 +167,7 @@ public abstract class DimensionedValueStringConverter<D extends Dimension,V exte
      *  includes the
      *  {@linkplain Dimension#unitSymbol() unit symbol}, too.
      *
-     *  @param  source  The object to convert; can be {@code null}.
+     *  @param  source  The object to convert; can be {@null}.
      *  @param  width   The minimum number of characters to be written to the
      *      output. If the length of the converted value is less than the width
      *      then the output will be padded by '&nbsp;' until the total number

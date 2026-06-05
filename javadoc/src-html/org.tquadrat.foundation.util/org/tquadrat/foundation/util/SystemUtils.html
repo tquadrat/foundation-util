@@ -92,13 +92,13 @@
 <span class="source-line-no">079</span><span id="line-79"> *  methods.</span>
 <span class="source-line-no">080</span><span id="line-80"> *</span>
 <span class="source-line-no">081</span><span id="line-81"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">082</span><span id="line-82"> *  @version $Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $</span>
+<span class="source-line-no">082</span><span id="line-82"> *  @version $Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">083</span><span id="line-83"> *  @since 0.0.5</span>
 <span class="source-line-no">084</span><span id="line-84"> *</span>
 <span class="source-line-no">085</span><span id="line-85"> *  @UMLGraph.link</span>
 <span class="source-line-no">086</span><span id="line-86"> */</span>
 <span class="source-line-no">087</span><span id="line-87">@SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )</span>
-<span class="source-line-no">088</span><span id="line-88">@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $" )</span>
+<span class="source-line-no">088</span><span id="line-88">@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">089</span><span id="line-89">@API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">090</span><span id="line-90">@UtilityClass</span>
 <span class="source-line-no">091</span><span id="line-91">public final class SystemUtils</span>
@@ -112,14 +112,14 @@
 <span class="source-line-no">099</span><span id="line-99">     *  UNIX/Linux and macOS/OS-X.</span>
 <span class="source-line-no">100</span><span id="line-100">     *</span>
 <span class="source-line-no">101</span><span id="line-101">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">102</span><span id="line-102">     *  @version $Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $</span>
+<span class="source-line-no">102</span><span id="line-102">     *  @version $Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">103</span><span id="line-103">     *  @since 0.0.6</span>
 <span class="source-line-no">104</span><span id="line-104">     *</span>
 <span class="source-line-no">105</span><span id="line-105">     *  @UMLGraph.link</span>
 <span class="source-line-no">106</span><span id="line-106">     *</span>
 <span class="source-line-no">107</span><span id="line-107">     *  @see SystemUtils#determineOperatingSystem()</span>
 <span class="source-line-no">108</span><span id="line-108">     */</span>
-<span class="source-line-no">109</span><span id="line-109">    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $" )</span>
+<span class="source-line-no">109</span><span id="line-109">    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">110</span><span id="line-110">    @API( status = STABLE, since = "0.0.6" )</span>
 <span class="source-line-no">111</span><span id="line-111">    public static enum OperatingSystem</span>
 <span class="source-line-no">112</span><span id="line-112">    {</span>
@@ -774,8 +774,8 @@
 <span class="source-line-no">761</span><span id="line-761">    /**</span>
 <span class="source-line-no">762</span><span id="line-762">     *  Checks whether the current system has a network interface installed.</span>
 <span class="source-line-no">763</span><span id="line-763">     *</span>
-<span class="source-line-no">764</span><span id="line-764">     *  @return {@code true} if the current system has a network interface</span>
-<span class="source-line-no">765</span><span id="line-765">     *      installed, {@code false} otherwise.</span>
+<span class="source-line-no">764</span><span id="line-764">     *  @return {@true} if the current system has a network interface</span>
+<span class="source-line-no">765</span><span id="line-765">     *      installed, {@false} otherwise.</span>
 <span class="source-line-no">766</span><span id="line-766">     */</span>
 <span class="source-line-no">767</span><span id="line-767">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">768</span><span id="line-768">    public static final boolean hasNetworkInterface()</span>
@@ -795,7 +795,7 @@
 <span class="source-line-no">782</span><span id="line-782">     *      monitors.</span>
 <span class="source-line-no">783</span><span id="line-783">     *</span>
 <span class="source-line-no">784</span><span id="line-784">     *  @param  millis  The time to sleep in milliseconds.</span>
-<span class="source-line-no">785</span><span id="line-785">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
+<span class="source-line-no">785</span><span id="line-785">     *  @return  {@true} if the sleep was interrupted, {@false} if it</span>
 <span class="source-line-no">786</span><span id="line-786">     *      terminated as planned.</span>
 <span class="source-line-no">787</span><span id="line-787">     */</span>
 <span class="source-line-no">788</span><span id="line-788">    @SuppressWarnings( {"BooleanMethodNameMustStartWithQuestion", "BusyWait"} )</span>
@@ -830,7 +830,7 @@
 <span class="source-line-no">817</span><span id="line-817">     *      monitors.</span>
 <span class="source-line-no">818</span><span id="line-818">     *</span>
 <span class="source-line-no">819</span><span id="line-819">     *  @param  duration    The time to sleep.</span>
-<span class="source-line-no">820</span><span id="line-820">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
+<span class="source-line-no">820</span><span id="line-820">     *  @return  {@true} if the sleep was interrupted, {@false} if it</span>
 <span class="source-line-no">821</span><span id="line-821">     *      terminated as planned.</span>
 <span class="source-line-no">822</span><span id="line-822">     */</span>
 <span class="source-line-no">823</span><span id="line-823">    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )</span>
@@ -869,7 +869,7 @@
 <span class="source-line-no">856</span><span id="line-856">     *      monitors.</span>
 <span class="source-line-no">857</span><span id="line-857">     *</span>
 <span class="source-line-no">858</span><span id="line-858">     *  @param  until   The end time for the sleep period.</span>
-<span class="source-line-no">859</span><span id="line-859">     *  @return  {@code true} if the sleep was interrupted, {@code false} if it</span>
+<span class="source-line-no">859</span><span id="line-859">     *  @return  {@true} if the sleep was interrupted, {@false} if it</span>
 <span class="source-line-no">860</span><span id="line-860">     *      terminated as planned.</span>
 <span class="source-line-no">861</span><span id="line-861">     */</span>
 <span class="source-line-no">862</span><span id="line-862">    @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )</span>

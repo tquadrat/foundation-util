@@ -39,7 +39,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  <p>This implementation is not synchronised, but thread-safe.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $
+ *  @version $Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <T> The type for the stack entries.
@@ -49,7 +49,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  @see    java.util.Stack
  */
 @SuppressWarnings( "NewClassNamingConvention" )
-@ClassVersion( sourceVersion = "$Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public final class Stack<T>
 {
@@ -65,12 +65,12 @@ public final class Stack<T>
      *      {@code <T>} that is inherited from the surrounding class.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $
+     *  @version $Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     private final class Entry
     {
@@ -95,7 +95,7 @@ public final class Stack<T>
          *  Creates a new {@code Stack} object.
          *
          *  @param  head    The current head.
-         *  @param  tail    The current tail; may be {@code null}, indicating
+         *  @param  tail    The current tail; may be {@null}, indicating
          *      an empty tail.
          */
         @SuppressWarnings( "UseOfConcreteClass" )
@@ -189,12 +189,12 @@ public final class Stack<T>
     /**
      *  <p>{@summary Tests if the stack is not empty.}</p>
      *  <p>If concurrent threads will access the stack, it is still possible
-     *  that this method will return {@code true}, but a call to
+     *  that this method will return {@true}, but a call to
      *  {@link #pop()}
-     *  immediately after returns {@code null}.</p>
+     *  immediately after returns {@null}.</p>
      *
-     *  @return {@code true} if there are still entries on the stack,
-     *      {@code false} otherwise.
+     *  @return {@true} if there are still entries on the stack,
+     *      {@false} otherwise.
      *
      *  @see #isEmpty()
      */
@@ -203,12 +203,12 @@ public final class Stack<T>
     /**
      *  <p>{@summary Tests if the stack is empty.}</p>
      *  <p>If concurrent threads will access the stack, it is still possible
-     *  that this method will return {@code false}, but a call to
+     *  that this method will return {@false}, but a call to
      *  {@link #pop()}
-     *  immediately after returns {@code null}.</p>
+     *  immediately after returns {@null}.</p>
      *
-     *  @return {@code true} if there are no entries on the stack,
-     *      {@code false} otherwise.
+     *  @return {@true} if there are no entries on the stack,
+     *      {@false} otherwise.
      *
      *  @see #hasMore()
      */
@@ -286,7 +286,7 @@ public final class Stack<T>
     /**
      *  <p>{@summary Adds the given entries to the stack, in LIFO order.}
      *  Nothing happens, if the provided array is empty.</p>
-     *  <p>The provided array may not contain {@code null} elements.</p>
+     *  <p>The provided array may not contain {@null} elements.</p>
      *  <p>If the push failed for anyone element of the array, the stack
      *  remained unchanged.</p>
      *  <p>The method guarantees that the elements of the array are stored to
@@ -295,7 +295,7 @@ public final class Stack<T>
      *
      *  @param  entries   The values to add.
      *  @throws IllegalArgumentException    At least one element of the
-     *      provided array is {@code null}.
+     *      provided array is {@null}.
      */
     @SafeVarargs
     public final void push( final T... entries ) throws IllegalArgumentException
@@ -333,7 +333,7 @@ public final class Stack<T>
      *
      *  @param  target  The target array; if this array has an insufficient
      *      size, a new array will be created.
-     *  @return An array with all entries on the stack; never {@code null}. If
+     *  @return An array with all entries on the stack; never {@null}. If
      *      the provided array was large enough to take all elements, it will
      *      be returned, otherwise the returned array is a new one and the
      *      provided array is unchanged.
@@ -369,7 +369,7 @@ public final class Stack<T>
      *  on the whole stack.</p>
      *
      *  @param  supplier    The supplier for the target array.
-     *  @return An array with all entries on the stack; never {@code null}.
+     *  @return An array with all entries on the stack; never {@null}.
      */
     public final T [] toArray( final IntFunction<T []> supplier )
     {

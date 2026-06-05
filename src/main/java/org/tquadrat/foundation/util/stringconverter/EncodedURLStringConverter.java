@@ -64,12 +64,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  {@linkplain Charset <code>charset</code> argument}.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: EncodedURLStringConverter.java 1080 2024-01-03 11:05:21Z tquadrat $
+ *  @version $Id: EncodedURLStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.1.0
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: EncodedURLStringConverter.java 1080 2024-01-03 11:05:21Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: EncodedURLStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public final class EncodedURLStringConverter extends URLStringConverter
 {
@@ -135,10 +135,10 @@ public final class EncodedURLStringConverter extends URLStringConverter
      *  {@link URL},
      *  using the provided character encoding.
      *
-     *  @param  source  The source; can be {@code null}.
+     *  @param  source  The source; can be {@null}.
      *  @param  charset The character encoding of the String.
-     *  @return The respective URL, or {@code null} if the source was already
-     *      {@code null}.
+     *  @return The respective URL, or {@null} if the source was already
+     *      {@null}.
      *  @throws IllegalArgumentException    The source was either not a valid
      *      URL, or the encoding was invalid.
      */
@@ -176,10 +176,10 @@ public final class EncodedURLStringConverter extends URLStringConverter
      *  into an {@code application/x-www-form-url} encoded String
      *  representation, using the provided character encoding.
      *
-     *  @param  source  The source; can be {@code null}.
+     *  @param  source  The source; can be {@null}.
      *  @param  charset The character encoding for the String.
-     *  @return The respective String representation, or {@code null} if the
-     *      source was already {@code null}.
+     *  @return The respective String representation, or {@null} if the
+     *      source was already {@null}.
      *  @throws IllegalArgumentException    The source was either not a valid
      *      URL, or the encoding was invalid.
      */

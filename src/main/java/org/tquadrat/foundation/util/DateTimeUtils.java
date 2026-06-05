@@ -17,11 +17,13 @@
 
 package org.tquadrat.foundation.util;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.lang.SoftLazy;
+import static java.util.Arrays.stream;
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toMap;
+import static org.apiguardian.api.API.Status.INTERNAL;
+import static org.apiguardian.api.API.Status.STABLE;
+import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
+import static org.tquadrat.foundation.lang.Objects.requireNotBlankArgument;
 
 import java.time.DateTimeException;
 import java.time.ZoneId;
@@ -32,25 +34,23 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.TimeZone;
 
-import static java.util.Arrays.stream;
-import static java.util.function.Function.identity;
-import static java.util.stream.Collectors.toMap;
-import static org.apiguardian.api.API.Status.INTERNAL;
-import static org.apiguardian.api.API.Status.STABLE;
-import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
-import static org.tquadrat.foundation.lang.Objects.requireNotBlankArgument;
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.lang.SoftLazy;
 
 /**
  *  Additional helpers for the work with date/time values.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: DateTimeUtils.java 1163 2026-03-20 15:28:33Z tquadrat $
+ *  @version $Id: DateTimeUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.3.0
  *
  *  @UMLGraph.link
  */
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: DateTimeUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: DateTimeUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.3.0" )
 public final class DateTimeUtils
 {
@@ -161,7 +161,7 @@ public final class DateTimeUtils
      *  returns a new instance, even if the argument remains the same. This
      *  means that it cannot be assumed that</p>
      *  <div class="source-container"><pre>ZoneId.of( "UTC" ) == ZoneId.of( "UTC" )</pre></div>
-     *  <p>returns {@code true} (although it cannot be excluded either).</p>
+     *  <p>returns {@true} (although it cannot be excluded either).</p>
      *  <p>If an application uses {@code ZoneId}s a lot, this could cause
      *  significant memory pressure, so it would make sense to cache them.</p>
      *  <p>This is safe because the instances of {@code ZoneId} are immutable

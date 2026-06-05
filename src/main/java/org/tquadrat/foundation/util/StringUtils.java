@@ -93,13 +93,13 @@ import org.tquadrat.foundation.lang.Objects;
  *  </ul>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $
+ *  @version $Id: StringUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.3
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: StringUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @UtilityClass
 public final class StringUtils
 {
@@ -111,13 +111,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $
+     *  @version $Id: StringUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
      *  @since 0.0.3
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Clipping
     {
@@ -209,13 +209,13 @@ public final class StringUtils
      *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $
+     *  @version $Id: StringUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "InnerClassTooDeeplyNested" )
-    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1186 2026-04-06 11:24:14Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: StringUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     @API( status = STABLE, since = "0.0.5" )
     public static enum Padding
     {
@@ -444,11 +444,11 @@ public final class StringUtils
      *  StringUtils.abbreviate( "abcdefg", 3 ) = IllegalArgumentException
      *  </code></pre>
      *
-     *  @param  text    The String to abbreviate, can be {@code null}.
+     *  @param  text    The String to abbreviate, can be {@null}.
      *  @param  maxWidth    The maximum length of result String, must be at
      *      least 4.
-     *  @return The abbreviated String, or {@code null} if the input was
-     *      already {@code null}.
+     *  @return The abbreviated String, or {@null} if the input was
+     *      already {@null}.
      *  @throws ValidationException The value for {@code maxWidth} was less
      *      than 4.
      *
@@ -491,13 +491,13 @@ public final class StringUtils
      *  StringUtils.abbreviate( "abcdefghij", 5, 6 )        = IllegalArgumentException
      *  </pre>
      *
-     *  @param  text    The String to process, can be {@code null}.
+     *  @param  text    The String to process, can be {@null}.
      *  @param  offset  The left edge of the source String; this value will not
      *      be checked.
      *  @param  maxWidth    The maximum length of result String, must be at
      *      least 4.
-     *  @return The abbreviated String, or {@code null} if the input was
-     *      already {@code null}.
+     *  @return The abbreviated String, or {@null} if the input was
+     *      already {@null}.
      *  @throws ValidationException The value for {@code maxWidth} was less
      *      than 4.
      *
@@ -566,11 +566,11 @@ public final class StringUtils
      *  StringUtils.abbreviateMiddle("abcdefgh", 4) = IllegalArgumentException
      *  </pre>
      *
-     *  @param  input   The String to check, may be {@code null}.
+     *  @param  input   The String to check, may be {@null}.
      *  @param  maxWidth    The maximum length of result String, must be at
      *      least 5.
-     *  @return The abbreviated String, or {@code null} if the input was
-     *      already {@code null}.
+     *  @return The abbreviated String, or {@null} if the input was
+     *      already {@null}.
      *  @throws ValidationException The value for {@code maxWidth} was less
      *      than 5.
      *
@@ -726,7 +726,7 @@ public final class StringUtils
      *  <p>{@summary <i>Capitalises</i> a String, meaning changing the first
      *  letter to upper case as per
      *  {@link Character#toUpperCase(char)}.} No other letters are changed.</p>
-     *  <p>A {@code null} input String returns {@code null}.</p>
+     *  <p>A {@null} input String returns {@null}.</p>
      *  <p>Samples:</p>
      *  <pre><code>
      *  StringUtils.capitalize( null )            == null;
@@ -741,9 +741,9 @@ public final class StringUtils
      *  even for the locale {@code tr_TR} (although &quot;&#x130;stanbul&quot;
      *  would be correct).</p>
      *
-     *  @param input    The String to capitalise, can be {@code null}.
-     *  @return The capitalised String, or {@code null} if the argument
-     *      was already {@code null}.
+     *  @param input    The String to capitalise, can be {@null}.
+     *  @return The capitalised String, or {@null} if the argument
+     *      was already {@null}.
      *
      *  @see #decapitalize(CharSequence)
      *
@@ -791,7 +791,7 @@ public final class StringUtils
      *  <p>{@summary <i>Capitalises</i> a String, meaning changing the first
      *  letter to upper case as per
      *  {@link Character#toTitleCase(char)}.} No other letters are changed.</p>
-     *  <p>A {@code null} input String returns {@code null}.</p>
+     *  <p>A {@null} input String returns {@null}.</p>
      *  <p>Samples:</p>
      *  <pre><code>
      *  StringUtils.capitalize( null )            == null;
@@ -806,9 +806,9 @@ public final class StringUtils
      *  even for the locale {@code tr_TR} (although &quot;&#x130;stanbul&quot;
      *  would be correct).</p>
      *
-     *  @param input    The String to capitalise, can be {@code null}.
-     *  @return The capitalised String, or {@code null} if the argument
-     *      was already {@code null}.
+     *  @param input    The String to capitalise, can be {@null}.
+     *  @return The capitalised String, or {@null} if the argument
+     *      was already {@null}.
      *
      *  @see #capitalize(CharSequence)
      *  @see #decapitalize(CharSequence)
@@ -854,7 +854,7 @@ public final class StringUtils
     }   //  capitalizeToTitle()
 
     /**
-     *  Tests if the given text is not {@code null}, not empty and not
+     *  Tests if the given text is not {@null}, not empty and not
      *  longer than the given maximum length. Use this to check whether a
      *  String that is provided as an argument to a method is longer than
      *  expected.
@@ -873,7 +873,7 @@ public final class StringUtils
      *  @throws EmptyArgumentException Either {@code name} or {@code text} is
      *      the empty String.
      *  @throws NullArgumentException   Either {@code name} or {@code text} is
-     *      {@code null}.
+     *      {@null}.
      *
      *  @since 0.0.5
      */
@@ -893,21 +893,21 @@ public final class StringUtils
      *  Tests if the given text is not longer than the given maximum length;
      *  different from
      *  {@link #checkTextLen(String, CharSequence, int)},
-     *  it may be {@code null} or empty.
+     *  it may be {@null} or empty.
      *
      *  @param  name    The name that should appear in the exception if one
      *      will be thrown.
-     *  @param  text    The text to check; may be {@code null}.
+     *  @param  text    The text to check; may be {@null}.
      *  @param  maxLength   The maximum length.
-     *  @return Always the contents of {@code text} as a String, {@code null}
-     *      if {@code text} was {@code null}; if the argument fails any of the
+     *  @return Always the contents of {@code text} as a String, {@null}
+     *      if {@code text} was {@null}; if the argument fails any of the
      *      tests, an
      *      {@link IllegalArgumentException}
      *      or an exception derived from that will be thrown.
      *  @throws CharSequenceTooLongException    {@code text} is longer than
      *      {@code maxLength}.
      *  @throws EmptyArgumentException  {@code name} is empty.
-     *  @throws NullArgumentException   {@code name} is {@code null}.
+     *  @throws NullArgumentException   {@code name} is {@null}.
      *
      *  @since 0.0.5
      */
@@ -934,8 +934,8 @@ public final class StringUtils
      *  <p>{@summary Changes the first letter of the given String to lower case
      *  as per
      *  {@link Character#toLowerCase(char)}.}
-     *  No other letters are changed. A {@code null} input String returns
-     *  {@code null}.</p>
+     *  No other letters are changed. A {@null} input String returns
+     *  {@null}.</p>
      *  <p>Samples:</p>
      *  <pre><code>
      *  StringUtils.decapitalize( null )           = null;
@@ -946,9 +946,9 @@ public final class StringUtils
      *  {@link #capitalize(CharSequence)}.</p>
      *  <p>Use this method to normalise the name of bean attributes.</p>
      *
-     *  @param  input   The String to <i>decapitalise</i>, may be {@code null}.
-     *  @return The <i>decapitalised</i> String, {@code null} if the argument
-     *      was {@code null}.
+     *  @param  input   The String to <i>decapitalise</i>, may be {@null}.
+     *  @return The <i>decapitalised</i> String, {@null} if the argument
+     *      was {@null}.
      *  @see #capitalize(CharSequence)
      *
      *  @since 0.0.5
@@ -1013,9 +1013,9 @@ public final class StringUtils
      *  (&amp;apos;) that was not a legal entity for HTML before HTML&nbsp;5 is
      *  now supported.</p>
      *
-     *  @param  input   The {@code String} to escape, may be {@code null}.
-     *  @return A new escaped {@code String}, or {@code null} if the
-     *      argument was already {@code null}.
+     *  @param  input   The {@code String} to escape, may be {@null}.
+     *  @return A new escaped {@code String}, or {@null} if the
+     *      argument was already {@null}.
      *
      *  @see #unescapeHTML(CharSequence)
      *  @see <a href="http://hotwired.lycos.com/webmonkey/reference/special_characters/">ISO Entities</a>
@@ -1048,8 +1048,8 @@ public final class StringUtils
      *  {@link #escapeHTML(CharSequence)}.
      *
      *  @param  appendable  The appendable object receiving the escaped string.
-     *  @param  input   The {@code String} to escape, may be {@code null}.
-     *  @throws NullArgumentException   The appendable is {@code null}.
+     *  @param  input   The {@code String} to escape, may be {@null}.
+     *  @throws NullArgumentException   The appendable is {@null}.
      *  @throws IOException when {@code Appendable} passed throws the exception
      *      from calls to the
      *      {@link Appendable#append(char)}
@@ -1084,7 +1084,7 @@ public final class StringUtils
      *  escapes also.
      *
      *  @param  input   The string to escape to the JSON format; it may be
-     *      empty, but not {@code null}.
+     *      empty, but not {@null}.
      *  @return A string correctly formatted for insertion in a JSON text.
      *
      *  @since 0.0.5
@@ -1146,7 +1146,7 @@ public final class StringUtils
      *
      *  @param  appendable  The appendable receiving the escaped string.
      *  @param  c   The character to escape.
-     *  @throws NullArgumentException   The appendable is {@code null}.
+     *  @throws NullArgumentException   The appendable is {@null}.
      *  @throws IOException when {@code Appendable} passed throws the exception
      *      from calls to the
      *      {@link Appendable#append(CharSequence)}
@@ -1206,9 +1206,9 @@ public final class StringUtils
     /**
      *  Escapes the characters in a {@code String} using Regex escapes.
      *
-     *  @param  input   The {@code String} to escape, may be {@code null}.
-     *  @return A new escaped {@code String}, or {@code null} if the argument
-     *      was already {@code null}.
+     *  @param  input   The {@code String} to escape, may be {@null}.
+     *  @return A new escaped {@code String}, or {@null} if the argument
+     *      was already {@null}.
      *
      *  @since 0.0.5
      */
@@ -1252,9 +1252,9 @@ public final class StringUtils
      *  {@link Appendable}.
      *
      *  @param  appendable  The appendable receiving the escaped string.
-     *  @param  input   The {@code String} to escape. If {@code null} or the empty
+     *  @param  input   The {@code String} to escape. If {@null} or the empty
      *      String, nothing will be put to the appendable.
-     *  @throws NullArgumentException   The appendable is {@code null}.
+     *  @throws NullArgumentException   The appendable is {@null}.
      *  @throws IOException when {@code Appendable} passed throws the exception
      *      from calls to the
      *      {@link Appendable#append(CharSequence)}
@@ -1286,8 +1286,8 @@ public final class StringUtils
      *  &amp;quot;butter&amp;quot;</code>.</p>
      *
      *  @param  input   The {@code String} to escape, may be null.
-     *  @return A new escaped {@code String}, or {@code null} if the
-     *      argument was already {@code null}.
+     *  @return A new escaped {@code String}, or {@null} if the
+     *      argument was already {@null}.
      *
      *  @see #unescapeXML(CharSequence)
      */
@@ -1311,8 +1311,8 @@ public final class StringUtils
      *  &amp;quot;butter&amp;quot;</code>.</p>
      *
      *  @param  appendable  The appendable object receiving the escaped string.
-     *  @param  input   The {@code String} to escape, may be {@code null}.
-     *  @throws NullArgumentException   The appendable is {@code null}.
+     *  @param  input   The {@code String} to escape, may be {@null}.
+     *  @throws NullArgumentException   The appendable is {@null}.
      *  @throws IOException when {@code Appendable} passed throws the exception
      *      from calls to the
      *      {@link Appendable#append(char)}
@@ -1332,11 +1332,11 @@ public final class StringUtils
     }   //  escapeXML()
 
     /**
-     *  Tests if the given String is {@code null} or the empty String.
+     *  Tests if the given String is {@null} or the empty String.
      *
      *  @param  input   The String to test.
-     *  @return {@code true} if the given String reference is
-     *      {@code null} or the empty String.
+     *  @return {@true} if the given String reference is
+     *      {@null} or the empty String.
      *
      *  @since 0.0.5
      */
@@ -1344,12 +1344,12 @@ public final class StringUtils
     public static final boolean isEmpty( final CharSequence input ) { return isNull( input ) || input.isEmpty(); }
 
     /**
-     *  Tests if the given String is {@code null}, the empty String, or just
+     *  Tests if the given String is {@null}, the empty String, or just
      *  containing whitespace.
      *
      *  @param  input   The String to test.
-     *  @return {@code true} if the given String reference is not
-     *      {@code null} and not the empty String.
+     *  @return {@true} if the given String reference is not
+     *      {@null} and not the empty String.
      *
      *  @see String#isBlank()
      *
@@ -1365,12 +1365,12 @@ public final class StringUtils
     }   //  isEmptyOrBlank()
 
     /**
-     *  Tests if the given String is not {@code null} and not the empty
+     *  Tests if the given String is not {@null} and not the empty
      *  String.
      *
      *  @param  input   The String to test.
-     *  @return {@code true} if the given String reference is not
-     *      {@code null} and not the empty String.
+     *  @return {@true} if the given String reference is not
+     *      {@null} and not the empty String.
      *
      *  @since 0.0.5
      */
@@ -1378,12 +1378,12 @@ public final class StringUtils
     public static final boolean isNotEmpty( final CharSequence input ) { return nonNull( input ) && !input.isEmpty(); }
 
     /**
-     *  Tests if the given String is not {@code null}, not the empty String,
+     *  Tests if the given String is not {@null}, not the empty String,
      *  and that it contains other characters than just whitespace.
      *
      *  @param  input   The String to test.
-     *  @return {@code true} if the given String reference is not
-     *      {@code null} and not the empty String, and it contains other
+     *  @return {@true} if the given String reference is not
+     *      {@null} and not the empty String, and it contains other
      *      characters than just whitespace.
      *
      *  @see String#isBlank()
@@ -1401,12 +1401,12 @@ public final class StringUtils
 
     /**
      *  <p>{@summary Returns the given replacement value if the given String is
-     *  {@code null} or empty.} Otherwise the original String is returned.</p>
+     *  {@null} or empty.} Otherwise the original String is returned.</p>
      *
      *  @param  input   The String to test.
-     *  @param  replacement The replacement; can be {@code null}.
+     *  @param  replacement The replacement; can be {@null}.
      *  @return Either the {@code input} or the {@code replacment} in case the
-     *      input is {@code null} or empty.
+     *      input is {@null} or empty.
      *
      *  @see #isEmpty(CharSequence)
      *  @see Objects#mapFromNull(Object,Object)
@@ -1424,13 +1424,13 @@ public final class StringUtils
 
     /**
      *  <p>{@summary Returns the replacement provided by the given supplier if
-     *  the given String is {@code null} or empty.} Otherwise the original
+     *  the given String is {@null} or empty.} Otherwise the original
      *  String is returned.</p>
      *
      *  @param  input   The String to test.
      *  @param  replacementSupplier Provides a replacement for the empty input.
      *  @return Either the {@code input} or the replacement value in case the
-     *      input is {@code null} or empty.
+     *      input is {@null} or empty.
      *
      *  @see #isEmpty(CharSequence)
      *  @see Objects#mapFromNull(Object, Supplier)
@@ -1454,7 +1454,7 @@ public final class StringUtils
      *
      *  @param  stream  The strings.
      *  @return The length of the longest string in the list; -1 if all values
-     *      in the given {@code stream} are {@code null}, and
+     *      in the given {@code stream} are {@null}, and
      *      {@link Integer#MIN_VALUE}
      *      if the given {@code stream} is empty.
      *
@@ -1478,7 +1478,7 @@ public final class StringUtils
      *
      *  @param  list    The strings.
      *  @return The length of the longest string in the list; -1 if all values
-     *      in the given {@code list} are {@code null}, and
+     *      in the given {@code list} are {@null}, and
      *      {@link Integer#MIN_VALUE}
      *      if the given {@code list} is empty.
      *
@@ -1499,7 +1499,7 @@ public final class StringUtils
      *
      *  @param  a   The strings.
      *  @return The length of the longest string in the list; -1 if all values
-     *      in the array are {@code null}, and
+     *      in the array are {@null}, and
      *      {@link Integer#MIN_VALUE}
      *      if the given array has zero length.
      *
@@ -1554,8 +1554,8 @@ public final class StringUtils
      *  @param  c   The pad character.
      *  @param  mode    The
      *      {@linkplain StringUtils.Padding pad mode}.
-     *  @param  clip    {@code true} if the input string should be cut in case
-     *      it is longer than {@code length}, {@code false} if it has to be
+     *  @param  clip    {@true} if the input string should be cut in case
+     *      it is longer than {@code length}, {@false} if it has to be
      *      returned unchanged .
      *  @return The re-formatted string.
      *
@@ -1683,9 +1683,9 @@ public final class StringUtils
      *  <p>Sometimes, this is just ugly, and there this method comes into
      *  play.</p>
      *
-     *  @param  input   The String to surround; can be {@code null}.
-     *  @return The quoted String; will be {@code null} if the argument was
-     *      {@code null} already.
+     *  @param  input   The String to surround; can be {@null}.
+     *  @return The quoted String; will be {@null} if the argument was
+     *      {@null} already.
      */
     public static final String quote( final CharSequence input )
     {
@@ -1766,7 +1766,7 @@ public final class StringUtils
      *      value will be treated as zero.
      *  @return A new String consisting of the given character repeated
      *      {@code count} times, or the empty String if {@code count} was 0
-     *      or negative, or {@code null} if the code point is invalid.
+     *      or negative, or {@null} if the code point is invalid.
      *
      *  @see Character#isValidCodePoint(int)
      *  @see String#repeat(int)
@@ -1799,13 +1799,13 @@ public final class StringUtils
      *  StringUtils.repeat(&nbsp;"a",&nbsp;-2&nbsp;)&nbsp;&rArr;&nbsp;""<br>
      *  </code>
      *
-     *  @param  input The String to repeat, may be {@code null}.
+     *  @param  input The String to repeat, may be {@null}.
      *  @param  count   The number of times to repeat {@code str}; a negative
      *      value will be treated as zero.
      *  @return A new String consisting of the original String repeated,
      *      {@code count} times, the empty String if {@code count} was 0
-     *      or negative, or {@code null} if the input String was
-     *      {@code null}, too.
+     *      or negative, or {@null} if the input String was
+     *      {@null}, too.
      *
      *  @see String#repeat(int)
      *
@@ -2230,8 +2230,8 @@ public final class StringUtils
      *  @param  input   The input String, denoting a file or folder name -
      *      <i>not</i> a full path.
      *  @return The String without the characters that are invalid for a file
-     *      name. This value will never be {@code null} or empty.
-     *  @throws NullArgumentException   The input is {@code null}.
+     *      name. This value will never be {@null} or empty.
+     *  @throws NullArgumentException   The input is {@null}.
      *  @throws EmptyArgumentException  The input is the empty String.
      *  @throws ValidationException After stripping the invalid characters the
      *      return value would be empty.
@@ -2307,8 +2307,8 @@ public final class StringUtils
     /**
      *  <p>{@summary Gets the String that is nested in between two Strings.}
      *  Only the first match is returned.</p>
-     *  <p>A {@code null} input String returns {@code null}. A {@code null}
-     *  open/close returns {@code null} (no match). An empty (&quot;&quot;)
+     *  <p>A {@null} input String returns {@null}. A {@null}
+     *  open/close returns {@null} (no match). An empty (&quot;&quot;)
      *  open and close returns an empty string.</p>
      *  <pre><code>
      *  substringBetween( "wx[b]yz", "[", "]" )    = "b"
@@ -2326,9 +2326,9 @@ public final class StringUtils
      *  @inspired Apache Commons Lang
      *
      *  @param  input   The String containing the substring, may be
-     *      {@code null}.
-     *  @param  open    The String before the substring, may be {@code null}.
-     *  @param  close   The String after the substring, may be {@code null}.
+     *      {@null}.
+     *  @param  open    The String before the substring, may be {@null}.
+     *  @param  close   The String after the substring, may be {@null}.
      *  @return An instance of
      *      {@link Optional}
      *      that holds the found substring; will be
@@ -2371,8 +2371,8 @@ public final class StringUtils
      *  end tag, returning all matching substrings in a
      *  {@link java.util.SequencedCollection Collection}.} That collection is
      *  empty if no match was found.</p>
-     *  <p>No match can be found in a {@code null} input String; same for a
-     *  {@code null} or an empty (&quot;&quot;) open or close.</p>
+     *  <p>No match can be found in a {@null} input String; same for a
+     *  {@null} or an empty (&quot;&quot;) open or close.</p>
      *  <pre><code>
      *  substringsBetween( "[a][b][c]", "[", "]" ) = ["a","b","c"]
      *  substringsBetween( null, *, * )            = []
@@ -2382,11 +2382,11 @@ public final class StringUtils
      *  </code></pre>
      *
      *  @param  input   The String containing the substrings, may be
-     *      {@code null}.
+     *      {@null}.
      *  @param  open    The String identifying the start of the substring, may
-     *      be {@code null}.
+     *      be {@null}.
      *  @param  close   The String identifying the end of the substring, may be
-     *      {@code null}.
+     *      {@null}.
      *  @return A
      *      {@link SequencedCollection Collection}
      *      with the found substrings, in the sequence they have in the input
@@ -2432,9 +2432,9 @@ public final class StringUtils
      *  verbatim into the result string. e.g. &quot;&amp;gt;&amp;zzzz;x&quot;
      *  will become &quot;&gt;&amp;zzzz;x&quot;.
      *
-     *  @param  input   The {@code String} to unescape, may be {@code null}.
-     *  @return A new unescaped {@code String}, {@code null} if the given
-     *      string was already {@code null}.
+     *  @param  input   The {@code String} to unescape, may be {@null}.
+     *  @return A new unescaped {@code String}, {@null} if the given
+     *      string was already {@null}.
      *
      *  @see #escapeHTML(CharSequence)
      *  @see #escapeHTML(Appendable,CharSequence)
@@ -2464,8 +2464,8 @@ public final class StringUtils
      *  will become &quot;&gt;&amp;zzzz;x&quot;.
      *
      *  @param  appendable  The appendable receiving the unescaped string.
-     *  @param  input   The {@code String} to unescape, may be {@code null}.
-     *  @throws NullArgumentException   The appendable is {@code null}.
+     *  @param  input   The {@code String} to unescape, may be {@null}.
+     *  @throws NullArgumentException   The appendable is {@null}.
      *  @throws IOException An IOException occurred.
      *
      *  @see #escapeHTML(CharSequence)
@@ -2488,9 +2488,9 @@ public final class StringUtils
      *  verbatim into the result string. e.g. &quot;&amp;gt;&amp;zzzz;x&quot;
      *  will become &quot;&gt;&amp;zzzz;x&quot;.</p>
      *
-     *  @param  input   The {@code String} to unescape, may be {@code null}.
-     *  @return A new unescaped {@code String}, {@code null} if the given
-     *      string was already {@code null}.
+     *  @param  input   The {@code String} to unescape, may be {@null}.
+     *  @return A new unescaped {@code String}, {@null} if the given
+     *      string was already {@null}.
      *
      *  @see #escapeXML(CharSequence)
      *  @see #escapeXML(Appendable,CharSequence)
@@ -2516,8 +2516,8 @@ public final class StringUtils
      *  will become &quot;&gt;&amp;zzzz;x&quot;.</p>
      *
      *  @param  appendable  The appendable receiving the unescaped string.
-     *  @param  input   The {@code String} to unescape, may be {@code null}.
-     *  @throws NullArgumentException   The writer is {@code null}.
+     *  @param  input   The {@code String} to unescape, may be {@null}.
+     *  @throws NullArgumentException   The writer is {@null}.
      *  @throws IOException An IOException occurred.
      *
      *  @see #escapeXML(CharSequence)

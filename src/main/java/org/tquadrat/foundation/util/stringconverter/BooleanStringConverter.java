@@ -17,17 +17,17 @@
 
 package org.tquadrat.foundation.util.stringconverter;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.MountPoint;
-import org.tquadrat.foundation.lang.StringConverter;
+import static org.apiguardian.api.API.Status.STABLE;
+import static org.tquadrat.foundation.lang.Objects.isNull;
 
 import java.io.Serial;
 import java.util.Collection;
 import java.util.List;
 
-import static org.apiguardian.api.API.Status.STABLE;
-import static org.tquadrat.foundation.lang.Objects.isNull;
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.MountPoint;
+import org.tquadrat.foundation.lang.StringConverter;
 
 /**
  *  An implementation of
@@ -38,11 +38,11 @@ import static org.tquadrat.foundation.lang.Objects.isNull;
  *  <br>The method
  *  {@link #fromString(CharSequence)}
  *  will accept the String &quot;true&quot;, irrespective of case, for the
- *  value {@code true}, and any other String for {@code false} (including the
+ *  value {@true}, and any other String for {@false} (including the
  *  empty String!), while
  *  {@link #toString()}
- *  will only return &quot;true&quot; or &quot;false&quot; (or {@code null} if
- *  the input is {@code null}). This behaviour can be changed by providing
+ *  will only return &quot;true&quot; or &quot;false&quot; (or {@null} if
+ *  the input is {@null}). This behaviour can be changed by providing
  *  different implementations for
  *  {@link #translate(CharSequence)}
  *  and
@@ -51,12 +51,12 @@ import static org.tquadrat.foundation.lang.Objects.isNull;
  *  @see Boolean#valueOf(String)
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: BooleanStringConverter.java 1163 2026-03-20 15:28:33Z tquadrat $
+ *  @version $Id: BooleanStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: BooleanStringConverter.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: BooleanStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public class BooleanStringConverter implements StringConverter<Boolean>
 {
@@ -139,11 +139,11 @@ public class BooleanStringConverter implements StringConverter<Boolean>
      *  <p>If this method will be implemented differently, it is no longer
      *  guaranteed that</p>
      *  <div class="source-container"><pre>toString( fromString( s ) ) == s</pre></div>
-     *  <p>yields {@code true} for all {@code s}.</p>
+     *  <p>yields {@true} for all {@code s}.</p>
      *
-     *  @param  source  The original text; can be {@code null}.
-     *  @return The translated source; will be {@code null} if {@code source}
-     *      was already {@code null}.
+     *  @param  source  The original text; can be {@null}.
+     *  @return The translated source; will be {@null} if {@code source}
+     *      was already {@null}.
      */
     @SuppressWarnings( "static-method" )
     @MountPoint

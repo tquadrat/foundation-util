@@ -50,10 +50,10 @@ import org.tquadrat.foundation.testutil.TestBaseClass;
  *  {@link org.tquadrat.foundation.util.internal.LazyListImpl}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestLazyList.java 1076 2023-10-03 18:36:07Z tquadrat $
+ *  @version $Id: TestLazyList.java 1258 2026-06-04 18:33:06Z tquadrat $
  */
 @SuppressWarnings( {"MisorderedAssertEqualsArguments", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: TestLazyList.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestLazyList.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.LazyList and ~.internal.LazyListImpl" )
 public class TestLazyList extends TestBaseClass
 {
@@ -475,7 +475,7 @@ public class TestLazyList extends TestBaseClass
      *  {@link List}
      *  that needs to throw a
      *  {@link NullPointerException}
-     *  when called with a {@code null} argument.
+     *  when called with a {@null} argument.
      */
     @Test
     final void testListMethodsNull()

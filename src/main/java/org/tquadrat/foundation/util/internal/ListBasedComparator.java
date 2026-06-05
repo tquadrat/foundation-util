@@ -46,12 +46,12 @@ import org.tquadrat.foundation.util.Comparators.KeyProvider;
  *      the same as the type itself.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ListBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: ListBasedComparator.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 @NotRecord
 public class ListBasedComparator<T,K> implements Comparator<T>
@@ -65,7 +65,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *  that returns the instance itself as the sort order key.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: ListBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $
+     *  @version $Id: ListBasedComparator.java 1258 2026-06-04 18:33:06Z tquadrat $
      *
      *  @param  <T> The type to order.
      *  @param  <K> The key type that is used to determine the order; this may
@@ -74,7 +74,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: ListBasedComparator.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     public static class SimpleKeyProvider<T,K extends T> implements KeyProvider<T,K>
     {
             /*--------------*\
@@ -91,8 +91,8 @@ public class ListBasedComparator<T,K> implements Comparator<T>
         /**
          *  {@inheritDoc}
          *
-         *  @return The instance itself as the sort order key; {@code null} if
-         *      the instance is {@code null} itself.
+         *  @return The instance itself as the sort order key; {@null} if
+         *      the instance is {@null} itself.
          */
         @SuppressWarnings( "unchecked" )
         @Override
@@ -105,7 +105,7 @@ public class ListBasedComparator<T,K> implements Comparator<T>
         \*------------*/
     /**
      *  The comparator that is used to determine the sort order for instances
-     *  that do not have their keys in the list; may be {@code null}.
+     *  that do not have their keys in the list; may be {@null}.
      */
     private final Comparator<? super K> m_Comparator;
 

@@ -45,14 +45,14 @@ import org.tquadrat.foundation.lang.Objects;
  *  allowed.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ArrayUtils.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: ArrayUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: ArrayUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ArrayUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 public final class ArrayUtils
 {
         /*-----------*\
@@ -123,10 +123,10 @@ public final class ArrayUtils
      *  @param <T>  The class for the objects.
      *  @param  o   The object to look for.
      *  @param  list    The list of object to look into.
-     *  @return {@code true} if the object is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the object is in the list,
+     *      {@false} otherwise.
      *  @throws NullPointerException At least one entry of {@code list} is
-     *      {@code null}.
+     *      {@null}.
      */
     @SafeVarargs
     @API( status = STABLE, since = "0.0.5" )
@@ -150,8 +150,8 @@ public final class ArrayUtils
      *  @param <T>  The class for the objects.
      *  @param  o   The object to look for.
      *  @param  list    The list of object to look into.
-     *  @return {@code true} if the object is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the object is in the list,
+     *      {@false} otherwise.
      */
     @SafeVarargs
     @API( status = STABLE, since = "0.0.5" )
@@ -173,10 +173,10 @@ public final class ArrayUtils
      *  {@link #isEqualIn(Object, Object...) isEqualIn()}
      *
      *  @param <T>  The class for the objects.
-     *  @param  o   The object to look for; may be {@code null}.
+     *  @param  o   The object to look for; may be {@null}.
      *  @param  list    The list of object to look into.
-     *  @return {@code true} if the object is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the object is in the list,
+     *      {@false} otherwise.
      */
     @SafeVarargs
     @API( status = STABLE, since = "0.0.5" )
@@ -194,8 +194,8 @@ public final class ArrayUtils
      *
      *  @param  v   The value to look for.
      *  @param  list    The list of values to look into.
-     *  @return {@code true} if the value is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the value is in the list,
+     *      {@false} otherwise.
      */
     @SuppressWarnings( "ImplicitNumericConversion" )
     @API( status = STABLE, since = "0.0.5" )
@@ -216,8 +216,8 @@ public final class ArrayUtils
      *
      *  @param  v   The value to look for.
      *  @param  list    The list of values to look into.
-     *  @return {@code true} if the value is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the value is in the list,
+     *      {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static boolean isIn( final char v, final char... list )
@@ -239,8 +239,8 @@ public final class ArrayUtils
      *
      *  @param  v   The value to look for.
      *  @param  list    The list of values to look into.
-     *  @return {@code true} if the value is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the value is in the list,
+     *      {@false} otherwise.
      */
     @SuppressWarnings( "FloatingPointEquality" )
     @API( status = STABLE, since = "0.0.5" )
@@ -263,8 +263,8 @@ public final class ArrayUtils
      *
      *  @param  v   The value to look for.
      *  @param  list    The list of values to look into.
-     *  @return {@code true} if the value is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the value is in the list,
+     *      {@false} otherwise.
      */
     @SuppressWarnings( "FloatingPointEquality" )
     @API( status = STABLE, since = "0.0.5" )
@@ -285,8 +285,8 @@ public final class ArrayUtils
      *
      *  @param  v   The value to look for.
      *  @param  list    The list of values to look into.
-     *  @return {@code true} if the value is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the value is in the list,
+     *      {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static boolean isIn( final int v, final int... list )
@@ -306,8 +306,8 @@ public final class ArrayUtils
      *
      *  @param  v   The value to look for.
      *  @param  list    The list of values to look into.
-     *  @return {@code true} if the value is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the value is in the list,
+     *      {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static boolean isIn( final long v, final long... list )
@@ -327,8 +327,8 @@ public final class ArrayUtils
      *
      *  @param  v   The value to look for.
      *  @param  list    The list of values to look into.
-     *  @return {@code true} if the value is in the list,
-     *      {@code false} otherwise.
+     *  @return {@true} if the value is in the list,
+     *      {@false} otherwise.
      */
     @SuppressWarnings( "ImplicitNumericConversion" )
     @API( status = STABLE, since = "0.0.5" )
@@ -737,7 +737,7 @@ public final class ArrayUtils
      *
      *  @param  array   The input array.
      *  @param  separator   The separator character sequence; if
-     *      {@code null}, the empty string is used.
+     *      {@null}, the empty string is used.
      *  @return The concatenated string.
      */
     @API( status = STABLE, since = "0.0.5" )

@@ -58,14 +58,14 @@
 <span class="source-line-no">045</span><span id="line-45"> *  allowed.</span>
 <span class="source-line-no">046</span><span id="line-46"> *</span>
 <span class="source-line-no">047</span><span id="line-47"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">048</span><span id="line-48"> *  @version $Id: ArrayUtils.java 1151 2025-10-01 21:32:15Z tquadrat $</span>
+<span class="source-line-no">048</span><span id="line-48"> *  @version $Id: ArrayUtils.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">049</span><span id="line-49"> *  @since 0.0.5</span>
 <span class="source-line-no">050</span><span id="line-50"> *</span>
 <span class="source-line-no">051</span><span id="line-51"> *  @UMLGraph.link</span>
 <span class="source-line-no">052</span><span id="line-52"> */</span>
 <span class="source-line-no">053</span><span id="line-53">@SuppressWarnings( "ClassWithTooManyMethods" )</span>
 <span class="source-line-no">054</span><span id="line-54">@UtilityClass</span>
-<span class="source-line-no">055</span><span id="line-55">@ClassVersion( sourceVersion = "$Id: ArrayUtils.java 1151 2025-10-01 21:32:15Z tquadrat $" )</span>
+<span class="source-line-no">055</span><span id="line-55">@ClassVersion( sourceVersion = "$Id: ArrayUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">056</span><span id="line-56">public final class ArrayUtils</span>
 <span class="source-line-no">057</span><span id="line-57">{</span>
 <span class="source-line-no">058</span><span id="line-58">        /*-----------*\</span>
@@ -136,10 +136,10 @@
 <span class="source-line-no">123</span><span id="line-123">     *  @param &lt;T&gt;  The class for the objects.</span>
 <span class="source-line-no">124</span><span id="line-124">     *  @param  o   The object to look for.</span>
 <span class="source-line-no">125</span><span id="line-125">     *  @param  list    The list of object to look into.</span>
-<span class="source-line-no">126</span><span id="line-126">     *  @return {@code true} if the object is in the list,</span>
-<span class="source-line-no">127</span><span id="line-127">     *      {@code false} otherwise.</span>
+<span class="source-line-no">126</span><span id="line-126">     *  @return {@true} if the object is in the list,</span>
+<span class="source-line-no">127</span><span id="line-127">     *      {@false} otherwise.</span>
 <span class="source-line-no">128</span><span id="line-128">     *  @throws NullPointerException At least one entry of {@code list} is</span>
-<span class="source-line-no">129</span><span id="line-129">     *      {@code null}.</span>
+<span class="source-line-no">129</span><span id="line-129">     *      {@null}.</span>
 <span class="source-line-no">130</span><span id="line-130">     */</span>
 <span class="source-line-no">131</span><span id="line-131">    @SafeVarargs</span>
 <span class="source-line-no">132</span><span id="line-132">    @API( status = STABLE, since = "0.0.5" )</span>
@@ -163,8 +163,8 @@
 <span class="source-line-no">150</span><span id="line-150">     *  @param &lt;T&gt;  The class for the objects.</span>
 <span class="source-line-no">151</span><span id="line-151">     *  @param  o   The object to look for.</span>
 <span class="source-line-no">152</span><span id="line-152">     *  @param  list    The list of object to look into.</span>
-<span class="source-line-no">153</span><span id="line-153">     *  @return {@code true} if the object is in the list,</span>
-<span class="source-line-no">154</span><span id="line-154">     *      {@code false} otherwise.</span>
+<span class="source-line-no">153</span><span id="line-153">     *  @return {@true} if the object is in the list,</span>
+<span class="source-line-no">154</span><span id="line-154">     *      {@false} otherwise.</span>
 <span class="source-line-no">155</span><span id="line-155">     */</span>
 <span class="source-line-no">156</span><span id="line-156">    @SafeVarargs</span>
 <span class="source-line-no">157</span><span id="line-157">    @API( status = STABLE, since = "0.0.5" )</span>
@@ -186,10 +186,10 @@
 <span class="source-line-no">173</span><span id="line-173">     *  {@link #isEqualIn(Object, Object...) isEqualIn()}</span>
 <span class="source-line-no">174</span><span id="line-174">     *</span>
 <span class="source-line-no">175</span><span id="line-175">     *  @param &lt;T&gt;  The class for the objects.</span>
-<span class="source-line-no">176</span><span id="line-176">     *  @param  o   The object to look for; may be {@code null}.</span>
+<span class="source-line-no">176</span><span id="line-176">     *  @param  o   The object to look for; may be {@null}.</span>
 <span class="source-line-no">177</span><span id="line-177">     *  @param  list    The list of object to look into.</span>
-<span class="source-line-no">178</span><span id="line-178">     *  @return {@code true} if the object is in the list,</span>
-<span class="source-line-no">179</span><span id="line-179">     *      {@code false} otherwise.</span>
+<span class="source-line-no">178</span><span id="line-178">     *  @return {@true} if the object is in the list,</span>
+<span class="source-line-no">179</span><span id="line-179">     *      {@false} otherwise.</span>
 <span class="source-line-no">180</span><span id="line-180">     */</span>
 <span class="source-line-no">181</span><span id="line-181">    @SafeVarargs</span>
 <span class="source-line-no">182</span><span id="line-182">    @API( status = STABLE, since = "0.0.5" )</span>
@@ -207,8 +207,8 @@
 <span class="source-line-no">194</span><span id="line-194">     *</span>
 <span class="source-line-no">195</span><span id="line-195">     *  @param  v   The value to look for.</span>
 <span class="source-line-no">196</span><span id="line-196">     *  @param  list    The list of values to look into.</span>
-<span class="source-line-no">197</span><span id="line-197">     *  @return {@code true} if the value is in the list,</span>
-<span class="source-line-no">198</span><span id="line-198">     *      {@code false} otherwise.</span>
+<span class="source-line-no">197</span><span id="line-197">     *  @return {@true} if the value is in the list,</span>
+<span class="source-line-no">198</span><span id="line-198">     *      {@false} otherwise.</span>
 <span class="source-line-no">199</span><span id="line-199">     */</span>
 <span class="source-line-no">200</span><span id="line-200">    @SuppressWarnings( "ImplicitNumericConversion" )</span>
 <span class="source-line-no">201</span><span id="line-201">    @API( status = STABLE, since = "0.0.5" )</span>
@@ -229,8 +229,8 @@
 <span class="source-line-no">216</span><span id="line-216">     *</span>
 <span class="source-line-no">217</span><span id="line-217">     *  @param  v   The value to look for.</span>
 <span class="source-line-no">218</span><span id="line-218">     *  @param  list    The list of values to look into.</span>
-<span class="source-line-no">219</span><span id="line-219">     *  @return {@code true} if the value is in the list,</span>
-<span class="source-line-no">220</span><span id="line-220">     *      {@code false} otherwise.</span>
+<span class="source-line-no">219</span><span id="line-219">     *  @return {@true} if the value is in the list,</span>
+<span class="source-line-no">220</span><span id="line-220">     *      {@false} otherwise.</span>
 <span class="source-line-no">221</span><span id="line-221">     */</span>
 <span class="source-line-no">222</span><span id="line-222">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">223</span><span id="line-223">    public static boolean isIn( final char v, final char... list )</span>
@@ -252,8 +252,8 @@
 <span class="source-line-no">239</span><span id="line-239">     *</span>
 <span class="source-line-no">240</span><span id="line-240">     *  @param  v   The value to look for.</span>
 <span class="source-line-no">241</span><span id="line-241">     *  @param  list    The list of values to look into.</span>
-<span class="source-line-no">242</span><span id="line-242">     *  @return {@code true} if the value is in the list,</span>
-<span class="source-line-no">243</span><span id="line-243">     *      {@code false} otherwise.</span>
+<span class="source-line-no">242</span><span id="line-242">     *  @return {@true} if the value is in the list,</span>
+<span class="source-line-no">243</span><span id="line-243">     *      {@false} otherwise.</span>
 <span class="source-line-no">244</span><span id="line-244">     */</span>
 <span class="source-line-no">245</span><span id="line-245">    @SuppressWarnings( "FloatingPointEquality" )</span>
 <span class="source-line-no">246</span><span id="line-246">    @API( status = STABLE, since = "0.0.5" )</span>
@@ -276,8 +276,8 @@
 <span class="source-line-no">263</span><span id="line-263">     *</span>
 <span class="source-line-no">264</span><span id="line-264">     *  @param  v   The value to look for.</span>
 <span class="source-line-no">265</span><span id="line-265">     *  @param  list    The list of values to look into.</span>
-<span class="source-line-no">266</span><span id="line-266">     *  @return {@code true} if the value is in the list,</span>
-<span class="source-line-no">267</span><span id="line-267">     *      {@code false} otherwise.</span>
+<span class="source-line-no">266</span><span id="line-266">     *  @return {@true} if the value is in the list,</span>
+<span class="source-line-no">267</span><span id="line-267">     *      {@false} otherwise.</span>
 <span class="source-line-no">268</span><span id="line-268">     */</span>
 <span class="source-line-no">269</span><span id="line-269">    @SuppressWarnings( "FloatingPointEquality" )</span>
 <span class="source-line-no">270</span><span id="line-270">    @API( status = STABLE, since = "0.0.5" )</span>
@@ -298,8 +298,8 @@
 <span class="source-line-no">285</span><span id="line-285">     *</span>
 <span class="source-line-no">286</span><span id="line-286">     *  @param  v   The value to look for.</span>
 <span class="source-line-no">287</span><span id="line-287">     *  @param  list    The list of values to look into.</span>
-<span class="source-line-no">288</span><span id="line-288">     *  @return {@code true} if the value is in the list,</span>
-<span class="source-line-no">289</span><span id="line-289">     *      {@code false} otherwise.</span>
+<span class="source-line-no">288</span><span id="line-288">     *  @return {@true} if the value is in the list,</span>
+<span class="source-line-no">289</span><span id="line-289">     *      {@false} otherwise.</span>
 <span class="source-line-no">290</span><span id="line-290">     */</span>
 <span class="source-line-no">291</span><span id="line-291">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">292</span><span id="line-292">    public static boolean isIn( final int v, final int... list )</span>
@@ -319,8 +319,8 @@
 <span class="source-line-no">306</span><span id="line-306">     *</span>
 <span class="source-line-no">307</span><span id="line-307">     *  @param  v   The value to look for.</span>
 <span class="source-line-no">308</span><span id="line-308">     *  @param  list    The list of values to look into.</span>
-<span class="source-line-no">309</span><span id="line-309">     *  @return {@code true} if the value is in the list,</span>
-<span class="source-line-no">310</span><span id="line-310">     *      {@code false} otherwise.</span>
+<span class="source-line-no">309</span><span id="line-309">     *  @return {@true} if the value is in the list,</span>
+<span class="source-line-no">310</span><span id="line-310">     *      {@false} otherwise.</span>
 <span class="source-line-no">311</span><span id="line-311">     */</span>
 <span class="source-line-no">312</span><span id="line-312">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">313</span><span id="line-313">    public static boolean isIn( final long v, final long... list )</span>
@@ -340,8 +340,8 @@
 <span class="source-line-no">327</span><span id="line-327">     *</span>
 <span class="source-line-no">328</span><span id="line-328">     *  @param  v   The value to look for.</span>
 <span class="source-line-no">329</span><span id="line-329">     *  @param  list    The list of values to look into.</span>
-<span class="source-line-no">330</span><span id="line-330">     *  @return {@code true} if the value is in the list,</span>
-<span class="source-line-no">331</span><span id="line-331">     *      {@code false} otherwise.</span>
+<span class="source-line-no">330</span><span id="line-330">     *  @return {@true} if the value is in the list,</span>
+<span class="source-line-no">331</span><span id="line-331">     *      {@false} otherwise.</span>
 <span class="source-line-no">332</span><span id="line-332">     */</span>
 <span class="source-line-no">333</span><span id="line-333">    @SuppressWarnings( "ImplicitNumericConversion" )</span>
 <span class="source-line-no">334</span><span id="line-334">    @API( status = STABLE, since = "0.0.5" )</span>
@@ -750,7 +750,7 @@
 <span class="source-line-no">737</span><span id="line-737">     *</span>
 <span class="source-line-no">738</span><span id="line-738">     *  @param  array   The input array.</span>
 <span class="source-line-no">739</span><span id="line-739">     *  @param  separator   The separator character sequence; if</span>
-<span class="source-line-no">740</span><span id="line-740">     *      {@code null}, the empty string is used.</span>
+<span class="source-line-no">740</span><span id="line-740">     *      {@null}, the empty string is used.</span>
 <span class="source-line-no">741</span><span id="line-741">     *  @return The concatenated string.</span>
 <span class="source-line-no">742</span><span id="line-742">     */</span>
 <span class="source-line-no">743</span><span id="line-743">    @API( status = STABLE, since = "0.0.5" )</span>

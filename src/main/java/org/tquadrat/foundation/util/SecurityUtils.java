@@ -49,12 +49,12 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *  uses multiple threads to calculate the hashes for a bunch of files.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SecurityUtils.java 1086 2024-01-05 23:18:33Z tquadrat $
+ *  @version $Id: SecurityUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1086 2024-01-05 23:18:33Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SecurityUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @UtilityClass
 public final class SecurityUtils
 {
@@ -335,9 +335,9 @@ public final class SecurityUtils
      *  not very efficient for calculating the hash value for (large) files as
      *  it would require to load the whole file into memory.
      *
-     *  @param  input   The source String; may be {@code null}.
-     *  @return The String with the hash value or {@code null} if the
-     *      input parameter was already {@code null}.
+     *  @param  input   The source String; may be {@null}.
+     *  @return The String with the hash value or {@null} if the
+     *      input parameter was already {@null}.
      *
      *  @see #calculateMD5CheckSum(File)
      */
@@ -392,9 +392,9 @@ public final class SecurityUtils
      *  not very efficient for calculating the hash value for (large) files as
      *  it would require to load the whole file into memory.
      *
-     *  @param  input   The source String; may be {@code null}.
-     *  @return The String with the hash value or {@code null} if the
-     *      input parameter was already {@code null}.
+     *  @param  input   The source String; may be {@null}.
+     *  @return The String with the hash value or {@null} if the
+     *      input parameter was already {@null}.
      *
      *  @see #calculateSHACheckSum(File)
      */
@@ -449,9 +449,9 @@ public final class SecurityUtils
      *  not very efficient for calculating the hash value for (large) files as
      *  it would require to load the whole file into memory.
      *
-     *  @param  input   The source String; may be {@code null}.
-     *  @return The String with the hash value or {@code null} if the
-     *      input parameter was already {@code null}.
+     *  @param  input   The source String; may be {@null}.
+     *  @return The String with the hash value or {@null} if the
+     *      input parameter was already {@null}.
      *
      *  @see #calculateSHA256CheckSum(File)
      */

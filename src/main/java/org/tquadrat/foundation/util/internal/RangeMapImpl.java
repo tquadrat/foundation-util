@@ -37,14 +37,14 @@ import org.tquadrat.foundation.util.RangeMap;
  *  {@link RangeMap}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: RangeMapImpl.java 1080 2024-01-03 11:05:21Z tquadrat $
+ *  @version $Id: RangeMapImpl.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.7
  *
  *  @param <T>  The type of the mapped value.
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: RangeMapImpl.java 1080 2024-01-03 11:05:21Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeMapImpl.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public sealed class RangeMapImpl<T> implements RangeMap<T>
     permits FinalRangeMap
@@ -91,8 +91,8 @@ public sealed class RangeMapImpl<T> implements RangeMap<T>
     /**
      *  Creates a new {@code RangeMap} instance.
      *
-     *  @param  includes    {@code true} if the limit belongs to the
-     *      range, {@code false} otherwise.
+     *  @param  includes    {@true} if the limit belongs to the
+     *      range, {@false} otherwise.
      */
     public RangeMapImpl( final boolean includes )
     {
@@ -115,8 +115,8 @@ public sealed class RangeMapImpl<T> implements RangeMap<T>
      *  Creates a new {@code RangeMap} instance from an instance of
      *  {@link Map}.
      *
-     *  @param  includes    {@code true} if the limit belongs to the
-     *      range, {@code false} otherwise.
+     *  @param  includes    {@true} if the limit belongs to the
+     *      range, {@false} otherwise.
      *  @param  map   The map instance.
      */
     public RangeMapImpl( final boolean includes, final Map<? extends Number,? extends T> map )
@@ -130,8 +130,8 @@ public sealed class RangeMapImpl<T> implements RangeMap<T>
      *  Creates a new {@code RangeMap} instance from a list of
      *  pairs.
      *
-     *  @param  includes    {@code true} if the limit belongs to the
-     *      range, {@code false} otherwise.
+     *  @param  includes    {@true} if the limit belongs to the
+     *      range, {@false} otherwise.
      *  @param  nvpList The list of entries.
      */
     public RangeMapImpl( final boolean includes, final Collection<? extends Map.Entry<? extends Number, ? extends T>> nvpList )

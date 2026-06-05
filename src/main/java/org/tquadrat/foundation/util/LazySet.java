@@ -34,7 +34,7 @@ import org.tquadrat.foundation.util.internal.LazySetImpl;
  *  that will be initialised only when required.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazySet.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: LazySet.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this set.
@@ -49,7 +49,7 @@ import org.tquadrat.foundation.util.internal.LazySetImpl;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: LazySet.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazySet.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public sealed interface LazySet<E> extends Set<E>
     permits LazySetImpl
@@ -76,7 +76,7 @@ public sealed interface LazySet<E> extends Set<E>
      *  Checks whether this {@code LazySet} instance has been initialised
      *  already.
      *
-     *  @return {@code true} if the instance was initialised, {@code false}
+     *  @return {@true} if the instance was initialised, {@false}
      *      otherwise.
      */
     public boolean isPresent();
@@ -115,8 +115,8 @@ public sealed interface LazySet<E> extends Set<E>
      *  initialise.
      *
      *  @param  <E> The type of elements in this set.
-     *  @param  doPopulate  {@code true} if the provided supplier will put
-     *      entries to the set on initialisation, {@code false} if it will
+     *  @param  doPopulate  {@true} if the provided supplier will put
+     *      entries to the set on initialisation, {@false} if it will
      *      create an empty set.
      *  @param  supplier    The supplier that initialises for the new instance
      *      of {@code LazySet} when needed.

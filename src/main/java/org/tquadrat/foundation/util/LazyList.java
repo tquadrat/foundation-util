@@ -35,7 +35,7 @@ import org.tquadrat.foundation.util.internal.LazyListImpl;
  *  that will be initialised only when required.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: LazyList.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: LazyList.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @param  <E> The type of elements in this list.
@@ -50,7 +50,7 @@ import org.tquadrat.foundation.util.internal.LazyListImpl;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: LazyList.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: LazyList.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 public sealed interface LazyList<E> extends List<E>
     permits LazyListImpl
@@ -77,7 +77,7 @@ public sealed interface LazyList<E> extends List<E>
      *  Checks whether this {@code LazyList} instance has been initialised
      *  already.
      *
-     *  @return {@code true} if the instance was initialised, {@code false}
+     *  @return {@true} if the instance was initialised, {@false}
      *      otherwise.
      */
     public boolean isPresent();
@@ -122,8 +122,8 @@ public sealed interface LazyList<E> extends List<E>
      *  initialise.
      *
      *  @param  <E> The type of elements in this list.
-     *  @param  doPopulate  {@code true} if the provided supplier will put
-     *      entries to the list on initialisation, {@code false} if it will
+     *  @param  doPopulate  {@true} if the provided supplier will put
+     *      entries to the list on initialisation, {@false} if it will
      *      create an empty list.
      *  @param  supplier    The supplier that initialises for the new instance
      *      of {@code LazyList} when needed.

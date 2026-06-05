@@ -35,14 +35,14 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Ben Gidley
- *  @version $Id: RangeFunctions.java 1032 2022-04-10 17:27:44Z tquadrat $
+ *  @version $Id: RangeFunctions.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.7
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
 @UtilityClass
-@ClassVersion( sourceVersion = "$Id: RangeFunctions.java 1032 2022-04-10 17:27:44Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeFunctions.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public final class RangeFunctions
 {
@@ -58,16 +58,16 @@ public final class RangeFunctions
     ====** Methods **==========================================================
         \*---------*/
     /**
-     *  Returns {@code true} if {@code value} is above {@code floor}.
+     *  Returns {@true} if {@code value} is above {@code floor}.
      *
      *  @param  <T> The type of the values to check.
      *  @param  value   The value to compare.
      *  @param  floor   The border value.
-     *  @param  include {@code true} if the border is included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is greater than the given
-     *      border value, {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;greater or equal&quot;,
+     *  @param  include {@true} if the border is included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is greater than the given
+     *      border value, {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;greater or equal&quot;,
      *      respectively.
      */
     public static <T> boolean isAbove( final Comparable<T> value, final T floor, final boolean include )
@@ -84,17 +84,17 @@ public final class RangeFunctions
     }   //  isAbove()
 
     /**
-     *  Returns {@code true} if {@code value} is above {@code floor}.
+     *  Returns {@true} if {@code value} is above {@code floor}.
      *
      *  @param  <T> The type of the values to check.
      *  @param  comparator  The comparator that is used for the comparison.
      *  @param  value   The value to compare.
      *  @param  floor   The border value.
-     *  @param  include {@code true} if the border is included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is greater than the given
-     *      border value, {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;greater or equal&quot;,
+     *  @param  include {@true} if the border is included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is greater than the given
+     *      border value, {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;greater or equal&quot;,
      *      respectively.
      */
     public static <T> boolean isAbove( final Comparator<T> comparator, final T value, final T floor, final boolean include )
@@ -112,15 +112,15 @@ public final class RangeFunctions
     }   //  isAbove()
 
     /**
-     *  Returns {@code true} if {@code value} is above {@code floor}. If
-     *  {@code include} is {@code true}, {@code floor} is included,
+     *  Returns {@true} if {@code value} is above {@code floor}. If
+     *  {@code include} is {@true}, {@code floor} is included,
      *  otherwise it is not part of the range.
      *
      *  @param  <T> The type of the values to check.
      *  @param  value   The value to compare.
      *  @param  floor   The border value.
-     *  @return {@code true} if the given value is greater than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is greater than the given
+     *      border value, {@false} otherwise.
      */
     public static <T> boolean isAbove( final Comparable<T> value, final T floor )
     {
@@ -131,16 +131,16 @@ public final class RangeFunctions
     }   //  isAbove()
 
     /**
-     *  Returns {@code true} if {@code value} is above {@code floor}. If
-     *  {@code include} is {@code true}, {@code floor} is included,
+     *  Returns {@true} if {@code value} is above {@code floor}. If
+     *  {@code include} is {@true}, {@code floor} is included,
      *  otherwise it is not part of the range.
      *
      *  @param  <T> The type of the values to check.
      *  @param  comparator  The comparator that is used for the comparison.
      *  @param  value   The value to compare.
      *  @param  floor   The border value.
-     *  @return {@code true} if the given value is greater than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is greater than the given
+     *      border value, {@false} otherwise.
      */
     public static <T> boolean isAbove( final Comparator<T> comparator, final T value, final T floor )
     {
@@ -151,49 +151,49 @@ public final class RangeFunctions
     }   //  isAbove()
 
     /**
-     *  Returns {@code true} if {@code value} is above {@code floor}.
+     *  Returns {@true} if {@code value} is above {@code floor}.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The border value.
-     *  @return {@code true} if the given value is greater than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is greater than the given
+     *      border value, {@false} otherwise.
      */
     @SuppressWarnings( "CharacterComparison" )
     public static boolean isAbove( final char value, final char floor ) { return value > floor; }
 
     /**
-     *  Returns {@code true} if {@code value} is above {@code floor}.
+     *  Returns {@true} if {@code value} is above {@code floor}.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The border value.
-     *  @return {@code true} if the given value is greater than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is greater than the given
+     *      border value, {@false} otherwise.
      */
     public static boolean isAbove( final double value, final double floor ) { return value > floor; }
 
     /**
-     *  Returns {@code true} if {@code value} is above {@code floor}.
+     *  Returns {@true} if {@code value} is above {@code floor}.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The border value.
-     *  @return {@code true} if the given value is greater than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is greater than the given
+     *      border value, {@false} otherwise.
      */
     public static boolean isAbove( final long value, final long floor ) { return value > floor; }
 
     /**
-     *  Returns {@code true} if {@code value} is below {@code ceiling}.
-     *  If {@code include} is {@code true}, {@code ceiling} is included,
+     *  Returns {@true} if {@code value} is below {@code ceiling}.
+     *  If {@code include} is {@true}, {@code ceiling} is included,
      *  otherwise it is not part of the range.
      *
      *  @param  <T> The type of the values to check.
      *  @param  value   The value to compare.
      *  @param  ceiling The border value.
-     *  @param  include {@code true} if the border is included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is less than the given
-     *      border value, {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;less or equal&quot;,
+     *  @param  include {@true} if the border is included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is less than the given
+     *      border value, {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;less or equal&quot;,
      *      respectively.
      */
     public static <T> boolean isBelow( final Comparable<T> value, final T ceiling, final boolean include )
@@ -210,19 +210,19 @@ public final class RangeFunctions
     }   //  isBelow()
 
     /**
-     *  Returns {@code true} if {@code value} is below {@code ceiling}.
-     *  If {@code include} is {@code true}, {@code ceiling} is included,
+     *  Returns {@true} if {@code value} is below {@code ceiling}.
+     *  If {@code include} is {@true}, {@code ceiling} is included,
      *  otherwise it is not part of the range.
      *
      *  @param  <T> The type of the values to check.
      *  @param  comparator  The comparator that is used for the comparison.
      *  @param  value   The value to compare.
      *  @param  ceiling The border value.
-     *  @param  include {@code true} if the border is included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is less than the given
-     *      border value, {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;less or equal&quot;,
+     *  @param  include {@true} if the border is included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is less than the given
+     *      border value, {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;less or equal&quot;,
      *      respectively.
      */
     public static <T> boolean isBelow( final Comparator<T> comparator, final T value, final T ceiling, final boolean include )
@@ -240,13 +240,13 @@ public final class RangeFunctions
     }   //  isBelow()
 
     /**
-     *  Returns {@code true} if {@code value} is below {@code ceiling}.
+     *  Returns {@true} if {@code value} is below {@code ceiling}.
      *
      *  @param  <T> The type of the values to check.
      *  @param  value   The value to compare.
      *  @param  ceiling The border value.
-     *  @return {@code true} if the given value is less than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is less than the given
+     *      border value, {@false} otherwise.
      */
     public static <T> boolean isBelow( final Comparable<T> value, final T ceiling )
     {
@@ -257,14 +257,14 @@ public final class RangeFunctions
     }   //  isBelow()
 
     /**
-     *  Returns {@code true} if {@code value} is below {@code ceiling}.
+     *  Returns {@true} if {@code value} is below {@code ceiling}.
      *
      *  @param  <T> The type of the values to check.
      *  @param  comparator  The comparator that is used for the comparison.
      *  @param  value   The value to compare.
      *  @param  ceiling The border value.
-     *  @return {@code true} if the given value is less than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is less than the given
+     *      border value, {@false} otherwise.
      */
     public static <T> boolean isBelow( final Comparator<T> comparator, final T value, final T ceiling )
     {
@@ -275,51 +275,51 @@ public final class RangeFunctions
     }   //  isBelow()
 
     /**
-     *  Returns {@code true} if {@code value} is below {@code ceiling}.
+     *  Returns {@true} if {@code value} is below {@code ceiling}.
      *
      *  @param  value   The value to compare.
      *  @param  ceiling The border value.
-     *  @return {@code true} if the given value is less than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is less than the given
+     *      border value, {@false} otherwise.
      */
     @SuppressWarnings( "CharacterComparison" )
     public static boolean isBelow( final char value, final char ceiling ) { return value < ceiling; }
 
     /**
-     *  Returns {@code true} if {@code value} is below {@code ceiling}.
+     *  Returns {@true} if {@code value} is below {@code ceiling}.
      *
      *  @param  value   The value to compare.
      *  @param  ceiling The border value.
-     *  @return {@code true} if the given value is less than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is less than the given
+     *      border value, {@false} otherwise.
      */
     public static boolean isBelow( final double value, final double ceiling ) { return value < ceiling; }
 
     /**
-     *  Returns {@code true} if {@code value} is below {@code ceiling}.
+     *  Returns {@true} if {@code value} is below {@code ceiling}.
      *
      *  @param  value   The value to compare.
      *  @param  ceiling The border value.
-     *  @return {@code true} if the given value is less than the given
-     *      border value, {@code false} otherwise.
+     *  @return {@true} if the given value is less than the given
+     *      border value, {@false} otherwise.
      */
     public static boolean isBelow( final long value, final long ceiling ) { return value < ceiling; }
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
-     *  {@code ceiling}. If {@code include} is {@code true}, {@code floor}
+     *  Returns {@true} if {@code value} is between {@code floor} and
+     *  {@code ceiling}. If {@code include} is {@true}, {@code floor}
      *  and {@code ceiling} are included, otherwise they are not in the range.
      *
      *  @param  <T> The type of the values to check.
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @param  include {@code true} if the borders are included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is greater than the given
+     *  @param  include {@true} if the borders are included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;greater or equal&quot; and
+     *      {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;greater or equal&quot; and
      *      &quot;less or equal&quot;, respectively.
      */
     public static <T> boolean isBetween( final Comparable<T> value, final T floor, final T ceiling, final boolean include )
@@ -331,8 +331,8 @@ public final class RangeFunctions
     }   //  isBetween()
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
-     *  {@code ceiling}. If {@code include} is {@code true}, {@code floor}
+     *  Returns {@true} if {@code value} is between {@code floor} and
+     *  {@code ceiling}. If {@code include} is {@true}, {@code floor}
      *  and {@code ceiling} are included, otherwise they are not in the range.
      *
      *  @param  <T> The type of the values to check.
@@ -340,12 +340,12 @@ public final class RangeFunctions
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @param  include {@code true} if the borders are included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is greater than the given
+     *  @param  include {@true} if the borders are included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;greater or equal&quot; and
+     *      {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;greater or equal&quot; and
      *      &quot;less or equal&quot;, respectively.
      */
     public static <T> boolean isBetween( final Comparator<T> comparator, final T value, final T floor, final T ceiling, final boolean include )
@@ -357,19 +357,19 @@ public final class RangeFunctions
     }   //  isBetween()
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
-     *  {@code ceiling}. If {@code include} is {@code true}, {@code floor}
+     *  Returns {@true} if {@code value} is between {@code floor} and
+     *  {@code ceiling}. If {@code include} is {@true}, {@code floor}
      *  and {@code ceiling} are included, otherwise they are not in the range.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @param  include {@code true} if the borders are included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is greater than the given
+     *  @param  include {@true} if the borders are included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;greater or equal&quot; and
+     *      {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;greater or equal&quot; and
      *      &quot;less or equal&quot;, respectively.
      */
     @SuppressWarnings( "CharacterComparison" )
@@ -384,19 +384,19 @@ public final class RangeFunctions
     }   //  isBetween()
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
-     *  {@code ceiling}. If {@code include} is {@code true}, {@code floor}
+     *  Returns {@true} if {@code value} is between {@code floor} and
+     *  {@code ceiling}. If {@code include} is {@true}, {@code floor}
      *  and {@code ceiling} are included, otherwise they are not in the range.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @param  include {@code true} if the borders are included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is greater than the given
+     *  @param  include {@true} if the borders are included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;greater or equal&quot; and
+     *      {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;greater or equal&quot; and
      *      &quot;less or equal&quot;, respectively.
      */
     public static boolean isBetween( final double value, final double floor, final double ceiling, final boolean include )
@@ -410,19 +410,19 @@ public final class RangeFunctions
     }   //  isBetween()
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
-     *  {@code ceiling}. If {@code include} is {@code true}, {@code floor}
+     *  Returns {@true} if {@code value} is between {@code floor} and
+     *  {@code ceiling}. If {@code include} is {@true}, {@code floor}
      *  and {@code ceiling} are included, otherwise they are not in the range.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @param  include {@code true} if the borders are included,
-     *      {@code false} if not.
-     *  @return {@code true} if the given value is greater than the given
+     *  @param  include {@true} if the borders are included,
+     *      {@false} if not.
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise. If {@code include} is
-     *      {@code true}, it will be &quot;greater or equal&quot; and
+     *      {@false} otherwise. If {@code include} is
+     *      {@true}, it will be &quot;greater or equal&quot; and
      *      &quot;less or equal&quot;, respectively.
      */
     public static boolean isBetween( final long value, final long floor, final long ceiling, final boolean include )
@@ -436,16 +436,16 @@ public final class RangeFunctions
     }   //  isBetween()
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
+     *  Returns {@true} if {@code value} is between {@code floor} and
      *  {@code ceiling}.
      *
      *  @param  <T> The type of the values to check.
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @return {@code true} if the given value is greater than the given
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise.
+     *      {@false} otherwise.
      */
     public static <T> boolean isBetween( final Comparable<T> value, final T floor, final T ceiling )
     {
@@ -456,7 +456,7 @@ public final class RangeFunctions
     }   //  isBetween()
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
+     *  Returns {@true} if {@code value} is between {@code floor} and
      *  {@code ceiling}.
      *
      *  @param  <T> The type of the values to check.
@@ -464,9 +464,9 @@ public final class RangeFunctions
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @return {@code true} if the given value is greater than the given
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise.
+     *      {@false} otherwise.
      */
     public static <T> boolean isBetween( final Comparator<T> comparator, final T value, final T floor, final T ceiling )
     {
@@ -477,41 +477,41 @@ public final class RangeFunctions
     }   //  isBetween()
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
+     *  Returns {@true} if {@code value} is between {@code floor} and
      *  {@code ceiling}.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @return {@code true} if the given value is greater than the given
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise.
+     *      {@false} otherwise.
      */
     public static boolean isBetween( final char value, final char floor, final char ceiling ) { return isBetween( value, floor, ceiling, false ); }
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
+     *  Returns {@true} if {@code value} is between {@code floor} and
      *  {@code ceiling}.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @return {@code true} if the given value is greater than the given
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise.
+     *      {@false} otherwise.
      */
     public static boolean isBetween( final double value, final double floor, final double ceiling ) { return isBetween( value, floor, ceiling, false ); }
 
     /**
-     *  Returns {@code true} if {@code value} is between {@code floor} and
+     *  Returns {@true} if {@code value} is between {@code floor} and
      *  {@code ceiling}.
      *
      *  @param  value   The value to compare.
      *  @param  floor   The lower border value.
      *  @param  ceiling The upper border value.
-     *  @return {@code true} if the given value is greater than the given
+     *  @return {@true} if the given value is greater than the given
      *      lower border value and less than the given upper border value,
-     *      {@code false} otherwise.
+     *      {@false} otherwise.
      */
     public static boolean isBetween( final long value, final long floor, final long ceiling ) { return isBetween( value, floor, ceiling, false ); }
 }

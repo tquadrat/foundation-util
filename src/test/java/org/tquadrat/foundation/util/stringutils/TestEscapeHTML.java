@@ -46,10 +46,10 @@ import static org.tquadrat.foundation.util.StringUtils.unescapeHTML;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestEscapeHTML.java 1163 2026-03-20 15:28:33Z tquadrat $
+ *  @version $Id: TestEscapeHTML.java 1258 2026-06-04 18:33:06Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestEscapeHTML.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestEscapeHTML.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestEscapeHTML" )
 public class TestEscapeHTML extends TestBaseClass
 {
@@ -90,7 +90,7 @@ public class TestEscapeHTML extends TestBaseClass
      *  and
      *  {@link StringUtils#unescapeHTML(CharSequence)}.<br>
      *  <br>Because HTML&nbsp;5 maps some Unicode characters to multiple
-     *  entities, the following should be always {@code true}:
+     *  entities, the following should be always {@true}:
      *  <div class="source-container"><pre>unescape( escape( text ) ) == text</pre></div>
      *  while the opposite
      *  <div class="source-container"><pre>escape( unescape( text ) ) == text</pre></div>
@@ -136,7 +136,7 @@ public class TestEscapeHTML extends TestBaseClass
      *  and
      *  {@link StringUtils#unescapeHTML(Appendable,CharSequence)}.<br>
      *  <br>Because HTML&nbsp;5 maps some Unicode characters to multiple
-     *  entities, the following should be always {@code true}:
+     *  entities, the following should be always {@true}:
      *  <div class="source-container"><pre>unescape( escape( text ) ) == text</pre></div>
      *  while the opposite
      *  <div class="source-container"><pre>escape( unescape( text ) ) == text</pre></div>

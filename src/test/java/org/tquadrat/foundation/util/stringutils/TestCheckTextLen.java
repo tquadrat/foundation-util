@@ -49,10 +49,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestCheckTextLen.java 1076 2023-10-03 18:36:07Z tquadrat $
+ *  @version $Id: TestCheckTextLen.java 1258 2026-06-04 18:33:06Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestCheckTextLen.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestCheckTextLen.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestCheckTextLen" )
 public class TestCheckTextLen extends TestBaseClass
 {
@@ -63,8 +63,8 @@ public class TestCheckTextLen extends TestBaseClass
      *  Tests for
      *  {@link StringUtils#checkTextLen(String,CharSequence,int)}
      *
-     *  @param  result  {@code true} if the execution should be successful,
-     *      {@code false} if it is expected to fail.
+     *  @param  result  {@true} if the execution should be successful,
+     *      {@false} if it is expected to fail.
      *  @param  text    The text to check.
      *  @param  maxLength   The maximum length for the text.
      */
@@ -105,8 +105,8 @@ public class TestCheckTextLen extends TestBaseClass
      *  Tests for
      *  {@link StringUtils#checkTextLenNull(String,CharSequence,int)}
      *
-     *  @param  result  {@code true} if the execution should be successful,
-     *      {@code false} if it is expected to fail.
+     *  @param  result  {@true} if the execution should be successful,
+     *      {@false} if it is expected to fail.
      *  @param  text    The text to check.
      *  @param  maxLength   The maximum length for the text.
      */

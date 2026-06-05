@@ -88,13 +88,13 @@
 <span class="source-line-no">075</span><span id="line-75"> *  methods.</span>
 <span class="source-line-no">076</span><span id="line-76"> *</span>
 <span class="source-line-no">077</span><span id="line-77"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">078</span><span id="line-78"> *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $</span>
+<span class="source-line-no">078</span><span id="line-78"> *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">079</span><span id="line-79"> *  @since 0.0.5</span>
 <span class="source-line-no">080</span><span id="line-80"> *</span>
 <span class="source-line-no">081</span><span id="line-81"> *  @UMLGraph.link</span>
 <span class="source-line-no">082</span><span id="line-82"> */</span>
 <span class="source-line-no">083</span><span id="line-83">@SuppressWarnings( "ClassWithTooManyMethods" )</span>
-<span class="source-line-no">084</span><span id="line-84">@ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )</span>
+<span class="source-line-no">084</span><span id="line-84">@ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">085</span><span id="line-85">@UtilityClass</span>
 <span class="source-line-no">086</span><span id="line-86">public final class IOUtils</span>
 <span class="source-line-no">087</span><span id="line-87">{</span>
@@ -110,13 +110,13 @@
 <span class="source-line-no">097</span><span id="line-97">     *  not applicable from the application logic.</span>
 <span class="source-line-no">098</span><span id="line-98">     *</span>
 <span class="source-line-no">099</span><span id="line-99">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">100</span><span id="line-100">     *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $</span>
+<span class="source-line-no">100</span><span id="line-100">     *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">101</span><span id="line-101">     *  @since 0.0.5</span>
 <span class="source-line-no">102</span><span id="line-102">     *</span>
 <span class="source-line-no">103</span><span id="line-103">     *  @UMLGraph.link</span>
 <span class="source-line-no">104</span><span id="line-104">     */</span>
 <span class="source-line-no">105</span><span id="line-105">    @SuppressWarnings( "PublicInnerClass" )</span>
-<span class="source-line-no">106</span><span id="line-106">    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )</span>
+<span class="source-line-no">106</span><span id="line-106">    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">107</span><span id="line-107">    @API( status = STABLE, since = "0.1.0" )</span>
 <span class="source-line-no">108</span><span id="line-108">    public static class NullAppendable implements Appendable</span>
 <span class="source-line-no">109</span><span id="line-109">    {</span>
@@ -164,12 +164,12 @@
 <span class="source-line-no">151</span><span id="line-151">     *  The default file attributes.</span>
 <span class="source-line-no">152</span><span id="line-152">     *</span>
 <span class="source-line-no">153</span><span id="line-153">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">154</span><span id="line-154">     *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $</span>
+<span class="source-line-no">154</span><span id="line-154">     *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">155</span><span id="line-155">     *  @since 0.0.6</span>
 <span class="source-line-no">156</span><span id="line-156">     *</span>
 <span class="source-line-no">157</span><span id="line-157">     *  @UMLGraph.link</span>
 <span class="source-line-no">158</span><span id="line-158">     */</span>
-<span class="source-line-no">159</span><span id="line-159">    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )</span>
+<span class="source-line-no">159</span><span id="line-159">    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">160</span><span id="line-160">    @UtilityClass</span>
 <span class="source-line-no">161</span><span id="line-161">    private static final class PosixPermissions</span>
 <span class="source-line-no">162</span><span id="line-162">    {</span>
@@ -249,7 +249,7 @@
 <span class="source-line-no">236</span><span id="line-236">     *  Java&amp;nbsp;7, this method can be still helpful.</span>
 <span class="source-line-no">237</span><span id="line-237">     *</span>
 <span class="source-line-no">238</span><span id="line-238">     *  @param  closeable   The {@code AutoCloseable} instance to close, can be</span>
-<span class="source-line-no">239</span><span id="line-239">     *      {@code null} or already closed.</span>
+<span class="source-line-no">239</span><span id="line-239">     *      {@null} or already closed.</span>
 <span class="source-line-no">240</span><span id="line-240">     */</span>
 <span class="source-line-no">241</span><span id="line-241">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">242</span><span id="line-242">    public static final void closeQuietly( final AutoCloseable closeable )</span>
@@ -424,7 +424,7 @@
 <span class="source-line-no">411</span><span id="line-411">     *</span>
 <span class="source-line-no">412</span><span id="line-412">     *  @param  dir The directory in which to create the temporary directory.</span>
 <span class="source-line-no">413</span><span id="line-413">     *  @param  prefix  The prefix string to be used in generating the</span>
-<span class="source-line-no">414</span><span id="line-414">     *      directory's name; may be {@code null}.</span>
+<span class="source-line-no">414</span><span id="line-414">     *      directory's name; may be {@null}.</span>
 <span class="source-line-no">415</span><span id="line-415">     *  @param  attributes  An optional list of file attributes to set</span>
 <span class="source-line-no">416</span><span id="line-416">     *      atomically when creating the directory.</span>
 <span class="source-line-no">417</span><span id="line-417">     *  @return The path to the newly created directory that did not exist</span>
@@ -460,7 +460,7 @@
 <span class="source-line-no">447</span><span id="line-447">     *  temporary-file directory.&lt;/p&gt;</span>
 <span class="source-line-no">448</span><span id="line-448">     *</span>
 <span class="source-line-no">449</span><span id="line-449">     *  @param  prefix  The prefix string to be used in generating the</span>
-<span class="source-line-no">450</span><span id="line-450">     *      directory's name; may be {@code null}.</span>
+<span class="source-line-no">450</span><span id="line-450">     *      directory's name; may be {@null}.</span>
 <span class="source-line-no">451</span><span id="line-451">     *  @param  attributes  An optional list of file attributes to set</span>
 <span class="source-line-no">452</span><span id="line-452">     *      atomically when creating the directory.</span>
 <span class="source-line-no">453</span><span id="line-453">     *  @return The</span>

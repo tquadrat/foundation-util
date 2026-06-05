@@ -46,19 +46,19 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  not on the CLASSPATH or otherwise loadable.<br>
  *  <br>It uses the
  *  {@link ClassLoader} that was used to load the caller for this method,
- *  and the {@code boolean} argument will be set to {@code false}, meaning that
+ *  and the {@code boolean} argument will be set to {@false}, meaning that
  *  the class will not be initialised if not loaded previously.
  *
  *  @see Class#forName(String, boolean, ClassLoader)
  *  @see org.tquadrat.foundation.util.JavaUtils#getCallersClassLoader()
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: ClassStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: ClassStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: ClassStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: ClassStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class ClassStringConverter implements StringConverter<Class<?>>
 {

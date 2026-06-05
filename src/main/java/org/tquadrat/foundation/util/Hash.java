@@ -41,13 +41,13 @@ import org.tquadrat.foundation.util.internal.HashImpl;
  *  These hashes are often used as checksums to validate the integrity of files
  *  or messages.</p>
  *
- *  @version $Id: Hash.java 1052 2023-03-06 06:30:36Z tquadrat $
+ *  @version $Id: Hash.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @UMLGraph.link
  *  @since 0.1.1
  */
 @SuppressWarnings( "NewClassNamingConvention" )
-@ClassVersion( sourceVersion = "$Id: Hash.java 1052 2023-03-06 06:30:36Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Hash.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.1.1" )
 public sealed interface Hash extends Cloneable, Serializable
     permits HashImpl
@@ -222,8 +222,8 @@ public sealed interface Hash extends Cloneable, Serializable
      *  Validates whether the given hash value matches with this hash instance.
      *
      *  @param  hashValue   The hash value to test.
-     *  @return {@code true} if the hash value matches with this hash instance,
-     *      {@code false} otherwise.
+     *  @return {@true} if the hash value matches with this hash instance,
+     *      {@false} otherwise.
      */
     public default boolean validate( final byte [] hashValue ) { return Arrays.equals( bytes(), hashValue ); }
 
@@ -231,8 +231,8 @@ public sealed interface Hash extends Cloneable, Serializable
      *  Validates whether the given hash value matches with this hash instance.
      *
      *  @param  hashValue   The hash value to test.
-     *  @return {@code true} if the hash value matches with this hash instance,
-     *      {@code false} otherwise.
+     *  @return {@true} if the hash value matches with this hash instance,
+     *      {@false} otherwise.
      */
     public default boolean validate( final long hashValue ) { return number().longValue() == hashValue; }
 
@@ -240,8 +240,8 @@ public sealed interface Hash extends Cloneable, Serializable
      *  Validates whether the given hash value matches with this hash instance.
      *
      *  @param  hashValue   The hash value to test.
-     *  @return {@code true} if the hash value matches with this hash instance,
-     *      {@code false} otherwise.
+     *  @return {@true} if the hash value matches with this hash instance,
+     *      {@false} otherwise.
      */
     public default boolean validate( final CharSequence hashValue )
     {

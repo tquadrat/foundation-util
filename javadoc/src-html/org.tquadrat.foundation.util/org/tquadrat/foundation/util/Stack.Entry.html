@@ -52,7 +52,7 @@
 <span class="source-line-no">039</span><span id="line-39"> *  &lt;p&gt;This implementation is not synchronised, but thread-safe.&lt;/p&gt;</span>
 <span class="source-line-no">040</span><span id="line-40"> *</span>
 <span class="source-line-no">041</span><span id="line-41"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">042</span><span id="line-42"> *  @version $Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $</span>
+<span class="source-line-no">042</span><span id="line-42"> *  @version $Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">043</span><span id="line-43"> *  @since 0.0.5</span>
 <span class="source-line-no">044</span><span id="line-44"> *</span>
 <span class="source-line-no">045</span><span id="line-45"> *  @param  &lt;T&gt; The type for the stack entries.</span>
@@ -62,7 +62,7 @@
 <span class="source-line-no">049</span><span id="line-49"> *  @see    java.util.Stack</span>
 <span class="source-line-no">050</span><span id="line-50"> */</span>
 <span class="source-line-no">051</span><span id="line-51">@SuppressWarnings( "NewClassNamingConvention" )</span>
-<span class="source-line-no">052</span><span id="line-52">@ClassVersion( sourceVersion = "$Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $" )</span>
+<span class="source-line-no">052</span><span id="line-52">@ClassVersion( sourceVersion = "$Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">053</span><span id="line-53">@API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">054</span><span id="line-54">public final class Stack&lt;T&gt;</span>
 <span class="source-line-no">055</span><span id="line-55">{</span>
@@ -78,12 +78,12 @@
 <span class="source-line-no">065</span><span id="line-65">     *      {@code &lt;T&gt;} that is inherited from the surrounding class.</span>
 <span class="source-line-no">066</span><span id="line-66">     *</span>
 <span class="source-line-no">067</span><span id="line-67">     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">068</span><span id="line-68">     *  @version $Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $</span>
+<span class="source-line-no">068</span><span id="line-68">     *  @version $Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">069</span><span id="line-69">     *  @since 0.0.5</span>
 <span class="source-line-no">070</span><span id="line-70">     *</span>
 <span class="source-line-no">071</span><span id="line-71">     *  @UMLGraph.link</span>
 <span class="source-line-no">072</span><span id="line-72">     */</span>
-<span class="source-line-no">073</span><span id="line-73">    @ClassVersion( sourceVersion = "$Id: Stack.java 1186 2026-04-06 11:24:14Z tquadrat $" )</span>
+<span class="source-line-no">073</span><span id="line-73">    @ClassVersion( sourceVersion = "$Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">074</span><span id="line-74">    @API( status = STABLE, since = "0.0.5" )</span>
 <span class="source-line-no">075</span><span id="line-75">    private final class Entry</span>
 <span class="source-line-no">076</span><span id="line-76">    {</span>
@@ -108,7 +108,7 @@
 <span class="source-line-no">095</span><span id="line-95">         *  Creates a new {@code Stack} object.</span>
 <span class="source-line-no">096</span><span id="line-96">         *</span>
 <span class="source-line-no">097</span><span id="line-97">         *  @param  head    The current head.</span>
-<span class="source-line-no">098</span><span id="line-98">         *  @param  tail    The current tail; may be {@code null}, indicating</span>
+<span class="source-line-no">098</span><span id="line-98">         *  @param  tail    The current tail; may be {@null}, indicating</span>
 <span class="source-line-no">099</span><span id="line-99">         *      an empty tail.</span>
 <span class="source-line-no">100</span><span id="line-100">         */</span>
 <span class="source-line-no">101</span><span id="line-101">        @SuppressWarnings( "UseOfConcreteClass" )</span>
@@ -202,12 +202,12 @@
 <span class="source-line-no">189</span><span id="line-189">    /**</span>
 <span class="source-line-no">190</span><span id="line-190">     *  &lt;p&gt;{@summary Tests if the stack is not empty.}&lt;/p&gt;</span>
 <span class="source-line-no">191</span><span id="line-191">     *  &lt;p&gt;If concurrent threads will access the stack, it is still possible</span>
-<span class="source-line-no">192</span><span id="line-192">     *  that this method will return {@code true}, but a call to</span>
+<span class="source-line-no">192</span><span id="line-192">     *  that this method will return {@true}, but a call to</span>
 <span class="source-line-no">193</span><span id="line-193">     *  {@link #pop()}</span>
-<span class="source-line-no">194</span><span id="line-194">     *  immediately after returns {@code null}.&lt;/p&gt;</span>
+<span class="source-line-no">194</span><span id="line-194">     *  immediately after returns {@null}.&lt;/p&gt;</span>
 <span class="source-line-no">195</span><span id="line-195">     *</span>
-<span class="source-line-no">196</span><span id="line-196">     *  @return {@code true} if there are still entries on the stack,</span>
-<span class="source-line-no">197</span><span id="line-197">     *      {@code false} otherwise.</span>
+<span class="source-line-no">196</span><span id="line-196">     *  @return {@true} if there are still entries on the stack,</span>
+<span class="source-line-no">197</span><span id="line-197">     *      {@false} otherwise.</span>
 <span class="source-line-no">198</span><span id="line-198">     *</span>
 <span class="source-line-no">199</span><span id="line-199">     *  @see #isEmpty()</span>
 <span class="source-line-no">200</span><span id="line-200">     */</span>
@@ -216,12 +216,12 @@
 <span class="source-line-no">203</span><span id="line-203">    /**</span>
 <span class="source-line-no">204</span><span id="line-204">     *  &lt;p&gt;{@summary Tests if the stack is empty.}&lt;/p&gt;</span>
 <span class="source-line-no">205</span><span id="line-205">     *  &lt;p&gt;If concurrent threads will access the stack, it is still possible</span>
-<span class="source-line-no">206</span><span id="line-206">     *  that this method will return {@code false}, but a call to</span>
+<span class="source-line-no">206</span><span id="line-206">     *  that this method will return {@false}, but a call to</span>
 <span class="source-line-no">207</span><span id="line-207">     *  {@link #pop()}</span>
-<span class="source-line-no">208</span><span id="line-208">     *  immediately after returns {@code null}.&lt;/p&gt;</span>
+<span class="source-line-no">208</span><span id="line-208">     *  immediately after returns {@null}.&lt;/p&gt;</span>
 <span class="source-line-no">209</span><span id="line-209">     *</span>
-<span class="source-line-no">210</span><span id="line-210">     *  @return {@code true} if there are no entries on the stack,</span>
-<span class="source-line-no">211</span><span id="line-211">     *      {@code false} otherwise.</span>
+<span class="source-line-no">210</span><span id="line-210">     *  @return {@true} if there are no entries on the stack,</span>
+<span class="source-line-no">211</span><span id="line-211">     *      {@false} otherwise.</span>
 <span class="source-line-no">212</span><span id="line-212">     *</span>
 <span class="source-line-no">213</span><span id="line-213">     *  @see #hasMore()</span>
 <span class="source-line-no">214</span><span id="line-214">     */</span>
@@ -299,7 +299,7 @@
 <span class="source-line-no">286</span><span id="line-286">    /**</span>
 <span class="source-line-no">287</span><span id="line-287">     *  &lt;p&gt;{@summary Adds the given entries to the stack, in LIFO order.}</span>
 <span class="source-line-no">288</span><span id="line-288">     *  Nothing happens, if the provided array is empty.&lt;/p&gt;</span>
-<span class="source-line-no">289</span><span id="line-289">     *  &lt;p&gt;The provided array may not contain {@code null} elements.&lt;/p&gt;</span>
+<span class="source-line-no">289</span><span id="line-289">     *  &lt;p&gt;The provided array may not contain {@null} elements.&lt;/p&gt;</span>
 <span class="source-line-no">290</span><span id="line-290">     *  &lt;p&gt;If the push failed for anyone element of the array, the stack</span>
 <span class="source-line-no">291</span><span id="line-291">     *  remained unchanged.&lt;/p&gt;</span>
 <span class="source-line-no">292</span><span id="line-292">     *  &lt;p&gt;The method guarantees that the elements of the array are stored to</span>
@@ -308,7 +308,7 @@
 <span class="source-line-no">295</span><span id="line-295">     *</span>
 <span class="source-line-no">296</span><span id="line-296">     *  @param  entries   The values to add.</span>
 <span class="source-line-no">297</span><span id="line-297">     *  @throws IllegalArgumentException    At least one element of the</span>
-<span class="source-line-no">298</span><span id="line-298">     *      provided array is {@code null}.</span>
+<span class="source-line-no">298</span><span id="line-298">     *      provided array is {@null}.</span>
 <span class="source-line-no">299</span><span id="line-299">     */</span>
 <span class="source-line-no">300</span><span id="line-300">    @SafeVarargs</span>
 <span class="source-line-no">301</span><span id="line-301">    public final void push( final T... entries ) throws IllegalArgumentException</span>
@@ -346,7 +346,7 @@
 <span class="source-line-no">333</span><span id="line-333">     *</span>
 <span class="source-line-no">334</span><span id="line-334">     *  @param  target  The target array; if this array has an insufficient</span>
 <span class="source-line-no">335</span><span id="line-335">     *      size, a new array will be created.</span>
-<span class="source-line-no">336</span><span id="line-336">     *  @return An array with all entries on the stack; never {@code null}. If</span>
+<span class="source-line-no">336</span><span id="line-336">     *  @return An array with all entries on the stack; never {@null}. If</span>
 <span class="source-line-no">337</span><span id="line-337">     *      the provided array was large enough to take all elements, it will</span>
 <span class="source-line-no">338</span><span id="line-338">     *      be returned, otherwise the returned array is a new one and the</span>
 <span class="source-line-no">339</span><span id="line-339">     *      provided array is unchanged.</span>
@@ -382,7 +382,7 @@
 <span class="source-line-no">369</span><span id="line-369">     *  on the whole stack.&lt;/p&gt;</span>
 <span class="source-line-no">370</span><span id="line-370">     *</span>
 <span class="source-line-no">371</span><span id="line-371">     *  @param  supplier    The supplier for the target array.</span>
-<span class="source-line-no">372</span><span id="line-372">     *  @return An array with all entries on the stack; never {@code null}.</span>
+<span class="source-line-no">372</span><span id="line-372">     *  @return An array with all entries on the stack; never {@null}.</span>
 <span class="source-line-no">373</span><span id="line-373">     */</span>
 <span class="source-line-no">374</span><span id="line-374">    public final T [] toArray( final IntFunction&lt;T []&gt; supplier )</span>
 <span class="source-line-no">375</span><span id="line-375">    {</span>

@@ -17,15 +17,6 @@
 
 package org.tquadrat.foundation.util;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
-
-import java.text.Normalizer;
-import java.util.regex.Pattern;
-
 import static java.lang.Character.MIN_CODE_POINT;
 import static java.lang.Character.isISOControl;
 import static java.lang.Character.isSurrogatePair;
@@ -45,6 +36,15 @@ import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.StringUtils.breakString;
 import static org.tquadrat.foundation.util.StringUtils.isEmpty;
 
+import java.text.Normalizer;
+import java.util.regex.Pattern;
+
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.exception.ValidationException;
+
 /**
  *  This class provides several utilities dealing with Strings in different
  *  character sets/encodings.
@@ -56,7 +56,7 @@ import static org.tquadrat.foundation.util.StringUtils.isEmpty;
  *  @since 0.1.0
  */
 @SuppressWarnings( "MagicNumber" )
-@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1163 2026-03-20 15:28:33Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: CharSetUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 @UtilityClass
 public final class CharSetUtils
@@ -82,9 +82,9 @@ public final class CharSetUtils
      *  <br>But generally, a transfer encoding like BASE64 or quoted-printable
      *  should be preferred.
      *
-     *  @param  bytes   The input; may be {@code null}.
-     *  @return The output string; {@code null} if the input was already
-     *      {@code null}.
+     *  @param  bytes   The input; may be {@null}.
+     *  @return The output string; {@null} if the input was already
+     *      {@null}.
      *
      *  @since 0.1.0
      */
@@ -126,9 +126,9 @@ public final class CharSetUtils
      *  Refer to
      *  {@link String#translateEscapes()}.
      *
-     *  @param  input   The input String; may be {@code null}.
-     *  @return The output string; {@code null} if the input string was
-     *      already {@code null}.
+     *  @param  input   The input String; may be {@null}.
+     *  @return The output string; {@null} if the input string was
+     *      already {@null}.
      *  @throws IllegalArgumentException    The given input String contained at
      *      least one non-ASCII character.
      *
@@ -178,10 +178,10 @@ public final class CharSetUtils
      *  &quot;<code>&#92;uXXXX</code>&quot;.
      *
      *  @param  normalization   The normalisation form; in case it is
-     *      {@code null}, no normalisation will be performed.
-     *  @param  input   The input String; may be {@code null}.
-     *  @return The output String; {@code null} if the input String was
-     *      already {@code null}.
+     *      {@null}, no normalisation will be performed.
+     *  @param  input   The input String; may be {@null}.
+     *  @return The output String; {@null} if the input String was
+     *      already {@null}.
      *
      *  @since 0.1.0
      */
@@ -224,11 +224,11 @@ public final class CharSetUtils
      *  &quot;<code>&#92;uXXXX</code>&quot;. Calling this method is the same as
      *  calling
      *  {@link #convertUnicodeToASCII(Normalizer.Form, CharSequence)}
-     *  with {@code null} as the first argument.
+     *  with {@null} as the first argument.
      *
-     *  @param  input   The input String; may be {@code null}.
-     *  @return The output String; {@code null} if the input String was
-     *      already {@code null}.
+     *  @param  input   The input String; may be {@null}.
+     *  @return The output String; {@null} if the input String was
+     *      already {@null}.
      *
      *  @since 0.1.0
      */
@@ -305,11 +305,11 @@ public final class CharSetUtils
     }   //  escapeCharacter()
 
     /**
-     *  Returns {@code true} if the given character is an ASCII character.
+     *  Returns {@true} if the given character is an ASCII character.
      *
      *  @param  c   The character to check.
-     *  @return {@code true} if the given character is an ASCII character,
-     *      {@code false} otherwise.
+     *  @return {@true} if the given character is an ASCII character,
+     *      {@false} otherwise.
      */
     public static final boolean isASCIICharacter( final char c )
     {
@@ -317,12 +317,12 @@ public final class CharSetUtils
     }   //  isASCIICharacter()
 
     /**
-     *  Returns {@code true} if the given code point represents an ASCII
+     *  Returns {@true} if the given code point represents an ASCII
      *  character.
      *
      *  @param  codePoint   The code point to check.
-     *  @return {@code true} if the given code point represents an ASCII
-     *      character, {@code false} otherwise.
+     *  @return {@true} if the given code point represents an ASCII
+     *      character, {@false} otherwise.
      */
     public static final boolean isASCIICharacter( final int codePoint )
     {
@@ -333,13 +333,13 @@ public final class CharSetUtils
     }   //  isASCIICharacter()
 
     /**
-     *  Returns {@code true} if the given character is a printable ASCII
+     *  Returns {@true} if the given character is a printable ASCII
      *  character. That means, it is an ASCII character, but not a control
      *  character.
      *
      *  @param  c   The character to check.
-     *  @return {@code true} if the given character is a printable ASCII
-     *      character, {@code false} otherwise.
+     *  @return {@true} if the given character is a printable ASCII
+     *      character, {@false} otherwise.
      */
     public static final boolean isPrintableASCIICharacter( final char c )
     {
@@ -347,13 +347,13 @@ public final class CharSetUtils
     }   //  isPrintableASCIICharacter()
 
     /**
-     *  Returns {@code true} if the given code point represents a printable
+     *  Returns {@true} if the given code point represents a printable
      *  ASCII character. That means, it is an ASCII character, but not a
      *  control character.
      *
      *  @param  codePoint   The code point to check.
-     *  @return {@code true} if the given code point represents a printable
-     *      ASCII character, {@code false} otherwise.
+     *  @return {@true} if the given code point represents a printable
+     *      ASCII character, {@false} otherwise.
      */
     public static final boolean isPrintableASCIICharacter( final int codePoint )
     {
@@ -420,7 +420,7 @@ public final class CharSetUtils
      *
      *  @param  input   The input String with the Unicode escape sequence.
      *  @return The Unicode character.
-     *  @throws ValidationException The input is {@code null}, empty, or cannot
+     *  @throws ValidationException The input is {@null}, empty, or cannot
      *      be parsed as a Unicode escape sequence.
      *
      *  @since 0.1.5

@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -87,13 +87,13 @@ import org.tquadrat.foundation.lang.DebugOutput;
  *  allowed.</p>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: JavaUtils.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: JavaUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: JavaUtils.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: JavaUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @UtilityClass
 public final class JavaUtils
 {
@@ -381,7 +381,7 @@ public final class JavaUtils
      *  that loaded the class of the method that called the method that called
      *  this method.}</p>
      *  <p>If the class of the caller's caller was loaded by the Bootstrap
-     *  classloader, the return value would be {@code null}, but this method
+     *  classloader, the return value would be {@null}, but this method
      *  will return the
      *  {@linkplain ClassLoader#getPlatformClassLoader() Platform classloader}
      *  instead.</p>
@@ -395,7 +395,7 @@ public final class JavaUtils
     @API( status = STABLE, since = "0.0.6" )
     public static final ClassLoader getCallersClassLoader()
     {
-        ClassLoader retValue = null;
+        ClassLoader retValue;
         try
         {
             final var callersCaller = findCaller( 3 );
@@ -436,7 +436,7 @@ public final class JavaUtils
      *      {@link Optional}
      *      that holds the URL for the code source.
      */
-    @SuppressWarnings( "removal" )
+    @SuppressWarnings( {"removal", "unused"} )
     @API( status = STABLE, since = "0.0.5" )
     public static final Optional<URL> getCodeSource( final Class<?> candidateClass )
     {
@@ -473,7 +473,7 @@ public final class JavaUtils
      *  name of the property.</p>
      *
      *  @param  element The element to check.
-     *  @return {@code true} if the method is an 'add' method, {@code false}
+     *  @return {@true} if the method is an 'add' method, {@false}
      *      otherwise.
      *
      *  @see #isGetter(Element)
@@ -493,10 +493,12 @@ public final class JavaUtils
 
             //---* Check if the method is public and not static *--------------
             final var modifiers = methodElement.getModifiers();
+            //noinspection PointlessBooleanExpression
             if( (retValue = modifiers.contains( PUBLIC ) && !modifiers.contains( STATIC ) && !modifiers.contains( DEFAULT )) == true )
             {
                 //---* Check the name *----------------------------------------
                 final var name = methodElement.getSimpleName().toString();
+                //noinspection PointlessBooleanExpression
                 if( (retValue = name.startsWith( PREFIX_ADD )) == true )
                 {
                     //---* Check if there is a property name *-----------------
@@ -523,13 +525,14 @@ public final class JavaUtils
      *  selected packages only and {@code org.tquadrat.foundation.util} is not
      *  amongst these, or {@code org.tquadrat.foundation.util} is explicitly
      *  disabled with {@code -da} or {@code -disableassertions}, this method
-     *  will return {@code false}. But even when it returns {@code true}, it is
+     *  will return {@false}. But even when it returns {@true}, it is
      *  possible that assertions are still not activated for some packages.
      *
-     *  @return {@code true} if assertions are activated for the
+     *  @return {@true} if assertions are activated for the
      *      package {@code org.tquadrat.util} and hopefully also for any other
-     *      package, {@code false} otherwise.
+     *      package, {@false} otherwise.
      */
+    @SuppressWarnings( "unused" )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isAssertionOn() { return m_AssertionOn; }
 
@@ -542,8 +545,8 @@ public final class JavaUtils
      *  {@code boolean}.
      *
      *  @param  method  The method to check.
-     *  @return {@code true} if the method is the {@code equals()} method,
-     *      {@code false} otherwise.
+     *  @return {@true} if the method is the {@code equals()} method,
+     *      {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isEquals( final Method method )
@@ -584,11 +587,11 @@ public final class JavaUtils
      *  {@link Object#getClass()}
      *  (inherited by all classes from
      *  {@link Object}),
-     *  this method will return {@code false}, as this is not a getter in the
+     *  this method will return {@false}, as this is not a getter in the
      *  sense of the definition.</p>
      *
      *  @param  element  The element to check.
-     *  @return {@code true} if the element is a getter method, {@code false}
+     *  @return {@true} if the element is a getter method, {@false}
      *      otherwise.
      */
     @SuppressWarnings( {"OverlyComplexMethod", "NestedAssignment"} )
@@ -603,10 +606,12 @@ public final class JavaUtils
 
             //---* Check if the method is public and not static *--------------
             final var modifiers = methodElement.getModifiers();
+            //noinspection PointlessBooleanExpression
             if( (retValue = modifiers.contains( PUBLIC ) && !modifiers.contains( STATIC )) == true )
             {
                 //---* Check the name *----------------------------------------
                 final var name = methodElement.getSimpleName().toString();
+                //noinspection PointlessBooleanExpression
                 if( (retValue = !"getClass".equals( name )) == true )
                 {
                     var pos = 0;
@@ -659,11 +664,11 @@ public final class JavaUtils
      *  {@link Object#getClass()}
      *  (inherited by all classes from
      *  {@link Object}),
-     *  this method will return {@code false}, as this is not a getter in the
+     *  this method will return {@false}, as this is not a getter in the
      *  sense of the definition.</p>
      *
      *  @param  method  The method to check.
-     *  @return {@code true} if the method is a getter, {@code false}
+     *  @return {@true} if the method is a getter, {@false}
      *      otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
@@ -718,8 +723,8 @@ public final class JavaUtils
      *  argument, and it will return a result of type {@code integer}.
      *
      *  @param  method  The method to check.
-     *  @return {@code true} if the method is the {@code hashCode()}
-     *      method, {@code false} otherwise.
+     *  @return {@true} if the method is the {@code hashCode()}
+     *      method, {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isHashCode( final Method method )
@@ -748,8 +753,8 @@ public final class JavaUtils
      *  {@code String []}, and it does not return any value.
      *
      *  @param  method  The method to check.
-     *  @return {@code true} if the method is a {@code main()} method,
-     *      {@code false} otherwise.
+     *  @return {@true} if the method is a {@code main()} method,
+     *      {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isMain( final Method method )
@@ -783,7 +788,7 @@ public final class JavaUtils
      *  attribute's name.</p>
      *
      *  @param  element The element to check.
-     *  @return {@code true} if the method is a setter, {@code false}
+     *  @return {@true} if the method is a setter, {@false}
      *      otherwise.
      */
     @SuppressWarnings( "NestedAssignment" )
@@ -798,10 +803,12 @@ public final class JavaUtils
 
             //---* Check if the method is public and not static *--------------
             final var modifiers = methodElement.getModifiers();
+            //noinspection PointlessBooleanExpression
             if( (retValue = modifiers.contains( PUBLIC ) && !modifiers.contains( STATIC )) == true )
             {
                 //---* Check the name *----------------------------------------
                 final var name = methodElement.getSimpleName().toString();
+                //noinspection PointlessBooleanExpression
                 if( (retValue = name.startsWith( PREFIX_SET )) == true )
                 {
                     //---* Check if there is a property name *-----------------
@@ -829,7 +836,7 @@ public final class JavaUtils
      *  attribute's name.
      *
      *  @param  method  The method to check.
-     *  @return {@code true} if the method is a setter, {@code false}
+     *  @return {@true} if the method is a setter, {@false}
      *      otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
@@ -869,8 +876,8 @@ public final class JavaUtils
      *  {@link String}.
      *
      *  @param  method  The method to check.
-     *  @return {@code true} if the method is the {@code toString()}
-     *      method, {@code false} otherwise.
+     *  @return {@true} if the method is the {@code toString()}
+     *      method, {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isToString( final Method method )
@@ -894,9 +901,9 @@ public final class JavaUtils
 
     /**
      *  Checks whether the given String is a valid Java name.<br>
-     *  <br>This method will return {@code true} for <i>restricted
+     *  <br>This method will return {@true} for <i>restricted
      *  keywords</i>, but not for {@code var}. For a single underscore
-     *  (&quot;{@code _}&quot;), it will return {@code false}.<br>
+     *  (&quot;{@code _}&quot;), it will return {@false}.<br>
      *  <br>The restricted keywords are
      *  <ul>
      *  <li>{@code exports}</li>
@@ -913,8 +920,8 @@ public final class JavaUtils
      *  All these are used in a {@code module-info.java} file.
      *
      *  @param  name   The String to check.
-     *  @return {@code true} if the given String is a valid name for the Java
-     *      language, {@code false} otherwise.
+     *  @return {@true} if the given String is a valid name for the Java
+     *      language, {@false} otherwise.
      *
      *  @see javax.lang.model.SourceVersion#isName(CharSequence, SourceVersion)
      *  @see javax.lang.model.SourceVersion#isIdentifier(CharSequence)
@@ -949,7 +956,7 @@ public final class JavaUtils
      *  too.
      *
      *  @param  classname   The name of the class to load; may <i>not</i> be
-     *      empty or {@code null}.
+     *      empty or {@null}.
      *  @return The class wrapped in an
      *      {@link Optional}
      *      instance.
@@ -988,7 +995,7 @@ public final class JavaUtils
      *
      *  @param  classLoader The class loader to use.
      *  @param  classname   The name of the class to load; may <i>not</i> be
-     *      empty or {@code null}.
+     *      empty or {@null}.
      *  @return The class wrapped in an
      *      {@link Optional}
      *      instance.
@@ -1041,7 +1048,7 @@ public final class JavaUtils
      *      will implement/extend.
      *  @param  classLoader The class loader to use.
      *  @param  classname   The name of the class to load; may <i>not</i> be
-     *      empty or {@code null}.
+     *      empty or {@null}.
      *  @param  implementing    The interface/class that the returned class
      *      has to implement/extend.
      *  @return The class wrapped in an
@@ -1098,7 +1105,7 @@ public final class JavaUtils
      *  @param  <T> The type of the interface/class that the returned class
      *      will implement/extend.
      *  @param  classname   The name of the class to load; may <i>not</i> be
-     *      empty or {@code null}.
+     *      empty or {@null}.
      *  @param  implementing    The interface/class that the returned class
      *      has to implement/extend.
      *  @return The class wrapped in an
@@ -1122,9 +1129,9 @@ public final class JavaUtils
 
     /**
      *  Retrieves the public getter for the property with the given name. If
-     *  not {@code null}, the returned value will cause
+     *  not {@null}, the returned value will cause
      *  {@link #isGetter(Method)}
-     *  to return {@code true}.
+     *  to return {@true}.
      *
      *  @param  beanClass   The class for the getter.
      *  @param  propertyName    The name of the property.
@@ -1150,12 +1157,12 @@ public final class JavaUtils
      *  it may be package local, protected or even private. A method returned
      *  by a call to this method will not cause
      *  {@link #isGetter(Method)}
-     *  to return {@code true} in all cases.</p>
+     *  to return {@true} in all cases.</p>
      *
      *  @param  beanClass   The class for the getter.
      *  @param  propertyName    The name of the property.
-     *  @param  isPublic    {@code true} if the getter is required to be
-     *      public, {@code false} otherwise.
+     *  @param  isPublic    {@true} if the getter is required to be
+     *      public, {@false} otherwise.
      *  @return An instance of
      *      {@link Optional}
      *      that holds the getter method; will be empty if there is no getter
@@ -1287,7 +1294,7 @@ public final class JavaUtils
      *
      *  @param  o   The object to inspect.
      *  @return The list of getters; it may be empty, but will never be
-     *  {@code null}.
+     *  {@null}.
      *
      *  @see #isGetter(Method)
      */
@@ -1352,6 +1359,7 @@ public final class JavaUtils
     public static final String retrievePropertyName( final ExecutableElement method )
     {
         final String retValue;
+        @SuppressWarnings( "LocalVariableNamingConvention" )
         final var propertyNameAnnotation = requireNonNullArgument( method, "method" ).getAnnotation( PropertyName.class );
         if( nonNull( propertyNameAnnotation ) )
         {
@@ -1359,7 +1367,7 @@ public final class JavaUtils
         }
         else
         {
-            final var methodName = requireValidArgument( method, "method", v -> isGetter( v ) || isSetter( v ) || isAddMethod( v ), $ -> "'%s()' is not a valid type of method".formatted( method.getSimpleName() ) ).getSimpleName().toString();
+            final var methodName = requireValidArgument( method, "method", v -> isGetter( v ) || isSetter( v ) || isAddMethod( v ), (_,v) -> "'%s()' is not a valid type of method".formatted( v.getSimpleName() ) ).getSimpleName().toString();
 
             /*
              * We know that the method is either a getter, a setter or an 'add'
@@ -1376,9 +1384,9 @@ public final class JavaUtils
 
     /**
      *  Retrieves the public setter for the property with the given name. If
-     *  not {@code null}, the returned value will cause
+     *  not {@null}, the returned value will cause
      *  {@link #isSetter(Method)}
-     *  to return {@code true}.
+     *  to return {@true}.
      *
      *  @param  beanClass   The class for the getter.
      *  @param  propertyName    The name of the property.
@@ -1402,14 +1410,14 @@ public final class JavaUtils
     /**
      *  Retrieves the setter for the property with the given name.<br>
      *  <br>For some purposes, non-public setters are quite useful; when
-     *  {@code isPublic} is provided as {@code false}, this method will also
+     *  {@code isPublic} is provided as {@false}, this method will also
      *  return those setters.
      *
      *  @param  beanClass   The class for the getter.
      *  @param  propertyName    The name of the property.
      *  @param  propertyType    The type of the property.
-     *  @param  isPublic    {@code true} if the setter is required to be
-     *      public, {@code false} otherwise.
+     *  @param  isPublic    {@true} if the setter is required to be
+     *      public, {@false} otherwise.
      *  @return An instance of
      *      {@link Optional}
      *      that holds the setter method; will be empty if there is no setter
@@ -1507,7 +1515,7 @@ public final class JavaUtils
      *
      *  @param  stackTrace  The stack trace.
      *  @param  methodName  The name of the method to look for.
-     *  @return The class name, or {@code null} if there is no reference to
+     *  @return The class name, or {@null} if there is no reference to
      *      the given method in the stack trace.
      */
     @API( status = STABLE, since = "0.0.5" )
@@ -1548,7 +1556,7 @@ public final class JavaUtils
      *  {@code javax.lang.model.element.Modifier}, but
      *  {@link Class#getModifiers()}
      *  will not return them, and they are not (yet) defined in
-     *  {@link java.lang.reflect.Modifier}. Therefore they will not appear in
+     *  {@link java.lang.reflect.Modifier}. Therefore, they will not appear in
      *  the return set, too.</p>
      *
      *  @param  modifiers   The integer value for the modifiers.

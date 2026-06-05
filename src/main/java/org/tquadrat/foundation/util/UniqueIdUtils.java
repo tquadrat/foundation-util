@@ -15,22 +15,6 @@
 
 package org.tquadrat.foundation.util;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.EmptyArgumentException;
-import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.UnsupportedEnumError;
-import org.tquadrat.foundation.lang.AutoLock;
-
-import java.math.BigInteger;
-import java.util.Map;
-import java.util.TreeMap;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.IntStream;
-
 import static java.lang.Long.toBinaryString;
 import static java.lang.Math.abs;
 import static java.lang.System.currentTimeMillis;
@@ -54,6 +38,22 @@ import static org.tquadrat.foundation.util.SystemUtils.currentTimeNanos;
 import static org.tquadrat.foundation.util.SystemUtils.getNodeId;
 import static org.tquadrat.foundation.util.SystemUtils.getRandom;
 import static org.tquadrat.foundation.util.SystemUtils.repose;
+
+import java.math.BigInteger;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.UUID;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.IntStream;
+
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.EmptyArgumentException;
+import org.tquadrat.foundation.exception.NullArgumentException;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.exception.UnsupportedEnumError;
+import org.tquadrat.foundation.lang.AutoLock;
 
 /**
  *  <p>{@summary This static class provides some utility methods that are helpful when
@@ -147,7 +147,7 @@ import static org.tquadrat.foundation.util.SystemUtils.repose;
  *   };</pre></div>
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: UniqueIdUtils.java 1164 2026-03-20 17:38:18Z tquadrat $
+ *  @version $Id: UniqueIdUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @see UUID#nameUUIDFromBytes(byte[])
@@ -157,7 +157,7 @@ import static org.tquadrat.foundation.util.SystemUtils.repose;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1164 2026-03-20 17:38:18Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: UniqueIdUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class UniqueIdUtils
@@ -202,8 +202,8 @@ public final class UniqueIdUtils
      *  controlling that only pseudo node ids should be used to generate
      *  {@link UUID UUID}
      *  instances of type 1: {@value}.}</p>
-     *  <p>A value of {@code true} means that only pseudo ids will be used
-     *  throughout the current run of the program, while {@code false}
+     *  <p>A value of {@true} means that only pseudo ids will be used
+     *  throughout the current run of the program, while {@false}
      *  (the default) means that a MAC address is used for the calculation of a
      *  node id, if available.</p>
      *  <p>This system property is not necessarily configured.</p>
@@ -278,6 +278,7 @@ public final class UniqueIdUtils
      *  The dummy node id that is used to generate UUIDs, if required. This is
      *  always a random value.
      */
+    @SuppressWarnings( "FieldNamingConvention" )
     private static final long m_DummyNodeId;
 
     /**
@@ -290,6 +291,7 @@ public final class UniqueIdUtils
      *  The node id that is used to generate UUIDs. This is either the MAC
      *  address of one of the NICs in the current system, or a random value.
      */
+    @SuppressWarnings( "FieldNamingConvention" )
     private static final long m_NodeId;
 
     /**
@@ -300,6 +302,7 @@ public final class UniqueIdUtils
      *  &quot;{@value #PROPERTY_USE_PSEUDO_NODE_ID}&quot;.<br>
      *  <br>Using a pseudo node id would generate anonymous UUIDs.
      */
+    @SuppressWarnings( "FieldNamingConvention" )
     private static final boolean m_UsePseudoNodeId;
 
     /**
@@ -323,6 +326,7 @@ public final class UniqueIdUtils
         m_DummyNodeId = createPseudoNodeId();
 
         //---* Get the flag that controls the generation of the node id *------
+        //noinspection AccessOfSystemProperties
         m_UsePseudoNodeId = Boolean.getBoolean( PROPERTY_USE_PSEUDO_NODE_ID );
 
         //---* Retrieve the node id *------------------------------------------
@@ -369,7 +373,7 @@ public final class UniqueIdUtils
 
         final var parts = splitString( requireNotBlankArgument( input, "input" ).toString().toUpperCase( ROOT ), "-" );
         final var message = "Cannot convert '%s' to a UUID!".formatted( input );
-        requireValidIntegerArgument( parts.length, "input", length -> length == 2, _ -> message );
+        requireValidIntegerArgument( parts.length, "input", length -> length == 2, (_,_) -> message );
         for( var i = 0; i < parts.length; ++i )
         {
             final var buffer = new StringBuilder();
@@ -428,7 +432,7 @@ public final class UniqueIdUtils
      *  Returns the UUID for the namespace with the given name.
      *
      *  @param  key The name of the namespace.
-     *  @return The UUID for the namespace, or {@code null} if that namespace
+     *  @return The UUID for the namespace, or {@null} if that namespace
      *      does not exist.
      */
     @API( status = STABLE, since = "0.0.5" )
@@ -439,6 +443,7 @@ public final class UniqueIdUtils
      *
      *  @return The names of the namespaces.
      */
+    @SuppressWarnings( "unused" )
     @API( status = STABLE, since = "0.0.5" )
     public static final String [] listNamespaces()
     {
@@ -652,6 +657,7 @@ public final class UniqueIdUtils
      *
      *  @return The UUID.
      */
+    @SuppressWarnings( "unused" )
     @API( status = STABLE, since = "0.0.7" )
     public static final UUID timebasedUUIDFromDummyNode()
     {
@@ -762,7 +768,7 @@ public final class UniqueIdUtils
      *
      *  @param  uuid    The UUID string representation.
      *  @return The UUID from the given String representation.
-     *  @throws NullArgumentException   The argument is {@code null}.
+     *  @throws NullArgumentException   The argument is {@null}.
      *  @throws EmptyArgumentException  The argument is the empty String.
      *  @throws IllegalArgumentException    The argument is invalid.
      *

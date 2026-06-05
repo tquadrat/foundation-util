@@ -47,7 +47,7 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  IP6 address String &ndash; an
  *  {@link IllegalArgumentException}
  *  is thrown when that host is unknown (cannot be resolved by DNS). But
- *  {@code fromString()} will not accept {@code null} or the empty String for
+ *  {@code fromString()} will not accept {@null} or the empty String for
  *  {@code localhost}; for these values it will also throw an
  *  {@code IllegalArgumentException}.<br>
  *  <br>The method
@@ -57,12 +57,12 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  to get the IP address as a String.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: InetAddressStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $
+ *  @version $Id: InetAddressStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: InetAddressStringConverter.java 1060 2023-09-24 19:21:40Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: InetAddressStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public final class InetAddressStringConverter implements StringConverter<InetAddress>
 {

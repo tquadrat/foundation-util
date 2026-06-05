@@ -32,7 +32,7 @@ import org.tquadrat.foundation.util.internal.RangeMapImpl;
  *  {@link Double#MAX_VALUE -Double.MAX_VALUE}.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: RangeMap.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: RangeMap.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.7
  *
  *  @param <T>  The type of the mapped value.
@@ -41,7 +41,7 @@ import org.tquadrat.foundation.util.internal.RangeMapImpl;
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: RangeMap.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: RangeMap.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.7" )
 public sealed interface RangeMap<T> extends Serializable
     permits RangeMapImpl
@@ -72,8 +72,8 @@ public sealed interface RangeMap<T> extends Serializable
     /**
      *  Returns a copy of this range map.
      *
-     *  @param  modifiable  {@code true} if the copy can be modified,
-     *      {@code false} otherwise.
+     *  @param  modifiable  {@true} if the copy can be modified,
+     *      {@false} otherwise.
      *  @return The copy.
      */
     public RangeMap<T> copy( final boolean modifiable );
@@ -104,7 +104,7 @@ public sealed interface RangeMap<T> extends Serializable
     public T get( final double key ) throws IllegalStateException;
 
     /**
-     *  <p>{@summary Returns {@code true} if the range map is empty.}</p>
+     *  <p>{@summary Returns {@true} if the range map is empty.}</p>
      *  <p>Usually, a range map is empty only after a call to
      *  {@link #clear()}
      *  or when the last entry was removed by a call to
@@ -112,7 +112,7 @@ public sealed interface RangeMap<T> extends Serializable
      *  but special implementations of this interface can handle this
      *  differently.</p>
      *
-     *  @return {@code true} if the range map is empty, {@code false}
+     *  @return {@true} if the range map is empty, {@false}
      *      if there were already some entries added to it.
      */
     public boolean isEmpty();
@@ -123,8 +123,8 @@ public sealed interface RangeMap<T> extends Serializable
      *  @param  <V> The value type for the range map.
      *  @param  defaultValue    The default value; this is the that is returned
      *      if the key is above all range limits.
-     *  @param  includes    {@code true} if the limit belongs to the
-     *      range, {@code false} otherwise.
+     *  @param  includes    {@true} if the limit belongs to the
+     *      range, {@false} otherwise.
      *  @return The new range map instance.
      */
     public static <V> RangeMap<V> of( final V defaultValue, final boolean includes )

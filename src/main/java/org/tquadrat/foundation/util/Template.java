@@ -78,7 +78,7 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  {@link #replaceVariableFromSystemData(CharSequence, Map[]) replaceVariableFromSystemData()}
  *  and
  *  {@link #replaceVariable(boolean, Map[]) replaceVariable()}
- *  with {@code addSystemData} set to {@code true}), some additional variables
+ *  with {@code addSystemData} set to {@true}), some additional variables
  *  are available:</p>
  *  <dl>
  *      <dt>{@value #VARNAME_IPAddress}</dt>
@@ -103,13 +103,13 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 1251 2026-05-25 20:08:13Z tquadrat $
+ *  @version $Id: Template.java 1258 2026-06-04 18:33:06Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: Template.java 1251 2026-05-25 20:08:13Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Template.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class Template implements Serializable
 {
@@ -399,7 +399,7 @@ public class Template implements Serializable
      *  <p>Finally, there is the single underscore that is allowed as a
      *  special variable.</p>
      *
-     *  @param  text    The text with the variables; may be {@code null}.
+     *  @param  text    The text with the variables; may be {@null}.
      *  @return A {@code Collection} with the variable (names).
      *
      *  @see #VARIABLE_PATTERN
@@ -489,8 +489,8 @@ public class Template implements Serializable
      *  with the given name.
      *
      *  @param  name    The name of the variable to look for.
-     *  @return {@code true} if the template contains the variable,
-     *      {@code false} otherwise.
+     *  @return {@true} if the template contains the variable,
+     *      {@false} otherwise.
      *  @throws IllegalArgumentException    The given argument is not valid as
      *      a variable name.
      *
@@ -512,9 +512,9 @@ public class Template implements Serializable
      *  form <code>${<i>&lt;name&gt;</i>}</code> (matching the pattern given in
      *  {@link #VARIABLE_PATTERN}).
      *
-     *  @param  input   The String to test; can be {@code null}.
-     *  @return {@code true} if the String contains at least one variable,
-     *      {@code false} otherwise.
+     *  @param  input   The String to test; can be {@null}.
+     *  @return {@true} if the String contains at least one variable,
+     *      {@false} otherwise.
      *
      *  @see #VARIABLE_PATTERN
      *
@@ -535,8 +535,8 @@ public class Template implements Serializable
      *  given in
      *  {@link #VARIABLE_PATTERN}).
      *
-     *  @return {@code true} if the template contains at least one variable,
-     *      {@code false} otherwise.
+     *  @return {@true} if the template contains at least one variable,
+     *      {@false} otherwise.
      *
      *  @see #VARIABLE_PATTERN
      */
@@ -547,8 +547,8 @@ public class Template implements Serializable
      *
      *  @param  name    The bare variable name, without the surrounding
      *      &quot;${&hellip;}&quot;.
-     *  @return {@code true} if the given name is valid for a variable name,
-     *      {@code false} otherwise.
+     *  @return {@true} if the given name is valid for a variable name,
+     *      {@false} otherwise.
      *
      *  @see #VARIABLE_PATTERN
      *  @see #findVariables(CharSequence)
@@ -576,9 +576,9 @@ public class Template implements Serializable
      *  in
      *  {@link #VARIABLE_PATTERN}.
      *
-     *  @param  input   The String to test; can be {@code null}.
-     *  @return {@code true} if the given String is not {@code null}, not the
-     *      empty String, and it matches the given pattern, {@code false}
+     *  @param  input   The String to test; can be {@null}.
+     *  @return {@true} if the given String is not {@null}, not the
+     *      empty String, and it matches the given pattern, {@false}
      *      otherwise.
      *
      *  @since 0.1.0
@@ -634,10 +634,10 @@ public class Template implements Serializable
      *  <p>Finally, there is the single underscore that is allowed as a
      *  special variable.</p>
      *
-     *  @param  text    The text with the variables; may be {@code null}.
+     *  @param  text    The text with the variables; may be {@null}.
      *  @param  sources The maps with the replacement values.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
+     *  @return The new text, or {@null} if the provided value for
+     *      {@code text} was already {@null}.
      *
      *  @see #VARIABLE_PATTERN
      *
@@ -692,8 +692,8 @@ public class Template implements Serializable
      *  special variable.</p>
      *
      *  @param  sources The maps with the replacement values.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
+     *  @return The new text, or {@null} if the provided value for
+     *      {@code text} was already {@null}.
      *
      *  @see #VARIABLE_PATTERN
      */
@@ -711,7 +711,7 @@ public class Template implements Serializable
      *  the result after formatting the updated contents.}
      *  The method will try the maps in the given sequence, it stops after the
      *  first match.</p>
-     *  <p>If {@code addSystemData} is provided as {@code true}, the
+     *  <p>If {@code addSystemData} is provided as {@true}, the
      *  {@linkplain System#getProperties() system properties}
      *  and
      *  {@linkplain System#getenv() system environment}
@@ -756,12 +756,12 @@ public class Template implements Serializable
      *  <p>Finally, there is the single underscore that is allowed as a
      *  special variable.</p>
      *
-     *  @param  addSystemData   {@code true} if the system properties and the
+     *  @param  addSystemData   {@true} if the system properties and the
      *      system environment should be searched for replacement values, too,
-     *      otherwise {@code false}.
+     *      otherwise {@false}.
      *  @param  sources The maps with the replacement values.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
+     *  @return The new text, or {@null} if the provided value for
+     *      {@code text} was already {@null}.
      *
      *  @see #VARIABLE_PATTERN
      *  @see #replaceVariableFromSystemData(CharSequence, Map[])
@@ -815,8 +815,8 @@ public class Template implements Serializable
      *
      *  @param  retriever   The function that will retrieve the replacement
      *      values for the given variable names.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
+     *  @return The new text, or {@null} if the provided value for
+     *      {@code text} was already {@null}.
      *
      *  @see #VARIABLE_PATTERN
      */
@@ -870,11 +870,11 @@ public class Template implements Serializable
      *  <p>Finally, there is the single underscore that is allowed as a
      *  special variable.</p>
      *
-     *  @param  text    The text with the variables; may be {@code null}.
+     *  @param  text    The text with the variables; may be {@null}.
      *  @param  retriever   The function that will retrieve the replacement
      *      values for the given variable names.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
+     *  @return The new text, or {@null} if the provided value for
+     *      {@code text} was already {@null}.
      *
      *  @see #VARIABLE_PATTERN
      *
@@ -921,11 +921,11 @@ public class Template implements Serializable
      *  will not be replaced.</p>
      *  <p>The variables names are case-sensitive.</p>
      *
-     *  @param  text    The text with the variables; can be {@code null}.
+     *  @param  text    The text with the variables; can be {@null}.
      *  @param  sources The maps with the replacement values, in addition to
      *      the system variables.
-     *  @return The new text, or {@code null} if the provided value for
-     *      {@code text} was already {@code null}.
+     *  @return The new text, or {@null} if the provided value for
+     *      {@code text} was already {@null}.
      *
      *  @see #VARIABLE_PATTERN
      *  @see #replaceVariable(CharSequence, Map...)

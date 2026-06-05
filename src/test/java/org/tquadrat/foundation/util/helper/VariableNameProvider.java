@@ -34,7 +34,7 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
  *
  *  @see org.tquadrat.foundation.util.Template
  */
-@ClassVersion( sourceVersion = "$Id: VariableNameProvider.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: VariableNameProvider.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @UtilityClass
 public final class VariableNameProvider
 {
@@ -44,14 +44,14 @@ public final class VariableNameProvider
     /**
      *  The container for the test data.
      *
-     *  @param  valid   {@code true} if the given variable name is valid,
-     *      {@code false} otherwise.
+     *  @param  valid   {@true} if the given variable name is valid,
+     *      {@false} otherwise.
      *  @param  variableName    The variable name.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      */
     @SuppressWarnings( {"PublicInnerClass", "hiding", "javadoc", "preview"} )
-    @ClassVersion( sourceVersion = "$Id: VariableNameProvider.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: VariableNameProvider.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     public static record Result( boolean valid, String variableName ) { /* Empty */ }
 
         /*--------------*\

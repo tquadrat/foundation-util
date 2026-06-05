@@ -77,12 +77,12 @@
 <span class="source-line-no">064</span><span id="line-64"> *  {@linkplain Charset &lt;code&gt;charset&lt;/code&gt; argument}.&lt;/p&gt;</span>
 <span class="source-line-no">065</span><span id="line-65"> *</span>
 <span class="source-line-no">066</span><span id="line-66"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">067</span><span id="line-67"> *  @version $Id: EncodedURLStringConverter.java 1080 2024-01-03 11:05:21Z tquadrat $</span>
+<span class="source-line-no">067</span><span id="line-67"> *  @version $Id: EncodedURLStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
 <span class="source-line-no">068</span><span id="line-68"> *  @since 0.1.0</span>
 <span class="source-line-no">069</span><span id="line-69"> *</span>
 <span class="source-line-no">070</span><span id="line-70"> *  @UMLGraph.link</span>
 <span class="source-line-no">071</span><span id="line-71"> */</span>
-<span class="source-line-no">072</span><span id="line-72">@ClassVersion( sourceVersion = "$Id: EncodedURLStringConverter.java 1080 2024-01-03 11:05:21Z tquadrat $" )</span>
+<span class="source-line-no">072</span><span id="line-72">@ClassVersion( sourceVersion = "$Id: EncodedURLStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
 <span class="source-line-no">073</span><span id="line-73">@API( status = STABLE, since = "0.1.0" )</span>
 <span class="source-line-no">074</span><span id="line-74">public final class EncodedURLStringConverter extends URLStringConverter</span>
 <span class="source-line-no">075</span><span id="line-75">{</span>
@@ -148,10 +148,10 @@
 <span class="source-line-no">135</span><span id="line-135">     *  {@link URL},</span>
 <span class="source-line-no">136</span><span id="line-136">     *  using the provided character encoding.</span>
 <span class="source-line-no">137</span><span id="line-137">     *</span>
-<span class="source-line-no">138</span><span id="line-138">     *  @param  source  The source; can be {@code null}.</span>
+<span class="source-line-no">138</span><span id="line-138">     *  @param  source  The source; can be {@null}.</span>
 <span class="source-line-no">139</span><span id="line-139">     *  @param  charset The character encoding of the String.</span>
-<span class="source-line-no">140</span><span id="line-140">     *  @return The respective URL, or {@code null} if the source was already</span>
-<span class="source-line-no">141</span><span id="line-141">     *      {@code null}.</span>
+<span class="source-line-no">140</span><span id="line-140">     *  @return The respective URL, or {@null} if the source was already</span>
+<span class="source-line-no">141</span><span id="line-141">     *      {@null}.</span>
 <span class="source-line-no">142</span><span id="line-142">     *  @throws IllegalArgumentException    The source was either not a valid</span>
 <span class="source-line-no">143</span><span id="line-143">     *      URL, or the encoding was invalid.</span>
 <span class="source-line-no">144</span><span id="line-144">     */</span>
@@ -189,10 +189,10 @@
 <span class="source-line-no">176</span><span id="line-176">     *  into an {@code application/x-www-form-url} encoded String</span>
 <span class="source-line-no">177</span><span id="line-177">     *  representation, using the provided character encoding.</span>
 <span class="source-line-no">178</span><span id="line-178">     *</span>
-<span class="source-line-no">179</span><span id="line-179">     *  @param  source  The source; can be {@code null}.</span>
+<span class="source-line-no">179</span><span id="line-179">     *  @param  source  The source; can be {@null}.</span>
 <span class="source-line-no">180</span><span id="line-180">     *  @param  charset The character encoding for the String.</span>
-<span class="source-line-no">181</span><span id="line-181">     *  @return The respective String representation, or {@code null} if the</span>
-<span class="source-line-no">182</span><span id="line-182">     *      source was already {@code null}.</span>
+<span class="source-line-no">181</span><span id="line-181">     *  @return The respective String representation, or {@null} if the</span>
+<span class="source-line-no">182</span><span id="line-182">     *      source was already {@null}.</span>
 <span class="source-line-no">183</span><span id="line-183">     *  @throws IllegalArgumentException    The source was either not a valid</span>
 <span class="source-line-no">184</span><span id="line-184">     *      URL, or the encoding was invalid.</span>
 <span class="source-line-no">185</span><span id="line-185">     */</span>

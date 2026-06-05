@@ -58,14 +58,14 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @param  <T> The type that is handled by this class.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TimeDateStringConverter.java 1130 2024-05-05 16:16:09Z tquadrat $
+ *  @version $Id: TimeDateStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.6
  *
  *  @UMLGraph.link
  *
  *  @see DateTimeFormatter
  */
-@ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 1130 2024-05-05 16:16:09Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TimeDateStringConverter.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.6" )
 public abstract class TimeDateStringConverter<T extends TemporalAccessor> implements StringConverter<T>
 {
@@ -180,7 +180,7 @@ public abstract class TimeDateStringConverter<T extends TemporalAccessor> implem
     /**
      *  Parses the given String to an instance of
      *  {@link Temporal}.
-     *  The caller ensures that {@code source} is not {@code null}, not the
+     *  The caller ensures that {@code source} is not {@null}, not the
      *  empty String and does not contain only whitespace.
      *
      *  @param  source  The String to parse.

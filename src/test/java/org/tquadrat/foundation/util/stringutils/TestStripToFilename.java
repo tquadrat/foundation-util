@@ -45,9 +45,9 @@ import static org.tquadrat.foundation.util.StringUtils.stripToFilename;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestStripToFilename.java 1158 2026-03-14 16:23:29Z tquadrat $
+ *  @version $Id: TestStripToFilename.java 1258 2026-06-04 18:33:06Z tquadrat $
  */
-@ClassVersion( sourceVersion = "$Id: TestStripToFilename.java 1158 2026-03-14 16:23:29Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestStripToFilename.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestStripToFilename" )
 public class TestStripToFilename extends TestBaseClass
 {
@@ -58,7 +58,7 @@ public class TestStripToFilename extends TestBaseClass
      *  Tests for
      *  {@link StringUtils#stripToFilename(CharSequence)}.
      *
-     *  @param  result  {@code true} if the input is valid, {@code false}
+     *  @param  result  {@true} if the input is valid, {@false}
      *      otherwise.
      *  @param  input   The input String.
      *  @param  output  The expected result

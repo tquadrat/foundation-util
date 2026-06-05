@@ -45,10 +45,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestIsEmptyOrBlank.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestIsEmptyOrBlank.java 1258 2026-06-04 18:33:06Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestIsEmptyOrBlank.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestIsEmptyOrBlank.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestIsEmptyOrBlank" )
 public class TestIsEmptyOrBlank extends TestBaseClass
 {
@@ -82,8 +82,8 @@ public class TestIsEmptyOrBlank extends TestBaseClass
      *  Test for the method
      *  {@link StringUtils#isEmptyOrBlank(CharSequence)}.
      *
-     *  @param  result  {@code true} if the candidate is empty or blank,
-     *      {@code false} otherwise.
+     *  @param  result  {@true} if the candidate is empty or blank,
+     *      {@false} otherwise.
      *  @param  candidate   The String to test.
      */
     @SuppressWarnings( "SimplifiableAssertion" )
@@ -140,8 +140,8 @@ public class TestIsEmptyOrBlank extends TestBaseClass
      *  Test for the method
      *  {@link StringUtils#isNotEmptyOrBlank(CharSequence)}.
      *
-     *  @param  result  {@code true} if the candidate is empty or blank,
-     *      {@code false} otherwise.
+     *  @param  result  {@true} if the candidate is empty or blank,
+     *      {@false} otherwise.
      *  @param  candidate   The String to test.
      */
     @SuppressWarnings( "SimplifiableAssertion" )

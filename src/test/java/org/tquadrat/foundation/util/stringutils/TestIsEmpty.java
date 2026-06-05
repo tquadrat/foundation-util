@@ -40,10 +40,10 @@ import org.tquadrat.foundation.util.StringUtils;
  *  {@link StringUtils}
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: TestIsEmpty.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: TestIsEmpty.java 1258 2026-06-04 18:33:06Z tquadrat $
  */
 @SuppressWarnings( "MisorderedAssertEqualsArguments" )
-@ClassVersion( sourceVersion = "$Id: TestIsEmpty.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestIsEmpty.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.stringutils.TestIsEmpty" )
 public class TestIsEmpty extends TestBaseClass
 {
@@ -54,7 +54,7 @@ public class TestIsEmpty extends TestBaseClass
      *  Test for the method
      *  {@link StringUtils#isEmpty(CharSequence)}.
      *
-     *  @param  result  {@code true} if the candidate is empty, {@code false}
+     *  @param  result  {@true} if the candidate is empty, {@false}
      *      otherwise.
      *  @param  candidate   The String to test.
      */
@@ -93,7 +93,7 @@ public class TestIsEmpty extends TestBaseClass
      *  Test for the method
      *  {@link StringUtils#isNotEmpty(CharSequence)}.
      *
-     *  @param  result  {@code true} if the candidate is empty, {@code false}
+     *  @param  result  {@true} if the candidate is empty, {@false}
      *      otherwise.
      *  @param  candidate   The String to test.
      */

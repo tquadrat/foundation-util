@@ -45,12 +45,12 @@ import org.tquadrat.foundation.util.Comparators.KeyProvider;
  *      the same as the type itself.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: KeyBasedComparator.java 820 2020-12-29 20:34:22Z tquadrat $
+ *  @version $Id: KeyBasedComparator.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
-@ClassVersion( sourceVersion = "$Id: KeyBasedComparator.java 820 2020-12-29 20:34:22Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: KeyBasedComparator.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = INTERNAL, since = "0.0.5" )
 public class KeyBasedComparator<T,K> implements Comparator<T>
 {
@@ -59,7 +59,7 @@ public class KeyBasedComparator<T,K> implements Comparator<T>
         \*------------*/
     /**
      *  A flag that determines whether the keys are to be cached internally;
-     *  {@code true} means they are kept, {@code false} means that the keys are
+     *  {@true} means they are kept, {@false} means that the keys are
      *  generated newly for each comparison.
      */
     private final boolean m_CacheKeys;
@@ -90,7 +90,7 @@ public class KeyBasedComparator<T,K> implements Comparator<T>
      *  @param  keyComparator   The comparator that determines the sort order
      *      for the keys.
      *  @param cacheKeys    A flag that determines whether the keys are to be
-     *      cached internally; {@code true} means they are kept, {@code false}
+     *      cached internally; {@true} means they are kept, {@false}
      *      means that the keys are generated newly for each comparison.
      */
     public KeyBasedComparator( final KeyProvider<T,K> keyProvider, final Comparator<K> keyComparator, final boolean cacheKeys )

@@ -79,13 +79,13 @@ import static org.tquadrat.foundation.util.StringUtils.splitString;
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $
+ *  @version $Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class SystemUtils
@@ -99,14 +99,14 @@ public final class SystemUtils
      *  UNIX/Linux and macOS/OS-X.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $
+     *  @version $Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      *
      *  @see SystemUtils#determineOperatingSystem()
      */
-    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1182 2026-04-03 15:38:16Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     @API( status = STABLE, since = "0.0.6" )
     public static enum OperatingSystem
     {
@@ -761,8 +761,8 @@ public final class SystemUtils
     /**
      *  Checks whether the current system has a network interface installed.
      *
-     *  @return {@code true} if the current system has a network interface
-     *      installed, {@code false} otherwise.
+     *  @return {@true} if the current system has a network interface
+     *      installed, {@false} otherwise.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean hasNetworkInterface()
@@ -782,7 +782,7 @@ public final class SystemUtils
      *      monitors.
      *
      *  @param  millis  The time to sleep in milliseconds.
-     *  @return  {@code true} if the sleep was interrupted, {@code false} if it
+     *  @return  {@true} if the sleep was interrupted, {@false} if it
      *      terminated as planned.
      */
     @SuppressWarnings( {"BooleanMethodNameMustStartWithQuestion", "BusyWait"} )
@@ -817,7 +817,7 @@ public final class SystemUtils
      *      monitors.
      *
      *  @param  duration    The time to sleep.
-     *  @return  {@code true} if the sleep was interrupted, {@code false} if it
+     *  @return  {@true} if the sleep was interrupted, {@false} if it
      *      terminated as planned.
      */
     @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )
@@ -856,7 +856,7 @@ public final class SystemUtils
      *      monitors.
      *
      *  @param  until   The end time for the sleep period.
-     *  @return  {@code true} if the sleep was interrupted, {@code false} if it
+     *  @return  {@true} if the sleep was interrupted, {@false} if it
      *      terminated as planned.
      */
     @SuppressWarnings( "BooleanMethodNameMustStartWithQuestion" )

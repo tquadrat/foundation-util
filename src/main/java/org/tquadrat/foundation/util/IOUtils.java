@@ -75,13 +75,13 @@ import org.tquadrat.foundation.lang.CommonConstants;
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $
+ *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -97,13 +97,13 @@ public final class IOUtils
      *  not applicable from the application logic.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $
+     *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -151,12 +151,12 @@ public final class IOUtils
      *  The default file attributes.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $
+     *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1228 2026-05-04 12:21:25Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -236,7 +236,7 @@ public final class IOUtils
      *  Java&nbsp;7, this method can be still helpful.
      *
      *  @param  closeable   The {@code AutoCloseable} instance to close, can be
-     *      {@code null} or already closed.
+     *      {@null} or already closed.
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final void closeQuietly( final AutoCloseable closeable )
@@ -411,7 +411,7 @@ public final class IOUtils
      *
      *  @param  dir The directory in which to create the temporary directory.
      *  @param  prefix  The prefix string to be used in generating the
-     *      directory's name; may be {@code null}.
+     *      directory's name; may be {@null}.
      *  @param  attributes  An optional list of file attributes to set
      *      atomically when creating the directory.
      *  @return The path to the newly created directory that did not exist
@@ -447,7 +447,7 @@ public final class IOUtils
      *  temporary-file directory.</p>
      *
      *  @param  prefix  The prefix string to be used in generating the
-     *      directory's name; may be {@code null}.
+     *      directory's name; may be {@null}.
      *  @param  attributes  An optional list of file attributes to set
      *      atomically when creating the directory.
      *  @return The
