@@ -17,36 +17,6 @@
 
 package org.tquadrat.foundation.util;
 
-import org.apiguardian.api.API;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.annotation.UtilityClass;
-import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
-import org.tquadrat.foundation.lang.CommonConstants;
-import org.tquadrat.foundation.lang.Lazy;
-
-import java.io.File;
-import java.math.BigInteger;
-import java.net.Inet4Address;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
-import java.net.UnknownHostException;
-import java.time.Duration;
-import java.time.Instant;
-import java.time.ZoneId;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.HexFormat;
-import java.util.IllformedLocaleException;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Random;
-import java.util.regex.Pattern;
-import java.util.regex.PatternSyntaxException;
-
 import static java.lang.Math.max;
 import static java.lang.String.format;
 import static java.lang.System.arraycopy;
@@ -74,18 +44,48 @@ import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.util.StringUtils.splitString;
 
+import java.io.File;
+import java.math.BigInteger;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.net.SocketException;
+import java.net.UnknownHostException;
+import java.time.Duration;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HexFormat;
+import java.util.IllformedLocaleException;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Random;
+import java.util.regex.Pattern;
+import java.util.regex.PatternSyntaxException;
+
+import org.apiguardian.api.API;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.annotation.UtilityClass;
+import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
+import org.tquadrat.foundation.exception.ValidationException;
+import org.tquadrat.foundation.lang.CommonConstants;
+import org.tquadrat.foundation.lang.Lazy;
+
 /**
  *  This class provides some system related helper and convenience
  *  methods.
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
+ *  @version $Id: SystemUtils.java 1260 2026-08-17 15:26:45Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: SystemUtils.java 1260 2026-08-17 15:26:45Z tquadrat $" )
 @API( status = STABLE, since = "0.0.5" )
 @UtilityClass
 public final class SystemUtils
@@ -99,14 +99,14 @@ public final class SystemUtils
      *  UNIX/Linux and macOS/OS-X.
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
+     *  @version $Id: SystemUtils.java 1260 2026-08-17 15:26:45Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      *
      *  @see SystemUtils#determineOperatingSystem()
      */
-    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: SystemUtils.java 1260 2026-08-17 15:26:45Z tquadrat $" )
     @API( status = STABLE, since = "0.0.6" )
     public static enum OperatingSystem
     {
@@ -835,7 +835,7 @@ public final class SystemUtils
                 Thread.sleep( remainingDuration );
                 retValue = false;
             }
-            catch( final InterruptedException ignored )
+            catch( final InterruptedException _ )
             {
                 if( currentThread().isInterrupted() ) break SleepLoop;
                 now = Instant.now();
