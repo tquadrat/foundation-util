@@ -49,6 +49,7 @@ import static org.tquadrat.foundation.lang.DebugOutput.ifDebug;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
 import static org.tquadrat.foundation.lang.Objects.requireNonNullArgument;
+import static org.tquadrat.foundation.lang.Objects.requireNotBlankArgument;
 import static org.tquadrat.foundation.lang.Objects.requireNotEmptyArgument;
 import static org.tquadrat.foundation.lang.Objects.requireValidArgument;
 import static org.tquadrat.foundation.util.StringUtils.capitalize;
@@ -86,7 +87,7 @@ import org.tquadrat.foundation.lang.DebugOutput;
  *  <p>All methods of this class are static, so no instance of this class is
  *  allowed.</p>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: JavaUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
@@ -101,26 +102,26 @@ public final class JavaUtils
     ====** Constants **========================================================
         \*-----------*/
     /**
-     *  The prefix for the name of an 'add' method: {@value}
+     *  <p>{@summary The prefix for the name of an 'add' method: {@value}.}</p>
      */
     @API( status = STABLE, since = "0.1.0" )
     public static final String PREFIX_ADD = "add";
 
     /**
-     *  The prefix for the name of a getter method: {@value}.
+     *  <p>{@summary The prefix for the name of a getter method: {@value}.}</p>
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final String PREFIX_GET = "get";
 
     /**
-     *  The prefix for the name of a getter method that returns a
-     *  {@code boolean} value: {@value}.
+     *  <p>{@summary The prefix for the name of a getter method that returns a
+     *  {@code boolean} value: {@value}.}</p>
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final String PREFIX_IS = "is";
 
     /**
-     *  The prefix for the name of a setter method: {@value}
+     *  <p>{@summary The prefix for the name of a setter method: {@value}.}</p>
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final String PREFIX_SET = "set";
@@ -129,16 +130,18 @@ public final class JavaUtils
     ====** Static Initialisations **===========================================
         \*------------------------*/
     /**
-     *  The flag that tracks the assertion on/off status for this package.
+     *  <p>{@summary The flag that tracks the assertion on/off status for this
+     *  package.}</p>
      */
     private static boolean m_AssertionOn;
 
     /**
-     *  Unfortunately,
+     *  <p>{@summary Primitive classes table.}</p>
+     *  <p>Unfortunately,
      *  {@link Class#forName(String, boolean, ClassLoader)}
      *  will not work for the classes of the primitive types. To enable
      *  {@link #loadClass(ClassLoader, String)}
-     *  to return those classes, we use this table.
+     *  to return those classes, we use this table.</p>
      */
     @SuppressWarnings( "StaticCollection" )
     private static final Map<String,Class<?>> m_PrimitiveClasses;
@@ -172,7 +175,7 @@ public final class JavaUtils
     ====** Constructors **=====================================================
         \*--------------*/
     /**
-     *  No instance allowed for this class.
+     *  <p>{@summary {@noInstance}}</p>
      */
     private JavaUtils() { throw new PrivateConstructorForStaticClassCalledError( JavaUtils.class ); }
 
@@ -180,10 +183,12 @@ public final class JavaUtils
     ====** Methods **==========================================================
         \*---------*/
     /**
-     *  Creates the name for the getter method for the property with the given
-     *  name. It will always be generated with '{@code get}', names for
-     *  {@code boolean} properties (that usually do start with '{@code is}')
-     *  are not generated.
+     *  <p>{@summary Creates the name for the getter method for the property
+     *  with the given name.} It will always be generated with
+     *  {@value #PREFIX_GET},
+     *  names for {@code boolean} properties (that usually do start with
+     *  {@value #PREFIX_IS})
+     *  are not generated.</p>
      *
      *  @param  propertyName    The name of the property.
      *  @return The name for the getter of the respective property.
@@ -191,15 +196,15 @@ public final class JavaUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final String composeGetterName( final String propertyName )
     {
-        final var retValue = PREFIX_GET + capitalize( requireNotEmptyArgument( propertyName, "propertyName" ) );
+        final var retValue = PREFIX_GET + capitalize( requireNotBlankArgument( propertyName, "propertyName" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
     }   //  composeGetterName()
 
     /**
-     *  Creates the name for the setter method for the property with the given
-     *  name.
+     *  <p>{@summary Creates the name for the setter method for the property
+     *  with the given name.}</p>
      *
      *  @param  propertyName    The name of the property.
      *  @return The name for the setter of the respective property.
@@ -207,7 +212,7 @@ public final class JavaUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final String composeSetterName( final String propertyName )
     {
-        final var retValue = PREFIX_SET + capitalize( requireNotEmptyArgument( propertyName, "propertyName" ) );
+        final var retValue = PREFIX_SET + capitalize( requireNotBlankArgument( propertyName, "propertyName" ) );
 
         //---* Done *----------------------------------------------------------
         return retValue;
@@ -467,9 +472,12 @@ public final class JavaUtils
      *  {@link java.util.Collection Collection}
      *  instances or alike.</p>
      *  <p>Such an 'add' method is characterised by being public, not being
-     *  default and not being static; it has a name starting with '{@code add}',
+     *  default and not being static; it has a name starting with
+     *  {@value #PREFIX_ADD},
      *  it takes exactly one parameter, and it does not return any value.</p>
-     *  <p>The remaining part of the name after '{@code add}' is taken as the
+     *  <p>The remaining part of the name after
+     *  {@value #PREFIX_ADD}
+     *  is taken as the
      *  name of the property.</p>
      *
      *  @param  element The element to check.
@@ -519,30 +527,31 @@ public final class JavaUtils
     }   //  isAddMethod()
 
     /**
-     *  Checks whether JDK assertion is currently activated, meaning that the
-     *  program was started with the command line flags {@code -ea} or
-     *  {@code -enableassertions}. If assertions are activated for some
-     *  selected packages only and {@code org.tquadrat.foundation.util} is not
-     *  amongst these, or {@code org.tquadrat.foundation.util} is explicitly
-     *  disabled with {@code -da} or {@code -disableassertions}, this method
-     *  will return {@false}. But even when it returns {@true}, it is
-     *  possible that assertions are still not activated for some packages.
+     *  <p>{@summary Checks whether JDK assertion is currently activated,
+     *  meaning that the program was started with the command line flags
+     *  {@code -ea} or {@code -enableassertions}.} If assertions are activated
+     *  for some selected packages only and
+     *  {@code org.tquadrat.foundation.util} is not amongst these, or
+     *  {@code org.tquadrat.foundation.util} is explicitly disabled with
+     *  {@code -da} or {@code -disableassertions}, this method will return
+     *  {@false}. But even when it returns {@true}, it is possible that
+     *  assertions are still not activated for some packages.</p>
      *
      *  @return {@true} if assertions are activated for the
-     *      package {@code org.tquadrat.util} and hopefully also for any other
-     *      package, {@false} otherwise.
+     *      package {@code org.tquadrat.foundation.util} and hopefully also for
+     *      any other package, {@false} otherwise.
      */
     @SuppressWarnings( "unused" )
     @API( status = STABLE, since = "0.0.5" )
     public static final boolean isAssertionOn() { return m_AssertionOn; }
 
     /**
-     *  Checks if the given method is the method
+     *  <p>{@summary Checks if the given method is the method
      *  {@link Object#equals(Object) equals()}
-     *  as defined by the class {@code Object}. To be this method, it has to be
-     *  public, it has to have the name 'equals', it has to take one argument
-     *  of type {@code Object} and it will return a result of type
-     *  {@code boolean}.
+     *  as defined by the class {@code Object}.} To be this method, it has to
+     *  be public, it has to have the name 'equals', it has to take one single
+     *  argument of type {@code Object} and it will return a result of type
+     *  {@code boolean}.</p>
      *
      *  @param  method  The method to check.
      *  @return {@true} if the method is the {@code equals()} method,
@@ -576,13 +585,19 @@ public final class JavaUtils
      *  <p>{@summary Checks whether the given element is a <i>getter</i> method
      *  or not.}</p>
      *  <p>A getter method is public and not static, it has a name starting
-     *  with &quot;{@code get}&quot;, it does not take any arguments, and it
-     *  will return a value. In case the return value is of type
-     *  {@code boolean}, the name may start with &quot;{@code is}&quot; instead
-     *  of &quot;{@code get}&quot;.</p>
-     *  <p>The remaining part of the name after &quot;{@code get}&quot; or
-     *  &quot;{@code is}&quot; has to start with an uppercase letter; this is
-     *  usually taken as the attribute's or property's name.</p>
+     *  with
+     *  {@value #PREFIX_GET},
+     *  it does not take any arguments, and it will return a value. In case the
+     *  return value is of type {@code boolean}, the name may start with
+     *  {@value #PREFIX_IS}
+     *  instead of
+     *  {@value #PREFIX_GET}.</p>
+     *  <p>The remaining part of the name after
+     *  {@value #PREFIX_GET}
+     *  or
+     *  {@value #PREFIX_IS}
+     *  has to start with an uppercase letter; this is usually taken as the
+     *  property's name.</p>
      *  <p>For the method
      *  {@link Object#getClass()}
      *  (inherited by all classes from
@@ -653,13 +668,19 @@ public final class JavaUtils
      *  <p>{@summary Checks whether the given method is a <i>getter</i> method
      *  or not.}</p>
      *  <p>A getter method is public and not static, it has a name starting
-     *  with &quot;{@code get}&quot;, it does not take any arguments, and it
-     *  will return a value. In case the return value is of type
-     *  {@code boolean}, the name may start with &quot;{@code is}&quot; instead
-     *  of &quot;{@code get}&quot;.</p>
-     *  <p>The remaining part of the name after &quot;{@code get}&quot; or
-     *  &quot;{@code is}&quot; has to start with an uppercase letter; this is
-     *  usually taken as the attribute's or property's name.</p>
+     *  with
+     *  {@value #PREFIX_GET},
+     *  it does not take any arguments, and it will return a value. In case the
+     *  return value is of type {@code boolean}, the name may start with
+     *  {@value #PREFIX_IS}
+     *  instead of
+     *  {@value #PREFIX_GET}.</p>
+     *  <p>The remaining part of the name after
+     *  {@value #PREFIX_GET}
+     *  or
+     *  {@value #PREFIX_IS}
+     *  has to start with an uppercase letter; this is usually taken as the
+     *  property's name.</p>
      *  <p>For the method
      *  {@link Object#getClass()}
      *  (inherited by all classes from
@@ -716,11 +737,11 @@ public final class JavaUtils
     }   //  isGetter()
 
     /**
-     *  Checks if the given method is the method
+     *  <p>{@summary Checks if the given method is the method
      *  {@link Object#hashCode() hashCode()}
-     *  as defined by the class {@code Object}. To be this method, it has to be
-     *  public, it has to have the name 'hashCode', it does not take any
-     *  argument, and it will return a result of type {@code integer}.
+     *  as defined by the class {@code Object}.} To be this method, it has to
+     *  be public, it has to have the name 'hashCode', it does not take any
+     *  argument, and it will return a result of type {@code int}.</p>
      *
      *  @param  method  The method to check.
      *  @return {@true} if the method is the {@code hashCode()}
@@ -747,10 +768,10 @@ public final class JavaUtils
     }   //  isHashCode()
 
     /**
-     *  Checks if the given method is a {@code main()} method or not. A
-     *  {@code main()} method is public and static, it has the name
+     *  <p>{@summary Checks if the given method is a {@code main()} method or
+     *  not.} A {@code main()} method is public and static, it has the name
      *  &quot;main&quot;, it takes exactly one parameter of type
-     *  {@code String []}, and it does not return any value.
+     *  {@code String []}, and it does not return any value.</p>
      *
      *  @param  method  The method to check.
      *  @return {@true} if the method is a {@code main()} method,
@@ -782,10 +803,13 @@ public final class JavaUtils
 
     /**
      *  <p>{@summary Checks if the given element is a setter method or not.} A
-     *  setter method is public, it has a name starting with 'set', it takes
-     *  exactly one parameter, and it does not return any value.</p>
-     *  <p>The remaining part of the name after 'set' is taken as the
-     *  attribute's name.</p>
+     *  setter method is public, it has a name starting with
+     *  {@value #PREFIX_SET},
+     *  it takes exactly one parameter, and it does not return any value.</p>
+     *  <p>The remaining part of the name after
+     *  {@value #PREFIX_SET}
+     *  is taken as the
+     *  property's name.</p>
      *
      *  @param  element The element to check.
      *  @return {@true} if the method is a setter, {@false}
@@ -829,11 +853,14 @@ public final class JavaUtils
     }   //  isSetter()
 
     /**
-     *  Checks if the given method is a setter method or not. A setter method
-     *  is public, it has a name starting with 'set', it takes exactly one
-     *  parameter, and it does not return any value.<br>
-     *  <br>The remaining part of the name after 'set' is taken as the
-     *  attribute's name.
+     *  <p>{@summary Checks if the given method is a setter method or not.} A
+     *  setter method is public, it has a name starting with
+     *  {@value #PREFIX_SET},
+     *  it takes exactly one parameter, and it does not return any value.</p>
+     *  <p>The remaining part of the name after
+     *  {@value #PREFIX_SET}
+     *  is taken as the
+     *  property's name.</p>
      *
      *  @param  method  The method to check.
      *  @return {@true} if the method is a setter, {@false}
@@ -868,12 +895,12 @@ public final class JavaUtils
     }   //  isSetter()
 
     /**
-     *  Checks if the given method is the method
+     *  <p>{@summary Checks if the given method is the method
      *  {@link Object#toString() toString()}
-     *  as defined by the class {@code Object}. To be this method, it has to be
-     *  public, it has to have the name 'toString', it does not take any
+     *  as defined by the class {@code Object}.} To be this method, it has to
+     *  be public, it has to have the name 'toString', it does not take any
      *  argument, and it returns a result of type
-     *  {@link String}.
+     *  {@link String}.</p>
      *
      *  @param  method  The method to check.
      *  @return {@true} if the method is the {@code toString()}
@@ -900,11 +927,11 @@ public final class JavaUtils
     }   //  isToString()
 
     /**
-     *  Checks whether the given String is a valid Java name.<br>
-     *  <br>This method will return {@true} for <i>restricted
+     *  <p>{@summary Checks whether the given String is a valid Java name.}</p>
+     *  <p>This method will return {@true} for <i>restricted
      *  keywords</i>, but not for {@code var}. For a single underscore
-     *  (&quot;{@code _}&quot;), it will return {@false}.<br>
-     *  <br>The restricted keywords are
+     *  (&quot;{@code _}&quot;), it will return {@false}.</p>
+     *  <p>The restricted keywords are</p>
      *  <ul>
      *  <li>{@code exports}</li>
      *  <li>{@code module}</li>
@@ -917,7 +944,7 @@ public final class JavaUtils
      *  <li>{@code uses}</li>
      *  <li>{@code with}</li>
      *  </ul>
-     *  All these are used in a {@code module-info.java} file.
+     *  <p>All these are used in a {@code module-info.java} file.</p>
      *
      *  @param  name   The String to check.
      *  @return {@true} if the given String is a valid name for the Java
@@ -939,21 +966,21 @@ public final class JavaUtils
     }   //  isValidName()
 
     /**
-     *  Loads the class with the given name, using the instance of
+     *  <p>{@summary Loads the class with the given name, using the instance of
      *  {@link ClassLoader}
-     *  that loaded the caller's class, and returns that class. If no class
+     *  that loaded the caller's class, and returns that class.} If no class
      *  with that name could be found by that {@code ClassLoader}, no exception
      *  will be thrown; instead this method will return an empty
      *  {@link Optional}
-     *  instance.<br>
-     *  <br>If not loaded and initialised before, the loaded class is not yet
+     *  instance.</p>
+     *  <p>If not loaded and initialised before, the loaded class is not yet
      *  initialised. That means that {@code static} code blocks have not been
      *  executed yet and class variables (static variables) are not
-     *  initialised.<br>
-     *  <br>Different from
+     *  initialised.</p>
+     *  <p>Different from
      *  {@link Class#forName(String, boolean, ClassLoader)},
      *  this method is able to load the class objects for the primitive types,
-     *  too.
+     *  too.</p>
      *
      *  @param  classname   The name of the class to load; may <i>not</i> be
      *      empty or {@null}.
@@ -1003,6 +1030,7 @@ public final class JavaUtils
      *  @see Class#forName(String)
      *  @see Class#forName(String, boolean, ClassLoader)
      *  @see Optional#isPresent()
+     *  @see #m_PrimitiveClasses
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final Optional<Class<?>> loadClass( final ClassLoader classLoader, final String classname )
@@ -1029,20 +1057,20 @@ public final class JavaUtils
     }   //  loadClass()
 
     /**
-     *  Loads the class with the given name, using the given
+     *  <p>{@summary Loads the class with the given name, using the given
      *  {@link ClassLoader}
      *  instance, and returns that class, wrapped in an instance of
-     *  {@link Optional}.
+     *  {@link Optional}.}
      *  If no class with that name could be found by that instance of
      *  {@code ClassLoader}, or if it does not implement the given
      *  interface/extend the given class, no exception will be thrown; instead
      *  this method will return an empty
      *  {@link Optional}
-     *  instance.<br>
-     *  <br>If not loaded and initialised before, the loaded class is not yet
+     *  instance.</p>
+     *  <p>If not loaded and initialised before, the loaded class is not yet
      *  initialised. That means that {@code static} code blocks have not been
      *  executed yet and class variables (static variables) are not
-     *  initialised.
+     *  initialised.</p>
      *
      *  @param  <T> The type of the interface/class that the returned class
      *      will implement/extend.
@@ -1081,26 +1109,21 @@ public final class JavaUtils
     }   //  loadClass()
 
     /**
-     *  If no class with that name could be found by that instance of
-     *  {@code ClassLoader}, or if it does not implement the given
-     *  interface/extend the given class, no exception will be thrown; instead
-     *  this method will return an empty
-     *  {@link Optional}.<br>
-     *  Loads the class with the given name, using the instance of
+     *  <p>{@summary Loads the class with the given name, using the instance of
      *  {@link ClassLoader}
      *  that loaded the caller's class, and returns that class, wrapped in an
      *  instance of
-     *  {@link Optional}.
+     *  {@link Optional}.}
      *  If no class with that name could be found by that instance of
      *  {@code ClassLoader}, or if it does not implement the given
      *  interface/extend the given class, no exception will be thrown; instead
      *  this method will return an empty
      *  {@link Optional}
-     *  instance.<br>
-     *  <br>If not loaded and initialised before, the loaded class is not yet
+     *  instance.</p>
+     *  <p>If not loaded and initialised before, the loaded class is not yet
      *  initialised. That means that {@code static} code blocks have not been
      *  executed yet and class variables (static variables) are not
-     *  initialised.
+     *  initialised.</p>
      *
      *  @param  <T> The type of the interface/class that the returned class
      *      will implement/extend.
@@ -1128,17 +1151,19 @@ public final class JavaUtils
     }   //  loadClass()
 
     /**
-     *  Retrieves the public getter for the property with the given name. If
-     *  not {@null}, the returned value will cause
+     *  <p>{@summary Retrieves the public getter for the property with the
+     *  given name.} If not {@null}, the returned value will cause
      *  {@link #isGetter(Method)}
-     *  to return {@true}.
+     *  to return {@true}.</p>
      *
      *  @param  beanClass   The class for the getter.
      *  @param  propertyName    The name of the property.
      *  @return An instance of
      *      {@link Optional}
-     *      that holds the getter method; will be empty if there is no public
-     *      getter for the given property on the provided class.
+     *      that holds the getter method; will be
+     *      {@linkplain Optional#empty() empty}
+     *      if there is no public getter for the given property on the provided
+     *      class.
      *
      *  @see #isGetter(Method)
      *  @see #retrieveGetter(Class, String, boolean)
@@ -1152,7 +1177,8 @@ public final class JavaUtils
     }   //  retrieveGetter()
 
     /**
-     *  <p>{@summary Retrieves the getter for the property with the given name.}</p>
+     *  <p>{@summary Retrieves the getter for the property with the given
+     *  name.}</p>
      *  <p>Usually, a getter method has to be public, but for some purposes,
      *  it may be package local, protected or even private. A method returned
      *  by a call to this method will not cause
@@ -1273,20 +1299,23 @@ public final class JavaUtils
     }   //  retrieveGetter()
 
     /**
-     *  Returns all the getter methods from the given object.<br>
-     *  <br><i>getter</i> methods ...
+     *  <p>{@summary Returns all the getter methods from the given object.}</p>
+     *  <p><i>getter</i> methods …</p>
      *  <ul>
-     *  <li>... are public</li>
-     *  <li>... are <i>not</i> static</li>
-     *  <li>... will return a value (are not {@code void}</li>
-     *  <li>... do not take an argument</li>
-     *  <li>... have a name that starts with &quot;{@code get}&quot;, followed
-     *  by the name of the property that they return, with its first letter in
-     *  uppercase (e.g. for the property &quot;{@code name}&quot;, get getter
-     *  would be named &quot;{@code getName()}&quot;</li>
-     *  <li>... may have a name that starts with &quot;{@code is}&quot; instead
-     *  of &quot;{@code get}&quot; in case they return a {@code boolean}
-     *  value.</li>
+     *  <li>… are public</li>
+     *  <li>… are <i>not</i> static</li>
+     *  <li>… will return a value (are not {@code void}</li>
+     *  <li>… do not take an argument</li>
+     *  <li>… have a name that starts with
+     *  {@value #PREFIX_GET},
+     *  followed by the name of the property that they return, with its first
+     *  letter in uppercase (e.g. for the property &quot;{@code name}&quot;,
+     *  the getter would be named &quot;{@code getName()}&quot;</li>
+     *  <li>… may have a name that starts with
+     *  {@value #PREFIX_IS}
+     *  instead of
+     *  {@value #PREFIX_GET},
+     *  in case they return a {@code boolean} value.</li>
      *  </ul>
      *  <br>The method will ignore the method
      *  {@link Object#getClass()}
@@ -1294,7 +1323,7 @@ public final class JavaUtils
      *
      *  @param  o   The object to inspect.
      *  @return The list of getters; it may be empty, but will never be
-     *  {@null}.
+     *      {@null}.
      *
      *  @see #isGetter(Method)
      */
@@ -1313,7 +1342,7 @@ public final class JavaUtils
     /**
      *  <p>{@summary Retrieves the public method with the given signature from
      *  the given class.} The method will not throw an exception in case the
-     *  method does not exist.
+     *  method does not exist.</p>
      *
      *  @param  sourceClass The class.
      *  @param  methodName  The name of the method.
@@ -1343,15 +1372,15 @@ public final class JavaUtils
     }   //  retrieveMethod()
 
     /**
-     *  Retrieves the name of the property from the name of the given
+     *  <p>{@summary Retrieves the name of the property from the name of the given
      *  executable element for a method that is either a
      *  {@linkplain #isGetter(Element) getter},
      *  a
      *  {@linkplain #isSetter(Element) setter},
      *  or an
      *  {@linkplain #isAddMethod(Element) 'add'}
-     *  method. Alternatively the method has an annotation that provides the
-     *  name of the property.
+     *  method.} Alternatively the method has an annotation that provides the
+     *  name of the property.</p>
      *
      *  @param  method  The method.
      *  @return The name of the property.
@@ -1383,10 +1412,10 @@ public final class JavaUtils
     }   //  retrievePropertyName()
 
     /**
-     *  Retrieves the public setter for the property with the given name. If
-     *  not {@null}, the returned value will cause
+     *  <p>{@summary Retrieves the public setter for the property with the
+     *  given name.} If not {@null}, the returned value will cause
      *  {@link #isSetter(Method)}
-     *  to return {@true}.
+     *  to return {@true}.</p>
      *
      *  @param  beanClass   The class for the getter.
      *  @param  propertyName    The name of the property.
@@ -1408,10 +1437,11 @@ public final class JavaUtils
     }   //  retrieveSetter()
 
     /**
-     *  Retrieves the setter for the property with the given name.<br>
-     *  <br>For some purposes, non-public setters are quite useful; when
+     *  <p>{@summary Retrieves the setter for the property with the given
+     *  name.}</p>
+     *  <p>For some purposes, non-public setters are quite useful; when
      *  {@code isPublic} is provided as {@false}, this method will also
-     *  return those setters.
+     *  return those setters.</p>
      *
      *  @param  beanClass   The class for the getter.
      *  @param  propertyName    The name of the property.
@@ -1552,7 +1582,7 @@ public final class JavaUtils
      *  does not exist as an {@code enum} value in
      *  {@link javax.lang.model.element.Modifier}.</p>
      *  <p>The modifiers {@code sealed} and {@code non-sealed}, belonging to
-     *  the preview feature 'Sealed Classes' are defined in
+     *  the new feature 'Sealed Classes' are defined in
      *  {@code javax.lang.model.element.Modifier}, but
      *  {@link Class#getModifiers()}
      *  will not return them, and they are not (yet) defined in

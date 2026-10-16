@@ -21,6 +21,7 @@ import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
@@ -30,6 +31,7 @@ import static org.tquadrat.foundation.util.StringUtils.capitalize;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.exception.BlankArgumentException;
 import org.tquadrat.foundation.exception.EmptyArgumentException;
 import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
@@ -59,6 +61,21 @@ public class TestComposeGetterName extends TestBaseClass
     {
         skipThreadTest();
 
+        /*
+         *  null is not a valid property name.
+         */
+        assertThrows( NullArgumentException.class, () -> composeGetterName( null ) );
+
+        /*
+         *  The empty string is not a valid property name.
+         */
+        assertThrows( EmptyArgumentException.class, () -> composeGetterName( EMPTY_STRING ) );
+
+        /*
+         *  A blank string cannot be a valid property name.
+         */
+        assertThrows( BlankArgumentException.class, () -> composeGetterName( " " ) );
+
         final String actual;
         final String expected;
         final String propertyName;
@@ -69,72 +86,6 @@ public class TestComposeGetterName extends TestBaseClass
         assertNotNull( actual );
         assertEquals( expected, actual );
     }   //  testComposeGetterName()
-
-    /**
-     *  Test method for the failure of
-     *  {@link JavaUtils#composeGetterName(String)}
-     *
-     *  @throws Exception   Something unexpected went wrong.
-     */
-    @Test
-    final void testComposeGetterNameWithEmptyArgument() throws Exception
-    {
-        skipThreadTest();
-
-        /*
-         *  The empty string is not a valid property name.
-         */
-        final Class<? extends Throwable> expectedException = EmptyArgumentException.class;
-        try
-        {
-            final var result = composeGetterName( EMPTY_STRING );
-            assertNotNull( result );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException )
-            {
-                t.printStackTrace( out );
-            }
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
-    }   //  testComposeGetterNameWithEmptyArgument()
-
-    /**
-     *  Test method for the failure of
-     *  {@link JavaUtils#composeGetterName(String)}
-     *
-     *  @throws Exception   Something unexpected went wrong.
-     */
-    @Test
-    final void testComposeGetterNameWithNullArgument() throws Exception
-    {
-        skipThreadTest();
-
-        /*
-         *  null is not a valid property name.
-         */
-        final Class<? extends Throwable> expectedException = NullArgumentException.class;
-        try
-        {
-            final var result = composeGetterName( EMPTY_STRING );
-            assertNotNull( result );
-            fail( () -> format( MSG_ExceptionNotThrown, expectedException.getName() ) );
-        }
-        catch( final AssertionError e ) { throw e; }
-        catch( final Throwable t )
-        {
-            final var isExpectedException = expectedException.isInstance( t );
-            if( !isExpectedException )
-            {
-                t.printStackTrace( out );
-            }
-            assertTrue( isExpectedException, () -> format( MSG_WrongExceptionThrown, expectedException.getName(), t.getClass().getName() ) );
-        }
-    }   //  testComposeGetterNameWithNullArgument()
 }
 //  class TestComposeGetterName
 
