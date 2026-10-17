@@ -18,12 +18,9 @@
 package org.tquadrat.foundation.util.javautils;
 
 import static java.lang.String.format;
-import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_STRING;
 import static org.tquadrat.foundation.util.JavaUtils.composeGetterName;
 import static org.tquadrat.foundation.util.StringUtils.capitalize;
@@ -43,7 +40,7 @@ import org.tquadrat.foundation.util.JavaUtils;
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  */
-@ClassVersion( sourceVersion = "$Id: TestComposeGetterName.java 1076 2023-10-03 18:36:07Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: TestComposeGetterName.java 1293 2026-10-16 13:12:15Z tquadrat $" )
 @DisplayName( "org.tquadrat.foundation.util.javautils.TestComposeGetterName" )
 public class TestComposeGetterName extends TestBaseClass
 {

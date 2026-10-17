@@ -88,13 +88,13 @@ import org.tquadrat.foundation.lang.DebugOutput;
  *  allowed.</p>
  *
  *  @author Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: JavaUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
+ *  @version $Id: JavaUtils.java 1293 2026-10-16 13:12:15Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( {"ClassWithTooManyMethods", "OverlyComplexClass"} )
-@ClassVersion( sourceVersion = "$Id: JavaUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: JavaUtils.java 1293 2026-10-16 13:12:15Z tquadrat $" )
 @UtilityClass
 public final class JavaUtils
 {
