@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -43,14 +43,14 @@ import java.util.stream.Stream.Builder;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.UnexpectedExceptionError;
+import org.tquadrat.foundation.exception.ImpossibleExceptionError;
 import org.tquadrat.foundation.lang.Lazy;
 import org.tquadrat.foundation.util.StringUtils;
 
 /**
- *  Provides HTML and XML entity utilities.
+ *  <p>{@summary Provides HTML and XML entity utilities.}</p>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Alexander Day Chaffee - alex@purpletech.com
  *  @thanks Gary Gregory - ggregory@seagullsw.com
  *  @inspired Some code I found somewhere long time ago, originally written by
@@ -75,8 +75,8 @@ public final class Entities
     ====** Inner Classes **====================================================
         \*---------------*/
     /**
-     *  Local interface for the data structure that is used to store the
-     *  entity mappings.
+     *  <p>{@summary Local interface for the data structure that is used to store the
+     *  entity mappings.}</p>
      *
      *  @extauthor Alexander Day Chaffee - alex@purpletech.com
      *  @extauthor Gary Gregory - ggregory@seagullsw.com
@@ -133,8 +133,8 @@ public final class Entities
     //  interface EntityMap
 
     /**
-     *  A simple implementation for the interface
-     *  {@link EntityMap}.
+     *  <p>{@summary A simple implementation for the interface
+     *  {@link EntityMap}.}</p>
      *
      *  @extauthor Alexander Day Chaffee - alex@purpletech.com
      *  @extauthor Gary Gregory - ggregory@seagullsw.com
@@ -164,7 +164,7 @@ public final class Entities
         ====** Constructors **=================================================
             \*--------------*/
         /**
-         *  Creates a new primitive entity map.
+         *  <p>{@summary {@constructor}}</p>
          */
         public PrimitiveEntityMap() { /* Does nothing but exist */ }
 
@@ -310,7 +310,7 @@ public final class Entities
     ====** Constructors **=====================================================
         \*--------------*/
     /**
-     *  Creates a new {@code Entities} instance.
+     *  <p>{@summary {@constructor}}</p>
      *
      *  @param  resourceNames   The names of the resource files with the entity
      *      definitions.
@@ -629,7 +629,7 @@ public final class Entities
                  * Operations on a StringBuilder should not cause an
                  * IOException.
                  */
-                throw new UnexpectedExceptionError( e );
+                throw new ImpossibleExceptionError( "Operations on a StringBuilder should not cause an IOException", e );
             }
             retValue = buffer.toString();
         }

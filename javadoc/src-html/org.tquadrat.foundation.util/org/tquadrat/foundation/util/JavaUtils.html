@@ -89,7 +89,7 @@
 <span class="source-line-no">076</span><span id="line-76">import org.tquadrat.foundation.annotation.PropertyName;</span>
 <span class="source-line-no">077</span><span id="line-77">import org.tquadrat.foundation.annotation.UtilityClass;</span>
 <span class="source-line-no">078</span><span id="line-78">import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;</span>
-<span class="source-line-no">079</span><span id="line-79">import org.tquadrat.foundation.exception.UnexpectedExceptionError;</span>
+<span class="source-line-no">079</span><span id="line-79">import org.tquadrat.foundation.exception.UnlikelyExceptionError;</span>
 <span class="source-line-no">080</span><span id="line-80">import org.tquadrat.foundation.exception.ValidationException;</span>
 <span class="source-line-no">081</span><span id="line-81">import org.tquadrat.foundation.lang.DebugOutput;</span>
 <span class="source-line-no">082</span><span id="line-82"></span>
@@ -267,13 +267,13 @@
 <span class="source-line-no">254</span><span id="line-254">            FindLoop: for( var i = 0; i &lt; len; ++i )</span>
 <span class="source-line-no">255</span><span id="line-255">            {</span>
 <span class="source-line-no">256</span><span id="line-256">                /*</span>
-<span class="source-line-no">257</span><span id="line-257">                 * This loop searches the stack until it will find the entry</span>
-<span class="source-line-no">258</span><span id="line-258">                 * for this method on it. It assumes then that the next entry</span>
-<span class="source-line-no">259</span><span id="line-259">                 * on the stack will belong to the caller for this method, and</span>
+<span class="source-line-no">257</span><span id="line-257">                 * This loop searches the stack until it finds the entry for</span>
+<span class="source-line-no">258</span><span id="line-258">                 * this method on it. It assumes then that the next entry</span>
+<span class="source-line-no">259</span><span id="line-259">                 * on the stack belongs to the caller for this method, and</span>
 <span class="source-line-no">260</span><span id="line-260">                 * that one after it will be the caller's caller - and so on.</span>
 <span class="source-line-no">261</span><span id="line-261">                 * The stack trace element for this method is not necessarily</span>
-<span class="source-line-no">262</span><span id="line-262">                 * the first on the stack, as getStackTrace() is on it as well,</span>
-<span class="source-line-no">263</span><span id="line-263">                 * and the exact index for this method depends on the</span>
+<span class="source-line-no">262</span><span id="line-262">                 * the first on the stack, as getStackTrace() is on it as well.</span>
+<span class="source-line-no">263</span><span id="line-263">                 * The exact index for this method depends on the</span>
 <span class="source-line-no">264</span><span id="line-264">                 * implementation of the VM and/or the Java Runtime Library.</span>
 <span class="source-line-no">265</span><span id="line-265">                 */</span>
 <span class="source-line-no">266</span><span id="line-266">                className = stackTraceElements [i].getClassName();</span>
@@ -424,11 +424,11 @@
 <span class="source-line-no">411</span><span id="line-411">        }</span>
 <span class="source-line-no">412</span><span id="line-412">        catch( final NoSuchElementException e )</span>
 <span class="source-line-no">413</span><span id="line-413">        {</span>
-<span class="source-line-no">414</span><span id="line-414">            throw new UnexpectedExceptionError( "Caller's caller must be on the stack", e );</span>
+<span class="source-line-no">414</span><span id="line-414">            throw new UnlikelyExceptionError( "Caller's caller must be on the stack", e );</span>
 <span class="source-line-no">415</span><span id="line-415">        }</span>
 <span class="source-line-no">416</span><span id="line-416">        catch( final ClassNotFoundException e )</span>
 <span class="source-line-no">417</span><span id="line-417">        {</span>
-<span class="source-line-no">418</span><span id="line-418">            throw new UnexpectedExceptionError( "Caller's class must exist", e );</span>
+<span class="source-line-no">418</span><span id="line-418">            throw new UnlikelyExceptionError( "Caller's class must exist", e );</span>
 <span class="source-line-no">419</span><span id="line-419">        }</span>
 <span class="source-line-no">420</span><span id="line-420"></span>
 <span class="source-line-no">421</span><span id="line-421">        //---* Done *----------------------------------------------------------</span>

@@ -76,7 +76,7 @@ import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.PropertyName;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.UnexpectedExceptionError;
+import org.tquadrat.foundation.exception.UnlikelyExceptionError;
 import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.DebugOutput;
 
@@ -254,13 +254,13 @@ public final class JavaUtils
             FindLoop: for( var i = 0; i < len; ++i )
             {
                 /*
-                 * This loop searches the stack until it will find the entry
-                 * for this method on it. It assumes then that the next entry
-                 * on the stack will belong to the caller for this method, and
+                 * This loop searches the stack until it finds the entry for
+                 * this method on it. It assumes then that the next entry
+                 * on the stack belongs to the caller for this method, and
                  * that one after it will be the caller's caller - and so on.
                  * The stack trace element for this method is not necessarily
-                 * the first on the stack, as getStackTrace() is on it as well,
-                 * and the exact index for this method depends on the
+                 * the first on the stack, as getStackTrace() is on it as well.
+                 * The exact index for this method depends on the
                  * implementation of the VM and/or the Java Runtime Library.
                  */
                 className = stackTraceElements [i].getClassName();
@@ -411,11 +411,11 @@ public final class JavaUtils
         }
         catch( final NoSuchElementException e )
         {
-            throw new UnexpectedExceptionError( "Caller's caller must be on the stack", e );
+            throw new UnlikelyExceptionError( "Caller's caller must be on the stack", e );
         }
         catch( final ClassNotFoundException e )
         {
-            throw new UnexpectedExceptionError( "Caller's class must exist", e );
+            throw new UnlikelyExceptionError( "Caller's class must exist", e );
         }
 
         //---* Done *----------------------------------------------------------

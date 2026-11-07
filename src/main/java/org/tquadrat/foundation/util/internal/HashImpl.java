@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2025 by Thomas Thrien.
+ *  Copyright © 2002-2026 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -37,7 +37,7 @@ import java.util.zip.Checksum;
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.NotRecord;
-import org.tquadrat.foundation.exception.UnexpectedExceptionError;
+import org.tquadrat.foundation.exception.UnlikelyExceptionError;
 import org.tquadrat.foundation.util.Hash;
 
 /**
@@ -49,6 +49,7 @@ import org.tquadrat.foundation.util.Hash;
  *  @UMLGraph.link
  *  @since 0.1.1
  */
+@SuppressWarnings( "SerializableDeserializableClassInSecureContext" )
 @ClassVersion( sourceVersion = "$Id: HashImpl.java 1151 2025-10-01 21:32:15Z tquadrat $" )
 @API( status = INTERNAL, since = "0.1.1" )
 @NotRecord
@@ -79,7 +80,7 @@ public final class HashImpl implements Hash
     ====** Constructors **=====================================================
         \*--------------*/
     /**
-     *  Creates a new instance of {@code HashImpl}.
+     *  <p>{@summary {@constructor}}</p>
      *
      *  @param  hashValue   The hash value.
      */
@@ -110,7 +111,7 @@ public final class HashImpl implements Hash
         }
         catch( final CloneNotSupportedException e )
         {
-            throw new UnexpectedExceptionError( e );
+            throw new UnlikelyExceptionError( e );
         }
 
         //---* Done *----------------------------------------------------------
