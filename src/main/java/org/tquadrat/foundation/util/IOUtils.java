@@ -71,17 +71,17 @@ import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledE
 import org.tquadrat.foundation.lang.CommonConstants;
 
 /**
- *  Some I/O, file, file system and network related helper and convenience
- *  methods.
+ *  <p>{@summary Some I/O, file, file system and network related helper and convenience
+ *  methods.}</p>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @version $Id: IOUtils.java 1298 2026-11-18 23:33:19Z tquadrat $
  *  @since 0.0.5
  *
  *  @UMLGraph.link
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: IOUtils.java 1298 2026-11-18 23:33:19Z tquadrat $" )
 @UtilityClass
 public final class IOUtils
 {
@@ -89,21 +89,22 @@ public final class IOUtils
     ====** Inner Classes **====================================================
         \*---------------*/
     /**
-     *  This implementation of an
+     *  <p>{@summary This implementation of an
      *  {@link Appendable}
-     *  just swallows any data that is written to it, like the {@code /dev/null}
-     *  device of a Unix or Linux machine, or {@code NUL:} on Windows. This class
-     *  might be useful if an {@code Appendable} is required from the API, but
-     *  not applicable from the application logic.
+     *  just swallows any data that is written to it, like the
+     *  {@code /dev/null} device of a Unix or Linux machine, or {@code NUL:} on
+     *  Windows.} This class might be useful if an {@code Appendable} is
+     *  required from the API, but not applicable from the application
+     *  logic.</p>
      *
-     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
+     *  @author Thomas Thrien - thomas.thrien@tquadrat.org
+     *  @version $Id: IOUtils.java 1298 2026-11-18 23:33:19Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @SuppressWarnings( "PublicInnerClass" )
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1298 2026-11-18 23:33:19Z tquadrat $" )
     @API( status = STABLE, since = "0.1.0" )
     public static class NullAppendable implements Appendable
     {
@@ -148,15 +149,15 @@ public final class IOUtils
     //  class NullAppendable
 
     /**
-     *  The default file attributes.
+     *  <p>{@summary The default file attributes.}</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
-     *  @version $Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
+     *  @version $Id: IOUtils.java 1298 2026-11-18 23:33:19Z tquadrat $
      *  @since 0.0.6
      *
      *  @UMLGraph.link
      */
-    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1258 2026-06-04 18:33:06Z tquadrat $" )
+    @ClassVersion( sourceVersion = "$Id: IOUtils.java 1298 2026-11-18 23:33:19Z tquadrat $" )
     @UtilityClass
     private static final class PosixPermissions
     {
@@ -199,14 +200,15 @@ public final class IOUtils
     ====** Constants **========================================================
         \*-----------*/
     /**
-     *  Some methods in this class need a buffer; the size of this buffer is
-     *  defined here: {@value}.
+     *  <p>{@summary Some methods in this class need a buffer; the size of this
+     *  buffer is defined here: {@value}.}</p>
      */
     @API( status = STABLE, since = "0.0.5" )
     public static final int DEFAULT_BUFFER_SIZE = 8192;
 
     /**
-     *  The flag that indicates if the default file systems is POSIX compliant.
+     *  <p>{@summary The flag that indicates if the default file systems is
+     *  POSIX compliant.}</p>
      *
      *  @since 0.0.6
      */
@@ -225,15 +227,15 @@ public final class IOUtils
     ====** Methods **==========================================================
         \*---------*/
     /**
-     *  Unconditionally closes an object instance of a class that implements
+     *  <p>{@summary Unconditionally closes an object instance of a class that implements
      *  the interface
-     *  {@link AutoCloseable}.<br>
-     *  Equivalent to
+     *  {@link AutoCloseable}.}</p>
+     *  <p>Equivalent to
      *  {@link AutoCloseable#close()},
      *  except any exceptions will be ignored. This is typically used in
-     *  {@code finally} blocks.<br>
-     *  <br>Even after the introduction of {@code try-with-resources} with
-     *  Java&nbsp;7, this method can be still helpful.
+     *  {@code finally} blocks.</p>
+     *  <p>Even after the introduction of {@code try-with-resources} with
+     *  Java&nbsp;7, this method can be still helpful.</p>
      *
      *  @param  closeable   The {@code AutoCloseable} instance to close, can be
      *      {@null} or already closed.
@@ -245,7 +247,7 @@ public final class IOUtils
         {
             if( nonNull( closeable ) ) closeable.close();
         }
-        catch( final Exception ignored ) { /* Deliberately ignored! */ }
+        catch( final Exception _ ) { /* Deliberately ignored! */ }
     }   //  closeQuietly()
 
     /**
@@ -866,10 +868,10 @@ public final class IOUtils
      *      <li><p>All other characters match themselves in an implementation
      *      dependent manner. This includes characters representing any
      *      {@linkplain java.nio.file.FileSystem#getSeparator name-separators}.</p></li>
-     *      <li><p>The matching of
+     *      <li><p>How
      *      {@link Path#getRoot root}
-     *      components is highly implementation-dependent and is not
-     *      specified.</p></li>
+     *      components are matching is highly implementation-dependent and is
+     *      not specified.</p></li>
      *  </ul>
      *  <p>When the syntax is "{@code regex}" then the pattern component is a
      *  regular expression as defined by the

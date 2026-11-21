@@ -12,4 +12,4 @@ Add this library to make the most often used features available to your project.
    </dependency>
    ```
 ---  
-Last updated: 2026-11-07T17:58:58.570177902+01:00[Europe/Berlin]
+Last updated: 2026-11-21T17:00:51.537794888+01:00[Europe/Berlin]

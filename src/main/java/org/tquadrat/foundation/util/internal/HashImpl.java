@@ -44,13 +44,13 @@ import org.tquadrat.foundation.util.Hash;
  *  The implementation for the interface
  *  {@link Hash}.
  *
- *  @version $Id: HashImpl.java 1151 2025-10-01 21:32:15Z tquadrat $
+ *  @version $Id: HashImpl.java 1297 2026-11-07 17:15:43Z tquadrat $
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
  *  @UMLGraph.link
  *  @since 0.1.1
  */
 @SuppressWarnings( "SerializableDeserializableClassInSecureContext" )
-@ClassVersion( sourceVersion = "$Id: HashImpl.java 1151 2025-10-01 21:32:15Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: HashImpl.java 1297 2026-11-07 17:15:43Z tquadrat $" )
 @API( status = INTERNAL, since = "0.1.1" )
 @NotRecord
 public final class HashImpl implements Hash

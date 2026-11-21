@@ -116,13 +116,13 @@
 <span class="source-line-no">103</span><span id="line-103"> *  @see #VARNAME_pid</span>
 <span class="source-line-no">104</span><span id="line-104"> *</span>
 <span class="source-line-no">105</span><span id="line-105"> *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org</span>
-<span class="source-line-no">106</span><span id="line-106"> *  @version $Id: Template.java 1258 2026-06-04 18:33:06Z tquadrat $</span>
+<span class="source-line-no">106</span><span id="line-106"> *  @version $Id: Template.java 1298 2026-11-18 23:33:19Z tquadrat $</span>
 <span class="source-line-no">107</span><span id="line-107"> *</span>
 <span class="source-line-no">108</span><span id="line-108"> *  @UMLGraph.link</span>
 <span class="source-line-no">109</span><span id="line-109"> *  @since 0.1.0</span>
 <span class="source-line-no">110</span><span id="line-110"> */</span>
 <span class="source-line-no">111</span><span id="line-111">@SuppressWarnings( "ClassWithTooManyMethods" )</span>
-<span class="source-line-no">112</span><span id="line-112">@ClassVersion( sourceVersion = "$Id: Template.java 1258 2026-06-04 18:33:06Z tquadrat $" )</span>
+<span class="source-line-no">112</span><span id="line-112">@ClassVersion( sourceVersion = "$Id: Template.java 1298 2026-11-18 23:33:19Z tquadrat $" )</span>
 <span class="source-line-no">113</span><span id="line-113">@API( status = STABLE, since = "0.1.0" )</span>
 <span class="source-line-no">114</span><span id="line-114">public class Template implements Serializable</span>
 <span class="source-line-no">115</span><span id="line-115">{</span>
@@ -328,7 +328,7 @@
 <span class="source-line-no">315</span><span id="line-315">    }   //  applyStringConverter()</span>
 <span class="source-line-no">316</span><span id="line-316"></span>
 <span class="source-line-no">317</span><span id="line-317">    /**</span>
-<span class="source-line-no">318</span><span id="line-318">     *  Builds the source map with the additional data.</span>
+<span class="source-line-no">318</span><span id="line-318">     *  &lt;p&gt;{@summary Builds the source map with the additional data.}&lt;/p&gt;</span>
 <span class="source-line-no">319</span><span id="line-319">     *</span>
 <span class="source-line-no">320</span><span id="line-320">     *  @return The source map.</span>
 <span class="source-line-no">321</span><span id="line-321">     *</span>
@@ -351,7 +351,7 @@
 <span class="source-line-no">338</span><span id="line-338">        {</span>
 <span class="source-line-no">339</span><span id="line-339">            determineIPAddress().ifPresent( inetAddress -&gt; retValue.put( VARNAME_IPAddress, inetAddress ) );</span>
 <span class="source-line-no">340</span><span id="line-340">        }</span>
-<span class="source-line-no">341</span><span id="line-341">        catch( final SocketException ignored ) { /* Deliberately ignored */ }</span>
+<span class="source-line-no">341</span><span id="line-341">        catch( final SocketException _ ) { /* Deliberately ignored */ }</span>
 <span class="source-line-no">342</span><span id="line-342"></span>
 <span class="source-line-no">343</span><span id="line-343">        //---* Done *----------------------------------------------------------</span>
 <span class="source-line-no">344</span><span id="line-344">        return retValue;</span>

@@ -103,13 +103,13 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  @see #VARNAME_pid
  *
  *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
- *  @version $Id: Template.java 1258 2026-06-04 18:33:06Z tquadrat $
+ *  @version $Id: Template.java 1298 2026-11-18 23:33:19Z tquadrat $
  *
  *  @UMLGraph.link
  *  @since 0.1.0
  */
 @SuppressWarnings( "ClassWithTooManyMethods" )
-@ClassVersion( sourceVersion = "$Id: Template.java 1258 2026-06-04 18:33:06Z tquadrat $" )
+@ClassVersion( sourceVersion = "$Id: Template.java 1298 2026-11-18 23:33:19Z tquadrat $" )
 @API( status = STABLE, since = "0.1.0" )
 public class Template implements Serializable
 {
@@ -315,7 +315,7 @@ public class Template implements Serializable
     }   //  applyStringConverter()
 
     /**
-     *  Builds the source map with the additional data.
+     *  <p>{@summary Builds the source map with the additional data.}</p>
      *
      *  @return The source map.
      *
@@ -338,7 +338,7 @@ public class Template implements Serializable
         {
             determineIPAddress().ifPresent( inetAddress -> retValue.put( VARNAME_IPAddress, inetAddress ) );
         }
-        catch( final SocketException ignored ) { /* Deliberately ignored */ }
+        catch( final SocketException _ ) { /* Deliberately ignored */ }
 
         //---* Done *----------------------------------------------------------
         return retValue;
