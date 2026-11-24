@@ -43,7 +43,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.exception.UnsupportedEnumError;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.StringUtils;
 import org.tquadrat.foundation.util.StringUtils.Clipping;
@@ -396,7 +395,7 @@ public class TestPad extends TestBaseClass
     {
         skipThreadTest();
 
-        final Class<? extends Throwable> expectedException = ValidationException.class;
+        final Class<? extends Throwable> expectedException = IllegalArgumentException.class;
         try
         {
             pad( "String", 4, ' ', PADDING_CENTER, CLIPPING_ABBREVIATE_MIDDLE );

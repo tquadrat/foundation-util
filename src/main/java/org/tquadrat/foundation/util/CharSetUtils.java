@@ -43,13 +43,12 @@ import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
 
 /**
- *  This class provides several utilities dealing with Strings in different
- *  character sets/encodings.
+ *  <p>{@summary This class provides several utilities dealing with Strings in
+ *  different character sets/encodings.}</p>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version CharSetUtils: HexUtils.java 747 2020-12-01 12:40:38Z tquadrat $
  *
  *  @UMLGraph.link
@@ -65,7 +64,7 @@ public final class CharSetUtils
     ====** Constructors **=====================================================
         \*--------------*/
     /**
-     *  No instance allowed for this class!
+     *  <p>{@summary {@noInstance}}</p>
      */
     private CharSetUtils() { throw new PrivateConstructorForStaticClassCalledError( CharSetUtils.class ); }
 
@@ -364,12 +363,12 @@ public final class CharSetUtils
     }   //  isPrintableASCIICharacter()
 
     /**
-     *  Extracts the escape sequence from the given chunk, write the result to
-     *  the buffer and returns the offset.
+     *  <p>{@summary Extracts the escape sequence from the given chunk, write
+     *  the result to the buffer and returns the offset.}</p>
      *
      *  @param  buffer  The target buffer.
      *  @param  pattern The regex pattern for the check.
-     *  @param chunk    The chunk to check.
+     *  @param  chunk   The chunk to check.
      *  @return The offset; one of 1, 6, or 12.
      */
     private static final int extractEscapeSequence( final StringBuilder buffer, final Pattern pattern, final CharSequence chunk )
@@ -387,7 +386,7 @@ public final class CharSetUtils
                         buffer.append( unescapeUnicode( chunk ) );
                         retValue = 12;
                     }
-                    catch( final ValidationException ignored ) { /* Deliberately ignored */ }
+                    catch( final IllegalArgumentException ignored ) { /* Deliberately ignored */ }
                 }
 
                 if( retValue == 1 )
@@ -397,7 +396,7 @@ public final class CharSetUtils
                         buffer.append( unescapeUnicode( c1 ) );
                         retValue = 6;
                     }
-                    catch( final ValidationException ignored ) { /* Deliberately ignored */ }
+                    catch( final IllegalArgumentException ignored ) { /* Deliberately ignored */ }
                 }
             }
         }
@@ -409,18 +408,19 @@ public final class CharSetUtils
     }   //  extractEscapeSequence()
 
     /**
-     *  Parses Strings in the format &quot;<code>&#92;uXXXX</code>&quot;,
-     *  containing the textual representation of a single Unicode character, to
-     *  the respective Unicode character. Some Unicode characters will be
-     *  represented as <i>surrogate pairs</i> in Java, so the String that is
-     *  returned by this method may contain more than one {@code char}.<br>
-     *  <br>The input format for this method is used in Java source code
+     *  <p>{@summary Parses Strings in the format
+     *  &quot;<code>&#92;uXXXX</code>&quot;, containing the textual
+     *  representation of a single Unicode character, to the respective Unicode
+     *  character.} Some Unicode characters will be represented as <i>surrogate
+     *  pairs</i> in Java, so the String that is returned by this method may
+     *  contain more than one {@code char}.</p>
+     *  <p>The input format for this method is used in Java source code
      *  Strings, in Java {@code .properties} files, in C/C++ source code, in
-     *  JavaScript source, &hellip;
+     *  JavaScript source, &hellip;</p>
      *
      *  @param  input   The input String with the Unicode escape sequence.
      *  @return The Unicode character.
-     *  @throws ValidationException The input is {@null}, empty, or cannot
+     *  @throws IllegalArgumentException The input is {@null}, empty, or cannot
      *      be parsed as a Unicode escape sequence.
      *
      *  @since 0.1.5
@@ -430,8 +430,8 @@ public final class CharSetUtils
     {
         final var len = requireNotEmptyArgument( input, "input" ).length();
         //noinspection MagicNumber
-        if( (len != 6) && (len != 12) ) throw new ValidationException( "The length of a Unicode String must be 6 or 12 characters" );
-        if( !input.subSequence( 0, 2 ).equals( "\\u" ) ) throw new ValidationException( "Unicode String must start with '\\u'" );
+        if( (len != 6) && (len != 12) ) throw new IllegalArgumentException( "The length of a Unicode String must be 6 or 12 characters" );
+        if( !input.subSequence( 0, 2 ).equals( "\\u" ) ) throw new IllegalArgumentException( "Unicode String must start with '\\u'" );
 
         final var msgCannotparse = "Cannot parse '%s' as a Unicode Escape String";
         @SuppressWarnings( "NumericCastThatLosesPrecision" )
@@ -444,7 +444,7 @@ public final class CharSetUtils
                 }
                 catch( final NumberFormatException e )
                 {
-                    throw new ValidationException( format( msgCannotparse, input ), e );
+                    throw new IllegalArgumentException( format( msgCannotparse, input ), e );
                 }
             } )
             .mapToObj( i -> Character.valueOf( (char) i ) )
@@ -457,13 +457,13 @@ public final class CharSetUtils
                     {
                         if( !isSurrogatePair( characters [0], characters [1] ) )
                         {
-                            throw new ValidationException( format( msgCannotparse, input ) );
+                            throw new IllegalArgumentException( format( msgCannotparse, input ) );
                         }
                         yield toCodePoint( characters [0], characters [1] );
                     }
-                default -> throw new ValidationException( format( msgCannotparse, input ) );
+                default -> throw new IllegalArgumentException( format( msgCannotparse, input ) );
             };
-        if( !Character.isValidCodePoint( codePoint ) ) throw new ValidationException( format( msgCannotparse, input ) );
+        if( !Character.isValidCodePoint( codePoint ) ) throw new IllegalArgumentException( format( msgCannotparse, input ) );
         final var retValue = new String( toChars( codePoint ) );
 
         //---* Done *----------------------------------------------------------

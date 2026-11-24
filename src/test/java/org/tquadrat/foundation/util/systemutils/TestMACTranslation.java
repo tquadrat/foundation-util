@@ -37,7 +37,6 @@ import org.junit.jupiter.params.provider.CsvFileSource;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.exception.EmptyArgumentException;
 import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.SystemUtils;
 
@@ -68,7 +67,7 @@ public class TestMACTranslation extends TestBaseClass
     {
         skipThreadTest();
 
-        final Class<? extends Exception> expectedException = ValidationException.class;
+        final Class<? extends Exception> expectedException = IllegalArgumentException.class;
         try
         {
             formatNodeIdAsMAC( 0xFFFFFFFFFFFFL + 1 );  // Too long
@@ -145,10 +144,10 @@ public class TestMACTranslation extends TestBaseClass
         skipThreadTest();
 
         //---* "MAC Address" is too long *-------------------------------------
-        assertThrows( ValidationException.class, () -> translateMACToNodeId( "12-34-56-78-9A-BC-DE" ) );
+        assertThrows( IllegalArgumentException.class, () -> translateMACToNodeId( "12-34-56-78-9A-BC-DE" ) );
 
         //---* "MAC Address" is too short *------------------------------------
-        assertThrows( ValidationException.class, () -> translateMACToNodeId( "12-34-56-78-9A" ) );
+        assertThrows( IllegalArgumentException.class, () -> translateMACToNodeId( "12-34-56-78-9A" ) );
 
         //---* "MAC Address" is too short *------------------------------------
         assertThrows( NumberFormatException.class, () -> translateMACToNodeId( "12-34-56-78-9A-XY" ) );

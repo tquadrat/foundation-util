@@ -17,17 +17,6 @@
 
 package org.tquadrat.foundation.util.stringutils;
 
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
-import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.EmptyArgumentException;
-import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.exception.ValidationException;
-import org.tquadrat.foundation.testutil.TestBaseClass;
-import org.tquadrat.foundation.util.StringUtils;
-
 import static java.lang.String.format;
 import static java.lang.System.out;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,6 +26,16 @@ import static org.junit.jupiter.api.Assertions.fail;
 import static org.tquadrat.foundation.lang.CommonConstants.EMPTY_CHARSEQUENCE;
 import static org.tquadrat.foundation.util.StringUtils.isNotEmptyOrBlank;
 import static org.tquadrat.foundation.util.StringUtils.stripToFilename;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+import org.tquadrat.foundation.annotation.ClassVersion;
+import org.tquadrat.foundation.exception.EmptyArgumentException;
+import org.tquadrat.foundation.exception.NullArgumentException;
+import org.tquadrat.foundation.testutil.TestBaseClass;
+import org.tquadrat.foundation.util.StringUtils;
 
 /**
  *  Some tests for the method
@@ -82,7 +81,7 @@ public class TestStripToFilename extends TestBaseClass
         }
         else
         {
-            final Class<? extends Throwable> expectedException = ValidationException.class;
+            final Class<? extends Throwable> expectedException = IllegalArgumentException.class;
             try
             {
                 stripToFilename( input );
@@ -131,7 +130,7 @@ public class TestStripToFilename extends TestBaseClass
     {
         skipThreadTest();
 
-        final Class<? extends Throwable> expectedException = ValidationException.class;
+        final Class<? extends Throwable> expectedException = IllegalArgumentException.class;
 
         var argument = ":\\/;*\"'@|?<>";
         try

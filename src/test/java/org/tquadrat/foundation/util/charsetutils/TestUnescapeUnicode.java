@@ -60,7 +60,6 @@ import org.junit.jupiter.params.provider.MethodSource;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.exception.EmptyArgumentException;
 import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.CharSetUtils;
 import org.tquadrat.foundation.util.StringUtils;
@@ -296,7 +295,7 @@ public class TestUnescapeUnicode extends TestBaseClass
     {
         skipThreadTest();
 
-        final Class<? extends Throwable> expectedException = ValidationException.class;
+        final Class<? extends Throwable> expectedException = IllegalArgumentException.class;
         try
         {
             unescapeUnicode( "123456" );

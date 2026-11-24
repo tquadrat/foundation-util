@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2024 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -70,15 +70,14 @@ import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.CommonConstants;
 import org.tquadrat.foundation.lang.Lazy;
 
 /**
- *  This class provides some system related helper and convenience
- *  methods.
+ *  <p>{@summary This class provides some system related helper and convenience
+ *  methods.}</p>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: SystemUtils.java 1260 2026-08-17 15:26:45Z tquadrat $
  *  @since 0.0.5
  *
@@ -94,11 +93,11 @@ public final class SystemUtils
     ====** Inner Classes **====================================================
         \*---------------*/
     /**
-     *  The operating system families that are supported (or not) by Java.<br>
-     *  <br>Currently, we can distinguish only between Microsoft Windows,
-     *  UNIX/Linux and macOS/OS-X.
+     *  <p>{@summary The operating system families that are supported (or not) by Java.}</p>
+     *  <p>Currently, we can distinguish only between Microsoft Windows,
+     *  UNIX/Linux and macOS/OS-X.</p>
      *
-     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+     *  @author Thomas Thrien - thomas.thrien@tquadrat.org
      *  @version $Id: SystemUtils.java 1260 2026-08-17 15:26:45Z tquadrat $
      *  @since 0.0.6
      *
@@ -564,7 +563,7 @@ public final class SystemUtils
     {
         if( nodeId != (nodeId & m_NodeIdBits) )
         {
-            throw new ValidationException( "Node id is invalid: %1$d".formatted( nodeId ) );
+            throw new IllegalArgumentException( "Node id is invalid: %1$d".formatted( nodeId ) );
         }
 
         final var hexFormat = HexFormat.of();
@@ -1080,7 +1079,7 @@ public final class SystemUtils
         final var bytes = HexFormat.ofDelimiter( "-" ).withUpperCase().parseHex( requireNotEmptyArgument( macAddress, "macAddress" ) );
         if( bytes.length != 6 )
         {
-            throw new ValidationException( "MAC address is invalid: %1$s".formatted( macAddress ) );
+            throw new IllegalArgumentException( "MAC address is invalid: %1$s".formatted( macAddress ) );
         }
         final var bytes2 = new byte [7];
         arraycopy( bytes, 0, bytes2, 1, 6 );

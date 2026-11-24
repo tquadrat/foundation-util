@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2020 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -18,6 +18,7 @@
 
 package org.tquadrat.foundation.util;
 
+import static org.apiguardian.api.API.Status.INTERNAL;
 import static org.apiguardian.api.API.Status.STABLE;
 import static org.tquadrat.foundation.lang.Objects.isNull;
 import static org.tquadrat.foundation.lang.Objects.nonNull;
@@ -30,7 +31,6 @@ import java.util.function.IntFunction;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.AutoLock;
 
 /**
@@ -38,7 +38,7 @@ import org.tquadrat.foundation.lang.AutoLock;
  *  from the Collections framework.}</p>
  *  <p>This implementation is not synchronised, but thread-safe.</p>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.5
  *
@@ -57,21 +57,21 @@ public final class Stack<T>
     ====** Inner Classes **====================================================
         \*---------------*/
     /**
-     *  The stack entries.
+     *  <p>{@summary The stack entries.}</p>
      *
      *  @note   This class cannot be changed to a {@code record} (instead of
      *      being a {@code class}) because a {@code record} as an inner class
      *      is implicitly static, and that collides with the type argument
      *      {@code <T>} that is inherited from the surrounding class.
      *
-     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+     *  @author Thomas Thrien - thomas.thrien@tquadrat.org
      *  @version $Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $
      *  @since 0.0.5
      *
      *  @UMLGraph.link
      */
     @ClassVersion( sourceVersion = "$Id: Stack.java 1258 2026-06-04 18:33:06Z tquadrat $" )
-    @API( status = STABLE, since = "0.0.5" )
+    @API( status = INTERNAL, since = "0.0.5" )
     private final class Entry
     {
             /*------------*\
@@ -125,20 +125,11 @@ public final class Stack<T>
     }
     //  class Entry
 
-        /*-----------*\
-    ====** Constants **========================================================
-        \*-----------*/
-    /**
-     *  An empty array of {@code Stack} objects.
-     */
-    @SuppressWarnings( "rawtypes" )
-    public static final Stack [] EMPTY_Stack_ARRAY = new Stack [0];
-
         /*------------*\
     ====** Attributes **=======================================================
         \*------------*/
     /**
-     *  The number of entries on the stack.
+     *  <p>{@summary The number of entries on the stack.}</p>
      */
     private int m_Count = 0;
 
@@ -302,7 +293,7 @@ public final class Stack<T>
     {
         for( var i = 0; i < requireNonNullArgument( entries, "entries" ).length; ++i )
         {
-            if( isNull( entries [i] ) ) throw new ValidationException( "The entry %1$d of the arguments list is null".formatted( i ) );
+            if( isNull( entries [i] ) ) throw new IllegalArgumentException( "The entry %1$d of the arguments list is null".formatted( i ) );
         }
 
         m_WriteLock.perform( () ->

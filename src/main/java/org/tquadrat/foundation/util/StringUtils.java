@@ -74,14 +74,14 @@ import org.tquadrat.foundation.exception.EmptyArgumentException;
 import org.tquadrat.foundation.exception.ImpossibleExceptionError;
 import org.tquadrat.foundation.exception.NullArgumentException;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.Objects;
 
 /**
- *  Library of utility methods that are useful when dealing with Strings. <br>
- *  <br>Parts of the code were adopted from the class
+ *  <p>{@summary Library of utility methods that are useful when dealing with
+ *  Strings.}</p>
+ *  <p>Parts of the code were adopted from the class
  *  <code>org.apache.commons.lang.StringUtils</code> and modified to match the
- *  requirements of this project. In particular, these are the methods
+ *  requirements of this project. In particular, these are the methods</p>
  *  <ul>
  *  <li>{@link #abbreviate(CharSequence, int) abbreviate()}</li>
  *  <li>{@link #capitalize(CharSequence) capitalize()}</li>
@@ -92,7 +92,7 @@ import org.tquadrat.foundation.lang.Objects;
  *  <li>{@link #unescapeHTML(CharSequence) unescapeHTML()} in both versions</li>
  *  </ul>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: StringUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
  *  @since 0.0.3
  *
@@ -107,8 +107,8 @@ public final class StringUtils
     ====** Inner Classes **====================================================
         \*---------------*/
     /**
-     *  The clipping mode that is used for the method
-     *  {@link StringUtils#pad(CharSequence,int,char,Padding,Clipping)}
+     *  <p>{@summary The clipping mode that is used for the method
+     *  {@link StringUtils#pad(CharSequence, int, char, Padding, Clipping)}}</p>
      *
      *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
      *  @version $Id: StringUtils.java 1258 2026-06-04 18:33:06Z tquadrat $
@@ -428,7 +428,7 @@ public final class StringUtils
      *  <li>Else abbreviate it to <code>(substring( text, 0, max - 1 ) +
      *  &quot;&hellip;&quot; )</code>.</li>
      *  <li>If {@code maxWidth} is less than 4, throw an
-     *  {@link ValidationException}.</li>
+     *  {@link IllegalArgumentException}.</li>
      *  <li>In no case it will return a String of length greater than
      *  {@code maxWidth}.</li>
      *  </ul>
@@ -449,32 +449,32 @@ public final class StringUtils
      *      least 4.
      *  @return The abbreviated String, or {@null} if the input was
      *      already {@null}.
-     *  @throws ValidationException The value for {@code maxWidth} was less
+     *  @throws IllegalArgumentException The value for {@code maxWidth} was less
      *      than 4.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String abbreviate( final CharSequence text, final int maxWidth ) throws ValidationException
+    public static final String abbreviate( final CharSequence text, final int maxWidth ) throws IllegalArgumentException
     {
         return abbreviate( text, 0, maxWidth );
     }   //  abbreviate()
 
     /**
-     *  Abbreviates a String using ellipses (Unicode HORIZONTAL ELLIPSIS,
-     *  0x2026). This will turn &quot;<i>Now is the time for all good
+     *  <p>{@summary Abbreviates a String using ellipses (Unicode HORIZONTAL ELLIPSIS,
+     *  0x2026).} This will turn &quot;<i>Now is the time for all good
      *  men</i>&quot; into &quot;<i>&hellip;is the time
-     *  for&hellip;</i>&quot;.<br>
-     *  <br>Works like
+     *  for&hellip;</i>&quot;.</p>
+     *  <p>Works like
      *  {@link #abbreviate(CharSequence, int)},
      *  but allows to specify a &quot;left edge&quot; offset. Note that this
      *  left edge is not necessarily going to be the leftmost character in the
      *  result, or the first character following the ellipses, but it will
      *  appear somewhere in the result. An offset less than 0 will be treated
-     *  as 0, a value greater than {@code maxWidth} will be ignored.<br>
-     *  <br>In no case will it return a String of length greater than
-     *  {@code maxWidth}.<br>
-     *  <br>Some samples:<br>
+     *  as 0, a value greater than {@code maxWidth} will be ignored.</p>
+     *  <p>In no case will it return a String of length greater than
+     *  {@code maxWidth}.</p>
+     *  <p>Some samples:</p>
      *  <pre>
      *  StringUtils.abbreviate( null, *, * )                = null
      *  StringUtils.abbreviate( "", 0, 4 )                  = ""
@@ -498,20 +498,20 @@ public final class StringUtils
      *      least 4.
      *  @return The abbreviated String, or {@null} if the input was
      *      already {@null}.
-     *  @throws ValidationException The value for {@code maxWidth} was less
+     *  @throws IllegalArgumentException The value for {@code maxWidth} was less
      *      than 4.
      *
      *  @since 0.0.5
      */
     @API( status = STABLE, since = "0.0.5" )
-    public static final String abbreviate( final CharSequence text, final int offset, final int maxWidth ) throws ValidationException
+    public static final String abbreviate( final CharSequence text, final int offset, final int maxWidth ) throws IllegalArgumentException
     {
         final var ellipsis = Character.toString( CHAR_ELLIPSIS ).intern();
 
         String retValue = null;
         if( nonNull( text ) )
         {
-            if( maxWidth < 4 ) throw new ValidationException( String.format( MSG_AbbrTooShort, 4 ) );
+            if( maxWidth < 4 ) throw new IllegalArgumentException( String.format( MSG_AbbrTooShort, 4 ) );
 
             final var len = text.length();
             if( len > maxWidth )
@@ -571,7 +571,7 @@ public final class StringUtils
      *      least 5.
      *  @return The abbreviated String, or {@null} if the input was
      *      already {@null}.
-     *  @throws ValidationException The value for {@code maxWidth} was less
+     *  @throws IllegalArgumentException The value for {@code maxWidth} was less
      *      than 5.
      *
      *  @since 0.0.5
@@ -584,7 +584,7 @@ public final class StringUtils
         String retValue = null;
         if( nonNull( input ) )
         {
-            if( maxWidth < 5 ) throw new ValidationException( String.format( MSG_AbbrTooShort, 5 ) );
+            if( maxWidth < 5 ) throw new IllegalArgumentException( String.format( MSG_AbbrTooShort, 5 ) );
 
             final var len = input.length();
             if( len > maxWidth )
@@ -629,7 +629,7 @@ public final class StringUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final Stream<String> breakString( final CharSequence input, final int chunk )
     {
-        if( chunk < 1 ) throw new ValidationException( "Chunk size must not be zero or a negative number: %d".formatted( chunk ) );
+        if( chunk < 1 ) throw new IllegalArgumentException( "Chunk size must not be zero or a negative number: %d".formatted( chunk ) );
 
         final Builder<String> builder = Stream.builder();
         final var len = requireNonNullArgument( input, "input" ).length();
@@ -681,7 +681,7 @@ public final class StringUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final Stream<String> breakText( final CharSequence text, final int lineLength )
     {
-        if( lineLength < 1 ) throw new ValidationException( "Line length size must not be zero or a negative number: %d".formatted( lineLength ) );
+        if( lineLength < 1 ) throw new IllegalArgumentException( "Line length size must not be zero or a negative number: %d".formatted( lineLength ) );
 
         final Builder<String> builder = Stream.builder();
 
@@ -1568,8 +1568,8 @@ public final class StringUtils
     }   //  pad()
 
     /**
-     *  Brings the given string to the given length and uses the provided
-     *  padding character to fill up the string.
+     *  <p>{@summary Brings the given string to the given length and uses the
+     *  provided padding character to fill up the string.}</p>
      *
      *  @param  input   The string to format.
      *  @param  length  The desired length; if 0 or less, the given string is
@@ -1589,7 +1589,7 @@ public final class StringUtils
         //noinspection OverlyComplexBooleanExpression
         if( ((requireNonNullArgument( clip, "clip" ) == CLIPPING_ABBREVIATE) && (length < 4)) || ((clip == CLIPPING_ABBREVIATE_MIDDLE) && (length < 5)) )
         {
-            throw new ValidationException( "Length %d is too short for clipping mode %s".formatted( length, clip.toString() ) );
+            throw new IllegalArgumentException( "Length %d is too short for clipping mode %s".formatted( length, clip.toString() ) );
         }
         requireNonNullArgument( mode, "mode" );
 
@@ -2233,14 +2233,14 @@ public final class StringUtils
      *      name. This value will never be {@null} or empty.
      *  @throws NullArgumentException   The input is {@null}.
      *  @throws EmptyArgumentException  The input is the empty String.
-     *  @throws ValidationException After stripping the invalid characters the
+     *  @throws IllegalArgumentException After stripping the invalid characters the
      *      return value would be empty.
      *
      *  @since 0.0.5
      */
     @SuppressWarnings( "SwitchStatementWithTooManyBranches" )
     @API( status = STABLE, since = "0.0.5" )
-    public static final String stripToFilename( final CharSequence input ) throws ValidationException
+    public static final String stripToFilename( final CharSequence input ) throws IllegalArgumentException
     {
         final var len = requireNotEmptyArgument( input, "input" ).length();
         final var buffer = new StringBuilder( len );
@@ -2279,7 +2279,7 @@ public final class StringUtils
         final var retValue = buffer.toString().trim();
         if( retValue.isEmpty() )
         {
-            throw new ValidationException( "After stripping the invalid characters from '%1$s' there do not remain enough characters for a valid file name".formatted(  input.toString() ) );
+            throw new IllegalArgumentException( "After stripping the invalid characters from '%1$s' there do not remain enough characters for a valid file name".formatted(  input.toString() ) );
         }
 
         //---* Done *----------------------------------------------------------

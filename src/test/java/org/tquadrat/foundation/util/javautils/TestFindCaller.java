@@ -31,7 +31,6 @@ import java.util.Optional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.JavaUtils;
 
@@ -100,7 +99,7 @@ public class TestFindCaller extends TestBaseClass
         /*
          *  An offset value less than zero is not valid.
          */
-        final Class<? extends Throwable> expectedException = ValidationException.class;
+        final Class<? extends Throwable> expectedException = IllegalArgumentException.class;
         try
         {
             findCaller( -1 );

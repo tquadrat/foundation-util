@@ -33,7 +33,6 @@ import org.junit.jupiter.api.RepetitionInfo;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.StringUtils;
 
@@ -83,7 +82,7 @@ public class TestAbbreviate extends TestBaseClass
         else
         {
             //---* The maxWidth argument is invalid *--------------------------
-            final Class<? extends Throwable> expectedException = ValidationException.class;
+            final Class<? extends Throwable> expectedException = IllegalArgumentException.class;
             try
             {
                 abbreviate( input, maxWidth );
@@ -146,7 +145,7 @@ public class TestAbbreviate extends TestBaseClass
         else
         {
             //---* The maxWidth argument is invalid *--------------------------
-            final Class<? extends Throwable> expectedException = ValidationException.class;
+            final Class<? extends Throwable> expectedException = IllegalArgumentException.class;
             try
             {
                 abbreviate( input, offset, maxWidth );
@@ -213,7 +212,7 @@ public class TestAbbreviate extends TestBaseClass
         else
         {
             //---* The maxWidth argument is invalid *--------------------------
-            final Class<? extends Throwable> expectedException = ValidationException.class;
+            final Class<? extends Throwable> expectedException = IllegalArgumentException.class;
             try
             {
                 abbreviateMiddle( input, maxWidth );

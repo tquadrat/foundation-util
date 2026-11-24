@@ -77,7 +77,6 @@ import org.tquadrat.foundation.annotation.PropertyName;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
 import org.tquadrat.foundation.exception.UnlikelyExceptionError;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.DebugOutput;
 
 /**
@@ -143,7 +142,6 @@ public final class JavaUtils
      *  {@link #loadClass(ClassLoader, String)}
      *  to return those classes, we use this table.</p>
      */
-    @SuppressWarnings( "StaticCollection" )
     private static final Map<String,Class<?>> m_PrimitiveClasses;
 
     static
@@ -239,7 +237,7 @@ public final class JavaUtils
     @API( status = STABLE, since = "0.0.5" )
     public static final Optional<StackTraceElement> findCaller( final int offset )
     {
-        if( offset < 0 ) throw new ValidationException( "offset is negative" );
+        if( offset < 0 ) throw new IllegalArgumentException( "offset is negative" );
 
         //---* Retrieve the stack *--------------------------------------------
         final var stackTraceElements = currentThread().getStackTrace();
@@ -1388,7 +1386,6 @@ public final class JavaUtils
     public static final String retrievePropertyName( final ExecutableElement method )
     {
         final String retValue;
-        @SuppressWarnings( "LocalVariableNamingConvention" )
         final var propertyNameAnnotation = requireNonNullArgument( method, "method" ).getAnnotation( PropertyName.class );
         if( nonNull( propertyNameAnnotation ) )
         {

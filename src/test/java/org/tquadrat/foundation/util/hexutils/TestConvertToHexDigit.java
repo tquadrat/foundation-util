@@ -26,7 +26,6 @@ import static org.tquadrat.foundation.util.HexUtils.convertToHexDigit;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 import org.tquadrat.foundation.util.HexUtils;
 
@@ -59,7 +58,7 @@ public class TestConvertToHexDigit extends TestBaseClass
         }
         catch( final Exception e )
         {
-            final Class<? extends Exception> expectedException = ValidationException.class;
+            final Class<? extends Exception> expectedException = IllegalArgumentException.class;
             final var isExpectedException = expectedException.isInstance( e );
             assertTrue( isExpectedException, format( "Wrong Exception type; caught '%2$s' but '%1$s' was expected", expectedException.getName(), e.getClass().getName() ) );
         }
@@ -71,7 +70,7 @@ public class TestConvertToHexDigit extends TestBaseClass
         }
         catch( final Exception e )
         {
-            final Class<? extends Exception> expectedException = ValidationException.class;
+            final Class<? extends Exception> expectedException = IllegalArgumentException.class;
             final var isExpectedException = expectedException.isInstance( e );
             assertTrue( isExpectedException, format( "Wrong Exception type; caught '%2$s' but '%1$s' was expected", expectedException.getName(), e.getClass().getName() ) );
         }

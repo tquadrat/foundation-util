@@ -35,7 +35,6 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.exception.NullArgumentException;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.testutil.TestBaseClass;
 
 /**
@@ -222,31 +221,31 @@ public class TestBase32 extends TestBaseClass
         assertNotNull( candidate );
 
         assertThrows( NullArgumentException.class, () -> candidate.decode( (byte []) null ) );
-        assertThrows( ValidationException.class, () -> candidate.decode( new byte [] {(byte) ' '} ) );
-        assertThrows( ValidationException.class, () -> candidate.decode( new byte [] {(byte) '-'} ) );
-        assertThrows( ValidationException.class, () -> candidate.decode( new byte [] {(byte) 'u'} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decode( new byte [] {(byte) ' '} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decode( new byte [] {(byte) '-'} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decode( new byte [] {(byte) 'u'} ) );
         assertThrows( NullArgumentException.class, () -> candidate.decode( (String) null ) );
-        assertThrows( ValidationException.class, () -> candidate.decode( " " ) );
-        assertThrows( ValidationException.class, () -> candidate.decode( "-" ) );
-        assertThrows( ValidationException.class, () -> candidate.decode( "u" ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decode( " " ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decode( "-" ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decode( "u" ) );
 
         assertThrows( NullArgumentException.class, () -> candidate.decodeToNumber( (byte []) null ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToNumber( new byte [] {(byte) ' '} ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToNumber( new byte [] {(byte) '-'} ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToNumber( new byte [] {(byte) 'u'} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToNumber( new byte [] {(byte) ' '} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToNumber( new byte [] {(byte) '-'} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToNumber( new byte [] {(byte) 'u'} ) );
         assertThrows( NullArgumentException.class, () -> candidate.decodeToNumber( (String) null ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToNumber( " " ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToNumber( "-" ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToNumber( "u" ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToNumber( " " ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToNumber( "-" ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToNumber( "u" ) );
 
         assertThrows( NullArgumentException.class, () -> candidate.decodeToString( (byte []) null ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToString( new byte [] {(byte) ' '} ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToString( new byte [] {(byte) '-'} ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToString( new byte [] {(byte) 'u'} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToString( new byte [] {(byte) ' '} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToString( new byte [] {(byte) '-'} ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToString( new byte [] {(byte) 'u'} ) );
         assertThrows( NullArgumentException.class, () -> candidate.decodeToString( (String) null ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToString( " " ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToString( "-" ) );
-        assertThrows( ValidationException.class, () -> candidate.decodeToString( "u" ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToString( " " ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToString( "-" ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.decodeToString( "u" ) );
     }   //  testDecoderDecodeValidation()
 
     /**
@@ -275,8 +274,8 @@ public class TestBase32 extends TestBaseClass
         assertThrows( NullArgumentException.class, () -> candidate.encodeToString( (byte []) null ) );
 
         final var value = BigInteger.valueOf( -1234L );
-        assertThrows( ValidationException.class, () -> candidate.encode( value ) );
-        assertThrows( ValidationException.class, () -> candidate.encodeToString( value ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.encode( value ) );
+        assertThrows( IllegalArgumentException.class, () -> candidate.encodeToString( value ) );
     }   //  testEncoderEncodeValidation()
 
     /**

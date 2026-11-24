@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2025 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  * Licensed to the public under the agreements of the GNU Lesser General Public
@@ -26,7 +26,6 @@ import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
 
 /**
  *  <p>{@summary A set of utility methods that are useful for the conversion of
@@ -69,7 +68,7 @@ public final class HexUtils
      *  <p>If the number of digits in the String is odd, the String will be
      *  <i>prefixed</i> by an additional 0.</p>
      *
-     *  @param  digits  Hexadecimal digits representation.
+     *  @param  digits  The hexadecimal number.
      *  @return The resulting byte array.
      *  @throws IllegalArgumentException The input String is {@null},
      *      empty, or it contains an invalid character that cannot be
@@ -89,14 +88,14 @@ public final class HexUtils
     }   //  convertFromHexString()
 
     /**
-     *  Converts an array of hexadecimal digits into the corresponding byte
-     *  array by encoding each two hexadecimal digits as a byte. The method
-     *  will not distinguish between upper or lower case for the digit from
-     *  {@code 0xA} to {@code 0xF}.<br>
-     *  <br>If the number of digits in the array is odd, an additional 0 will
-     *  be <i>prepended</i> to it.
+     *  <p>{@summary Converts an array of hexadecimal digits into the
+     *  corresponding byte array by encoding each two hexadecimal digits as a
+     *  byte.} The method will not distinguish between upper or lower case for
+     *  the digit from {@code 0xA} to {@code 0xF}.</p>
+     *  <p>If the number of digits in the array is odd, an additional 0 will
+     *  be <i>prepended</i> to it.</p>
      *
-     *  @param  digits  Hexadecimal digits representation.
+     *  @param  digits  The hexadecimal digits.
      *  @return The resulting byte array.
      *  @throws IllegalArgumentException The input array is {@null},
      *      empty, or it contains an invalid character that cannot be
@@ -113,7 +112,8 @@ public final class HexUtils
     }   //  convertFromHexCharArray()
 
     /**
-     *  Converts an integer in the range form 0 to 15 to a hex digit.
+     *  <p>{@summary Converts an integer in the range form 0 to 15 to a hex
+     *  digit.}</p>
      *
      *  @param  value   The value to convert.
      *  @return The hex digit (uppercase).
@@ -124,7 +124,7 @@ public final class HexUtils
     {
         if( (value < 0) || (value > 15) )
         {
-            throw new ValidationException( "The value %1$d cannot be converted to a single HexDigit".formatted( value ) );
+            throw new IllegalArgumentException( "The value %1$d cannot be converted to a single HexDigit".formatted( value ) );
         }
 
         final var retValue = HexFormat.of().withUpperCase().toLowHexDigit( value );

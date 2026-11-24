@@ -7,7 +7,7 @@
      version='1.1'
      baseProfile='full'
      width='439.000'
-     height='635.000'>
+     height='624.000'>
     <defs>
         <style><![CDATA[
             line
@@ -118,7 +118,7 @@
         </marker>
         <clipPath id='ID000001'>
             <rect class='focusClass'
-                  height='205.000'
+                  height='194.000'
                   width='364.000'
                   x='0.000'
                   y='8.000'/>
@@ -130,7 +130,7 @@
                     <rect x='0.000'
                           y='8.000'
                           width='364.000'
-                          height='205.000'
+                          height='194.000'
                           class='focusClass'/>
                     <line x1='0.000'
                           y1='25.000'
@@ -140,40 +140,38 @@
                     <text x='167.000'
                           y='21.000'>Stack</text>
                     <line x1='0.000'
-                          y1='86.000'
+                          y1='75.000'
                           x2='364.000'
-                          y2='86.000'
+                          y2='75.000'
                           class='separator'/>
-                    <text y='38.000'
-                          class='static final'>+ EMPTY_Stack_ARRAY:org.tquadrat.foundation.util.Stack[]</text>
-                    <text y='49.000'>- m_Count:int</text>
-                    <text y='60.000'>- m_Entries:org.tquadrat.foundation.util.Stack&lt;T&gt;.Entry</text>
-                    <text y='71.000'
+                    <text y='38.000'>- m_Count:int</text>
+                    <text y='49.000'>- m_Entries:org.tquadrat.foundation.util.Stack&lt;T&gt;.Entry</text>
+                    <text y='60.000'
                           class='final'>- m_ReadLock:org.tquadrat.foundation.lang.AutoLock</text>
-                    <text y='82.000'
+                    <text y='71.000'
                           class='final'>- m_WriteLock:org.tquadrat.foundation.lang.AutoLock</text>
                     <text x='5.000'
-                          y='99.000'>+ Stack()</text>
+                          y='88.000'>+ Stack()</text>
                     <text x='5.000'
-                          y='110.000'>+ clear():void</text>
+                          y='99.000'>+ clear():void</text>
                     <text x='5.000'
-                          y='121.000'>+ hasMore():boolean</text>
+                          y='110.000'>+ hasMore():boolean</text>
                     <text x='5.000'
-                          y='132.000'>+ isEmpty():boolean</text>
+                          y='121.000'>+ isEmpty():boolean</text>
                     <text x='5.000'
-                          y='143.000'>+ peek():java.util.Optional&lt;T&gt;</text>
+                          y='132.000'>+ peek():java.util.Optional&lt;T&gt;</text>
                     <text x='5.000'
-                          y='154.000'>+ pop():java.util.Optional&lt;T&gt;</text>
+                          y='143.000'>+ pop():java.util.Optional&lt;T&gt;</text>
                     <text x='5.000'
-                          y='165.000'>+ push(entry:T):void</text>
+                          y='154.000'>+ push(entry:T):void</text>
                     <text x='5.000'
-                          y='176.000'>+ push(entries:T&#x2026;):void</text>
+                          y='165.000'>+ push(entries:T&#x2026;):void</text>
                     <text x='5.000'
-                          y='187.000'>+ size():int</text>
+                          y='176.000'>+ size():int</text>
                     <text x='5.000'
-                          y='198.000'>+ toArray(target:T[]):T[]</text>
+                          y='187.000'>+ toArray(target:T[]):T[]</text>
                     <text x='5.000'
-                          y='209.000'>+ toArray(supplier:java.util.function.IntFunction&lt;T[]&gt;):T[]</text>
+                          y='198.000'>+ toArray(supplier:java.util.function.IntFunction&lt;T[]&gt;):T[]</text>
                 </g>
                 <g transform='translate(339.000 0.000)'>
                     <rect x='0.000'

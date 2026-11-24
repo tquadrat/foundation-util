@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- *  Copyright © 2002-2025 by Thomas Thrien.
+ *  Copyright © 2002-2026 by Thomas Thrien.
  *  All Rights Reserved.
  * ============================================================================
  *  Licensed to the public under the agreements of the GNU Lesser General Public
@@ -31,7 +31,6 @@ import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
 import org.tquadrat.foundation.annotation.UtilityClass;
 import org.tquadrat.foundation.exception.PrivateConstructorForStaticClassCalledError;
-import org.tquadrat.foundation.exception.ValidationException;
 
 /**
  *  <p>{@summary This class provides an Encoder and a Decoder for
@@ -41,12 +40,12 @@ import org.tquadrat.foundation.exception.ValidationException;
  *  characters than Base&nbsp;10 (the regular decimal system) or Base&nbsp;16
  *  (the hexadecimal system). It has the advantage over Base&nbsp;64 that it
  *  uses fewer symbols, and no special characters.</p>
- *  <p>While Base&nbsp; is mainly for (large) numbers, it can be used for
+ *  <p>While Base&nbsp;32 is mainly for (large) numbers, it can be used for
  *  strings, to, in the same way as Base&nbsp;64. But different from that,
- *  Base&nbsp;32 is not really standardized; this version, introduced by
+ *  Base&nbsp;32 is not really standardised; this version, introduced by
  *  Douglas Crockford, is just one among various others.</p>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  *  @thanks Douglas Crockford - douglas@crockford.com
  *  @version $Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $
  *  @since 0.1.0
@@ -67,7 +66,7 @@ public final class Base32
      *  {@href https://www.crockford.com/base32.html Crockford's Base&nbsp;32}
      *  format.}</p>
      *
-     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+     *  @author Thomas Thrien - thomas.thrien@tquadrat.org
      *  @thanks Douglas Crockford - douglas@crockford.com
      *  @version $Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $
      *  @since 0.1.0
@@ -82,7 +81,7 @@ public final class Base32
         ====** Constructors **=================================================
             \*--------------*/
         /**
-         *  Creates a new instance of {@code Base32.Decoder}.
+         *  <p>{@summary {@constructor}}</p>
          */
         private Decoder() { /* Just exists */ }
 
@@ -90,8 +89,9 @@ public final class Base32
         ====** Methods **======================================================
             \*---------*/
         /**
-         *  Checks whether the given argument is a valid Basic&nbsp;32
-         *  sequence and converts it into an array with the symbol values.
+         *  <p>{@summary Checks whether the given argument is a valid
+         *  Base&nbsp;32 sequence and converts it into an array with the symbol
+         *  values.}</p>
          *
          *  @param  src The data to check.
          *  @return The symbol values.
@@ -104,7 +104,7 @@ public final class Base32
             for( var i = 0; i < src.length; ++i )
             {
                 final var value = ALPHABET_VALUES [(char) src [i]];
-                if( value == -1 ) throw new ValidationException( "No valid Base32 sequence" );
+                if( value == -1 ) throw new IllegalArgumentException( "No valid Base32 sequence" );
                 retValue [i] = value;
             }
 
@@ -119,10 +119,10 @@ public final class Base32
          *
          *  @param  src The input data.
          *  @return The decoded value.
-         *  @throws ValidationException The input data is not a valid
+         *  @throws IllegalArgumentException The input data is not a valid
          *      Base&nbsp;32 sequence
          */
-        public final byte [] decode( final byte [] src ) throws ValidationException
+        public final byte [] decode( final byte [] src ) throws IllegalArgumentException
         {
             var retValue = EMPTY_byte_ARRAY;
             if( requireNonNullArgument( src, "src" ).length > 0 )
@@ -142,10 +142,10 @@ public final class Base32
          *
          *  @param  src The input data.
          *  @return The decoded value.
-         *  @throws ValidationException The input data is not a valid
+         *  @throws IllegalArgumentException The input data is not a valid
          *      Base&nbsp;32 sequence
          */
-        public final byte [] decode( final String src ) throws ValidationException
+        public final byte [] decode( final String src ) throws IllegalArgumentException
         {
             final var buffer = decodeToNumber( requireNonNullArgument( src, "src" ).getBytes( UTF8) );
             final var retValue = buffer.toByteArray();
@@ -155,14 +155,15 @@ public final class Base32
         }   //  decode()
 
         /**
-         *  Decodes an array of Base&nbsp;32 symbols to a number.
+         *  <p>{@summary Decodes an array of Base&nbsp;32 symbols to a
+         *  number.}</p>
          *
          *  @param  src The input data.
          *  @return The decoded value.
-         *  @throws ValidationException The input data is not a valid
+         *  @throws IllegalArgumentException The input data is not a valid
          *      Base&nbsp;32 sequence
          */
-        public final BigInteger decodeToNumber( final byte [] src ) throws ValidationException
+        public final BigInteger decodeToNumber( final byte [] src ) throws IllegalArgumentException
         {
             final var sourceValues = checkValid( src );
             var shift = (sourceValues.length - 1) * 5;
@@ -184,10 +185,10 @@ public final class Base32
          *
          *  @param  src The input data.
          *  @return The decoded value.
-         *  @throws ValidationException The input data is not a valid
+         *  @throws IllegalArgumentException The input data is not a valid
          *      Base&nbsp;32 sequence
          */
-        public final BigInteger decodeToNumber( final String src ) throws ValidationException
+        public final BigInteger decodeToNumber( final String src ) throws IllegalArgumentException
         {
             final var retValue = decodeToNumber( requireNonNullArgument( src, "src" ).getBytes( UTF8 ) );
 
@@ -203,10 +204,10 @@ public final class Base32
          *
          *  @param  src The input data.
          *  @return The decoded value.
-         *  @throws ValidationException The input data is not a valid
+         *  @throws IllegalArgumentException The input data is not a valid
          *      Base&nbsp;32 sequence
          */
-        public final String decodeToString( final byte [] src ) throws ValidationException
+        public final String decodeToString( final byte [] src ) throws IllegalArgumentException
         {
             final var buffer = decode( src );
             final var retValue = new String( buffer, UTF8 );
@@ -222,10 +223,10 @@ public final class Base32
          *
          *  @param  src The input data.
          *  @return The decoded value.
-         *  @throws ValidationException The input data is not a valid
+         *  @throws IllegalArgumentException The input data is not a valid
          *      Base&nbsp;32 sequence
          */
-        public final String decodeToString( final String src ) throws ValidationException
+        public final String decodeToString( final String src ) throws IllegalArgumentException
         {
             var retValue = EMPTY_STRING;
             if( !requireNonNullArgument( src, "src" ).isEmpty() ) retValue = decodeToString( src.getBytes( UTF8 ) );
@@ -241,7 +242,7 @@ public final class Base32
      *  {@href https://www.crockford.com/base32.html Crockford's Base&nbsp;32}
      *  format.}</p>
      *
-     *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+     *  @author Thomas Thrien - thomas.thrien@tquadrat.org
      *  @thanks Douglas Crockford - douglas@crockford.com
      *  @version $Id: Base32.java 1151 2025-10-01 21:32:15Z tquadrat $
      *  @since 0.1.0
@@ -256,7 +257,7 @@ public final class Base32
         ====** Constructors **=================================================
             \*--------------*/
         /**
-         *  Creates a new instance of {@code Base32.Encoder}.
+         *  <p>{@summary {@constructor}}</p>
          */
         private Encoder() { /* Just exists */ }
 
@@ -276,7 +277,7 @@ public final class Base32
         {
             if( requireNonNullArgument( value, "value" ).signum() < 0 )
             {
-                throw new ValidationException( "%d is negative".formatted( value ) );
+                throw new IllegalArgumentException( "%d is negative".formatted( value ) );
             }
             final var buffer = value.toString( RADIX )
                 .toUpperCase( ROOT );

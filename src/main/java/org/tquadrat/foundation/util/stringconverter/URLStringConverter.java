@@ -1,6 +1,6 @@
 /*
  * ============================================================================
- * Copyright © 2002-2023 by Thomas Thrien.
+ * Copyright © 2002-2026 by Thomas Thrien.
  * All Rights Reserved.
  * ============================================================================
  *
@@ -34,7 +34,6 @@ import java.util.List;
 
 import org.apiguardian.api.API;
 import org.tquadrat.foundation.annotation.ClassVersion;
-import org.tquadrat.foundation.exception.ValidationException;
 import org.tquadrat.foundation.lang.StringConverter;
 
 /**
@@ -54,7 +53,7 @@ import org.tquadrat.foundation.lang.StringConverter;
  *  <p>Generally, when dealing with relative URLs, URIs should be used
  *  instead.</p>
  *
- *  @extauthor Thomas Thrien - thomas.thrien@tquadrat.org
+ *  @author Thomas Thrien - thomas.thrien@tquadrat.org
  *  @version $Id: URLStringConverter.java 1157 2025-12-31 14:05:44Z tquadrat $
  *  @since 0.0.6
  *
@@ -111,11 +110,11 @@ public sealed class URLStringConverter implements StringConverter<URL>
         {
             try
             {
-                if( isEmptyOrBlank( source ) ) throw new ValidationException( "URL is blank or empty" );
+                if( isEmptyOrBlank( source ) ) throw new IllegalArgumentException( "URL is blank or empty" );
                 final var uri = new URI( source.toString() );
                 retValue = uri.toURL();
             }
-            catch( final MalformedURLException | URISyntaxException | ValidationException e )
+            catch( final MalformedURLException | URISyntaxException e )
             {
                 throw new IllegalArgumentException( format( MSG_InvalidURL, source ), e );
             }
